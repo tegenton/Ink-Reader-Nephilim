@@ -1,7 +1,6 @@
 package game.type.subtype;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Optional;
 
 public enum PlaneswalkerType implements Subtype {
     ajani,
@@ -67,19 +66,18 @@ public enum PlaneswalkerType implements Subtype {
     xenagos,
     yanggu,
     yanling;
-    static final Set<String> types = new HashSet<>();
 
-    static public boolean contains(String s) {
-        if (types.isEmpty()) {
-            for (PlaneswalkerType type : PlaneswalkerType.values()) {
-                types.add(type.getName());
+    public static Optional<Subtype> fromString(String s) {
+        for (PlaneswalkerType type : PlaneswalkerType.values()) {
+            if (type.getName().equalsIgnoreCase(s)) {
+                return Optional.of(type);
             }
         }
-        return types.contains(s);
+        return Optional.empty();
     }
 
     @Override
     public String getName() {
-        return this.name();
+        return this.name().substring(0, 1).toUpperCase() + this.name().substring(1);
     }
 }

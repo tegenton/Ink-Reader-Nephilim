@@ -1,6 +1,7 @@
 package game.concepts.object.characteristics;
 
-import game.type.subtype.*;
+import game.type.Type;
+import game.type.subtype.Subtype;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -16,21 +17,12 @@ class SubtypeCharacteristic extends Characteristic {
     }
 
     public static Optional<Characteristic> fromString(String s) {
-        s = s.toLowerCase();
-        if (ArtifactType.contains(s)) {
-            return Optional.of(new SubtypeCharacteristic(ArtifactType.valueOf(s)));
-        } else if (CreatureType.contains(s)) {
-            return Optional.of(new SubtypeCharacteristic(CreatureType.valueOf(s)));
-        } else if (EnchantmentType.contains(s)) {
-            return Optional.of(new SubtypeCharacteristic(EnchantmentType.valueOf(s)));
-        } else if (LandType.contains(s)) {
-            return Optional.of(new SubtypeCharacteristic(LandType.valueOf(s)));
-        } else if (PlanarType.contains(s)) {
-            return Optional.of(new SubtypeCharacteristic(PlanarType.valueOf(s)));
-        } else if (PlaneswalkerType.contains(s)) {
-            return Optional.of(new SubtypeCharacteristic(PlaneswalkerType.valueOf(s)));
-        } else if (SpellType.contains(s)) {
-            return Optional.of(new SubtypeCharacteristic(SpellType.valueOf(s)));
+        Optional<Subtype> result;
+        for (Type cardType : Type.values()) {
+            result = cardType.fromString(s);
+            if (result.isPresent()) {
+                return Optional.of(new SubtypeCharacteristic(result.get()));
+            }
         }
         return Optional.empty();
     }

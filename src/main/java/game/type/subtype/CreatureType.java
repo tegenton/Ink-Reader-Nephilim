@@ -1,7 +1,6 @@
 package game.type.subtype;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Optional;
 
 public enum CreatureType implements Subtype {
     advisor,
@@ -260,24 +259,23 @@ public enum CreatureType implements Subtype {
     zombie,
     zubera;
 
-    static final Set<String> types = new HashSet<>();
     private final String name;
 
     CreatureType() {
-        this.name = this.name();
+        this.name = this.name().substring(0, 1).toUpperCase() + this.name().substring(1);
     }
 
     CreatureType(String s) {
         this.name = s;
     }
 
-    static public boolean contains(String s) {
-        if (types.isEmpty()) {
-            for (CreatureType type : CreatureType.values()) {
-                types.add(type.getName());
+    public static Optional<Subtype> fromString(String s) {
+        for (CreatureType type : CreatureType.values()) {
+            if (type.getName().equalsIgnoreCase(s)) {
+                return Optional.of(type);
             }
         }
-        return types.contains(s);
+        return Optional.empty();
     }
 
     @Override

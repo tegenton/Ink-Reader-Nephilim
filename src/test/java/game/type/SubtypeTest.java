@@ -1,11 +1,8 @@
 package game.type;
 
-import game.type.subtype.*;
+import game.type.subtype.CreatureType;
 import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.InvocationTargetException;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SubtypeTest {
@@ -14,55 +11,55 @@ public class SubtypeTest {
 
     @Test
     void artifactHasCorrectSubtype() {
-        assertEquals(ArtifactType.class, Type.artifact.getSubtype());
+        assertTrue(Type.artifact.fromString("Treasure").isPresent());
     }
 
     @Test
     void creatureHasCorrectSubtype() {
-        assertEquals(CreatureType.class, cardType.getSubtype());
+        assertTrue(Type.creature.fromString("Assembly-Worker").isPresent());
     }
 
     @Test
     void enchantmentHasCorrectSubtype() {
-        assertEquals(EnchantmentType.class, Type.enchantment.getSubtype());
+        assertTrue(Type.enchantment.fromString("Shrine").isPresent());
     }
 
     @Test
     void landHasCorrectSubtype() {
-        assertEquals(LandType.class, Type.land.getSubtype());
+        assertTrue(Type.land.fromString("Urza's").isPresent());
     }
 
     @Test
     void planeHasCorrectSubtype() {
-        assertEquals(PlanarType.class, Type.plane.getSubtype());
+        assertTrue(Type.plane.fromString("Serra's Realm").isPresent());
     }
 
     @Test
     void planeswalkerHasCorrectSubtype() {
-        assertEquals(PlaneswalkerType.class, Type.planeswalker.getSubtype());
+        assertTrue(Type.planeswalker.fromString("Ajani").isPresent());
     }
 
     @Test
     void instantHasCorrectSubtype() {
-        assertEquals(SpellType.class, Type.instant.getSubtype());
+        assertTrue(Type.instant.fromString("Arcane").isPresent());
     }
 
     @Test
     void sorceryHasCorrectSubtype() {
-        assertEquals(SpellType.class, Type.sorcery.getSubtype());
+        assertTrue(Type.sorcery.fromString("Arcane").isPresent());
     }
 
     @Test
     void creatureSubtypeContainsHumanWizard() {
         for (String subtype : subtypes) {
-            assertTrue(CreatureType.contains(subtype));
+            assertTrue(CreatureType.fromString(subtype).isPresent());
         }
     }
 
     @Test
-    void accessContainsFromCardType() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+    void accessContainsFromCardType() {
         for (String subtype : subtypes) {
-            assertTrue(cardType.contains(subtype));
+            assertTrue(cardType.fromString(subtype).isPresent());
         }
     }
 }

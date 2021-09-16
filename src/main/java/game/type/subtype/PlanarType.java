@@ -1,7 +1,6 @@
 package game.type.subtype;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Optional;
 
 public enum PlanarType implements Subtype {
     alara,
@@ -48,7 +47,6 @@ public enum PlanarType implements Subtype {
     xerex,
     zendikar;
 
-    static final Set<String> types = new HashSet<>();
     private final String name;
 
     PlanarType(String name) {
@@ -56,16 +54,16 @@ public enum PlanarType implements Subtype {
     }
 
     PlanarType() {
-        this.name = this.name();
+        this.name = this.name().substring(0, 1).toUpperCase() + this.name().substring(1);
     }
 
-    public static boolean contains(String s) {
-        if (types.isEmpty()) {
-            for (PlanarType type : PlanarType.values()) {
-                types.add(type.getName());
+    public static Optional<Subtype> fromString(String s) {
+        for (PlanarType type : PlanarType.values()) {
+            if (type.getName().equalsIgnoreCase(s)) {
+                return Optional.of(type);
             }
         }
-        return types.contains(s);
+        return Optional.empty();
     }
 
     @Override

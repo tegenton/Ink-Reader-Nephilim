@@ -1,27 +1,25 @@
 package game.type.subtype;
 
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Optional;
 
 public enum SpellType implements Subtype {
     adventure,
     arcane,
     lesson,
     trap;
-    static final Set<String> types = new HashSet<>();
 
-    public static boolean contains(String s) {
-        if (types.isEmpty()) {
-            for (SpellType type : SpellType.values()) {
-                types.add(type.getName());
+    public static Optional<Subtype> fromString(String s) {
+        for (SpellType type : SpellType.values()) {
+            if (type.getName().equalsIgnoreCase(s)) {
+                return Optional.of(type);
             }
         }
-        return types.contains(s);
+        return Optional.empty();
     }
 
     @Override
     public String getName() {
-        return this.name();
+        return this.name().substring(0, 1).toUpperCase() + this.name().substring(1);
     }
 }

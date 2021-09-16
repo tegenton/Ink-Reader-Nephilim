@@ -2,48 +2,42 @@ package game.type;
 
 import game.type.subtype.*;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import java.util.Optional;
+import java.util.function.Function;
 
 public enum Type {
-    artifact(ArtifactType.class),
+    artifact(ArtifactType::fromString),
     conspiracy,
-    creature(CreatureType.class),
-    enchantment(EnchantmentType.class),
-    instant(SpellType.class),
-    land(LandType.class),
+    creature(CreatureType::fromString),
+    enchantment(EnchantmentType::fromString),
+    instant(SpellType::fromString),
+    land(LandType::fromString),
     phenomenon,
-    plane(PlanarType.class),
-    planeswalker(PlaneswalkerType.class),
+    plane(PlanarType::fromString),
+    planeswalker(PlaneswalkerType::fromString),
     scheme,
-    sorcery(SpellType.class),
-    tribal(CreatureType.class),
+    sorcery(SpellType::fromString),
+    tribal(CreatureType::fromString),
     vanguard;
 
-    private final Class<? extends Subtype> subtypes;
+    private final Function<String, Optional<Subtype>> subtypes;
 
     Type() {
         this.subtypes = null;
     }
 
-    Type(Class<? extends Subtype> subtypes) {
+    Type(Function<String, Optional<Subtype>> subtypes) {
         this.subtypes = subtypes;
     }
 
-    public Class<? extends Subtype> getSubtype() {
+    public Function<String, Optional<Subtype>> getSubtype() {
         return subtypes;
     }
 
-    public boolean contains(String subtype) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        if (subtypes == null) {
-            return false;
+    public Optional<Subtype> fromString(String subtype) {
+        if (this.subtypes != null) {
+            return this.subtypes.apply(subtype);
         }
-        Method m = subtypes.getDeclaredMethod("contains", String.class);
-        return (boolean) m.invoke(null, subtype);
-    }
-
-    public Subtype getSubtype(String subtype) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        Method m = subtypes.getDeclaredMethod("valueOf", String.class);
-        return (Subtype) m.invoke(null, subtype);
+        return Optional.empty();
     }
 }

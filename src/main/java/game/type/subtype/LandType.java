@@ -1,7 +1,6 @@
 package game.type.subtype;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Optional;
 
 public enum LandType implements Subtype {
     plains(true),
@@ -18,14 +17,6 @@ public enum LandType implements Subtype {
     powerplant("Power-Plant"),
     tower;
 
-    static final Set<String> types = new HashSet<>();
-
-    static {
-        for (LandType type : LandType.values()) {
-            types.add(type.getName());
-        }
-    }
-
     private final String name;
     private final boolean basic;
 
@@ -36,7 +27,7 @@ public enum LandType implements Subtype {
 
     LandType() {
         this.basic = false;
-        this.name = this.name();
+        this.name = this.name().substring(0, 1).toUpperCase() + this.name().substring(1);
     }
 
     LandType(boolean basic) {
@@ -44,9 +35,13 @@ public enum LandType implements Subtype {
         this.name = this.name();
     }
 
-    public static boolean contains(String s) {
-        s = s.toLowerCase();
-        return types.contains(s);
+    public static Optional<Subtype> fromString(String s) {
+        for (LandType type : LandType.values()) {
+            if (type.getName().equalsIgnoreCase(s)) {
+                return Optional.of(type);
+            }
+        }
+        return Optional.empty();
     }
 
     @Override
