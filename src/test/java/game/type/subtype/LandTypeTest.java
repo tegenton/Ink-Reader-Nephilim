@@ -29,9 +29,9 @@ public class LandTypeTest {
 
     @ParameterizedTest
     @ValueSource(strings = {
-            //TODO: "urzas",
+            "urzas",
             "mine",
-            //TODO: "powerplant",
+            "powerplant",
             "tower"})
     void urzas(String s) {
         type = LandType.valueOf(s);
