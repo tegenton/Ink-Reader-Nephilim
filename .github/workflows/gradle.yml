@@ -27,6 +27,7 @@ jobs:
         run: chmod +x gradlew
       - name: Build with Gradle
         run: ./gradlew test
+        continue-on-error: true
       - name: Upload results
         uses: actions/upload-artifact@v2
         with:
