@@ -8,6 +8,8 @@ import game.type.subtype.CreatureType;
 import game.type.subtype.EnchantmentType;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.EnumSet;
 import java.util.List;
 
@@ -38,7 +40,7 @@ card.”*/
         assertEquals(EnumSet.noneOf(Color.class), token.getCharacteristic(CharacteristicName.color).get());
         assertEquals(EnumSet.of(Type.artifact), token.getCharacteristic(CharacteristicName.cardType).get());
         assertEquals(List.of(ArtifactType.treasure), token.getCharacteristic(CharacteristicName.subtype).get());
-        assertEquals("Treasure", token.getCharacteristic(CharacteristicName.name).get());
+        assertEquals(new ArrayList<>(Collections.singleton("Treasure")), token.getCharacteristic(CharacteristicName.name).get());
         // TODO: {T}, sac: add any
     }
 
@@ -53,7 +55,7 @@ card.”*/
         assertEquals(EnumSet.noneOf(Color.class), token.getCharacteristic(CharacteristicName.color).get());
         assertEquals(EnumSet.of(Type.artifact), token.getCharacteristic(CharacteristicName.cardType).get());
         assertEquals(List.of(ArtifactType.food), token.getCharacteristic(CharacteristicName.subtype).get());
-        assertEquals("Food", token.getCharacteristic(CharacteristicName.name).get());
+        assertEquals(new ArrayList<>(Collections.singleton("Food")), token.getCharacteristic(CharacteristicName.name).get());
         // TODO: {2}, sac: gain 3
     }
 
@@ -68,7 +70,7 @@ card.”*/
         assertEquals(EnumSet.noneOf(Color.class), token.getCharacteristic(CharacteristicName.color).get());
         assertEquals(EnumSet.of(Type.artifact), token.getCharacteristic(CharacteristicName.cardType).get());
         assertEquals(List.of(ArtifactType.gold), token.getCharacteristic(CharacteristicName.subtype).get());
-        assertEquals("Gold", token.getCharacteristic(CharacteristicName.name).get());
+        assertEquals(new ArrayList<>(Collections.singleton("Gold")), token.getCharacteristic(CharacteristicName.name).get());
         // TODO: sac: add any
     }
 
@@ -85,7 +87,7 @@ card.”*/
         assertEquals(EnumSet.of(Color.black), token.getCharacteristic(CharacteristicName.color).get());
         assertEquals(EnumSet.of(Type.creature), token.getCharacteristic(CharacteristicName.cardType).get());
         assertEquals(List.of(CreatureType.zombie), token.getCharacteristic(CharacteristicName.subtype).get());
-        assertEquals("Walker", token.getCharacteristic(CharacteristicName.name).get());
+        assertEquals(new ArrayList<>(Collections.singleton("Walker")), token.getCharacteristic(CharacteristicName.name).get());
     }
 
     @Test
@@ -99,7 +101,7 @@ card.”*/
         assertEquals(EnumSet.noneOf(Color.class), token.getCharacteristic(CharacteristicName.color).get());
         assertEquals(EnumSet.of(Type.enchantment), token.getCharacteristic(CharacteristicName.cardType).get());
         assertEquals(List.of(EnchantmentType.shard), token.getCharacteristic(CharacteristicName.subtype).get());
-        assertEquals("Shard", token.getCharacteristic(CharacteristicName.name).get());
+        assertEquals(new ArrayList<>(Collections.singleton("Shard")), token.getCharacteristic(CharacteristicName.name).get());
         // TODO: {2}, sac: opt
     }
 
@@ -114,7 +116,7 @@ card.”*/
         assertEquals(EnumSet.noneOf(Color.class), token.getCharacteristic(CharacteristicName.color).get());
         assertEquals(EnumSet.of(Type.artifact), token.getCharacteristic(CharacteristicName.cardType).get());
         assertEquals(List.of(ArtifactType.clue), token.getCharacteristic(CharacteristicName.subtype).get());
-        assertEquals("Clue", token.getCharacteristic(CharacteristicName.name).get());
+        assertEquals(new ArrayList<>(Collections.singleton("Clue")), token.getCharacteristic(CharacteristicName.name).get());
         // TODO: {2}, sac: draw
     }
 }

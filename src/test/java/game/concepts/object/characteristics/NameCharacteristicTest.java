@@ -4,6 +4,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -14,7 +17,7 @@ public class NameCharacteristicTest {
     void caseInsensitive() {
         characteristic = NameCharacteristic.fromString("named Kaldra").orElse(null);
         assertNotNull(characteristic);
-        assertEquals("Kaldra", characteristic.value());
+        assertEquals(new ArrayList<>(Collections.singleton("Kaldra")), characteristic.value());
     }
 
     @ParameterizedTest
@@ -22,6 +25,6 @@ public class NameCharacteristicTest {
     void names(String name) {
         characteristic = NameCharacteristic.fromString("named " + name).orElse(null);
         assertNotNull(characteristic);
-        assertEquals(name, characteristic.value());
+        assertEquals(new ArrayList<>(Collections.singleton(name)), characteristic.value());
     }
 }

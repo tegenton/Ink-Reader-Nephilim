@@ -7,6 +7,8 @@ import game.type.Type;
 import game.type.subtype.CreatureType;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.EnumSet;
 import java.util.List;
 
@@ -29,7 +31,7 @@ public class TokenTest {
         assertEquals(EnumSet.of(Color.green), token.getCharacteristic(CharacteristicName.color).get());
         assertEquals(EnumSet.of(Type.creature), token.getCharacteristic(CharacteristicName.cardType).get());
         assertEquals(List.of(CreatureType.saproling), token.getCharacteristic(CharacteristicName.subtype).get());
-        assertEquals("Saproling", token.getCharacteristic(CharacteristicName.name).get());
+        assertEquals(new ArrayList<>(Collections.singleton("Saproling")), token.getCharacteristic(CharacteristicName.name).get());
 
         // TODO: assertTrue(token.getManaCost().isEmpty());
         assertTrue(token.getCharacteristic(CharacteristicName.superType).isEmpty());
@@ -47,7 +49,7 @@ public class TokenTest {
         assertTrue(token.getCharacteristic(CharacteristicName.name).isPresent());
         assertEquals(EnumSet.of(Type.creature), token.getCharacteristic(CharacteristicName.cardType).get());
         assertEquals(List.of(CreatureType.goblin, CreatureType.scout), token.getCharacteristic(CharacteristicName.subtype).get());
-        assertEquals("Goblin Scout", token.getCharacteristic(CharacteristicName.name).get());
+        assertEquals(new ArrayList<>(Collections.singleton("Goblin Scout")), token.getCharacteristic(CharacteristicName.name).get());
     }
 
     @Test
@@ -65,6 +67,6 @@ public class TokenTest {
         assertEquals(EnumSet.of(SuperType.legendary), token.getCharacteristic(CharacteristicName.superType).get());
         assertEquals(EnumSet.of(Type.creature), token.getCharacteristic(CharacteristicName.cardType).get());
         assertEquals(List.of(CreatureType.avatar), token.getCharacteristic(CharacteristicName.subtype).get());
-        assertEquals("Kaldra", token.getCharacteristic(CharacteristicName.name).get());
+        assertEquals(new ArrayList<>(Collections.singleton("Kaldra")), token.getCharacteristic(CharacteristicName.name).get());
     }
 }
