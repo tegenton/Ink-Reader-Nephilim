@@ -1,13 +1,16 @@
 package game.concepts.object.characteristics;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 class NameCharacteristic extends Characteristic {
-    private String name;
+    private List<String> name;
 
     NameCharacteristic(String name) {
         super();
-        this.name = name;
+        this.name = new ArrayList<>();
+        this.name.add(name);
     }
 
     public static Optional<Characteristic> fromString(String s) {
@@ -27,7 +30,7 @@ class NameCharacteristic extends Characteristic {
     @Override
     public void add(Characteristic characteristic) {
         if (characteristic.getClass() == NameCharacteristic.class) {
-            name = (String) characteristic.value();
+            name.add((String) characteristic.value());
         }
     }
 
@@ -39,7 +42,7 @@ class NameCharacteristic extends Characteristic {
     @Override
     public void add(Object value) {
         if (value.getClass() == String.class) {
-            name = (String) value;
+            name.add((String) value);
         }
     }
 }

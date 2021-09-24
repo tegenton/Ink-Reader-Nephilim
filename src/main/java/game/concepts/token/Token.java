@@ -1,17 +1,23 @@
 package game.concepts.token;
 
-import game.concepts.Permanent;
 import game.concepts.object.Object;
 import game.concepts.object.characteristics.CharacteristicName;
+import game.concepts.permanent.Permanent;
+import game.concepts.permanent.State;
 import game.type.subtype.Subtype;
 
+import java.util.EnumMap;
 import java.util.List;
 import java.util.Optional;
 
 public class Token extends Object implements Permanent {
+    private EnumMap<State, Boolean> state = new EnumMap<>(State.class);
 
     protected Token() {
         super();
+        for (State category : State.values()) {
+            state.put(category, false);
+        }
     }
 
     public static Token create(String s) {
@@ -45,5 +51,20 @@ public class Token extends Object implements Permanent {
             }
             this.setCharacteristic("named " + name);
         }
+    }
+
+    @Override
+    public boolean getState(State category) {
+        return state.get(category);
+    }
+
+    @Override
+    public void setState(State category, boolean value) {
+        state.put(category, value);
+    }
+
+    @Override
+    public void toggleState(State category) {
+        state.put(category, !((boolean) state.get(category)));
     }
 }
