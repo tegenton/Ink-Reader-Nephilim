@@ -42,6 +42,10 @@ public enum EnglishNumber implements Word {
 
     @Override
     public String getWord() {
-        return this.name();
+        return name();
+    }
+
+    public int getVal() {
+        return val;
     }
 }

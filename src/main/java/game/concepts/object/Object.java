@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-public abstract class Object { // TODO: make abstract (interface?)
+public abstract class Object {
     // TODO: card(extends object), permanentCard (extends card, implements permanent (extends object)), spell (extends card), ability, abilityOnStack (extends object)
     /*An object’s characteristics are name, mana cost, color, color indicator, card type, subtype,
 supertype, rules text, abilities, power, toughness, loyalty, hand modifier, and life modifier. Objects
