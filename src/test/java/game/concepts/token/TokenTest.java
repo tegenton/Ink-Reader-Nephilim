@@ -69,4 +69,10 @@ public class TokenTest {
         assertEquals(List.of(CreatureType.avatar), token.getCharacteristic(CharacteristicName.subtype).get());
         assertEquals(new ArrayList<>(Collections.singleton("Kaldra")), token.getCharacteristic(CharacteristicName.name).get());
     }
+
+    @Test
+    void malformed() {
+        token = LegendaryToken.create("Some Dude");
+        assertNull(token);
+    }
 }

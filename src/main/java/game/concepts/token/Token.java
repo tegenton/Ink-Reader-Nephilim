@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class Token extends Object implements Permanent {
-    private EnumMap<State, Boolean> state = new EnumMap<>(State.class);
+    private final EnumMap<State, Boolean> state = new EnumMap<>(State.class);
 
     protected Token() {
         super();
@@ -39,7 +39,7 @@ public class Token extends Object implements Permanent {
     private void setDefaultName() {
         StringBuilder name = new StringBuilder();
         if (getCharacteristic(CharacteristicName.subtype).isPresent()) {
-            Optional<java.lang.Object> result = this.getCharacteristic(CharacteristicName.subtype);
+            Optional<java.lang.Object> result = getCharacteristic(CharacteristicName.subtype);
             if (result.isPresent()) {
                 List<Subtype> subtypes = (List<Subtype>) result.get();
                 for (Subtype subtype : subtypes) {
@@ -49,7 +49,7 @@ public class Token extends Object implements Permanent {
                 }
                 name = new StringBuilder(name.substring(0, name.length() - 1));
             }
-            this.setCharacteristic("named " + name);
+            setCharacteristic("named " + name);
         }
     }
 

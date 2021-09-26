@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 class NameCharacteristic extends Characteristic {
-    private List<String> name;
+    private final List<String> name;
 
     NameCharacteristic(String name) {
         super();
