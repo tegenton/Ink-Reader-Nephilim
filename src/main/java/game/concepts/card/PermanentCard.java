@@ -6,7 +6,7 @@ import game.concepts.permanent.State;
 import java.util.EnumMap;
 
 public class PermanentCard extends Card implements Permanent {
-    private EnumMap<State, Boolean> state = new EnumMap<>(State.class);
+    private final EnumMap<State, Boolean> state = new EnumMap<>(State.class);
 
     public PermanentCard() {
         for (State category : State.values()) {

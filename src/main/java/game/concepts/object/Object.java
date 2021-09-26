@@ -35,11 +35,4 @@ target, an object’s owner or controller, what an Aura enchants, and so on.*/
     public void setCharacteristic(CharacteristicName name, java.lang.Object value) {
         characteristics.put(name, Characteristic.create(name, value));
     }
-    /*public void addCharacteristic(CharacteristicName name, java.lang.Object value) {
-        if (characteristics.containsKey(name)) {
-            characteristics.get(name).add(value);
-        } else {
-            characteristics.put(name, Characteristic.create(name, value));
-        }
-    }*/
 }
