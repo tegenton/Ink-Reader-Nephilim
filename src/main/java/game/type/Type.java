@@ -23,20 +23,16 @@ public enum Type {
     private final Function<String, Optional<Subtype>> subtypes;
 
     Type() {
-        this.subtypes = null;
+        subtypes = null;
     }
 
     Type(Function<String, Optional<Subtype>> subtypes) {
         this.subtypes = subtypes;
     }
 
-    public Function<String, Optional<Subtype>> getSubtype() {
-        return subtypes;
-    }
-
     public Optional<Subtype> fromString(String subtype) {
-        if (this.subtypes != null) {
-            return this.subtypes.apply(subtype);
+        if (subtypes != null) {
+            return subtypes.apply(subtype);
         }
         return Optional.empty();
     }
