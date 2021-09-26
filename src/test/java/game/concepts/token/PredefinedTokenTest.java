@@ -119,4 +119,10 @@ card.”*/
         assertEquals(new ArrayList<>(Collections.singleton("Clue")), token.getCharacteristic(CharacteristicName.name).get());
         // TODO: {2}, sac: draw
     }
+
+    @Test
+    void invalid() {
+        token = PredefinedToken.create("Some Dude");
+        assertNull(token);
+    }
 }

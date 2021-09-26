@@ -36,4 +36,16 @@ ability says otherwise. */
         assertTrue(permanent.getState(State.faceDown));
         assertTrue(permanent.getState(State.phasedOut));
     }
+
+    @Test
+    void setState() {
+        permanent.setState(State.tapped, true);
+        permanent.setState(State.flipped, true);
+        permanent.setState(State.faceDown, true);
+        permanent.setState(State.phasedOut, true);
+        assertTrue(permanent.getState(State.tapped));
+        assertTrue(permanent.getState(State.flipped));
+        assertTrue(permanent.getState(State.faceDown));
+        assertTrue(permanent.getState(State.phasedOut));
+    }
 }

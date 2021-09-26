@@ -6,28 +6,26 @@ import game.concepts.symbols.loyalty.LoyaltySymbol;
 import game.concepts.symbols.mana.ManaSymbol;
 import game.concepts.symbols.planechase.PlanechaseSymbol;
 import game.concepts.symbols.tap.TapSymbol;
+import generic.Filter;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 
 public abstract class Symbol {
+    private static Filter<Symbol> filter;
 
-    private static final List<Function<String, Optional<Symbol>>> symbols;
-
-    static {
+    private static void setupFilter() {
+        List<Function<String, Optional<Symbol>>> symbols;
         symbols = List.of(VariableSymbol::fromString, ManaSymbol::fromString, TapSymbol::fromString, LoyaltySymbol::fromString, LevelSymbol::fromString, PlanechaseSymbol::fromString, EnergySymbol::fromString, ChapterSymbol::fromString);
+        filter = new Filter<>(symbols);
     }
 
     public static Optional<Symbol> fromString(String s) {
-        Symbol result;
-        for (Function<String, Optional<Symbol>> test : symbols) {
-            result = test.apply(s).orElse(null);
-            if (result != null) {
-                return Optional.of(result);
-            }
+        if (filter == null) {
+            setupFilter();
         }
-        return Optional.empty();
+        return filter.filter(s);
     }
 
     protected static String removeBrackets(String s) {

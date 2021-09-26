@@ -1,5 +1,7 @@
 package game.concepts.object.characteristics;
 
+import generic.Filter;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
@@ -10,21 +12,19 @@ supertype, rules text, abilities, power, toughness, loyalty, hand modifier, and 
 can have some or all of these characteristics. Any other information about an object isn’t a
 characteristic. For example, characteristics don’t include whether a permanent is tapped, a spell’s
 target, an object’s owner or controller, what an Aura enchants, and so on.*/
-    private static final List<Function<String, Optional<Characteristic>>> characteristics;
+    private static Filter<Characteristic> filter;
 
-    static {
+    private static void setupFilter() {
+        List<Function<String, Optional<Characteristic>>> characteristics;
         characteristics = List.of(NameCharacteristic::fromString, ColorCharacteristic::fromString, CardTypeCharacteristic::fromString, SubtypeCharacteristic::fromString, SuperTypeCharacteristic::fromString, PowerToughnessCharacteristic::fromString);
+        filter = new Filter<>(characteristics);
     }
 
     public static Optional<Characteristic> fromString(String s) {
-        Optional<Characteristic> result;
-        for (Function<String, Optional<Characteristic>> test : characteristics) {
-            result = test.apply(s);
-            if (result.isPresent()) {
-                return result;
-            }
+        if (filter == null) {
+            setupFilter();
         }
-        return Optional.empty();
+        return filter.filter(s);
     }
 
     public static Characteristic create(CharacteristicName name, Object value) {

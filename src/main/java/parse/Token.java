@@ -1,5 +1,6 @@
 package parse;
 
+import generic.Filter;
 import parse.lexicon.Word;
 
 import java.util.ArrayList;
@@ -8,13 +9,14 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public abstract class Token {
-    private static List<Function<String, Optional<Token>>> tokenTypes;
-
-    static {
-        tokenTypes = List.of(EnglishNumberToken::fromString, PunctuationToken::fromString, SubjectToken::fromString, VerbToken::fromString);
-    }
-
+    private static Filter<Token> filter;
     protected Word word;
+
+    private static void setupFilter() {
+        List<Function<String, Optional<Token>>> tokenTypes;
+        tokenTypes = List.of(EnglishNumberToken::fromString, PunctuationToken::fromString, SubjectToken::fromString, VerbToken::fromString);
+        filter = new Filter<>(tokenTypes);
+    }
 
     public static List<Token> tokenize(String s) {
         StringSplitter sentence = new StringSplitter(s);
@@ -26,14 +28,10 @@ public abstract class Token {
     }
 
     private static Optional<Token> fromString(String s) {
-        Token result;
-        for (Function<String, Optional<Token>> test : tokenTypes) {
-            result = test.apply(s).orElse(null);
-            if (result != null) {
-                return Optional.of(result);
-            }
+        if (filter == null) {
+            setupFilter();
         }
-        return Optional.empty();
+        return filter.filter(s);
     }
 
     public Word getWord() {

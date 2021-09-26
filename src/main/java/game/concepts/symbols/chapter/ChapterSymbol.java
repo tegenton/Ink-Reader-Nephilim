@@ -1,26 +1,25 @@
 package game.concepts.symbols.chapter;
 
 import game.concepts.symbols.Symbol;
+import generic.Filter;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 
 public abstract class ChapterSymbol extends Symbol {
-    private static final List<Function<String, Optional<Symbol>>> chapterSymbols;
+    private static Filter<Symbol> filter;
 
-    static {
+    private static void setupFilter() {
+        List<Function<String, Optional<Symbol>>> chapterSymbols;
         chapterSymbols = List.of(SingleChapterSymbol::fromString, MultipleChapterSymbol::fromString);
+        filter = new Filter<>(chapterSymbols);
     }
 
     public static Optional<Symbol> fromString(String s) {
-        Optional<Symbol> result;
-        for (Function<String, Optional<Symbol>> test : chapterSymbols) {
-            result = test.apply(s);
-            if (result.isPresent()) {
-                return result;
-            }
+        if (filter == null) {
+            setupFilter();
         }
-        return Optional.empty();
+        return filter.filter(s);
     }
 }
