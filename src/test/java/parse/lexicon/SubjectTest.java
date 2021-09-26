@@ -6,20 +6,20 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-public class VerbTest {
-    public static Verb verb;
+public class SubjectTest {
+    public static Subject subject;
 
     @ParameterizedTest
-    @ValueSource(strings = {"draw", "create"})
+    @ValueSource(strings = {"cards"})
     void validNumbers(String s) {
-        verb = Verb.fromString(s).orElse(null);
-        assertNotNull(verb);
+        subject = Subject.fromString(s).orElse(null);
+        assertNotNull(subject);
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"Whenever", "Lifelink"})
     void invalid(String s) {
-        verb = Verb.fromString(s).orElse(null);
-        assertNull(verb);
+        subject = Subject.fromString(s).orElse(null);
+        assertNull(subject);
     }
 }

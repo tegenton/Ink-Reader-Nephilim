@@ -3,8 +3,7 @@ package parse;
 import org.junit.jupiter.api.Test;
 import parse.lexicon.Verb;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class VerbTokenTest {
     public static VerbToken verbToken;
@@ -14,5 +13,11 @@ public class VerbTokenTest {
         verbToken = (VerbToken) VerbToken.fromString("draw").orElse(null);
         assertNotNull(verbToken);
         assertEquals(Verb.draw, verbToken.getWord());
+    }
+
+    @Test
+    void invalid() {
+        verbToken = (VerbToken) VerbToken.fromString("when").orElse(null);
+        assertNull(verbToken);
     }
 }

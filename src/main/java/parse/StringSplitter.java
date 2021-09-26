@@ -9,20 +9,20 @@ class StringSplitter {
     }
 
     public boolean hasNext() {
-        return !this.s.isEmpty();
+        return !s.isEmpty();
     }
 
     public String getNext() {
         StringBuilder token = new StringBuilder();
-        for (int i = 0; i < this.s.length(); i++) {
-            if (this.s.charAt(i) != ' ') {
-                token.append(this.s.charAt(i));
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) != ' ') {
+                token.append(s.charAt(i));
             }
-            if (this.s.length() == i + 1 || this.s.charAt(i + 1) == ' ') {
-                this.s = this.s.substring(i + 1);
+            if (s.length() == i + 1 || s.charAt(i + 1) == ' ') {
+                s = s.substring(i + 1);
                 break;
-            } else if (this.delim.contains(this.s.substring(i + 1, i + 2))) {
-                this.s = this.s.substring(i + 1);
+            } else if (delim.contains(s.substring(i + 1, i + 2))) {
+                s = s.substring(i + 1);
                 break;
             }
         }

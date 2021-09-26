@@ -4,7 +4,7 @@ import java.util.Optional;
 
 public enum Punctuation implements Word {
     period("."),
-    comma(".");
+    comma(",");
 
     private final String name;
 

@@ -6,20 +6,20 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-public class VerbTest {
-    public static Verb verb;
+public class PunctuationTest {
+    public static Punctuation punctuation;
 
     @ParameterizedTest
-    @ValueSource(strings = {"draw", "create"})
-    void validNumbers(String s) {
-        verb = Verb.fromString(s).orElse(null);
-        assertNotNull(verb);
+    @ValueSource(strings = {".", ","})
+    void validPunctuation(String s) {
+        punctuation = Punctuation.fromString(s).orElse(null);
+        assertNotNull(punctuation);
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"Whenever", "Lifelink"})
     void invalid(String s) {
-        verb = Verb.fromString(s).orElse(null);
-        assertNull(verb);
+        punctuation = Punctuation.fromString(s).orElse(null);
+        assertNull(punctuation);
     }
 }
