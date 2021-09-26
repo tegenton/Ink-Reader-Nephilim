@@ -10,7 +10,7 @@ public class SubjectTest {
     public static Subject subject;
 
     @ParameterizedTest
-    @ValueSource(strings = {"cards"})
+    @ValueSource(strings = {"card", "cards"})
     void validNumbers(String s) {
         subject = Subject.fromString(s).orElse(null);
         assertNotNull(subject);
