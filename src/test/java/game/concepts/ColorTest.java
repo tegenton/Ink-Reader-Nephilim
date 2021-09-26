@@ -47,6 +47,7 @@ public class ColorTest {
 
     @Test
     void invalidColor() {
+        //noinspection ResultOfMethodCallIgnored
         assertThrows(InvalidColorException.class, () -> Color.fromString("W/U"));
     }
 }
