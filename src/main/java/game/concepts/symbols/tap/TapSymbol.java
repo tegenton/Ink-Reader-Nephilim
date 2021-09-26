@@ -1,28 +1,28 @@
 package game.concepts.symbols.tap;
 
 import game.concepts.symbols.Symbol;
+import generic.Filter;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 
 public abstract class TapSymbol extends Symbol {
-    private static final List<Function<String, Optional<Symbol>>> tapSymbols;
+    private static Filter<Symbol> filter;
 
-    static {
+    private static void setupFilter() {
+        List<Function<String, Optional<Symbol>>> tapSymbols;
         tapSymbols = List.of(TapTapSymbol::fromString, UntapSymbol::fromString);
+        filter = new Filter<>(tapSymbols);
     }
 
     public static Optional<Symbol> fromString(String s) {
+        if (filter == null) {
+            setupFilter();
+        }
         if (s.startsWith("{") && s.endsWith("}")) {
             s = removeBrackets(s);
-            Optional<Symbol> result;
-            for (Function<String, Optional<Symbol>> test : tapSymbols) {
-                result = test.apply(s);
-                if (result.isPresent()) {
-                    return result;
-                }
-            }
+            return filter.filter(s);
         }
         return Optional.empty();
     }

@@ -2,6 +2,7 @@ package game.concepts.symbols.mana;
 
 import game.concepts.Color;
 import game.concepts.symbols.Symbol;
+import generic.Filter;
 
 import java.util.EnumSet;
 import java.util.List;
@@ -9,10 +10,12 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public abstract class ManaSymbol extends Symbol {
-    private static final List<Function<String, Optional<Symbol>>> manaSymbols;
+    private static Filter<Symbol> filter;
 
-    static {
+    private static void setupFilter() {
+        List<Function<String, Optional<Symbol>>> manaSymbols;
         manaSymbols = List.of(PrimaryManaSymbol::fromString, NumericManaSymbol::fromString, VariableManaSymbol::fromString, HybridManaSymbol::fromString, MonoHybridManaSymbol::fromString, PhyrexianManaSymbol::fromString, SnowManaSymbol::fromString);
+        filter = new Filter<>(manaSymbols);
     }
 
     /*
@@ -23,15 +26,12 @@ public abstract class ManaSymbol extends Symbol {
         {R/P}, and {G/P}; and the snow symbol {S}.
     */
     public static Optional<Symbol> fromString(String s) {
+        if (filter == null) {
+            setupFilter();
+        }
         if (s.startsWith("{") && s.endsWith("}")) {
             s = removeBrackets(s);
-            Optional<Symbol> result;
-            for (Function<String, Optional<Symbol>> test : manaSymbols) {
-                result = test.apply(s);
-                if (result.isPresent()) {
-                    return result;
-                }
-            }
+            return filter.filter(s);
         }
         return Optional.empty();
     }
