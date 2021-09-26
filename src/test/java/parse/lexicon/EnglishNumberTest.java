@@ -1,10 +1,10 @@
 package parse.lexicon;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class EnglishNumberTest {
     private static EnglishNumber num;
@@ -15,6 +15,13 @@ public class EnglishNumberTest {
     void validNumbers(String s) {
         num = EnglishNumber.fromString(s).orElse(null);
         assertNotNull(num);
+    }
+
+    @Test
+    void value() {
+        assertEquals(1, EnglishNumber.one.getVal());
+        assertEquals(2, EnglishNumber.two.getVal());
+        assertEquals(3, EnglishNumber.three.getVal());
     }
 
     @ParameterizedTest
