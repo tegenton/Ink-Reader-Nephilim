@@ -2,6 +2,8 @@ card = {}
 card.isGood = false
 
 creature = {}
-setmetatable(creature, card)
+creature_meta = {}
+creature_meta.__index = card
+setmetatable(creature, creature_meta)
 
 print(creature.isGood)
