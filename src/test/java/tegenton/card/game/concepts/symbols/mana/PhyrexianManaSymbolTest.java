@@ -1,13 +1,12 @@
 package tegenton.card.game.concepts.symbols.mana;
 
-import tegenton.card.game.concepts.Color;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import tegenton.card.game.concepts.Color;
 
 import java.util.EnumSet;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class PhyrexianManaSymbolTest {
     public static EnumSet<Color> colors;
@@ -61,5 +60,11 @@ public class PhyrexianManaSymbolTest {
         assertNotNull(symbol);
         assertEquals(colors, symbol.getType());
         assertEquals(1, symbol.getManaValue());
+    }
+
+    @Test
+    void invalid() {
+        symbol = (PhyrexianManaSymbol) PhyrexianManaSymbol.fromString("Y/P").orElse(null);
+        assertNull(symbol);
     }
 }
