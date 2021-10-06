@@ -2,15 +2,15 @@ package tegenton.card.game.concepts.object.characteristics;
 
 import java.util.Optional;
 
-class PowerToughnessCharacteristic extends Characteristic {
-    private int[] powerToughness;
+class PowerToughnessCharacteristic extends Characteristic<Integer[]> {
+    private final Integer[] powerToughness;
 
     private PowerToughnessCharacteristic(int power, int toughness) {
         super();
-        this.powerToughness = new int[]{power, toughness};
+        powerToughness = new Integer[]{power, toughness};
     }
 
-    public static Optional<Characteristic> fromString(String s) {
+    public static Optional<Characteristic<?>> fromString(String s) {
         String[] parts = s.split("/");
         if (parts.length == 2) {
             try {
@@ -23,23 +23,12 @@ class PowerToughnessCharacteristic extends Characteristic {
     }
 
     @Override
-    public CharacteristicName getName() {
-        return CharacteristicName.powerToughness;
-    }
-
-    @Override
-    public void add(Characteristic characteristic) {
-    }
-
-    @Override
-    public Object value() {
+    public Integer[] value() {
         return powerToughness;
     }
 
     @Override
-    public void add(Object value) {
-        if (value.getClass() == int[].class) {
-            powerToughness = (int[]) value;
-        }
+    public CharacteristicName getName() {
+        return CharacteristicName.powerToughness;
     }
 }

@@ -3,20 +3,23 @@ package tegenton.card.game.concepts.object.characteristics;
 import tegenton.card.game.type.Type;
 import tegenton.card.game.type.subtype.Subtype;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
-class SubtypeCharacteristic extends Characteristic {
-    private final List<Subtype> type = new ArrayList<>();
+class SubtypeCharacteristic extends Characteristic<List<Subtype>> {
+    private final List<Subtype> type;
 
     private SubtypeCharacteristic(Subtype type) {
         super();
-        this.type.add(type);
+        this.type = List.of(type);
     }
 
-    public static Optional<Characteristic> fromString(String s) {
+    public SubtypeCharacteristic(List<Subtype> subtypes) {
+        super();
+        type = subtypes;
+    }
+
+    public static Optional<Characteristic<?>> fromString(String s) {
         Optional<Subtype> result;
         for (Type cardType : Type.values()) {
             result = cardType.fromString(s);
@@ -27,27 +30,17 @@ class SubtypeCharacteristic extends Characteristic {
         return Optional.empty();
     }
 
+    public static Characteristic<List<Subtype>> subtypeList(List<Subtype> subtypes) {
+        return new SubtypeCharacteristic(subtypes);
+    }
+
     @Override
     public CharacteristicName getName() {
         return CharacteristicName.subtype;
     }
 
     @Override
-    public void add(Characteristic characteristic) {
-        if (characteristic.getClass() == SubtypeCharacteristic.class) {
-            this.type.addAll(((SubtypeCharacteristic) characteristic).type);
-        }
-    }
-
-    @Override
-    public Object value() {
+    public List<Subtype> value() {
         return type;
-    }
-
-    @Override
-    public void add(Object value) {
-        if (List.class.isAssignableFrom(value.getClass())) {
-            type.addAll((Collection<? extends Subtype>) value);
-        }
     }
 }

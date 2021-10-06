@@ -1,7 +1,6 @@
 package tegenton.card.game.concepts.token;
 
-import tegenton.card.game.concepts.object.characteristics.CharacteristicName;
-
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -12,7 +11,7 @@ public abstract class LegendaryToken extends Token {
         Matcher m = legend.matcher(s);
         if (m.find()) {
             Token token = Token.create(m.group(2));
-            token.setCharacteristic(CharacteristicName.name, m.group(1));
+            token.setName(List.of(m.group(1)));
             return token;
         } else {
             return null;

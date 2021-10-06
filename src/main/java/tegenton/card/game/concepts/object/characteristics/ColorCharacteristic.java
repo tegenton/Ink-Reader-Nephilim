@@ -2,21 +2,20 @@ package tegenton.card.game.concepts.object.characteristics;
 
 import tegenton.card.game.concepts.Color;
 
-import java.util.Collection;
 import java.util.EnumSet;
 import java.util.Optional;
 
-class ColorCharacteristic extends Characteristic {
+class ColorCharacteristic extends Characteristic<EnumSet<Color>> {
     private final EnumSet<Color> colors = EnumSet.noneOf(Color.class);
 
     private ColorCharacteristic(Color color) {
         super();
         if (color != null) {
-            this.colors.add(color);
+            colors.add(color);
         }
     }
 
-    public static Optional<Characteristic> fromString(String s) {
+    public static Optional<Characteristic<?>> fromString(String s) {
         s = s.toLowerCase();
         try {
             return Optional.of(new ColorCharacteristic(Color.valueOf(s)));
@@ -34,21 +33,7 @@ class ColorCharacteristic extends Characteristic {
     }
 
     @Override
-    public void add(Characteristic characteristic) {
-        if (characteristic.getClass() == ColorCharacteristic.class) {
-            this.colors.addAll(((ColorCharacteristic) characteristic).colors);
-        }
-    }
-
-    @Override
-    public Object value() {
+    public EnumSet<Color> value() {
         return colors;
-    }
-
-    @Override
-    public void add(Object value) {
-        if (EnumSet.class.isAssignableFrom(value.getClass())) {
-            colors.addAll((Collection<? extends Color>) value);
-        }
     }
 }

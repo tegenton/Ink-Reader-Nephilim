@@ -1,12 +1,11 @@
 package tegenton.card.game.concepts.token;
 
+import org.junit.jupiter.api.Test;
 import tegenton.card.game.concepts.Color;
-import tegenton.card.game.concepts.object.characteristics.CharacteristicName;
 import tegenton.card.game.type.Type;
 import tegenton.card.game.type.subtype.ArtifactType;
 import tegenton.card.game.type.subtype.CreatureType;
 import tegenton.card.game.type.subtype.EnchantmentType;
-import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -33,14 +32,14 @@ card.”*/
     void treasure() {
         token = PredefinedToken.create("Treasure");
         assertNotNull(token);
-        assertTrue(token.getCharacteristic(CharacteristicName.color).isPresent());
-        assertTrue(token.getCharacteristic(CharacteristicName.cardType).isPresent());
-        assertTrue(token.getCharacteristic(CharacteristicName.subtype).isPresent());
-        assertTrue(token.getCharacteristic(CharacteristicName.name).isPresent());
-        assertEquals(EnumSet.noneOf(Color.class), token.getCharacteristic(CharacteristicName.color).get());
-        assertEquals(EnumSet.of(Type.artifact), token.getCharacteristic(CharacteristicName.cardType).get());
-        assertEquals(List.of(ArtifactType.treasure), token.getCharacteristic(CharacteristicName.subtype).get());
-        assertEquals(new ArrayList<>(Collections.singleton("Treasure")), token.getCharacteristic(CharacteristicName.name).get());
+        assertTrue(token.getColor().isPresent());
+        assertTrue(token.getCardTypes().isPresent());
+        assertTrue(token.getSubtypes().isPresent());
+        assertTrue(token.getName().isPresent());
+        assertEquals(EnumSet.noneOf(Color.class), token.getColor().get());
+        assertEquals(EnumSet.of(Type.artifact), token.getCardTypes().get());
+        assertIterableEquals(List.of(ArtifactType.treasure), token.getSubtypes().get());
+        assertIterableEquals(new ArrayList<>(Collections.singleton("Treasure")), token.getName().get());
         // TODO: {T}, sac: add any
     }
 
@@ -48,14 +47,14 @@ card.”*/
     void food() {
         token = PredefinedToken.create("Food");
         assertNotNull(token);
-        assertTrue(token.getCharacteristic(CharacteristicName.color).isPresent());
-        assertTrue(token.getCharacteristic(CharacteristicName.cardType).isPresent());
-        assertTrue(token.getCharacteristic(CharacteristicName.subtype).isPresent());
-        assertTrue(token.getCharacteristic(CharacteristicName.name).isPresent());
-        assertEquals(EnumSet.noneOf(Color.class), token.getCharacteristic(CharacteristicName.color).get());
-        assertEquals(EnumSet.of(Type.artifact), token.getCharacteristic(CharacteristicName.cardType).get());
-        assertEquals(List.of(ArtifactType.food), token.getCharacteristic(CharacteristicName.subtype).get());
-        assertEquals(new ArrayList<>(Collections.singleton("Food")), token.getCharacteristic(CharacteristicName.name).get());
+        assertTrue(token.getColor().isPresent());
+        assertTrue(token.getCardTypes().isPresent());
+        assertTrue(token.getSubtypes().isPresent());
+        assertTrue(token.getName().isPresent());
+        assertEquals(EnumSet.noneOf(Color.class), token.getColor().get());
+        assertEquals(EnumSet.of(Type.artifact), token.getCardTypes().get());
+        assertIterableEquals(List.of(ArtifactType.food), token.getSubtypes().get());
+        assertIterableEquals(new ArrayList<>(Collections.singleton("Food")), token.getName().get());
         // TODO: {2}, sac: gain 3
     }
 
@@ -63,14 +62,14 @@ card.”*/
     void gold() {
         token = PredefinedToken.create("Gold");
         assertNotNull(token);
-        assertTrue(token.getCharacteristic(CharacteristicName.color).isPresent());
-        assertTrue(token.getCharacteristic(CharacteristicName.cardType).isPresent());
-        assertTrue(token.getCharacteristic(CharacteristicName.subtype).isPresent());
-        assertTrue(token.getCharacteristic(CharacteristicName.name).isPresent());
-        assertEquals(EnumSet.noneOf(Color.class), token.getCharacteristic(CharacteristicName.color).get());
-        assertEquals(EnumSet.of(Type.artifact), token.getCharacteristic(CharacteristicName.cardType).get());
-        assertEquals(List.of(ArtifactType.gold), token.getCharacteristic(CharacteristicName.subtype).get());
-        assertEquals(new ArrayList<>(Collections.singleton("Gold")), token.getCharacteristic(CharacteristicName.name).get());
+        assertTrue(token.getColor().isPresent());
+        assertTrue(token.getCardTypes().isPresent());
+        assertTrue(token.getSubtypes().isPresent());
+        assertTrue(token.getName().isPresent());
+        assertEquals(EnumSet.noneOf(Color.class), token.getColor().get());
+        assertEquals(EnumSet.of(Type.artifact), token.getCardTypes().get());
+        assertEquals(List.of(ArtifactType.gold), token.getSubtypes().get());
+        assertEquals(new ArrayList<>(Collections.singleton("Gold")), token.getName().get());
         // TODO: sac: add any
     }
 
@@ -78,30 +77,32 @@ card.”*/
     void walker() {
         token = PredefinedToken.create("Walker");
         assertNotNull(token);
-        assertTrue(token.getCharacteristic(CharacteristicName.powerToughness).isPresent());
-        assertTrue(token.getCharacteristic(CharacteristicName.color).isPresent());
-        assertTrue(token.getCharacteristic(CharacteristicName.cardType).isPresent());
-        assertTrue(token.getCharacteristic(CharacteristicName.subtype).isPresent());
-        assertTrue(token.getCharacteristic(CharacteristicName.name).isPresent());
-        assertArrayEquals(new int[]{2, 2}, (int[]) token.getCharacteristic(CharacteristicName.powerToughness).get());
-        assertEquals(EnumSet.of(Color.black), token.getCharacteristic(CharacteristicName.color).get());
-        assertEquals(EnumSet.of(Type.creature), token.getCharacteristic(CharacteristicName.cardType).get());
-        assertEquals(List.of(CreatureType.zombie), token.getCharacteristic(CharacteristicName.subtype).get());
-        assertEquals(new ArrayList<>(Collections.singleton("Walker")), token.getCharacteristic(CharacteristicName.name).get());
+        assertTrue(token.getPower().isPresent());
+        assertTrue(token.getToughness().isPresent());
+        assertTrue(token.getColor().isPresent());
+        assertTrue(token.getCardTypes().isPresent());
+        assertTrue(token.getSubtypes().isPresent());
+        assertTrue(token.getName().isPresent());
+        assertEquals(2, token.getPower().get());
+        assertEquals(2, token.getToughness().get());
+        assertEquals(EnumSet.of(Color.black), token.getColor().get());
+        assertEquals(EnumSet.of(Type.creature), token.getCardTypes().get());
+        assertEquals(List.of(CreatureType.zombie), token.getSubtypes().get());
+        assertEquals(new ArrayList<>(Collections.singleton("Walker")), token.getName().get());
     }
 
     @Test
     void shard() {
         token = PredefinedToken.create("Shard");
         assertNotNull(token);
-        assertTrue(token.getCharacteristic(CharacteristicName.color).isPresent());
-        assertTrue(token.getCharacteristic(CharacteristicName.cardType).isPresent());
-        assertTrue(token.getCharacteristic(CharacteristicName.subtype).isPresent());
-        assertTrue(token.getCharacteristic(CharacteristicName.name).isPresent());
-        assertEquals(EnumSet.noneOf(Color.class), token.getCharacteristic(CharacteristicName.color).get());
-        assertEquals(EnumSet.of(Type.enchantment), token.getCharacteristic(CharacteristicName.cardType).get());
-        assertEquals(List.of(EnchantmentType.shard), token.getCharacteristic(CharacteristicName.subtype).get());
-        assertEquals(new ArrayList<>(Collections.singleton("Shard")), token.getCharacteristic(CharacteristicName.name).get());
+        assertTrue(token.getColor().isPresent());
+        assertTrue(token.getCardTypes().isPresent());
+        assertTrue(token.getSubtypes().isPresent());
+        assertTrue(token.getName().isPresent());
+        assertEquals(EnumSet.noneOf(Color.class), token.getColor().get());
+        assertEquals(EnumSet.of(Type.enchantment), token.getCardTypes().get());
+        assertEquals(List.of(EnchantmentType.shard), token.getSubtypes().get());
+        assertEquals(new ArrayList<>(Collections.singleton("Shard")), token.getName().get());
         // TODO: {2}, sac: opt
     }
 
@@ -109,14 +110,14 @@ card.”*/
     void clue() {
         token = PredefinedToken.create("Clue");
         assertNotNull(token);
-        assertTrue(token.getCharacteristic(CharacteristicName.color).isPresent());
-        assertTrue(token.getCharacteristic(CharacteristicName.cardType).isPresent());
-        assertTrue(token.getCharacteristic(CharacteristicName.subtype).isPresent());
-        assertTrue(token.getCharacteristic(CharacteristicName.name).isPresent());
-        assertEquals(EnumSet.noneOf(Color.class), token.getCharacteristic(CharacteristicName.color).get());
-        assertEquals(EnumSet.of(Type.artifact), token.getCharacteristic(CharacteristicName.cardType).get());
-        assertEquals(List.of(ArtifactType.clue), token.getCharacteristic(CharacteristicName.subtype).get());
-        assertEquals(new ArrayList<>(Collections.singleton("Clue")), token.getCharacteristic(CharacteristicName.name).get());
+        assertTrue(token.getColor().isPresent());
+        assertTrue(token.getCardTypes().isPresent());
+        assertTrue(token.getSubtypes().isPresent());
+        assertTrue(token.getName().isPresent());
+        assertEquals(EnumSet.noneOf(Color.class), token.getColor().get());
+        assertEquals(EnumSet.of(Type.artifact), token.getCardTypes().get());
+        assertEquals(List.of(ArtifactType.clue), token.getSubtypes().get());
+        assertEquals(new ArrayList<>(Collections.singleton("Clue")), token.getName().get());
         // TODO: {2}, sac: draw
     }
 

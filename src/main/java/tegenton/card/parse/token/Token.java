@@ -1,7 +1,8 @@
-package tegenton.card.parse;
+package tegenton.card.parse.token;
 
 import tegenton.card.generic.Filter;
-import tegenton.card.parse.lexicon.Word;
+import tegenton.card.generic.StringSplitter;
+import tegenton.card.parse.token.lexicon.Word;
 
 import java.util.ArrayList;
 import java.util.List;

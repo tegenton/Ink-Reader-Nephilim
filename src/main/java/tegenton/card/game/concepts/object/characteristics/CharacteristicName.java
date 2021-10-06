@@ -13,6 +13,6 @@ public enum CharacteristicName {
     powerToughness,
     loyalty,
     handMod,
-    lifeMod,
+    lifeMod
 
 }

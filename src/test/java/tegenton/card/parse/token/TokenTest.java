@@ -1,6 +1,7 @@
-package tegenton.card.parse;
+package tegenton.card.parse.token;
 
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -23,7 +24,7 @@ public class TokenTest {
     void compare() {
         assertEquals(expected.size(), tokens.size());
         for (int i = 0; i < tokens.size(); i++) {
-            assertEquals(expected.get(i).getWord().getWord(), tokens.get(i).getWord().getWord());
+            Assertions.assertEquals(expected.get(i).getWord().getWord(), tokens.get(i).getWord().getWord());
         }
     }
 

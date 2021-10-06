@@ -1,7 +1,6 @@
 package tegenton.card.game.concepts.token;
 
 import tegenton.card.game.concepts.object.Object;
-import tegenton.card.game.concepts.object.characteristics.CharacteristicName;
 import tegenton.card.game.concepts.permanent.Permanent;
 import tegenton.card.game.concepts.permanent.State;
 import tegenton.card.game.type.subtype.Subtype;
@@ -30,7 +29,7 @@ public class Token extends Object implements Permanent {
                 token.setCharacteristic(items[i]);
             }
         }
-        if (token.getCharacteristic(CharacteristicName.name).isEmpty()) {
+        if (token.getName().isEmpty()) {
             token.setDefaultName();
         }
         return token;
@@ -38,10 +37,10 @@ public class Token extends Object implements Permanent {
 
     private void setDefaultName() {
         StringBuilder name = new StringBuilder();
-        if (getCharacteristic(CharacteristicName.subtype).isPresent()) {
-            Optional<java.lang.Object> result = getCharacteristic(CharacteristicName.subtype);
+        if (getSubtypes().isPresent()) {
+            Optional<List<Subtype>> result = getSubtypes();
             if (result.isPresent()) {
-                List<Subtype> subtypes = (List<Subtype>) result.get();
+                List<Subtype> subtypes = result.get();
                 for (Subtype subtype : subtypes) {
                     String temp = subtype.getName();
                     temp = temp.substring(0, 1).toUpperCase() + temp.substring(1);
@@ -49,7 +48,7 @@ public class Token extends Object implements Permanent {
                 }
                 name = new StringBuilder(name.substring(0, name.length() - 1));
             }
-            setCharacteristic("named " + name);
+            setName(List.of(name.toString()));
         }
     }
 
@@ -66,5 +65,10 @@ public class Token extends Object implements Permanent {
     @Override
     public void toggleState(State category) {
         state.put(category, !((boolean) state.get(category)));
+    }
+
+    @Override
+    protected void setName(List<String> names) {
+        super.setName(names);
     }
 }
