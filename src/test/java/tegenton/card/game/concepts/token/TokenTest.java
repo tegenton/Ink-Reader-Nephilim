@@ -36,7 +36,7 @@ public class TokenTest {
 
         // TODO: assertTrue(token.getManaCost().isEmpty());
         assertTrue(token.getSuperTypes().isEmpty());
-        // TODO: assertTrue(token.getRulesText().isEmpty());
+        assertTrue(token.getRulesText().isEmpty());
         // TODO: assertTrue(token.getAbilities().isEmpty());
     }
 

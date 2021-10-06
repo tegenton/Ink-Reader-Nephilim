@@ -18,16 +18,20 @@ characteristic. For example, characteristics don’t include whether a permanent
 target, an object’s owner or controller, what an Aura enchants, and so on.*/
     private final EnumMap<CharacteristicName, Characteristic<?>> characteristics = new EnumMap<>(CharacteristicName.class);
 
-    public Optional<List<String>> getName() {
-        if (!characteristics.containsKey(CharacteristicName.name)) {
+    private <T> Optional<T> getCharacteristic(CharacteristicName name) {
+        if (!characteristics.containsKey(name)) {
             return Optional.empty();
         }
         try {
-            Characteristic<List<String>> characteristic = (Characteristic<List<String>>) characteristics.get(CharacteristicName.name);
+            Characteristic<T> characteristic = (Characteristic<T>) characteristics.get(name);
             return Optional.of(characteristic.value());
         } catch (ClassCastException e) {
             return Optional.empty();
         }
+    }
+
+    public Optional<List<String>> getName() {
+        return getCharacteristic(CharacteristicName.name);
     }
 
     protected void setName(List<String> names) {
@@ -35,127 +39,52 @@ target, an object’s owner or controller, what an Aura enchants, and so on.*/
     }
 
     public Optional<EnumSet<Color>> getColor() {
-        if (!characteristics.containsKey(CharacteristicName.color)) {
-            return Optional.empty();
-        }
-        try {
-            Characteristic<EnumSet<Color>> characteristic = (Characteristic<EnumSet<Color>>) characteristics.get(CharacteristicName.color);
-            return Optional.of(characteristic.value());
-        } catch (ClassCastException e) {
-            return Optional.empty();
-        }
+        return getCharacteristic(CharacteristicName.color);
     }
 
     // TODO: manaCost
 
     public Optional<EnumSet<Color>> getColorIndicator() {
-        if (!characteristics.containsKey(CharacteristicName.colorIndicator)) {
-            return Optional.empty();
-        }
-        try {
-            Characteristic<EnumSet<Color>> characteristic = (Characteristic<EnumSet<Color>>) characteristics.get(CharacteristicName.colorIndicator);
-            return Optional.of(characteristic.value());
-        } catch (ClassCastException e) {
-            return Optional.empty();
-        }
+        return getCharacteristic(CharacteristicName.colorIndicator);
     }
 
     public Optional<EnumSet<SuperType>> getSuperTypes() {
-        if (!characteristics.containsKey(CharacteristicName.superType)) {
-            return Optional.empty();
-        }
-        try {
-            Characteristic<EnumSet<SuperType>> characteristic = (Characteristic<EnumSet<SuperType>>) characteristics.get(CharacteristicName.superType);
-            return Optional.of(characteristic.value());
-        } catch (ClassCastException e) {
-            return Optional.empty();
-        }
+        return getCharacteristic(CharacteristicName.superType);
     }
 
     public Optional<EnumSet<Type>> getCardTypes() {
-        if (!characteristics.containsKey(CharacteristicName.cardType)) {
-            return Optional.empty();
-        }
-        try {
-            Characteristic<EnumSet<Type>> characteristic = (Characteristic<EnumSet<Type>>) characteristics.get(CharacteristicName.cardType);
-            return Optional.of(characteristic.value());
-        } catch (ClassCastException e) {
-            return Optional.empty();
-        }
+        return getCharacteristic(CharacteristicName.cardType);
     }
 
     public Optional<List<Subtype>> getSubtypes() {
-        if (!characteristics.containsKey(CharacteristicName.subtype)) {
-            return Optional.empty();
-        }
-        try {
-            Characteristic<List<Subtype>> characteristic = (Characteristic<List<Subtype>>) characteristics.get(CharacteristicName.subtype);
-            return Optional.of(characteristic.value());
-        } catch (ClassCastException e) {
-            return Optional.empty();
-        }
+        return getCharacteristic(CharacteristicName.subtype);
     }
 
-    // TODO: rulesText,
+    public Optional<String> getRulesText() {
+        return getCharacteristic(CharacteristicName.rulesText);
+    }
+
     // TODO: abilities,
     public Optional<Integer> getPower() {
-        if (!characteristics.containsKey(CharacteristicName.powerToughness)) {
-            return Optional.empty();
-        }
-        try {
-            Characteristic<Integer[]> characteristic = (Characteristic<Integer[]>) characteristics.get(CharacteristicName.powerToughness);
-            return Optional.of(characteristic.value()[0]);
-        } catch (ClassCastException e) {
-            return Optional.empty();
-        }
+        Optional<Integer[]> pt = getCharacteristic(CharacteristicName.powerToughness);
+        return pt.map(integers -> integers[0]);
     }
 
     public Optional<Integer> getToughness() {
-        if (!characteristics.containsKey(CharacteristicName.powerToughness)) {
-            return Optional.empty();
-        }
-        try {
-            Characteristic<Integer[]> characteristic = (Characteristic<Integer[]>) characteristics.get(CharacteristicName.powerToughness);
-            return Optional.of(characteristic.value()[1]);
-        } catch (ClassCastException e) {
-            return Optional.empty();
-        }
+        Optional<Integer[]> pt = getCharacteristic(CharacteristicName.powerToughness);
+        return pt.map(integers -> integers[1]);
     }
 
     public Optional<Integer> getLoyalty() {
-        if (!characteristics.containsKey(CharacteristicName.loyalty)) {
-            return Optional.empty();
-        }
-        try {
-            Characteristic<Integer> characteristic = (Characteristic<Integer>) characteristics.get(CharacteristicName.loyalty);
-            return Optional.of(characteristic.value());
-        } catch (ClassCastException e) {
-            return Optional.empty();
-        }
+        return getCharacteristic(CharacteristicName.loyalty);
     }
 
     public Optional<Integer> getHandMod() {
-        if (!characteristics.containsKey(CharacteristicName.handMod)) {
-            return Optional.empty();
-        }
-        try {
-            Characteristic<Integer> characteristic = (Characteristic<Integer>) characteristics.get(CharacteristicName.handMod);
-            return Optional.of(characteristic.value());
-        } catch (ClassCastException e) {
-            return Optional.empty();
-        }
+        return getCharacteristic(CharacteristicName.handMod);
     }
 
     public Optional<Integer> getLifeMod() {
-        if (!characteristics.containsKey(CharacteristicName.lifeMod)) {
-            return Optional.empty();
-        }
-        try {
-            Characteristic<Integer> characteristic = (Characteristic<Integer>) characteristics.get(CharacteristicName.lifeMod);
-            return Optional.of(characteristic.value());
-        } catch (ClassCastException e) {
-            return Optional.empty();
-        }
+        return getCharacteristic(CharacteristicName.lifeMod);
     }
 
     protected void setCharacteristic(String item) {
