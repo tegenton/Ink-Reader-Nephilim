@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 
 class VariableLoyaltySymbol extends LoyaltySymbol {
     private static final Pattern p = Pattern.compile("^\\[?[+-]X]?$");
-    private int x;
+    private int x = 0;
 
     private VariableLoyaltySymbol() {
         super();
