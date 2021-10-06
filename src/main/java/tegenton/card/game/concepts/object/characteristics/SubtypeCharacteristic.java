@@ -19,15 +19,15 @@ class SubtypeCharacteristic extends Characteristic<List<Subtype>> {
         type = subtypes;
     }
 
-    public static Optional<Characteristic<?>> fromString(String s) {
+    public static SubtypeCharacteristic fromString(String s) {
         Optional<Subtype> result;
         for (Type cardType : Type.values()) {
             result = cardType.fromString(s);
             if (result.isPresent()) {
-                return Optional.of(new SubtypeCharacteristic(result.get()));
+                return new SubtypeCharacteristic(result.get());
             }
         }
-        return Optional.empty();
+        return null;
     }
 
     public static Characteristic<List<Subtype>> subtypeList(List<Subtype> subtypes) {

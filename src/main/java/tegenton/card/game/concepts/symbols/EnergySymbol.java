@@ -1,16 +1,14 @@
 package tegenton.card.game.concepts.symbols;
 
-import java.util.Optional;
-
 class EnergySymbol extends Symbol {
     private EnergySymbol() {
         super();
     }
 
-    public static Optional<Symbol> fromString(String s) {
+    public static EnergySymbol fromString(String s) {
         if (s.equalsIgnoreCase("{E}")) {
-            return Optional.of(new EnergySymbol());
+            return new EnergySymbol();
         }
-        return Optional.empty();
+        return null;
     }
 }

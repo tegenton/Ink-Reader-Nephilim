@@ -1,18 +1,16 @@
 package tegenton.card.parse.token.lexicon;
 
-import java.util.Optional;
-
 public enum KeywordAction implements Word {
     scry,
     fateseal;
 
-    public static Optional<KeywordAction> fromString(String s) {
+    public static KeywordAction fromString(String s) {
         for (KeywordAction type : KeywordAction.values()) {
             if (type.getWord().equalsIgnoreCase(s)) {
-                return Optional.of(type);
+                return type;
             }
         }
-        return Optional.empty();
+        return null;
     }
 
     @Override

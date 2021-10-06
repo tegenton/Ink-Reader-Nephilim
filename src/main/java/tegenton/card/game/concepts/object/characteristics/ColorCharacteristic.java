@@ -3,7 +3,6 @@ package tegenton.card.game.concepts.object.characteristics;
 import tegenton.card.game.concepts.Color;
 
 import java.util.EnumSet;
-import java.util.Optional;
 
 class ColorCharacteristic extends Characteristic<EnumSet<Color>> {
     private final EnumSet<Color> colors = EnumSet.noneOf(Color.class);
@@ -15,15 +14,15 @@ class ColorCharacteristic extends Characteristic<EnumSet<Color>> {
         }
     }
 
-    public static Optional<Characteristic<?>> fromString(String s) {
+    public static ColorCharacteristic fromString(String s) {
         s = s.toLowerCase();
         try {
-            return Optional.of(new ColorCharacteristic(Color.valueOf(s)));
+            return new ColorCharacteristic(Color.valueOf(s));
         } catch (IllegalArgumentException e) {
             if (s.equalsIgnoreCase("colorless")) {
-                return Optional.of(new ColorCharacteristic(null));
+                return new ColorCharacteristic(null);
             }
-            return Optional.empty();
+            return null;
         }
     }
 

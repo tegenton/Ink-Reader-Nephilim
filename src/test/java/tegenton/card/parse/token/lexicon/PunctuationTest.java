@@ -12,14 +12,14 @@ public class PunctuationTest {
     @ParameterizedTest
     @ValueSource(strings = {".", ","})
     void validPunctuation(String s) {
-        punctuation = Punctuation.fromString(s).orElse(null);
+        punctuation = Punctuation.fromString(s);
         assertNotNull(punctuation);
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"Whenever", "Lifelink"})
     void invalid(String s) {
-        punctuation = Punctuation.fromString(s).orElse(null);
+        punctuation = Punctuation.fromString(s);
         assertNull(punctuation);
     }
 }

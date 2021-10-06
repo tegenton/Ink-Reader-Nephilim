@@ -1,7 +1,5 @@
 package tegenton.card.parse.token.lexicon;
 
-import java.util.Optional;
-
 public enum Punctuation implements Word {
     period("."),
     comma(",");
@@ -12,13 +10,13 @@ public enum Punctuation implements Word {
         name = s;
     }
 
-    public static Optional<Punctuation> fromString(String s) {
+    public static Punctuation fromString(String s) {
         for (Punctuation type : Punctuation.values()) {
             if (type.getWord().equalsIgnoreCase(s)) {
-                return Optional.of(type);
+                return type;
             }
         }
-        return Optional.empty();
+        return null;
     }
 
     @Override

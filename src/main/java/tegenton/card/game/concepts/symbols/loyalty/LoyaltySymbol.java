@@ -4,19 +4,18 @@ import tegenton.card.game.concepts.symbols.Symbol;
 import tegenton.card.generic.Filter;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.function.Function;
 
 public abstract class LoyaltySymbol extends Symbol {
-    private static Filter<Symbol> filter;
+    private static Filter<LoyaltySymbol> filter;
 
     private static void setupFilter() {
-        List<Function<String, Optional<Symbol>>> loyaltySymbols;
+        List<Function<String, LoyaltySymbol>> loyaltySymbols;
         loyaltySymbols = List.of(StaticLoyaltySymbol::fromString, VariableLoyaltySymbol::fromString);
         filter = new Filter<>(loyaltySymbols);
     }
 
-    public static Optional<Symbol> fromString(String s) {
+    public static LoyaltySymbol fromString(String s) {
         if (filter == null) {
             setupFilter();
         }

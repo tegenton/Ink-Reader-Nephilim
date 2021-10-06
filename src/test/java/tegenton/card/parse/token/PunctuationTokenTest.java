@@ -12,21 +12,21 @@ public class PunctuationTokenTest {
 
     @Test
     void comma() {
-        punctuationToken = (PunctuationToken) PunctuationToken.fromString(",").orElse(null);
+        punctuationToken = PunctuationToken.fromString(",");
         assertNotNull(punctuationToken);
         Assertions.assertEquals(Punctuation.comma, punctuationToken.getWord());
     }
 
     @Test
     void period() {
-        punctuationToken = (PunctuationToken) PunctuationToken.fromString(".").orElse(null);
+        punctuationToken = PunctuationToken.fromString(".");
         assertNotNull(punctuationToken);
         Assertions.assertEquals(Punctuation.period, punctuationToken.getWord());
     }
 
     @Test
     void invalid() {
-        punctuationToken = (PunctuationToken) PunctuationToken.fromString("when").orElse(null);
+        punctuationToken = PunctuationToken.fromString("when");
         assertNull(punctuationToken);
     }
 }

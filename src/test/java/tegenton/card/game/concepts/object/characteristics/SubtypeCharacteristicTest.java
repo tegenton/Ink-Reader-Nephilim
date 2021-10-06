@@ -1,8 +1,8 @@
 package tegenton.card.game.concepts.object.characteristics;
 
-import tegenton.card.game.type.subtype.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import tegenton.card.game.type.subtype.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class SubtypeCharacteristicTest {
-    public static Characteristic characteristic;
+    public static SubtypeCharacteristic characteristic;
     public static List<Subtype> types;
 
     @BeforeEach
@@ -22,7 +22,7 @@ public class SubtypeCharacteristicTest {
     @Test
     void caseInsensitive() {
         types.add(CreatureType.goblin);
-        characteristic = SubtypeCharacteristic.fromString("gObLiN").orElse(null);
+        characteristic = SubtypeCharacteristic.fromString("gObLiN");
         assertNotNull(characteristic);
         assertEquals(types, characteristic.value());
     }
@@ -30,7 +30,7 @@ public class SubtypeCharacteristicTest {
     @Test
     void artifact() {
         types.add(ArtifactType.treasure);
-        characteristic = SubtypeCharacteristic.fromString("treasure").orElse(null);
+        characteristic = SubtypeCharacteristic.fromString("treasure");
         assertNotNull(characteristic);
         assertEquals(types, characteristic.value());
     }
@@ -38,7 +38,7 @@ public class SubtypeCharacteristicTest {
     @Test
     void creature() {
         types.add(CreatureType.goblin);
-        characteristic = SubtypeCharacteristic.fromString("goblin").orElse(null);
+        characteristic = SubtypeCharacteristic.fromString("goblin");
         assertNotNull(characteristic);
         assertEquals(types, characteristic.value());
     }
@@ -46,7 +46,7 @@ public class SubtypeCharacteristicTest {
     @Test
     void enchantment() {
         types.add(EnchantmentType.cartouche);
-        characteristic = SubtypeCharacteristic.fromString("cartouche").orElse(null);
+        characteristic = SubtypeCharacteristic.fromString("cartouche");
         assertNotNull(characteristic);
         assertEquals(types, characteristic.value());
     }
@@ -54,7 +54,7 @@ public class SubtypeCharacteristicTest {
     @Test
     void land() {
         types.add(LandType.gate);
-        characteristic = SubtypeCharacteristic.fromString("gate").orElse(null);
+        characteristic = SubtypeCharacteristic.fromString("gate");
         assertNotNull(characteristic);
         assertEquals(types, characteristic.value());
     }
@@ -62,7 +62,7 @@ public class SubtypeCharacteristicTest {
     @Test
     void plane() {
         types.add(PlanarType.wildfire);
-        characteristic = SubtypeCharacteristic.fromString("wildfire").orElse(null);
+        characteristic = SubtypeCharacteristic.fromString("wildfire");
         assertNotNull(characteristic);
         assertEquals(types, characteristic.value());
     }
@@ -70,7 +70,7 @@ public class SubtypeCharacteristicTest {
     @Test
     void planeswalker() {
         types.add(PlaneswalkerType.freyalise);
-        characteristic = SubtypeCharacteristic.fromString("freyalise").orElse(null);
+        characteristic = SubtypeCharacteristic.fromString("freyalise");
         assertNotNull(characteristic);
         assertEquals(types, characteristic.value());
     }
@@ -78,7 +78,7 @@ public class SubtypeCharacteristicTest {
     @Test
     void spell() {
         types.add(SpellType.adventure);
-        characteristic = SubtypeCharacteristic.fromString("adventure").orElse(null);
+        characteristic = SubtypeCharacteristic.fromString("adventure");
         assertNotNull(characteristic);
         assertEquals(types, characteristic.value());
     }

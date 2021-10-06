@@ -3,7 +3,6 @@ package tegenton.card.game.concepts.object.characteristics;
 import tegenton.card.game.type.Type;
 
 import java.util.EnumSet;
-import java.util.Optional;
 
 class CardTypeCharacteristic extends Characteristic<EnumSet<Type>> {
     private final EnumSet<Type> type = EnumSet.noneOf(Type.class);
@@ -13,12 +12,12 @@ class CardTypeCharacteristic extends Characteristic<EnumSet<Type>> {
         this.type.add(type);
     }
 
-    public static Optional<Characteristic<?>> fromString(String s) {
+    public static CardTypeCharacteristic fromString(String s) {
         s = s.toLowerCase();
         try {
-            return Optional.of(new CardTypeCharacteristic(Type.valueOf(s)));
+            return new CardTypeCharacteristic(Type.valueOf(s));
         } catch (IllegalArgumentException e) {
-            return Optional.empty();
+            return null;
         }
     }
 

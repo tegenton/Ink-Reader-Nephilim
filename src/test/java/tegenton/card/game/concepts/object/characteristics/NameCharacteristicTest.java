@@ -11,11 +11,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class NameCharacteristicTest {
-    public static Characteristic characteristic;
+    public static NameCharacteristic characteristic;
 
     @Test
     void caseInsensitive() {
-        characteristic = NameCharacteristic.fromString("named Kaldra").orElse(null);
+        characteristic = NameCharacteristic.fromString("named Kaldra");
         assertNotNull(characteristic);
         assertEquals(new ArrayList<>(Collections.singleton("Kaldra")), characteristic.value());
     }
@@ -23,7 +23,7 @@ public class NameCharacteristicTest {
     @ParameterizedTest
     @ValueSource(strings = {"Marit Lage", "Icingdeath, Frost Tongue", "Minsc, Beloved Hamster", "Stangg Twin"})
     void names(String name) {
-        characteristic = NameCharacteristic.fromString("named " + name).orElse(null);
+        characteristic = NameCharacteristic.fromString("named " + name);
         assertNotNull(characteristic);
         assertEquals(new ArrayList<>(Collections.singleton(name)), characteristic.value());
     }

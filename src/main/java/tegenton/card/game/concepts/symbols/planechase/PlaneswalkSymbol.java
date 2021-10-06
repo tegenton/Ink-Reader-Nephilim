@@ -1,18 +1,14 @@
 package tegenton.card.game.concepts.symbols.planechase;
 
-import tegenton.card.game.concepts.symbols.Symbol;
-
-import java.util.Optional;
-
 class PlaneswalkSymbol extends PlanechaseSymbol {
     private PlaneswalkSymbol() {
         super();
     }
 
-    public static Optional<Symbol> fromString(String s) {
+    public static PlaneswalkSymbol fromString(String s) {
         if (s.equalsIgnoreCase("PW")) {
-            return Optional.of(new PlaneswalkSymbol());
+            return new PlaneswalkSymbol();
         }
-        return Optional.empty();
+        return null;
     }
 }

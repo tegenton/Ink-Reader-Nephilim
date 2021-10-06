@@ -4,7 +4,6 @@ import tegenton.card.game.type.subtype.Subtype;
 import tegenton.card.generic.Filter;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.function.Function;
 
 public abstract class Characteristic<T> {
@@ -16,12 +15,12 @@ target, an object’s owner or controller, what an Aura enchants, and so on.*/
     private static Filter<Characteristic<?>> filter;
 
     private static void setupFilter() {
-        List<Function<String, Optional<Characteristic<?>>>> characteristics;
+        List<Function<String, Characteristic<?>>> characteristics;
         characteristics = List.of(NameCharacteristic::fromString, ColorCharacteristic::fromString, CardTypeCharacteristic::fromString, SubtypeCharacteristic::fromString, SuperTypeCharacteristic::fromString, PowerToughnessCharacteristic::fromString);
         filter = new Filter<>(characteristics);
     }
 
-    public static Optional<Characteristic<?>> fromString(String s) {
+    public static Characteristic<?> fromString(String s) {
         if (filter == null) {
             setupFilter();
         }

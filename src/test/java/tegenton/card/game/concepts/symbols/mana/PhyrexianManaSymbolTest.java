@@ -20,7 +20,7 @@ public class PhyrexianManaSymbolTest {
     @Test
     void primaryWhite() {
         colors.add(Color.white);
-        symbol = (PhyrexianManaSymbol) PhyrexianManaSymbol.fromString("W/P").orElse(null);
+        symbol = PhyrexianManaSymbol.fromString("W/P");
         assertNotNull(symbol);
         assertEquals(colors, symbol.getType());
         assertEquals(1, symbol.getManaValue());
@@ -29,7 +29,7 @@ public class PhyrexianManaSymbolTest {
     @Test
     void primaryBlue() {
         colors.add(Color.blue);
-        symbol = (PhyrexianManaSymbol) PhyrexianManaSymbol.fromString("U/P").orElse(null);
+        symbol = PhyrexianManaSymbol.fromString("U/P");
         assertNotNull(symbol);
         assertEquals(colors, symbol.getType());
         assertEquals(1, symbol.getManaValue());
@@ -38,7 +38,7 @@ public class PhyrexianManaSymbolTest {
     @Test
     void primaryBlack() {
         colors.add(Color.black);
-        symbol = (PhyrexianManaSymbol) PhyrexianManaSymbol.fromString("B/P").orElse(null);
+        symbol = PhyrexianManaSymbol.fromString("B/P");
         assertNotNull(symbol);
         assertEquals(colors, symbol.getType());
         assertEquals(1, symbol.getManaValue());
@@ -47,7 +47,7 @@ public class PhyrexianManaSymbolTest {
     @Test
     void primaryRed() {
         colors.add(Color.red);
-        symbol = (PhyrexianManaSymbol) PhyrexianManaSymbol.fromString("R/P").orElse(null);
+        symbol = PhyrexianManaSymbol.fromString("R/P");
         assertNotNull(symbol);
         assertEquals(colors, symbol.getType());
         assertEquals(1, symbol.getManaValue());
@@ -56,7 +56,7 @@ public class PhyrexianManaSymbolTest {
     @Test
     void primaryGreen() {
         colors.add(Color.green);
-        symbol = (PhyrexianManaSymbol) PhyrexianManaSymbol.fromString("G/P").orElse(null);
+        symbol = PhyrexianManaSymbol.fromString("G/P");
         assertNotNull(symbol);
         assertEquals(colors, symbol.getType());
         assertEquals(1, symbol.getManaValue());
@@ -64,7 +64,7 @@ public class PhyrexianManaSymbolTest {
 
     @Test
     void invalid() {
-        symbol = (PhyrexianManaSymbol) PhyrexianManaSymbol.fromString("Y/P").orElse(null);
+        symbol = PhyrexianManaSymbol.fromString("Y/P");
         assertNull(symbol);
     }
 }

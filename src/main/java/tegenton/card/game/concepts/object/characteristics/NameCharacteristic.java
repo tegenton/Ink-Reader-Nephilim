@@ -2,7 +2,6 @@ package tegenton.card.game.concepts.object.characteristics;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 class NameCharacteristic extends Characteristic<List<String>> {
     private final List<String> name;
@@ -18,13 +17,12 @@ class NameCharacteristic extends Characteristic<List<String>> {
         name = names;
     }
 
-    public static Optional<Characteristic<?>> fromString(String s) {
+    public static NameCharacteristic fromString(String s) {
         String test = s.toLowerCase();
         if (test.startsWith("named ")) {
-            NameCharacteristic nameCharacteristic = new NameCharacteristic(s.substring("named ".length()));
-            return Optional.of(nameCharacteristic);
+            return new NameCharacteristic(s.substring("named ".length()));
         }
-        return Optional.empty();
+        return null;
     }
 
     public static Characteristic<List<String>> nameList(List<String> names) {

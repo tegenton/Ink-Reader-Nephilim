@@ -12,14 +12,14 @@ public class ArticleTest {
     @ParameterizedTest
     @ValueSource(strings = {"a", "an"})
     void validPunctuation(String s) {
-        article = Article.fromString(s).orElse(null);
+        article = Article.fromString(s);
         assertNotNull(article);
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"Whenever", "Lifelink"})
     void invalid(String s) {
-        article = Article.fromString(s).orElse(null);
+        article = Article.fromString(s);
         assertNull(article);
     }
 }

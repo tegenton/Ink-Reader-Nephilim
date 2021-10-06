@@ -1,18 +1,14 @@
 package tegenton.card.game.concepts.symbols.planechase;
 
-import tegenton.card.game.concepts.symbols.Symbol;
-
-import java.util.Optional;
-
 class ChaosSymbol extends PlanechaseSymbol {
     private ChaosSymbol() {
         super();
     }
 
-    public static Optional<Symbol> fromString(String s) {
+    public static ChaosSymbol fromString(String s) {
         if (s.equalsIgnoreCase("CHAOS")) {
-            return Optional.of(new ChaosSymbol());
+            return new ChaosSymbol();
         }
-        return Optional.empty();
+        return null;
     }
 }

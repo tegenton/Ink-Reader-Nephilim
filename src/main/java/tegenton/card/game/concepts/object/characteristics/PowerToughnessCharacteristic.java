@@ -1,7 +1,5 @@
 package tegenton.card.game.concepts.object.characteristics;
 
-import java.util.Optional;
-
 class PowerToughnessCharacteristic extends Characteristic<Integer[]> {
     private final Integer[] powerToughness;
 
@@ -10,16 +8,16 @@ class PowerToughnessCharacteristic extends Characteristic<Integer[]> {
         powerToughness = new Integer[]{power, toughness};
     }
 
-    public static Optional<Characteristic<?>> fromString(String s) {
+    public static PowerToughnessCharacteristic fromString(String s) {
         String[] parts = s.split("/");
         if (parts.length == 2) {
             try {
-                return Optional.of(new PowerToughnessCharacteristic(Integer.parseInt(parts[0]), Integer.parseInt(parts[1])));
+                return new PowerToughnessCharacteristic(Integer.parseInt(parts[0]), Integer.parseInt(parts[1]));
             } catch (NumberFormatException e) {
-                return Optional.empty();
+                return null;
             }
         }
-        return Optional.empty();
+        return null;
     }
 
     @Override

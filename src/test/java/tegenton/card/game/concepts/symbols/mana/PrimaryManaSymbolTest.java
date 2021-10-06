@@ -1,8 +1,8 @@
 package tegenton.card.game.concepts.symbols.mana;
 
-import tegenton.card.game.concepts.Color;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import tegenton.card.game.concepts.Color;
 
 import java.util.EnumSet;
 
@@ -21,7 +21,7 @@ public class PrimaryManaSymbolTest {
     @Test
     void primaryWhite() {
         colors.add(Color.white);
-        symbol = (PrimaryManaSymbol) PrimaryManaSymbol.fromString("W").orElse(null);
+        symbol = PrimaryManaSymbol.fromString("W");
         assertNotNull(symbol);
         assertEquals(colors, symbol.getType());
         assertEquals(1, symbol.getManaValue());
@@ -30,7 +30,7 @@ public class PrimaryManaSymbolTest {
     @Test
     void primaryBlue() {
         colors.add(Color.blue);
-        symbol = (PrimaryManaSymbol) PrimaryManaSymbol.fromString("U").orElse(null);
+        symbol = PrimaryManaSymbol.fromString("U");
         assertNotNull(symbol);
         assertEquals(colors, symbol.getType());
         assertEquals(1, symbol.getManaValue());
@@ -39,7 +39,7 @@ public class PrimaryManaSymbolTest {
     @Test
     void primaryBlack() {
         colors.add(Color.black);
-        symbol = (PrimaryManaSymbol) PrimaryManaSymbol.fromString("B").orElse(null);
+        symbol = PrimaryManaSymbol.fromString("B");
         assertNotNull(symbol);
         assertEquals(colors, symbol.getType());
         assertEquals(1, symbol.getManaValue());
@@ -48,7 +48,7 @@ public class PrimaryManaSymbolTest {
     @Test
     void primaryRed() {
         colors.add(Color.red);
-        symbol = (PrimaryManaSymbol) PrimaryManaSymbol.fromString("R").orElse(null);
+        symbol = PrimaryManaSymbol.fromString("R");
         assertNotNull(symbol);
         assertEquals(colors, symbol.getType());
         assertEquals(1, symbol.getManaValue());
@@ -57,7 +57,7 @@ public class PrimaryManaSymbolTest {
     @Test
     void primaryGreen() {
         colors.add(Color.green);
-        symbol = (PrimaryManaSymbol) PrimaryManaSymbol.fromString("G").orElse(null);
+        symbol = PrimaryManaSymbol.fromString("G");
         assertNotNull(symbol);
         assertEquals(colors, symbol.getType());
         assertEquals(1, symbol.getManaValue());
@@ -65,7 +65,7 @@ public class PrimaryManaSymbolTest {
 
     @Test
     void primaryColorless() {
-        symbol = (PrimaryManaSymbol) PrimaryManaSymbol.fromString("C").orElse(null);
+        symbol = PrimaryManaSymbol.fromString("C");
         assertNotNull(symbol);
         assertEquals(colors, symbol.getType());
         assertEquals(1, symbol.getManaValue());

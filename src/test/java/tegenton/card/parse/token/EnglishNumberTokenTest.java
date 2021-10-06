@@ -15,15 +15,15 @@ public class EnglishNumberTokenTest {
     @ValueSource(strings = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
             "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty"})
     void validNumbers(String s) {
-        englishNumberToken = (EnglishNumberToken) EnglishNumberToken.fromString(s).orElse(null);
+        englishNumberToken = EnglishNumberToken.fromString(s);
         assertNotNull(englishNumberToken);
-        Assertions.assertEquals(EnglishNumber.fromString(s).orElse(null), englishNumberToken.getWord());
+        Assertions.assertEquals(EnglishNumber.fromString(s), englishNumberToken.getWord());
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"Whenever", "5", "X"})
     void invalid(String s) {
-        englishNumberToken = (EnglishNumberToken) EnglishNumberToken.fromString(s).orElse(null);
+        englishNumberToken = EnglishNumberToken.fromString(s);
         assertNull(englishNumberToken);
     }
 }

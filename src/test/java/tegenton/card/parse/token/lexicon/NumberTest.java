@@ -13,7 +13,7 @@ public class NumberTest {
     @ValueSource(strings = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
             "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"})
     void validNumbers(String s) {
-        num = Number.fromString(s).orElse(null);
+        num = Number.fromString(s);
         assertNotNull(num);
         assertEquals(s, num.getWord());
     }
@@ -21,7 +21,7 @@ public class NumberTest {
     @Test
     void value() {
         for (int i = 0; i < 20; i++) {
-            num = Number.fromString(Integer.toString(i)).orElse(null);
+            num = Number.fromString(Integer.toString(i));
             assertNotNull(num);
             assertEquals(i, num.getVal());
         }
@@ -30,7 +30,7 @@ public class NumberTest {
     @ParameterizedTest
     @ValueSource(strings = {"One", "X", "{3}"})
     void invalid(String s) {
-        num = Number.fromString(s).orElse(null);
+        num = Number.fromString(s);
         assertNull(num);
     }
 }

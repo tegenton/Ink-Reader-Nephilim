@@ -1,7 +1,7 @@
 package tegenton.card.game.concepts.symbols.mana;
 
-import tegenton.card.game.concepts.Color;
 import org.junit.jupiter.api.Test;
+import tegenton.card.game.concepts.Color;
 
 import java.util.EnumSet;
 
@@ -13,7 +13,7 @@ public class SnowManaSymbolTest {
 
     @Test
     void snow() {
-        symbol = (SnowManaSymbol) SnowManaSymbol.fromString("S").orElse(null);
+        symbol = SnowManaSymbol.fromString("S");
         assertNotNull(symbol);
         assertEquals(1, symbol.getManaValue());
         assertEquals(EnumSet.noneOf(Color.class), symbol.getType());

@@ -1,18 +1,16 @@
 package tegenton.card.parse.token.lexicon;
 
-import java.util.Optional;
-
 public enum Article implements Word {
     a,
     an;
 
-    public static Optional<Article> fromString(String s) {
+    public static Article fromString(String s) {
         for (Article type : Article.values()) {
             if (type.getWord().equalsIgnoreCase(s)) {
-                return Optional.of(type);
+                return type;
             }
         }
-        return Optional.empty();
+        return null;
     }
 
     @Override

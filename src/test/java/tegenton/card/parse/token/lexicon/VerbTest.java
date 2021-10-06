@@ -12,14 +12,14 @@ public class VerbTest {
     @ParameterizedTest
     @ValueSource(strings = {"draw", "create"})
     void validNumbers(String s) {
-        verb = Verb.fromString(s).orElse(null);
+        verb = Verb.fromString(s);
         assertNotNull(verb);
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"Whenever", "Lifelink"})
     void invalid(String s) {
-        verb = Verb.fromString(s).orElse(null);
+        verb = Verb.fromString(s);
         assertNull(verb);
     }
 }

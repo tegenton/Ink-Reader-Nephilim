@@ -20,7 +20,7 @@ public class ManaSymbolTest {
     @ParameterizedTest
     @ValueSource(strings = {"{W}", "{U}", "{B}", "{R}", "{G}"})
     void primary(String s) {
-        symbol = (ManaSymbol) ManaSymbol.fromString(s).orElse(null);
+        symbol = ManaSymbol.fromString(s);
         assertNotNull(symbol);
         assertEquals(PrimaryManaSymbol.class, symbol.getClass());
         assertEquals(1, symbol.getManaValue());
@@ -29,14 +29,14 @@ public class ManaSymbolTest {
     @ParameterizedTest
     @ValueSource(strings = {"{0}", "{1}", "{2}", "{3}", "{4}", "{5}", "{6}", "{7}", "{8}", "{9}"})
     void numeric(String s) {
-        symbol = (ManaSymbol) ManaSymbol.fromString(s).orElse(null);
+        symbol = ManaSymbol.fromString(s);
         assertNotNull(symbol);
         assertEquals(NumericManaSymbol.class, symbol.getClass());
     }
 
     @Test
     void variable() {
-        symbol = (ManaSymbol) ManaSymbol.fromString("{X}").orElse(null);
+        symbol = ManaSymbol.fromString("{X}");
         assertNotNull(symbol);
         assertEquals(VariableManaSymbol.class, symbol.getClass());
         assertEquals(0, symbol.getManaValue());
@@ -44,7 +44,7 @@ public class ManaSymbolTest {
 
     @Test
     void hybrid() {
-        symbol = (ManaSymbol) ManaSymbol.fromString("{U/W}").orElse(null);
+        symbol = ManaSymbol.fromString("{U/W}");
         assertNotNull(symbol);
         assertEquals(HybridManaSymbol.class, symbol.getClass());
         assertEquals(1, symbol.getManaValue());
@@ -53,7 +53,7 @@ public class ManaSymbolTest {
     @ParameterizedTest
     @ValueSource(strings = {"{2/W}", "{2/U}", "{2/B}", "{2/R}", "{2/G}"})
     void monocolorHybrid(String s) {
-        symbol = (ManaSymbol) ManaSymbol.fromString(s).orElse(null);
+        symbol = ManaSymbol.fromString(s);
         assertNotNull(symbol);
         assertEquals(MonoHybridManaSymbol.class, symbol.getClass());
         assertEquals(2, symbol.getManaValue());
@@ -62,7 +62,7 @@ public class ManaSymbolTest {
     @ParameterizedTest
     @ValueSource(strings = {"{W/P}", "{U/P}", "{B/P}", "{R/P}", "{G/P}"})
     void phyrexian(String s) {
-        symbol = (ManaSymbol) ManaSymbol.fromString(s).orElse(null);
+        symbol = ManaSymbol.fromString(s);
         assertNotNull(symbol);
         assertEquals(PhyrexianManaSymbol.class, symbol.getClass());
         assertEquals(1, symbol.getManaValue());
@@ -70,7 +70,7 @@ public class ManaSymbolTest {
 
     @Test
     void snow() {
-        symbol = (ManaSymbol) ManaSymbol.fromString("{S}").orElse(null);
+        symbol = ManaSymbol.fromString("{S}");
         assertNotNull(symbol);
         assertEquals(SnowManaSymbol.class, symbol.getClass());
         assertEquals(1, symbol.getManaValue());

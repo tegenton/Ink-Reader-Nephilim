@@ -1,9 +1,5 @@
 package tegenton.card.game.concepts.symbols.chapter;
 
-import tegenton.card.game.concepts.symbols.Symbol;
-
-import java.util.Optional;
-
 class MultipleChapterSymbol extends ChapterSymbol {
     private final int[] chapters;
 
@@ -11,7 +7,7 @@ class MultipleChapterSymbol extends ChapterSymbol {
         this.chapters = chapters;
     }
 
-    public static Optional<Symbol> fromString(String s) {
+    public static MultipleChapterSymbol fromString(String s) {
         int[] chapters;
         switch (s.toUpperCase()) {
             case "I,II":
@@ -24,9 +20,9 @@ class MultipleChapterSymbol extends ChapterSymbol {
                 chapters = new int[]{1, 2, 3};
                 break;
             default:
-                return Optional.empty();
+                return null;
         }
-        return Optional.of(new MultipleChapterSymbol(chapters));
+        return new MultipleChapterSymbol(chapters);
     }
 
     public int[] getChapters() {

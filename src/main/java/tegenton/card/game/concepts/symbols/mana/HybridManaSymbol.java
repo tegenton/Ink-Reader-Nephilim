@@ -2,10 +2,8 @@ package tegenton.card.game.concepts.symbols.mana;
 
 import tegenton.card.game.concepts.Color;
 import tegenton.card.game.concepts.InvalidColorException;
-import tegenton.card.game.concepts.symbols.Symbol;
 
 import java.util.EnumSet;
-import java.util.Optional;
 
 class HybridManaSymbol extends ColoredManaSymbol {
     private final Color colorA;
@@ -17,18 +15,18 @@ class HybridManaSymbol extends ColoredManaSymbol {
         colorB = b;
     }
 
-    public static Optional<Symbol> fromString(String s) {
+    public static HybridManaSymbol fromString(String s) {
         HybridManaSymbol symbol;
         String[] parts = s.split("/");
         if (parts.length == 2) {
             try {
                 symbol = new HybridManaSymbol(Color.fromString(parts[0]), Color.fromString(parts[1]));
             } catch (InvalidColorException e) {
-                return Optional.empty();
+                return null;
             }
-            return Optional.of(symbol);
+            return symbol;
         }
-        return Optional.empty();
+        return null;
     }
 
     @Override

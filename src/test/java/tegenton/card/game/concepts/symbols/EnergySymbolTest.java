@@ -6,17 +6,17 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class EnergySymbolTest {
-    public static Symbol symbol;
+    public static EnergySymbol symbol;
 
     @Test
     void energy() {
-        symbol = EnergySymbol.fromString("{E}").orElse(null);
+        symbol = EnergySymbol.fromString("{E}");
         assertNotNull(symbol);
     }
 
     @Test
     void isInvalid() {
-        symbol = EnergySymbol.fromString("E").orElse(null);
+        symbol = EnergySymbol.fromString("E");
         assertNull(symbol);
     }
 

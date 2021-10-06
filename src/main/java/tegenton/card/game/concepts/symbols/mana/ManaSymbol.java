@@ -6,14 +6,13 @@ import tegenton.card.generic.Filter;
 
 import java.util.EnumSet;
 import java.util.List;
-import java.util.Optional;
 import java.util.function.Function;
 
 public abstract class ManaSymbol extends Symbol {
-    private static Filter<Symbol> filter;
+    private static Filter<ManaSymbol> filter;
 
     private static void setupFilter() {
-        List<Function<String, Optional<Symbol>>> manaSymbols;
+        List<Function<String, ManaSymbol>> manaSymbols;
         manaSymbols = List.of(PrimaryManaSymbol::fromString, NumericManaSymbol::fromString, VariableManaSymbol::fromString, HybridManaSymbol::fromString, MonoHybridManaSymbol::fromString, PhyrexianManaSymbol::fromString, SnowManaSymbol::fromString);
         filter = new Filter<>(manaSymbols);
     }
@@ -25,7 +24,7 @@ public abstract class ManaSymbol extends Symbol {
         {2/W}, {2/U}, {2/B}, {2/R}, and {2/G}; the Phyrexian mana symbols {W/P}, {U/P}, {B/P},
         {R/P}, and {G/P}; and the snow symbol {S}.
     */
-    public static Optional<Symbol> fromString(String s) {
+    public static ManaSymbol fromString(String s) {
         if (filter == null) {
             setupFilter();
         }
@@ -33,7 +32,7 @@ public abstract class ManaSymbol extends Symbol {
             s = removeBrackets(s);
             return filter.filter(s);
         }
-        return Optional.empty();
+        return null;
     }
 
     public abstract int getManaValue();

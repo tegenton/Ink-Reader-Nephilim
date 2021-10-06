@@ -12,14 +12,14 @@ public class SubjectTest {
     @ParameterizedTest
     @ValueSource(strings = {"card", "cards"})
     void validNumbers(String s) {
-        subject = Subject.fromString(s).orElse(null);
+        subject = Subject.fromString(s);
         assertNotNull(subject);
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"Whenever", "Lifelink"})
     void invalid(String s) {
-        subject = Subject.fromString(s).orElse(null);
+        subject = Subject.fromString(s);
         assertNull(subject);
     }
 }

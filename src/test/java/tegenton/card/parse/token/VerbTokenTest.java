@@ -12,14 +12,14 @@ public class VerbTokenTest {
 
     @Test
     void draw() {
-        verbToken = (VerbToken) VerbToken.fromString("draw").orElse(null);
+        verbToken = VerbToken.fromString("draw");
         assertNotNull(verbToken);
         Assertions.assertEquals(Verb.draw, verbToken.getWord());
     }
 
     @Test
     void invalid() {
-        verbToken = (VerbToken) VerbToken.fromString("when").orElse(null);
+        verbToken = VerbToken.fromString("when");
         assertNull(verbToken);
     }
 }

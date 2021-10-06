@@ -3,7 +3,6 @@ package tegenton.card.parse.token.lexicon;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 public enum Subject implements Word {
     card("card", "cards");
@@ -19,14 +18,14 @@ public enum Subject implements Word {
         this.names = Arrays.asList(names);
     }
 
-    public static Optional<Subject> fromString(String s) {
+    public static Subject fromString(String s) {
         s = s.toLowerCase();
         for (Subject type : Subject.values()) {
             if (type.names.contains(s)) {
-                return Optional.of(type);
+                return type;
             }
         }
-        return Optional.empty();
+        return null;
     }
 
     @Override

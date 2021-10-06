@@ -6,17 +6,17 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class VariableSymbolTest {
-    public static Symbol symbol;
+    public static VariableSymbol symbol;
 
     @Test
     void variable() {
-        symbol = VariableSymbol.fromString("X").orElse(null);
+        symbol = VariableSymbol.fromString("X");
         assertNotNull(symbol);
     }
 
     @Test
     void isInvalid() {
-        symbol = VariableSymbol.fromString("{X}").orElse(null);
+        symbol = VariableSymbol.fromString("{X}");
         assertNull(symbol);
     }
 

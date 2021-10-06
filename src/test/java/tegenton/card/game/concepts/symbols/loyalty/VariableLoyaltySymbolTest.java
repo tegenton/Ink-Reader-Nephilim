@@ -11,13 +11,13 @@ public class VariableLoyaltySymbolTest {
 
     @Test
     void minusX() {
-        result = (VariableLoyaltySymbol) VariableLoyaltySymbol.fromString("-X").orElse(null);
+        result = VariableLoyaltySymbol.fromString("-X");
         assertNotNull(result);
     }
 
     @Test
     void zeroByDefault() {
-        result = (VariableLoyaltySymbol) VariableLoyaltySymbol.fromString("-X").orElse(null);
+        result = VariableLoyaltySymbol.fromString("-X");
         assertNotNull(result);
         assertEquals(0, result.getValue());
     }
@@ -25,7 +25,7 @@ public class VariableLoyaltySymbolTest {
     @ParameterizedTest
     @ValueSource(strings = {"+1", "0", "-1"})
     void isInvalid(String s) {
-        result = (VariableLoyaltySymbol) VariableLoyaltySymbol.fromString(s).orElse(null);
+        result = VariableLoyaltySymbol.fromString(s);
         assertNull(result);
     }
 

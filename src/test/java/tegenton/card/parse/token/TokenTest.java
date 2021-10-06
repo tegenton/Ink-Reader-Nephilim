@@ -31,21 +31,21 @@ public class TokenTest {
     @Test
     void divination() {
         tokens = Token.tokenize("Draw two cards.");
-        expected.add(VerbToken.fromString("Draw").orElse(null));
-        expected.add(EnglishNumberToken.fromString("Two").orElse(null));
-        expected.add(SubjectToken.fromString("cards").orElse(null));
-        expected.add(PunctuationToken.fromString(".").orElse(null));
+        expected.add(VerbToken.fromString("Draw"));
+        expected.add(EnglishNumberToken.fromString("Two"));
+        expected.add(SubjectToken.fromString("cards"));
+        expected.add(PunctuationToken.fromString("."));
     }
 
     @Test
     void oneLineOpt() {
         tokens = Token.tokenize("Scry 1. Draw a card.");
-        expected.add(KeywordActionToken.fromString("Scry").orElse(null));
-        expected.add(NumberToken.fromString("1").orElse(null));
-        expected.add(PunctuationToken.fromString(".").orElse(null));
-        expected.add(VerbToken.fromString("Draw").orElse(null));
-        expected.add(ArticleToken.fromString("a").orElse(null));
-        expected.add(SubjectToken.fromString("card").orElse(null));
-        expected.add(PunctuationToken.fromString(".").orElse(null));
+        expected.add(KeywordActionToken.fromString("Scry"));
+        expected.add(NumberToken.fromString("1"));
+        expected.add(PunctuationToken.fromString("."));
+        expected.add(VerbToken.fromString("Draw"));
+        expected.add(ArticleToken.fromString("a"));
+        expected.add(SubjectToken.fromString("card"));
+        expected.add(PunctuationToken.fromString("."));
     }
 }

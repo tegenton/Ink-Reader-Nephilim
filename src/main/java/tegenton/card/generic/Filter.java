@@ -1,24 +1,23 @@
 package tegenton.card.generic;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.function.Function;
 
 public class Filter<T> {
-    private final List<Function<String, Optional<T>>> filter;
+    private final List<Function<String, T>> filter;
 
-    public Filter(List<Function<String, Optional<T>>> methods) {
+    public Filter(List<Function<String, T>> methods) {
         filter = methods;
     }
 
-    public Optional<T> filter(String s) {
+    public T filter(String s) {
         T result;
-        for (Function<String, Optional<T>> test : filter) {
-            result = test.apply(s).orElse(null);
+        for (Function<String, T> test : filter) {
+            result = test.apply(s);
             if (result != null) {
-                return Optional.of(result);
+                return result;
             }
         }
-        return Optional.empty();
+        return null;
     }
 }

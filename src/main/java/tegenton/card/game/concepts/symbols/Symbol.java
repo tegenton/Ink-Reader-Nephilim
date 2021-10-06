@@ -9,19 +9,18 @@ import tegenton.card.game.concepts.symbols.tap.TapSymbol;
 import tegenton.card.generic.Filter;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.function.Function;
 
 public abstract class Symbol {
     private static Filter<Symbol> filter;
 
     private static void setupFilter() {
-        List<Function<String, Optional<Symbol>>> symbols;
+        List<Function<String, Symbol>> symbols;
         symbols = List.of(VariableSymbol::fromString, ManaSymbol::fromString, TapSymbol::fromString, LoyaltySymbol::fromString, LevelSymbol::fromString, PlanechaseSymbol::fromString, EnergySymbol::fromString, ChapterSymbol::fromString);
         filter = new Filter<>(symbols);
     }
 
-    public static Optional<Symbol> fromString(String s) {
+    public static Symbol fromString(String s) {
         if (filter == null) {
             setupFilter();
         }

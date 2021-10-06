@@ -4,19 +4,18 @@ import tegenton.card.game.concepts.symbols.Symbol;
 import tegenton.card.generic.Filter;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.function.Function;
 
 public abstract class ChapterSymbol extends Symbol {
-    private static Filter<Symbol> filter;
+    private static Filter<ChapterSymbol> filter;
 
     private static void setupFilter() {
-        List<Function<String, Optional<Symbol>>> chapterSymbols;
+        List<Function<String, ChapterSymbol>> chapterSymbols;
         chapterSymbols = List.of(SingleChapterSymbol::fromString, MultipleChapterSymbol::fromString);
         filter = new Filter<>(chapterSymbols);
     }
 
-    public static Optional<Symbol> fromString(String s) {
+    public static ChapterSymbol fromString(String s) {
         if (filter == null) {
             setupFilter();
         }

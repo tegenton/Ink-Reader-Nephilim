@@ -12,34 +12,34 @@ public class StaticLoyaltySymbolTest {
     @ParameterizedTest
     @ValueSource(strings = {"[+1]", "+1", "0", "-1"})
     void isValid(String s) {
-        symbol = (StaticLoyaltySymbol) StaticLoyaltySymbol.fromString(s).orElse(null);
+        symbol = StaticLoyaltySymbol.fromString(s);
         assertNotNull(symbol);
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"-X"})
     void isInvalid(String s) {
-        symbol = (StaticLoyaltySymbol) StaticLoyaltySymbol.fromString(s).orElse(null);
+        symbol = StaticLoyaltySymbol.fromString(s);
         assertNull(symbol);
     }
 
     @Test
     void plusOne() {
-        symbol = (StaticLoyaltySymbol) StaticLoyaltySymbol.fromString("+1").orElse(null);
+        symbol = StaticLoyaltySymbol.fromString("+1");
         assertNotNull(symbol);
         assertEquals(1, symbol.getValue());
     }
 
     @Test
     void zero() {
-        symbol = (StaticLoyaltySymbol) StaticLoyaltySymbol.fromString("0").orElse(null);
+        symbol = StaticLoyaltySymbol.fromString("0");
         assertNotNull(symbol);
         assertEquals(0, symbol.getValue());
     }
 
     @Test
     void minusOne() {
-        symbol = (StaticLoyaltySymbol) StaticLoyaltySymbol.fromString("-1").orElse(null);
+        symbol = StaticLoyaltySymbol.fromString("-1");
         assertNotNull(symbol);
         assertEquals(-1, symbol.getValue());
     }

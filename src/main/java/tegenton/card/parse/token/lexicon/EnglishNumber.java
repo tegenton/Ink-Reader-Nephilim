@@ -1,7 +1,5 @@
 package tegenton.card.parse.token.lexicon;
 
-import java.util.Optional;
-
 public enum EnglishNumber implements Word {
     zero(0),
     one(1),
@@ -31,13 +29,13 @@ public enum EnglishNumber implements Word {
         this.val = val;
     }
 
-    public static Optional<EnglishNumber> fromString(String s) {
+    public static EnglishNumber fromString(String s) {
         for (EnglishNumber type : EnglishNumber.values()) {
             if (type.getWord().equalsIgnoreCase(s)) {
-                return Optional.of(type);
+                return type;
             }
         }
-        return Optional.empty();
+        return null;
     }
 
     @Override

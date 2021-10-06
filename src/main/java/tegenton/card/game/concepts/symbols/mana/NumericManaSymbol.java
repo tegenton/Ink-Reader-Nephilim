@@ -1,9 +1,5 @@
 package tegenton.card.game.concepts.symbols.mana;
 
-import tegenton.card.game.concepts.symbols.Symbol;
-
-import java.util.Optional;
-
 class NumericManaSymbol extends ManaSymbol {
     // {0}, {1}, {2}, and so on
     private final int value;
@@ -13,14 +9,14 @@ class NumericManaSymbol extends ManaSymbol {
         this.value = value;
     }
 
-    public static Optional<Symbol> fromString(String s) {
+    public static NumericManaSymbol fromString(String s) {
         NumericManaSymbol symbol;
         try {
             symbol = new NumericManaSymbol(Integer.parseInt(s));
         } catch (NumberFormatException n) {
-            return Optional.empty();
+            return null;
         }
-        return Optional.of(symbol);
+        return symbol;
     }
 
     @Override

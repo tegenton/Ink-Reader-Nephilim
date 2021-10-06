@@ -1,18 +1,14 @@
 package tegenton.card.game.concepts.symbols.tap;
 
-import tegenton.card.game.concepts.symbols.Symbol;
-
-import java.util.Optional;
-
 class TapTapSymbol extends TapSymbol {
     private TapTapSymbol() {
         super();
     }
 
-    public static Optional<Symbol> fromString(String s) {
+    public static TapTapSymbol fromString(String s) {
         if (s.equalsIgnoreCase("T")) {
-            return Optional.of(new TapTapSymbol());
+            return new TapTapSymbol();
         }
-        return Optional.empty();
+        return null;
     }
 }

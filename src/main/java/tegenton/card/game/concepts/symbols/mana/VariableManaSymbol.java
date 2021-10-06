@@ -1,9 +1,5 @@
 package tegenton.card.game.concepts.symbols.mana;
 
-import tegenton.card.game.concepts.symbols.Symbol;
-
-import java.util.Optional;
-
 class VariableManaSymbol extends ManaSymbol {
     private int x = 0;
 
@@ -11,11 +7,11 @@ class VariableManaSymbol extends ManaSymbol {
         super();
     }
 
-    public static Optional<Symbol> fromString(String s) {
+    public static VariableManaSymbol fromString(String s) {
         if (s.equalsIgnoreCase("X")) {
-            return Optional.of(new VariableManaSymbol());
+            return new VariableManaSymbol();
         }
-        return Optional.empty();
+        return null;
     }
 
     @Override

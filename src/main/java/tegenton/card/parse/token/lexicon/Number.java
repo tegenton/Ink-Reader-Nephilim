@@ -1,22 +1,20 @@
 package tegenton.card.parse.token.lexicon;
 
-import java.util.Optional;
-
 public class Number implements Word {
-    int val;
+    final int val;
 
     public Number(int val) {
         this.val = val;
     }
 
-    public static Optional<Number> fromString(String s) {
+    public static Number fromString(String s) {
         int val;
         try {
             val = Integer.parseInt(s);
         } catch (NumberFormatException e) {
-            return Optional.empty();
+            return null;
         }
-        return Optional.of(new Number(val));
+        return new Number(val);
     }
 
     @Override

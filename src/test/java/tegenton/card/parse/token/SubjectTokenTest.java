@@ -12,21 +12,21 @@ public class SubjectTokenTest {
 
     @Test
     void card() {
-        subjectToken = (SubjectToken) SubjectToken.fromString("card").orElse(null);
+        subjectToken = SubjectToken.fromString("card");
         assertNotNull(subjectToken);
         Assertions.assertEquals(Subject.card, subjectToken.getWord());
     }
 
     @Test
     void cards() {
-        subjectToken = (SubjectToken) SubjectToken.fromString("cards").orElse(null);
+        subjectToken = SubjectToken.fromString("cards");
         assertNotNull(subjectToken);
         Assertions.assertEquals(Subject.card, subjectToken.getWord());
     }
 
     @Test
     void invalid() {
-        subjectToken = (SubjectToken) SubjectToken.fromString("when").orElse(null);
+        subjectToken = SubjectToken.fromString("when");
         assertNull(subjectToken);
     }
 }

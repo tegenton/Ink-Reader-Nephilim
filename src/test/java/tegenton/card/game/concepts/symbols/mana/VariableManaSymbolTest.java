@@ -1,7 +1,7 @@
 package tegenton.card.game.concepts.symbols.mana;
 
-import tegenton.card.game.concepts.Color;
 import org.junit.jupiter.api.Test;
+import tegenton.card.game.concepts.Color;
 
 import java.util.EnumSet;
 
@@ -13,7 +13,7 @@ public class VariableManaSymbolTest {
 
     @Test
     void valueZeroByDefault() {
-        symbol = (VariableManaSymbol) VariableManaSymbol.fromString("X").orElse(null);
+        symbol = VariableManaSymbol.fromString("X");
         assertNotNull(symbol);
         assertEquals(0, symbol.getManaValue());
         assertEquals(EnumSet.noneOf(Color.class), symbol.getType());

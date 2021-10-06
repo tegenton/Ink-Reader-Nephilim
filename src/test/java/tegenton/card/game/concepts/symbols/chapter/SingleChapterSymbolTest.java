@@ -12,48 +12,48 @@ public class SingleChapterSymbolTest {
     @ParameterizedTest
     @ValueSource(strings = {"I", "II", "III", "IV"})
     void isValid(String s) {
-        symbol = (SingleChapterSymbol) SingleChapterSymbol.fromString(s).orElse(null);
+        symbol = SingleChapterSymbol.fromString(s);
         assertNotNull(symbol);
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"I,II", "II,III", "I,II,III"})
     void isInvalid(String s) {
-        symbol = (SingleChapterSymbol) SingleChapterSymbol.fromString(s).orElse(null);
+        symbol = SingleChapterSymbol.fromString(s);
         assertNull(symbol);
     }
 
     @Test
     void one() {
-        symbol = (SingleChapterSymbol) SingleChapterSymbol.fromString("I").orElse(null);
+        symbol = SingleChapterSymbol.fromString("I");
         assertNotNull(symbol);
         assertEquals(1, symbol.getChapter());
     }
 
     @Test
     void two() {
-        symbol = (SingleChapterSymbol) SingleChapterSymbol.fromString("II").orElse(null);
+        symbol = SingleChapterSymbol.fromString("II");
         assertNotNull(symbol);
         assertEquals(2, symbol.getChapter());
     }
 
     @Test
     void three() {
-        symbol = (SingleChapterSymbol) SingleChapterSymbol.fromString("III").orElse(null);
+        symbol = SingleChapterSymbol.fromString("III");
         assertNotNull(symbol);
         assertEquals(3, symbol.getChapter());
     }
 
     @Test
     void four() {
-        symbol = (SingleChapterSymbol) SingleChapterSymbol.fromString("IV").orElse(null);
+        symbol = SingleChapterSymbol.fromString("IV");
         assertNotNull(symbol);
         assertEquals(4, symbol.getChapter());
     }
 
     @Test
     void five() {
-        symbol = (SingleChapterSymbol) SingleChapterSymbol.fromString("V").orElse(null);
+        symbol = SingleChapterSymbol.fromString("V");
         assertNotNull(symbol);
         assertEquals(5, symbol.getChapter());
     }

@@ -11,7 +11,7 @@ public class WordTest {
 
     @Test
     void getWord() {
-        word = Verb.fromString("draw").orElse(null);
+        word = Verb.fromString("draw");
         assertNotNull(word);
         assertEquals("draw", word.getWord());
     }

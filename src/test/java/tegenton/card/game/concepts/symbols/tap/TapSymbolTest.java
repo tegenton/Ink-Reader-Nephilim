@@ -12,27 +12,27 @@ public class TapSymbolTest {
     @ParameterizedTest
     @ValueSource(strings = {"{T}", "{Q}"})
     void isValid(String s) {
-        symbol = (TapSymbol) TapSymbol.fromString(s).orElse(null);
+        symbol = TapSymbol.fromString(s);
         assertNotNull(symbol);
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"T", "Q"})
     void isInvalid(String s) {
-        symbol = (TapSymbol) TapSymbol.fromString(s).orElse(null);
+        symbol = TapSymbol.fromString(s);
         assertNull(symbol);
     }
 
     @Test
     void tap() {
-        symbol = (TapSymbol) TapSymbol.fromString("{T}").orElse(null);
+        symbol = TapSymbol.fromString("{T}");
         assertNotNull(symbol);
         assertEquals(TapTapSymbol.class, symbol.getClass());
     }
 
     @Test
     void untap() {
-        symbol = (TapSymbol) TapSymbol.fromString("{Q}").orElse(null);
+        symbol = TapSymbol.fromString("{Q}");
         assertNotNull(symbol);
         assertEquals(UntapSymbol.class, symbol.getClass());
     }

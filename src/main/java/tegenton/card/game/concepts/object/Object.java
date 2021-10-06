@@ -159,14 +159,14 @@ target, an object’s owner or controller, what an Aura enchants, and so on.*/
     }
 
     protected void setCharacteristic(String item) {
-        Optional<Characteristic<?>> result = Characteristic.fromString(item);
-        if (result.isPresent()) {
-            if (!characteristics.containsKey(result.get().getName())) {
-                characteristics.put(result.get().getName(), result.get());
+        Characteristic<?> result = Characteristic.fromString(item);
+        if (result != null) {
+            if (!characteristics.containsKey(result.getName())) {
+                characteristics.put(result.getName(), result);
             } else {
                 List<Subtype> newTypes = new ArrayList<>();
                 newTypes.addAll(getSubtypes().orElse(new ArrayList<>()));
-                newTypes.addAll(((Characteristic<List<Subtype>>) result.get()).value());
+                newTypes.addAll(((Characteristic<List<Subtype>>) result).value());
                 characteristics.put(CharacteristicName.subtype, Characteristic.subtypeList(newTypes));
             }
         }

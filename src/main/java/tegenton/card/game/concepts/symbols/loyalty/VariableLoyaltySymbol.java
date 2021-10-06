@@ -1,8 +1,5 @@
 package tegenton.card.game.concepts.symbols.loyalty;
 
-import tegenton.card.game.concepts.symbols.Symbol;
-
-import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -14,12 +11,12 @@ class VariableLoyaltySymbol extends LoyaltySymbol {
         super();
     }
 
-    public static Optional<Symbol> fromString(String s) {
+    public static VariableLoyaltySymbol fromString(String s) {
         Matcher m = p.matcher(s);
         if (m.find()) {
-            return Optional.of(new VariableLoyaltySymbol());
+            return new VariableLoyaltySymbol();
         }
-        return Optional.empty();
+        return null;
     }
 
     public int getValue() {

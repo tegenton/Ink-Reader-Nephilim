@@ -12,21 +12,21 @@ public class ArticleTokenTest {
 
     @Test
     void a() {
-        articleToken = (ArticleToken) ArticleToken.fromString("a").orElse(null);
+        articleToken = ArticleToken.fromString("a");
         assertNotNull(articleToken);
         Assertions.assertEquals(Article.a, articleToken.getWord());
     }
 
     @Test
     void an() {
-        articleToken = (ArticleToken) ArticleToken.fromString("an").orElse(null);
+        articleToken = ArticleToken.fromString("an");
         assertNotNull(articleToken);
         Assertions.assertEquals(Article.an, articleToken.getWord());
     }
 
     @Test
     void invalid() {
-        articleToken = (ArticleToken) ArticleToken.fromString("when").orElse(null);
+        articleToken = ArticleToken.fromString("when");
         assertNull(articleToken);
     }
 }

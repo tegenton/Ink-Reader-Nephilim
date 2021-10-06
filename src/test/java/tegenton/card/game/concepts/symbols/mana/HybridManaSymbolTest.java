@@ -1,8 +1,8 @@
 package tegenton.card.game.concepts.symbols.mana;
 
-import tegenton.card.game.concepts.Color;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import tegenton.card.game.concepts.Color;
 
 import java.util.EnumSet;
 
@@ -25,7 +25,7 @@ public class HybridManaSymbolTest {
     @Test
     void whiteBlue() {
         colors = EnumSet.of(Color.white, Color.blue);
-        symbol = (HybridManaSymbol) HybridManaSymbol.fromString("W/U").orElse(null);
+        symbol = HybridManaSymbol.fromString("W/U");
         assertNotNull(symbol);
         assertEquals(colors, symbol.getType());
         assertEquals(1, symbol.getManaValue());
@@ -34,7 +34,7 @@ public class HybridManaSymbolTest {
     @Test
     void whiteBlack() {
         colors = EnumSet.of(Color.white, Color.black);
-        symbol = (HybridManaSymbol) HybridManaSymbol.fromString("W/B").orElse(null);
+        symbol = HybridManaSymbol.fromString("W/B");
         assertNotNull(symbol);
         assertEquals(colors, symbol.getType());
         assertEquals(1, symbol.getManaValue());
@@ -43,7 +43,7 @@ public class HybridManaSymbolTest {
     @Test
     void blueBlack() {
         colors = EnumSet.of(Color.blue, Color.black);
-        symbol = (HybridManaSymbol) HybridManaSymbol.fromString("U/B").orElse(null);
+        symbol = HybridManaSymbol.fromString("U/B");
         assertNotNull(symbol);
         assertEquals(colors, symbol.getType());
         assertEquals(1, symbol.getManaValue());
@@ -52,7 +52,7 @@ public class HybridManaSymbolTest {
     @Test
     void redBlue() {
         colors = EnumSet.of(Color.red, Color.blue);
-        symbol = (HybridManaSymbol) HybridManaSymbol.fromString("R/U").orElse(null);
+        symbol = HybridManaSymbol.fromString("R/U");
         assertNotNull(symbol);
         assertEquals(colors, symbol.getType());
         assertEquals(1, symbol.getManaValue());
@@ -61,7 +61,7 @@ public class HybridManaSymbolTest {
     @Test
     void blackRed() {
         colors = EnumSet.of(Color.black, Color.red);
-        symbol = (HybridManaSymbol) HybridManaSymbol.fromString("B/R").orElse(null);
+        symbol = HybridManaSymbol.fromString("B/R");
         assertNotNull(symbol);
         assertEquals(colors, symbol.getType());
         assertEquals(1, symbol.getManaValue());
@@ -70,7 +70,7 @@ public class HybridManaSymbolTest {
     @Test
     void blackGreen() {
         colors = EnumSet.of(Color.black, Color.green);
-        symbol = (HybridManaSymbol) HybridManaSymbol.fromString("B/G").orElse(null);
+        symbol = HybridManaSymbol.fromString("B/G");
         assertNotNull(symbol);
         assertEquals(colors, symbol.getType());
         assertEquals(1, symbol.getManaValue());
@@ -79,7 +79,7 @@ public class HybridManaSymbolTest {
     @Test
     void redGreen() {
         colors = EnumSet.of(Color.red, Color.green);
-        symbol = (HybridManaSymbol) HybridManaSymbol.fromString("R/G").orElse(null);
+        symbol = HybridManaSymbol.fromString("R/G");
         assertNotNull(symbol);
         assertEquals(colors, symbol.getType());
         assertEquals(1, symbol.getManaValue());
@@ -88,7 +88,7 @@ public class HybridManaSymbolTest {
     @Test
     void redWhite() {
         colors = EnumSet.of(Color.red, Color.white);
-        symbol = (HybridManaSymbol) HybridManaSymbol.fromString("R/W").orElse(null);
+        symbol = HybridManaSymbol.fromString("R/W");
         assertNotNull(symbol);
         assertEquals(colors, symbol.getType());
         assertEquals(1, symbol.getManaValue());
@@ -97,7 +97,7 @@ public class HybridManaSymbolTest {
     @Test
     void greenWhite() {
         colors = EnumSet.of(Color.green, Color.white);
-        symbol = (HybridManaSymbol) HybridManaSymbol.fromString("G/W").orElse(null);
+        symbol = HybridManaSymbol.fromString("G/W");
         assertNotNull(symbol);
         assertEquals(colors, symbol.getType());
         assertEquals(1, symbol.getManaValue());
@@ -106,7 +106,7 @@ public class HybridManaSymbolTest {
     @Test
     void greenBlue() {
         colors = EnumSet.of(Color.green, Color.blue);
-        symbol = (HybridManaSymbol) HybridManaSymbol.fromString("G/U").orElse(null);
+        symbol = HybridManaSymbol.fromString("G/U");
         assertNotNull(symbol);
         assertEquals(colors, symbol.getType());
         assertEquals(1, symbol.getManaValue());

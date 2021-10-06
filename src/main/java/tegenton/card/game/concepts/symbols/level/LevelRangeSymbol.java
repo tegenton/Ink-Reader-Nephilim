@@ -1,8 +1,5 @@
 package tegenton.card.game.concepts.symbols.level;
 
-import tegenton.card.game.concepts.symbols.Symbol;
-
-import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -16,14 +13,14 @@ class LevelRangeSymbol extends LevelSymbol {
         this.max = max;
     }
 
-    public static Optional<Symbol> fromString(String s) {
+    public static LevelRangeSymbol fromString(String s) {
         Matcher m = p.matcher(s);
         if (m.find()) {
             int min = Integer.parseInt(m.group(1));
             int max = Integer.parseInt(m.group(2));
-            return Optional.of(new LevelRangeSymbol(min, max));
+            return new LevelRangeSymbol(min, max);
         }
-        return Optional.empty();
+        return null;
     }
 
     public int getMin() {

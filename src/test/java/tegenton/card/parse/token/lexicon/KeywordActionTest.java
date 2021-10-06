@@ -12,14 +12,14 @@ public class KeywordActionTest {
     @ParameterizedTest
     @ValueSource(strings = {"scry", "fateseal"})
     void validNumbers(String s) {
-        keywordAction = KeywordAction.fromString(s).orElse(null);
+        keywordAction = KeywordAction.fromString(s);
         assertNotNull(keywordAction);
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"Whenever", "Lifelink"})
     void invalid(String s) {
-        keywordAction = KeywordAction.fromString(s).orElse(null);
+        keywordAction = KeywordAction.fromString(s);
         assertNull(keywordAction);
     }
 }

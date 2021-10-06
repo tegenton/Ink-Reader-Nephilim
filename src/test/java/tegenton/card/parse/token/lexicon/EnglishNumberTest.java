@@ -13,7 +13,7 @@ public class EnglishNumberTest {
     @ValueSource(strings = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
             "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty"})
     void validNumbers(String s) {
-        num = EnglishNumber.fromString(s).orElse(null);
+        num = EnglishNumber.fromString(s);
         assertNotNull(num);
     }
 
@@ -27,7 +27,7 @@ public class EnglishNumberTest {
     @ParameterizedTest
     @ValueSource(strings = {"1", "X", "{3}"})
     void invalid(String s) {
-        num = EnglishNumber.fromString(s).orElse(null);
+        num = EnglishNumber.fromString(s);
         assertNull(num);
     }
 }

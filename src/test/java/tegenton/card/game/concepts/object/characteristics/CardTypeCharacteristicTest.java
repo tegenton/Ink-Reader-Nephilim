@@ -1,7 +1,7 @@
 package tegenton.card.game.concepts.object.characteristics;
 
-import tegenton.card.game.type.Type;
 import org.junit.jupiter.api.Test;
+import tegenton.card.game.type.Type;
 
 import java.util.EnumSet;
 
@@ -9,12 +9,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class CardTypeCharacteristicTest {
-    public static Characteristic characteristic;
+    public static CardTypeCharacteristic characteristic;
 
     @Test
     void caseInsensitive() {
         EnumSet<Type> types = EnumSet.of(Type.artifact);
-        characteristic = CardTypeCharacteristic.fromString("aRtIfAct").orElse(null);
+        characteristic = CardTypeCharacteristic.fromString("aRtIfAct");
         assertNotNull(characteristic);
         assertEquals(types, characteristic.value());
     }
@@ -22,7 +22,7 @@ public class CardTypeCharacteristicTest {
     @Test
     void artifact() {
         EnumSet<Type> types = EnumSet.of(Type.artifact);
-        characteristic = CardTypeCharacteristic.fromString("artifact").orElse(null);
+        characteristic = CardTypeCharacteristic.fromString("artifact");
         assertNotNull(characteristic);
         assertEquals(types, characteristic.value());
     }
@@ -30,7 +30,7 @@ public class CardTypeCharacteristicTest {
     @Test
     void conspiracy() {
         EnumSet<Type> types = EnumSet.of(Type.conspiracy);
-        characteristic = CardTypeCharacteristic.fromString("conspiracy").orElse(null);
+        characteristic = CardTypeCharacteristic.fromString("conspiracy");
         assertNotNull(characteristic);
         assertEquals(types, characteristic.value());
     }
@@ -38,7 +38,7 @@ public class CardTypeCharacteristicTest {
     @Test
     void creature() {
         EnumSet<Type> types = EnumSet.of(Type.creature);
-        characteristic = CardTypeCharacteristic.fromString("creature").orElse(null);
+        characteristic = CardTypeCharacteristic.fromString("creature");
         assertNotNull(characteristic);
         assertEquals(types, characteristic.value());
     }
@@ -46,7 +46,7 @@ public class CardTypeCharacteristicTest {
     @Test
     void enchantment() {
         EnumSet<Type> types = EnumSet.of(Type.enchantment);
-        characteristic = CardTypeCharacteristic.fromString("enchantment").orElse(null);
+        characteristic = CardTypeCharacteristic.fromString("enchantment");
         assertNotNull(characteristic);
         assertEquals(types, characteristic.value());
     }
@@ -54,7 +54,7 @@ public class CardTypeCharacteristicTest {
     @Test
     void instant() {
         EnumSet<Type> types = EnumSet.of(Type.instant);
-        characteristic = CardTypeCharacteristic.fromString("instant").orElse(null);
+        characteristic = CardTypeCharacteristic.fromString("instant");
         assertNotNull(characteristic);
         assertEquals(types, characteristic.value());
     }
@@ -62,7 +62,7 @@ public class CardTypeCharacteristicTest {
     @Test
     void land() {
         EnumSet<Type> types = EnumSet.of(Type.land);
-        characteristic = CardTypeCharacteristic.fromString("land").orElse(null);
+        characteristic = CardTypeCharacteristic.fromString("land");
         assertNotNull(characteristic);
         assertEquals(types, characteristic.value());
     }
@@ -70,7 +70,7 @@ public class CardTypeCharacteristicTest {
     @Test
     void phenomenon() {
         EnumSet<Type> types = EnumSet.of(Type.phenomenon);
-        characteristic = CardTypeCharacteristic.fromString("phenomenon").orElse(null);
+        characteristic = CardTypeCharacteristic.fromString("phenomenon");
         assertNotNull(characteristic);
         assertEquals(types, characteristic.value());
     }
@@ -78,7 +78,7 @@ public class CardTypeCharacteristicTest {
     @Test
     void plane() {
         EnumSet<Type> types = EnumSet.of(Type.plane);
-        characteristic = CardTypeCharacteristic.fromString("plane").orElse(null);
+        characteristic = CardTypeCharacteristic.fromString("plane");
         assertNotNull(characteristic);
         assertEquals(types, characteristic.value());
     }
@@ -86,7 +86,7 @@ public class CardTypeCharacteristicTest {
     @Test
     void planeswalker() {
         EnumSet<Type> types = EnumSet.of(Type.planeswalker);
-        characteristic = CardTypeCharacteristic.fromString("planeswalker").orElse(null);
+        characteristic = CardTypeCharacteristic.fromString("planeswalker");
         assertNotNull(characteristic);
         assertEquals(types, characteristic.value());
     }
@@ -94,7 +94,7 @@ public class CardTypeCharacteristicTest {
     @Test
     void scheme() {
         EnumSet<Type> types = EnumSet.of(Type.scheme);
-        characteristic = CardTypeCharacteristic.fromString("scheme").orElse(null);
+        characteristic = CardTypeCharacteristic.fromString("scheme");
         assertNotNull(characteristic);
         assertEquals(types, characteristic.value());
     }
@@ -102,7 +102,7 @@ public class CardTypeCharacteristicTest {
     @Test
     void sorcery() {
         EnumSet<Type> types = EnumSet.of(Type.sorcery);
-        characteristic = CardTypeCharacteristic.fromString("sorcery").orElse(null);
+        characteristic = CardTypeCharacteristic.fromString("sorcery");
         assertNotNull(characteristic);
         assertEquals(types, characteristic.value());
     }
@@ -110,7 +110,7 @@ public class CardTypeCharacteristicTest {
     @Test
     void tribal() {
         EnumSet<Type> types = EnumSet.of(Type.tribal);
-        characteristic = CardTypeCharacteristic.fromString("tribal").orElse(null);
+        characteristic = CardTypeCharacteristic.fromString("tribal");
         assertNotNull(characteristic);
         assertEquals(types, characteristic.value());
     }
@@ -118,7 +118,7 @@ public class CardTypeCharacteristicTest {
     @Test
     void vanguard() {
         EnumSet<Type> types = EnumSet.of(Type.vanguard);
-        characteristic = CardTypeCharacteristic.fromString("vanguard").orElse(null);
+        characteristic = CardTypeCharacteristic.fromString("vanguard");
         assertNotNull(characteristic);
         assertEquals(types, characteristic.value());
     }

@@ -11,20 +11,20 @@ public class LevelMinSymbolTest {
 
     @Test
     void isValid() {
-        symbol = (LevelMinSymbol) LevelMinSymbol.fromString("LEVEL 5+").orElse(null);
+        symbol = LevelMinSymbol.fromString("LEVEL 5+");
         assertNotNull(symbol);
     }
 
     @Test
     void isInvalid() {
-        symbol = (LevelMinSymbol) LevelMinSymbol.fromString("LEVEL 5-8").orElse(null);
+        symbol = LevelMinSymbol.fromString("LEVEL 5-8");
         assertNull(symbol);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9})
     void min(int level) {
-        symbol = (LevelMinSymbol) LevelMinSymbol.fromString("LEVEL " + level + "+").orElse(null);
+        symbol = LevelMinSymbol.fromString("LEVEL " + level + "+");
         assertNotNull(symbol);
         assertEquals(level, symbol.getMin());
     }
