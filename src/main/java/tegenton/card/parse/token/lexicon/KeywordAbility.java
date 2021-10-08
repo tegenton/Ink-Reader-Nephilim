@@ -3,10 +3,10 @@ package tegenton.card.parse.token.lexicon;
 public enum KeywordAbility implements Word {
     deathtouch,
     defender,
-    doubleStrike("double strike"),
+    doubleStrike("Double Strike"),
     enchant,
     equip,
-    firstStrike("first strike"),
+    firstStrike("First Strike"),
     flash,
     flying,
     haste,
@@ -23,7 +23,7 @@ public enum KeywordAbility implements Word {
     ward,
     banding,
     rampage,
-    cumulativeUpkeep("cumulative upkeep"),
+    cumulativeUpkeep("Cumulative Upkeep"),
     flanking,
     phasing,
     buyback,
@@ -60,11 +60,11 @@ public enum KeywordAbility implements Word {
     graft,
     recover,
     ripple,
-    splitSecond("split second"),
+    splitSecond("Split Second"),
     suspend,
     vanishing,
     absorb,
-    auraSwap("aura swap"),
+    auraSwap("Aura Swap"),
     delve,
     fortify,
     frenzy,
@@ -86,12 +86,12 @@ public enum KeywordAbility implements Word {
     unearth,
     cascade,
     annihilator,
-    levelUp("level up"),
+    levelUp("Level Up"),
     rebound,
-    totemArmor("totem armor"),
+    totemArmor("Totem Armor"),
     infect,
-    battleCry("battle cry"),
-    livingWeapon("living weapon"),
+    battleCry("Battle Cry"),
+    livingWeapon("Living Weapon"),
     undying,
     miracle,
     soulbond,
@@ -105,7 +105,7 @@ public enum KeywordAbility implements Word {
     bestow,
     tribute,
     dethrone,
-    hiddenAgenda("hidden agenda"),
+    hiddenAgenda("Hidden Agenda"),
     outlast,
     prowess,
     dash,
@@ -132,7 +132,7 @@ public enum KeywordAbility implements Word {
     afflict,
     ascend,
     assist,
-    jumpStart("jump-start"),
+    jumpStart("Jump-Start"),
     mentor,
     afterlife,
     riot,
@@ -156,7 +156,7 @@ public enum KeywordAbility implements Word {
     }
 
     KeywordAbility() {
-        name = name();
+        name = name().substring(0, 1).toUpperCase() + name().substring(1);
     }
 
     public static KeywordAbility fromString(String s) {
