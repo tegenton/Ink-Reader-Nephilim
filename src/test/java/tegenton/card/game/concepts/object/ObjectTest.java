@@ -18,7 +18,7 @@ public class ObjectTest {
         assertTrue(object.getSuperTypes().isEmpty());
         assertTrue(object.getCardTypes().isEmpty());
         assertTrue(object.getSubtypes().isEmpty());
-        // TODO: assertTrue(object.getRulesText().isEmpty());
+        assertTrue(object.getRulesText().isEmpty());
         // TODO: assertTrue(object.getCharacteristic(CharacteristicName.abilities).isEmpty());
         assertTrue(object.getPower().isEmpty());
         assertTrue(object.getToughness().isEmpty());

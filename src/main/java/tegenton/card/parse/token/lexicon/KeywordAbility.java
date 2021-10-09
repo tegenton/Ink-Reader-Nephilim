@@ -148,7 +148,6 @@ public enum KeywordAbility implements Word {
     nightbound,
     disturb,
     decayed;
-
     private final String name;
 
     KeywordAbility(String s) {
