@@ -7,16 +7,24 @@ import tegenton.card.game.type.SuperType;
 import tegenton.card.game.type.Type;
 import tegenton.card.game.type.subtype.Subtype;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.EnumMap;
+import java.util.EnumSet;
+import java.util.List;
+import java.util.Optional;
 
+/**
+ * An object is an ability on the stack, a card, a copy of a card, a token, a spell,
+ * a permanent, or an emblem.
+ */
 public abstract class Object {
-    // TODO: card(extends object), permanentCard (extends card, implements permanent (extends object)), spell (extends card), ability, abilityOnStack (extends object)
     /*An object’s characteristics are name, mana cost, color, color indicator, card type, subtype,
-supertype, rules text, abilities, power, toughness, loyalty, hand modifier, and life modifier. Objects
-can have some or all of these characteristics. Any other information about an object isn’t a
-characteristic. For example, characteristics don’t include whether a permanent is tapped, a spell’s
-target, an object’s owner or controller, what an Aura enchants, and so on.*/
-    private final EnumMap<CharacteristicName, Characteristic<?>> characteristics = new EnumMap<>(CharacteristicName.class);
+supertype, rules text, abilities, power, toughness, loyalty, hand modifier, and life modifier.
+Objects can have some or all of these characteristics. Any other information about an object isn’t
+a characteristic. For example, characteristics don’t include whether a permanent is tapped, a
+spell’s target, an object’s owner or controller, what an Aura enchants, and so on.*/
+    private final EnumMap<CharacteristicName, Characteristic<?>> characteristics =
+            new EnumMap<>(CharacteristicName.class);
 
     private <T> Optional<T> getCharacteristic(CharacteristicName name) {
         if (!characteristics.containsKey(name)) {
@@ -96,7 +104,8 @@ target, an object’s owner or controller, what an Aura enchants, and so on.*/
                 List<Subtype> newTypes = new ArrayList<>();
                 newTypes.addAll(getSubtypes().orElse(new ArrayList<>()));
                 newTypes.addAll(((Characteristic<List<Subtype>>) result).value());
-                characteristics.put(CharacteristicName.subtype, Characteristic.subtypeList(newTypes));
+                characteristics.put(CharacteristicName.subtype,
+                        Characteristic.subtypeList(newTypes));
             }
         }
     }
