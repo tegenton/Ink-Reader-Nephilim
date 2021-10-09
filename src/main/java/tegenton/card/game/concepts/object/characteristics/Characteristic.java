@@ -1,25 +1,41 @@
 package tegenton.card.game.concepts.object.characteristics;
 
 import tegenton.card.game.type.subtype.Subtype;
-import tegenton.card.generic.Filter;
 
 import java.util.List;
 import java.util.function.Function;
+import tegenton.card.generic.Filter;
 
+/**
+ * An object’s characteristics are name, mana cost, color, color indicator, card type, subtype,
+ * supertype, rules text, abilities, power, toughness, loyalty, hand modifier, and life modifier.
+ * Objects can have some or all of these characteristics. Any other information about an object
+ * isn’t a characteristic. For example, characteristics don’t include whether a permanent is
+ * tapped, a spell’s target, an object’s owner or controller, what an Aura enchants, and so on.
+ *
+ * @param <T> type of information contained in the characteristic, such as a string for name or
+ *            Color for color
+ */
 public abstract class Characteristic<T> {
-    /*An object’s characteristics are name, mana cost, color, color indicator, card type, subtype,
-supertype, rules text, abilities, power, toughness, loyalty, hand modifier, and life modifier. Objects
-can have some or all of these characteristics. Any other information about an object isn’t a
-characteristic. For example, characteristics don’t include whether a permanent is tapped, a spell’s
-target, an object’s owner or controller, what an Aura enchants, and so on.*/
     private static Filter<Characteristic<?>> filter;
 
     private static void setupFilter() {
         List<Function<String, Characteristic<?>>> characteristics;
-        characteristics = List.of(NameCharacteristic::fromString, ColorCharacteristic::fromString, CardTypeCharacteristic::fromString, SubtypeCharacteristic::fromString, SuperTypeCharacteristic::fromString, PowerToughnessCharacteristic::fromString);
+        characteristics = List.of(CardTypeCharacteristic::fromString,
+                ColorCharacteristic::fromString,
+                NameCharacteristic::fromString,
+                PowerToughnessCharacteristic::fromString,
+                SubtypeCharacteristic::fromString,
+                SuperTypeCharacteristic::fromString);
         filter = new Filter<>(characteristics);
     }
 
+    /**
+     * Returns the characteristic represented by s.
+     *
+     * @param s string which may contain a characteristic
+     * @return characteristic contained in s, if s contains a characteristic, otherwise null
+     */
     public static Characteristic<?> fromString(String s) {
         if (filter == null) {
             setupFilter();
