@@ -14,7 +14,7 @@ public abstract class Token {
 
     private static void setupFilter() {
         List<Function<String, Token>> tokenTypes;
-        tokenTypes = List.of(ArticleToken::fromString, EnglishNumberToken::fromString, KeywordActionToken::fromString, NumberToken::fromString, PunctuationToken::fromString, SubjectToken::fromString, VerbToken::fromString);
+        tokenTypes = List.of(ArticleToken::fromString, EnglishNumberToken::fromString, KeywordAbilityToken::fromString, KeywordActionToken::fromString, NumberToken::fromString, PunctuationToken::fromString, SubjectToken::fromString, VerbToken::fromString);
         filter = new Filter<>(tokenTypes);
     }
 
