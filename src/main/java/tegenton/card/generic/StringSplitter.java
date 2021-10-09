@@ -2,27 +2,27 @@ package tegenton.card.generic;
 
 public class StringSplitter {
     private final String delim = " ,.";
-    private String s;
+    private String string;
 
     public StringSplitter(String s) {
-        this.s = s;
+        string = s;
     }
 
     public boolean hasNext() {
-        return !s.isEmpty();
+        return !string.isEmpty();
     }
 
     public String getNext() {
         StringBuilder token = new StringBuilder();
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) != ' ') {
-                token.append(s.charAt(i));
+        for (int i = 0; i < string.length(); i++) {
+            if (string.charAt(i) != ' ') {
+                token.append(string.charAt(i));
             }
-            if (s.length() == i + 1 || s.charAt(i + 1) == ' ') {
-                s = s.substring(i + 1);
+            if (string.length() == i + 1 || string.charAt(i + 1) == ' ') {
+                string = string.substring(i + 1);
                 break;
-            } else if (delim.contains(s.substring(i + 1, i + 2))) {
-                s = s.substring(i + 1);
+            } else if (delim.contains(string.substring(i + 1, i + 2))) {
+                string = string.substring(i + 1);
                 break;
             }
         }

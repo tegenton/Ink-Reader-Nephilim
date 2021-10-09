@@ -1,6 +1,13 @@
 package tegenton.card.game.type;
 
-import tegenton.card.game.type.subtype.*;
+import tegenton.card.game.type.subtype.ArtifactType;
+import tegenton.card.game.type.subtype.CreatureType;
+import tegenton.card.game.type.subtype.EnchantmentType;
+import tegenton.card.game.type.subtype.LandType;
+import tegenton.card.game.type.subtype.PlanarType;
+import tegenton.card.game.type.subtype.PlaneswalkerType;
+import tegenton.card.game.type.subtype.SpellType;
+import tegenton.card.game.type.subtype.Subtype;
 
 import java.util.Optional;
 import java.util.function.Function;
