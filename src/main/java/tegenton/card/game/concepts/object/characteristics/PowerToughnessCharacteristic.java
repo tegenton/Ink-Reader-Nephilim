@@ -12,7 +12,9 @@ class PowerToughnessCharacteristic extends Characteristic<Integer[]> {
         String[] parts = s.split("/");
         if (parts.length == 2) {
             try {
-                return new PowerToughnessCharacteristic(Integer.parseInt(parts[0]), Integer.parseInt(parts[1]));
+                int power = Integer.parseInt(parts[0]);
+                int toughness = Integer.parseInt(parts[1]);
+                return new PowerToughnessCharacteristic(power, toughness);
             } catch (NumberFormatException e) {
                 return null;
             }

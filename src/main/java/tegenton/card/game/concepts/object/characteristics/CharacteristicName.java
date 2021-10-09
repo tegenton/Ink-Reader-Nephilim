@@ -1,15 +1,19 @@
 package tegenton.card.game.concepts.object.characteristics;
 
+/**
+ * The various types of characteristics. These are used to determine which characteristics an
+ * object has.
+ */
 public enum CharacteristicName {
     name,
-    // TODO: manaCost,
+    manaCost,
     color,
     colorIndicator,
     superType,
     cardType,
     subtype,
     rulesText,
-    // TODO: abilities,
+    abilities,
     powerToughness,
     loyalty,
     handMod,
