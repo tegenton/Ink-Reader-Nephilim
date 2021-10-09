@@ -32,6 +32,9 @@ pitest {
     junit5PluginVersion = "0.15"
 }
 
+checkstyle {
+    toolVersion '9.0'
+}
 checkstyleMain {
     source = 'src/main/java'
 }
