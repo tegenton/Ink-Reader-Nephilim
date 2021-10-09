@@ -17,7 +17,8 @@ class MonoHybridManaSymbol extends ColoredManaSymbol {
         String[] parts = s.split("/");
         if (parts.length == 2) {
             try {
-                symbol = new MonoHybridManaSymbol(Integer.parseInt(parts[0]), Color.fromString(parts[1]));
+                symbol = new MonoHybridManaSymbol(Integer.parseInt(parts[0]),
+                        Color.fromString(parts[1]));
             } catch (NumberFormatException | InvalidColorException e) {
                 return null;
             }

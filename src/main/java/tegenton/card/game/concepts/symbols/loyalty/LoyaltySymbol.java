@@ -11,7 +11,8 @@ public abstract class LoyaltySymbol extends Symbol {
 
     private static void setupFilter() {
         List<Function<String, LoyaltySymbol>> loyaltySymbols;
-        loyaltySymbols = List.of(StaticLoyaltySymbol::fromString, VariableLoyaltySymbol::fromString);
+        loyaltySymbols = List.of(StaticLoyaltySymbol::fromString,
+                VariableLoyaltySymbol::fromString);
         filter = new Filter<>(loyaltySymbols);
     }
 

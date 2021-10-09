@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 class VariableLoyaltySymbol extends LoyaltySymbol {
     private static final Pattern p = Pattern.compile("^\\[?[+-]X]?$");
-    private int x = 0;
+    private int value = 0;
 
     private VariableLoyaltySymbol() {
         super();
@@ -20,6 +20,6 @@ class VariableLoyaltySymbol extends LoyaltySymbol {
     }
 
     public int getValue() {
-        return x;
+        return value;
     }
 }

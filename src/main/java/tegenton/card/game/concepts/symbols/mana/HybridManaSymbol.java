@@ -20,7 +20,8 @@ class HybridManaSymbol extends ColoredManaSymbol {
         String[] parts = s.split("/");
         if (parts.length == 2) {
             try {
-                symbol = new HybridManaSymbol(Color.fromString(parts[0]), Color.fromString(parts[1]));
+                symbol = new HybridManaSymbol(Color.fromString(parts[0]),
+                        Color.fromString(parts[1]));
             } catch (InvalidColorException e) {
                 return null;
             }

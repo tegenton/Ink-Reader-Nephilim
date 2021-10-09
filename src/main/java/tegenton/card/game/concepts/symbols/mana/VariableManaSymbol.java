@@ -1,7 +1,7 @@
 package tegenton.card.game.concepts.symbols.mana;
 
 class VariableManaSymbol extends ManaSymbol {
-    private int x = 0;
+    private int value = 0;
 
     private VariableManaSymbol() {
         super();
@@ -16,6 +16,6 @@ class VariableManaSymbol extends ManaSymbol {
 
     @Override
     public int getManaValue() {
-        return x;
+        return value;
     }
 }

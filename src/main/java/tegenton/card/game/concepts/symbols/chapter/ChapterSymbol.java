@@ -11,7 +11,8 @@ public abstract class ChapterSymbol extends Symbol {
 
     private static void setupFilter() {
         List<Function<String, ChapterSymbol>> chapterSymbols;
-        chapterSymbols = List.of(SingleChapterSymbol::fromString, MultipleChapterSymbol::fromString);
+        chapterSymbols = List.of(SingleChapterSymbol::fromString,
+                MultipleChapterSymbol::fromString);
         filter = new Filter<>(chapterSymbols);
     }
 
