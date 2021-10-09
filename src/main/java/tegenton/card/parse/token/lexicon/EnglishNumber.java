@@ -1,5 +1,9 @@
 package tegenton.card.parse.token.lexicon;
 
+/**
+ * A number written out, such as "two" or "seven".
+ * This enum contains zero to twenty.
+ */
 public enum EnglishNumber implements Word {
     zero(0),
     one(1),
@@ -29,6 +33,12 @@ public enum EnglishNumber implements Word {
         this.val = val;
     }
 
+    /**
+     * Returns the number represented by s.
+     *
+     * @param s string that may contain a number
+     * @return number contained in s, if s represents one, otherwise null
+     */
     public static EnglishNumber fromString(String s) {
         for (EnglishNumber type : EnglishNumber.values()) {
             if (type.getWord().equalsIgnoreCase(s)) {
