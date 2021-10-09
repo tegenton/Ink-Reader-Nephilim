@@ -48,4 +48,10 @@ public class TokenTest {
         expected.add(SubjectToken.fromString("card"));
         expected.add(PunctuationToken.fromString("."));
     }
+
+    @Test
+    void healersHawk() {
+        tokens = Token.tokenize("Lifelink");
+        expected.add(KeywordAbilityToken.fromString("Lifelink"));
+    }
 }

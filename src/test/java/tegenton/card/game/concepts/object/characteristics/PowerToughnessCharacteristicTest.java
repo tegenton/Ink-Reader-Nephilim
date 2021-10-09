@@ -3,8 +3,7 @@ package tegenton.card.game.concepts.object.characteristics;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class PowerToughnessCharacteristicTest {
     public static PowerToughnessCharacteristic result;
@@ -23,5 +22,12 @@ public class PowerToughnessCharacteristicTest {
         result = PowerToughnessCharacteristic.fromString("1/" + stat);
         assertNotNull(result);
         assertArrayEquals(new Integer[]{1, stat}, result.value());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"1/1/1", "*/*"})
+    void invalid(String s) {
+        result = PowerToughnessCharacteristic.fromString(s);
+        assertNull(result);
     }
 }
