@@ -49,7 +49,7 @@ public enum KeywordAction implements Word {
 
     private final String name;
 
-    KeywordAction(String s) {
+    KeywordAction(final String s) {
         name = s;
     }
 
@@ -57,8 +57,14 @@ public enum KeywordAction implements Word {
         name = name();
     }
 
-    public static KeywordAction fromString(String s) {
-        for (KeywordAction type : KeywordAction.values()) {
+    /**
+     * Returns the action represented by s.
+     *
+     * @param s string that may contain an action, such as "draw"
+     * @return action contained in s, if s represents one, otherwise null
+     */
+    public static KeywordAction fromString(final String s) {
+        for (final KeywordAction type : KeywordAction.values()) {
             if (type.getWord().equalsIgnoreCase(s)) {
                 return type;
             }

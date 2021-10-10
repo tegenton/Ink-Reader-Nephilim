@@ -13,8 +13,8 @@ public enum Article implements Word {
      * @param s string that may contain an article
      * @return article contained in s, if s represents one, otherwise null
      */
-    public static Article fromString(String s) {
-        for (Article type : Article.values()) {
+    public static Article fromString(final String s) {
+        for (final Article type : Article.values()) {
             if (type.getWord().equalsIgnoreCase(s)) {
                 return type;
             }

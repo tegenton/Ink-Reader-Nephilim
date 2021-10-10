@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * The (grammatical) object of a sentence.
+ */
 public enum Subject implements Word {
     card("card", "cards");
 
@@ -14,14 +17,19 @@ public enum Subject implements Word {
         names.add(name());
     }
 
-    Subject(String... names) {
-        this.names = Arrays.asList(names);
+    Subject(final String... listOfNames) {
+        this.names = Arrays.asList(listOfNames);
     }
 
-    public static Subject fromString(String s) {
-        s = s.toLowerCase();
-        for (Subject type : Subject.values()) {
-            if (type.names.contains(s)) {
+    /**
+     * The subject that s represents.
+     *
+     * @param s string that may contain a subject
+     * @return the represented subject or null
+     */
+    public static Subject fromString(final String s) {
+        for (final Subject type : Subject.values()) {
+            if (type.names.contains(s.toLowerCase())) {
                 return type;
             }
         }
