@@ -49,16 +49,24 @@ public enum PlanarType implements Subtype {
 
     private final String name;
 
-    PlanarType(String name) {
-        this.name = name;
+    PlanarType(final String planeName) {
+        this.name = planeName;
     }
 
     PlanarType() {
-        this.name = this.name().substring(0, 1).toUpperCase() + this.name().substring(1);
+        this.name = this.name().substring(0, 1).toUpperCase()
+                + this.name().substring(1);
     }
 
-    public static Optional<Subtype> fromString(String s) {
-        for (PlanarType type : PlanarType.values()) {
+
+    /**
+     * Returns an optional containing the planar type represented by s.
+     *
+     * @param s string that may contain a planar type
+     * @return planar type contained in s, if s represents one, otherwise empty
+     */
+    public static Optional<Subtype> fromString(final String s) {
+        for (final PlanarType type : PlanarType.values()) {
             if (type.getName().equalsIgnoreCase(s)) {
                 return Optional.of(type);
             }
