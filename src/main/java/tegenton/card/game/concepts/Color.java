@@ -7,37 +7,34 @@ public enum Color {
     red,
     green;
 
-    public static Color fromString(String s) throws InvalidColorException {
-        switch (s) {
+    /**
+     * If s represents a color (or colorless), this function returns that color.
+     * s may be formatted as {W},W,{w}, or w for any of WUBRG or C.
+     *
+     * @param s string that may contain a color
+     * @return the corresponding color, or null for colorless
+     * @throws InvalidColorException if s is not a color or colorless
+     */
+    public static Color
+    fromString(final String s) throws InvalidColorException {
+        switch (s.toUpperCase()) {
             case "{W}":
-            case "{w}":
             case "W":
-            case "w":
                 return white;
             case "{U}":
-            case "{u}":
             case "U":
-            case "u":
                 return blue;
             case "{B}":
-            case "{b}":
             case "B":
-            case "b":
                 return black;
             case "{R}":
-            case "{r}":
             case "R":
-            case "r":
                 return red;
             case "{G}":
-            case "{g}":
             case "G":
-            case "g":
                 return green;
             case "{C}":
-            case "{c}":
             case "C":
-            case "c":
                 return null;
             default:
                 throw new InvalidColorException();
