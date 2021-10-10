@@ -1,19 +1,19 @@
 package tegenton.card.game.concepts.symbols.mana;
 
-class NumericManaSymbol extends ManaSymbol {
+final class NumericManaSymbol extends ManaSymbol {
     // {0}, {1}, {2}, and so on
     private final int value;
 
-    private NumericManaSymbol(int value) {
+    private NumericManaSymbol(final int manaValue) {
         super();
-        this.value = value;
+        this.value = manaValue;
     }
 
-    public static NumericManaSymbol fromString(String s) {
-        NumericManaSymbol symbol;
+    public static NumericManaSymbol fromString(final String s) {
+        final NumericManaSymbol symbol;
         try {
             symbol = new NumericManaSymbol(Integer.parseInt(s));
-        } catch (NumberFormatException n) {
+        } catch (final NumberFormatException n) {
             return null;
         }
         return symbol;

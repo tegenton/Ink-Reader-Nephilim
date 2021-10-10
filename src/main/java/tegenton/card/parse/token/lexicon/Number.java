@@ -1,17 +1,23 @@
 package tegenton.card.parse.token.lexicon;
 
-public class Number implements Word {
-    final int val;
+public final class Number implements Word {
+    private final int value;
 
-    public Number(int val) {
-        this.val = val;
+    private Number(final int val) {
+        this.value = val;
     }
 
-    public static Number fromString(String s) {
-        int val;
+    /**
+     * A number, such as 3 or 12.
+     *
+     * @param s a string containing a number
+     * @return Number object containing that value
+     */
+    public static Number fromString(final String s) {
+        final int val;
         try {
             val = Integer.parseInt(s);
-        } catch (NumberFormatException e) {
+        } catch (final NumberFormatException e) {
             return null;
         }
         return new Number(val);
@@ -19,10 +25,15 @@ public class Number implements Word {
 
     @Override
     public String getWord() {
-        return Integer.toString(val);
+        return Integer.toString(value);
     }
 
+    /**
+     * Retrieve the actual value of the original string.
+     *
+     * @return the number as an integer
+     */
     public int getVal() {
-        return val;
+        return value;
     }
 }

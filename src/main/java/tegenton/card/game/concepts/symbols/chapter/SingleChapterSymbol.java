@@ -1,34 +1,29 @@
 package tegenton.card.game.concepts.symbols.chapter;
 
-class SingleChapterSymbol extends ChapterSymbol {
+enum RomanNumeral {
+    zero, // for ordinal offset
+    I,
+    II,
+    III,
+    IV,
+    V
+}
+
+final class SingleChapterSymbol extends ChapterSymbol {
     private final int chapter;
 
-    private SingleChapterSymbol(int chapter) {
-        this.chapter = chapter;
+    private SingleChapterSymbol(final int chapterNum) {
+        this.chapter = chapterNum;
     }
 
-    public static SingleChapterSymbol fromString(String s) {
-        int chapter;
-        switch (s.toUpperCase()) {
-            case "I":
-                chapter = 1;
-                break;
-            case "II":
-                chapter = 2;
-                break;
-            case "III":
-                chapter = 3;
-                break;
-            case "IV":
-                chapter = 4;
-                break;
-            case "V":
-                chapter = 5;
-                break;
-            default:
-                return null;
+    public static SingleChapterSymbol fromString(final String s) {
+        final RomanNumeral numeral;
+        try {
+            numeral = RomanNumeral.valueOf(s.toUpperCase());
+        } catch (final IllegalArgumentException e) {
+            return null;
         }
-        return new SingleChapterSymbol(chapter);
+        return new SingleChapterSymbol(numeral.ordinal());
     }
 
     public int getChapter() {

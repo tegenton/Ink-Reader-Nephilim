@@ -12,8 +12,15 @@ public enum ArtifactType implements Subtype {
     treasure,
     vehicle;
 
-    public static Optional<Subtype> fromString(String s) {
-        for (ArtifactType type : ArtifactType.values()) {
+    /**
+     * Returns an optional containing the artifact type represented by s.
+     *
+     * @param s string that may contain an artifact type
+     * @return artifact type contained in s, if s represents one,
+     * otherwise empty
+     */
+    public static Optional<Subtype> fromString(final String s) {
+        for (final ArtifactType type : ArtifactType.values()) {
             if (type.getName().equalsIgnoreCase(s)) {
                 return Optional.of(type);
             }
@@ -23,6 +30,7 @@ public enum ArtifactType implements Subtype {
 
     @Override
     public String getName() {
-        return this.name().substring(0, 1).toUpperCase() + this.name().substring(1);
+        return this.name().substring(0, 1).toUpperCase()
+                + this.name().substring(1);
     }
 }

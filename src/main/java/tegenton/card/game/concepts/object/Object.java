@@ -6,97 +6,189 @@ import tegenton.card.game.concepts.object.characteristics.CharacteristicName;
 import tegenton.card.game.type.SuperType;
 import tegenton.card.game.type.Type;
 import tegenton.card.game.type.subtype.Subtype;
+import java.util.ArrayList;
+import java.util.EnumMap;
+import java.util.EnumSet;
+import java.util.List;
+import java.util.Optional;
 
-import java.util.*;
-
+/**
+ * An object is an ability on the stack, a card, a copy of a card, a token, a
+ * spell, a permanent, or an emblem.
+ */
 public abstract class Object {
-    // TODO: card(extends object), permanentCard (extends card, implements permanent (extends object)), spell (extends card), ability, abilityOnStack (extends object)
-    /*An object’s characteristics are name, mana cost, color, color indicator, card type, subtype,
-supertype, rules text, abilities, power, toughness, loyalty, hand modifier, and life modifier. Objects
-can have some or all of these characteristics. Any other information about an object isn’t a
-characteristic. For example, characteristics don’t include whether a permanent is tapped, a spell’s
-target, an object’s owner or controller, what an Aura enchants, and so on.*/
-    private final EnumMap<CharacteristicName, Characteristic<?>> characteristics = new EnumMap<>(CharacteristicName.class);
+    private final EnumMap<CharacteristicName, Characteristic<?>> characteristics
+            = new EnumMap<>(CharacteristicName.class);
 
-    private <T> Optional<T> getCharacteristic(CharacteristicName name) {
+    private <T> Optional<T> getCharacteristic(final CharacteristicName name) {
         if (!characteristics.containsKey(name)) {
             return Optional.empty();
         }
-        try {
-            Characteristic<T> characteristic = (Characteristic<T>) characteristics.get(name);
-            return Optional.of(characteristic.value());
-        } catch (ClassCastException e) {
-            return Optional.empty();
-        }
+        final Characteristic<T> characteristic;
+        characteristic = (Characteristic<T>) characteristics.get(name);
+        return Optional.of(characteristic.value());
     }
 
-    public Optional<List<String>> getName() {
+    /**
+     * The list of names this object has.
+     *
+     * @return An empty optional if this object has no name, or an optional
+     * containing this object's list of names
+     */
+    public final Optional<List<String>> getName() {
         return getCharacteristic(CharacteristicName.name);
     }
 
-    protected void setName(List<String> names) {
-        characteristics.put(CharacteristicName.name, Characteristic.nameList(names));
+    /**
+     * Set the names of an object. Overwrites current names.
+     *
+     * @param names new list of names
+     */
+    protected void setName(final List<String> names) {
+        characteristics.put(CharacteristicName.name,
+                Characteristic.nameList(names));
     }
 
-    public Optional<EnumSet<Color>> getColor() {
+    /**
+     * The set of colors this object is. A "colorless" object is different from
+     * an object without a color, and has an empty set rather than an empty
+     * optional.
+     *
+     * @return An empty optional if this object has no color characteristic, or
+     * an optional containing this object's colors.
+     */
+    public final Optional<EnumSet<Color>> getColor() {
         return getCharacteristic(CharacteristicName.color);
     }
 
-    // TODO: manaCost
+    // manaCost
 
-    public Optional<EnumSet<Color>> getColorIndicator() {
+    /**
+     * The set of colors in this object's color indicator.
+     *
+     * @return An empty optional if this object has no color indicator, or an
+     * optional containing this object's color indicator.
+     */
+    public final Optional<EnumSet<Color>> getColorIndicator() {
         return getCharacteristic(CharacteristicName.colorIndicator);
     }
 
-    public Optional<EnumSet<SuperType>> getSuperTypes() {
+    /**
+     * The set of supertypes of this object.
+     *
+     * @return An empty optional if this object has no supertypes, or an
+     * optional containing this object's supertypes.
+     */
+    public final Optional<EnumSet<SuperType>> getSuperTypes() {
         return getCharacteristic(CharacteristicName.superType);
     }
 
-    public Optional<EnumSet<Type>> getCardTypes() {
+    /**
+     * The set of types of this object.
+     *
+     * @return An empty optional if this object has no types, or an optional
+     * containing this object's types.
+     */
+    public final Optional<EnumSet<Type>> getCardTypes() {
         return getCharacteristic(CharacteristicName.cardType);
     }
 
-    public Optional<List<Subtype>> getSubtypes() {
+    /**
+     * The list of subtypes of this object. This is a list rather than a set
+     * because most cards have their types in a particular order (creatures for
+     * example use race then class).
+     *
+     * @return An empty optional if this object has no subtypes, or an optional
+     * containing this object's subtypes.
+     */
+    public final Optional<List<Subtype>> getSubtypes() {
         return getCharacteristic(CharacteristicName.subtype);
     }
 
-    public Optional<String> getRulesText() {
+    /**
+     * The rules text of this object.
+     *
+     * @return An empty optional if this object has no rules text, or an
+     * optional containing this object's rules text.
+     */
+    public final Optional<String> getRulesText() {
         return getCharacteristic(CharacteristicName.rulesText);
     }
 
-    // TODO: abilities,
-    public Optional<Integer> getPower() {
-        Optional<Integer[]> pt = getCharacteristic(CharacteristicName.powerToughness);
+    // abilities
+
+    /**
+     * The power of this object.
+     *
+     * @return An empty optional if this object has no power, or an optional
+     * containing this object's power.
+     */
+    public final Optional<Integer> getPower() {
+        final Optional<Integer[]> pt;
+        pt = getCharacteristic(CharacteristicName.powerToughness);
         return pt.map(integers -> integers[0]);
     }
 
-    public Optional<Integer> getToughness() {
-        Optional<Integer[]> pt = getCharacteristic(CharacteristicName.powerToughness);
+    /**
+     * The toughness of this object.
+     *
+     * @return An empty optional if this object has no toughness, or an optional
+     * containing this object's toughness.
+     */
+    public final Optional<Integer> getToughness() {
+        final Optional<Integer[]> pt;
+        pt = getCharacteristic(CharacteristicName.powerToughness);
         return pt.map(integers -> integers[1]);
     }
 
-    public Optional<Integer> getLoyalty() {
+    /**
+     * The starting loyalty of this object.
+     *
+     * @return An empty optional if this object has no starting loyalty, or an
+     * optional containing this object's starting loyalty.
+     */
+    public final Optional<Integer> getLoyalty() {
         return getCharacteristic(CharacteristicName.loyalty);
     }
 
-    public Optional<Integer> getHandMod() {
+    /**
+     * The hand modifier of this object.
+     *
+     * @return An empty optional if this object has no hand modifier, or an
+     * optional containing this object's hand modifier.
+     */
+    public final Optional<Integer> getHandMod() {
         return getCharacteristic(CharacteristicName.handMod);
     }
 
-    public Optional<Integer> getLifeMod() {
+    /**
+     * The life modifier of this object.
+     *
+     * @return An empty optional if this object has no life modifier, or an
+     * optional containing this object's life modifier.
+     */
+    public final Optional<Integer> getLifeMod() {
         return getCharacteristic(CharacteristicName.lifeMod);
     }
 
-    protected void setCharacteristic(String item) {
-        Characteristic<?> result = Characteristic.fromString(item);
+    /**
+     * Set a characteristic of this object from a string. This is typically used
+     * for setting token attributes.
+     *
+     * @param item a string containing an attribute.
+     */
+    protected void setCharacteristic(final String item) {
+        final Characteristic<?> result = Characteristic.fromString(item);
         if (result != null) {
             if (!characteristics.containsKey(result.getName())) {
                 characteristics.put(result.getName(), result);
             } else {
-                List<Subtype> newTypes = new ArrayList<>();
+                final List<Subtype> newTypes = new ArrayList<>();
                 newTypes.addAll(getSubtypes().orElse(new ArrayList<>()));
-                newTypes.addAll(((Characteristic<List<Subtype>>) result).value());
-                characteristics.put(CharacteristicName.subtype, Characteristic.subtypeList(newTypes));
+                newTypes.addAll(((Characteristic<List<Subtype>>) result)
+                        .value());
+                characteristics.put(CharacteristicName.subtype,
+                        Characteristic.subtypeList(newTypes));
             }
         }
     }

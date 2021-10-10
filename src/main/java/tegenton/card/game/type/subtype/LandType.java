@@ -20,23 +20,30 @@ public enum LandType implements Subtype {
     private final String name;
     private final boolean basic;
 
-    LandType(String name) {
+    LandType(final String fullName) {
         this.basic = false;
-        this.name = name;
+        this.name = fullName;
     }
 
     LandType() {
         this.basic = false;
-        this.name = this.name().substring(0, 1).toUpperCase() + this.name().substring(1);
+        this.name = this.name().substring(0, 1).toUpperCase()
+                + this.name().substring(1);
     }
 
-    LandType(boolean basic) {
-        this.basic = basic;
+    LandType(final boolean isBasic) {
+        this.basic = isBasic;
         this.name = this.name();
     }
 
-    public static Optional<Subtype> fromString(String s) {
-        for (LandType type : LandType.values()) {
+    /**
+     * Returns an optional containing the land type represented by s.
+     *
+     * @param s string that may contain a land type
+     * @return land type contained in s, if s represents one, otherwise empty
+     */
+    public static Optional<Subtype> fromString(final String s) {
+        for (final LandType type : LandType.values()) {
             if (type.getName().equalsIgnoreCase(s)) {
                 return Optional.of(type);
             }
@@ -49,6 +56,11 @@ public enum LandType implements Subtype {
         return this.name;
     }
 
+    /**
+     * The basic land types are Plains, Island, Swamp, Mountain, and Forest.
+     *
+     * @return is this type basic?
+     */
     public boolean isBasic() {
         return basic;
     }

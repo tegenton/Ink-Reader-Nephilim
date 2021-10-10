@@ -1,19 +1,21 @@
 package tegenton.card.game.concepts.object.characteristics;
 
-class PowerToughnessCharacteristic extends Characteristic<Integer[]> {
+final class PowerToughnessCharacteristic extends Characteristic<Integer[]> {
     private final Integer[] powerToughness;
 
-    private PowerToughnessCharacteristic(int power, int toughness) {
+    private PowerToughnessCharacteristic(final int power, final int toughness) {
         super();
         powerToughness = new Integer[]{power, toughness};
     }
 
-    public static PowerToughnessCharacteristic fromString(String s) {
-        String[] parts = s.split("/");
+    public static PowerToughnessCharacteristic fromString(final String s) {
+        final String[] parts = s.split("/");
         if (parts.length == 2) {
             try {
-                return new PowerToughnessCharacteristic(Integer.parseInt(parts[0]), Integer.parseInt(parts[1]));
-            } catch (NumberFormatException e) {
+                final int power = Integer.parseInt(parts[0]);
+                final int toughness = Integer.parseInt(parts[1]);
+                return new PowerToughnessCharacteristic(power, toughness);
+            } catch (final NumberFormatException e) {
                 return null;
             }
         }

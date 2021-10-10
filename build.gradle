@@ -1,4 +1,5 @@
 plugins {
+    id 'checkstyle'
     id 'idea'
     id 'java'
     id 'info.solidsoft.pitest' version '1.7.0'
@@ -29,4 +30,15 @@ test {
 pitest {
     targetClasses = ['tegenton.card.*']
     junit5PluginVersion = "0.15"
+}
+
+checkstyle {
+    configFile file(".github/linters/sun_checks.xml")
+    toolVersion '9.0'
+}
+checkstyleMain {
+    source = 'src/main/java'
+}
+checkstyleTest {
+    source = 'src/test/java'
 }

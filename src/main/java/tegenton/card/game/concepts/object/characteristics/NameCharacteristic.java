@@ -3,29 +3,30 @@ package tegenton.card.game.concepts.object.characteristics;
 import java.util.ArrayList;
 import java.util.List;
 
-class NameCharacteristic extends Characteristic<List<String>> {
+final class NameCharacteristic extends Characteristic<List<String>> {
     private final List<String> name;
 
-    private NameCharacteristic(String name) {
+    private NameCharacteristic(final String singleName) {
         super();
         this.name = new ArrayList<>();
-        this.name.add(name);
+        this.name.add(singleName);
     }
 
-    public NameCharacteristic(List<String> names) {
+    private NameCharacteristic(final List<String> nameList) {
         super();
-        name = names;
+        name = nameList;
     }
 
-    public static NameCharacteristic fromString(String s) {
-        String test = s.toLowerCase();
+    public static NameCharacteristic fromString(final String s) {
+        final String test = s.toLowerCase();
         if (test.startsWith("named ")) {
             return new NameCharacteristic(s.substring("named ".length()));
         }
         return null;
     }
 
-    public static Characteristic<List<String>> nameList(List<String> names) {
+    public static Characteristic<List<String>>
+    nameList(final List<String> names) {
         return new NameCharacteristic(names);
     }
 

@@ -1,28 +1,31 @@
 package tegenton.card.game.concepts.symbols.chapter;
 
-class MultipleChapterSymbol extends ChapterSymbol {
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+
+final class MultipleChapterSymbol extends ChapterSymbol {
     private final int[] chapters;
 
-    private MultipleChapterSymbol(int[] chapters) {
-        this.chapters = chapters;
+    private MultipleChapterSymbol(final List<Integer> chapterList) {
+        chapters = new int[chapterList.size()];
+        for (int i = 0; i < chapters.length; i++) {
+            chapters[i] = chapterList.get(i);
+        }
     }
 
-    public static MultipleChapterSymbol fromString(String s) {
-        int[] chapters;
-        switch (s.toUpperCase()) {
-            case "I,II":
-                chapters = new int[]{1, 2};
-                break;
-            case "II,III":
-                chapters = new int[]{2, 3};
-                break;
-            case "I,II,III":
-                chapters = new int[]{1, 2, 3};
-                break;
-            default:
-                return null;
+    public static MultipleChapterSymbol fromString(final String s) {
+        final String[] split = s.toUpperCase().split(",");
+        final List<Integer> chapterNums = Arrays.stream(split)
+                .map(SingleChapterSymbol::fromString)
+                .filter(Objects::nonNull)
+                .map(SingleChapterSymbol::getChapter)
+                .collect(Collectors.toList());
+        if (chapterNums.size() < 2 || chapterNums.size() != split.length) {
+            return null;
         }
-        return new MultipleChapterSymbol(chapters);
+        return new MultipleChapterSymbol(chapterNums);
     }
 
     public int[] getChapters() {

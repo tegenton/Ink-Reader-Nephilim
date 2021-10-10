@@ -2,13 +2,13 @@ package tegenton.card.parse.token;
 
 import tegenton.card.parse.token.lexicon.KeywordAbility;
 
-class KeywordAbilityToken extends Token {
-    private KeywordAbilityToken(KeywordAbility word) {
-        this.word = word;
+final class KeywordAbilityToken extends Token {
+    private KeywordAbilityToken(final KeywordAbility word) {
+        this.setWord(word);
     }
 
-    static KeywordAbilityToken fromString(String s) {
-        KeywordAbility keywordAbility = KeywordAbility.fromString(s);
+    static KeywordAbilityToken fromString(final String s) {
+        final KeywordAbility keywordAbility = KeywordAbility.fromString(s);
         if (keywordAbility != null) {
             return new KeywordAbilityToken(keywordAbility);
         }

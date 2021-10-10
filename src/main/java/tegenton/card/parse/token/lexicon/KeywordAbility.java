@@ -154,7 +154,7 @@ public enum KeywordAbility implements Word {
     decayed;
     private final String name;
 
-    KeywordAbility(String s) {
+    KeywordAbility(final String s) {
         name = s;
     }
 
@@ -162,8 +162,14 @@ public enum KeywordAbility implements Word {
         name = name().substring(0, 1).toUpperCase() + name().substring(1);
     }
 
-    public static KeywordAbility fromString(String s) {
-        for (KeywordAbility type : KeywordAbility.values()) {
+    /**
+     * Returns the ability represented by s.
+     *
+     * @param s string that may contain an ability, such as "lifelink"
+     * @return ability contained in s, if s represents one, otherwise null
+     */
+    public static KeywordAbility fromString(final String s) {
+        for (final KeywordAbility type : KeywordAbility.values()) {
             if (type.getWord().equalsIgnoreCase(s)) {
                 return type;
             }
