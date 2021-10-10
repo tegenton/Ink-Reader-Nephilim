@@ -2,13 +2,13 @@ package tegenton.card.parse.token;
 
 import tegenton.card.parse.token.lexicon.Number;
 
-class NumberToken extends Token {
-    private NumberToken(Number word) {
-        this.word = word;
+final class NumberToken extends Token {
+    private NumberToken(final Number word) {
+        this.setWord(word);
     }
 
-    static NumberToken fromString(String s) {
-        Number number = Number.fromString(s);
+    static NumberToken fromString(final String s) {
+        final Number number = Number.fromString(s);
         if (number != null) {
             return new NumberToken(number);
         }

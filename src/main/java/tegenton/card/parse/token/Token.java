@@ -1,23 +1,23 @@
 package tegenton.card.parse.token;
 
+import tegenton.card.generic.Filter;
+import tegenton.card.generic.StringSplitter;
 import tegenton.card.parse.token.lexicon.Word;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
-import tegenton.card.generic.Filter;
-import tegenton.card.generic.StringSplitter;
 
 /**
- * A token represents one "word", such as "draw". It does not have to represent exactly one
- * word of text, rather it is the smallest portion of text which holds meaning.
+ * A token represents one "word", such as "draw". It does not have to represent
+ * exactly one word of text, rather it is the smallest portion of text which
+ * holds meaning.
  */
 public abstract class Token {
     private static Filter<Token> filter;
-    protected Word word;
+    private Word word;
 
     private static void setupFilter() {
-        List<Function<String, Token>> tokenTypes;
+        final List<Function<String, Token>> tokenTypes;
         tokenTypes = List.of(ArticleToken::fromString,
                 EnglishNumberToken::fromString,
                 KeywordAbilityToken::fromString,
@@ -35,11 +35,11 @@ public abstract class Token {
      * @param s string to parameterize
      * @return a list of tokens produced from s
      */
-    public static List<Token> tokenize(String s) {
-        StringSplitter sentence = new StringSplitter(s);
-        List<Token> tokens = new ArrayList<>();
+    public static List<Token> tokenize(final String s) {
+        final StringSplitter sentence = new StringSplitter(s);
+        final List<Token> tokens = new ArrayList<>();
         while (sentence.hasNext()) {
-            Token next = Token.fromString(sentence.getNext());
+            final Token next = Token.fromString(sentence.getNext());
             if (next != null) {
                 tokens.add(next);
             }
@@ -47,15 +47,21 @@ public abstract class Token {
         return tokens;
     }
 
-    private static Token fromString(String s) {
+    private static Token fromString(final String s) {
         if (filter == null) {
             setupFilter();
         }
         return filter.filter(s);
     }
 
-    public Word getWord() {
+    /**
+     * @return The word that represents this token
+     */
+    public final Word getWord() {
         return word;
     }
 
+    protected final void setWord(final Word newWord) {
+        this.word = newWord;
+    }
 }

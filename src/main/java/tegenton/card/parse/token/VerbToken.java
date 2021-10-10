@@ -2,13 +2,13 @@ package tegenton.card.parse.token;
 
 import tegenton.card.parse.token.lexicon.Verb;
 
-class VerbToken extends Token {
-    private VerbToken(Verb word) {
-        this.word = word;
+final class VerbToken extends Token {
+    private VerbToken(final Verb word) {
+        this.setWord(word);
     }
 
-    static VerbToken fromString(String s) {
-        Verb verb = Verb.fromString(s);
+    static VerbToken fromString(final String s) {
+        final Verb verb = Verb.fromString(s);
         if (verb != null) {
             return new VerbToken(verb);
         }
