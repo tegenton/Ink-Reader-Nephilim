@@ -6,22 +6,22 @@ import tegenton.card.game.type.subtype.Subtype;
 import java.util.List;
 import java.util.Optional;
 
-class SubtypeCharacteristic extends Characteristic<List<Subtype>> {
+final class SubtypeCharacteristic extends Characteristic<List<Subtype>> {
     private final List<Subtype> type;
 
-    private SubtypeCharacteristic(Subtype type) {
+    private SubtypeCharacteristic(final Subtype singleType) {
         super();
-        this.type = List.of(type);
+        this.type = List.of(singleType);
     }
 
-    public SubtypeCharacteristic(List<Subtype> subtypes) {
+    private SubtypeCharacteristic(final List<Subtype> subtypeList) {
         super();
-        type = subtypes;
+        type = subtypeList;
     }
 
-    public static SubtypeCharacteristic fromString(String s) {
+    public static SubtypeCharacteristic fromString(final String s) {
         Optional<Subtype> result;
-        for (Type cardType : Type.values()) {
+        for (final Type cardType : Type.values()) {
             result = cardType.fromString(s);
             if (result.isPresent()) {
                 return new SubtypeCharacteristic(result.get());
@@ -30,7 +30,8 @@ class SubtypeCharacteristic extends Characteristic<List<Subtype>> {
         return null;
     }
 
-    public static Characteristic<List<Subtype>> subtypeList(List<Subtype> subtypes) {
+    public static Characteristic<List<Subtype>>
+    subtypeList(final List<Subtype> subtypes) {
         return new SubtypeCharacteristic(subtypes);
     }
 

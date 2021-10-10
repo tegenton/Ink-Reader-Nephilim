@@ -1,22 +1,21 @@
 package tegenton.card.game.concepts.object.characteristics;
 
 import tegenton.card.game.type.SuperType;
-
 import java.util.EnumSet;
 
-class SuperTypeCharacteristic extends Characteristic<EnumSet<SuperType>> {
+final class SuperTypeCharacteristic extends Characteristic<EnumSet<SuperType>> {
     private final EnumSet<SuperType> type = EnumSet.noneOf(SuperType.class);
 
-    private SuperTypeCharacteristic(SuperType type) {
+    private SuperTypeCharacteristic(final SuperType superType) {
         super();
-        this.type.add(type);
+        this.type.add(superType);
     }
 
-    public static SuperTypeCharacteristic fromString(String s) {
-        s = s.toLowerCase();
+    public static SuperTypeCharacteristic fromString(final String s) {
         try {
-            return new SuperTypeCharacteristic(SuperType.valueOf(s));
-        } catch (IllegalArgumentException e) {
+            final SuperType superType = SuperType.valueOf(s.toLowerCase());
+            return new SuperTypeCharacteristic(superType);
+        } catch (final IllegalArgumentException e) {
             return null;
         }
     }
