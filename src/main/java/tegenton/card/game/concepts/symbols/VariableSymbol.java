@@ -1,11 +1,11 @@
 package tegenton.card.game.concepts.symbols;
 
-class VariableSymbol extends Symbol {
+final class VariableSymbol extends Symbol {
     private VariableSymbol() {
         super();
     }
 
-    public static VariableSymbol fromString(String s) {
+    public static VariableSymbol fromString(final String s) {
         if (s.equalsIgnoreCase("X")) {
             return new VariableSymbol();
         }

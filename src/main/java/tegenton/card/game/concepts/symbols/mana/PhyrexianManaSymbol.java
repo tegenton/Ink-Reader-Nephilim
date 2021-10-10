@@ -3,19 +3,19 @@ package tegenton.card.game.concepts.symbols.mana;
 import tegenton.card.game.concepts.Color;
 import tegenton.card.game.concepts.InvalidColorException;
 
-class PhyrexianManaSymbol extends ColoredManaSymbol {
-    private PhyrexianManaSymbol(Color color) {
+final class PhyrexianManaSymbol extends ColoredManaSymbol {
+    private PhyrexianManaSymbol(final Color color) {
         super();
-        this.color = color;
+        this.setColor(color);
     }
 
-    public static PhyrexianManaSymbol fromString(String s) {
-        PhyrexianManaSymbol symbol;
-        String[] parts = s.split("/");
+    public static PhyrexianManaSymbol fromString(final String s) {
+        final PhyrexianManaSymbol symbol;
+        final String[] parts = s.split("/");
         if (parts.length == 2 && parts[1].equalsIgnoreCase("P")) {
             try {
                 symbol = new PhyrexianManaSymbol(Color.fromString(parts[0]));
-            } catch (InvalidColorException e) {
+            } catch (final InvalidColorException e) {
                 return null;
             }
             return symbol;
@@ -23,8 +23,4 @@ class PhyrexianManaSymbol extends ColoredManaSymbol {
         return null;
     }
 
-    @Override
-    public int getManaValue() {
-        return 1;
-    }
 }
