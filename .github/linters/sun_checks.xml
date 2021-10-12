@@ -39,6 +39,7 @@
 
         <property name="basedir" value="${basedir}"/>
     -->
+    <property name="basedir" value="src/main/java"/>
     <property name="severity" value="error"/>
 
     <property name="fileExtensions" value="java, properties, xml"/>
