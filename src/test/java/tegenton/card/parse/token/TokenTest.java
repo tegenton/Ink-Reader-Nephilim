@@ -51,7 +51,9 @@ public class TokenTest {
 
     @Test
     void healersHawk() {
-        tokens = Token.tokenize("Lifelink");
+        tokens = Token.tokenize("Flying, Lifelink");
+        expected.add(KeywordAbilityToken.fromString("Flying"));
+        expected.add(PunctuationToken.fromString(","));
         expected.add(KeywordAbilityToken.fromString("Lifelink"));
     }
 }
