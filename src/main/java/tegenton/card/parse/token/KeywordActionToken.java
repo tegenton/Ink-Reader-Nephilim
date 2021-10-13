@@ -2,7 +2,7 @@ package tegenton.card.parse.token;
 
 import tegenton.card.parse.token.lexicon.KeywordAction;
 
-public final class KeywordActionToken extends Token {
+final class KeywordActionToken extends Token {
     private KeywordActionToken(final KeywordAction word) {
         this.setWord(word);
     }

@@ -24,7 +24,9 @@ public abstract class Token {
                 KeywordActionToken::fromString,
                 NumberToken::fromString,
                 PunctuationToken::fromString,
+                QualifierToken::fromString,
                 SubjectToken::fromString,
+                TriggeredAbilityToken::fromString,
                 VerbToken::fromString);
         filter = new Filter<>(tokenTypes);
     }
