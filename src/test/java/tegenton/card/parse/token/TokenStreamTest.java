@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class TokenStreamTest {
 
@@ -24,6 +25,7 @@ public class TokenStreamTest {
         while (tokenStream.hasNext()) {
             Assertions.assertEquals(expected.get(i++).getWord().getWord(), tokenStream.getNext().getWord().getWord());
         }
+        assertEquals(expected.size(), i);
     }
 
     @Test
@@ -41,5 +43,15 @@ public class TokenStreamTest {
         expected.add(KeywordAbilityToken.fromString("Flying"));
         expected.add(PunctuationToken.fromString(","));
         expected.add(KeywordAbilityToken.fromString("Lifelink"));
+    }
+
+    @Test
+    void checkNext() {
+        tokenStream = new TokenStream("Draw two cards.");
+        expected.add(VerbToken.fromString("Draw"));
+        expected.add(EnglishNumberToken.fromString("Two"));
+        expected.add(SubjectToken.fromString("cards"));
+        expected.add(PunctuationToken.fromString("."));
+        assertEquals(tokenStream.checkNext(), tokenStream.checkNext());
     }
 }

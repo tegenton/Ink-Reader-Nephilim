@@ -17,4 +17,9 @@ public class TokenStream {
     public Token getNext() {
         return tokens.get(index++);
     }
+
+    public Token checkNext() {
+        return tokens.get(index);
+    }
+
 }
