@@ -1,14 +1,16 @@
 package tegenton.card.parse.ability;
 
-import tegenton.card.parse.token.Token;
-import java.util.List;
+import tegenton.card.parse.token.TokenStream;
+import tegenton.card.parse.token.lexicon.KeywordAbility;
 
 public class EnchantAbility extends Ability {
-    private EnchantAbility(final List<Token> tokens) {
+    public EnchantAbility(TokenStream tokens) {
         super();
     }
 
-    public static EnchantAbility fromTokens(final List<Token> tokens) {
+    public static EnchantAbility fromStream(final TokenStream tokens) {
+        if (tokens.checkNext().getWord().equals(KeywordAbility.enchant))
+            tokens.getNext();
         return new EnchantAbility(tokens);
     }
 }
