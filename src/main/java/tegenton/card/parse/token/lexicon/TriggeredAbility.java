@@ -5,7 +5,13 @@ public enum TriggeredAbility implements Word {
     whenever,
     at;
 
-    public static TriggeredAbility fromString(String s) {
+    /**
+     * The trigger word that s represents (Whenever, When, or At).
+     *
+     * @param s string that may contain a trigger word
+     * @return the represented word or null
+     */
+    public static TriggeredAbility fromString(final String s) {
         try {
             return TriggeredAbility.valueOf(s.toLowerCase());
         } catch (IllegalArgumentException e) {
