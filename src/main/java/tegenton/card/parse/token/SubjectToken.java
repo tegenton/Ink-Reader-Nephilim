@@ -2,7 +2,7 @@ package tegenton.card.parse.token;
 
 import tegenton.card.parse.token.lexicon.Subject;
 
-public final class SubjectToken extends Token {
+final class SubjectToken extends Token {
     private SubjectToken(final Subject word) {
         this.setWord(word);
     }

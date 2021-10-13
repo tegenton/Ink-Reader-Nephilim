@@ -2,7 +2,7 @@ package tegenton.card.parse.token;
 
 import tegenton.card.parse.token.lexicon.Qualifier;
 
-public class QualifierToken extends Token {
+public final class QualifierToken extends Token {
     private QualifierToken(final Qualifier word) {
         this.setWord(word);
     }

@@ -2,7 +2,7 @@ package tegenton.card.parse.token;
 
 import tegenton.card.parse.token.lexicon.Article;
 
-public final class ArticleToken extends Token {
+final class ArticleToken extends Token {
     private ArticleToken(final Article word) {
         setWord(word);
     }
