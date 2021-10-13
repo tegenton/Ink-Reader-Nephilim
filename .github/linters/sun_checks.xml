@@ -39,6 +39,10 @@
 
         <property name="basedir" value="${basedir}"/>
     -->
+    <module name="BeforeExecutionExclusionFileFilter">
+        <property name="fileNamePattern"
+                  value=".*[\\/]src[\\/]test[\\/].*$"/>
+    </module>
     <property name="severity" value="error"/>
 
     <property name="fileExtensions" value="java, properties, xml"/>
