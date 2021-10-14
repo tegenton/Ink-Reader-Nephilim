@@ -41,7 +41,7 @@
     -->
     <module name="BeforeExecutionExclusionFileFilter">
         <property name="fileNamePattern"
-                  value=".*[\\/]src[\\/]test[\\/].*$"/>
+                  value=".*Test\.java$"/>
     </module>
     <property name="severity" value="error"/>
 

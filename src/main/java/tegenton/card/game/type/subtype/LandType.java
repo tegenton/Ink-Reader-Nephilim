@@ -2,6 +2,7 @@ package tegenton.card.game.type.subtype;
 
 import java.util.Optional;
 
+// Sample change to a source file
 public enum LandType implements Subtype {
     plains(true),
     island(true),

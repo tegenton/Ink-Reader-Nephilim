@@ -5,6 +5,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+// sample change to a test file
 public class LandTypeTest {
     public static LandType type;
 
