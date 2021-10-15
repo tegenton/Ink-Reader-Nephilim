@@ -30,6 +30,12 @@ staticAbility -> 'As long as ' condition ', ' staticAbility
               -> object ' is a Swamp.'
               -> object ' cost {3} more to cast.'
               -> 'Activated abilities of white enchantments cost {3} more to activate.'
+              -> 'As ~ enters the battlefield, you lose life equal to your life total.'
+              -> 'You don’t lose the game for having 0 or less life.'
+              -> 'If you would gain life, draw that many cards instead.'
+              -> object '’s power and toughness are each equal to the number of Swamps you control.'
+              -> 'Enchanted creature doesn’t untap during its controller’s untap step.'
+              -> '~’s power and toughness are each equal to the number of creatures named Plague Rats on the battlefield.'
 
 except -> 'except it’s an enchantment in addition to its other types'
        -> 'except it doesn’t copy that creature’s color and it has “At the beginning of your upkeep, you may have this creature become a copy of target creature, except it doesn’t copy that creature’s color and it has this ability.”'
@@ -46,8 +52,10 @@ cost -> '{W}'+
      -> '{U}'
      -> '{B}'+
      -> '{1}'
+     -> '{4}'
      -> '{0}'
      -> '{T}'
+     -> 'Remove a corpse counter from ~'
 
 
 triggeredAbility -> triggerCondition (', ' interveningClause)? ', ' effect
@@ -58,10 +66,16 @@ triggerCondition -> 'At the beginning of your upkeep'
                  -> 'When ' object ' dies'
                  -> 'Whenever ' object ' becomes tapped'
                  -> 'When you control no ' object
-                 -> 'When ~ enters the battlefield'
+                 -> 'When ' object ' enters the battlefield'
+                 -> 'Whenever ' object ' deals damage to an opponent'
+                 -> 'Whenever you’re dealt damage'
+                 -> 'When ~ is put into a graveyard from the battlefield'
+                 -> 'At the beginning of the end step'
 
 interveningClause -> 'if it’s on the battlefield'
                   -> 'unless you pay' cost
+                  -> 'if ' object ' is in your graveyard with three or more creature cards above it'
+                  -> 'if no creatures are on the battlefield'
 
 statMod -> '+' number '/+' number
         -> '-' number '/-' number
@@ -99,10 +113,14 @@ spellAbility -> effect '.'
              -> 'Each player antes the top card of their library.'
              -> 'Search your library for a card, put that card into your hand, then shuffle.'
              -> object ' deals X damage to any target. ' player ' gain life equal to the damage dealt, but not more life than the player’s life total before the damage was dealt, the planeswalker’s loyalty before the damage was dealt, or the creature’s toughness.'
+             -> player ' discards X cards at random.'
+             -> 'Return target creature card from your graveyard to your hand.'
 
 restriction -> 'Cast this spell only during combat before blockers are declared'
             -> 'Cast this spell only during an opponent’s turn, before attackers are declared.'
             -> 'Spend only black mana on X.'
+            -> 'As an additional cost to cast this spell, sacrifice a creature.'
+            -> 'Add an amount of {B} equal to the sacrificed creature’s mana value.'
 
 modal -> 'Choose one —' ('\n• ' effect '.')+
 
@@ -129,6 +147,7 @@ effect -> 'Add {B}{B}{B}'
        -> 'The next 1 damage that would be dealt to ' object ' this turn is dealt to its owner instead. Only ' object '’s owner may activate this ability'
        -> object ' deals ' number ' damage to any target'
        -> object ' deals ' number ' damage to that player.'
+       -> object ' deals 1 damage to each creature and each player'
        -> object ' deals ' number ' damage to that land’s controller.'
        -> object ' deals damage to that player equal to the number of Swamps they control.'
        -> object ' deals damage equal to that creature’s toughness to the creature’s controller.'
@@ -136,6 +155,15 @@ effect -> 'Add {B}{B}{B}'
        -> 'that player may pay any amount of mana. ~ deals 2 damage to that player. Prevent X of that damage, where X is the amount of mana that player paid this way.'
        -> 'you may pay ' cost '. If you do, ' effect '.'
        -> 'tap ~ and sacrifice a land of an opponent’s choice.'
+       -> 'that player discards a card at random.'
+       -> 'sacrifice that many nontoken permanents. If you can’t, you lose the game.'
+       -> 'you lose the game.'
+       -> 'sacrifice a creature other than ~. If you can’t, ~ deals 7 damage to you.'
+       -> 'you may put ~ onto the battlefield'
+       -> 'Choose target non-Wall creature the active player has controlled continuously since the beginning of the turn. That creature attacks this turn if able. Destroy it at the beginning of the next end step if it didn’t attack this turn. Activate only during an opponent’s turn, before attackers are declared'
+       -> 'tap ' object
+       -> 'untap the creature'
+       -> 'put a corpse counter on ~ for each creature that died this turn'
 
 keyword -> 'Enchant' object
         -> 'Banding'
@@ -147,6 +175,7 @@ keyword -> 'Enchant' object
         -> landType 'walk'
         -> 'indestructible'
         -> 'fear'
+        -> 'haste'
 
 landType -> 'plains'
          -> 'island'
