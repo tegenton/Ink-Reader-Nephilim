@@ -34,8 +34,10 @@ staticAbility -> 'As long as ' condition ', ' staticAbility
               -> 'You don’t lose the game for having 0 or less life.'
               -> 'If you would gain life, draw that many cards instead.'
               -> object '’s power and toughness are each equal to the number of Swamps you control.'
+              -> object '’s power and toughness are each equal to the number of creatures named Plague Rats on the battlefield.'
               -> 'Enchanted creature doesn’t untap during its controller’s untap step.'
-              -> '~’s power and toughness are each equal to the number of creatures named Plague Rats on the battlefield.'
+              -> 'Other Zombie creatures have swampwalk'
+              -> 'Other Zombies have “{B}: Regenerate this permanent.”'
 
 except -> 'except it’s an enchantment in addition to its other types'
        -> 'except it doesn’t copy that creature’s color and it has “At the beginning of your upkeep, you may have this creature become a copy of target creature, except it doesn’t copy that creature’s color and it has this ability.”'
@@ -58,11 +60,12 @@ cost -> '{W}'+
      -> 'Remove a corpse counter from ~'
 
 
-triggeredAbility -> triggerCondition (', ' interveningClause)? ', ' effect
+triggeredAbility -> triggerCondition (', ' interveningClause)? ', ' effect '.'
 
 triggerCondition -> 'At the beginning of your upkeep'
                  -> 'At the beginning of each player’s upkeep'
                  -> 'At the beginning of the upkeep of ' object '’s controller'
+                 -> 'At the beginning of the end step'
                  -> 'When ' object ' dies'
                  -> 'Whenever ' object ' becomes tapped'
                  -> 'When you control no ' object
@@ -70,7 +73,7 @@ triggerCondition -> 'At the beginning of your upkeep'
                  -> 'Whenever ' object ' deals damage to an opponent'
                  -> 'Whenever you’re dealt damage'
                  -> 'When ~ is put into a graveyard from the battlefield'
-                 -> 'At the beginning of the end step'
+                 -> 'Whenever a creature dealt damage by ~ this turn dies,'
 
 interveningClause -> 'if it’s on the battlefield'
                   -> 'unless you pay' cost
@@ -115,12 +118,15 @@ spellAbility -> effect '.'
              -> object ' deals X damage to any target. ' player ' gain life equal to the damage dealt, but not more life than the player’s life total before the damage was dealt, the planeswalker’s loyalty before the damage was dealt, or the creature’s toughness.'
              -> player ' discards X cards at random.'
              -> 'Return target creature card from your graveyard to your hand.'
+             -> 'You gain life equal to the damage dealt to you this turn. ~ deals damage to target creature you control equal to the damage dealt to you this turn.'
+             -> 'Look at target opponent’s hand and choose a card from it. You control that player until Word of Command finishes resolving. The player plays that card if able. While doing so, the player can activate mana abilities only if they’re from lands that player controls and only if mana they produce is spent to activate other mana abilities of lands the player controls and/or to play that card. If the chosen card is cast as a spell, you control the player while that spell is resolving.'
 
 restriction -> 'Cast this spell only during combat before blockers are declared'
             -> 'Cast this spell only during an opponent’s turn, before attackers are declared.'
             -> 'Spend only black mana on X.'
             -> 'As an additional cost to cast this spell, sacrifice a creature.'
             -> 'Add an amount of {B} equal to the sacrificed creature’s mana value.'
+            -> 'Destroy target nonartifact, nonblack creature. It can’t be regenerated.'
 
 modal -> 'Choose one —' ('\n• ' effect '.')+
 
@@ -164,6 +170,7 @@ effect -> 'Add {B}{B}{B}'
        -> 'tap ' object
        -> 'untap the creature'
        -> 'put a corpse counter on ~ for each creature that died this turn'
+       -> 'put a +1/+1 counter on ~'
 
 keyword -> 'Enchant' object
         -> 'Banding'
