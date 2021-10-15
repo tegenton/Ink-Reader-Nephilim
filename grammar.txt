@@ -7,6 +7,7 @@ ability -> keywords
         -> staticAbility
         -> activatedAbility
         -> triggeredAbility
+        -> restriction
 
 keywords -> keyword ([;,]' ' keyword)*
 
@@ -35,7 +36,7 @@ except -> 'except it’s an enchantment in addition to its other types'
 condition -> object ' is untapped'
           -> object ' isn’t a creature'
 
-activatedAbility -> costs ': ' effect
+activatedAbility -> costs ': ' effect '.'
 
 costs -> cost (', ' cost)*
 
@@ -45,14 +46,8 @@ cost -> '{W}'+
      -> '{0}'
      -> '{T}'
 
-effect -> object 'gets ' statMod ' until end of turn.'
-                 -> 'The next time a ' color ' source of your choice would deal damage to you this turn, prevent that damage.'
-                 -> 'Destroy ' object '.'
-                 -> 'The next 1 damage that would be dealt to ' object ' this turn is dealt to its owner instead. Only ' object '’s owner may activate this ability.'
-                 -> 'Prevent the next 1 damage that would be dealt to any target this turn.'
-                 -> object ' deals 1 damage to any target.'
 
-triggeredAbility -> triggerCondition ', ' triggerEffect
+triggeredAbility -> triggerCondition ', ' effect
 
 triggerCondition -> 'At the beginning of your upkeep'
                  -> 'At the beginning of each player’s upkeep'
@@ -60,74 +55,76 @@ triggerCondition -> 'At the beginning of your upkeep'
                  -> 'When ' object ' dies'
                  -> 'Whenever ' object ' becomes tapped'
                  -> 'When you control no islands'
-                 
-triggerEffect -> object ' deals damage to that player equal to the number of Swamps they control.'
-              -> 'its owner loses half their life, rounded up.'
-              -> '~ deals damage equal to that creature’s toughness to the creature’s controller.'
-              -> object ' deals 1 damage to that player.'
-              -> 'you gain 1 life.'
-              -> 'sacrifice ' object (' unless you pay ' cost)? '.'
-              -> 'that player may pay any amount of mana. ~ deals 2 damage to that player. Prevent X of that damage, where X is the amount of mana that player paid this way.'
-              -> object ' deals 2 damage to that land’s controller.'
-              -> 'you may pay ' cost '. If you do, you gain 1 life.'
 
-statMod -> '+1/+1'
-        -> '+0/+2'
-        -> '+0/+1'
-        -> '+1/+2'
-        -> '+1/+0'
+statMod -> '+' number '/+' number
 
 ## Spells
 
 spellCard -> spellAbility (\n spellAbility)*
 
-spellAbility -> 'Destroy ' object '.' (' They can’t be regenerated.')?
-             -> 'Each player chooses a number of lands they control equal to the number of lands controlled by the player who controls the fewest, then sacrifices the rest. Players discard cards and sacrifice creatures the same way.'
-             -> restriction
+spellAbility -> effect '.'
+             -> restriction '.'
              -> modal
-             -> object ' can block any number of creatures this turn. It blocks each attacking creature this turn if able.'
-             -> 'Regenerate ' object
-             -> 'Prevent the next X damage that would be dealt to any target this turn. Until end of turn, you may pay {1} any time you could cast an instant. If you do, prevent the next 1 damage that would be dealt to that permanent or player this turn.'
+             -> 'Each player chooses a number of lands they control equal to the number of lands controlled by the player who controls the fewest, then sacrifices the rest. Players discard cards and sacrifice creatures the same way.'
              -> object ' becomes ' color '.'
-             -> 'Return target creature card from your graveyard to the battlefield.'
+             -> object ' can block any number of creatures this turn. It blocks each attacking creature this turn if able.'
+             -> 'Prevent the next X damage that would be dealt to any target this turn. Until end of turn, you may pay {1} any time you could cast an instant. If you do, prevent the next 1 damage that would be dealt to that permanent or player this turn.'
              -> 'The next time a source of your choice would deal damage to you this turn, prevent that damage. You gain life equal to the damage prevented this way.'
-             -> object ' gets +7/+7 until end of turn.'
              -> 'Exile ' object '. Its controller gains life equal to its power.'
-             -> 'Target player draws three cards.'
-             -> 'Target player draws X cards.'
-             -> 'Counter ' object
-             -> 'Target player activates a mana ability of each land they control. Then that player loses all unspent mana and you add the mana lost this way.'
-             -> object ' gains ' keyword ' until end of turn.'
-             -> 'Change the text of ' object ' by replacing all instances of one ' textAspect ' another.'
-             -> 'Tap all lands target player controls and that player loses all unspent mana.'
-             -> 'Counter target spell unless its controller pays {X}. If that player doesn’t, they tap all lands with mana abilities they control and lose all unspent mana.'
-             -> '~ deals 4 damage to any target and 2 damage to you.'
+             -> player ' draws ' amount ' cards.'
+             -> player ' activates a mana ability of each land they control. Then that player loses all unspent mana and you add the mana lost this way.'
+             -> 'Tap all lands ' player ' controls and that player loses all unspent mana.'
+             -> object ' deals 4 damage to any target and 2 damage to you.'
              -> 'Creatures the active player controls attack this turn if able.'
              -> 'At the beginning of the next end step, destroy all non-Wall creatures that player controls that didn’t attack this turn. Ignore this effect for each creature the player didn’t control continuously since the beginning of the turn.'
              -> 'Take an extra turn after this one.'
              -> 'Each player shuffles their hand and graveyard into their library, then draws seven cards.'
              ->'You may tap or untap target artifact, creature, or land.'
-             -> 'Counter target spell with mana value X.'
+             -> 'Return target creature card from your graveyard to the battlefield.'
              -> 'Return ' object ' to its owner’s hand.'
              -> 'Destroy X target Mountains. ~ deals damage to each creature and each player equal to the number of Mountains put into a graveyard this way.'
+             -> 'Change the text of ' object ' by replacing all instances of one ' textAspect ' another.'
 
 
 restriction -> 'Cast this spell only during combat before blockers are declared'
             -> 'Cast this spell only during an opponent’s turn, before attackers are declared.'
 
-modal -> 'Choose one —' ('\n• ' modalEffect)+
-
-modalEffect -> 'Target player gains 3 life.'
-       -> 'Prevent the next 3 damage that would be dealt to any target this turn.'
-       -> 'Counter ' object '.'
-       -> 'Destroy ' object '.'
+modal -> 'Choose one —' ('\n• ' effect '.')+
 
 ## Definitions
+amount -> 'three'
+       -> 'X'
+
 color -> 'white'
       -> 'blue'
       -> 'black'
       -> 'green'
       -> 'red'
+
+effect -> player 'gain' ('s '|' ') number ' life'
+       -> 'Counter ' object (' unless its controller pays {X}. If that player doesn’t, they tap all lands with mana abilities they control and lose all unspent mana')
+       -> 'Destroy ' object ('. They can’t be regenerated')?
+       -> 'sacrifice ' object (' unless you pay ' cost)? '.'
+       -> 'Regenerate ' object
+       -> object ' gains ' keyword ' until end of turn'
+       -> object 'gets ' statMod ' until end of turn'
+       -> 'Prevent the next ' number ' damage that would be dealt to any target this turn'
+       -> 'The next time a ' color ' source of your choice would deal damage to you this turn, prevent that damage'
+       -> 'The next 1 damage that would be dealt to ' object ' this turn is dealt to its owner instead. Only ' object '’s owner may activate this ability'
+       -> object ' deals ' number ' damage to any target'
+       -> object ' deals ' number ' damage to that player.'
+       -> object ' deals ' number ' damage to that land’s controller.'
+       -> object ' deals damage to that player equal to the number of Swamps they control.'
+       -> object ' deals damage equal to that creature’s toughness to the creature’s controller.'
+       -> 'its owner loses half their life, rounded up.'
+       -> 'that player may pay any amount of mana. ~ deals 2 damage to that player. Prevent X of that damage, where X is the amount of mana that player paid this way.'
+       -> 'you may pay ' cost '. If you do, ' effect '.'
+
+number -> '0'
+       -> '1'
+       -> '2'
+       -> '3'
+       -> '7'
 
 object -> '~'
        -> 'creature'
@@ -153,6 +150,10 @@ objectQualifier -> 'Enchanted'
 objectRestriction -> 'you control'
                   -> 'defending player controls'
                   -> 'an opponent controls'
+                  -> 'with mana value X'
+
+player -> 'target player'
+       -> 'you'
 
 keyword -> 'Enchant' object
         -> 'Banding'
