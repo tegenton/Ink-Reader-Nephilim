@@ -35,6 +35,8 @@ staticAbility -> object ' can attack as though it didn't have defender.'
               -> 'As ~ enters the battlefield, choose a basic land type.'
               -> object ' is the chosen type.'
               -> object ' can’t attack unless defending player controls an Island.'
+              -> 'Players skip their untap steps.'
+              -> 'You may have Vesuvan Doppelganger enter the battlefield as a copy of any creature on the battlefield, except it doesn’t copy that creature’s color and it has “At the beginning of your upkeep, you may have this creature become a copy of target creature, except it doesn’t copy that creature’s color and it has this ability.”'
               
 activatedAbility -> costs ': ' effect
 
@@ -68,6 +70,7 @@ statMod -> '+1/+1'
         -> '+0/+2'
         -> '+0/+1'
         -> '+1/+2'
+        -> '+1/+0'
 
 ## Spells
 
@@ -92,11 +95,22 @@ spellAbility -> 'Destroy ' object '.' (' They can’t be regenerated.')?
              -> 'Target player activates a mana ability of each land they control. Then that player loses all unspent mana and you add the mana lost this way.'
              -> object ' gains ' keyword ' until end of turn.'
              -> 'Change the text of ' object ' by replacing all instances of one basic land type with another.'
+             -> 'Change the text of ' object ' by replacing all instances of one color word with another.'
              -> 'Tap all lands target player controls and that player loses all unspent mana.'
              -> 'Counter target spell unless its controller pays {X}. If that player doesn’t, they tap all lands with mana abilities they control and lose all unspent mana.'
              -> '~ deals 4 damage to any target and 2 damage to you.'
-
+             -> 'Creatures the active player controls attack this turn if able.'
+             -> 'At the beginning of the next end step, destroy all non-Wall creatures that player controls that didn’t attack this turn. Ignore this effect for each creature the player didn’t control continuously since the beginning of the turn.'
+             -> 'Take an extra turn after this one.'
+             -> 'Each player shuffles their hand and graveyard into their library, then draws seven cards.'
+             ->'You may tap or untap target artifact, creature, or land.'
+            
 restriction -> 'Cast this spell only during combat before blockers are declared'
+            -> 'Cast this spell only during an opponent’s turn, before attackers are declared.'
+            -> 'Counter target spell with mana value X.'
+            -> 'Return ' object ' to its owner’s hand.'
+            -> 'Destroy X target Mountains. Volcanic Eruption deals damage to each creature and each player equal to the number of Mountains put into a graveyard this way.'
+
 
 ## Definitions
 color -> white
@@ -109,9 +123,10 @@ object -> '~'
        -> 'creature'
        -> 'land'
        -> 'Wall'
-       -> 'artifact or enchantment'
+       -> 'artifact'
        -> 'enchantment'
-       -> 'spell or permanent'
+       -> object ' or ' object
+       -> 'spell'
        -> 'permanent'
        -> objectQualifier ' ' object
        -> object 's'
