@@ -7,7 +7,6 @@ ability -> keywords
         -> staticAbility
         -> activatedAbility
         -> triggeredAbility
-        -> restriction
 
 keywords -> keyword ([;,]' ' keyword)*
 
@@ -28,6 +27,9 @@ staticAbility -> 'As long as ' condition ', ' staticAbility
               -> object ' is the chosen type.'
               -> object ' can’t attack unless defending player controls an Island.'
               -> 'Players skip their untap steps.'
+              -> object ' is a Swamp.'
+              -> object ' cost {3} more to cast.'
+              -> 'Activated abilities of white enchantments cost {3} more to activate.'
 
 except -> 'except it’s an enchantment in addition to its other types'
        -> 'except it doesn’t copy that creature’s color and it has “At the beginning of your upkeep, you may have this creature become a copy of target creature, except it doesn’t copy that creature’s color and it has this ability.”'
@@ -42,21 +44,27 @@ costs -> cost (', ' cost)*
 
 cost -> '{W}'+
      -> '{U}'
+     -> '{B}'+
      -> '{1}'
      -> '{0}'
      -> '{T}'
 
 
-triggeredAbility -> triggerCondition ', ' effect
+triggeredAbility -> triggerCondition (', ' interveningClause)? ', ' effect
 
 triggerCondition -> 'At the beginning of your upkeep'
                  -> 'At the beginning of each player’s upkeep'
                  -> 'At the beginning of the upkeep of ' object '’s controller'
                  -> 'When ' object ' dies'
                  -> 'Whenever ' object ' becomes tapped'
-                 -> 'When you control no islands'
+                 -> 'When you control no ' object
+                 -> 'When ~ enters the battlefield'
+
+interveningClause -> 'if it’s on the battlefield'
+                  -> 'unless you pay' cost
 
 statMod -> '+' number '/+' number
+        -> '-' number '/-' number
 
 ## Spells
 
@@ -65,6 +73,7 @@ spellCard -> spellAbility (\n spellAbility)*
 spellAbility -> effect '.'
              -> restriction '.'
              -> modal
+             -> 'Remove ~ from your deck before playing if you’re not playing for ante.'
              -> 'Each player chooses a number of lands they control equal to the number of lands controlled by the player who controls the fewest, then sacrifices the rest. Players discard cards and sacrifice creatures the same way.'
              -> object ' becomes ' color '.'
              -> object ' can block any number of creatures this turn. It blocks each attacking creature this turn if able.'
@@ -84,10 +93,16 @@ spellAbility -> effect '.'
              -> 'Return ' object ' to its owner’s hand.'
              -> 'Destroy X target Mountains. ~ deals damage to each creature and each player equal to the number of Mountains put into a graveyard this way.'
              -> 'Change the text of ' object ' by replacing all instances of one ' textAspect ' another.'
-
+             -> 'it loses “enchant creature card in a graveyard” and gains “enchant creature put onto the battlefield with ~.” Return enchanted creature card to the battlefield under your control and attach ~ to it. When ~ leaves the battlefield, that creature’s controller sacrifices it.'
+             -> 'Discard your hand, ante the top card of your library, then draw seven cards.'
+             -> 'You own target card in the ante. Exchange that card with the top card of your library.'
+             -> 'Each player antes the top card of their library.'
+             -> 'Search your library for a card, put that card into your hand, then shuffle.'
+             -> object ' deals X damage to any target. ' player ' gain life equal to the damage dealt, but not more life than the player’s life total before the damage was dealt, the planeswalker’s loyalty before the damage was dealt, or the creature’s toughness.'
 
 restriction -> 'Cast this spell only during combat before blockers are declared'
             -> 'Cast this spell only during an opponent’s turn, before attackers are declared.'
+            -> 'Spend only black mana on X.'
 
 modal -> 'Choose one —' ('\n• ' effect '.')+
 
@@ -101,7 +116,8 @@ color -> 'white'
       -> 'green'
       -> 'red'
 
-effect -> player 'gain' ('s '|' ') number ' life'
+effect -> 'Add {B}{B}{B}'
+       -> player 'gain' ('s '|' ') number ' life'
        -> 'Counter ' object (' unless its controller pays {X}. If that player doesn’t, they tap all lands with mana abilities they control and lose all unspent mana')
        -> 'Destroy ' object ('. They can’t be regenerated')?
        -> 'sacrifice ' object (' unless you pay ' cost)? '.'
@@ -119,17 +135,35 @@ effect -> player 'gain' ('s '|' ') number ' life'
        -> 'its owner loses half their life, rounded up.'
        -> 'that player may pay any amount of mana. ~ deals 2 damage to that player. Prevent X of that damage, where X is the amount of mana that player paid this way.'
        -> 'you may pay ' cost '. If you do, ' effect '.'
+       -> 'tap ~ and sacrifice a land of an opponent’s choice.'
+
+keyword -> 'Enchant' object
+        -> 'Banding'
+        -> 'First strike'
+        -> 'Flying'
+        -> 'Vigilance'
+        -> 'Defender'
+        -> 'Protection from ' color
+        -> landType 'walk'
+        -> 'indestructible'
+        -> 'fear'
+
+landType -> 'plains'
+         -> 'island'
+         -> 'swamp'
 
 number -> '0'
        -> '1'
        -> '2'
        -> '3'
        -> '7'
+       -> 'X'
 
 object -> '~'
        -> 'creature'
+       -> 'creature card in a graveyard'
        -> 'land'
-       -> 'forest'
+       -> landType
        -> 'Wall'
        -> 'artifact'
        -> 'enchantment'
@@ -154,16 +188,6 @@ objectRestriction -> 'you control'
 
 player -> 'target player'
        -> 'you'
-
-keyword -> 'Enchant' object
-        -> 'Banding'
-        -> 'First strike'
-        -> 'Flying'
-        -> 'Vigilance'
-        -> 'Defender'
-        -> 'Protection from ' color
-        -> 'islandwalk'
-        -> 'indestructible'
 
 textAspect -> 'color word'
            -> 'basic land type'
