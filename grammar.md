@@ -31,12 +31,17 @@ staticAbility -> object ' can attack as though it didn't have defender.'
               -> 'You control' object
               -> 'You may have ~ enter the battlefield as a copy of any artifact on the battlefield, except it’s an enchantment in addition to its other types.'
               -> object ' can’t be blocked except by ' object '.'
+              -> 'Other Merfolk get +1/+1 and have islandwalk.'
+              -> 'As ~ enters the battlefield, choose a basic land type.'
+              -> object ' is the chosen type.'
+              -> object ' can’t attack unless defending player controls an Island.'
               
 activatedAbility -> costs ': ' effect
 
 costs -> cost (', ' cost)*
 
 cost -> '{W}'+
+     -> '{U}'
      -> '{1}'
      -> '{0}'
      -> '{T}'
@@ -46,12 +51,17 @@ effect -> object 'gets ' statMod ' until end of turn.'
                  -> 'Destroy ' object '.'
                  -> 'The next 1 damage that would be dealt to ' object ' this turn is dealt to its owner instead. Only ' object '’s owner may activate this ability.'
                  -> 'Prevent the next 1 damage that would be dealt to any target this turn.'
+                 -> object ' deals 1 damage to any target.'
 
 triggeredAbility -> 'At the beginning of your upkeep, sacrifice ' object ' unless you pay ' cost '.'
                  -> 'At the beginning of each player’s upkeep, ' object ' deals damage to that player equal to the number of Swamps they control.'
                  -> 'When ~ dies, its owner loses half their life, rounded up.'
                  -> 'When ' object ' dies, ~ deals damage equal to that creature’s toughness to the creature’s controller.'
                  -> 'At the beginning of the upkeep of enchanted enchantment’s controller, ~ deals 1 damage to that player.'
+                 -> 'Whenever a Forest an opponent controls becomes tapped, you gain 1 life.'
+                 -> 'When you control no islands, sacrifice ' object '.'
+                 -> 'At the beginning of the upkeep of enchanted enchantment’s controller, that player may pay any amount of mana. Power Leak deals 2 damage to that player. Prevent X of that damage, where X is the amount of mana that player paid this way.'
+                 -> 'Whenever enchanted land becomes tapped, ~ deals 2 damage to that land’s controller.'
 
 
 statMod -> '+1/+1'
@@ -81,6 +91,10 @@ spellAbility -> 'Destroy ' object '.' (' They can’t be regenerated.')?
              -> 'Counter target spell'
              -> 'Target player activates a mana ability of each land they control. Then that player loses all unspent mana and you add the mana lost this way.'
              -> object ' gains ' keyword ' until end of turn.'
+             -> 'Change the text of ' object ' by replacing all instances of one basic land type with another.'
+             -> 'Tap all lands target player controls and that player loses all unspent mana.'
+             -> 'Counter target spell unless its controller pays {X}. If that player doesn’t, they tap all lands with mana abilities they control and lose all unspent mana.'
+             -> '~ deals 4 damage to any target and 2 damage to you.'
 
 restriction -> 'Cast this spell only during combat before blockers are declared'
 
