@@ -12,10 +12,11 @@ keywords -> keyword ([;,]' ' keyword)*
 
 activatedAbility -> costs ': ' effect '.' (restriction '.')?
 
-triggeredAbility -> triggerCondition (', ' interveningClause)? ', ' effect '.'
+triggeredAbility -> triggerCondition (', ' interveningClause)? ', ' effect (' ' interveningClause)? '.'
 
 staticAbility -> 'As long as ' condition ', ' staticAbility
               -> 'As ' object ' enters the battlefield, choose a ' textAspect '.'
+              -> 'As ' object ' enters the battlefield, choose an opponent.'
               -> 'As ' object ' enters the battlefield, you lose life equal to your life total.'
               -> 'All mountains are plains.'
               -> 'all damage that would be dealt to you by unblocked creatures is dealt to ' object ' instead.'
@@ -29,6 +30,7 @@ staticAbility -> 'As long as ' condition ', ' staticAbility
               -> object ' has ' keyword (' and can’t be enchanted by other Auras.')? '.' ('This effect doesn't remove ~.')?
               -> object '’s power and toughness are each equal to ' amount '.'
               -> object ' doesn’t untap during its controller’s untap step.'
+              -> object ' doesn’t untap during your untap step.'
               -> object ' enters the battlefield with ' number ' ' counter ' counters on it.'
               -> object ' is the chosen type.'
               -> object ' is a Swamp.'
@@ -47,6 +49,14 @@ staticAbility -> 'As long as ' condition ', ' staticAbility
               -> player ' can’t untap more than one creature during their untap steps.'
               -> 'Activated abilities of white enchantments cost {3} more to activate.'
               -> 'For each 1 damage that would be dealt to ~, if it has a +1/+1 counter on it, remove a +1/+1 counter from it and prevent that 1 damage.'
+              -> 'Enchanted creature gets +X/+Y, where X is half the number of Forests you control, rounded down, and Y is half the number of Forests you control, rounded up.'
+              -> 'You may play any number of lands on each of your turns.'
+              -> 'As long as Gaea’s Liege isn’t attacking, its power and toughness are each equal to the number of Forests you control. As long as Gaea’s Liege is attacking, its power and toughness are each equal to the number of Forests defending player controls.'
+              -> 'Enchanted creature can attack as though it had haste.'
+              -> 'All Forests are 1/1 creatures that are still lands.'
+              -> 'All creatures able to block enchanted creature do so.'
+              -> 'Enchanted creature gets +0/+2 and has reach.'
+              -> 'Clockwork Beast enters the battlefield with seven +1/+0 counters on it.'
 
 except -> 'except it’s an enchantment in addition to its other types'
        -> 'except it doesn’t copy that creature’s color and it has “At the beginning of your upkeep, you may have this creature become a copy of target creature, except it doesn’t copy that creature’s color and it has this ability.”'
@@ -55,22 +65,31 @@ condition -> object ' is untapped'
           -> object ' isn’t a creature'
 
 triggerCondition -> 'At the beginning of ' phase
+                 -> 'At end of combat'
                  -> 'When you control no ' object
                  -> 'When ' object ' enters the battlefield'
                  -> 'When ' object ' dies'
                  -> 'When ' object ' is put into a graveyard from the battlefield'
                  -> 'Whenever ' object ' becomes tapped'
+                 -> 'Whenever ' object ' is tapped for mana'
+                 -> 'Whenever ' object ' blocks or becomes blocked by a non-Wall creature'
                  -> 'Whenever ' object ' deals damage to an opponent'
+                 -> 'Whenever ' object ' is dealt damage'
+                 -> 'Whenever you play a land'
+                 -> 'Whenever you cast an enchantment spell'
                  -> 'Whenever you’re dealt damage'
                  -> 'Whenever a creature dealt damage by ~ this turn dies,'
                  -> 'Whenever a player taps a land for mana'
                  -> 'Whenever one or more creatures you control attack'
+                 -> 'Whenever a land enters the battlefield'
 
 interveningClause -> 'if it’s on the battlefield'
                   -> 'unless you pay' cost
                   -> 'if ' object ' is in your graveyard with three or more creature cards above it'
                   -> 'if no creatures are on the battlefield'
                   -> 'if ' object ' has flying'
+                  -> 'if it wasn’t the first land you played this turn'
+                  -> 'if Clockwork Beast attacked or blocked this combat'
 
 ## Spells
 
@@ -103,17 +122,29 @@ spellAbility -> effect '.'
              -> 'Look at target opponent’s hand and choose a card from it. You control that player until Word of Command finishes resolving. The player plays that card if able. While doing so, the player can activate mana abilities only if they’re from lands that player controls and only if mana they produce is spent to activate other mana abilities of lands the player controls and/or to play that card. If the chosen card is cast as a spell, you control the player while that spell is resolving.'
              -> 'Remove target creature defending player controls from combat. Creatures it was blocking that had become blocked by only that creature this combat become unblocked. You may have it block an attacking creature of your choice.'
              -> 'Copy target instant or sorcery spell, except that the copy is red. You may choose new targets for the copy.'
+             -> 'Target creature gains trample and gets +X/+0 until end of turn, where X is its power. At the beginning of the next end step, destroy that creature if it attacked this turn.'
+             -> 'This turn, instead of declaring blockers, each defending player chooses any number of creatures they control and divides them into a number of piles equal to the number of attacking creatures for whom that player is the defending player. Creatures those players control that can block additional creatures may likewise be put into additional piles. Assign each pile to a different one of those attacking creatures at random. Each creature in a pile that can block the creature that pile is assigned to does so'
+             -> 'Until end of turn, any time you could activate a mana ability, you may pay 1 life. If you do, add {C}.'
+             -> 'Prevent all combat damage that would be dealt this turn.'
+             -> 'Look at the top three cards of target player’s library, then put them back in any order. You may have that player shuffle.'
 
 restriction -> 'Cast this spell only during ' phase '.'
+            -> 'Cast this spell only before the combat damage step.'
             -> 'Spend only black mana on X.'
             -> 'As an additional cost to cast this spell, sacrifice a creature.'
             -> 'This spell costs {1} more to cast for each target beyond the first.'
             -> 'Activate only during your upkeep'
+            -> 'Activate only during your turn and only once each turn'
 
 effect -> dealDamage
        -> 'Add {B}{B}{B}'
+       -> 'Add {C}{C}{C}'
+       -> 'Add three mana of any one color'
+       -> 'Add {G}'
        -> 'Add an amount of {B} equal to ' amount
        -> player ' adds one mana of any type that land produced'
+       -> 'its controller adds an additional {G}'
+       -> 'Add one mana of any color'
        -> 'Counter ' object (' unless its controller pays {X}. If that player doesn’t, they tap all lands with mana abilities they control and lose all unspent mana')
        -> 'Destroy ' object ('. ' ('It'|'They') 'can’t be regenerated')?
        -> 'Destroy target nonartifact, nonblack creature. It can’t be regenerated'
@@ -143,9 +174,21 @@ effect -> dealDamage
        -> 'Choose target non-Wall creature the active player has controlled continuously since the beginning of the turn. That creature attacks this turn if able. Destroy it at the beginning of the next end step if it didn’t attack this turn. Activate only during an opponent’s turn, before attackers are declared'
        -> 'tap ' object
        -> 'untap the creature'
+       -> 'Untap enchanted creature'
+       -> 'Untap target land'
+       -> 'Untap ~'
        -> 'put a ' counter ' counter on ' object (' for each creature that died this turn')?
        -> 'each defending player divides all creatures without flying they control into a “left” pile and a “right” pile. Then, for each attacking creature you control, choose “left” or “right.” That creature can’t be blocked this combat except by creatures with flying and creatures in a pile with the chosen label'
        -> 'it loses “enchant creature card in a graveyard” and gains “enchant creature put onto the battlefield with ~.” Return enchanted creature card to the battlefield under your control and attach ~ to it. When ~ leaves the battlefield, that creature’s controller sacrifices it'
+       -> 'destroy that creature at end of combat'
+       -> 'Target land becomes a Forest until Gaea’s Liege leaves the battlefield'
+       -> 'destroy it. That land’s controller may attach Kudzu to a land of their choice'
+       -> 'put that many ' counter ' counters on ' object
+       -> 'you may remove a vitality counter from ' object '. If you do, you gain 1 life'
+       -> 'you may draw a card'
+       -> 'If Chaos Orb is on the battlefield, flip Chaos Orb onto the battlefield from a height of at least one foot. If Chaos Orb turns over completely at least once during the flip, destroy all nontoken permanents it touches. Then destroy Chaos Orb'
+       -> 'remove a +1/+0 counter from it'
+       -> 'Put up to X +1/+0 counters on Clockwork Beast. This ability can’t cause the total number of +1/+0 counters on Clockwork Beast to be greater than seven. Activate only during your upkeep'
 
 dealDamage -> object ' deals ' number ' damage to ' something
            -> object ' deals ' number ' damage to ' something ' and ' number ' damage to ' something
@@ -169,6 +212,7 @@ amount -> 'three'
        -> 'the number of non-Wall creatures you control.'
        -> 'the number of Mountains put into a graveyard this way'
        -> 'the number of untapped lands they controlled at the beginning of this turn'
+       -> 'the number of cards in their hand minus 4'
        -> 'the damage dealt to you this turn'
        -> 'the sacrificed creature’s mana value'
        -> 'that creature’s toughness'
@@ -186,11 +230,15 @@ cost -> '{W}'+
      -> '{U}'
      -> '{B}'+
      -> '{R}'
+     -> '{G}'+
      -> '{1}'
+     -> '{2}'
      -> '{4}'
      -> '{0}'
+     -> '{X}'
      -> '{T}'
      -> 'Remove a ' counter ' counter from ' object
+     -> 'Sacrifice ~'
 
 counter -> '+1/+1'
         -> 'corpse'
@@ -207,6 +255,7 @@ keyword -> 'Enchant' object
         -> 'fear'
         -> 'haste'
         -> 'trample'
+        -> 'reach'
 
 landType -> 'plains'
          -> 'island'
@@ -223,6 +272,7 @@ number -> '0'
 
 object -> qualifier ' ' object
        -> object 's'
+       -> object ' or ' object
        -> object ' ' objectRestriction
        -> '~'
        -> 'creature'
@@ -232,9 +282,9 @@ object -> qualifier ' ' object
        -> 'Wall'
        -> 'artifact'
        -> 'enchantment'
-       -> object ' or ' object
        -> 'spell'
        -> 'permanent'
+       -> 'it'
 
 qualifier -> 'Enchanted'
           -> 'all'
@@ -254,7 +304,9 @@ objectRestriction -> player ' control' ('s')?
                   -> 'in a graveyard'
 
 phase -> 'your upkeep'
+      -> 'your declare attackers step'
       -> 'each player’s upkeep'
+      -> 'the chosen player’s upkeep'
       -> 'the upkeep of ' object '’s controller'
       -> 'the end step'
       -> 'combat before blockers are declared'
