@@ -20,6 +20,7 @@ staticAbility -> 'As long as ' condition ', ' staticAbility
               -> 'Other Zombie creatures have swampwalk'
               -> 'Other Zombies have “{B}: Regenerate this permanent.”'
               -> 'Other Merfolk get ' statMod ' and have ' ability '.'
+              -> 'Other Goblins get ' statMod ' and have ' ability '.'
               -> 'If you would draw a card during your draw step, instead you may skip that draw. If you do, until your next turn, you can’t be attacked except by creatures with flying and/or islandwalk.'
               -> 'If you would gain life, draw that many cards instead.'
               -> 'all damage that would be dealt to you by unblocked creatures is dealt to ~ instead.'
@@ -37,7 +38,14 @@ staticAbility -> 'As long as ' condition ', ' staticAbility
               -> 'As ~ enters the battlefield, you lose life equal to your life total.'
               -> object '’s power and toughness are each equal to the number of Swamps you control.'
               -> object '’s power and toughness are each equal to the number of creatures named Plague Rats on the battlefield.'
-              -> object 'doesn’t untap during its controller’s untap step.'
+              -> object ' doesn’t untap during its controller’s untap step.'
+              -> object ' can’t block creatures with power 2 or greater.'
+              -> object '’s power and toughness are each equal to the number of non-Wall creatures you control.'
+              -> object 'enters the battlefield with ' number ' ' counter ' counters on it.'
+              -> 'For each 1 damage that would be dealt to ~, if it has a +1/+1 counter on it, remove a +1/+1 counter from it and prevent that 1 damage.'
+              -> object ' gets +1/+1 as long as you control a Swamp.'
+              -> 'Players can’t untap more than one creature during their untap steps.'
+              -> object 'can block an additional creature each combat.'
 
 except -> 'except it’s an enchantment in addition to its other types'
        -> 'except it doesn’t copy that creature’s color and it has “At the beginning of your upkeep, you may have this creature become a copy of target creature, except it doesn’t copy that creature’s color and it has this ability.”'
@@ -46,13 +54,14 @@ except -> 'except it’s an enchantment in addition to its other types'
 condition -> object ' is untapped'
           -> object ' isn’t a creature'
 
-activatedAbility -> costs ': ' effect '.'
+activatedAbility -> costs ': ' effect '.' (restriction '.')?
 
 costs -> cost (', ' cost)*
 
 cost -> '{W}'+
      -> '{U}'
      -> '{B}'+
+     -> '{R}'
      -> '{1}'
      -> '{4}'
      -> '{0}'
@@ -62,7 +71,7 @@ cost -> '{W}'+
 
 triggeredAbility -> triggerCondition (', ' interveningClause)? ', ' effect '.'
 
-triggerCondition -> 'At the beginning ' phase
+triggerCondition -> 'At the beginning of ' phase
                  -> 'When you control no ' object
                  -> 'When ' object ' enters the battlefield'
                  -> 'When ' object ' dies'
@@ -71,6 +80,8 @@ triggerCondition -> 'At the beginning ' phase
                  -> 'Whenever ' object ' deals damage to an opponent'
                  -> 'Whenever you’re dealt damage'
                  -> 'Whenever a creature dealt damage by ~ this turn dies,'
+                 -> 'Whenever a player taps a land for mana'
+                 -> 'Whenever one or more creatures you control attack'
 
 phase -> 'your upkeep'
       -> 'each player’s upkeep'
@@ -81,6 +92,7 @@ interveningClause -> 'if it’s on the battlefield'
                   -> 'unless you pay' cost
                   -> 'if ' object ' is in your graveyard with three or more creature cards above it'
                   -> 'if no creatures are on the battlefield'
+                  -> 'if ' object ' has flying'
 
 statMod -> '+' number '/+' number
         -> '-' number '/-' number
@@ -102,7 +114,6 @@ spellAbility -> effect '.'
              -> player ' draws ' amount ' cards.'
              -> player ' activates a mana ability of each land they control. Then that player loses all unspent mana and you add the mana lost this way.'
              -> 'Tap all lands ' player ' controls and that player loses all unspent mana.'
-             -> object ' deals 4 damage to any target and 2 damage to you.'
              -> 'Creatures the active player controls attack this turn if able.'
              -> 'At the beginning of the next end step, destroy all non-Wall creatures that player controls that didn’t attack this turn. Ignore this effect for each creature the player didn’t control continuously since the beginning of the turn.'
              -> 'Take an extra turn after this one.'
@@ -122,12 +133,20 @@ spellAbility -> effect '.'
              -> 'Return target creature card from your graveyard to your hand.'
              -> 'You gain life equal to the damage dealt to you this turn. ~ deals damage to target creature you control equal to the damage dealt to you this turn.'
              -> 'Look at target opponent’s hand and choose a card from it. You control that player until Word of Command finishes resolving. The player plays that card if able. While doing so, the player can activate mana abilities only if they’re from lands that player controls and only if mana they produce is spent to activate other mana abilities of lands the player controls and/or to play that card. If the chosen card is cast as a spell, you control the player while that spell is resolving.'
-            -> 'Destroy target nonartifact, nonblack creature. It can’t be regenerated.'
+             -> 'Destroy target nonartifact, nonblack creature. It can’t be regenerated.'
+             -> object 'deals X damage to each creature without flying and each player.'
+             -> 'Remove target creature defending player controls from combat. Creatures it was blocking that had become blocked by only that creature this combat become unblocked. You may have it block an attacking creature of your choice.'
+             -> object ' deals X damage divided evenly, rounded down, among any number of targets.'
+             -> 'Copy target instant or sorcery spell, except that the copy is red. You may choose new targets for the copy.'
+             -> 'Each player discards their hand, then draws seven cards.'
 
-restriction -> 'Cast this spell only during combat before blockers are declared'
+restriction -> 'Cast this spell only during combat before blockers are declared.'
+            -> 'Cast this spell only during the declare blockers step.'
             -> 'Cast this spell only during an opponent’s turn, before attackers are declared.'
             -> 'Spend only black mana on X.'
             -> 'As an additional cost to cast this spell, sacrifice a creature.'
+            -> 'This spell costs {1} more to cast for each target beyond the first.'
+            -> 'Activate only during your upkeep'
 
 modal -> 'Choose one —' ('\n• ' effect '.')+
 
@@ -148,12 +167,13 @@ effect -> 'Add {B}{B}{B}'
        -> 'Add an amount of {B} equal to the sacrificed creature’s mana value.'
        -> player 'gain' ('s '|' ') number ' life'
        -> 'Counter ' object (' unless its controller pays {X}. If that player doesn’t, they tap all lands with mana abilities they control and lose all unspent mana')
-       -> 'Destroy ' object ('. They can’t be regenerated')?
+       -> 'Destroy ' object ('. ' ('It'|'They') 'can’t be regenerated')?
        -> 'sacrifice ' object (' unless you pay ' cost)?
        -> 'Regenerate ' object
        -> object ' gains ' keyword ' until end of turn'
        -> object 'gets ' statMod ' until end of turn'
        -> 'Prevent the next ' number ' damage that would be dealt to any target this turn'
+       -> 'Prevent the next ' number ' damage that would be dealt to ~ this turn.'
        -> 'The next time a ' color ' source of your choice would deal damage to you this turn, prevent that damage'
        -> 'The next 1 damage that would be dealt to ' object ' this turn is dealt to its owner instead. Only ' object '’s owner may activate this ability'
        -> object ' deals ' number ' damage to you'
@@ -161,6 +181,8 @@ effect -> 'Add {B}{B}{B}'
        -> object ' deals ' number ' damage to that player'
        -> object ' deals ' number ' damage to each creature and each player'
        -> object ' deals ' number ' damage to that land’s controller'
+       -> object ' deals ' number ' damage to any target and ' number ' damage to you.'
+       -> object ' deals X damage to that player, where X is the number of untapped lands they controlled at the beginning of this turn'
        -> object ' deals damage to that player equal to the number of Swamps they control'
        -> object ' deals damage equal to that creature’s toughness to the creature’s controller'
        -> 'its owner loses half their life, rounded up'
@@ -176,6 +198,13 @@ effect -> 'Add {B}{B}{B}'
        -> 'tap ' object
        -> 'untap the creature'
        -> 'put a ' counter ' counter on ' object (' for each creature that died this turn')?
+       -> object ' deals X damage to any target. If it’s a creature, it can’t be regenerated this turn, and if it would die this turn, exile it instead.'
+       -> object ' gets +1/+0 until end of turn. If this ability has been activated four or more times this turn, sacrifice ~ at the beginning of the next end step.'
+       -> object ' can’t be blocked this turn'
+       -> object ' deals 2 damage to that creature and ' object ' gains "Enchanted creature loses flying"'
+       -> 'that player adds one mana of any type that land produced'
+       -> 'each defending player divides all creatures without flying they control into a “left” pile and a “right” pile. Then, for each attacking creature you control, choose “left” or “right.” That creature can’t be blocked this combat except by creatures with flying and creatures in a pile with the chosen label.'
+       -> 'Target creature you control with toughness less than Stone Giant’s power gains flying until end of turn. Destroy that creature at the beginning of the next end step'
 
 keyword -> 'Enchant' object
         -> 'Banding'
@@ -188,15 +217,18 @@ keyword -> 'Enchant' object
         -> 'indestructible'
         -> 'fear'
         -> 'haste'
+        -> 'trample'
 
 landType -> 'plains'
          -> 'island'
          -> 'swamp'
+         -> 'mountain'
 
 number -> '0'
        -> '1'
        -> '2'
        -> '3'
+       -> '4'
        -> '7'
        -> 'X'
 
@@ -221,11 +253,13 @@ objectQualifier -> 'Enchanted'
                 -> color
                 -> 'Untapped'
                 -> 'blocking'
+                -> 'attacking'
 
 objectRestriction -> 'you control'
                   -> 'defending player controls'
                   -> 'an opponent controls'
                   -> 'with mana value X'
+                  -> 'with power 2 or less'
 
 player -> 'target player'
        -> 'you'
