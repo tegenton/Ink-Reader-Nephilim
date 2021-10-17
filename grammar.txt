@@ -19,27 +19,25 @@ staticAbility -> 'As long as ' condition ', ' staticAbility
               -> 'As ' object ' enters the battlefield, choose an opponent.'
               -> 'As ' object ' enters the battlefield, you lose life equal to your life total.'
               -> 'As long as ' object ' isn’t attacking, its power and toughness are each equal to the number of Forests you control. As long as Gaea’s Liege is attacking, its power and toughness are each equal to the number of Forests defending player controls.'
-              -> 'All mountains are plains.'
-              -> 'All Forests are 1/1 creatures that are still lands.'
-              -> 'All Swamps are 1/1 black creatures that are still lands.'
+              -> object ' are plains.'
+              -> object ' are 1/1 creatures that are still lands.'
+              -> object ' are 1/1 black creatures that are still lands.'
               -> 'all damage that would be dealt to you by unblocked creatures is dealt to ' object ' instead.'
               -> object ' can attack as though it didn't have defender.'
               -> object ' can attack as though it had haste.'
               -> object ' can’t attack unless defending player controls an Island.'
               -> object ' can block an additional creature each combat.'
-              -> object ' can’t block creatures with power 2 or greater.'
-              -> object ' can’t be blocked except by ' object '.'
-              -> object ' can’t be blocked by Walls.'
+              -> object ' can’t block ' object '.'
+              -> object ' can’t be blocked ' ('except ')? 'by ' object '.'
               -> object ' get' ('s')? ' ' statMod (' as long as you control a Swamp')? '.'
-              -> object ' gets +0/+2 and has reach.'
+              -> object ' gets ' statMod ' and has reach.'
               -> object ' gets +X/+Y, where X is half the number of Forests you control, rounded down, and Y is half the number of Forests you control, rounded up.'
               -> object ' get ' statMod ' and have ' ability '.'
               -> object ' has “' ability '”'
-              -> object ' has ' keyword (' and can’t be enchanted by other Auras.')? '.' ('This effect doesn't remove ~.')?
+              -> object ' has ' keyword (' and can’t be enchanted by other Auras.')? '.' ('This effect doesn't remove ' object '.')?
               -> object '’s power and toughness are each equal to ' amount '.'
-              -> object ' doesn’t untap during its controller’s untap step.'
+              -> object ' doesn’t untap during ' phase '.'
               -> object ' don’t untap during their controllers’ untap steps.'
-              -> object ' doesn’t untap during your untap step.'
               -> object ' enters the battlefield with ' number ' ' counter ' counters on it.'
               -> object ' enters the battlefield with seven +1/+0 counters on it.'
               -> object ' enters the battlefield tapped.'
@@ -148,7 +146,7 @@ effect -> dealDamage
        -> manaEffect
        -> 'Counter ' object (' unless its controller pays {X}. If that player doesn’t, they tap all lands with mana abilities they control and lose all unspent mana')
        -> 'Destroy ' object ('. ' ('It'|'They') 'can’t be regenerated')?
-       -> 'Destroy X target Mountains. ' object ' deals damage to each creature and each player equal to ' amount
+       -> 'Destroy ' object '. ' object ' deals damage to each creature and each player equal to ' amount
        -> 'destroy ' object ' at end of combat'
        -> 'destroy ' object '. ' player ' may attach ' object ' to ' object ' of their choice'
        -> 'sacrifice ' object (interveningClause)?
@@ -240,6 +238,7 @@ cost ->(mana)+
 
 determiner -> article
            -> demonstrative
+           -> amount
            -> 'all'
            -> 'each'
            -> 'other'
@@ -291,15 +290,17 @@ quality -> 'mana value ' number
         -> 'power ' number ' or greater'
 
 phase -> 'your turn'
+      -> 'your untap step'
       -> 'your upkeep'
-      -> 'each player’s upkeep'
+      -> 'your draw step'
+      -> 'your declare attackers step'
+      -> 'its controller’s untap step'
       -> 'the chosen player’s upkeep'
       -> 'the upkeep of ' object '’s controller'
-      -> 'your draw step'
+      -> 'each player’s upkeep'
       -> 'each player’s draw step'
-      -> 'an opponent’s turn, before attackers are declared'
       -> 'combat'
-      -> 'your declare attackers step'
+      -> 'an opponent’s turn, before attackers are declared'
       -> 'combat before blockers are declared'
       -> 'the declare blockers step'
       -> 'the combat damage step'
