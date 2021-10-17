@@ -18,7 +18,7 @@ staticAbility -> 'As long as ' condition ', ' staticAbility
               -> 'As ' object ' enters the battlefield, choose a ' textAspect '.'
               -> 'As ' object ' enters the battlefield, choose an opponent.'
               -> 'As ' object ' enters the battlefield, you lose life equal to your life total.'
-              -> 'As long as Gaea’s Liege isn’t attacking, its power and toughness are each equal to the number of Forests you control. As long as Gaea’s Liege is attacking, its power and toughness are each equal to the number of Forests defending player controls.'
+              -> 'As long as ' object ' isn’t attacking, its power and toughness are each equal to the number of Forests you control. As long as Gaea’s Liege is attacking, its power and toughness are each equal to the number of Forests defending player controls.'
               -> 'All mountains are plains.'
               -> 'All Forests are 1/1 creatures that are still lands.'
               -> 'All Swamps are 1/1 black creatures that are still lands.'
@@ -134,36 +134,31 @@ spellAbility -> effect '.'
              -> 'Look at target opponent’s hand and choose a card from it. You control that player until Word of Command finishes resolving. The player plays that card if able. While doing so, the player can activate mana abilities only if they’re from lands that player controls and only if mana they produce is spent to activate other mana abilities of lands the player controls and/or to play that card. If the chosen card is cast as a spell, you control the player while that spell is resolving.'
              -> 'Remove target creature defending player controls from combat. Creatures it was blocking that had become blocked by only that creature this combat become unblocked. You may have it block an attacking creature of your choice.'
              -> 'Copy target instant or sorcery spell, except that the copy is red. You may choose new targets for the copy.'
-             -> 'This turn, instead of declaring blockers, each defending player chooses any number of creatures they control and divides them into a number of piles equal to the number of attacking creatures for whom that player is the defending player. Creatures those players control that can block additional creatures may likewise be put into additional piles. Assign each pile to a different one of those attacking creatures at random. Each creature in a pile that can block the creature that pile is assigned to does so'
+             -> 'This turn, instead of declaring blockers, each defending player chooses any number of creatures they control and divides them into a number of piles equal to the number of attacking creatures for whom that player is the defending player. Creatures ' player ' control that can block additional creatures may likewise be put into additional piles. Assign each pile to a different one of those attacking creatures at random. Each creature in a pile that can block the creature that pile is assigned to does so'
              -> 'Until end of turn, any time you could activate a mana ability, you may pay 1 life. If you do, add {C}.'
              -> 'Look at the top three cards of target player’s library, then put them back in any order. You may have that player shuffle.'
 
-restriction -> 'Cast this spell only during ' phase
-            -> 'Cast this spell only before the combat damage step'
+restriction -> 'Cast ' object ' only during ' phase
+            -> 'Cast ' object ' only before ' phase
             -> 'Spend only black mana on X'
-            -> 'As an additional cost to cast this spell, sacrifice a creature'
+            -> 'As an additional cost to cast this spell, ' cost
             -> 'This spell costs {1} more to cast for each target beyond the first'
             -> 'Activate only during your upkeep'
-            -> 'Activate only during your turn and only once each turn'
             -> 'Activate only during combat'
+            -> 'Activate only during your turn'
+            -> 'Activate only during your turn and only once each turn'
 
 effect -> dealDamage
        -> manaEffect
        -> 'Counter ' object (' unless its controller pays {X}. If that player doesn’t, they tap all lands with mana abilities they control and lose all unspent mana')
        -> 'Destroy ' object ('. ' ('It'|'They') 'can’t be regenerated')?
        -> 'Destroy X target Mountains. ' object ' deals damage to each creature and each player equal to ' amount
+       -> 'destroy that creature at end of combat'
+       -> 'destroy it. That land’s controller may attach ' object ' to a land of their choice'
        -> 'sacrifice ' object (interveningClause)?
        -> 'sacrifice that many nontoken permanents. If you can’t, ' effect
        -> 'sacrifice a creature other than ' object '. If you can’t, ' effect
        -> 'Regenerate ' object
-       -> object ' gains ' keyword ' until end of turn'
-       -> object ' gains trample and gets +X/+0 until end of turn, where X is its power. At the beginning of the next end step, destroy that creature if it attacked this turn.'
-       -> object ' gets ' statMod ' until end of turn'
-       -> object ' gets +1/+0 until end of turn. If this ability has been activated four or more times this turn, sacrifice ~ at the beginning of the next end step'
-       -> object ' can’t be blocked this turn'
-       -> object ' with toughness less than ' object '’s power gains flying until end of turn. Destroy ' object ' at the beginning of the next end step'
-       -> object ' becomes a Forest until ' object ' leaves the battlefield'
-       -> object ' becomes a 3/6 Golem artifact creature until end of combat'
        -> 'Prevent all combat damage that would be dealt this turn.'
        -> 'Prevent the next ' number ' damage that would be dealt to ' something ' this turn'
        -> 'Prevent the next ' number ' damage that would be dealt to ' something ' this turn. Until end of turn, you may pay {1} any time you could cast an instant. If you do, prevent the next 1 damage that would be dealt to that permanent or player this turn'
@@ -172,17 +167,6 @@ effect -> dealDamage
        -> 'The next time a source of your choice would deal damage to target creature this turn, that source deals that damage to you instead'
        -> 'The next ' number ' damage that would be dealt to ' object ' this turn is dealt to its owner instead. Only ' object '’s owner may activate this ability'
        -> 'its owner loses half their life, rounded up'
-       -> 'that player may pay any amount of mana. ' object ' deals 2 damage to that player. Prevent X of that damage, where X is the amount of mana that player paid this way'
-       -> 'you may ' cost '. If you do, ' effect
-       -> player ' draws ' amount ' cards'
-       -> player ' draws an additional card'
-       -> player ' discards ' amount ' card ' ('s')? ' at random'
-       -> player ' discards a card. Activate only during your turn'
-       -> player ' lose the game'
-       -> player ' gain' ('s '|' ') number ' life'
-       -> player ' may put ' object ' onto the battlefield'
-       -> player ' may draw a card'
-       -> player ' may tap or untap ' object
        -> 'Choose target non-Wall creature the active player has controlled continuously since the beginning of the turn. That creature attacks this turn if able. Destroy it at the beginning of the next end step if it didn’t attack this turn. Activate only during an opponent’s turn, before attackers are declared'
        -> 'tap ' object ' and sacrifice a land of an opponent’s choice'
        -> 'tap ' object
@@ -190,41 +174,57 @@ effect -> dealDamage
        -> 'Take an extra turn after this one.'
        -> 'put a ' counter ' counter on ' object (' for each creature that died this turn')?
        -> 'Put a mire counter on target non-Swamp land. That land is a Swamp for as long as it has a mire counter on it. Activate only during your upkeep'
-       -> 'each defending player divides all creatures without flying they control into a “left” pile and a “right” pile. Then, for each attacking creature you control, choose “left” or “right.” That creature can’t be blocked this combat except by creatures with flying and creatures in a pile with the chosen label'
-       -> 'it loses “enchant creature card in a graveyard” and gains “enchant creature put onto the battlefield with ~.” Return enchanted creature card to the battlefield under your control and attach ~ to it. When ~ leaves the battlefield, that creature’s controller sacrifices it'
-       -> 'destroy that creature at end of combat'
-       -> 'destroy it. That land’s controller may attach ~ to a land of their choice'
        -> 'put that many ' counter ' counters on ' object
+       -> 'Put up to X ' counter ' counters on ' object '. This ability can’t cause the total number of +1/+0 counters on Clockwork Beast to be greater than seven. Activate only during your upkeep'
        -> 'If Chaos Orb is on the battlefield, flip Chaos Orb onto the battlefield from a height of at least one foot. If Chaos Orb turns over completely at least once during the flip, destroy all nontoken permanents it touches. Then destroy Chaos Orb'
-       -> 'remove a +1/+0 counter from it'
-       -> 'Put up to X +1/+0 counters on Clockwork Beast. This ability can’t cause the total number of +1/+0 counters on Clockwork Beast to be greater than seven. Activate only during your upkeep'
+       -> 'remove a ' counter ' counter from ' object
        -> 'at the beginning of each of your upkeeps for the rest of the game, remove all mire counters from a land that a mire counter was put onto with Cyclopean Tomb but that a mire counter has not been removed from with Cyclopean Tomb'
        -> 'The next time an unblocked creature of your choice would deal combat damage to you this turn, prevent all but 1 of that damage'
        -> 'Look at target player’s hand'
-       -> 'You may choose a creature card in your hand whose mana cost could be paid by some amount of, or all of, the mana you spent on {X}. If you do, you may cast that card face down as a 2/2 creature spell without paying its mana cost. If the creature that spell becomes as it resolves has not been turned face up and would assign or deal damage, be dealt damage, or become tapped, instead it’s turned face up and assigns or deals damage, is dealt damage, or becomes tapped. Activate only as a sorcery.'
        -> 'Create a 1/1 colorless Insect artifact creature token with flying named Wasp'
+       -> object ' gains ' keyword ' until end of turn'
+       -> object ' gains trample and gets +X/+0 until end of turn, where X is its power. At the beginning of the next end step, destroy that creature if it attacked this turn.'
+       -> object ' gets ' statMod ' until end of turn'
+       -> object ' gets ' statMod ' until end of turn. If this ability has been activated four or more times this turn, sacrifice ' object ' at the beginning of the next end step'
+       -> object ' can’t be blocked this turn'
+       -> object ' with toughness less than ' object '’s power gains flying until end of turn. Destroy ' object ' at the beginning of the next end step'
+       -> object ' becomes a Forest until ' object ' leaves the battlefield'
+       -> object ' becomes a 3/6 Golem artifact creature until end of combat'
+       -> player ' draws ' (amount ' ')? object
+       -> player ' draws an additional card'
+       -> player ' discards ' (amount ' ')? object (' at random')?
+       -> player ' lose the game'
+       -> player ' gain' ('s '|' ') number ' life'
+       -> player ' may ' cost '. If you do, ' effect
+       -> player ' may put ' object ' onto the battlefield'
+       -> player ' may draw a card'
+       -> player ' may tap or untap ' object
+       -> player ' may pay any amount of mana. ' object ' deals 2 damage to that player. Prevent X of that damage, where X is the amount of mana that player paid this way'
+       -> player ' may choose a creature card in your hand whose mana cost could be paid by some amount of, or all of, the mana you spent on {X}. If you do, you may cast that card face down as a 2/2 creature spell without paying its mana cost. If the creature that spell becomes as it resolves has not been turned face up and would assign or deal damage, be dealt damage, or become tapped, instead it’s turned face up and assigns or deals damage, is dealt damage, or becomes tapped. Activate only as a sorcery.'
+       -> player ' divides all creatures without flying they control into a “left” pile and a “right” pile. Then, for each attacking creature you control, choose “left” or “right.” That creature can’t be blocked this combat except by creatures with flying and creatures in a pile with the chosen label'
+       -> 'it loses “enchant creature card in a graveyard” and gains “enchant creature put onto the battlefield with ~.” Return enchanted creature card to the battlefield under your control and attach ~ to it. When ~ leaves the battlefield, that creature’s controller sacrifices it'
 
 dealDamage -> object ' deals ' number ' damage to ' something
            -> object ' deals ' number ' damage to ' something ' and ' number ' damage to ' something
            -> object ' deals ' number ' damage to ' something ' and ' object ' gains "Enchanted creature loses flying"'
            -> object ' deals ' number ' damage to ' something ', where X is ' amount
-           -> object ' deals ' number ' damage to ' something '. ' player ' gain life equal to the damage dealt, but not more life than the player’s life total before the damage was dealt, the planeswalker’s loyalty before the damage was dealt, or the creature’s toughness.'
-           -> object ' deals ' number ' damage to ' something '. If it’s a creature, it can’t be regenerated this turn, and if it would die this turn, exile it instead.'
+           -> object ' deals ' number ' damage to ' something '. ' player ' gain life equal to the damage dealt, but not more life than the player’s life total before the damage was dealt, the planeswalker’s loyalty before the damage was dealt, or the creature’s toughness'
+           -> object ' deals ' number ' damage to ' something '. If it’s a creature, it can’t be regenerated this turn, and if it would die this turn, exile it instead'
            -> object ' deals ' number ' damage divided evenly, rounded down, among any number of targets'
            -> object ' deals damage to ' something ' equal to ' amount
            -> object ' deals damage equal to ' amount ' to ' something
 
-manaEffect -> 'Add ' mana
-           -> 'Add an amount of {B} equal to ' amount
-           -> 'Add three mana of any one color'
-           -> 'Add one mana of any color'
-           -> player ' adds one mana of any type that land produced'
+manaEffect -> 'add ' mana
+           -> 'add an amount of {B} equal to ' amount
+           -> 'add ' amount ' mana of any ' ('one ')? 'color'
+           -> player ' adds ' amount ' mana of any type that land produced'
            -> 'its controller adds an additional ' mana
 
 ## Definitions
 
-amount -> 'three'
+amount -> 'one'
        -> 'X'
+       -> 'three'
        -> 'the number of Swamps you control'
        -> 'the number of Swamps they control'
        -> 'the number of creatures named Plague Rats on the battlefield'
@@ -235,7 +235,10 @@ amount -> 'three'
        -> 'the damage dealt to you this turn'
        -> 'the sacrificed creature’s mana value'
        -> 'that creature’s toughness'
-       -> 'a'
+
+article -> 'the'
+        -> 'a'
+        -> 'an'
 
 color -> 'white'
       -> 'blue'
@@ -245,22 +248,39 @@ color -> 'white'
 
 costs -> cost (', ' cost)*
 
-cost -> ('pay ')? mana
+cost -> ('pay ')? (mana)+
      -> '{T}'
-     -> 'Remove a ' counter ' counter from ' object
-     -> 'Sacrifice ~'
+     -> 'remove a ' counter ' counter from ' object
+     -> 'sacrifice ' object
 
-counter -> '+1/+1'
+counter -> statMod
         -> 'corpse'
         -> 'vitality'
 
-keyword -> 'Enchant' object
-        -> 'Banding'
-        -> 'First strike'
-        -> 'Flying'
-        -> 'Vigilance'
-        -> 'Defender'
-        -> 'Protection from ' color
+demonstrative -> 'this'
+              -> 'these'
+              -> 'those'
+              -> 'that'
+
+determiner -> article
+           -> demonstrative
+           -> 'all'
+           -> 'each'
+           -> 'other'
+           -> 'target'
+           -> color
+           -> 'enchanted'
+           -> 'untapped'
+           -> 'blocking'
+           -> 'attacking'
+
+keyword -> 'enchant' object
+        -> 'banding'
+        -> 'first strike'
+        -> 'flying'
+        -> 'vigilance'
+        -> 'defender'
+        -> 'protection from ' color
         -> landType 'walk'
         -> 'indestructible'
         -> 'fear'
@@ -280,81 +300,75 @@ mana -> '{W}'+
      -> '{R}'+
      -> '{G}'+
      -> '{C}'+
-     -> '{1}'
-     -> '{2}'
-     -> '{3}'
-     -> '{4}'
-     -> '{5}'
-     -> '{0}'
-     -> '{X}'
+     -> '{' number '}'
 
 number -> '0'
        -> '1'
        -> '2'
        -> '3'
        -> '4'
+       -> '5'
+       -> '6'
        -> '7'
        -> 'X'
 
-object -> qualifier ' ' object
+object -> determiner ' ' object
        -> object 's'
        -> object ' or ' object
        -> object ' ' objectRestriction
        -> '~'
-       -> 'creature'
-       -> 'creature card'
-       -> 'land'
-       -> landType
-       -> 'Wall'
-       -> 'artifact'
-       -> 'enchantment'
+       -> type
        -> 'spell'
        -> 'permanent'
        -> 'it'
+       -> (type)? 'card'
        -> 'artifacts, creatures, and enchantments'
        -> 'artifact, creature, or land'
-       -> 'Other Merfolk'
-       -> 'Other Goblins'
        -> 'nonartifact, nonblack creature'
 
+type -> cardType
+     -> landType
+     -> creatureType
+
+cardType -> 'creature'
+         -> 'land'
+         -> 'artifact'
+         -> 'enchantment'
+
+creatureType -> 'Wall'
+             -> 'Merfolk'
+             -> 'Goblins'
+
 objectRestriction -> player ' control' ('s')?
-                  -> 'with mana value X'
-                  -> 'with power 2 or less'
-                  -> 'without flying'
                   -> 'in a graveyard'
-                  -> 'with power 3 or greater'
+                  -> 'with' ('out')? ' ' quality
+
+quality -> 'mana value X'
+        -> 'power 2 or less'
+        -> keyword
+        -> 'power 3 or greater'
 
 phase -> 'your upkeep'
-      -> 'your draw step'
-      -> 'your declare attackers step'
       -> 'each player’s upkeep'
-      -> 'each player’s draw step'
       -> 'the chosen player’s upkeep'
       -> 'the upkeep of ' object '’s controller'
-      -> 'the end step'
+      -> 'your draw step'
+      -> 'each player’s draw step'
+      -> 'an opponent’s turn, before attackers are declared'
+      -> 'your declare attackers step'
       -> 'combat before blockers are declared'
       -> 'the declare blockers step'
-      -> 'an opponent’s turn, before attackers are declared'
+      -> 'the combat damage step'
+      -> 'the end step'
 
-player -> qualifier ' ' player
+player -> determiner ' ' player
        -> player 's'
        -> 'player'
        -> 'you'
        -> 'opponent'
        -> 'an opponent'
        -> 'the active player'
-
-qualifier -> 'Enchanted'
-          -> 'all'
-          -> 'each'
-          -> 'target'
-          -> color
-          -> 'Untapped'
-          -> 'blocking'
-          -> 'attacking'
-          -> 'that'
-          -> 'this'
-          -> 'a'
+       -> 'defending player'
 
 something -> object
           -> player
