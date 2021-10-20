@@ -37,9 +37,9 @@ staticAbility -> staticAbility ' ' staticAbility
               -> object ' cost ' costs ' more to cast.'
               -> object ' attacks each combat if able.'
               -> object ' able to block ' object ' do so.'
-              -> 'If ' player ' would draw a card during ' phase , instead you may skip that draw. If you do, until your next turn, you can’t be attacked except by creatures with flying and/or islandwalk.'
-              -> 'If ' player ' would gain life, draw that many cards instead.'
-              -> 'If ' player ' would begin your turn while ' object ' is tapped, you may skip that turn instead. If you do, untap ' object '.'
+              -> 'If ' player ' would draw ' object ' during ' phase ', instead ' effect '.'
+              -> 'If ' player ' would gain life, ' effect ' instead.'
+              -> 'If ' player ' would begin your turn while ' object ' is tapped, you may skip that turn instead. If you do, ' effect '.'
               -> 'If an effect causes you to discard a card, discard it, but you may put it on top of your library instead of into your graveyard.'
               -> player ' may have ' object ' enter ' zone ' as a copy of any ' object ' on ' zone (' ' except)? ('.')?
               -> player ' control ' object
@@ -124,19 +124,60 @@ restriction -> 'Cast ' object ' only during ' phase
             -> 'Activate only during ' phase ('and only once each turn')?
             -> 'Remove ' object ' from your deck before playing if you’re not playing for ante'
 
-effect -> dealDamage
-       -> manaEffect
-       -> 'Counter ' object (' unless its controller pays {X}. If that player doesn’t, they tap all lands with mana abilities they control and lose all unspent mana')
-       -> 'choose a ' textAspect
-       -> 'choose ' player
-       -> 'Destroy ' object ('. ' ('It'|'They') 'can’t be regenerated')?
-       -> 'Destroy ' object '. ' object ' deals damage to each creature and each player equal to ' amount
-       -> 'destroy ' object ' at end of combat'
-       -> 'destroy ' object '. ' player ' may attach ' object ' to ' object ' of their choice'
-       -> 'Exile ' object '. ' player ' gains life equal to ' amount
-       -> 'sacrifice ' object (interveningClause)?
-       -> 'sacrifice ' object '. If you can’t, ' effect
-       -> 'Regenerate ' object
+continuous -> object ' gains ' keyword ' until end of turn'
+           -> object ' gains trample and gets +X/+0 until end of turn, where X is ' amount '. At the beginning of the next end step, destroy that creature if it attacked this turn.'
+           -> object ' gets ' statMod ' until end of turn'
+           -> object ' gets ' statMod ' until end of turn. If this ability has been activated four or more times this turn, sacrifice ' object ' at the beginning of the next end step'
+           -> object ' attack this turn if able.'
+           -> object ' can’t be blocked this turn'
+           -> object ' can block ' object ' this turn'
+           -> object ' blocks ' object ' this turn if able'
+           -> object ' with toughness less than ' object '’s power gains flying until end of turn. Destroy ' object ' at the beginning of the next end step'
+           -> object ' becomes ' color
+           -> object ' becomes ' object ' until ' object ' leaves the battlefield'
+           -> object ' becomes ' object ' until end of combat'
+
+oneShot -> dealDamage
+        -> manaEffect
+        -> 'counter ' object (' unless its controller pays {X}. If that player doesn’t, they tap all lands with mana abilities they control and lose all unspent mana')
+        -> 'choose a ' textAspect
+        -> 'choose ' player
+        -> 'destroy ' object ('. ' ('It'|'They') 'can’t be regenerated')?
+        -> 'destroy ' object '. ' object ' deals damage to each creature and each player equal to ' amount
+        -> 'destroy ' object ' at end of combat'
+        -> 'destroy ' object '. ' player ' may attach ' object ' to ' object ' of their choice'
+        -> 'exile ' object '. ' player ' gains life equal to ' amount
+        -> 'sacrifice ' object (interveningClause)?
+        -> 'sacrifice ' object '. If you can’t, ' effect
+        -> 'tap ' object ' and sacrifice a land of an opponent’s choice'
+        -> 'tap ' object
+        -> 'untap ' object
+        -> 'take an extra turn after this one'
+        -> 'put a ' counter ' counter on ' object (' for each creature that died this turn')?
+        -> 'put a ' counter ' counter on ' object '. That land is a Swamp for as long as it has a ' counter ' counter on it. Activate only during your upkeep'
+        -> 'put that many ' counter ' counters on ' object
+        -> 'put up to X ' counter ' counters on ' object '. This ability can’t cause the total number of +1/+0 counters on Clockwork Beast to be greater than seven. Activate only during your upkeep'
+        -> 'remove a ' counter ' counter from ' object
+        -> 'Look at ' player '’s hand'
+        -> 'Search ' zone ' for ' object
+        -> 'put ' object ' ' (i|o) 'nto ' zone
+        -> 'shuffle'
+        -> 'ante the top card of ' zone
+        -> (player)? ' draw' ('s')? ' ' object
+        -> player ' discards ' object (' at random')?
+        -> player ' discards their hand'
+        -> 'discard your hand'
+        -> player ' lose the game'
+        -> player ' lose life equal to ' amount
+        -> player ' gain' ('s '|' ') number ' life'
+        -> player ' gain life equal to ' amount '. ' object ' deals damage to ' something ' equal to ' amount '.'
+        -> 'Create a 1/1 colorless Insect artifact creature token with flying named Wasp'
+        -> 'exchange ' object ' with the top card of ' zone
+        -> 'Regenerate ' object
+        -> object ' become unblocked'
+
+effect -> oneShot
+       -> continuous
        -> 'Prevent ' damage ('. Until end of turn, you may pay {1} any time you could cast an instant. If you do, prevent the next 1 damage that would be dealt to that permanent or player this turn')?
        -> 'The next time a ' color ' source of your choice would deal damage to you this turn, prevent that damage'
        -> 'The next time a source of your choice would deal damage to you this turn, prevent that damage. You gain life equal to the damage prevented this way'
@@ -144,57 +185,21 @@ effect -> dealDamage
        -> 'The next ' number ' damage that would be dealt to ' object ' this turn is dealt to its owner instead. Only ' object '’s owner may activate this ability'
        -> 'its owner loses half their life, rounded up'
        -> 'Choose target non-Wall creature the active player has controlled continuously since the beginning of the turn. That creature attacks this turn if able. Destroy it at the beginning of the next end step if it didn’t attack this turn. Activate only during an opponent’s turn, before attackers are declared'
-       -> 'tap ' object ' and sacrifice a land of an opponent’s choice'
-       -> 'tap ' object
-       -> 'untap ' object
-       -> 'Take an extra turn after this one.'
-       -> 'put a ' counter ' counter on ' object (' for each creature that died this turn')?
-       -> 'Put a mire counter on target non-Swamp land. That land is a Swamp for as long as it has a mire counter on it. Activate only during your upkeep'
-       -> 'put that many ' counter ' counters on ' object
-       -> 'Put up to X ' counter ' counters on ' object '. This ability can’t cause the total number of +1/+0 counters on Clockwork Beast to be greater than seven. Activate only during your upkeep'
        -> 'If Chaos Orb is on the battlefield, flip Chaos Orb onto the battlefield from a height of at least one foot. If Chaos Orb turns over completely at least once during the flip, destroy all nontoken permanents it touches. Then destroy Chaos Orb'
-       -> 'remove a ' counter ' counter from ' object
        -> 'at the beginning of each of your upkeeps for the rest of the game, remove all mire counters from a land that a mire counter was put onto with Cyclopean Tomb but that a mire counter has not been removed from with Cyclopean Tomb'
        -> 'The next time an unblocked creature of your choice would deal combat damage to you this turn, prevent all but 1 of that damage'
-       -> 'Look at ' player '’s hand'
-       -> 'Create a 1/1 colorless Insect artifact creature token with flying named Wasp'
-       -> object ' gains ' keyword ' until end of turn'
-       -> object ' gains trample and gets +X/+0 until end of turn, where X is its power. At the beginning of the next end step, destroy that creature if it attacked this turn.'
-       -> object ' gets ' statMod ' until end of turn'
-       -> object ' gets ' statMod ' until end of turn. If this ability has been activated four or more times this turn, sacrifice ' object ' at the beginning of the next end step'
-       -> object ' attack this turn if able.'
-       -> object ' can’t be blocked this turn'
-       -> object ' can block ' object ' this turn'
-       -> object ' blocks ' object ' this turn if able'
-       -> object ' with toughness less than ' object '’s power gains flying until end of turn. Destroy ' object ' at the beginning of the next end step'
-       -> object ' becomes ' color
-       -> object ' becomes ' object ' until ' object ' leaves the battlefield'
-       -> object ' becomes ' object ' until end of combat'
        -> player ' antes the top card of ' zone
-       -> 'Search ' zone ' for ' object
-       -> 'put ' object ' ' (i|o) 'nto ' zone
-       -> 'shuffle'
-       -> 'ante the top card of ' zone
-       -> (player)? ' draw' ('s')? ' ' object
-       -> player ' discards ' object (' at random')?
-       -> player ' discards their hand'
-       -> 'discard your hand'
-       -> player ' lose the game'
-       -> player ' lose life equal to ' amount
        -> player ' own ' object '
-       -> 'exchange ' object ' with the top card of ' zone
-       -> player ' gain' ('s '|' ') number ' life'
-       -> player ' gain life equal to ' amount '. ' object ' deals damage to ' something ' equal to ' amount '.'
-       -> player ' may ' cost '. If you do, ' effect
+       -> player ' may ' costs '. If you do, ' effect
        -> player ' may ' effect
        -> player ' may tap or untap ' object
        -> player ' shuffles their hand and graveyard into ' zone
+       -> 'until your next turn, ' player ' can’t be attacked except by creatures with flying and/or islandwalk'
        -> player ' may pay any amount of mana. ' object ' deals 2 damage to that player. Prevent X of that damage, where X is the amount of mana that player paid this way'
        -> player ' may choose a creature card in your hand whose mana cost could be paid by some amount of, or all of, the mana you spent on {X}. If you do, you may cast that card face down as a 2/2 creature spell without paying its mana cost. If the creature that spell becomes as it resolves has not been turned face up and would assign or deal damage, be dealt damage, or become tapped, instead it’s turned face up and assigns or deals damage, is dealt damage, or becomes tapped. Activate only as a sorcery.'
        -> player ' divides all creatures without flying they control into a “left” pile and a “right” pile. Then, for each attacking creature you control, choose “left” or “right.” That creature can’t be blocked this combat except by creatures with flying and creatures in a pile with the chosen label'
        -> 'it loses “enchant creature card in a graveyard” and gains “enchant creature put onto the battlefield with ~.” Return enchanted creature card to the battlefield under your control and attach ~ to it. When ~ leaves the battlefield, that creature’s controller sacrifices it'
        -> 'remove ' object ' from combat'
-       -> object ' become unblocked'
        -> player ' may have ' object ' block ' object ' of your choice'
        -> player ' activates a mana ability of ' object
        -> player ' loses all unspent mana and ' player ' add the mana lost this way'
@@ -245,10 +250,11 @@ englishNumber -> 'one'
 costs -> ('pay ')? cost (', ' costs)?
 
 cost ->(mana)+
-     -> '{T}'
+     -> lBracket 't' rBracket
      -> number ' life'
      -> 'remove a ' counter ' counter from ' object
      -> 'sacrifice ' object
+     -> 'skip that ' ('turn'|'draw')
 
 determiner -> article
            -> demonstrative
@@ -357,12 +363,12 @@ textAspect -> 'color word'
 
 zone -> 'your graveyard'
      -> 'a graveyard'
-     -> 'the battlefield'
      -> 'your hand'
      -> 'its owner’s hand'
      -> 'your library'
      -> 'their library'
      -> 'the ante'
+     -> 'the battlefield'
 
 ## Morphemes
 
@@ -394,6 +400,7 @@ color -> 'non' color
 counter -> statMod
         -> 'corpse'
         -> 'vitality'
+        -> 'mire'
 
 creatureType -> 'Goblin'
              -> 'Golem'
