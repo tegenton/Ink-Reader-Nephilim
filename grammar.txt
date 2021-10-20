@@ -16,16 +16,14 @@ triggeredAbility -> triggerCondition (', ' interveningClause)? ', ' effect (' ' 
 
 staticAbility -> 'As long as ' condition ', ' staticAbility
               -> 'As ' object ' enters the battlefield, choose a ' textAspect '.'
-              -> 'As ' object ' enters the battlefield, choose an opponent.'
+              -> 'As ' object ' enters the battlefield, choose ' player '.'
               -> 'As ' object ' enters the battlefield, you lose life equal to your life total.'
               -> 'As long as ' object ' isn’t attacking, its power and toughness are each equal to the number of Forests you control. As long as Gaea’s Liege is attacking, its power and toughness are each equal to the number of Forests defending player controls.'
-              -> object ' are plains.'
-              -> object ' are 1/1 creatures that are still lands.'
-              -> object ' are 1/1 black creatures that are still lands.'
+              -> object ' ' ('are'|'is'|'’s') ' ' object '.'
               -> 'all damage that would be dealt to you by unblocked creatures is dealt to ' object ' instead.'
-              -> object ' can attack as though it didn't have defender.'
-              -> object ' can attack as though it had haste.'
-              -> object ' can’t attack unless defending player controls an Island.'
+              -> object ' can attack as though ' object ' didn't have defender.'
+              -> object ' can attack as though ' object ' had haste.'
+              -> object ' can’t attack unless defending player controls ' object '.'
               -> object ' can block an additional creature each combat.'
               -> object ' can’t block ' object '.'
               -> object ' can’t be blocked ' ('except ')? 'by ' object '.'
@@ -33,21 +31,15 @@ staticAbility -> 'As long as ' condition ', ' staticAbility
               -> object ' gets ' statMod ' and has reach.'
               -> object ' gets +X/+Y, where X is half the number of Forests you control, rounded down, and Y is half the number of Forests you control, rounded up.'
               -> object ' get ' statMod ' and have ' ability '.'
-              -> object ' has “' ability '”'
-              -> object ' has ' keyword (' and can’t be enchanted by other Auras.')? '.' ('This effect doesn't remove ' object '.')?
+              -> object ' ha' ('s'|'ve') ' “' ability '”'
+              -> object ' have ' ability '.'
+              -> object ' has ' keyword (' and can’t be enchanted by ' object)? '.' ('This effect doesn't remove ' object '.')?
               -> object '’s power and toughness are each equal to ' amount '.'
-              -> object ' doesn’t untap during ' phase '.'
-              -> object ' don’t untap during their controllers’ untap steps.'
-              -> object ' enters the battlefield with ' number ' ' counter ' counters on it.'
-              -> object ' enters the battlefield with seven +1/+0 counters on it.'
+              -> object ' do' ('es')? 'n’t untap during ' phase '.'
+              -> object ' enters the battlefield with ' amount ' ' counter ' counters on it.'
               -> object ' enters the battlefield tapped.'
-              -> object ' is the chosen type.'
-              -> object ' is a Swamp.'
-              -> object '’s an artifact creature with power and toughness each equal to its mana value.'
               -> object ' cost {3} more to cast.'
               -> object ' attacks each combat if able.'
-              -> 'Other Zombie creatures have ' ability '.'
-              -> 'Other Zombies have “' ability '”'
               -> 'If you would draw a card during your draw step, instead you may skip that draw. If you do, until your next turn, you can’t be attacked except by creatures with flying and/or islandwalk.'
               -> 'If you would gain life, draw that many cards instead.'
               -> 'If you would begin your turn while ' object ' is tapped, you may skip that turn instead. If you do, untap ' object '.'
@@ -67,40 +59,43 @@ staticAbility -> 'As long as ' condition ', ' staticAbility
 except -> 'except it’s an enchantment in addition to its other types'
        -> 'except it doesn’t copy that creature’s color and it has “At the beginning of your upkeep, you may have this creature become a copy of target creature, except it doesn’t copy that creature’s color and it has this ability.”'
 
+triggerCondition -> triggerWord ' ' triggerEvent
+
+triggerWord -> 'at'
+            -> 'when'
+            -> 'whenever'
+
+triggerEvent -> 'the beginning of ' phase
+             -> 'end of combat'
+             -> object ' enters the battlefield'
+             -> object ' dies'
+             -> object ' is put into a graveyard from the battlefield'
+             -> object ' becomes tapped'
+             -> object ' is tapped for mana'
+             -> object ' blocks or becomes blocked by a non-Wall creature'
+             -> object ' deals damage to an opponent'
+             -> object ' is dealt damage'
+             -> object ' dealt damage by ' object ' this turn dies,'
+             -> player ' casts a' ('n')? ' ' object
+             -> player ' taps a land for mana'
+             -> player ' play a land'
+             -> player ' control ' object
+             -> 'you’re dealt damage'
+             -> 'one or more ' object ' attack'
+
+interveningClause -> 'if ' condition
+                  -> 'unless you pay' cost
+
 condition -> object ' is untapped'
           -> object ' is tapped'
           -> object ' isn’t a creature'
-          -> object ' has a +1/+1 counter on it'
+          -> object ' has a ' counter ' counter on it'
           -> object ' has flying'
-
-triggerCondition -> 'At the beginning of ' phase
-                 -> 'At end of combat'
-                 -> 'When you control no ' object
-                 -> 'When ' object ' enters the battlefield'
-                 -> 'When ' object ' dies'
-                 -> 'When ' object ' is put into a graveyard from the battlefield'
-                 -> 'Whenever ' object ' enters the battlefield'
-                 -> 'Whenever ' object ' dies'
-                 -> 'Whenever ' object ' becomes tapped'
-                 -> 'Whenever ' object ' is tapped for mana'
-                 -> 'Whenever ' object ' blocks or becomes blocked by a non-Wall creature'
-                 -> 'Whenever ' object ' deals damage to an opponent'
-                 -> 'Whenever ' object ' is dealt damage'
-                 -> 'Whenever you play a land'
-                 -> 'Whenever a land is put into a graveyard from the battlefield'
-                 -> 'Whenever you’re dealt damage'
-                 -> 'Whenever a creature dealt damage by ~ this turn dies,'
-                 -> 'Whenever a player taps a land for mana'
-                 -> 'Whenever ' player ' casts a' ('n')? ' ' object
-                 -> 'Whenever one or more creatures you control attack'
-
-interveningClause -> 'if ' condition
-                  -> 'if it’s on the battlefield'
-                  -> 'unless you pay' cost
-                  -> 'if ' object ' is in your graveyard with three or more creature cards above it'
-                  -> 'if no creatures are on the battlefield'
-                  -> 'if it wasn’t the first land you played this turn'
-                  -> 'if ' object ' attacked or blocked this combat'
+          -> object ' is in your graveyard with three or more creature cards above it'
+          -> object ' are on the battlefield'
+          -> 'it wasn’t the first land you played this turn'
+          -> object ' attacked or blocked this combat'
+          -> 'it’s on the battlefield'
 
 ## Spells
 
@@ -184,15 +179,15 @@ effect -> dealDamage
        -> object ' with toughness less than ' object '’s power gains flying until end of turn. Destroy ' object ' at the beginning of the next end step'
        -> object ' becomes a Forest until ' object ' leaves the battlefield'
        -> object ' becomes a 3/6 Golem artifact creature until end of combat'
-       -> player ' draws ' (amount ' ')? object
+       -> player ' draws ' object
        -> player ' draws an additional card'
-       -> player ' discards ' (amount ' ')? object (' at random')?
+       -> player ' discards ' object (' at random')?
        -> player ' lose the game'
        -> player ' gain' ('s '|' ') number ' life'
        -> player ' gain life equal to ' amount '. ' object ' deals damage to ' something ' equal to ' amount '.'
        -> player ' may ' cost '. If you do, ' effect
        -> player ' may put ' object ' onto the battlefield'
-       -> player ' may draw a card'
+       -> player ' may draw ' object
        -> player ' may tap or untap ' object
        -> player ' may pay any amount of mana. ' object ' deals 2 damage to that player. Prevent X of that damage, where X is the amount of mana that player paid this way'
        -> player ' may choose a creature card in your hand whose mana cost could be paid by some amount of, or all of, the mana you spent on {X}. If you do, you may cast that card face down as a 2/2 creature spell without paying its mana cost. If the creature that spell becomes as it resolves has not been turned face up and would assign or deal damage, be dealt damage, or become tapped, instead it’s turned face up and assigns or deals damage, is dealt damage, or becomes tapped. Activate only as a sorcery.'
@@ -217,9 +212,8 @@ manaEffect -> 'add ' mana
 
 ## Definitions
 
-amount -> 'one'
+amount -> englishNumber (' or more')?
        -> 'X'
-       -> 'three'
        -> 'the number of ' object
        -> 'the number of Mountains put into a graveyard this way'
        -> 'the number of untapped lands they controlled at the beginning of this turn'
@@ -227,6 +221,10 @@ amount -> 'one'
        -> 'the damage dealt to you this turn'
        -> 'the sacrificed creature’s mana value'
        -> 'that creature’s toughness'
+
+englishNumber -> 'one'
+              -> 'three'
+              -> 'seven'
 
 costs -> ('pay ')? cost (', ' cost)*
 
@@ -243,6 +241,7 @@ determiner -> article
            -> 'each'
            -> 'other'
            -> 'target'
+           -> 'no'
 
 keyword -> 'enchant' object
         -> 'banding'
@@ -265,7 +264,7 @@ object -> premodifier ' ' object
        -> object ', ' object ' and ' object
        -> '~'
        -> type
-       -> (type)? 'card'
+       -> 'card'
        -> 'spell'
        -> 'permanent'
        -> 'it'
@@ -274,15 +273,21 @@ postmodifier -> player ' control' ('s')?
              -> 'in a graveyard'
              -> 'with' ('out')? ' ' quality
              -> 'named Plague Rats on the battlefield'
+             -> 'that are still lands'
+             -> 'with power and toughness each equal to its mana value'
 
 premodifier -> (premodifier ', ')+ premodifier
             -> adjective
             -> determiner
+            -> type
+            -> '1/1'
 
 type -> 'non' ('-')? type
      -> cardType
      -> landType
      -> creatureType
+     -> 'aura'
+     -> 'chosen type'
 
 quality -> 'mana value ' number
         -> 'power ' number ' or less'
@@ -291,6 +296,7 @@ quality -> 'mana value ' number
 
 phase -> 'your turn'
       -> 'your untap step'
+      -> 'their controllers’ untap steps.'
       -> 'your upkeep'
       -> 'your draw step'
       -> 'your declare attackers step'
@@ -359,7 +365,8 @@ counter -> statMod
 
 creatureType -> 'Wall'
              -> 'Merfolk'
-             -> 'Goblins'
+             -> 'Goblin'
+             -> 'Zombie'
 
 demonstrative -> 'this'
               -> 'these'
