@@ -23,7 +23,7 @@ dependencies {
 test {
     useJUnitPlatform()
     testLogging {
-        events "passed", "skipped", "failed"
+        events = ["passed", "skipped", "failed"]
     }
 }
 
@@ -33,8 +33,8 @@ pitest {
 }
 
 checkstyle {
-    configFile file(".github/linters/sun_checks.xml")
-    toolVersion '9.0'
+    configFile = file(".github/linters/sun_checks.xml")
+    toolVersion = '9.0'
 }
 checkstyleMain {
     source = 'src/main/java'
