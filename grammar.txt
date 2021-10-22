@@ -12,22 +12,16 @@ keywords -> keyword ((semicolon|comma)space keyword)*
 
 activatedAbility -> costs colon space effect period (restriction period)?
 
-triggeredAbility -> triggerCondition (comma space interveningClause)? comma space effect (space interveningClause)? period
+triggeredAbility -> triggerCondition (comma space subordinateClause)? comma space effect (space subordinateClause)? period
 
 staticAbility -> staticAbility space staticAbility
-              -> 'As long as ' condition ', ' staticAbility
-              -> 'As ' object ' enters ' zone comma space effect period
-              -> damage ' is dealt to ' object ' instead.'
-              -> object ' enters ' zone ' with ' amount ' ' counter ' counters on ' object period
-              -> object ' enters ' zone ' tapped' period
+              -> subordinateClause comma space staticAbility
+              -> replacementEffect period
               -> continuous period
+              -> damage ' is dealt to ' object ' instead.'
               -> object ' do' ('es')? 'n’t untap during ' phase period
               -> object ' cost ' costs ' more to cast' period
               -> object ' able to block ' object ' do so' period
-              -> 'If ' player ' would draw ' object ' during ' phase ', instead ' effect period
-              -> 'If ' player ' would gain life, ' effect ' instead' period
-              -> 'If ' player ' would begin your turn while ' object ' is tapped, you may skip that turn instead. If you do, ' effect period
-              -> 'If an effect causes you to discard a card, discard it, but you may put it on top of ' zone ' instead of into ' zone period
               -> player ' may have ' object ' enter ' zone ' as a copy of any ' object ' on ' zone (space except)? (period)?
               -> player ' control ' object
               -> player ' don’t lose the game for having 0 or less life' period
@@ -39,40 +33,58 @@ staticAbility -> staticAbility space staticAbility
               -> 'Activated abilities of ' object ' cost ' costs ' more to activate' period
               -> 'For each ' damage ' that would be dealt to ' object ', if ' condition ', remove a ' counter ' counter from it and prevent that ' damage period
 
+replacementEffect -> subordinateClause comma space effect
+                  -> object ' enters ' zone space prepositionalPhrase
+                  -> object ' enters ' zone space 'tapped'
+                  -> subordinateClause comma space 'instead' space effect
+                  -> subordinateClause comma space effect ' instead'
+                  -> subordinateClause comma space 'you may skip that turn instead. If you do, ' effect
+                  -> subordinateClause comma space 'discard it, but you may put it on top of ' zone ' instead of into ' zone
+
 except -> 'except it’s ' object ' in addition to its other types'
        -> 'except it doesn’t copy that creature’s color and it has “At the beginning of your upkeep, you may have this creature become a copy of target creature, except it doesn’t copy that creature’s color and it has this ability.”'
        -> 'except that the copy is ' color
 
 triggerCondition -> triggerWord ' ' triggerEvent
 
-triggerWord -> 'at'
-            -> 'when'
-            -> 'whenever'
-
 triggerEvent -> 'the beginning of ' phase
              -> 'end of combat'
-             -> object ' enters ' zone
-             -> object ' dies'
-             -> object ' is put into ' zone ' from ' zone
-             -> object ' becomes tapped'
-             -> object ' is tapped for mana'
-             -> object ' attack'
-             -> object ' blocks or becomes blocked by ' object
-             -> object ' deals damage to an opponent'
-             -> object ' is dealt damage'
-             -> object ' dealt damage by ' object ' this turn dies,'
-             -> player ' casts ' object
-             -> player ' taps ' object ' for mana'
-             -> player ' play ' object
-             -> player ' control ' object
-             -> player '’re dealt damage'
+             -> player (space)? playerVerbPhrase
+             -> object space objectVerbPhrase
 
-interveningClause -> 'if ' condition
-                  -> 'unless you ' costs
-                  -> 'unless ' player ' controls ' object
+playerVerbPhrase -> playerVerb space object
+                 -> playerVerb space object ' for mana'
+                 -> '’re dealt damage'
+
+playerVerb -> rawPlayerVerb (plural)?
+
+objectVerbPhrase -> 'enters' space zone
+                 -> 'dies'
+                 -> 'is dealt damage'
+                 -> 'is tapped for mana'
+                 -> 'is put into ' zone ' from ' zone
+                 -> 'becomes tapped'
+                 -> 'attack'
+                 -> 'blocks or becomes blocked by ' object
+                 -> 'deals damage to an opponent'
+                 -> 'dealt damage by ' object ' this turn dies,'
+
+subordinateClause -> subordinateConjunction space condition
+                  -> subordinateConjunction space 'long' space subordinateConjunction space condition
+                  -> subordinateConjunction space player space costs
+                  -> subordinateConjunction space player ' controls ' object
+                  -> subordinateConjunction object space 'enters' space zone
+                  -> subordinateConjunction space player ' would draw ' object ' during ' phase
+                  -> subordinateConjunction space player ' would gain life'
+                  -> subordinateConjunction space player ' would begin your turn while ' object ' is tapped'
+		  -> subordinateConjunction space 'an effect causes you to discard a card
+
+subordinateConjunction -> 'as'
+                       -> 'if'
+                       -> 'unless'
 
 condition -> object ' is ' ('un')? 'tapped'
-          -> object ' isn’t a creature'
+          -> object ' isn’t ' object
           -> object ' isn’t attacking'
           -> object ' has a ' counter ' counter on it'
           -> object ' has flying'
@@ -80,13 +92,13 @@ condition -> object ' is ' ('un')? 'tapped'
           -> object ' wasn’t the first land you played this turn'
           -> object ' attacked or blocked this combat'
           -> object ' are ' prepositionalPhrase
-          -> object '’s ' prepositionalPhrase
+          -> object saxon space prepositionalPhrase
 
 ## Spells
 
 spellCard -> spellAbility (\n spellAbility)*
 
-modal -> 'Choose one —' ('\n• ' effect '.')+
+modal -> 'Choose one ' dash (newline bullet space effect period)+
 
 spellAbility -> effect '.' ((' then')? ' ' effect '.')*
              -> (effect ', ')? effect ', then ' effect '.'
@@ -111,6 +123,8 @@ restriction -> 'Cast ' object ' only during ' phase
             -> 'Activate only during ' phase ('and only once each turn')?
             -> 'Remove ' object ' from your deck before playing if you’re not playing for ante'
 
+## Effects
+
 duration -> 'until end of turn'
          -> 'this turn'
          -> 'until ' object ' leaves ' zone
@@ -123,13 +137,13 @@ continuous -> continuous (' ' duration)? (' if able')?
            -> object ' get' ('s')? ' ' statMod (' as long as you control a Swamp')?
            -> object ' gets +X/+Y, where X is ' amount ', and Y is ' amount
            -> object ' gets ' statMod ' until end of turn. If this ability has been activated four or more times this turn, sacrifice ' object ' at the beginning of the next end step'
-           -> object ' get' ('s')? ' ' statMod ' and ha' ('s '|'ve ') ability
+           -> object ' get' ('s')? ' ' statMod ' and ha' ('s'|'ve') space ability
            -> object ' ha' ('s'|'ve') ' “' ability '”'
            -> object ' ha' ('s '|'ve ') ability (' and can’t be enchanted by ' object)? ('. this effect doesn't remove ' object)?
-           -> object ' attack' ('s')?
+           -> object ' attack' (plural)?
            -> object ' can attack as though ' object ' didn't have defender'
            -> object ' can attack as though ' object ' had haste'
-           -> object ' can’t attack' (' ' interveningClause)?
+           -> object ' can’t attack' (' ' subordinateClause)?
            -> object ' can block ' object
            -> object ' can’t be blocked'
            -> object ' can’t be blocked ' ('except ')? 'by ' object
@@ -139,42 +153,42 @@ continuous -> continuous (' ' duration)? (' if able')?
            -> object ' becomes ' color
            -> object ' becomes ' object
            -> object ' ' ('are'|'is'|'’s') ' ' object
-           -> object ('’')? 's power and toughness are each equal to ' amount
+           -> object (saxon)? 's power and toughness are each equal to ' amount
 
 oneShot -> dealDamage
         -> manaEffect
         -> 'counter ' object (' unless its controller pays {X}. If that player doesn’t, they tap all lands with mana abilities they control and lose all unspent mana')
         -> 'choose a ' textAspect
         -> 'choose ' player
-        -> 'destroy ' object ('. ' ('It'|'They') 'can’t be regenerated')?
-        -> 'destroy ' object '. ' object ' deals damage to each creature and each player equal to ' amount
+        -> 'destroy ' object (period space ('It'|'They') 'can’t be regenerated')?
+        -> 'destroy ' object period space object ' deals damage to each creature and each player equal to ' amount
         -> 'destroy ' object ' at end of combat'
-        -> 'destroy ' object '. ' player ' may attach ' object ' to ' object ' of their choice'
-        -> 'exile ' object '. ' player ' gains life equal to ' amount
-        -> 'sacrifice ' object (interveningClause)?
+        -> 'destroy ' object period space player ' may attach ' object ' to ' object ' of their choice'
+        -> 'exile ' object period space player ' gains life equal to ' amount
+        -> 'sacrifice ' object (subordinateClause)?
         -> 'sacrifice ' object '. If you can’t, ' effect
-        -> 'tap ' object ' and sacrifice a land of an opponent’s choice'
+        -> 'tap ' object ' and sacrifice ' object ' of an opponent’s choice'
         -> 'tap ' object
         -> 'untap ' object
         -> 'take an extra turn after this one'
         -> 'put a ' counter ' counter on ' object (' for each creature that died this turn')?
         -> 'put a ' counter ' counter on ' object '. That land is a Swamp for as long as it has a ' counter ' counter on it. Activate only during your upkeep'
         -> 'put that many ' counter ' counters on ' object
-        -> 'put up to X ' counter ' counters on ' object '. This ability can’t cause the total number of +1/+0 counters on Clockwork Beast to be greater than seven. Activate only during your upkeep'
+        -> 'put up to X ' counter ' counters on ' object '. This ability can’t cause the total number of +1/+0 counters on ' object ' to be greater than seven. Activate only during your upkeep'
         -> 'remove a ' counter ' counter from ' object
-        -> 'Look at ' player '’s hand'
+        -> 'Look' space 'at' space zone
         -> 'Search ' zone space prepositionalPhrase
-        -> 'put ' object ' ' (i|o) 'nto ' zone
+        -> 'put' space object space prepositionalPhrase
         -> 'shuffle'
         -> 'ante the top card of ' zone
-        -> (player)? ' draw' ('s')? ' ' object
+        -> (player space)? 'draw' (plural)? ' ' object
         -> player ' discards ' object (' at random')?
         -> player ' discards their hand'
         -> 'discard your hand'
         -> player ' lose the game'
         -> player ' lose life equal to ' amount
-        -> player ' gain' ('s '|' ') number ' life'
-        -> player ' gain life equal to ' amount '. ' object ' deals damage to ' something ' equal to ' amount '.'
+        -> player ' gain' (plural)? space number ' life'
+        -> player ' gain life equal to ' amount period space object ' deals damage to ' something ' equal to ' amount '.'
         -> 'Create a 1/1 colorless Insect artifact creature token with flying named Wasp'
         -> 'exchange ' object ' with the top card of ' zone
         -> 'Regenerate ' object
@@ -234,6 +248,14 @@ manaEffect -> 'add ' mana
 
 ## Definitions
 
+adjective -> 'enchanted'
+          -> 'tapped'
+          -> 'blocking'
+          -> 'attacking'
+          -> 'sacrificed'
+          -> 'token'
+          -> 'additional'
+
 amount -> 'half ' amount comma ' rounded ' ('up'|'down')
        -> englishNumber (space conjunction space 'more')?
        -> object (saxon)? 's toughness'
@@ -249,11 +271,11 @@ amount -> 'half ' amount comma ' rounded ' ('up'|'down')
 costs -> ('pay' space)? cost (comma space costs)?
 
 cost ->(mana)+
-     -> lBracket 't' rBracket
+     -> lBracket tap rBracket
      -> number ' life'
      -> 'remove a ' counter ' counter from ' object
      -> 'sacrifice ' object
-     -> 'skip that ' ('turn'|'draw')
+     -> 'skip ' demonstrative space ('turn'|'draw')
 
 determiner -> article
            -> demonstrative
@@ -286,11 +308,10 @@ object -> premodifier space object
        -> 'permanent'
        -> 'it'
 
-postmodifier -> player ' control' ('s')?
+postmodifier -> player ' control' (plural)?
              -> player ' controlled at the beginning of this turn'
              -> 'controlled by the player who controls the fewest'
              -> prepositionalPhrase
-             -> preposition ('out')? ' ' quality
              -> preposition ' toughness less than ' amount
              -> preposition ' power and toughness each equal to ' amount
              -> 'named Plague Rats' space prepositionalPhrase
@@ -310,7 +331,8 @@ premodifier -> (premodifier comma space)+ premodifier
 prepositionalPhrase -> prepositionalPhrase space prepositionalPhrase
                     -> preposition space zone
                     -> preposition space object
-                    -> preposition space object
+                    -> preposition space quality
+                    -> preposition amount space counter ' counters on ' object
 
 type -> negation (dash)? type
      -> cardType
@@ -319,7 +341,7 @@ type -> negation (dash)? type
      -> enchantmentType
      -> 'chosen type'
 
-quality -> 'mana value ' number
+quality -> 'mana value' space number
         -> 'power' space number space conjunction space comparator
         -> keyword
 
@@ -331,6 +353,10 @@ phase -> playerPossesive space 'turn'
       -> 'combat before blockers are declared'
       -> 'the' space rawPhase
       -> 'the next' space rawPhase
+
+rawPhase -> turnPart
+         -> turnPart space step
+         -> turnPart space turnPart space step
 
 player -> determiner space player
        -> player plural
@@ -352,7 +378,7 @@ playerPossesive -> 'your'
 
 something -> object
           -> player
-          -> determiner ' target'
+          -> determiner space 'target'
           -> something space conjunction space something
 
 statMod -> plusMinus number slash plusMinus number
@@ -370,14 +396,6 @@ plusMinus -> plus
           -> dash
 
 ## Morphemes
-
-adjective -> 'enchanted'
-          -> 'tapped'
-          -> 'blocking'
-          -> 'attacking'
-          -> 'sacrificed'
-          -> 'token'
-          -> 'additional'
 
 article -> 'the'
         -> 'a'
@@ -429,9 +447,9 @@ landType -> 'plains'
          -> 'forest'
 
 preposition -> 'with' ('out')?
-            -> 'in'
+            -> 'in' ('to')?
             -> 'above'
-            -> 'on'
+            -> 'on' ('to')?
 
 rawDeterminer -> 'all'
               -> 'each'
@@ -441,19 +459,32 @@ rawDeterminer -> 'all'
               -> 'no'
               -> 'only'
 
-rawPhase -> 'untap step'
-         -> 'upkeep'
-         -> 'draw step'
-         -> 'declare attackers step'
-         -> 'declare blockers step'
-         -> 'combat damage step'
-         -> 'end step'
+rawPlayerVerb -> 'cast'
+              -> 'tap'
+              -> 'play'
+              -> 'control'
 
 rawZone -> 'graveyard'
         -> 'battlefield'
         -> 'hand'
         -> 'library'
         -> 'ante'
+
+step -> 'step'
+
+turnPart -> 'untap'
+         -> 'upkeep'
+         -> 'draw'
+         -> 'declare'
+         -> 'attackers'
+         -> 'blockers'
+         -> 'combat'
+         -> 'damage'
+         -> 'end'
+
+triggerWord -> 'at'
+            -> 'when'
+            -> 'whenever'
 
 ## Lexemes
 
@@ -481,13 +512,18 @@ plural -> 's'
 
 saxon -> '’' ('s')?
 
+tap -> 't'
+
 ## Symbols
+
+bullet -> '•'
 
 comma -> ','
 
 colon -> ':'
 
 dash -> '-'
+     -> '—'
 
 lBracket -> '{'
 
