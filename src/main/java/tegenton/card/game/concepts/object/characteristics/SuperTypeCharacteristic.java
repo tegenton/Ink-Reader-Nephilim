@@ -1,10 +1,12 @@
 package tegenton.card.game.concepts.object.characteristics;
 
 import tegenton.card.game.type.SuperType;
+import java.util.ArrayList;
 import java.util.EnumSet;
+import java.util.List;
 
-final class SuperTypeCharacteristic extends Characteristic<EnumSet<SuperType>> {
-    private final EnumSet<SuperType> type = EnumSet.noneOf(SuperType.class);
+final class SuperTypeCharacteristic extends Characteristic {
+    private final List<SuperType> type = new ArrayList<>();
 
     private SuperTypeCharacteristic(final SuperType superType) {
         super();
@@ -26,7 +28,7 @@ final class SuperTypeCharacteristic extends Characteristic<EnumSet<SuperType>> {
     }
 
     @Override
-    public EnumSet<SuperType> value() {
+    public List<SuperType> value() {
         return type;
     }
 }

@@ -3,7 +3,7 @@ package tegenton.card.game.concepts.object.characteristics;
 import java.util.ArrayList;
 import java.util.List;
 
-final class NameCharacteristic extends Characteristic<List<String>> {
+final class NameCharacteristic extends Characteristic {
     private final List<String> name;
 
     private NameCharacteristic(final String singleName) {
@@ -25,8 +25,7 @@ final class NameCharacteristic extends Characteristic<List<String>> {
         return null;
     }
 
-    public static Characteristic<List<String>>
-    nameList(final List<String> names) {
+    public static Characteristic nameList(final List<String> names) {
         return new NameCharacteristic(names);
     }
 

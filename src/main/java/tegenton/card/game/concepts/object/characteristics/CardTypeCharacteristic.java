@@ -2,10 +2,11 @@ package tegenton.card.game.concepts.object.characteristics;
 
 import tegenton.card.game.type.Type;
 
-import java.util.EnumSet;
+import java.util.ArrayList;
+import java.util.List;
 
-final class CardTypeCharacteristic extends Characteristic<EnumSet<Type>> {
-    private final EnumSet<Type> type = EnumSet.noneOf(Type.class);
+final class CardTypeCharacteristic extends Characteristic {
+    private final List<Type> type = new ArrayList<>();
 
     private CardTypeCharacteristic(final Type singleType) {
         super();
@@ -26,7 +27,7 @@ final class CardTypeCharacteristic extends Characteristic<EnumSet<Type>> {
     }
 
     @Override
-    public EnumSet<Type> value() {
+    public List<Type> value() {
         return type;
     }
 }

@@ -11,23 +11,15 @@ import java.util.EnumMap;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * An object is an ability on the stack, a card, a copy of a card, a token, a
  * spell, a permanent, or an emblem.
  */
 public abstract class Object {
-    private final EnumMap<CharacteristicName, Characteristic<?>> characteristics
+    private final EnumMap<CharacteristicName, Characteristic> characteristics
             = new EnumMap<>(CharacteristicName.class);
-
-    private <T> Optional<T> getCharacteristic(final CharacteristicName name) {
-        if (!characteristics.containsKey(name)) {
-            return Optional.empty();
-        }
-        final Characteristic<T> characteristic;
-        characteristic = (Characteristic<T>) characteristics.get(name);
-        return Optional.of(characteristic.value());
-    }
 
     /**
      * The list of names this object has.
@@ -36,7 +28,19 @@ public abstract class Object {
      * containing this object's list of names
      */
     public final Optional<List<String>> getName() {
-        return getCharacteristic(CharacteristicName.name);
+        Characteristic characteristic = characteristics.get(CharacteristicName.name);
+        if (characteristic != null) {
+            List<?> unknowns = characteristic.value();
+            if (unknowns != null) {
+                List<String> names = unknowns.stream()
+                        .map(String.class::cast)
+                        .collect(Collectors.toList());
+                if (!names.isEmpty()) {
+                    return Optional.of(names);
+                }
+            }
+        }
+        return Optional.empty();
     }
 
     /**
@@ -57,8 +61,18 @@ public abstract class Object {
      * @return An empty optional if this object has no color characteristic, or
      * an optional containing this object's colors.
      */
-    public final Optional<EnumSet<Color>> getColor() {
-        return getCharacteristic(CharacteristicName.color);
+    public final Optional<List<Color>> getColor() {
+        Characteristic characteristic = characteristics.get(CharacteristicName.color);
+        if (characteristic != null) {
+            List<?> unknowns = characteristic.value();
+            if (unknowns != null) {
+                List<Color> colors = unknowns.stream()
+                        .map(Color.class::cast)
+                        .collect(Collectors.toList());
+                return Optional.of(colors);
+            }
+        }
+        return Optional.empty();
     }
 
     // manaCost
@@ -69,8 +83,20 @@ public abstract class Object {
      * @return An empty optional if this object has no color indicator, or an
      * optional containing this object's color indicator.
      */
-    public final Optional<EnumSet<Color>> getColorIndicator() {
-        return getCharacteristic(CharacteristicName.colorIndicator);
+    public final Optional<List<Color>> getColorIndicator() {
+        Characteristic characteristic = characteristics.get(CharacteristicName.colorIndicator);
+        if (characteristic != null) {
+            List<?> unknowns = characteristic.value();
+            if (unknowns != null) {
+                List<Color> colors = unknowns.stream()
+                        .map(Color.class::cast)
+                        .collect(Collectors.toList());
+                if (!colors.isEmpty()) {
+                    return Optional.of(colors);
+                }
+            }
+        }
+        return Optional.empty();
     }
 
     /**
@@ -79,8 +105,20 @@ public abstract class Object {
      * @return An empty optional if this object has no supertypes, or an
      * optional containing this object's supertypes.
      */
-    public final Optional<EnumSet<SuperType>> getSuperTypes() {
-        return getCharacteristic(CharacteristicName.superType);
+    public final Optional<List<SuperType>> getSuperTypes() {
+        Characteristic characteristic = characteristics.get(CharacteristicName.superType);
+        if (characteristic != null) {
+            List<?> unknowns = characteristic.value();
+            if (unknowns != null) {
+                List<SuperType> superTypes = unknowns.stream()
+                        .map(SuperType.class::cast)
+                        .collect(Collectors.toList());
+                if (!superTypes.isEmpty()) {
+                    return Optional.of(superTypes);
+                }
+            }
+        }
+        return Optional.empty();
     }
 
     /**
@@ -89,8 +127,20 @@ public abstract class Object {
      * @return An empty optional if this object has no types, or an optional
      * containing this object's types.
      */
-    public final Optional<EnumSet<Type>> getCardTypes() {
-        return getCharacteristic(CharacteristicName.cardType);
+    public final Optional<List<Type>> getCardTypes() {
+        Characteristic characteristic = characteristics.get(CharacteristicName.cardType);
+        if (characteristic != null) {
+            List<?> unknowns = characteristic.value();
+            if (unknowns != null) {
+                List<Type> types = unknowns.stream()
+                        .map(Type.class::cast)
+                        .collect(Collectors.toList());
+                if (!types.isEmpty()) {
+                    return Optional.of(types);
+                }
+            }
+        }
+        return Optional.empty();
     }
 
     /**
@@ -102,7 +152,19 @@ public abstract class Object {
      * containing this object's subtypes.
      */
     public final Optional<List<Subtype>> getSubtypes() {
-        return getCharacteristic(CharacteristicName.subtype);
+        Characteristic characteristic = characteristics.get(CharacteristicName.subtype);
+        if (characteristic != null) {
+            List<?> unknowns = characteristic.value();
+            if (unknowns != null) {
+                List<Subtype> subtypes = unknowns.stream()
+                        .map(Subtype.class::cast)
+                        .collect(Collectors.toList());
+                if (!subtypes.isEmpty()) {
+                    return Optional.of(subtypes);
+                }
+            }
+        }
+        return Optional.empty();
     }
 
     /**
@@ -112,7 +174,14 @@ public abstract class Object {
      * optional containing this object's rules text.
      */
     public final Optional<String> getRulesText() {
-        return getCharacteristic(CharacteristicName.rulesText);
+        Characteristic characteristic = characteristics.get(CharacteristicName.rulesText);
+        if (characteristic != null) {
+            List<?> unknowns = characteristic.value();
+            if (unknowns != null && unknowns.size() == 1 && unknowns.get(0) instanceof String text) {
+                return Optional.of(text);
+            }
+        }
+        return Optional.empty();
     }
 
     // abilities
@@ -124,9 +193,14 @@ public abstract class Object {
      * containing this object's power.
      */
     public final Optional<Integer> getPower() {
-        final Optional<Integer[]> pt;
-        pt = getCharacteristic(CharacteristicName.powerToughness);
-        return pt.map(integers -> integers[0]);
+        Characteristic characteristic = characteristics.get(CharacteristicName.powerToughness);
+        if (characteristic != null) {
+            List<?> unknowns = characteristic.value();
+            if (unknowns != null && unknowns.size() == 2 && unknowns.get(0) instanceof Integer power) {
+                return Optional.of(power);
+            }
+        }
+        return Optional.empty();
     }
 
     /**
@@ -136,9 +210,14 @@ public abstract class Object {
      * containing this object's toughness.
      */
     public final Optional<Integer> getToughness() {
-        final Optional<Integer[]> pt;
-        pt = getCharacteristic(CharacteristicName.powerToughness);
-        return pt.map(integers -> integers[1]);
+        Characteristic characteristic = characteristics.get(CharacteristicName.powerToughness);
+        if (characteristic != null) {
+            List<?> unknowns = characteristic.value();
+            if (unknowns != null && unknowns.size() == 2 && unknowns.get(1) instanceof Integer toughness) {
+                return Optional.of(toughness);
+            }
+        }
+        return Optional.empty();
     }
 
     /**
@@ -148,7 +227,14 @@ public abstract class Object {
      * optional containing this object's starting loyalty.
      */
     public final Optional<Integer> getLoyalty() {
-        return getCharacteristic(CharacteristicName.loyalty);
+        Characteristic characteristic = characteristics.get(CharacteristicName.loyalty);
+        if (characteristic != null) {
+            List<?> unknowns = characteristic.value();
+            if (unknowns != null && unknowns.size() == 2 && unknowns.get(0) instanceof Integer loyalty) {
+                return Optional.of(loyalty);
+            }
+        }
+        return Optional.empty();
     }
 
     /**
@@ -158,7 +244,14 @@ public abstract class Object {
      * optional containing this object's hand modifier.
      */
     public final Optional<Integer> getHandMod() {
-        return getCharacteristic(CharacteristicName.handMod);
+        Characteristic characteristic = characteristics.get(CharacteristicName.handMod);
+        if (characteristic != null) {
+            List<?> unknowns = characteristic.value();
+            if (unknowns != null && unknowns.size() == 2 && unknowns.get(0) instanceof Integer handMod) {
+                return Optional.of(handMod);
+            }
+        }
+        return Optional.empty();
     }
 
     /**
@@ -168,7 +261,14 @@ public abstract class Object {
      * optional containing this object's life modifier.
      */
     public final Optional<Integer> getLifeMod() {
-        return getCharacteristic(CharacteristicName.lifeMod);
+        Characteristic characteristic = characteristics.get(CharacteristicName.lifeMod);
+        if (characteristic != null) {
+            List<?> unknowns = characteristic.value();
+            if (unknowns != null && unknowns.size() == 2 && unknowns.get(0) instanceof Integer lifeMod) {
+                return Optional.of(lifeMod);
+            }
+        }
+        return Optional.empty();
     }
 
     /**
@@ -178,15 +278,14 @@ public abstract class Object {
      * @param item a string containing an attribute.
      */
     protected void setCharacteristic(final String item) {
-        final Characteristic<?> result = Characteristic.fromString(item);
+        final Characteristic result = Characteristic.fromString(item);
         if (result != null) {
             if (!characteristics.containsKey(result.getName())) {
                 characteristics.put(result.getName(), result);
             } else {
                 final List<Subtype> newTypes = new ArrayList<>();
                 newTypes.addAll(getSubtypes().orElse(new ArrayList<>()));
-                newTypes.addAll(((Characteristic<List<Subtype>>) result)
-                        .value());
+                newTypes.addAll(result.value().stream().map(Subtype.class::cast).collect(Collectors.toList()));
                 characteristics.put(CharacteristicName.subtype,
                         Characteristic.subtypeList(newTypes));
             }

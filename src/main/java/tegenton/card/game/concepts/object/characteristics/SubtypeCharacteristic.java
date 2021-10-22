@@ -6,7 +6,7 @@ import tegenton.card.game.type.subtype.Subtype;
 import java.util.List;
 import java.util.Optional;
 
-final class SubtypeCharacteristic extends Characteristic<List<Subtype>> {
+final class SubtypeCharacteristic extends Characteristic {
     private final List<Subtype> type;
 
     private SubtypeCharacteristic(final Subtype singleType) {
@@ -30,8 +30,7 @@ final class SubtypeCharacteristic extends Characteristic<List<Subtype>> {
         return null;
     }
 
-    public static Characteristic<List<Subtype>>
-    subtypeList(final List<Subtype> subtypes) {
+    public static Characteristic subtypeList(final List<Subtype> subtypes) {
         return new SubtypeCharacteristic(subtypes);
     }
 
