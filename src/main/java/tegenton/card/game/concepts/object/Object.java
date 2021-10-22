@@ -64,16 +64,7 @@ public abstract class Object {
     public final Optional<List<Color>> getColor() {
         Characteristic characteristic;
         characteristic = characteristics.get(CharacteristicName.color);
-        if (characteristic != null) {
-            List<?> unknowns = characteristic.value();
-            if (unknowns != null) {
-                List<Color> colors = unknowns.stream()
-                        .map(Color.class::cast)
-                        .collect(Collectors.toList());
-                return Optional.of(colors);
-            }
-        }
-        return Optional.empty();
+        return getColors(characteristic);
     }
 
     // manaCost
@@ -87,18 +78,7 @@ public abstract class Object {
     public final Optional<List<Color>> getColorIndicator() {
         Characteristic characteristic;
         characteristic = characteristics.get(CharacteristicName.colorIndicator);
-        if (characteristic != null) {
-            List<?> unknowns = characteristic.value();
-            if (unknowns != null) {
-                List<Color> colors = unknowns.stream()
-                        .map(Color.class::cast)
-                        .collect(Collectors.toList());
-                if (!colors.isEmpty()) {
-                    return Optional.of(colors);
-                }
-            }
-        }
-        return Optional.empty();
+        return getColors(characteristic);
     }
 
     /**
@@ -274,6 +254,20 @@ public abstract class Object {
                         Characteristic.subtypeList(newTypes));
             }
         }
+    }
+
+    private Optional<List<Color>>
+    getColors(final Characteristic characteristic) {
+        if (characteristic != null) {
+            List<?> unknowns = characteristic.value();
+            if (unknowns != null) {
+                List<Color> colors = unknowns.stream()
+                        .map(Color.class::cast)
+                        .collect(Collectors.toList());
+                return Optional.of(colors);
+            }
+        }
+        return Optional.empty();
     }
 
     private Optional<Integer>
