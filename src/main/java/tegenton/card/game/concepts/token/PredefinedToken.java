@@ -31,14 +31,15 @@ public abstract class PredefinedToken extends Token {
      * @return A token with the characteristics of the given type
      */
     public static Token create(final String s) {
-        return switch (s.toLowerCase()) {
-            case "treasure" -> Token.create("colorless Treasure artifact");
-            case "food" -> Token.create("colorless Food artifact");
-            case "gold" -> Token.create("colorless Gold artifact");
-            case "walker" -> Token.create("2/2 black Zombie creature named Walker");
-            case "shard" -> Token.create("colorless Shard enchantment");
-            case "clue" -> Token.create("colorless Clue artifact");
-            default -> null;
-        };
+        return Token.create(
+                switch (s.toLowerCase()) {
+                    case "treasure" -> "colorless Treasure artifact";
+                    case "food" -> "colorless Food artifact";
+                    case "gold" -> "colorless Gold artifact";
+                    case "walker" -> "2/2 black Zombie creature named Walker";
+                    case "shard" -> "colorless Shard enchantment";
+                    case "clue" -> "colorless Clue artifact";
+                    default -> throw new IllegalArgumentException();
+                });
     }
 }

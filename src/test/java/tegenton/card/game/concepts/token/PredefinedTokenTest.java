@@ -122,7 +122,7 @@ card.”*/
 
     @Test
     void invalid() {
-        token = PredefinedToken.create("Some Dude");
-        assertNull(token);
+        assertThrows(IllegalArgumentException.class,
+                () -> PredefinedToken.create("Some Dude"));
     }
 }

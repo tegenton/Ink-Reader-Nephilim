@@ -27,7 +27,8 @@ public abstract class Object {
      * containing this object's list of names
      */
     public final Optional<List<String>> getName() {
-        Characteristic characteristic = characteristics.get(CharacteristicName.name);
+        Characteristic characteristic;
+        characteristic = characteristics.get(CharacteristicName.name);
         if (characteristic != null) {
             List<?> unknowns = characteristic.value();
             if (unknowns != null) {
@@ -61,7 +62,8 @@ public abstract class Object {
      * an optional containing this object's colors.
      */
     public final Optional<List<Color>> getColor() {
-        Characteristic characteristic = characteristics.get(CharacteristicName.color);
+        Characteristic characteristic;
+        characteristic = characteristics.get(CharacteristicName.color);
         if (characteristic != null) {
             List<?> unknowns = characteristic.value();
             if (unknowns != null) {
@@ -83,7 +85,8 @@ public abstract class Object {
      * optional containing this object's color indicator.
      */
     public final Optional<List<Color>> getColorIndicator() {
-        Characteristic characteristic = characteristics.get(CharacteristicName.colorIndicator);
+        Characteristic characteristic;
+        characteristic = characteristics.get(CharacteristicName.colorIndicator);
         if (characteristic != null) {
             List<?> unknowns = characteristic.value();
             if (unknowns != null) {
@@ -105,7 +108,8 @@ public abstract class Object {
      * optional containing this object's supertypes.
      */
     public final Optional<List<SuperType>> getSuperTypes() {
-        Characteristic characteristic = characteristics.get(CharacteristicName.superType);
+        Characteristic characteristic;
+        characteristic = characteristics.get(CharacteristicName.superType);
         if (characteristic != null) {
             List<?> unknowns = characteristic.value();
             if (unknowns != null) {
@@ -127,7 +131,8 @@ public abstract class Object {
      * containing this object's types.
      */
     public final Optional<List<Type>> getCardTypes() {
-        Characteristic characteristic = characteristics.get(CharacteristicName.cardType);
+        Characteristic characteristic;
+        characteristic = characteristics.get(CharacteristicName.cardType);
         if (characteristic != null) {
             List<?> unknowns = characteristic.value();
             if (unknowns != null) {
@@ -151,7 +156,8 @@ public abstract class Object {
      * containing this object's subtypes.
      */
     public final Optional<List<Subtype>> getSubtypes() {
-        Characteristic characteristic = characteristics.get(CharacteristicName.subtype);
+        Characteristic characteristic;
+        characteristic = characteristics.get(CharacteristicName.subtype);
         if (characteristic != null) {
             List<?> unknowns = characteristic.value();
             if (unknowns != null) {
@@ -173,10 +179,12 @@ public abstract class Object {
      * optional containing this object's rules text.
      */
     public final Optional<String> getRulesText() {
-        Characteristic characteristic = characteristics.get(CharacteristicName.rulesText);
+        Characteristic characteristic;
+        characteristic = characteristics.get(CharacteristicName.rulesText);
         if (characteristic != null) {
             List<?> unknowns = characteristic.value();
-            if (unknowns != null && unknowns.size() == 1 && unknowns.get(0) instanceof String text) {
+            if (unknowns != null && unknowns.size() == 1
+                    && unknowns.get(0) instanceof String text) {
                 return Optional.of(text);
             }
         }
@@ -192,7 +200,8 @@ public abstract class Object {
      * containing this object's power.
      */
     public final Optional<Integer> getPower() {
-        Characteristic characteristic = characteristics.get(CharacteristicName.powerToughness);
+        Characteristic characteristic;
+        characteristic = characteristics.get(CharacteristicName.powerToughness);
         return getInteger(characteristic, 0);
     }
 
@@ -203,7 +212,8 @@ public abstract class Object {
      * containing this object's toughness.
      */
     public final Optional<Integer> getToughness() {
-        Characteristic characteristic = characteristics.get(CharacteristicName.powerToughness);
+        Characteristic characteristic;
+        characteristic = characteristics.get(CharacteristicName.powerToughness);
         return getInteger(characteristic, 1);
     }
 
@@ -214,7 +224,8 @@ public abstract class Object {
      * optional containing this object's starting loyalty.
      */
     public final Optional<Integer> getLoyalty() {
-        Characteristic characteristic = characteristics.get(CharacteristicName.loyalty);
+        Characteristic characteristic;
+        characteristic = characteristics.get(CharacteristicName.loyalty);
         return getInteger(characteristic, 0);
     }
 
@@ -225,7 +236,8 @@ public abstract class Object {
      * optional containing this object's hand modifier.
      */
     public final Optional<Integer> getHandMod() {
-        Characteristic characteristic = characteristics.get(CharacteristicName.handMod);
+        Characteristic characteristic;
+        characteristic = characteristics.get(CharacteristicName.handMod);
         return getInteger(characteristic, 0);
     }
 
@@ -236,7 +248,8 @@ public abstract class Object {
      * optional containing this object's life modifier.
      */
     public final Optional<Integer> getLifeMod() {
-        Characteristic characteristic = characteristics.get(CharacteristicName.lifeMod);
+        Characteristic characteristic;
+        characteristic = characteristics.get(CharacteristicName.lifeMod);
         return getInteger(characteristic, 0);
     }
 
@@ -254,18 +267,22 @@ public abstract class Object {
             } else {
                 final List<Subtype> newTypes = new ArrayList<>();
                 newTypes.addAll(getSubtypes().orElse(new ArrayList<>()));
-                newTypes.addAll(result.value().stream().map(Subtype.class::cast).collect(Collectors.toList()));
+                newTypes.addAll(result.value().stream()
+                        .map(Subtype.class::cast)
+                        .collect(Collectors.toList()));
                 characteristics.put(CharacteristicName.subtype,
                         Characteristic.subtypeList(newTypes));
             }
         }
     }
 
-    private Optional<Integer> getInteger(Characteristic characteristic, int i) {
+    private Optional<Integer>
+    getInteger(final Characteristic characteristic, final int i) {
         if (characteristic != null) {
             List<?> unknowns = characteristic.value();
-            if (unknowns != null && unknowns.size() == 2 && unknowns.get(i) instanceof Integer power) {
-                return Optional.of(power);
+            if (unknowns != null && unknowns.size() == 2
+                    && unknowns.get(i) instanceof Integer integer) {
+                return Optional.of(integer);
             }
         }
         return Optional.empty();
