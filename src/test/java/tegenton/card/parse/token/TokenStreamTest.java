@@ -1,13 +1,11 @@
 package tegenton.card.parse.token;
 
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class TokenStreamTest {
 
@@ -23,7 +21,7 @@ public class TokenStreamTest {
     void compare() {
         int i = 0;
         while (tokenStream.hasNext()) {
-            Assertions.assertEquals(expected.get(i++).getWord().getWord(), tokenStream.getNext().getWord().getWord());
+            assertEquals(expected.get(i++).getWord().getWord(), tokenStream.getNext().getWord().getWord());
         }
         assertEquals(expected.size(), i);
     }
