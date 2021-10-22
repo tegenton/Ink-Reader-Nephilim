@@ -1,43 +1,43 @@
 # Grammar for Alpha
 
 ## Permanents
-permanentCard -> ability? ('\n' ability)*
+permanentCard -> ability? (newline ability)*
 
 ability -> keywords
         -> staticAbility
         -> activatedAbility
         -> triggeredAbility
 
-keywords -> keyword ([;,]' ' keyword)*
+keywords -> keyword ((semicolon|comma)space keyword)*
 
-activatedAbility -> costs ': ' effect '.' (restriction '.')?
+activatedAbility -> costs colon space effect period (restriction period)?
 
-triggeredAbility -> triggerCondition (', ' interveningClause)? ', ' effect (' ' interveningClause)? '.'
+triggeredAbility -> triggerCondition (comma space interveningClause)? comma space effect (space interveningClause)? period
 
-staticAbility -> staticAbility ' ' staticAbility
+staticAbility -> staticAbility space staticAbility
               -> 'As long as ' condition ', ' staticAbility
-              -> 'As ' object ' enters ' zone ', ' effect '.'
+              -> 'As ' object ' enters ' zone comma space effect period
               -> damage ' is dealt to ' object ' instead.'
-              -> object ' enters ' zone ' with ' amount ' ' counter ' counters on it.'
-              -> object ' enters ' zone ' tapped.'
-              -> continuous '.'
-              -> object ' do' ('es')? 'n’t untap during ' phase '.'
-              -> object ' cost ' costs ' more to cast.'
-              -> object ' able to block ' object ' do so.'
-              -> 'If ' player ' would draw ' object ' during ' phase ', instead ' effect '.'
-              -> 'If ' player ' would gain life, ' effect ' instead.'
-              -> 'If ' player ' would begin your turn while ' object ' is tapped, you may skip that turn instead. If you do, ' effect '.'
-              -> 'If an effect causes you to discard a card, discard it, but you may put it on top of your library instead of into your graveyard.'
-              -> player ' may have ' object ' enter ' zone ' as a copy of any ' object ' on ' zone (' ' except)? ('.')?
+              -> object ' enters ' zone ' with ' amount ' ' counter ' counters on ' object period
+              -> object ' enters ' zone ' tapped' period
+              -> continuous period
+              -> object ' do' ('es')? 'n’t untap during ' phase period
+              -> object ' cost ' costs ' more to cast' period
+              -> object ' able to block ' object ' do so' period
+              -> 'If ' player ' would draw ' object ' during ' phase ', instead ' effect period
+              -> 'If ' player ' would gain life, ' effect ' instead' period
+              -> 'If ' player ' would begin your turn while ' object ' is tapped, you may skip that turn instead. If you do, ' effect period
+              -> 'If an effect causes you to discard a card, discard it, but you may put it on top of ' zone ' instead of into ' zone period
+              -> player ' may have ' object ' enter ' zone ' as a copy of any ' object ' on ' zone (space except)? (period)?
               -> player ' control ' object
-              -> player ' don’t lose the game for having 0 or less life.'
-              -> player ' have no maximum hand size.'
-              -> player ' may spend ' color ' mana as though it were ' color ' mana.'
-              -> player ' may play any number of lands on each of your turns.'
-              -> player ' skip ' phase '.'
-              -> player ' can’t untap more than one ' object ' during ' phase '.'
-              -> 'Activated abilities of ' object ' cost ' costs ' more to activate.'
-              -> 'For each 1 damage that would be dealt to ' object ', if ' condition ', remove a ' counter ' counter from it and prevent that 1 damage.'
+              -> player ' don’t lose the game for having 0 or less life' period
+              -> player ' have no maximum hand size' period
+              -> player ' may spend ' color ' mana as though it were ' color ' mana' period
+              -> player ' may play any number of lands on each of your turns' period
+              -> player ' skip ' phase period
+              -> player ' can’t untap more than one ' object ' during ' phase period
+              -> 'Activated abilities of ' object ' cost ' costs ' more to activate' period
+              -> 'For each ' damage ' that would be dealt to ' object ', if ' condition ', remove a ' counter ' counter from it and prevent that ' damage period
 
 except -> 'except it’s ' object ' in addition to its other types'
        -> 'except it doesn’t copy that creature’s color and it has “At the beginning of your upkeep, you may have this creature become a copy of target creature, except it doesn’t copy that creature’s color and it has this ability.”'
@@ -76,11 +76,11 @@ condition -> object ' is ' ('un')? 'tapped'
           -> object ' isn’t attacking'
           -> object ' has a ' counter ' counter on it'
           -> object ' has flying'
-          -> object ' is in ' zone ' with ' object ' above it'
+          -> object ' is ' prepositionalPhrase space prepositionalPhrase
           -> object ' wasn’t the first land you played this turn'
           -> object ' attacked or blocked this combat'
-          -> object ' are on ' zone
-          -> object '’s on ' zone
+          -> object ' are ' prepositionalPhrase
+          -> object '’s ' prepositionalPhrase
 
 ## Spells
 
@@ -91,7 +91,7 @@ modal -> 'Choose one —' ('\n• ' effect '.')+
 spellAbility -> effect '.' ((' then')? ' ' effect '.')*
              -> (effect ', ')? effect ', then ' effect '.'
              -> effect '. ' effect '. ' effect '.'
-             -> restriction '.'
+             -> restriction period
              -> modal
              -> player ' chooses a number of lands they control equal to ' amount ', then sacrifices the rest. Players discard cards and sacrifice creatures the same way.'
              -> 'Tap ' object ' and ' player ' loses all unspent mana.'
@@ -163,7 +163,7 @@ oneShot -> dealDamage
         -> 'put up to X ' counter ' counters on ' object '. This ability can’t cause the total number of +1/+0 counters on Clockwork Beast to be greater than seven. Activate only during your upkeep'
         -> 'remove a ' counter ' counter from ' object
         -> 'Look at ' player '’s hand'
-        -> 'Search ' zone ' for ' object
+        -> 'Search ' zone space prepositionalPhrase
         -> 'put ' object ' ' (i|o) 'nto ' zone
         -> 'shuffle'
         -> 'ante the top card of ' zone
@@ -217,7 +217,7 @@ damage -> number ' damage'
        -> 'the next ' number ' damage that would be dealt to ' something ' this turn'
 
 dealDamage -> object ' deals ' damage ' to ' something
-           -> object ' deals ' damage ' to ' something ' and ' number ' damage to ' something
+           -> object ' deals ' damage ' to ' something ' and ' damage ' to ' something
            -> object ' deals ' damage ' to ' something ' and ' object ' gains "Enchanted creature loses flying"'
            -> object ' deals ' damage ' to ' something ', where X is ' amount
            -> object ' deals ' damage ' to ' something '. ' player ' gain life equal to the damage dealt, but not more life than the player’s life total before the damage was dealt, the planeswalker’s loyalty before the damage was dealt, or the creature’s toughness'
@@ -234,23 +234,19 @@ manaEffect -> 'add ' mana
 
 ## Definitions
 
-amount -> 'half ' amount ', rounded ' ('up'|'down')
-       -> englishNumber (' or more')?
-       -> object ('’')? 's toughness'
-       -> object ('’')? 's power'
-       -> object ('’')? 's mana value'
+amount -> 'half ' amount comma ' rounded ' ('up'|'down')
+       -> englishNumber (space conjunction space 'more')?
+       -> object (saxon)? 's toughness'
+       -> object (saxon)? 's power'
+       -> object (saxon)? 's mana value'
        -> 'X'
        -> 'the number of ' object (' minus ' number)?
-       -> 'the damage dealt to you this turn'
-       -> 'your life total'
+       -> 'the damage dealt to ' player ' this turn'
+       -> playerPossesive ' life total'
        -> 'that many'
        -> 'any number of'
 
-englishNumber -> 'one'
-              -> 'three'
-              -> 'seven'
-
-costs -> ('pay ')? cost (', ' costs)?
+costs -> ('pay' space)? cost (comma space costs)?
 
 cost ->(mana)+
      -> lBracket 't' rBracket
@@ -262,12 +258,6 @@ cost ->(mana)+
 determiner -> article
            -> demonstrative
            -> amount
-           -> 'all'
-           -> 'each'
-           -> 'other'
-           -> 'target'
-           -> 'no'
-           -> 'only'
 
 keyword -> 'enchant' object
         -> 'banding'
@@ -283,14 +273,13 @@ keyword -> 'enchant' object
         -> 'trample'
         -> 'reach'
 
-mana -> (lBracket manaLetter rBracket)+
+mana -> (lBracket (manaLetter | number) rBracket)+
 
-object -> premodifier ' ' object
-       -> object ' ' postmodifier
-       -> object 's'
-       -> (object ', ')? object ' or ' object
-       -> object ', ' object ' and ' object
-       -> '~'
+object -> premodifier space object
+       -> object space postmodifier
+       -> object plural
+       -> (object comma space)* object space conjunction object
+       -> tilde
        -> type
        -> 'card'
        -> 'spell'
@@ -300,60 +289,53 @@ object -> premodifier ' ' object
 postmodifier -> player ' control' ('s')?
              -> player ' controlled at the beginning of this turn'
              -> 'controlled by the player who controls the fewest'
-             -> 'in ' zone
-             -> 'with' ('out')? ' ' quality
-             -> 'with toughness less than ' amount
-             -> 'with power and toughness each equal to ' amount
-             -> 'named Plague Rats on ' zone
+             -> prepositionalPhrase
+             -> preposition ('out')? ' ' quality
+             -> preposition ' toughness less than ' amount
+             -> preposition ' power and toughness each equal to ' amount
+             -> 'named Plague Rats' space prepositionalPhrase
              -> 'that are still ' object
              -> 'other than ' object
              -> 'that didn’t attack this turn'
              -> object ' was blocking that had become blocked by ' object ' this combat'
              -> 'put into ' zone ' this way'
 
-premodifier -> (premodifier ', ')+ premodifier
-            -> adjective
+premodifier -> (premodifier comma space)+ premodifier
+            -> (negation (space|dash))? adjective
+            -> (negation (space|dash))? color
             -> determiner
             -> type
-            -> '1/1'
-            -> '3/6'
+            -> number slash number
 
-type -> 'non' ('-')? type
+prepositionalPhrase -> prepositionalPhrase space prepositionalPhrase
+                    -> preposition space zone
+                    -> preposition space object
+                    -> preposition space object
+
+type -> negation (dash)? type
      -> cardType
      -> landType
      -> creatureType
-     -> 'aura'
+     -> enchantmentType
      -> 'chosen type'
 
 quality -> 'mana value ' number
-        -> 'power ' number ' or less'
+        -> 'power' space number space conjunction space comparator
         -> keyword
-        -> 'power ' number ' or greater'
 
-phase -> 'your turn'
-      -> 'your untap step'
-      -> 'their untap steps'
-      -> 'their controllers’ untap steps.'
-      -> 'your upkeep'
-      -> 'your draw step'
-      -> 'your declare attackers step'
-      -> 'its controller’s untap step'
-      -> 'the chosen player’s upkeep'
-      -> 'the upkeep of ' object '’s controller'
-      -> 'each player’s upkeep'
-      -> 'each player’s draw step'
+phase -> playerPossesive space 'turn'
+      -> playerPossesive space rawPhase (plural)?
+      -> 'the ' rawPhase ' of ' object saxon ' controller'
       -> 'combat'
-      -> 'an opponent’s turn, before attackers are declared'
+      -> 'an opponent’s turn' comma ' before attackers are declared'
       -> 'combat before blockers are declared'
-      -> 'the declare blockers step'
-      -> 'the combat damage step'
-      -> 'the end step'
-      -> 'the next end step'
+      -> 'the' space rawPhase
+      -> 'the next' space rawPhase
 
-player -> determiner ' ' player
-       -> player 's'
-       -> object '’s controller'
-       -> object '’s owner'
+player -> determiner space player
+       -> player plural
+       -> object saxon space 'controller'
+       -> object saxon space 'owner'
        -> 'player'
        -> 'you'
        -> 'opponent'
@@ -361,33 +343,40 @@ player -> determiner ' ' player
        -> 'defending player'
        -> 'they'
 
+playerPossesive -> 'your'
+                -> 'their'
+                -> player saxon
+                -> 'their controller' plural saxon
+                -> 'its controller' saxon
+                -> 'the chosen player' saxon
+
 something -> object
           -> player
-          -> 'any target'
-          -> something ' and ' something
+          -> determiner ' target'
+          -> something space conjunction space something
+
+statMod -> plusMinus number slash plusMinus number
 
 textAspect -> 'color word'
            -> 'basic land type'
 
-zone -> 'your graveyard'
-     -> 'a graveyard'
-     -> 'your hand'
-     -> 'their hand'
-     -> player '’s hand'
-     -> 'your library'
-     -> 'their library'
-     -> 'the ante'
-     -> 'the battlefield'
+zone -> playerPossesive space rawZone
+     -> article space rawZone
+
+counter -> statMod
+        -> counterType
+
+plusMinus -> plus
+          -> dash
 
 ## Morphemes
 
-adjective -> color
-          -> 'enchanted'
-          -> 'untapped'
+adjective -> 'enchanted'
+          -> 'tapped'
           -> 'blocking'
           -> 'attacking'
           -> 'sacrificed'
-          -> 'nontoken'
+          -> 'token'
           -> 'additional'
 
 article -> 'the'
@@ -399,17 +388,21 @@ cardType -> 'creature'
          -> 'artifact'
          -> 'enchantment'
 
-color -> 'non' color
-      -> 'white'
+color -> 'white'
       -> 'blue'
       -> 'black'
       -> 'green'
       -> 'red'
 
-counter -> statMod
-        -> 'corpse'
-        -> 'vitality'
-        -> 'mire'
+comparator -> 'less'
+           -> 'greater'
+
+conjunction -> 'and'
+            -> 'or'
+
+counterType -> 'corpse'
+            -> 'vitality'
+            -> 'mire'
 
 creatureType -> 'Goblin'
              -> 'Golem'
@@ -422,11 +415,47 @@ demonstrative -> 'this'
               -> 'those'
               -> 'that'
 
+englishNumber -> 'one'
+              -> 'two'
+              -> 'three'
+              -> 'seven'
+
+enchantmentType -> 'aura'
+
 landType -> 'plains'
          -> 'island'
          -> 'swamp'
          -> 'mountain'
          -> 'forest'
+
+preposition -> 'with' ('out')?
+            -> 'in'
+            -> 'above'
+            -> 'on'
+
+rawDeterminer -> 'all'
+              -> 'each'
+              -> 'any'
+              -> 'other'
+              -> 'target'
+              -> 'no'
+              -> 'only'
+
+rawPhase -> 'untap step'
+         -> 'upkeep'
+         -> 'draw step'
+         -> 'declare attackers step'
+         -> 'declare blockers step'
+         -> 'combat damage step'
+         -> 'end step'
+
+rawZone -> 'graveyard'
+        -> 'battlefield'
+        -> 'hand'
+        -> 'library'
+        -> 'ante'
+
+## Lexemes
 
 manaLetter -> 'W'
            -> 'U'
@@ -434,11 +463,9 @@ manaLetter -> 'W'
            -> 'R'
            -> 'G'
            -> 'C'
-           -> number
 
-lBracket -> '{'
-
-rBracket -> '}'
+negation -> 'non'
+         -> 'un'
 
 number -> '0'
        -> '1'
@@ -450,5 +477,32 @@ number -> '0'
        -> '7'
        -> 'X'
 
-statMod -> '+' number '/+' number
-        -> '-' number '/-' number
+plural -> 's'
+
+saxon -> '’' ('s')?
+
+## Symbols
+
+comma -> ','
+
+colon -> ':'
+
+dash -> '-'
+
+lBracket -> '{'
+
+newline -> '\n'
+
+period -> '.'
+
+plus -> '+'
+
+rBracket -> '}'
+
+semicolon -> ';'
+
+slash -> '/'
+
+space -> ' '
+
+tilde -> '~'
