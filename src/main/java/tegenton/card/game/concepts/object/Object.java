@@ -8,7 +8,6 @@ import tegenton.card.game.type.Type;
 import tegenton.card.game.type.subtype.Subtype;
 import java.util.ArrayList;
 import java.util.EnumMap;
-import java.util.EnumSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -194,13 +193,7 @@ public abstract class Object {
      */
     public final Optional<Integer> getPower() {
         Characteristic characteristic = characteristics.get(CharacteristicName.powerToughness);
-        if (characteristic != null) {
-            List<?> unknowns = characteristic.value();
-            if (unknowns != null && unknowns.size() == 2 && unknowns.get(0) instanceof Integer power) {
-                return Optional.of(power);
-            }
-        }
-        return Optional.empty();
+        return getInteger(characteristic, 0);
     }
 
     /**
@@ -211,13 +204,7 @@ public abstract class Object {
      */
     public final Optional<Integer> getToughness() {
         Characteristic characteristic = characteristics.get(CharacteristicName.powerToughness);
-        if (characteristic != null) {
-            List<?> unknowns = characteristic.value();
-            if (unknowns != null && unknowns.size() == 2 && unknowns.get(1) instanceof Integer toughness) {
-                return Optional.of(toughness);
-            }
-        }
-        return Optional.empty();
+        return getInteger(characteristic, 1);
     }
 
     /**
@@ -228,13 +215,7 @@ public abstract class Object {
      */
     public final Optional<Integer> getLoyalty() {
         Characteristic characteristic = characteristics.get(CharacteristicName.loyalty);
-        if (characteristic != null) {
-            List<?> unknowns = characteristic.value();
-            if (unknowns != null && unknowns.size() == 2 && unknowns.get(0) instanceof Integer loyalty) {
-                return Optional.of(loyalty);
-            }
-        }
-        return Optional.empty();
+        return getInteger(characteristic, 0);
     }
 
     /**
@@ -245,13 +226,7 @@ public abstract class Object {
      */
     public final Optional<Integer> getHandMod() {
         Characteristic characteristic = characteristics.get(CharacteristicName.handMod);
-        if (characteristic != null) {
-            List<?> unknowns = characteristic.value();
-            if (unknowns != null && unknowns.size() == 2 && unknowns.get(0) instanceof Integer handMod) {
-                return Optional.of(handMod);
-            }
-        }
-        return Optional.empty();
+        return getInteger(characteristic, 0);
     }
 
     /**
@@ -262,13 +237,7 @@ public abstract class Object {
      */
     public final Optional<Integer> getLifeMod() {
         Characteristic characteristic = characteristics.get(CharacteristicName.lifeMod);
-        if (characteristic != null) {
-            List<?> unknowns = characteristic.value();
-            if (unknowns != null && unknowns.size() == 2 && unknowns.get(0) instanceof Integer lifeMod) {
-                return Optional.of(lifeMod);
-            }
-        }
-        return Optional.empty();
+        return getInteger(characteristic, 0);
     }
 
     /**
@@ -292,4 +261,13 @@ public abstract class Object {
         }
     }
 
+    private Optional<Integer> getInteger(Characteristic characteristic, int i) {
+        if (characteristic != null) {
+            List<?> unknowns = characteristic.value();
+            if (unknowns != null && unknowns.size() == 2 && unknowns.get(i) instanceof Integer power) {
+                return Optional.of(power);
+            }
+        }
+        return Optional.empty();
+    }
 }

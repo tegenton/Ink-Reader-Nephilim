@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import tegenton.card.game.type.Type;
 
 import java.util.ArrayList;
-import java.util.EnumSet;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

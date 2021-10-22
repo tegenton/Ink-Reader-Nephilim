@@ -7,8 +7,6 @@ import tegenton.card.game.type.Type;
 import tegenton.card.game.type.subtype.CreatureType;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.EnumSet;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;

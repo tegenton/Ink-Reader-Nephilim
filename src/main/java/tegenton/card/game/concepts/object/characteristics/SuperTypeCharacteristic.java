@@ -2,7 +2,6 @@ package tegenton.card.game.concepts.object.characteristics;
 
 import tegenton.card.game.type.SuperType;
 import java.util.ArrayList;
-import java.util.EnumSet;
 import java.util.List;
 
 final class SuperTypeCharacteristic extends Characteristic {

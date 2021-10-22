@@ -9,7 +9,6 @@ import tegenton.card.game.type.subtype.EnchantmentType;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.EnumSet;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;

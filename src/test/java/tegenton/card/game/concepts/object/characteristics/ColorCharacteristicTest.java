@@ -3,10 +3,8 @@ package tegenton.card.game.concepts.object.characteristics;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import tegenton.card.game.concepts.Color;
-import tegenton.card.game.concepts.token.LegendaryToken;
 
 import java.util.ArrayList;
-import java.util.EnumSet;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
