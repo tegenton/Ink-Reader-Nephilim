@@ -116,6 +116,30 @@ public class RulesTextParserTest {
             void crusade() {
                 text = "White creatures get +1/+1.";
             }
+
+            @Test
+            @DisplayName("Death Ward")
+            void deathWard() {
+                text = "Regenerate target creature.";
+            }
+
+            @Test
+            @DisplayName("Disenchant")
+            void disenchant() {
+                text = "Destroy target artifact or enchantment.";
+            }
+
+            @Test
+            @DisplayName("Farmstead")
+            void farmstead() {
+                text = "Enchant land\nEnchanted land has “At the beginning of your upkeep, you may pay {W}{W}. If you do, you gain 1 life.”";
+            }
+
+            @Test
+            @DisplayName("Green Ward")
+            void greenWard() {
+                text = "Enchant creature\nEnchanted creature has protection from green. This effect doesn’t remove Green Ward.";
+            }
         }
     }
 }
