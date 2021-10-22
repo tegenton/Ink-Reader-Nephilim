@@ -1,10 +1,11 @@
 package tegenton.card.game.concepts.object.characteristics;
 
 import tegenton.card.game.concepts.Color;
-import java.util.EnumSet;
+import java.util.ArrayList;
+import java.util.List;
 
-final class ColorCharacteristic extends Characteristic<EnumSet<Color>> {
-    private final EnumSet<Color> colors = EnumSet.noneOf(Color.class);
+final class ColorCharacteristic extends Characteristic {
+    private final List<Color> colors = new ArrayList<>();
 
     private ColorCharacteristic(final Color color) {
         super();
@@ -30,7 +31,7 @@ final class ColorCharacteristic extends Characteristic<EnumSet<Color>> {
     }
 
     @Override
-    public EnumSet<Color> value() {
+    public List<Color> value() {
         return colors;
     }
 }

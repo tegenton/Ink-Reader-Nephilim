@@ -14,15 +14,12 @@ import tegenton.card.generic.Filter;
  * characteristic. For example, characteristics don’t include whether a
  * permanent is tapped, a spell’s target, an object’s owner or controller, what
  * an Aura enchants, and so on.
- *
- * @param <T> type of information contained in the characteristic, such as a
- *            string for name or Color for color
  */
-public abstract class Characteristic<T> {
-    private static Filter<Characteristic<?>> filter;
+public abstract class Characteristic {
+    private static Filter<Characteristic> filter;
 
     private static void setupFilter() {
-        final List<Function<String, Characteristic<?>>> characteristics;
+        final List<Function<String, Characteristic>> characteristics;
         characteristics = List.of(CardTypeCharacteristic::fromString,
                 ColorCharacteristic::fromString,
                 NameCharacteristic::fromString,
@@ -39,7 +36,7 @@ public abstract class Characteristic<T> {
      * @return characteristic contained in s, if s contains a characteristic,
      * otherwise null
      */
-    public static Characteristic<?> fromString(final String s) {
+    public static Characteristic fromString(final String s) {
         if (filter == null) {
             setupFilter();
         }
@@ -52,8 +49,7 @@ public abstract class Characteristic<T> {
      * @param names the list of names for the new NameCharacteristic
      * @return a NameCharacteristic containing those names
      */
-    public static Characteristic<List<String>>
-    nameList(final List<String> names) {
+    public static Characteristic nameList(final List<String> names) {
         return NameCharacteristic.nameList(names);
     }
 
@@ -64,8 +60,7 @@ public abstract class Characteristic<T> {
      * @param subtypes the list of names for the new SubtypeCharacteristic
      * @return a SubtypeCharacteristic containing those subtypes
      */
-    public static Characteristic<List<Subtype>>
-    subtypeList(final List<Subtype> subtypes) {
+    public static Characteristic subtypeList(final List<Subtype> subtypes) {
         return SubtypeCharacteristic.subtypeList(subtypes);
     }
 
@@ -74,7 +69,7 @@ public abstract class Characteristic<T> {
      *
      * @return Some information
      */
-    public abstract T value();
+    public abstract List<?> value();
 
     /**
      * Determine the type of characteristic this object is.

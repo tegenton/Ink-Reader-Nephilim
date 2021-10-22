@@ -7,8 +7,6 @@ import tegenton.card.game.type.Type;
 import tegenton.card.game.type.subtype.CreatureType;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.EnumSet;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -29,10 +27,10 @@ public class TokenTest {
         assertTrue(token.getName().isPresent());
         assertEquals(1, token.getPower().get());
         assertEquals(1, token.getToughness().get());
-        assertEquals(EnumSet.of(Color.green), token.getColor().get());
-        assertEquals(EnumSet.of(Type.creature), token.getCardTypes().get());
-        assertEquals(List.of(CreatureType.saproling), token.getSubtypes().get());
-        assertEquals(new ArrayList<>(Collections.singleton("Saproling")), token.getName().get());
+        assertIterableEquals(List.of(Color.green), token.getColor().get());
+        assertIterableEquals(List.of(Type.creature), token.getCardTypes().get());
+        assertIterableEquals(List.of(CreatureType.saproling), token.getSubtypes().get());
+        assertIterableEquals(List.of("Saproling"), token.getName().get());
 
         // TODO: assertTrue(token.getManaCost().isEmpty());
         assertTrue(token.getSuperTypes().isEmpty());
@@ -48,9 +46,9 @@ public class TokenTest {
         assertTrue(token.getCardTypes().isPresent());
         assertTrue(token.getSubtypes().isPresent());
         assertTrue(token.getName().isPresent());
-        assertEquals(EnumSet.of(Type.creature), token.getCardTypes().get());
-        assertEquals(List.of(CreatureType.goblin, CreatureType.scout), token.getSubtypes().get());
-        assertEquals(new ArrayList<>(Collections.singleton("Goblin Scout")), token.getName().get());
+        assertIterableEquals(List.of(Type.creature), token.getCardTypes().get());
+        assertIterableEquals(List.of(CreatureType.goblin, CreatureType.scout), token.getSubtypes().get());
+        assertIterableEquals(List.of("Goblin Scout"), token.getName().get());
     }
 
     @Test
@@ -66,9 +64,9 @@ public class TokenTest {
         assertTrue(token.getName().isPresent());
         assertEquals(4, token.getPower().get());
         assertEquals(4, token.getToughness().get());
-        assertEquals(EnumSet.noneOf(Color.class), token.getColor().get());
-        assertEquals(EnumSet.of(SuperType.legendary), token.getSuperTypes().get());
-        assertEquals(EnumSet.of(Type.creature), token.getCardTypes().get());
+        assertIterableEquals(new ArrayList<>(), token.getColor().get());
+        assertIterableEquals(List.of(SuperType.legendary), token.getSuperTypes().get());
+        assertIterableEquals(List.of(Type.creature), token.getCardTypes().get());
         assertEquals(List.of(CreatureType.avatar), token.getSubtypes().get());
         assertEquals(List.of("Kaldra"), token.getName().get());
     }
