@@ -22,7 +22,7 @@ staticAbility -> staticAbility space staticAbility
               -> object ' do' ('es')? 'n’t untap during ' phase period
               -> object ' cost ' costs ' more to cast' period
               -> object ' able to block ' object ' do so' period
-              -> player ' may have ' object ' enter ' zone ' as a copy of any ' object ' on ' zone (space except)? (period)?
+              -> player ' may have ' object ' enter ' zone ' as a copy of any ' object ' on ' zone (space prepositionalPhrase)? (period)?
               -> player ' control ' object
               -> player ' don’t lose the game for having 0 or less life' period
               -> player ' have no maximum hand size' period
@@ -34,18 +34,14 @@ staticAbility -> staticAbility space staticAbility
               -> 'For each ' damage ' that would be dealt to ' object ', if ' condition ', remove a ' counter ' counter from it and prevent that ' damage period
 
 replacementEffect -> subordinateClause comma space effect
-                  -> object ' enters ' zone space prepositionalPhrase
-                  -> object ' enters ' zone space 'tapped'
+                  -> object space 'enters' space zone space prepositionalPhrase
+                  -> object space 'enters' space zone space 'tapped'
                   -> subordinateClause comma space 'instead' space effect
-                  -> subordinateClause comma space effect ' instead'
-                  -> subordinateClause comma space 'you may skip that turn instead. If you do, ' effect
-                  -> subordinateClause comma space 'discard it, but you may put it on top of ' zone ' instead of into ' zone
+                  -> subordinateClause comma space effect space 'instead'
+                  -> subordinateClause comma space 'you may skip that turn instead. If you do' comma space effect
+                  -> subordinateClause comma space 'discard it' comma space 'but you may put it on top of ' zone ' instead of into ' zone
 
-except -> 'except it’s ' object ' in addition to its other types'
-       -> 'except it doesn’t copy that creature’s color and it has “At the beginning of your upkeep, you may have this creature become a copy of target creature, except it doesn’t copy that creature’s color and it has this ability.”'
-       -> 'except that the copy is ' color
-
-triggerCondition -> triggerWord ' ' triggerEvent
+triggerCondition -> triggerWord space triggerEvent
 
 triggerEvent -> 'the beginning of ' phase
              -> 'end of combat'
@@ -53,46 +49,51 @@ triggerEvent -> 'the beginning of ' phase
              -> object space objectVerbPhrase
 
 playerVerbPhrase -> playerVerb space object
-                 -> playerVerb space object ' for mana'
+                 -> playerVerb space object space 'for mana'
                  -> '’re dealt damage'
+                 -> costs
 
 playerVerb -> rawPlayerVerb (plural)?
 
-objectVerbPhrase -> 'enters' space zone
-                 -> 'dies'
-                 -> 'is dealt damage'
+objectVerbPhrase -> 'is dealt damage'
                  -> 'is tapped for mana'
                  -> 'is put into ' zone ' from ' zone
-                 -> 'becomes tapped'
-                 -> 'attack'
                  -> 'blocks or becomes blocked by ' object
-                 -> 'deals damage to an opponent'
-                 -> 'dealt damage by ' object ' this turn dies,'
-
-subordinateClause -> subordinateConjunction space condition
-                  -> subordinateConjunction space 'long' space subordinateConjunction space condition
-                  -> subordinateConjunction space player space costs
-                  -> subordinateConjunction space player ' controls ' object
-                  -> subordinateConjunction object space 'enters' space zone
-                  -> subordinateConjunction space player ' would draw ' object ' during ' phase
-                  -> subordinateConjunction space player ' would gain life'
-                  -> subordinateConjunction space player ' would begin your turn while ' object ' is tapped'
-		  -> subordinateConjunction space 'an effect causes you to discard a card
-
-subordinateConjunction -> 'as'
-                       -> 'if'
-                       -> 'unless'
+                 -> 'deals damage to ' player
+                 -> objectVerb space 'tapped'
+                 -> objectVerb space zone
+                 -> objectVerb
 
 condition -> object ' is ' ('un')? 'tapped'
+          -> object ' is ' prepositionalPhrase space prepositionalPhrase
           -> object ' isn’t ' object
           -> object ' isn’t attacking'
+          -> object '’s ' prepositionalPhrase
           -> object ' has a ' counter ' counter on it'
           -> object ' has flying'
-          -> object ' is ' prepositionalPhrase space prepositionalPhrase
           -> object ' wasn’t the first land you played this turn'
           -> object ' attacked or blocked this combat'
           -> object ' are ' prepositionalPhrase
-          -> object saxon space prepositionalPhrase
+
+objectVerb -> rawObjectVerb (plural)?
+
+rawObjectVerb -> 'enter'
+              -> 'die'
+              -> 'attack'
+              -> 'block'
+              -> 'become'
+
+subordinateClause -> subordinateConjunction space 'long' space subordinateClause
+                  -> subordinateConjunction space condition
+                  -> subordinateConjunction space player space playerVerbPhrase
+                  -> subordinateConjunction space player ' would draw ' object ' during ' phase
+                  -> subordinateConjunction space player ' would gain life'
+                  -> subordinateConjunction space player ' would begin your turn while ' object ' is tapped'
+                  -> subordinateConjunction space object space objectVerbPhrase
+		          -> subordinateConjunction space 'an effect causes you to discard a card'
+                  -> subordinateConjunction space 'it’s ' object ' in addition to its other types'
+                  -> subordinateConjunction space 'it doesn’t copy that creature’s color and it has “At the beginning of your upkeep, you may have this creature become a copy of target creature, except it doesn’t copy that creature’s color and it has this ability.”'
+                  -> subordinateConjunction space 'that the copy is ' color
 
 ## Spells
 
@@ -156,7 +157,9 @@ continuous -> continuous (' ' duration)? (' if able')?
            -> object (saxon)? 's power and toughness are each equal to ' amount
 
 oneShot -> dealDamage
-        -> manaEffect
+        -> 'add ' mana
+        -> 'add ' article ' amount of ' mana ' equal to ' amount
+        -> 'add ' amount ' mana of any ' ('one ')? 'color'
         -> 'counter ' object (' unless its controller pays {X}. If that player doesn’t, they tap all lands with mana abilities they control and lose all unspent mana')
         -> 'choose a ' textAspect
         -> 'choose ' player
@@ -181,6 +184,8 @@ oneShot -> dealDamage
         -> 'put' space object space prepositionalPhrase
         -> 'shuffle'
         -> 'ante the top card of ' zone
+        -> player ' adds ' amount ' mana of any type that land produced'
+        -> player ' adds ' article ' additional ' mana
         -> (player space)? 'draw' (plural)? ' ' object
         -> player ' discards ' object (' at random')?
         -> player ' discards their hand'
@@ -190,7 +195,7 @@ oneShot -> dealDamage
         -> player ' gain' (plural)? space number ' life'
         -> player ' gain life equal to ' amount period space object ' deals damage to ' something ' equal to ' amount '.'
         -> 'Create a 1/1 colorless Insect artifact creature token with flying named Wasp'
-        -> 'exchange ' object ' with the top card of ' zone
+        -> 'exchange ' object ' with ' article ' top card of ' zone
         -> 'Regenerate ' object
         -> object ' become unblocked'
 
@@ -228,7 +233,7 @@ effect -> oneShot
 damage -> number ' damage'
        -> 'all combat damage that would be dealt this turn.'
        -> 'all damage that would be dealt to you by unblocked creatures'
-       -> 'the next ' number ' damage that would be dealt to ' something ' this turn'
+       -> article space 'next ' number ' damage that would be dealt to ' something ' this turn'
 
 dealDamage -> object ' deals ' damage ' to ' something
            -> object ' deals ' damage ' to ' something ' and ' damage ' to ' something
@@ -239,12 +244,6 @@ dealDamage -> object ' deals ' damage ' to ' something
            -> object ' deals ' damage ' divided evenly, rounded down, among any number of targets'
            -> object ' deals damage to ' something ' equal to ' amount
            -> object ' deals damage equal to ' amount ' to ' something
-
-manaEffect -> 'add ' mana
-           -> 'add an amount of ' mana ' equal to ' amount
-           -> 'add ' amount ' mana of any ' ('one ')? 'color'
-           -> player ' adds ' amount ' mana of any type that land produced'
-           -> player ' adds an additional ' mana
 
 ## Definitions
 
@@ -262,18 +261,22 @@ amount -> 'half ' amount comma ' rounded ' ('up'|'down')
        -> object (saxon)? 's power'
        -> object (saxon)? 's mana value'
        -> 'X'
-       -> 'the number of ' object (' minus ' number)?
-       -> 'the damage dealt to ' player ' this turn'
-       -> playerPossesive ' life total'
+       -> article space 'number of ' object (' minus ' number)?
+       -> article space 'damage dealt to ' player ' this turn'
+       -> playerPossessive ' life total'
        -> 'that many'
        -> 'any number of'
+
+characteristic -> 'power'
+               -> 'toughness'
+               -> 'mana value'
 
 costs -> ('pay' space)? cost (comma space costs)?
 
 cost ->(mana)+
      -> lBracket tap rBracket
      -> number ' life'
-     -> 'remove a ' counter ' counter from ' object
+     -> 'remove ' article space counter ' counter from ' object
      -> 'sacrifice ' object
      -> 'skip ' demonstrative space ('turn'|'draw')
 
@@ -283,11 +286,11 @@ determiner -> article
 
 keyword -> 'enchant' object
         -> 'banding'
-        -> 'first strike'
+        -> 'first' space 'strike'
         -> 'flying'
         -> 'vigilance'
         -> 'defender'
-        -> 'protection from ' color
+        -> 'protection from' space color
         -> landType 'walk'
         -> 'indestructible'
         -> 'fear'
@@ -312,14 +315,13 @@ postmodifier -> player ' control' (plural)?
              -> player ' controlled at the beginning of this turn'
              -> 'controlled by the player who controls the fewest'
              -> prepositionalPhrase
-             -> preposition ' toughness less than ' amount
-             -> preposition ' power and toughness each equal to ' amount
              -> 'named Plague Rats' space prepositionalPhrase
              -> 'that are still ' object
              -> 'other than ' object
              -> 'that didn’t attack this turn'
              -> object ' was blocking that had become blocked by ' object ' this combat'
              -> 'put into ' zone ' this way'
+             -> 'dealt damage by ' object ' this turn'
 
 premodifier -> (premodifier comma space)+ premodifier
             -> (negation (space|dash))? adjective
@@ -332,7 +334,7 @@ prepositionalPhrase -> prepositionalPhrase space prepositionalPhrase
                     -> preposition space zone
                     -> preposition space object
                     -> preposition space quality
-                    -> preposition amount space counter ' counters on ' object
+                    -> preposition space amount space counter ' counters on ' object
 
 type -> negation (dash)? type
      -> cardType
@@ -343,20 +345,21 @@ type -> negation (dash)? type
 
 quality -> 'mana value' space number
         -> 'power' space number space conjunction space comparator
+        -> 'toughness ' comparator ' than ' amount
+        -> 'power and toughness each equal to ' amount
         -> keyword
 
-phase -> playerPossesive space 'turn'
-      -> playerPossesive space rawPhase (plural)?
-      -> 'the ' rawPhase ' of ' object saxon ' controller'
+phase -> playerPossessive space 'turn'
+      -> playerPossessive space rawPhase (plural)?
+      -> article space rawPhase ' of ' object saxon ' controller'
+      -> article space rawPhase
+      -> article space 'opponent’s turn' comma ' before attackers are declared'
+      -> article space 'next' space rawPhase
       -> 'combat'
-      -> 'an opponent’s turn' comma ' before attackers are declared'
       -> 'combat before blockers are declared'
-      -> 'the' space rawPhase
-      -> 'the next' space rawPhase
 
 rawPhase -> turnPart
-         -> turnPart space step
-         -> turnPart space turnPart space step
+         -> (turnPart space)? turnPart space step
 
 player -> determiner space player
        -> player plural
@@ -369,16 +372,16 @@ player -> determiner space player
        -> 'defending player'
        -> 'they'
 
-playerPossesive -> 'your'
-                -> 'their'
-                -> player saxon
-                -> 'their controller' plural saxon
-                -> 'its controller' saxon
-                -> 'the chosen player' saxon
+playerPossessive -> 'your'
+                 -> 'their'
+                 -> player saxon
+                 -> 'their controller' plural saxon
+                 -> 'its controller' saxon
+                 -> 'the chosen player' saxon
 
 something -> object
           -> player
-          -> determiner space 'target'
+          -> determiner space target
           -> something space conjunction space something
 
 statMod -> plusMinus number slash plusMinus number
@@ -386,7 +389,7 @@ statMod -> plusMinus number slash plusMinus number
 textAspect -> 'color word'
            -> 'basic land type'
 
-zone -> playerPossesive space rawZone
+zone -> playerPossessive space rawZone
      -> article space rawZone
 
 counter -> statMod
@@ -448,8 +451,8 @@ landType -> 'plains'
 
 preposition -> 'with' ('out')?
             -> 'in' ('to')?
-            -> 'above'
             -> 'on' ('to')?
+            -> 'above'
 
 rawDeterminer -> 'all'
               -> 'each'
@@ -470,7 +473,10 @@ rawZone -> 'graveyard'
         -> 'library'
         -> 'ante'
 
-step -> 'step'
+subordinateConjunction -> 'as'
+                       -> 'if'
+                       -> 'unless'
+                       -> 'except'
 
 turnPart -> 'untap'
          -> 'upkeep'
@@ -485,6 +491,10 @@ turnPart -> 'untap'
 triggerWord -> 'at'
             -> 'when'
             -> 'whenever'
+
+## individual words
+
+step -> 'step'
 
 ## Lexemes
 
