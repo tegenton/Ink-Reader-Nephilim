@@ -60,15 +60,7 @@ continuous -> continuous (space duration)?
            -> player ' skip ' phase
 
 oneShot -> playerVerbPhrase (' and sacrifice ' object ' of an opponent’s choice')? (' and ' player ' loses all unspent mana')? (period space player ' may attach ' object ' to ' object ' of their choice')?
-        -> player ' adds ' amount ' mana of any type that land produced'
-        -> player ' adds ' article ' additional ' mana
-        -> (player space)? 'draw' (plural)? ' ' object
-        -> player ' discards ' object (' at random')?
-        -> player ' discards their hand'
-        -> player ' lose the game'
-        -> player ' lose life equal to ' amount
-        -> player ' gain' (plural)? space number ' life'
-        -> player ' gain life equal to ' amount period space object ' deals damage to ' something ' equal to ' amount '.'
+	-> player space playerVerbPhrase
         -> object ' become unblocked'
 	-> object ' deals ' damage ' to ' something
         -> object ' deals ' damage ' to ' something ' and ' damage ' to ' something
@@ -289,34 +281,39 @@ playerPossessive -> 'your'
                  -> 'the chosen player' saxon
 
 playerVerbPhrase -> playerVerb space object
+		 -> playerVerb space player
                  -> playerVerb space object space 'for mana'
                  -> '’re dealt damage'
                  -> costs
-                 -> 'add ' mana
-                 -> 'add ' article ' amount of ' mana ' equal to ' amount
-                 -> 'add ' amount ' mana of any ' ('one ')? 'color'
-                 -> 'ante the top card of' space zone
-		 -> 'change the text of ' object ' by replacing all instances of one ' textAspect ' with another'
-		 -> 'choose a' space textAspect
-		 -> 'choose' space player
+                 -> playerVerb mana
+                 -> playerVerb space article ' amount of ' mana ' equal to ' amount
+                 -> playerVerb space amount ' mana of any ' ('one ')? 'color'
+		 -> playerVerb space amount ' mana of any type that land produced'
+		 -> playerVerb space article ' additional ' mana
+		 -> playerVerb space 'the text of ' object ' by replacing all instances of one ' textAspect ' with another'
+		 -> playerVerb space 'a' space textAspect
 		 -> 'copy' space object comma space except period space 'You may choose new targets for the copy.'
 		 -> 'counter' space object (' unless its controller pays {X}. If that player doesn’t, they tap all lands with mana abilities they control and lose all unspent mana')
 		 -> 'create a 1/1 colorless Insect artifact creature token with flying named Wasp'
-		 -> 'destroy ' object (period space ('It'|'They') 'can’t be regenerated')?
+		 -> playerVerb space object (period space ('It'|'They') 'can’t be regenerated')?
 		 -> 'destroy ' object period space object ' deals damage to each creature and each player equal to ' amount
 		 -> 'destroy ' object ' at end of combat'
-		 -> 'destroy ' object
-		 -> 'discard your hand'
+		 -> 'discards ' object (' at random')?
+		 -> playerVerb space'their hand'
+		 -> playerVerb space 'discard your hand'
 		 -> 'exchange ' object ' with ' object
 		 -> 'exile ' object period space player ' gains life equal to ' amount
+		 -> 'gain' (plural)? space number ' life'
+		 -> 'gain life equal to ' amount period space object ' deals damage to ' something ' equal to ' amount '.'
 		 -> 'Look at the top ' amount ' cards of ' zone ', then put them back in any order. ' player ' may have ' player ' shuffle'
 		 -> 'Look' space 'at' space zone
+		 -> 'lose the game'
+		 -> 'lose life equal to ' amount
 		 -> 'put' space object space prepositionalPhrase
 		 -> 'put a ' counter ' counter on ' object (' for each creature that died this turn')?
 		 -> 'put a ' counter ' counter on ' object '. That land is a Swamp for as long as it has a ' counter ' counter on it'
 		 -> 'put that many ' counter ' counters on ' object
 		 -> 'put up to X ' counter ' counters on ' object '. This ability can’t cause the total number of ' counter ' counters on ' object ' to be greater than ' amount
-		 -> 'Regenerate ' object
 		 -> 'remove a ' counter ' counter from ' object
 		 -> 'return' space object (' from ' zone)? ' to ' zone period
 		 -> 'sacrifice ' object (subordinateClause)?
@@ -324,7 +321,6 @@ playerVerbPhrase -> playerVerb space object
 		 -> 'search ' zone space prepositionalPhrase
 		 -> 'shuffle'
 		 -> 'take an extra turn after this one'
-		 -> ('un')? 'tap ' object
 
 playerVerb -> rawPlayerVerb (plural)?
 
@@ -460,10 +456,17 @@ rawObjectVerb -> 'attack'
               -> 'die'
               -> 'enter'
 
-rawPlayerVerb -> 'cast'
-              -> 'tap'
-              -> 'play'
+rawPlayerVerb -> 'add'
+              -> 'ante'
+	      -> 'cast'
+	      -> 'change'
               -> 'control'
+	      -> 'draw'
+	      -> 'destroy'
+	      -> 'discard'
+              -> 'play'
+	      -> 'regenerate'
+	      -> ('un')? 'tap'
 
 rawZone -> 'graveyard'
         -> 'battlefield'
