@@ -8,7 +8,7 @@ ability -> keywords
         -> activatedAbility
         -> triggeredAbility
 
-keywords -> keyword ((semicolon|comma)space keyword)*
+keywords -> keyword ((semicolon|comma) space keyword)*
 
 activatedAbility -> costs colon space effect period (restriction period)?
 
@@ -31,7 +31,7 @@ replacementEffect -> subordinateClause comma space effect
                   -> object space objectVerbPhrase prepositionalPhrase
                   -> subordinateClause comma space 'instead' space effect
                   -> subordinateClause comma space effect space 'instead'
-                  -> subordinateClause comma space 'you may skip that turn instead. If you do' comma space effect
+                  -> subordinateClause comma space 'you may skip that turn instead' period space subordinateClause comma space effect
                   -> subordinateClause comma space 'discard it' comma space 'but you may put it on top of ' zone ' instead of into ' zone
 
 ## Spells
@@ -48,7 +48,7 @@ spellAbility -> effect period ((' then')? space effect period)*
              -> player ' chooses a number of lands they control equal to ' amount ', then sacrifices the rest. Players discard cards and sacrifice creatures the same way.'
              -> 'At the beginning of ' phase ', destroy ' object '. Ignore this effect for each creature the player didn’t control continuously since the beginning of the turn.'
              -> duration comma space 'instead of declaring blockers, each defending player chooses any number of creatures they control and divides them into a number of piles equal to the number of attacking creatures for whom that player is the defending player. Creatures ' player ' control that can block additional creatures may likewise be put into additional piles. Assign each pile to a different one of those attacking creatures at random. Each creature in a pile that can block the creature that pile is assigned to does so.'
-             -> duration comma space 'any time you could activate a mana ability, you may ' costs '. If you do, ' effect period
+             -> duration comma space 'any time you could activate a mana ability, you may ' costs period space subordinateClause comma space effect
 
 ## Effects
 
@@ -74,7 +74,7 @@ oneShot -> playerVerbPhrase (' and sacrifice ' object ' of an opponent’s choic
 
 effect -> oneShot
        -> continuous
-       -> 'Prevent ' damage ('. Until end of turn, you may pay {1} any time you could cast an instant. If you do, prevent the next 1 damage that would be dealt to that permanent or player this turn')?
+       -> 'Prevent ' damage ('. Until end of turn, you may ' costs ' any time you could cast an instant' period space subordinateClause comma space effect)?
        -> 'The next time a ' color ' source of your choice would deal damage to you this turn, prevent that damage'
        -> 'The next time a source of your choice would deal damage to you this turn, prevent that damage. You gain life equal to the damage prevented this way'
        -> 'The next time a source of your choice would deal damage to target creature this turn, that source deals that damage to you instead'
@@ -86,7 +86,7 @@ effect -> oneShot
        -> 'The next time an unblocked creature of your choice would deal combat damage to you this turn, prevent all but 1 of that damage'
        -> player ' antes the top card of ' zone
        -> player ' own ' object '
-       -> player ' may ' costs '. If you do, ' effect
+       -> player ' may ' costs period space subordinateClause comma space effect
        -> player ' may ' effect
        -> player ' may tap or untap ' object
        -> player ' shuffles their hand and graveyard into ' zone
@@ -106,7 +106,7 @@ effect -> oneShot
 damage -> number ' damage'
        -> 'all combat damage that would be dealt this turn.'
        -> 'all damage that would be dealt to you by unblocked creatures'
-       -> article space 'next ' number ' damage that would be dealt to ' something ' this turn'
+       -> article space 'next ' damage ' that would be dealt to ' something ' this turn'
 
 ## Definitions
 
@@ -280,25 +280,25 @@ playerPossessive -> 'your'
                  -> 'its controller' saxon
                  -> 'the chosen player' saxon
 
-playerVerbPhrase -> playerVerb space object
+playerVerbPhrase -> playerVerb
+                 -> playerVerb space object (space 'at random')?
 		 -> playerVerb space player
                  -> playerVerb space object space 'for mana'
                  -> '’re dealt damage'
                  -> costs
                  -> playerVerb mana
-                 -> playerVerb space article ' amount of ' mana ' equal to ' amount
-                 -> playerVerb space amount ' mana of any ' ('one ')? 'color'
-		 -> playerVerb space amount ' mana of any type that land produced'
-		 -> playerVerb space article ' additional ' mana
-		 -> playerVerb space 'the text of ' object ' by replacing all instances of one ' textAspect ' with another'
-		 -> playerVerb space 'a' space textAspect
-		 -> 'copy' space object comma space except period space 'You may choose new targets for the copy.'
+                 -> playerVerb space article space 'amount of ' mana ' equal to ' amount
+                 -> playerVerb space amount space 'mana of any ' ('one ')? 'color'
+		 -> playerVerb space amount space 'mana of any type that land produced'
+		 -> playerVerb space article space 'additional ' mana
+		 -> playerVerb space article space 'text of ' object ' by replacing all instances of one ' textAspect ' with another'
+		 -> playerVerb space article space textAspect
+		 -> 'copy' space object comma space except period space player space 'may choose new targets for the copy'
 		 -> 'counter' space object (' unless its controller pays {X}. If that player doesn’t, they tap all lands with mana abilities they control and lose all unspent mana')
 		 -> 'create a 1/1 colorless Insect artifact creature token with flying named Wasp'
 		 -> playerVerb space object (period space ('It'|'They') 'can’t be regenerated')?
 		 -> 'destroy ' object period space object ' deals damage to each creature and each player equal to ' amount
 		 -> 'destroy ' object ' at end of combat'
-		 -> 'discards ' object (' at random')?
 		 -> playerVerb space'their hand'
 		 -> playerVerb space 'discard your hand'
 		 -> 'exchange ' object ' with ' object
@@ -317,7 +317,7 @@ playerVerbPhrase -> playerVerb space object
 		 -> 'remove a ' counter ' counter from ' object
 		 -> 'return' space object (' from ' zone)? ' to ' zone period
 		 -> 'sacrifice ' object (subordinateClause)?
-		 -> 'sacrifice ' object '. If you can’t, ' effect
+		 -> 'sacrifice ' object period space subordinateClause comma space effect
 		 -> 'search ' zone space prepositionalPhrase
 		 -> 'shuffle'
 		 -> 'take an extra turn after this one'
@@ -344,7 +344,8 @@ restriction -> 'Cast ' object ' only during ' phase
 	    -> 'Activate only during an opponent’s turn, before attackers are declared'
             -> 'Remove ' object ' from your deck before playing if you’re not playing for ante'
 
-something -> object
+something -> determiner something
+          -> object
           -> player
           -> determiner space target
           -> something space conjunction space something
@@ -457,14 +458,16 @@ rawObjectVerb -> 'attack'
               -> 'enter'
 
 rawPlayerVerb -> 'add'
-              -> 'ante'
+	      -> 'ante'
+	      -> 'can’t'
 	      -> 'cast'
 	      -> 'change'
-              -> 'control'
-	      -> 'draw'
+	      -> 'control'
 	      -> 'destroy'
 	      -> 'discard'
-              -> 'play'
+	      -> 'do'
+	      -> 'draw'
+	      -> 'play'
 	      -> 'regenerate'
 	      -> ('un')? 'tap'
 
