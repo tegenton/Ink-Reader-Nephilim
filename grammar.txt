@@ -17,22 +17,10 @@ triggeredAbility -> triggerCondition (comma space subordinateClause)? comma spac
 staticAbility -> staticAbility space staticAbility
               -> subordinateClause comma space staticAbility
               -> replacementEffect period
-              -> continuous period
+              -> continuous (period)?
+              -> 'Activated abilities of' space object space 'cost' space costs space 'more to activate' period
               -> damage verbIs ' dealt to ' object ' instead' period
-              -> player ' may have ' object ' enter ' zone ' as a copy of any ' object ' on ' zone (space prepositionalPhrase)? (period)?
-              -> player ' may spend ' color ' mana as though it were ' color ' mana' period
-              -> player ' may play any number of lands on each of your turns' period
-              -> player ' don’t lose the game for having 0 or less life' period
-              -> player ' can’t untap more than one ' object ' during ' phase period
-              -> 'Activated abilities of ' object ' cost ' costs ' more to activate' period
               -> 'For each ' damage ' that would be dealt to ' object comma space 'if' space condition comma space effect period
-
-replacementEffect -> subordinateClause comma space effect
-                  -> object space objectVerbPhrase prepositionalPhrase
-                  -> subordinateClause comma space 'instead' space effect
-                  -> subordinateClause comma space effect space 'instead'
-                  -> subordinateClause comma space 'you may ' costs ' instead' period space subordinateClause comma space effect
-                  -> subordinateClause comma space 'discard it' comma space 'but you may put it on top of ' zone ' instead of into ' zone
 
 ## Spells
 
@@ -43,7 +31,7 @@ modal -> 'Choose one ' dash (newline bullet space effect period)+
 spellAbility -> effect period
              -> restriction period
              -> modal
-             -> player ' chooses a number of lands they control equal to ' amount ', then sacrifices the rest. Players discard cards and sacrifice creatures the same way.'
+             -> player space 'chooses a number of lands they control equal to ' amount ', then sacrifices the rest. Players discard cards and sacrifice creatures the same way.'
              -> 'At the beginning of ' phase ', destroy ' object '. Ignore this effect for each creature the player didn’t control continuously since the beginning of the turn.'
              -> duration comma space 'instead of declaring blockers, each defending player chooses any number of creatures they control and divides them into a number of piles equal to the number of attacking creatures for whom that player is the defending player. Creatures ' player ' control that can block additional creatures may likewise be put into additional piles. Assign each pile to a different one of those attacking creatures at random. Each creature in a pile that can block the creature that pile is assigned to does so.'
              -> duration comma space 'any time you could activate a mana ability, you may ' costs period space subordinateClause comma space effect
@@ -51,26 +39,21 @@ spellAbility -> effect period
 ## Effects
 
 continuous -> continuous (space duration)?
-           -> object space objectVerbPhrase
-           -> object (saxon)? 's power and toughness are each equal to ' amount
-           -> player ' control ' object
-           -> player ' have no maximum hand size'
-           -> player ' skip ' phase
+           -> objectPossesive space characteristics space verbIs ' each equal to ' amount
+           -> phrase
 
 oneShot -> playerVerbPhrase (' and sacrifice ' object ' of an opponent’s choice')? (' and ' player ' loses all unspent mana')? (period space player ' may attach ' object ' to ' object ' of their choice')?
-	-> player space playerVerbPhrase
-        -> object ' become unblocked'
-	-> object ' deals ' damage ' to ' something
-        -> object ' deals ' damage ' to ' something ' and ' damage ' to ' something
-        -> object ' deals ' damage ' to ' something ' and ' object ' gains "Enchanted creature loses flying"'
-        -> object ' deals ' damage ' to ' something comma space 'where X is ' amount
-        -> object ' deals ' damage ' to ' something period space player ' gain life equal to the damage dealt, but not more life than the player’s life total before the damage was dealt, the planeswalker’s loyalty before the damage was dealt, or the creature’s toughness'
-        -> object ' deals ' damage ' to ' something '. If ' condition ', it can’t be regenerated this turn, and if it would die this turn, exile it instead'
-        -> object ' deals ' damage ' divided evenly, rounded down, among any number of targets'
-        -> object ' deals damage to ' something ' equal to ' amount
-        -> object ' deals damage equal to ' amount ' to ' something
+	-> Phrase
+
+replacementEffect -> subordinateClause comma space effect
+                  -> objectPhrase space prepositionalPhrase
+                  -> subordinateClause comma space 'instead' space effect
+                  -> subordinateClause comma space effect space 'instead'
+                  -> subordinateClause comma space playerPhrase space 'instead' period space subordinateClause comma space effect
+                  -> subordinateClause comma space playerVerbPhrase comma space 'but you may put it on top of ' zone ' instead of into ' zone
 
 effect -> effect (period)? space conjunction space effect
+       -> effect period space effect
        -> (effect comma space)? effect comma space conjunction space effect
        -> oneShot
        -> continuous
@@ -82,15 +65,15 @@ effect -> effect (period)? space conjunction space effect
        -> 'The next ' number ' damage that would be dealt to ' object ' this turn is dealt to its owner instead. Only ' object '’s owner may activate this ability'
        -> player ' loses half their life, rounded up'
        -> 'Choose ' object period space object ' attacks this turn if able. Destroy it at the beginning of the next end step if it didn’t attack this turn'
-       -> 'If Chaos Orb is on the battlefield, flip Chaos Orb onto the battlefield from a height of at least one foot. If Chaos Orb turns over completely at least once during the flip, destroy all nontoken permanents it touches. Then destroy Chaos Orb'
-       -> 'at the beginning of each of your upkeeps for the rest of the game, remove all mire counters from a land that a mire counter was put onto with Cyclopean Tomb but that a mire counter has not been removed from with Cyclopean Tomb'
+       -> 'If Chaos Orb is on the battlefield, flip Chaos Orb onto the battlefield from a height of at least one foot. If Chaos Orb turns over completely at least once during the flip, destroy all nontoken permanents it touches'
+       -> 'at the beginning of each of your upkeeps for the rest of the game, remove all ' counter ' counters from a land that a ' counter ' counter was put onto with ' object ' but that a ' counter ' counter has not been removed from with ' object
        -> 'The next time ' object ' would deal combat damage to you this turn, prevent all but 1 of that damage'
        -> player ' antes the top card of ' zone
        -> player ' may ' costs period space subordinateClause comma space effect
        -> player ' may ' effect
        -> player ' may tap or untap ' object
        -> player ' shuffles their hand and graveyard into ' zone
-       -> 'until your next turn, ' player ' can’t be attacked except by creatures with flying and/or islandwalk'
+       -> 'until your next turn, ' player ' can’t be attacked except by ' object
        -> player ' may pay any amount of mana. ' object ' deals 2 damage to that player. Prevent X of that damage, where X is the amount of mana that player paid this way'
        -> player ' may choose a creature card in your hand whose mana cost could be paid by some amount of, or all of, the mana you spent on {X}. If you do, you may cast that card face down as a 2/2 creature spell without paying its mana cost. If the creature that spell becomes as it resolves has not been turned face up and would assign or deal damage, be dealt damage, or become tapped, instead it’s turned face up and assigns or deals damage, is dealt damage, or becomes tapped. Activate only as a sorcery.'
        -> player ' divides all creatures without flying they control into a “left” pile and a “right” pile. Then, for each attacking creature you control, choose “left” or “right.” That creature can’t be blocked this combat except by creatures with flying and creatures in a pile with the chosen label'
@@ -102,6 +85,9 @@ effect -> effect (period)? space conjunction space effect
        -> 'Look at ' zone ' and choose a card from it'
        -> player ' control ' player ' until ' object ' finishes resolving'
        -> 'The player plays that card if able. While doing so, the player can activate mana abilities only if they’re from lands that player controls and only if mana they produce is spent to activate other mana abilities of lands the player controls and/or to play that card. If the chosen card is cast as a spell, you control the player while that spell is resolving'
+       -> 'put' space amount space counter ' counter on ' object (' for each creature that died this turn')?
+       -> 'put' space amount space counter ' counter on ' object '. That land is a Swamp for as long as it has a ' counter ' counter on it'
+       -> 'put' space amount space counter ' counters on ' object '. This ability can’t cause the total number of ' counter ' counters on ' object ' to be greater than ' amount
 
 damage -> number ' damage'
        -> 'all combat damage that would be dealt' space duration
@@ -122,7 +108,7 @@ adjective -> 'enchanted'
 amount -> 'half ' amount comma ' rounded ' ('up'|'down')
        -> 'up to ' amount
        -> englishNumber (space conjunction space 'more')?
-       -> object saxon space characteristic
+       -> object saxon space characteristics
        -> 'X'
        -> article space 'number of ' object (' minus ' number)?
        -> article space 'damage dealt to ' player ' this turn'
@@ -133,6 +119,8 @@ amount -> 'half ' amount comma ' rounded ' ('up'|'down')
 characteristic -> 'power'
                -> 'toughness'
                -> 'mana value'
+
+characteristics -> characteristic (conjunction characteristic)?
 
 condition -> object (space)? verbIs space ('un')? 'tapped'
           -> object (space)? verbIs space prepositionalPhrase (space prepositionalPhrase)?
@@ -193,6 +181,10 @@ object -> premodifier space object
        -> 'it'
        -> article ' top card of ' zone
 
+objectPossesive -> object saxon
+
+objectPhrase -> object space objectVerbPhrase
+
 objectVerbPhrase -> verbIs space 'dealt damage'
                  -> verbIs space 'tapped for mana'
                  -> verbIs space 'put into ' zone ' from ' zone
@@ -206,21 +198,31 @@ objectVerbPhrase -> verbIs space 'dealt damage'
                  -> 'do' ('es')? 'n’t untap during ' phase
                  -> 'do so'
                  -> 'cost' space costs space 'more to cast'
-             	 -> 'gains ' keyword space duration period space 'Destroy ' object ' at the beginning of the next end step'
-		 -> 'gains ' keyword
+             	 -> 'gains' space keyword space duration
+		 -> 'gains' keyword
 		 -> 'gains trample and gets ' statMod space duration ', where X is ' amount '. At the beginning of the next end step, destroy that creature if it attacked this turn'
-		 -> ' get' ('s')? ' ' statMod (' as long as you control a Swamp')?
-		 -> ' gets ' statMod space duration '. If this ability has been activated four or more times this turn, sacrifice ' object ' at the beginning of the next end step'
-		 -> ' get' ('s')? ' ' statMod ' and ha' ('s'|'ve') space ability
-		 -> ' ha' ('s'|'ve') space quotedAbility
-		 -> ' ha' ('s '|'ve ') ability (' and can’t be enchanted by ' object)? ('. this effect doesn't remove ' object)?
-		 -> ' can attack as though ' object ' didn't have defender'
-		 -> ' can attack as though ' object ' had haste'
-		 -> ' can’t attack' (' ' subordinateClause)?
-		 -> ' can block ' object
-		 -> ' can’t be blocked'
-		 -> ' can’t be blocked ' ('except ')? 'by ' object
-		 -> ' can’t block ' object
+		 -> 'get' ('s')? ' ' statMod (' as long as you control a Swamp')?
+		 -> 'gets ' statMod space duration '. If this ability has been activated four or more times this turn, sacrifice ' object ' at the beginning of the next end step'
+		 -> 'get' ('s')? ' ' statMod ' and ha' ('s'|'ve') space ability
+		 -> 'ha' ('s'|'ve') space quotedAbility
+		 -> 'ha' ('s '|'ve ') ability (' and can’t be enchanted by ' object)? ('. this effect doesn't remove ' object)?
+		 -> 'can attack as though ' object ' didn't have defender'
+		 -> 'can attack as though ' object ' had haste'
+		 -> 'can’t attack' (' ' subordinateClause)?
+		 -> 'can block ' object
+		 -> 'can’t be blocked'
+		 -> 'can’t be blocked ' ('except ')? 'by ' object
+		 -> 'can’t block ' object
+                 -> 'become unblocked'
+	         -> 'deals ' damage ' to ' something
+                 -> 'deals ' damage ' to ' something ' and ' damage ' to ' something
+                 -> 'deals ' damage ' to ' something ' and ' object ' gains "Enchanted creature loses flying"'
+                 -> 'deals ' damage ' to ' something comma space 'where X is ' amount
+                 -> 'deals ' damage ' to ' something period space player ' gain life equal to the damage dealt, but not more life than the player’s life total before the damage was dealt, the planeswalker’s loyalty before the damage was dealt, or the creature’s toughness'
+                 -> 'deals ' damage ' to ' something '. If ' condition ', it can’t be regenerated this turn, and if it would die this turn, exile it instead'
+                 -> 'deals ' damage ' divided evenly, rounded down, among any number of targets'
+                 -> 'deals damage to ' something ' equal to ' amount
+                 -> 'deals damage equal to ' amount ' to ' something
 
 objectVerb -> rawObjectVerb (plural)?
 
@@ -238,6 +240,7 @@ postmodifier -> player ' control' (plural)?
              -> 'dealt damage by ' object ' this turn'
 	     -> player ' has controlled continuously since the beginning of the turn'
 	     -> 'of your choice'
+	     -> 'with' space keyword space conjunction space keyword
 
 premodifier -> (premodifier comma space)+ premodifier
             -> (negation (space|dash))? adjective
@@ -261,6 +264,9 @@ phase -> playerPossessive space 'turn'
       -> 'combat'
       -> 'combat before blockers are declared'
 
+phrase -> playerPhrase
+       -> objectPhrase
+
 player -> determiner space player
        -> player plural
        -> object saxon space 'controller'
@@ -271,6 +277,8 @@ player -> determiner space player
        -> 'active player'
        -> 'defending player'
        -> 'they'
+
+playerPhrase -> player space playerVerbPhrase
 
 playerPossessive -> 'your'
                  -> 'their'
@@ -298,6 +306,7 @@ playerVerbPhrase -> playerVerb
 		 -> playerVerb space object (period space ('It'|'They') 'can’t be regenerated')?
 		 -> 'destroy ' object period space object ' deals damage to each creature and each player equal to ' amount
 		 -> 'destroy ' object ' at end of combat'
+		 -> 'destroy ' object ' at the beginning of the next end step'
 		 -> playerVerb space 'their hand'
 		 -> playerVerb space 'your hand'
 		 -> 'exchange ' object ' with ' object
@@ -309,9 +318,6 @@ playerVerbPhrase -> playerVerb
 		 -> 'lose the game'
 		 -> 'lose life equal to ' amount
 		 -> 'put' space object space prepositionalPhrase
-		 -> 'put' space amount space counter ' counter on ' object (' for each creature that died this turn')?
-		 -> 'put' space amount space counter ' counter on ' object '. That land is a Swamp for as long as it has a ' counter ' counter on it'
-		 -> 'put' space amount space counter ' counters on ' object '. This ability can’t cause the total number of ' counter ' counters on ' object ' to be greater than ' amount
 		 -> 'remove a ' counter ' counter from ' object
 		 -> 'return' space object (' from ' zone)? ' to ' zone period
 		 -> 'sacrifice ' object (subordinateClause)?
@@ -319,6 +325,14 @@ playerVerbPhrase -> playerVerb
 		 -> 'search ' zone space prepositionalPhrase
 		 -> 'shuffle'
 		 -> 'take an extra turn after this one'
+		 -> 'may' playerVerbPhrase
+                 -> 'have ' object ' enter ' zone ' as a copy of any ' object ' on ' zone (space prepositionalPhrase)?
+                 -> 'spend ' color ' mana as though it were ' color ' mana'
+                 -> 'play any number of lands on each of your turns'
+                 -> 'don’t lose the game for having 0 or less life'
+                 -> 'can’t untap more than one ' object ' during ' phase
+                 -> 'have no maximum hand size'
+                 -> 'skip ' phase
 
 playerVerb -> rawPlayerVerb (plural)?
 
@@ -352,11 +366,10 @@ statMod -> plusMinus number slash plusMinus number (' where X is ' amount (', an
 
 subordinateClause -> subordinateConjunction space 'long' space subordinateClause
                   -> subordinateConjunction space condition
-                  -> subordinateConjunction space player space playerVerbPhrase
+                  -> subordinateConjunction space phrase
                   -> subordinateConjunction space player ' would draw ' object ' during ' phase
                   -> subordinateConjunction space player ' would gain life'
                   -> subordinateConjunction space player ' would begin your turn while ' object ' is tapped'
-                  -> subordinateConjunction space object space objectVerbPhrase
 		  -> subordinateConjunction space 'an effect causes you to discard a card'
                   -> subordinateConjunction space 'it’s ' object ' in addition to its other types'
                   -> subordinateConjunction space 'it doesn’t copy that creature’s color and it has “At the beginning of your upkeep, you may have this creature become a copy of target creature, except it doesn’t copy that creature’s color and it has this ability.”'
@@ -369,8 +382,7 @@ triggerCondition -> triggerWord space triggerEvent
 
 triggerEvent -> 'the beginning of' space phase
              -> 'end of combat'
-             -> player (space)? playerVerbPhrase
-             -> object space objectVerbPhrase
+             -> phrase
 
 type -> negation (dash)? type
      -> cardType
@@ -406,6 +418,7 @@ comparator -> 'less'
 
 conjunction -> 'and'
             -> 'or'
+	    -> 'and/or'
 	    -> 'then'
 
 counterType -> 'corpse'
