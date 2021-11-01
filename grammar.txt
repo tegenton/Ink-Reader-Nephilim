@@ -26,7 +26,7 @@ staticAbility -> staticAbility space staticAbility
 
 spellCard -> spellAbility (\n spellAbility)*
 
-modal -> 'Choose one ' dash (newline bullet space effect period)+
+modal -> 'Choose' space amount dash (newline bullet space effect period)+
 
 spellAbility -> effect period
              -> restriction period
@@ -109,7 +109,8 @@ adjective -> 'enchanted'
 
 amount -> 'half ' amount comma ' rounded ' ('up'|'down')
        -> 'up to ' amount
-       -> englishNumber (space conjunction space 'more')?
+       -> comparator ' than ' englishNumber
+       -> englishNumber (space conjunction space comparator)?
        -> object saxon space characteristics
        -> 'X'
        -> article space 'number of ' object (' minus ' number)?
@@ -204,9 +205,9 @@ objectVerbPhrase -> verbIs space 'dealt damage'
 		 -> 'gains trample and gets ' statMod space duration ', where X is ' amount
 		 -> 'get' ('s')? ' ' statMod (' as long as you control a Swamp')?
 		 -> 'gets ' statMod space duration '. If this ability has been activated four or more times this turn, sacrifice ' object ' at the beginning of the next end step'
-		 -> 'get' ('s')? ' ' statMod ' and ha' ('s'|'ve') space ability
+		 -> 'get' ('s')? space statMod ' and ha' ('s'|'ve') space ability
 		 -> 'ha' ('s'|'ve') space quotedAbility
-		 -> 'ha' ('s '|'ve ') ability (' and can’t be enchanted by ' object)? ('. this effect doesn't remove ' object)?
+		 -> 'ha' ('s '|'ve ') ability (' and can’t be enchanted by ' object)? (period space 'this effect doesn't remove ' object)?
 		 -> 'can attack as though ' object ' didn't have defender'
 		 -> 'can attack as though ' object ' had haste'
 		 -> 'can’t attack' (' ' subordinateClause)?
@@ -229,7 +230,7 @@ objectVerb -> rawObjectVerb (plural)?
 
 postmodifier -> player ' control' (plural)?
              -> player ' controlled at the beginning of this turn'
-             -> 'controlled by the player who controls the fewest'
+             -> 'controlled by ' player
              -> prepositionalPhrase
              -> 'named Plague Rats' space prepositionalPhrase
 	     -> 'able to block ' object
@@ -282,6 +283,7 @@ player -> determiner space player
        -> 'active player'
        -> 'defending player'
        -> 'they'
+       -> 'the player who controls the fewest'
 
 playerPhrase -> player space playerVerbPhrase
 
@@ -345,8 +347,8 @@ delayedTrigger -> 'at end of combat'
 playerVerb -> rawPlayerVerb (plural)?
 
 quality -> 'mana value' space number
-        -> 'power' space number space conjunction space comparator
-        -> 'toughness ' comparator ' than ' amount
+        -> 'power' space amount
+        -> 'toughness' space amount
         -> 'power and toughness each equal to ' amount
         -> keyword
 
@@ -423,6 +425,7 @@ color -> 'white'
 
 comparator -> 'less'
            -> 'greater'
+	   -> 'more'
 
 conjunction -> 'and'
             -> 'or'
