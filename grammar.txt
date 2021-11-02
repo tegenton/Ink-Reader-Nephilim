@@ -37,13 +37,6 @@ spellAbility -> effect period
 
 ## Effects
 
-continuous -> continuous space duration
-           -> objectPossesive space characteristics space verbIs ' each equal to ' amount
-           -> phrase
-
-oneShot -> playerVerbPhrase (' and sacrifice ' object ' of an opponent’s choice')? (' and ' player ' loses all unspent mana')? (period space player ' may attach ' object ' to ' object ' of their choice')?
-	-> Phrase
-
 replacementEffect -> subordinateClause comma space effect
                   -> objectPhrase space prepositionalPhrase
                   -> subordinateClause comma space 'instead' space effect
@@ -53,9 +46,8 @@ replacementEffect -> subordinateClause comma space effect
 
 effect -> effect (period)? space conjunction space effect
        -> effect period space effect
+       -> effect space duration
        -> (effect comma space)? effect comma space conjunction space effect
-       -> oneShot
-       -> continuous
        -> 'Prevent ' damage (period space 'Until end of turn, you may ' costs ' any time you could cast an instant' period space subordinateClause comma space effect)?
        -> 'prevent that ' damage
        -> 'The next time ' object ' would deal combat damage to you this turn, prevent all but 1 of that damage'
@@ -65,16 +57,11 @@ effect -> effect (period)? space conjunction space effect
        -> 'The next ' number ' damage that would be dealt to ' object ' this turn is dealt to its owner instead. Only ' object '’s owner may activate this ability'
        -> player ' loses half their life, rounded up'
        -> 'Choose ' object
-       -> object ' attacks this turn if able.'
+       -> object ' attacks this turn if able'
        -> 'If Chaos Orb is on the battlefield, flip Chaos Orb onto the battlefield from a height of at least one foot. If Chaos Orb turns over completely at least once during the flip, destroy all nontoken permanents it touches'
-       -> delayedTrigger ', remove all ' counter ' counters from a land that a ' counter ' counter was put onto with ' object ' but that a ' counter ' counter has not been removed from with ' object
-       -> delayedTrigger ', destroy that creature if it attacked this turn'
-       -> player ' antes the top card of ' zone
+       -> delayedTrigger comma space 'remove all ' counter ' counters from a land that a ' counter ' counter was put onto with ' object ' but that a ' counter ' counter has not been removed from with ' object
+       -> delayedTrigger comma space 'destroy that creature if it attacked this turn'
        -> player ' chooses a number of lands they control equal to ' amount ', then sacrifices the rest. Players discard cards and sacrifice creatures the same way'
-       -> player ' may ' costs period space subordinateClause comma space effect
-       -> player ' may ' effect
-       -> player ' may tap or untap ' object
-       -> player ' shuffles their hand and graveyard into ' zone
        -> duration comma space player ' can’t be attacked except by ' object
        -> player ' may pay any amount of mana. ' object ' deals 2 damage to that player. Prevent X of that damage, where X is the amount of mana that player paid this way'
        -> player ' may choose a creature card in your hand whose mana cost could be paid by some amount of, or all of, the mana you spent on {X}. If you do, you may cast that card face down as a 2/2 creature spell without paying its mana cost. If the creature that spell becomes as it resolves has not been turned face up and would assign or deal damage, be dealt damage, or become tapped, instead it’s turned face up and assigns or deals damage, is dealt damage, or becomes tapped. Activate only as a sorcery.'
@@ -90,6 +77,10 @@ effect -> effect (period)? space conjunction space effect
        -> 'put' space amount space counter ' counter on ' object (' for each creature that died this turn')?
        -> 'put' space amount space counter ' counter on ' object '. That land is a Swamp for as long as it has a ' counter ' counter on it'
        -> 'put' space amount space counter ' counters on ' object '. This ability can’t cause the total number of ' counter ' counters on ' object ' to be greater than ' amount
+       -> objectPossesive space characteristics space verbIs ' each equal to ' amount
+       -> phrase
+       -> playerVerbPhrase (' and sacrifice ' object ' of an opponent’s choice')? (' and ' player ' loses all unspent mana')? (period space player ' may attach ' object ' to ' object ' of their choice')?
+       -> phrase
 
 damage -> number ' damage'
        -> 'all combat damage that would be dealt' space duration
@@ -339,7 +330,11 @@ playerVerbPhrase -> playerVerb
                  -> 'don’t lose the game for having 0 or less life'
                  -> 'can’t untap more than one ' object ' during ' phase
                  -> 'have no maximum hand size'
-
+		 -> 'antes ' object
+		 -> 'may ' costs period space subordinateClause comma space effect
+		 -> 'may ' effect
+		 -> 'may tap or untap ' object
+		 -> 'shuffles their hand and graveyard into ' zone
 
 delayedTrigger -> 'at end of combat'
                -> 'at the beginning of ' phase
@@ -355,7 +350,7 @@ quality -> 'mana value' space number
 quotedAbility -> openQuote ability closeQuote
 
 rawPhase -> turnPart
-         -> (turnPart space)? turnPart space step
+         -> (turnPart space)? turnPart space rawWordStep
 
 restriction -> 'Cast ' object ' only during ' phase
             -> 'Cast ' object ' only before ' phase
@@ -528,7 +523,9 @@ rawVerbIs -> 'is'
           -> 'are'
           -> apostrophe letterS
 
-step -> 'step'
+rawWordStep -> 'step'
+
+
 
 ## Lexemes
 
