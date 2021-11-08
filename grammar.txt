@@ -12,21 +12,21 @@ keywords -> keyword ((semicolon|comma) space keyword)*
 
 activatedAbility -> costs colon space effect period (restriction period)?
 
-triggeredAbility -> triggerCondition (comma space subordinateClause)? comma space effect (space subordinateClause)? period
+triggeredAbility -> triggerCondition comma space triggerEffect period
 
 staticAbility -> staticAbility space staticAbility
               -> subordinateClause comma space staticAbility
               -> replacementEffect period
               -> continuous (period)?
-              -> 'Activated abilities of' space object space 'cost' space costs space 'more to activate' period
-              -> damage verbIs ' dealt to ' object ' instead' period
-              -> 'For each ' damage ' that would be dealt to ' object comma space 'if' space condition comma space effect period
+              -> abilityType space prepositionOf space object space verbCost space costs space adverbMore space prepositionTo space verbActivate period
+              -> damage space verbIs space verbDealt space prepositionTo space object adverbInstead period
+              -> prepositionFor space rawDeterminer damage space distinguisher  comma space triggerEffect period
 
 ## Spells
 
 spellCard -> spellAbility (\n spellAbility)*
 
-modal -> 'Choose' space amount dash (newline bullet space effect period)+
+modal -> verbChoose space amount dash (newline bullet space effect period)+
 
 spellAbility -> effect period
              -> restriction period
@@ -37,24 +37,26 @@ spellAbility -> effect period
 
 ## Effects
 
-replacementEffect -> subordinateClause comma space effect
+replacementEffect -> subordinateClause comma space (space 'instead')? effect (space 'instead')?
                   -> objectPhrase space prepositionalPhrase
-                  -> subordinateClause comma space 'instead' space effect
-                  -> subordinateClause comma space effect space 'instead'
                   -> subordinateClause comma space playerPhrase space 'instead' period space subordinateClause comma space effect
                   -> subordinateClause comma space playerVerbPhrase comma space 'but you may put it on top of ' zone ' instead of into ' zone
+
+source -> object
+       -> 'a ' color ' source of your choice'
+       -> 'a source of your choice'
 
 effect -> effect (period)? space conjunction space effect
        -> effect period space effect
        -> effect space duration
        -> (effect comma space)? effect comma space conjunction space effect
-       -> 'Prevent ' damage (period space 'Until end of turn, you may ' costs ' any time you could cast an instant' period space subordinateClause comma space effect)?
+       -> 'Prevent' space damage (period space 'Until end of turn, you may ' costs ' any time you could cast an instant' period space subordinateClause comma space effect)?
        -> 'prevent that ' damage
-       -> 'The next time ' object ' would deal combat damage to you this turn, prevent all but 1 of that damage'
-       -> 'The next time a ' color ' source of your choice would deal damage to you this turn, prevent that damage'
-       -> 'The next time a source of your choice would deal damage to you this turn, prevent that damage. You gain life equal to the damage prevented this way'
-       -> 'The next time a source of your choice would deal damage to target creature this turn, that source deals that damage to you instead'
-       -> 'The next ' number ' damage that would be dealt to ' object ' this turn is dealt to its owner instead. Only ' object '’s owner may activate this ability'
+       -> 'The next time ' source ' would deal combat damage to you this turn, prevent all but 1 of that damage'
+       -> 'The next time ' source ' would deal damage to you this turn, prevent that damage'
+       -> 'The next time ' source ' would deal damage to you this turn, prevent that damage. You gain life equal to the damage prevented this way'
+       -> 'The next time ' source ' would deal damage to target creature this turn, that source deals that damage to you instead'
+       -> 'The next ' damage ' that would be dealt to ' object ' this turn is dealt to its owner instead'
        -> player ' loses half their life, rounded up'
        -> 'Choose ' object
        -> object ' attacks this turn if able'
@@ -80,7 +82,6 @@ effect -> effect (period)? space conjunction space effect
        -> objectPossesive space characteristics space verbIs ' each equal to ' amount
        -> phrase
        -> playerVerbPhrase (' and sacrifice ' object ' of an opponent’s choice')? (' and ' player ' loses all unspent mana')? (period space player ' may attach ' object ' to ' object ' of their choice')?
-       -> phrase
 
 damage -> number ' damage'
        -> 'all combat damage that would be dealt' space duration
@@ -360,6 +361,7 @@ restriction -> 'Cast ' object ' only during ' phase
             -> 'Activate only during ' phase ('and only once each turn')?
 	    -> 'Activate only during an opponent’s turn, before attackers are declared'
             -> 'Remove ' object ' from your deck before playing if you’re not playing for ante'
+	    -> 'Only ' object '’s owner may activate this ability'
 
 something -> determiner something
           -> object
@@ -591,3 +593,18 @@ slash -> '/'
 space -> ' '
 
 tilde -> '~'
+
+# To Sort
+
+distinguisher -> 'that would be' space verbDealt space prepositionTo space object
+triggerEffect -> (subordinateClause comma space)? effect (space subordinateClause)?
+abilityType -> 'activated abilities'
+verbChoose -> 'choose'
+prepositionOf -> 'of'
+verbCost -> 'cost'
+adverbMore -> 'more'
+adverbInstead -> 'instead'
+prepositionTo -> 'to'
+prepositionFor -> 'for'
+verbActivate -> 'activate'
+verbDealt -> 'dealt'
