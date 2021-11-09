@@ -31,32 +31,33 @@ modal -> verbChoose space amount dash (newline bullet space effect period)+
 spellAbility -> effect period
              -> restriction period
              -> modal
-             -> delayedTrigger comma space effect period space 'Ignore this effect for ' object period
-             -> duration comma space 'instead of declaring blockers, each defending player chooses any number of creatures they control and divides them into a number of piles equal to the number of attacking creatures for whom that player is the defending player. Creatures ' player ' control that can block additional creatures may likewise be put into additional piles. Assign each pile to a different one of those attacking creatures at random. Each creature in a pile that can block the creature that pile is assigned to does so.'
-             -> duration comma space 'any time you could activate a mana ability, you may ' costs period space subordinateClause comma space effect
+             -> delayedTrigger comma space effect period space verbIgnore space demonstrative space nounEffect space prepositionFor space object period
+             -> duration comma space adverbInstead space prepositionOf space verbDeclaring space nounBlockers comma space rawDeterminer space player space 'chooses any number of creatures they control and divides them into a number of piles equal to the number of attacking creatures for whom that player is the defending player. Creatures ' player ' control that can block additional creatures may likewise be put into additional piles. Assign each pile to a different one of those attacking creatures at random. Each creature in a pile that can block the creature that pile is assigned to does so.'
 
+nounBlockers -> 'blockers'
+verbIgnore -> 'ignore'
+verbDeclaring -> 'declaring'
+nounEffect -> 'effect'
 ## Effects
 
-replacementEffect -> subordinateClause comma space (space 'instead')? effect (space 'instead')?
+replacementEffect -> subordinateClause comma space (space adverbInstead)? effect (space adverbInstead)?
                   -> objectPhrase space prepositionalPhrase
-                  -> subordinateClause comma space playerPhrase space 'instead' period space subordinateClause comma space effect
-                  -> subordinateClause comma space playerVerbPhrase comma space 'but you may put it on top of ' zone ' instead of into ' zone
-
-source -> object
-       -> 'a ' color ' source of your choice'
-       -> 'a source of your choice'
+                  -> subordinateClause comma space playerPhrase space adverbInstead period space subordinateClause comma space effect
+                  -> subordinateClause comma space playerVerbPhrase comma space 'but you may put it on top of ' zone space adverbInstead ' of into ' zone
 
 effect -> effect (period)? space conjunction space effect
        -> effect period space effect
        -> effect space duration
        -> (effect comma space)? effect comma space conjunction space effect
-       -> 'Prevent' space damage (period space 'Until end of turn, you may ' costs ' any time you could cast an instant' period space subordinateClause comma space effect)?
+       -> duration comma space 'any time you could activate a mana ability, you may ' costs period space subordinateClause comma space effect
+       -> 'Until end of turn, you may ' costs ' any time you could cast an instant' period space subordinateClause comma space effect)?
+       -> 'Prevent' space damage
        -> 'prevent that ' damage
        -> 'The next time ' source ' would deal combat damage to you this turn, prevent all but 1 of that damage'
        -> 'The next time ' source ' would deal damage to you this turn, prevent that damage'
        -> 'The next time ' source ' would deal damage to you this turn, prevent that damage. You gain life equal to the damage prevented this way'
-       -> 'The next time ' source ' would deal damage to target creature this turn, that source deals that damage to you instead'
-       -> 'The next ' damage ' that would be dealt to ' object ' this turn is dealt to its owner instead'
+       -> 'The next time ' source ' would deal damage to target creature this turn, that source deals that damage to you' space adverbInstead
+       -> 'The next ' damage ' that would be dealt to ' object ' this turn is dealt to its owner' adverbInstead
        -> player ' loses half their life, rounded up'
        -> 'Choose ' object
        -> object ' attacks this turn if able'
@@ -213,7 +214,7 @@ objectVerbPhrase -> verbIs space 'dealt damage'
                  -> 'deals ' damage ' to ' something ' and ' object ' gains "Enchanted creature loses flying"'
                  -> 'deals ' damage ' to ' something comma space 'where X is ' amount
                  -> 'deals ' damage ' to ' something period space player ' gain life equal to the damage dealt, but not more life than the player’s life total before the damage was dealt, the planeswalker’s loyalty before the damage was dealt, or the creature’s toughness'
-                 -> 'deals ' damage ' to ' something '. If ' condition ', it can’t be regenerated this turn, and if it would die this turn, exile it instead'
+                 -> 'deals ' damage ' to ' something '. If ' condition ', it can’t be regenerated this turn, and if it would die this turn, exile it' space adverbInstead
                  -> 'deals ' damage ' divided evenly, rounded down, among any number of targets'
                  -> 'deals damage to ' something ' equal to ' amount
                  -> 'deals damage equal to ' amount ' to ' something
@@ -353,21 +354,27 @@ quotedAbility -> openQuote ability closeQuote
 rawPhase -> turnPart
          -> (turnPart space)? turnPart space rawWordStep
 
-restriction -> 'Cast ' object ' only during ' phase
-            -> 'Cast ' object ' only before ' phase
+restriction -> verbCast space object ' only during ' phase
+            -> verbCast object ' only before ' phase
             -> 'Spend only ' color ' mana on X'
-            -> 'As an additional cost to cast this spell, ' costs
-            -> 'This spell costs ' costs ' more to cast for each target beyond the first'
+            -> 'As an additional cost to ' verbCast ' this spell, ' costs
+            -> 'This spell costs ' costs ' more to ' verbCast ' for each target beyond the first'
             -> 'Activate only during ' phase ('and only once each turn')?
 	    -> 'Activate only during an opponent’s turn, before attackers are declared'
             -> 'Remove ' object ' from your deck before playing if you’re not playing for ante'
-	    -> 'Only ' object '’s owner may activate this ability'
+	    -> 'Only ' player ' may activate this ability'
 
 something -> determiner something
           -> object
           -> player
           -> determiner space target
           -> something space conjunction space something
+
+source -> premodifier space source
+       -> source space postmodifier
+       -> object
+       -> space color space 'source'
+       -> 'source'
 
 statMod -> plusMinus number slash plusMinus number (' where X is ' amount (', and Y is ' amount)?)?
 
@@ -602,6 +609,7 @@ abilityType -> 'activated abilities'
 verbChoose -> 'choose'
 prepositionOf -> 'of'
 verbCost -> 'cost'
+verbCast -> 'cast'
 adverbMore -> 'more'
 adverbInstead -> 'instead'
 prepositionTo -> 'to'
