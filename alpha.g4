@@ -1,6 +1,9 @@
 // Grammar for Alpha
 
 grammar alpha;
+
+card : permanentCard | spellCard;
+
 // Permanents
 permanentCard : ability (newline ability)* |; // or nothing
 
@@ -293,7 +296,8 @@ phase : playerPossessive space 'turn'
 phrase : playerPhrase
        | objectPhrase;
 
-player : determiner space player
+player : rawPlayer
+       | determiner space player
        | rawPlayer plural
        | objectPossesive rawPlayer;
 
@@ -597,7 +601,6 @@ closeQuote : '”';
 saxon : (apostrophe (letterS)?|letterS);
 
 tap : 't';
-
 
 // To Sort
 
