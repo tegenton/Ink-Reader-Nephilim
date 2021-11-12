@@ -16,7 +16,7 @@ activatedAbility : costs colon space effect period (restriction period)?;
 staticAbility : staticAbility space staticAbility
               | subordinateClause comma space staticAbility
               | replacementEffect period
-              //| continuous (period)?
+              //TODO: | continuous (period)?
               | abilityType space prepositionOf space object space verbCost space costs space comparator space prepositionTo space verbActivate period
               | damage space verbIs space verbDealt space prepositionTo space object adverbInstead period
               | prepositionFor space rawDeterminer damage space distinguisher  comma space triggerEffect period;
@@ -60,11 +60,13 @@ replacementEffect : subordinateClause comma space (space adverbInstead)? effect 
 
 triggerEffect : effect (space subordinateClause)?;
 
-effect //: //effect (period)? space conjunction space effect
-       //| effect period space effect
-       //| effect space duration
-       //| (effect comma space)? effect comma space conjunction space effect
-       : duration comma space rawDeterminer space nounTime space player space verbCould space verbActivate space article space abilityType comma space player space verbMay space costs period space subordinateClause comma space effect
+effect : rawEffect
+       | rawEffect (period)? space conjunction space effect
+       | rawEffect period space effect
+       | rawEffect space duration
+       | (rawEffect comma space)? rawEffect comma space conjunction space rawEffect;
+
+rawEffect : duration comma space rawDeterminer space nounTime space player space verbCould space verbActivate space article space abilityType comma space player space verbMay space costs period space subordinateClause comma space effect
        | duration comma space player space verbMay space costs space rawDeterminer space nounTime space player space verbCould space verbCast space article space 'instant' period space subordinateClause comma space effect
        | 'The next time' space source space 'would deal' space damageType space 'to' space something space 'this turn' comma space effect
        | 'Prevent' space damage
@@ -120,7 +122,7 @@ amount : 'half ' amount comma ' rounded ' ('up'|'down')
        | 'up to ' amount
        | comparator ' than ' englishNumber
        | englishNumber (space conjunction space comparator)?
-       //| object saxon space characteristics
+       | rawObject saxon space characteristics
        | 'X'
        | article space 'number of ' object (' minus ' number)?
        | article space 'damage dealt to ' player ' this turn'
@@ -184,17 +186,19 @@ keyword : 'enchant' object
 
 mana : (lBracket (manaLetter | number) rBracket)+;
 
-object : premodifier space object
-       //| object space postmodifier
-       //| object plural
-       //| (object comma space)* object space conjunction object
-       | tilde
-       | type
-       | 'card'
-       | 'spell'
-       | 'permanent'
-       | 'it'
-       | 'top card of ' zone;
+object : rawObject
+       | (premodifier space)+ object
+       | rawObject (space postmodifier)+
+       | rawObject plural
+       | (rawObject comma space)* rawObject space conjunction rawObject;
+
+rawObject : tilde
+          | type
+          | 'card'
+          | 'spell'
+          | 'permanent'
+          | 'it'
+          | 'top card of ' zone;
 
 objectPossesive : object saxon;
 
@@ -290,22 +294,24 @@ phrase : playerPhrase
        | objectPhrase;
 
 player : determiner space player
-       //| player plural
-       | object saxon space 'controller'
-       | object saxon space 'owner'
-       | 'player'
-       | 'you'
-       | 'opponent'
-       | 'active player'
-       | 'defending player'
-       | 'they'
-       | 'the player who controls the fewest';
+       | rawPlayer plural
+       | objectPossesive rawPlayer;
+
+rawPlayer: 'controller'
+         | 'owner'
+         | 'player'
+         | 'you'
+         | 'opponent'
+         | 'active player'
+         | 'defending player'
+         | 'they'
+         | 'the player who controls the fewest';
 
 playerPhrase : player space playerVerbPhrase;
 
 playerPossessive : 'your'
                  | 'their'
-                 //| player saxon
+                 | rawPlayer saxon
                  | 'their controller' plural saxon
                  | 'its controller' saxon
                  | 'the chosen player' saxon;
@@ -327,6 +333,7 @@ playerVerbPhrase : verbMay playerVerbPhrase
                  | 'copy' space object comma space 'except' period space player space 'may ' verbChoose ' new targets for the copy'
                  | 'counter' space object (' unless its controller pays {X}. If that player doesn’t, they tap all lands with mana abilities they control and lose all unspent mana')
                  | 'create a 1/1 colorless Insect artifact creature token with flying named Wasp'
+                 | 'destroy ' object
                  | 'destroy ' object period space object ' deals damage to each creature and each player equal to ' amount
                  | 'destroy ' object space delayedTrigger
                  | 'destroy ' object space delayedTrigger space 'if it didn’t attack this turn'
@@ -514,9 +521,7 @@ rawPlayerVerb : 'add'
               | 'cast'
               | 'change'
               | 'control'
-	          | 'destroy'
 	          | 'discard'
-	          | 'destroy'
 	          | 'do'
 	          | 'draw'
 	          | 'own'
