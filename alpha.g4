@@ -89,12 +89,7 @@ replacementEffect -> subordinateClause comma space (space adverbInstead)? effect
                   -> subordinateClause comma space playerVerbPhrase comma space prepositionBut space player space verbMay space verbPut space object preposition space nounTop space prepositionOf space zone space adverbInstead space prepositionOf space preposition space zone
                   -> objectPhrase space prepositionalPhrase
 
-triggerEffect -> (subordinateClause comma space)? effect (space subordinateClause)?
-
-nounTime -> 'time'
-verbCould -> 'could'
-damageType -> 'combat damage'
-           -> 'damage'
+triggerEffect -> effect (space subordinateClause)?
 
 effect -> effect (period)? space conjunction space effect
        -> effect period space effect
@@ -443,7 +438,7 @@ subordinateClause -> subordinateConjunction space 'long' space subordinateClause
                   -> subordinateConjunction space player ' would draw ' object ' during ' phase
                   -> subordinateConjunction space player ' would gain life'
                   -> subordinateConjunction space player ' would begin your turn while ' object ' is tapped'
-		  -> subordinateConjunction space 'an effect causes you to discard a card'
+                  -> subordinateConjunction space 'an effect causes you to discard a card'
                   -> subordinateConjunction space 'it’s ' object ' in addition to its other types'
                   -> subordinateConjunction space 'it doesn’t copy that creature’s color and it has “At the beginning of your upkeep, you may have this creature become a copy of target creature, except it doesn’t copy that creature’s color and it has this ability.”'
                   -> subordinateConjunction space 'that the copy is ' color
@@ -451,7 +446,7 @@ subordinateClause -> subordinateConjunction space 'long' space subordinateClause
 textAspect -> 'color word'
            -> 'basic land type'
 
-triggerCondition -> triggerWord space triggerEvent
+triggerCondition -> triggerWord space triggerEvent (comma space subordinateClause)?
 
 triggerEvent -> 'the beginning of' space phase
              -> 'end of combat'
@@ -667,4 +662,8 @@ nounEffect -> 'effect'
 nounTop -> 'top'
 prepositionBut -> 'but'
 verbPut -> 'put'
+nounTime -> 'time'
+verbCould -> 'could'
+damageType -> 'combat damage'
+           -> 'damage'
 */
