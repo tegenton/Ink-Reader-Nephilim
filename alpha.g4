@@ -35,34 +35,6 @@ spellAbility : effect period
              | delayedTrigger comma space effect period space verbIgnore space demonstrative space nounEffect space prepositionFor space object period
              | duration comma space adverbInstead space prepositionOf space verbDeclaring space nounBlockers comma space rawDeterminer space player space verbChooses space object space conjunction space verbDivides space pronounThem space preposition space article space nounNumber space prepositionOf space nounPiles space adjectiveEqual space prepositionTo space amount period space object space verbMay space verbLikewise space verbBe space vebPut preposition space adjectiveAdditional space nounPiles period space verbAssign space rawDeterminer space nounPile prepositionTo space article space adjectiveDifferent space number prepositionOf space object space prepositionAt space adjectiveRandom period space space objectPhrase period;
 
-// Alphabet (case insensitive)
-fragment A : [aA];
-fragment B : [bB];
-fragment C : [cC];
-fragment D : [dD];
-fragment E : [eE];
-fragment F : [fF];
-fragment G : [gG];
-fragment H : [hH];
-fragment I : [iI];
-fragment J : [jJ];
-fragment K : [kK];
-fragment L : [lL];
-fragment M : [mM];
-fragment N : [nN];
-fragment O : [oO];
-fragment P : [pP];
-fragment Q : [qQ];
-fragment R : [rR];
-fragment S : [sS];
-fragment T : [tT];
-fragment U : [uU];
-fragment V : [vV];
-fragment W : [wW];
-fragment X : [xX];
-fragment Y : [yY];
-fragment Z : [zZ];
-
 // Symbols
 
 apostrophe : '’';
