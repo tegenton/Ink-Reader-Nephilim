@@ -1,6 +1,8 @@
-# Grammar for Alpha
+// Grammar for Alpha
 
-## Permanents
+grammar alpha;
+/*
+// Permanents
 permanentCard -> ability? (newline ability)*
 
 ability -> keywords
@@ -22,7 +24,7 @@ staticAbility -> staticAbility space staticAbility
               -> damage space verbIs space verbDealt space prepositionTo space object adverbInstead period
               -> prepositionFor space rawDeterminer damage space distinguisher  comma space triggerEffect period
 
-## Spells
+// Spells
 
 spellCard -> spellAbility (\n spellAbility)*
 
@@ -34,7 +36,7 @@ spellAbility -> effect period
              -> delayedTrigger comma space effect period space verbIgnore space demonstrative space nounEffect space prepositionFor space object period
              -> duration comma space adverbInstead space prepositionOf space verbDeclaring space nounBlockers comma space rawDeterminer space player space verbChooses space object space conjunction space verbDivides space pronounThem space preposition space article space nounNumber space prepositionOf space nounPiles space adjectiveEqual space prepositionTo space amount period space object space verbMay space verbLikewise space verbBe space vebPut preposition space adjectiveAdditional space nounPiles period space verbAssign space rawDeterminer space nounPile prepositionTo space article space adjectiveDifferent space number prepositionOf space object space prepositionAt space adjectiveRandom period space space objectPhrase period
 
-## Effects
+// Effects
 
 replacementEffect -> subordinateClause comma space (space adverbInstead)? effect (space adverbInstead)?
                   -> subordinateClause comma space playerPhrase space adverbInstead period space subordinateClause comma space effect
@@ -92,7 +94,7 @@ damage -> 'damage'
        -> 'that' space damage
        -> article space 'next' space damage space 'that would be dealt to' space something space duration
 
-## Definitions
+// Definitions
 
 adjective -> 'enchanted'
           -> 'tapped'
@@ -421,7 +423,7 @@ verbIs -> rawVerbIs (negation)?
 zone -> playerPossessive space rawZone
      -> article space rawZone
 
-## Morphemes
+// Morphemes
 
 article -> 'the'
         -> 'a'
@@ -537,7 +539,7 @@ triggerWord -> 'at'
             -> 'when'
             -> 'whenever'
 
-## individual words
+// individual words
 
 rawVerbIs -> 'is'
           -> 'are'
@@ -547,7 +549,7 @@ rawWordStep -> 'step'
 
 
 
-## Lexemes
+// Lexemes
 
 letterS -> 's'
 
@@ -581,7 +583,7 @@ saxon -> (apostrophe (letterS)?|letterS)
 
 tap -> 't'
 
-## Symbols
+// Symbols
 
 apostrophe -> '’'
 
@@ -612,7 +614,7 @@ space -> ' '
 
 tilde -> '~'
 
-# To Sort
+// To Sort
 
 abilityType -> 'activated abilities'
             -> 'mana ability'
@@ -649,3 +651,4 @@ nounEffect -> 'effect'
 nounTop -> 'top'
 prepositionBut -> 'but'
 verbPut -> 'put'
+*/
