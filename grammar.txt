@@ -38,23 +38,25 @@ spellAbility -> effect period
 
 replacementEffect -> subordinateClause comma space (space adverbInstead)? effect (space adverbInstead)?
                   -> subordinateClause comma space playerPhrase space adverbInstead period space subordinateClause comma space effect
-                  -> subordinateClause comma space playerVerbPhrase comma space 'but you may put it on top of ' zone space adverbInstead ' of into ' zone
+                  -> subordinateClause comma space playerVerbPhrase comma space prepositionBut space player space verbMay space verbPut space object preposition space nounTop space prepositionOf space zone space adverbInstead space prepositionOf space preposition space zone
                   -> objectPhrase space prepositionalPhrase
 
 triggerEffect -> (subordinateClause comma space)? effect (space subordinateClause)?
+
+nounTime -> 'time'
+verbCould -> 'could'
+damageType -> 'combat damage'
+           -> 'damage'
 
 effect -> effect (period)? space conjunction space effect
        -> effect period space effect
        -> effect space duration
        -> (effect comma space)? effect comma space conjunction space effect
-       -> duration comma space 'any time you could activate a mana ability, you may ' costs period space subordinateClause comma space effect
-       -> 'Until end of turn, you may ' costs ' any time you could cast an instant' period space subordinateClause comma space effect)?
+       -> duration comma space rawDeterminer space nounTime space player space verbCould space verbActivate space article space abilityType comma space player space verbMay space costs period space subordinateClause comma space effect
+       -> duration comma space player space verbMay space costs space rawDeterminer space nounTime space player space verbCould space verbCast space article space 'instant' period space subordinateClause comma space effect
+       -> 'The next time' space source space 'would deal' space damageType space 'to' space something space 'this turn' comma space effect
        -> 'Prevent' space damage
-       -> 'prevent that ' damage
-       -> 'The next time ' source ' would deal combat damage to you this turn, prevent all but 1 of that damage'
-       -> 'The next time ' source ' would deal damage to you this turn, prevent that damage'
-       -> 'The next time ' source ' would deal damage to you this turn, prevent that damage. You gain life equal to the damage prevented this way'
-       -> 'The next time ' source ' would deal damage to target creature this turn, that source deals that damage to you' space adverbInstead
+       -> 'that source deals' space damage space 'to' space player space adverbInstead
        -> 'The next ' damage ' that would be dealt to ' object ' this turn is dealt to its owner' adverbInstead
        -> player ' loses half their life, rounded up'
        -> verbChoose space object
@@ -65,7 +67,7 @@ effect -> effect (period)? space conjunction space effect
        -> player space verbChooses space 'a number of lands they control equal to ' amount ', then sacrifices the rest. Players discard cards and sacrifice creatures the same way'
        -> duration comma space player ' can’t be attacked except by ' object
        -> player space 'may pay any amount of mana. ' object ' deals 2 damage to that player. Prevent X of that damage, where X is the amount of mana that player paid this way'
-       -> player space 'may' space verbChoose space 'a creature card in your hand whose mana cost could be paid by some amount of, or all of, the mana you spent on {X}. If you do, you may cast that card face down as a 2/2 creature spell without paying its mana cost. If the creature that spell becomes as it resolves has not been turned face up and would assign or deal damage, be dealt damage, or become tapped, instead it’s turned face up and assigns or deals damage, is dealt damage, or becomes tapped. Activate only as a sorcery.'
+       -> player space verbMay space verbChoose space 'a creature card in your hand whose mana cost could be paid by some amount of, or all of, the mana you spent on {X}. If you do, you may cast that card face down as a 2/2 creature spell without paying its mana cost. If the creature that spell becomes as it resolves has not been turned face up and would assign or deal damage, be dealt damage, or become tapped, instead it’s turned face up and assigns or deals damage, is dealt damage, or becomes tapped. Activate only as a sorcery.'
        -> player ' divides all creatures without flying they control into a “left” pile and a “right” pile. Then, for each attacking creature you control, ' verbChoose ' “left” or “right.” That creature can’t be blocked this combat except by creatures with flying and creatures in a pile with the chosen label'
        -> 'it loses “enchant creature card in a graveyard” and gains “enchant creature put onto the battlefield with ~.” Return enchanted creature card to the battlefield under your control and attach ~ to it. When ~ leaves the battlefield, that creature’s controller sacrifices it'
        -> 'remove' space object space 'from combat'
@@ -82,10 +84,13 @@ effect -> effect (period)? space conjunction space effect
        -> phrase
        -> playerVerbPhrase (' and sacrifice ' object ' of an opponent’s choice')? (' and ' player ' loses all unspent mana')? (period space player ' may attach ' object ' to ' object ' of their choice')?
 
-damage -> number ' damage'
+damage -> 'damage'
+       -> number space 'damage'
        -> 'all combat damage that would be dealt' space duration
        -> 'all damage that would be dealt to ' player ' by ' object
-       -> article space 'next ' damage ' that would be dealt to ' something space duration
+       -> 'all but 1 of that damage'
+       -> 'that' space damage
+       -> article space 'next' space damage space 'that would be dealt to' space something space duration
 
 ## Definitions
 
@@ -292,13 +297,14 @@ playerPossessive -> 'your'
                  -> 'its controller' saxon
                  -> 'the chosen player' saxon
 
-playerVerbPhrase -> playerVerb
-                 -> playerVerb mana
+playerVerbPhrase -> verbMay playerVerbPhrase
+                 -> playerVerb
+		 -> playerVerb space mana
                  -> playerVerb space object (space prepositionAt space adjectiveRandom)?
 		 -> playerVerb space player
                  -> playerVerb space object space 'for mana'
                  -> playerVerb space article space 'amount of ' mana ' equal to ' amount
-                 -> playerVerb space amount space 'mana of any ' ('one ')? 'color'
+                 -> playerVerb space amount space 'mana of any ' ('one' space)? 'color'
 		 -> playerVerb space amount space 'mana of any type that land produced'
 		 -> playerVerb space article space 'additional ' mana
 		 -> playerVerb space article space 'text of ' object ' by replacing all instances of one ' textAspect ' with another'
@@ -315,6 +321,7 @@ playerVerbPhrase -> playerVerb
 		 -> 'exchange ' object ' with ' object
 		 -> 'exile ' object period space player ' gains life equal to ' amount
 		 -> 'gain' (plural)? space number ' life'
+		 -> 'gain life equal to the damage prevented this way'
 		 -> 'gain life equal to ' amount period space object ' deals damage to ' something ' equal to ' amount '.'
 		 -> 'Look at the top ' amount ' cards of ' zone ', then put them back in any order. ' player ' may have ' player ' shuffle'
 		 -> 'Look' space 'at' space zone
@@ -330,7 +337,6 @@ playerVerbPhrase -> playerVerb
                  -> 'skip' space phase
 		 -> 'skip' space demonstrative space ('turn'|'draw')
 		 -> 'take an extra turn after this one'
-		 -> 'may' playerVerbPhrase
                  -> 'have ' object ' enter ' zone ' as a copy of any ' object ' on ' zone (space prepositionalPhrase)?
                  -> 'spend ' color ' mana as though it were ' color ' mana'
                  -> 'play any number of lands on each of your turns'
@@ -609,6 +615,7 @@ tilde -> '~'
 # To Sort
 
 abilityType -> 'activated abilities'
+            -> 'mana ability'
 verbChoose -> 'choose'
 verbCost -> 'cost'
 verbCast -> 'cast'
@@ -639,3 +646,6 @@ verbDivides -> 'divides'
 verbIgnore -> 'ignore'
 verbDeclaring -> 'declaring'
 nounEffect -> 'effect'
+nounTop -> 'top'
+prepositionBut -> 'but'
+verbPut -> 'put'
