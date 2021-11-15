@@ -1,8 +1,43 @@
 lexer grammar alpha_lexer;
+// Determiner types
+// Articles
+A: LetterA;
+AN: A 'n';
+THE: T 'he';
+// Demonstrative
+TARGET: T 'arget';
+THIS: T 'his';
+THESE: T 'hese';
+THAT: T 'hat';
+THOSE: T 'hose';
+// Negative
+NO: N 'o';
+// Alternative
+OTHER: O 'ther';
+// Alternative-addative
+ANOTHER: A 'nother';
+// Universal
+ALL: LetterA 'll';
+// Distributive
+EACH: E 'ach';
+// Existential
+ANY: LetterA 'ny';
+
+CONJUNCTION : LetterA 'nd'
+            | O 'r'
+            | LetterA 'nd' SLASH 'or'
+            | T 'hen';
+
+// Object verbs
+ATTACK : LetterA 'ttack';
+BECOME : B 'ecome';
+BLOCK : B 'lock';
+DIE : D 'ie';
+ENTER : E 'nter';
 
 // Player verbs
-ADD : A 'dd';
-ANTE : A 'nte';
+ADD : LetterA 'dd';
+ANTE : LetterA 'nte';
 CAST : C 'ast';
 CHANGE : C 'hange';
 CHOOSE : C 'hoose';
@@ -29,44 +64,61 @@ FEAR : F 'ear';
 HASTE : H 'aste';
 TRAMPLE : T 'rample';
 REACH : R 'each';
+
 // Creature types
-GOBLIN : G 'oblin';
-GOLEM : G 'olem';
-MERFOLK : M 'erfolk';
-WALL : W 'all';
-ZOMBIE : Z 'ombie';
+CREATURE_TYPE : G 'oblin'
+              | G 'olem'
+              | M 'erfolk'
+              | W 'all'
+              | Z 'ombie';
+
+ENCHANTMENT_TYPE : LetterA 'ura';
+
+// Land types
+LAND_TYPE : P 'lains'
+          | I 'sland'
+          | S 'wamp'
+          | M 'ountain'
+          | F 'orest';
 
 // Literal symbols
-APOSTROPHE : '’';
-BULLET : '•';
-CLOSEQUOTE : '”';
-COMMA : ',';
-COLON : ':';
-DASH : '-' | '—';
-LBRACKET : '{';
-NEWLINE : '\n';
-OPENQUOTE : '“';
-PERIOD : '.';
-PLUS : '+';
-RBRACKET : '}';
-SEMICOLON : ';';
-SLASH : '/';
-SPACE : ' ';
-TILDE : '~';
+fragment APOSTROPHE : '’';
+fragment BULLET : '•';
+fragment CLOSEQUOTE : '”';
+fragment COMMA : ',';
+fragment COLON : ':';
+fragment DASH : '-' | '—';
+fragment LBRACKET : '{';
+fragment NEWLINE : '\n';
+fragment OPENQUOTE : '“';
+fragment PERIOD : '.';
+fragment PLUS : '+';
+fragment RBRACKET : '}';
+fragment SEMICOLON : ';';
+fragment SLASH : '/';
+fragment SPACE : ' ';
+fragment TILDE : '~';
 
 // Numbers
-NUMBER : ('0'..'9')+
-       | 'X';
+NUMBER : [0-9]+
+       | X;
 
-MANA_COLOR : 'W'
-           | 'U'
-           | 'B'
-           | 'R'
-           | 'G'
-           | 'C';
+// Colors
+COLOR : W 'hite'
+      | B 'lue'
+      | B 'lack'
+      | G 'reen'
+      | R 'ed';
+
+MANA_COLOR : W
+           | U
+           | B
+           | R
+           | G
+           | C;
 
 // Case insensitive alphabet
-fragment A : [Aa];
+fragment LetterA : [Aa];
 fragment B : [Bb];
 fragment C : [Cc];
 fragment D : [Dd];

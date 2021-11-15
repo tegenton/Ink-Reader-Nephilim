@@ -453,48 +453,18 @@ cardType : 'creature'
          | 'enchantment'
          | 'instant';
 
-color : 'white'
-      | 'blue'
-      | 'black'
-      | 'green'
-      | 'red';
-
 comparator : 'less'
            | 'greater'
            | 'more';
-
-conjunction : 'and'
-            | 'or'
-            | 'and' SLASH 'or'
-            | 'then';
 
 counterType : 'corpse'
             | 'vitality'
             | 'mire';
 
-creatureType : GOBLIN
-             | GOLEM
-             | MERFOLK
-             | WALL
-             | ZOMBIE;
-
-demonstrative : 'this'
-              | 'these'
-              | 'those'
-              | 'that';
-
 englishNumber : 'one'
               | 'two'
               | 'three'
               | 'seven';
-
-enchantmentType : 'aura';
-
-landType : 'plains'
-         | 'island'
-         | 'swamp'
-         | 'mountain'
-         | 'forest';
 
 preposition : 'with' ('out')?
             | 'in' ('to')?
@@ -504,19 +474,18 @@ preposition : 'with' ('out')?
 plusMinus : PLUS
           | DASH;
 
-rawDeterminer : 'all'
-              | 'each'
-              | 'any'
-              | 'other'
-              | 'target'
-              | 'no'
-              | 'only';
+rawDeterminer : ALL
+              | EACH
+              | ANY
+              | OTHER
+              | TARGET
+              | NO;
 
-rawObjectVerb : 'attack'
-              | 'become'
-              | 'block'
-              | 'die'
-              | 'enter';
+rawObjectVerb : ATTACK
+              | BECOME
+              | BLOCK
+              | DIE
+              | ENTER;
 
 rawPlayerVerb : ADD
               | ANTE
