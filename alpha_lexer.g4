@@ -76,7 +76,7 @@ CAN: C 'an' (APOSTROPHE 't')?;
 GAINS: G 'ains';
 GETS: G 'et' ('s')?;
 HAS: H 'as' | H 'ave';
-IS: I 's' | A 're' | APOSTROPHE S;
+IS: ((I 's' | A 're') ('n' APOSTROPHE 't')?) | APOSTROPHE S;
 LOSES: L 'oses';
 ONESHOT_OBJECT_VERB: ATTACK
                    | BLOCK

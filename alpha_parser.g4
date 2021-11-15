@@ -25,7 +25,7 @@ staticAbility : staticAbility SPACE staticAbility
               | continuousEffect (PERIOD)?
               | replacementEffect PERIOD
               | abilityType SPACE prepositionOf SPACE object SPACE verbCost SPACE costs SPACE comparator SPACE prepositionTo SPACE verbActivate PERIOD
-              | damage SPACE verbIs SPACE verbDealt SPACE prepositionTo SPACE object adverbInstead PERIOD
+              | damage SPACE IS SPACE verbDealt SPACE prepositionTo SPACE object adverbInstead PERIOD
               | prepositionFor SPACE rawDeterminer damage SPACE distinguisher  COMMA SPACE triggerEffect PERIOD;
 
 triggeredAbility : triggerCondition COMMA SPACE triggerEffect PERIOD;
@@ -58,7 +58,7 @@ continuousEffect : anyTime COMMA SPACE player SPACE verbMay SPACE costs PERIOD S
 continuousObjectPhrase: object SPACE continuousObjectVerbPhrase;
 
 continuousObjectVerbPhrase: continuousObjectVerbPhrase SPACE CONJUNCTION SPACE continuousObjectVerbPhrase
-                          | verbIs SPACE object
+                          | IS SPACE object
                 	      | CAN SPACE ATTACK (SPACE subordinateClause)?
              	          | CAN SPACE BLOCK SPACE object
                       	  | CAN 'be blocked'
@@ -108,7 +108,7 @@ rawEffect: PREVENT SPACE damage
        | player ' control ' player ' until ' object ' finishes resolving'
        | 'If this ability has been activated four or ' comparator ' times this turn, sacrifice ' object ' at the beginning of the next end step'
        | 'The player plays that card if able. While doing so, the player can activate mana abilities only if they’re from lands that player controls and only if mana they produce is spent to activate other mana abilities of lands the player controls and/or to play that card. If the chosen card is cast as a spell, you control the player while that spell is resolving'
-       | objectPossesive SPACE characteristics SPACE verbIs ' each equal to ' amount
+       | objectPossesive SPACE characteristics SPACE IS ' each equal to ' amount
        | phrase
        | playerVerbPhrase (' and sacrifice ' object ' of an opponent’s choice')? (' and ' player ' loses all unspent mana')? (PERIOD SPACE player ' may attach ' object ' to ' object ' of their choice')?
        | object 'can’t be regenerated'
@@ -205,9 +205,9 @@ objectPossesive : object saxon;
 
 objectPhrase : object SPACE objectVerbPhrase;
 
-objectVerbPhrase : verbIs SPACE 'dealt damage'
-                 | verbIs SPACE 'tapped for mana'
-                 | verbIs SPACE 'put into ' zone ' from ' zone
+objectVerbPhrase : IS SPACE 'dealt damage'
+                 | IS SPACE 'tapped for mana'
+                 | IS SPACE 'put into ' zone ' from ' zone
                  | objectVerb SPACE zone 'tapped'
                  | objectVerb SPACE COLOR
                  | objectVerb SPACE zone
@@ -240,11 +240,11 @@ postmodifier : player ' control' (plural)?
              | prepositionalPhrase
              | 'named Plague Rats' SPACE prepositionalPhrase
              | 'able to block ' object
-             | 'that can block' object
-             | 'that ' verbIs ' still ' object
-             | 'other than ' object
-             | 'that didn’t attack this turn'
-             | 'that can block additional creatures'
+             | THAT SPACE 'can block' object
+             | THAT SPACE IS ' still ' object
+             | OTHER SPACE 'than ' object
+             | THAT SPACE 'didn’t attack this turn'
+             | THAT SPACE CAN SPACE BLOCK SPACE 'additional creatures'
              | object ' was blocking that had become blocked by ' object ' this combat'
              | 'put ' prepositionalPhrase ' this way'
              | 'dealt damage by ' object ' this turn'
@@ -422,8 +422,6 @@ triggerEvent : 'the beginning of' SPACE phase
 type : negation (DASH)? type
      | TYPE
      | 'chosen type';
-
-verbIs : rawVerbIs (negation)?;
 
 zone : playerPossessive SPACE ZONE
      | ARTICLE SPACE ZONE;
