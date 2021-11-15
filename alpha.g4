@@ -38,22 +38,6 @@ spellAbility : effect PERIOD
              | delayedTrigger COMMA SPACE effect PERIOD SPACE verbIgnore SPACE demonstrative SPACE nounEffect SPACE prepositionFor SPACE object PERIOD
              | duration COMMA SPACE adverbInstead SPACE prepositionOf SPACE verbDeclaring SPACE nounBlockers COMMA SPACE rawDeterminer SPACE player SPACE verbChooses SPACE object SPACE conjunction SPACE verbDivides SPACE pronounThem SPACE preposition SPACE article SPACE nounNumber SPACE prepositionOf SPACE nounPiles SPACE adjectiveEqual SPACE prepositionTo SPACE amount PERIOD SPACE object SPACE verbMay SPACE verbLikewise SPACE verbBe SPACE verbPut preposition SPACE adjectiveAdditional SPACE nounPiles PERIOD SPACE verbAssign SPACE rawDeterminer SPACE nounPile prepositionTo SPACE article SPACE adjectiveDifferent SPACE number prepositionOf SPACE object SPACE prepositionAt SPACE adjectiveRandom PERIOD SPACE SPACE objectPhrase PERIOD;
 
-// Symbols
-APOSTROPHE : '’';
-BULLET : '•';
-COMMA : ',';
-COLON : ':';
-DASH : '-' | '—';
-LBRACKET : '{';
-NEWLINE : '\n';
-PERIOD : '.';
-PLUS : '+';
-RBRACKET : '}';
-SEMICOLON : ';';
-SLASH : '/';
-SPACE : ' ';
-TILDE : '~';
-
 // Effects
 
 replacementEffect : subordinateClause COMMA SPACE (SPACE adverbInstead)? effect (SPACE adverbInstead)?
@@ -173,7 +157,7 @@ duration : 'until end of turn'
          | 'this turn'
          | 'each combat';
 
-keyword : 'enchant' object
+keyword : 'enchant' SPACE object
         | 'banding'
         | 'first' SPACE 'strike'
         | 'flying'
@@ -452,7 +436,8 @@ article : 'the'
 cardType : 'creature'
          | 'land'
          | 'artifact'
-         | 'enchantment';
+         | 'enchantment'
+         | 'instant';
 
 color : 'white'
       | 'blue'
@@ -473,11 +458,17 @@ counterType : 'corpse'
             | 'vitality'
             | 'mire';
 
-creatureType : 'Goblin'
-             | 'Golem'
-             | 'Merfolk'
-             | 'Wall'
-             | 'Zombie';
+creatureType : GOBLIN
+             | GOLEM
+             | MERFOLK
+             | WALL
+             | ZOMBIE;
+
+GOBLIN : G 'oblin';
+GOLEM : G 'olem';
+MERFOLK : M 'erfolk';
+WALL : W 'all';
+ZOMBIE : Z 'ombie';
 
 demonstrative : 'this'
               | 'these'
@@ -601,6 +592,50 @@ closeQuote : '”';
 saxon : (APOSTROPHE (letterS)?|letterS);
 
 tap : 't';
+
+// Symbols
+APOSTROPHE : '’';
+BULLET : '•';
+COMMA : ',';
+COLON : ':';
+DASH : '-' | '—';
+LBRACKET : '{';
+NEWLINE : '\n';
+PERIOD : '.';
+PLUS : '+';
+RBRACKET : '}';
+SEMICOLON : ';';
+SLASH : '/';
+SPACE : ' ';
+TILDE : '~';
+
+// Case sensitivity
+fragment A : [Aa];
+fragment B : [Bb];
+fragment C : [Cc];
+fragment D : [Dd];
+fragment E : [Ee];
+fragment F : [Ff];
+fragment G : [Gg];
+fragment H : [Hh];
+fragment I : [Ii];
+fragment J : [Jj];
+fragment K : [Kk];
+fragment L : [Ll];
+fragment M : [Mm];
+fragment N : [Nn];
+fragment O : [Oo];
+fragment P : [Pp];
+fragment Q : [Qq];
+fragment R : [Rr];
+fragment S : [Ss];
+fragment T : [Tt];
+fragment U : [Uu];
+fragment V : [Vv];
+fragment W : [Ww];
+fragment X : [Xx];
+fragment Y : [Yy];
+fragment Z : [Zz];
 
 // To Sort
 
