@@ -32,10 +32,10 @@ EXISTENTIAL: ANY;
 ANY: LetterA 'ny';
 
 // Conjunctions
-CONJUNCTION: LetterA 'nd'
-           | O 'r'
+CONJUNCTION: O 'r'
            | LetterA 'nd' SLASH 'or'
            | T 'hen';
+AND: LetterA 'nd';
 
 COMPARATIVE: LESS | GREATER | MORE;
 LESS: L 'ess';
@@ -49,7 +49,10 @@ SUBORDINATE_CONJUNCTION: A 's'
 
 // Concept Nouns
 SOURCE: S 'ource';
+LIFE: L 'ife';
 PILE: P 'ile';
+STEP: S 'tep';
+TURN: T 'urn';
 
 TRIGGER_WORD: AT | WHEN | WHENEVER;
 AT: A 't';
@@ -66,14 +69,23 @@ MANA: M 'ana';
 VALUE: V 'alue';
 
 // Object verbs
+CONTINUOUS_OBJECT_VERB: BECOMES
+                      | HAS;
+BECOMES: B 'ecome' ('s')?;
+GETS: G 'et' ('s')?;
+HAS: H 'as' | H 'ave';
+ONESHOT_OBJECT_VERB: ATTACK
+                   | BLOCK
+                   | DIE
+                   | ENTER;
 ATTACK: LetterA 'ttack';
-BECOME: B 'ecome';
 BLOCK: B 'lock';
 DIE: D 'ie';
 ENTER: E 'nter';
 
 // Player verbs
 ADD: LetterA 'dd';
+ACTIVATE: A 'ctivate';
 CAST: C 'ast';
 CHANGE: C 'hange';
 CHOOSE: C 'hoose';
@@ -89,6 +101,7 @@ PAY: P 'ay';
 PUT: P 'ut';
 PREVENT: P 'revent';
 REGENERATE: R 'egenerate';
+SHUFFLE: 'shuffle';
 
 // Source verb
 DEAL: D 'eal';
@@ -110,11 +123,16 @@ GRAVEYARD: G 'raveyard';
 HAND: H 'and';
 LIBRARY: L 'ibrary';
 
-ABILITY_TYPE: ACTIVATED | MANA;
+ABILITY_TYPE: ACTIVATE 'd' | MANA;
 
 COUNTER: C 'orpse'
        | V 'itality'
-       | M 'ire';
+       | M 'ire'
+       | STAT_MOD;
+
+STAT_MOD: PLUSMINUS NUMBER SLASH PLUSMINUS NUMBER;
+
+PLUSMINUS: PLUS | DASH;
 
 // Keywords
 ENCHANT: E 'nchant';
@@ -180,10 +198,11 @@ fragment SPACE: ' ';
 fragment TILDE: '~';
 
 // Numbers
-ENGLISH_NUMBER : O 'ne'
+ENGLISH_NUMBER : ONE
               | T 'wo'
               | T 'hree'
               | S 'even';
+ONE: O 'ne';
 
 NUMBER: [0-9]+
       | VARIABLE;
@@ -239,14 +258,11 @@ fragment Z: [Zz];
 abilityType : 'activated abilities'
             | 'mana ability';
 verbCost : 'cost';
-verbCast : 'cast';
 adverbInstead : 'instead';
 prepositionTo : 'to';
 prepositionFor : 'for';
-verbActivate : 'activate';
 verbDealt : 'dealt';
 adjectiveRandom : 'random';
-prepositionAt : 'at';
 adjectiveDifferent : 'different';
 verbAssign : 'assign';
 verbBe : 'be';
