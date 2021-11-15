@@ -51,12 +51,15 @@ SUBORDINATE_CONJUNCTION: A 's'
 SOURCE: S 'ource';
 PILE: P 'ile';
 
-// Object attributes
+TRIGGER_WORD: AT | WHEN | WHENEVER;
+AT: A 't';
+WHEN: W 'hen';
+WHENEVER: W 'henever';
 
+// Object attributes
 CHARACTERISTIC: POWER
               | TOUGHNESS
               | MANA SPACE VALUE;
-
 POWER: P 'ower';
 TOUGHNESS: T 'oughness';
 MANA: M 'ana';

@@ -44,13 +44,26 @@ spellAbility : effect PERIOD
 
 // Effects
 
-anyTime : rawDeterminer SPACE nounTime SPACE player SPACE verbCould SPACE verbActivate SPACE article SPACE abilityType
-        | rawDeterminer SPACE nounTime SPACE player SPACE verbCould SPACE verbCast SPACE article SPACE cardType;
+anyTime : rawDeterminer SPACE nounTime SPACE player SPACE verbCould SPACE verbActivate SPACE A SPACE abilityType
+        | rawDeterminer SPACE nounTime SPACE player SPACE verbCould SPACE verbCast SPACE A SPACE cardType;
 
 continuousEffect : anyTime COMMA SPACE player SPACE verbMay SPACE costs PERIOD SPACE subordinateClause COMMA SPACE effect
                  | player SPACE verbMay SPACE costs SPACE anyTime PERIOD SPACE subordinateClause COMMA SPACE effect
-                 | player ' can’t be attacked except by ' object
-                 | object SPACE verbIs SPACE object;
+                 | player SPACE 'can’t be attacked except by ' object
+                 | object SPACE verbIs SPACE object
+                 | object SPACE 'gains' SPACE keyword
+             	 | object SPACE 'gets ' statMod
+             	 | object SPACE 'get' ('s')? SPACE statMod ' and ha' ('s'|'ve') SPACE ability
+             	 | object SPACE 'ha' ('s'|'ve') SPACE quotedAbility
+             	 | object SPACE 'get' ('s')? ' ' statMod (' as long as you control a Swamp')?
+             	 | object SPACE 'ha' ('s '|'ve ') ability (' and can’t be enchanted by ' object)? (PERIOD SPACE 'this effect doesn’t remove ' object)?
+             	 | object SPACE 'can attack as though ' object ' didn’t have defender'
+             	 | object SPACE 'can attack as though ' object ' had haste'
+             	 | object SPACE 'can’t attack' (' ' subordinateClause)?
+             	 | object SPACE 'can block ' object
+             	 | object SPACE 'can’t be blocked'
+             	 | object SPACE 'can’t be blocked ' ('except ')? 'by ' object
+             	 | object SPACE 'can’t block ' object;
 
 replacementEffect : subordinateClause COMMA SPACE (SPACE adverbInstead)? effect (SPACE adverbInstead)?
                   | subordinateClause COMMA SPACE playerPhrase SPACE adverbInstead PERIOD SPACE subordinateClause COMMA SPACE effect
@@ -70,22 +83,25 @@ rawEffect: PREVENT SPACE damage
        | source SPACE verbDeals SPACE damage SPACE prepositionTo SPACE player SPACE adverbInstead
        | 'The next time' SPACE source SPACE 'would deal' SPACE damageType SPACE 'to' SPACE something SPACE 'this turn' COMMA SPACE effect
        | 'The next ' damage ' that would be dealt to ' object ' this turn is dealt to its owner' adverbInstead
-       | 'If ' object ' is on the battlefield, flip ' object ' onto the battlefield from a height of at least one foot. If ' object ' turns over completely at least once during the flip, destroy all nontoken permanents it touches'
+       | subordinateClause ', flip ' object ' onto the battlefield from a height of at least one foot. If ' object ' turns over completely at least once during the flip, destroy all nontoken permanents it touches'
        | delayedTrigger COMMA SPACE 'remove all ' counter ' counters from a land that a ' counter ' counter was put onto with ' object ' but that a ' counter ' counter has not been removed from with ' object
        | delayedTrigger COMMA SPACE 'destroy ' object ' if it attacked this turn'
        | player SPACE verbChooses SPACE 'a number of lands they control equal to ' amount ', then sacrifices the rest. Players discard cards and sacrifice creatures the same way'
        | player SPACE 'may pay any amount of mana'
-       | object ' deals 2 damage to that player'
        | 'Prevent X of that damage, where ' variableDefinition
-       | player SPACE verbMay SPACE verbChoose SPACE 'a creature card in your hand whose mana cost could be paid by some amount of, or all of, the mana you spent on {X}. If you do, you may cast that card face down as a 2/2 creature spell without paying its mana cost. If the creature that spell becomes as it resolves has not been turned face up and would assign or deal damage, be dealt damage, or become tapped, instead it’s turned face up and assigns or deals damage, is dealt damage, or becomes tapped. Activate only as a sorcery.'
+       | player SPACE verbMay SPACE CHOOSE SPACE 'a creature card in your hand whose mana cost could be paid by some amount of, or all of, the mana you spent on {X}. If you do, you may cast that card face down as a 2/2 creature spell without paying its mana cost. If the creature that spell becomes as it resolves has not been turned face up and would assign or deal damage, be dealt damage, or become tapped, instead it’s turned face up and assigns or deals damage, is dealt damage, or becomes tapped. Activate only as a sorcery.'
        | player ' divides all creatures without flying they control into a “left” pile and a “right” pile. Then, for each attacking creature you control, ' verbChoose ' “left” or “right.” That creature can’t be blocked this combat except by creatures with flying and creatures in a pile with the chosen label'
-       | 'it loses “enchant creature card in a graveyard” and gains “enchant creature put onto the battlefield with ~.” Return enchanted creature card to the battlefield under your control and attach ~ to it. When ~ leaves the battlefield, that creature’s controller sacrifices it'
+       | 'it loses ' quotedAbility ' and gains ' quotedAbility
+       | 'Return ' object ' to the battlefield under your control'
+       | 'attach ' object ' to it'
+       | 'When ' object ' leaves the battlefield, that creature’s controller sacrifices it'
        | 'remove' SPACE object SPACE 'from combat'
        | player SPACE 'may have ' object ' block ' object ' of your choice'
        | player SPACE 'activates a mana ability of ' object
        | player SPACE 'loses all unspent mana'
        | player SPACE 'add the mana lost this way'
        | player ' control ' player ' until ' object ' finishes resolving'
+       | 'If this ability has been activated four or ' comparator ' times this turn, sacrifice ' object ' at the beginning of the next end step'
        | 'The player plays that card if able. While doing so, the player can activate mana abilities only if they’re from lands that player controls and only if mana they produce is spent to activate other mana abilities of lands the player controls and/or to play that card. If the chosen card is cast as a spell, you control the player while that spell is resolving'
        | objectPossesive SPACE characteristics SPACE verbIs ' each equal to ' amount
        | phrase
@@ -133,12 +149,12 @@ condition : object (SPACE)? verbIs SPACE ('un')? 'tapped'
           | object (SPACE)? verbIs SPACE prepositionalPhrase (SPACE prepositionalPhrase)?
           | object (SPACE)? verbIs SPACE object
           | object (SPACE)? verbIs SPACE 'attacking'
-          | object ' has a ' counter ' counter on it'
-          | object ' has ' keyword
-          | object ' wasn’t the first land you played this turn'
-          | object ' attacked or blocked this combat';
+          | object SPACE 'has a ' counter ' counter on it'
+          | object SPACE 'has ' keyword
+          | object SPACE 'wasn’t the first land you played this turn'
+          | object SPACE 'attacked or blocked this combat';
 
-costs : ('pay' SPACE)? cost (COMMA SPACE costs)?;
+costs : (PAY SPACE)? cost (COMMA SPACE costs)?;
 
 cost :(MANA_SYMBOL)+
      | TAP_SYMBOL
@@ -146,7 +162,7 @@ cost :(MANA_SYMBOL)+
      | playerVerbPhrase;
 
 counter : statMod
-        | counterType;
+        | COUNTER;
 
 determiner: DETERMINER
           | amount;
@@ -189,7 +205,7 @@ objectVerbPhrase : verbIs SPACE 'dealt damage'
                  | verbIs SPACE 'put into ' zone ' from ' zone
                  | verbIs SPACE object
                  | objectVerb SPACE zone 'tapped'
-                 | objectVerb SPACE color
+                 | objectVerb SPACE COLOR
                  | objectVerb SPACE zone
                  | objectVerb SPACE object (' if able')?
                  | 'attacks this turn if able'
@@ -198,21 +214,7 @@ objectVerbPhrase : verbIs SPACE 'dealt damage'
                  | 'do' ('es')? 'n’t untap during ' phase
                  | 'do' ('es')? 'so'
                  | verbCost SPACE costs SPACE comparator SPACE 'to cast'
-             	 | 'gains' SPACE keyword SPACE duration
-             	 | 'gains' keyword
              	 | 'gains trample and gets ' statMod SPACE duration ', where X is ' amount
-             	 | 'get' ('s')? ' ' statMod (' as long as you control a Swamp')?
-             	 | 'gets ' statMod SPACE duration '. If this ability has been activated four or ' comparator ' times this turn, sacrifice ' object ' at the beginning of the next end step'
-             	 | 'get' ('s')? SPACE statMod ' and ha' ('s'|'ve') SPACE ability
-             	 | 'ha' ('s'|'ve') SPACE quotedAbility
-             	 | 'ha' ('s '|'ve ') ability (' and can’t be enchanted by ' object)? (PERIOD SPACE 'this effect doesn’t remove ' object)?
-             	 | 'can attack as though ' object ' didn’t have defender'
-             	 | 'can attack as though ' object ' had haste'
-             	 | 'can’t attack' (' ' subordinateClause)?
-             	 | 'can block ' object
-             	 | 'can’t be blocked'
-             	 | 'can’t be blocked ' ('except ')? 'by ' object
-             	 | 'can’t block ' object
              	 | 'become unblocked'
              	 | 'deals ' damage ' to ' something
                  | 'deals ' damage ' to ' something ' and ' damage ' to ' something
@@ -404,12 +406,12 @@ subordinateClause : SUBORDINATE_CONJUNCTION SPACE 'long' SPACE subordinateClause
                   | SUBORDINATE_CONJUNCTION SPACE 'an effect causes you to discard a card'
                   | SUBORDINATE_CONJUNCTION SPACE 'it’s ' object ' in addition to its other types'
                   | SUBORDINATE_CONJUNCTION SPACE 'it doesn’t copy that creature’s color and it has “At the beginning of your upkeep, you may have this creature become a copy of target creature, except it doesn’t copy that creature’s color and it has this ability.”'
-                  | SUBORDINATE_CONJUNCTION SPACE 'that the copy is ' color;
+                  | SUBORDINATE_CONJUNCTION SPACE 'that the copy is ' COLOR;
 
 textAspect : 'color word'
            | 'basic land type';
 
-triggerCondition : triggerWord SPACE triggerEvent (COMMA SPACE subordinateClause)?;
+triggerCondition : TRIGGER_WORD SPACE triggerEvent (COMMA SPACE subordinateClause)?;
 
 triggerEvent : 'the beginning of' SPACE phase
              | 'end of combat'
@@ -466,10 +468,6 @@ turnPart : 'untap'
          | 'damage'
          | 'end';
 
-triggerWord : 'at'
-            | 'when'
-            | 'whenever';
-
 // individual words
 
 rawVerbIs : 'is'
@@ -477,8 +475,6 @@ rawVerbIs : 'is'
           | APOSTROPHE letterS;
 
 rawWordStep : 'step';
-
-
 
 // Lexemes
 negation : 'non'
