@@ -18,8 +18,8 @@ activatedAbility : costs COLON SPACE effect PERIOD (restriction PERIOD)?;
 
 staticAbility : staticAbility SPACE staticAbility
               | subordinateClause COMMA SPACE staticAbility
+              | continuousEffect (PERIOD)?
               | replacementEffect PERIOD
-              //TODO: | continuous (PERIOD)?
               | abilityType SPACE prepositionOf SPACE object SPACE verbCost SPACE costs SPACE comparator SPACE prepositionTo SPACE verbActivate PERIOD
               | damage SPACE verbIs SPACE verbDealt SPACE prepositionTo SPACE object adverbInstead PERIOD
               | prepositionFor SPACE rawDeterminer damage SPACE distinguisher  COMMA SPACE triggerEffect PERIOD;
@@ -40,6 +40,12 @@ spellAbility : effect PERIOD
 
 // Effects
 
+anyTime : rawDeterminer SPACE nounTime SPACE player SPACE verbCould SPACE verbActivate SPACE article SPACE abilityType
+        | rawDeterminer SPACE nounTime SPACE player SPACE verbCould SPACE verbCast SPACE article SPACE cardType;
+
+continuousEffect : anyTime COMMA SPACE player SPACE verbMay SPACE costs PERIOD SPACE subordinateClause COMMA SPACE effect
+                 | player SPACE verbMay SPACE costs SPACE anyTime PERIOD SPACE subordinateClause COMMA SPACE effect;
+
 replacementEffect : subordinateClause COMMA SPACE (SPACE adverbInstead)? effect (SPACE adverbInstead)?
                   | subordinateClause COMMA SPACE playerPhrase SPACE adverbInstead PERIOD SPACE subordinateClause COMMA SPACE effect
                   | subordinateClause COMMA SPACE playerVerbPhrase COMMA SPACE prepositionBut SPACE player SPACE verbMay SPACE verbPut SPACE object preposition SPACE nounTop SPACE prepositionOf SPACE zone SPACE adverbInstead SPACE prepositionOf SPACE preposition SPACE zone
@@ -50,14 +56,14 @@ triggerEffect : effect (SPACE subordinateClause)?;
 effect : rawEffect
        | rawEffect (PERIOD)? SPACE conjunction SPACE effect
        | rawEffect PERIOD SPACE effect
-       | rawEffect SPACE duration
+       | continuousEffect SPACE duration
+       | duration COMMA SPACE continuousEffect
        | (rawEffect COMMA SPACE)? rawEffect COMMA SPACE conjunction SPACE rawEffect;
 
-rawEffect : duration COMMA SPACE rawDeterminer SPACE nounTime SPACE player SPACE verbCould SPACE verbActivate SPACE article SPACE abilityType COMMA SPACE player SPACE verbMay SPACE costs PERIOD SPACE subordinateClause COMMA SPACE effect
-       | duration COMMA SPACE player SPACE verbMay SPACE costs SPACE rawDeterminer SPACE nounTime SPACE player SPACE verbCould SPACE verbCast SPACE article SPACE 'instant' PERIOD SPACE subordinateClause COMMA SPACE effect
-       | 'The next time' SPACE source SPACE 'would deal' SPACE damageType SPACE 'to' SPACE something SPACE 'this turn' COMMA SPACE effect
+rawEffect :
        | 'Prevent' SPACE damage
        | 'that source deals' SPACE damage SPACE 'to' SPACE player SPACE adverbInstead
+       | 'The next time' SPACE source SPACE 'would deal' SPACE damageType SPACE 'to' SPACE something SPACE 'this turn' COMMA SPACE effect
        | 'The next ' damage ' that would be dealt to ' object ' this turn is dealt to its owner' adverbInstead
        | player ' loses half their life, rounded up'
        | verbChoose SPACE object
@@ -84,7 +90,8 @@ rawEffect : duration COMMA SPACE rawDeterminer SPACE nounTime SPACE player SPACE
        | objectPossesive SPACE characteristics SPACE verbIs ' each equal to ' amount
        | phrase
        | playerVerbPhrase (' and sacrifice ' object ' of an opponent’s choice')? (' and ' player ' loses all unspent mana')? (PERIOD SPACE player ' may attach ' object ' to ' object ' of their choice')?
-       | object 'can’t be regenerated';
+       | object 'can’t be regenerated'
+       | player SPACE 'may ' verbChoose ' new targets for' object;
 
 damage : 'damage'
        | number SPACE 'damage'
@@ -157,19 +164,19 @@ duration : 'until end of turn'
          | 'this turn'
          | 'each combat';
 
-keyword : 'enchant' SPACE object
-        | 'banding'
+keyword : ENCHANT SPACE object
+        | BANDING
         | 'first' SPACE 'strike'
-        | 'flying'
-        | 'vigilance'
-        | 'defender'
+        | FLYING
+        | VIGILANCE
+        | DEFENDER
         | 'protection from' SPACE color
         | landType 'walk'
-        | 'indestructible'
-        | 'fear'
-        | 'haste'
-        | 'trample'
-        | 'reach';
+        | INDESTRUCTIBLE
+        | FEAR
+        | HASTE
+        | TRAMPLE
+        | REACH;
 
 mana : (LBRACKET (manaLetter | number) RBRACKET)+;
 
@@ -181,6 +188,7 @@ object : rawObject
 
 rawObject : TILDE
           | type
+          | 'copy'
           | 'card'
           | 'spell'
           | 'permanent'
@@ -318,14 +326,13 @@ playerVerbPhrase : verbMay playerVerbPhrase
                  | playerVerb SPACE article SPACE textAspect
                  | playerVerb SPACE zone
                  | '’re dealt damage'
-                 | 'copy' SPACE object COMMA SPACE 'except' PERIOD SPACE player SPACE 'may ' verbChoose ' new targets for the copy'
+                 | 'copy' SPACE object COMMA SPACE 'except the copy is red'
                  | 'counter' SPACE object (' unless its controller pays {X}. If that player doesn’t, they tap all lands with mana abilities they control and lose all unspent mana')
                  | 'create a 1/1 colorless Insect artifact creature token with flying named Wasp'
-                 | 'destroy ' object
-                 | 'destroy ' object PERIOD SPACE object ' deals damage to each creature and each player equal to ' amount
-                 | 'destroy ' object SPACE delayedTrigger
-                 | 'destroy ' object SPACE delayedTrigger SPACE 'if it didn’t attack this turn'
-                 | 'exchange ' object ' with ' object
+                 | DESTROY SPACE object PERIOD SPACE object SPACE 'deals damage to each creature and each player equal to' SPACE amount
+                 | DESTROY SPACE object SPACE delayedTrigger
+                 | DESTROY SPACE object SPACE delayedTrigger SPACE 'if it didn’t attack this turn'
+                 | EXCHANGE SPACE object SPACE 'with' SPACE object
                  | 'exile ' object PERIOD SPACE player ' gains life equal to ' amount
                  | 'gain' (plural)? SPACE number ' life'
                  | 'gain life equal to the damage prevented this way'
@@ -464,12 +471,6 @@ creatureType : GOBLIN
              | WALL
              | ZOMBIE;
 
-GOBLIN : G 'oblin';
-GOLEM : G 'olem';
-MERFOLK : M 'erfolk';
-WALL : W 'all';
-ZOMBIE : Z 'ombie';
-
 demonstrative : 'this'
               | 'these'
               | 'those'
@@ -510,18 +511,19 @@ rawObjectVerb : 'attack'
               | 'die'
               | 'enter';
 
-rawPlayerVerb : 'add'
-              | 'ante'
+rawPlayerVerb : ADD
+              | ANTE
               | 'can’t'
-              | 'cast'
-              | 'change'
-              | 'control'
-	          | 'discard'
+              | CAST
+              | CHANGE
+              | CONTROL
+              | DESTROY
+	          | DISCARD
 	          | 'do'
-	          | 'draw'
-	          | 'own'
+	          | DRAW
+	          | OWN
 	          | 'play'
-	          | 'regenerate'
+	          | REGENERATE
 	          | ('un')? 'tap';
 
 rawZone : 'graveyard'
@@ -676,3 +678,37 @@ nounTime : 'time';
 verbCould : 'could';
 damageType : 'combat damage'
            | 'damage';
+
+// Creature types
+
+GOBLIN : G 'oblin';
+GOLEM : G 'olem';
+MERFOLK : M 'erfolk';
+WALL : W 'all';
+ZOMBIE : Z 'ombie';
+
+// Player verbs
+
+ADD : A 'dd';
+ANTE : A 'nte';
+CAST : C 'ast';
+CHANGE : C 'hange';
+CONTROL : C 'ontrol';
+DESTROY : D 'estroy';
+DISCARD : D 'iscard';
+DRAW : D 'raw';
+EXCHANGE : E 'xchange';
+OWN : O 'wn';
+REGENERATE : R 'egenerate';
+
+// Keywords
+ENCHANT : E 'nchant';
+BANDING : B 'anding';
+FLYING : F 'lying';
+VIGILANCE : V 'igilance';
+DEFENDER : D 'efender';
+INDESTRUCTIBLE : I 'ndesctructible';
+FEAR : F 'ear';
+HASTE : H 'aste';
+TRAMPLE : T 'rample';
+REACH : R 'each';
