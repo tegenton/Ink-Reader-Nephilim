@@ -1,6 +1,10 @@
 // Grammar for Alpha
 
-grammar alpha;
+parser grammar alpha_parser;
+
+options {
+    tokenVocab = alpha_lexer;
+}
 
 card : permanentCard | spellCard;
 
@@ -377,7 +381,7 @@ quality : 'mana value' SPACE number
         | 'power and toughness each equal to ' amount
         | keyword;
 
-quotedAbility : openQuote ability closeQuote;
+quotedAbility : OPENQUOTE ability CLOSEQUOTE;
 
 rawPhase : turnPart
          | (turnPart SPACE)? turnPart SPACE rawWordStep;
@@ -591,56 +595,9 @@ number : '0'
 
 plural : letterS;
 
-openQuote : '“';
-closeQuote : '”';
-
 saxon : (APOSTROPHE (letterS)?|letterS);
 
 tap : 't';
-
-// Symbols
-APOSTROPHE : '’';
-BULLET : '•';
-COMMA : ',';
-COLON : ':';
-DASH : '-' | '—';
-LBRACKET : '{';
-NEWLINE : '\n';
-PERIOD : '.';
-PLUS : '+';
-RBRACKET : '}';
-SEMICOLON : ';';
-SLASH : '/';
-SPACE : ' ';
-TILDE : '~';
-
-// Case sensitivity
-fragment A : [Aa];
-fragment B : [Bb];
-fragment C : [Cc];
-fragment D : [Dd];
-fragment E : [Ee];
-fragment F : [Ff];
-fragment G : [Gg];
-fragment H : [Hh];
-fragment I : [Ii];
-fragment J : [Jj];
-fragment K : [Kk];
-fragment L : [Ll];
-fragment M : [Mm];
-fragment N : [Nn];
-fragment O : [Oo];
-fragment P : [Pp];
-fragment Q : [Qq];
-fragment R : [Rr];
-fragment S : [Ss];
-fragment T : [Tt];
-fragment U : [Uu];
-fragment V : [Vv];
-fragment W : [Ww];
-fragment X : [Xx];
-fragment Y : [Yy];
-fragment Z : [Zz];
 
 // To Sort
 
@@ -681,37 +638,3 @@ nounTime : 'time';
 verbCould : 'could';
 damageType : 'combat damage'
            | 'damage';
-
-// Creature types
-
-GOBLIN : G 'oblin';
-GOLEM : G 'olem';
-MERFOLK : M 'erfolk';
-WALL : W 'all';
-ZOMBIE : Z 'ombie';
-
-// Player verbs
-
-ADD : A 'dd';
-ANTE : A 'nte';
-CAST : C 'ast';
-CHANGE : C 'hange';
-CONTROL : C 'ontrol';
-DESTROY : D 'estroy';
-DISCARD : D 'iscard';
-DRAW : D 'raw';
-EXCHANGE : E 'xchange';
-OWN : O 'wn';
-REGENERATE : R 'egenerate';
-
-// Keywords
-ENCHANT : E 'nchant';
-BANDING : B 'anding';
-FLYING : F 'lying';
-VIGILANCE : V 'igilance';
-DEFENDER : D 'efender';
-INDESTRUCTIBLE : I 'ndesctructible';
-FEAR : F 'ear';
-HASTE : H 'aste';
-TRAMPLE : T 'rample';
-REACH : R 'each';
