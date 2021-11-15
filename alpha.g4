@@ -66,7 +66,6 @@ rawEffect :
        | 'The next time' SPACE source SPACE 'would deal' SPACE damageType SPACE 'to' SPACE something SPACE 'this turn' COMMA SPACE effect
        | 'The next ' damage ' that would be dealt to ' object ' this turn is dealt to its owner' adverbInstead
        | player ' loses half their life, rounded up'
-       | verbChoose SPACE object
        | object ' attacks this turn if able'
        | 'If Chaos Orb is on the battlefield, flip Chaos Orb onto the battlefield from a height of at least one foot. If Chaos Orb turns over completely at least once during the flip, destroy all nontoken permanents it touches'
        | delayedTrigger COMMA SPACE 'remove all ' counter ' counters from a land that a ' counter ' counter was put onto with ' object ' but that a ' counter ' counter has not been removed from with ' object
@@ -81,17 +80,16 @@ rawEffect :
        | player ' may have ' object ' block ' object ' of your choice'
        | player ' activates a mana ability of ' object
        | player ' loses all unspent mana and ' player ' add the mana lost this way'
-       | 'Look at ' zone ' and ' verbChoose ' a card from it'
+       | 'Look at ' zone
        | player ' control ' player ' until ' object ' finishes resolving'
        | 'The player plays that card if able. While doing so, the player can activate mana abilities only if they’re from lands that player controls and only if mana they produce is spent to activate other mana abilities of lands the player controls and/or to play that card. If the chosen card is cast as a spell, you control the player while that spell is resolving'
-       | 'put' SPACE amount SPACE counter ' counter on ' object (' for each creature that died this turn')?
-       | 'put' SPACE amount SPACE counter ' counter on ' object '. That land is a Swamp for as long as it has a ' counter ' counter on it'
-       | 'put' SPACE amount SPACE counter ' counters on ' object '. This ability can’t cause the total number of ' counter ' counters on ' object ' to be greater than ' amount
        | objectPossesive SPACE characteristics SPACE verbIs ' each equal to ' amount
        | phrase
        | playerVerbPhrase (' and sacrifice ' object ' of an opponent’s choice')? (' and ' player ' loses all unspent mana')? (PERIOD SPACE player ' may attach ' object ' to ' object ' of their choice')?
        | object 'can’t be regenerated'
-       | player SPACE 'may ' verbChoose ' new targets for' object;
+       | player SPACE 'may ' verbChoose ' new targets for' object
+       | 'That land is a Swamp for as long as it has a ' counter ' counter on it'
+       | 'This ability can’t cause the total number of ' counter ' counters on ' object ' to be greater than ' amount;
 
 damage : 'damage'
        | number SPACE 'damage'
@@ -328,6 +326,8 @@ playerVerbPhrase : verbMay playerVerbPhrase
                  | '’re dealt damage'
                  | 'copy' SPACE object COMMA SPACE 'except the copy is red'
                  | 'counter' SPACE object (' unless its controller pays {X}. If that player doesn’t, they tap all lands with mana abilities they control and lose all unspent mana')
+                 | verbChoose SPACE object
+                 | verbChoose SPACE 'a card from it'
                  | 'create a 1/1 colorless Insect artifact creature token with flying named Wasp'
                  | DESTROY SPACE object PERIOD SPACE object SPACE 'deals damage to each creature and each player equal to' SPACE amount
                  | DESTROY SPACE object SPACE delayedTrigger
@@ -342,6 +342,9 @@ playerVerbPhrase : verbMay playerVerbPhrase
                  | 'lose the game'
                  | 'lose life equal to ' amount
                  | 'put' SPACE object SPACE prepositionalPhrase
+                 | 'put' SPACE amount SPACE counter ' counter on ' object (' for each creature that died this turn')?
+                 | 'put' SPACE amount SPACE counter ' counter on ' object
+                 | 'put' SPACE amount SPACE counter ' counters on ' object
                  | 'remove' SPACE article SPACE counter ' counter from ' object
                  | 'return' SPACE object (' from ' zone)? ' to ' zone PERIOD
                  | 'sacrifice ' object (subordinateClause)?
