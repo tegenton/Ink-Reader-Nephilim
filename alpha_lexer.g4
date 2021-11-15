@@ -37,6 +37,16 @@ CONJUNCTION: LetterA 'nd'
            | LetterA 'nd' SLASH 'or'
            | T 'hen';
 
+COMPARATIVE: LESS | GREATER | MORE;
+LESS: L 'ess';
+GREATER:  G 'reater';
+MORE: M 'ore';
+
+SUBORDINATE_CONJUNCTION: A 's'
+                       | E 'xcept'
+                       | I 'f'
+                       | U 'nless';
+
 // Concept Nouns
 SOURCE: S 'ource';
 PILE: P 'ile';
@@ -72,9 +82,15 @@ DRAW: D 'raw';
 EXCHANGE: E 'xchange';
 IGNORE: I 'gnore';
 OWN: O 'wn';
+PAY: P 'ay';
 PUT: P 'ut';
 PREVENT: P 'revent';
 REGENERATE: R 'egenerate';
+
+// Source verb
+DEAL: D 'eal';
+DEALT: DEAL 't';
+
 
 // Zones
 ZONE: ANTE
@@ -91,17 +107,31 @@ GRAVEYARD: G 'raveyard';
 HAND: H 'and';
 LIBRARY: L 'ibrary';
 
+ABILITY_TYPE: ACTIVATED | MANA;
+
+COUNTER: C 'orpse'
+       | V 'itality'
+       | M 'ire';
+
 // Keywords
 ENCHANT: E 'nchant';
+PROTECTION: P 'rotection';
+// Keywords that need no context
+SIMPLE_KEYWORD: BANDING | DEFENDER | FEAR | FIRST_STRIKE | FLYING | HASTE | INDESTRUCTIBLE | LANDWALK | REACH | TRAMPLE | VIGILANCE;
 BANDING: B 'anding';
-FLYING: F 'lying';
-VIGILANCE: V 'igilance';
 DEFENDER: D 'efender';
-INDESTRUCTIBLE: I 'ndesctructible';
 FEAR: F 'ear';
+FIRST_STRIKE: FIRST SPACE STRIKE;
+FLYING: F 'lying';
 HASTE: H 'aste';
-TRAMPLE: T 'rample';
+INDESTRUCTIBLE: I 'ndesctructible';
+LANDWALK: LAND_TYPE 'walk';
 REACH: R 'each';
+TRAMPLE: T 'rample';
+VIGILANCE: V 'igilance';
+
+FIRST: F 'irst';
+STRIKE: S 'trike';
 
 TYPE: CARD_TYPE
     | CREATURE_TYPE
@@ -147,6 +177,11 @@ fragment SPACE: ' ';
 fragment TILDE: '~';
 
 // Numbers
+ENGLISH_NUMBER : O 'ne'
+              | T 'wo'
+              | T 'hree'
+              | S 'even';
+
 NUMBER: [0-9]+
       | VARIABLE;
 
