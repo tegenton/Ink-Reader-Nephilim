@@ -65,8 +65,8 @@ effect : rawEffect
        | (rawEffect COMMA SPACE)? rawEffect COMMA SPACE conjunction SPACE rawEffect;
 
 rawEffect :
-       | 'Prevent' SPACE damage
-       | 'that source deals' SPACE damage SPACE 'to' SPACE player SPACE adverbInstead
+       | PREVENT SPACE damage
+       | source SPACE 'deals' SPACE damage SPACE 'to' SPACE player SPACE adverbInstead
        | 'The next time' SPACE source SPACE 'would deal' SPACE damageType SPACE 'to' SPACE something SPACE 'this turn' COMMA SPACE effect
        | 'The next ' damage ' that would be dealt to ' object ' this turn is dealt to its owner' adverbInstead
        | player ' loses half their life, rounded up'
@@ -572,69 +572,12 @@ rawWordStep : 'step';
 
 letterS : 's';
 
-manaLetter : 'W'
-           | 'U'
-           | 'B'
-           | 'R'
-           | 'G'
-           | 'C';
-
 negation : 'non'
          | 'un'
          | 'n’t';
-
-number : '0'
-       | '1'
-       | '2'
-       | '3'
-       | '4'
-       | '5'
-       | '6'
-       | '7'
-       | 'X';
 
 plural : letterS;
 
 saxon : (APOSTROPHE (letterS)?|letterS);
 
 tap : 't';
-
-// To Sort
-
-abilityType : 'activated abilities'
-            | 'mana ability';
-verbChoose : 'choose';
-verbCost : 'cost';
-verbCast : 'cast';
-adverbInstead : 'instead';
-prepositionTo : 'to';
-prepositionFor : 'for';
-verbActivate : 'activate';
-verbDealt : 'dealt';
-adjectiveRandom : 'random';
-prepositionAt : 'at';
-adjectiveDifferent : 'different';
-verbAssign : 'assign';
-adjectiveAdditional : 'additional';
-verbPut : 'put';
-verbBe : 'be';
-verbLikewise : 'likewise';
-verbMay : 'may';
-adjectiveEqual : 'equal';
-nounPile : 'pile';
-nounPiles : 'piles';
-prepositionOf : 'of';
-nounNumber : 'number';
-pronounThem : 'them';
-nounBlockers : 'blockers';
-verbChooses : 'chooses';
-verbDivides : 'divides';
-verbIgnore : 'ignore';
-verbDeclaring : 'declaring';
-nounEffect : 'effect';
-nounTop : 'top';
-prepositionBut : 'but';
-nounTime : 'time';
-verbCould : 'could';
-damageType : 'combat damage'
-           | 'damage';
