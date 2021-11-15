@@ -59,20 +59,17 @@ continuousObjectPhrase: object SPACE continuousObjectVerbPhrase;
 
 continuousObjectVerbPhrase: continuousObjectVerbPhrase SPACE CONJUNCTION SPACE continuousObjectVerbPhrase
                           | verbIs SPACE object
-                      	  | 'can attack as though ' object ' didn’t have defender'
-                          | 'can attack as though ' object ' had haste'
-                	      | 'can’t attack' (SPACE subordinateClause)?
-             	          | 'can block ' object
-                      	  | 'can’t block ' object
-                      	  | 'can’t be blocked'
-                      	  | 'can’t be blocked ' ('except ')? 'by ' object
-                      	  | 'can’t be enchanted by ' object
-                          | 'gains' SPACE keyword
-                          | 'gains' SPACE quotedAbility
+                	      | CAN SPACE ATTACK (SPACE subordinateClause)?
+             	          | CAN SPACE BLOCK SPACE object
+                      	  | CAN 'be blocked'
+                      	  | CAN 'be blocked ' ('except ')? 'by ' object
+                      	  | CAN 'be enchanted by ' object
+                          | GAINS SPACE keyword
+                          | GAINS SPACE quotedAbility
                       	  | GETS SPACE statMod
                           | HAS SPACE quotedAbility
              	          | HAS SPACE ability (PERIOD SPACE 'this effect doesn’t remove ' object)?
-                          | 'loses' SPACE quotedAbility;
+                          | LOSES SPACE quotedAbility;
 
 replacementEffect : subordinateClause COMMA SPACE (SPACE adverbInstead)? effect (SPACE adverbInstead)?
                   | subordinateClause COMMA SPACE playerPhrase SPACE adverbInstead PERIOD SPACE subordinateClause COMMA SPACE effect
@@ -119,12 +116,12 @@ rawEffect: PREVENT SPACE damage
        | 'This ability can’t cause the total number of ' counter ' counters on ' object ' to be greater than ' amount;
 
 damage : 'damage'
-       | number SPACE 'damage'
-       | 'all combat damage that would be dealt' SPACE duration
-       | 'all damage that would be dealt to ' player ' by ' object
-       | 'all but 1 of that damage'
-       | 'that' SPACE damage
-       | article SPACE 'next' SPACE damage SPACE 'that would be dealt to' SPACE something SPACE duration;
+       | NUMBER SPACE 'damage'
+       | ALL SPACE 'combat damage that would be dealt' SPACE duration
+       | ALL SPACE 'damage that would be dealt to ' player ' by ' object
+       | ALL SPACE 'but 1 of that damage'
+       | THAT SPACE damage
+       | THE SPACE 'next' SPACE damage SPACE THAT SPACE 'would be dealt to' SPACE something SPACE duration;
 
 // Definitions
 
@@ -153,12 +150,14 @@ amount : 'half ' amount COMMA ' rounded ' ('up'|'down')
 
 characteristics : characteristic (conjunction characteristic)?;
 
-condition : object (SPACE)? verbIs SPACE ('un')? 'tapped'
-          | object (SPACE)? verbIs SPACE prepositionalPhrase (SPACE prepositionalPhrase)?
-          | object (SPACE)? verbIs SPACE object
-          | object (SPACE)? verbIs SPACE 'attacking'
+condition : object (SPACE)? IS SPACE ('un')? 'tapped'
+          | object (SPACE)? IS SPACE prepositionalPhrase (SPACE prepositionalPhrase)?
+          | object (SPACE)? IS SPACE object
+          | object (SPACE)? IS SPACE 'attacking'
           | object SPACE HAS SPACE A SPACE COUNTER SPACE 'counter' prepositionalPhrase
           | object SPACE HAS SPACE keyword
+          | object ' had haste'
+          | object ' didn’t have defender'
           | object SPACE 'wasn’t the first land you played' SPACE THIS SPACE TURN
           | object SPACE 'attacked or blocked this combat';
 
@@ -461,12 +460,6 @@ turnPart : 'untap'
          | 'combat'
          | 'damage'
          | 'end';
-
-// individual words
-
-rawVerbIs : 'is'
-          | 'are'
-          | APOSTROPHE letterS;
 
 // Lexemes
 negation : 'non'

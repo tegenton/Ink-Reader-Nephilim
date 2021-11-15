@@ -42,7 +42,7 @@ LESS: L 'ess';
 GREATER:  G 'reater';
 MORE: M 'ore';
 
-SUBORDINATE_CONJUNCTION: A 's'
+SUBORDINATE_CONJUNCTION: A 's' (SPACE 'though')
                        | E 'xcept'
                        | I 'f'
                        | U 'nless';
@@ -72,8 +72,12 @@ VALUE: V 'alue';
 CONTINUOUS_OBJECT_VERB: BECOMES
                       | HAS;
 BECOMES: B 'ecome' ('s')?;
+CAN: C 'an' (APOSTROPHE 't')?;
+GAINS: G 'ains';
 GETS: G 'et' ('s')?;
 HAS: H 'as' | H 'ave';
+IS: I 's' | A 're' | APOSTROPHE S;
+LOSES: L 'oses';
 ONESHOT_OBJECT_VERB: ATTACK
                    | BLOCK
                    | DIE
