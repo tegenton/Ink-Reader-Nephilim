@@ -3,42 +3,54 @@ lexer grammar alpha_lexer;
 DETERMINER: ARTICLE | DEMONSTRATIVE | NEGATIVE | ALTERNATIVE | UNIVERSAL | DISTRIBUTIVE | EXISTENTIAL;
 // Articles
 ARTICLE: A | AN | THE;
-fragment A: LetterA;
-fragment AN: A 'n';
-fragment THE: T 'he';
+A: LetterA;
+AN: A 'n';
+THE: T 'he';
 // Demonstrative
 DEMONSTRATIVE: TARGET | THIS | THESE | THAT | THOSE;
 TARGET: T 'arget';
-fragment THIS: T 'his';
-fragment THESE: T 'hese';
-fragment THAT: T 'hat';
-fragment THOSE: T 'hose';
+THIS: T 'his';
+THESE: T 'hese';
+THAT: T 'hat';
+THOSE: T 'hose';
 // Negative
 NEGATIVE: NO;
-fragment NO: N 'o';
+NO: N 'o';
 // Alternative
 ALTERNATIVE: OTHER | ANOTHER;
-fragment OTHER: O 'ther';
+OTHER: O 'ther';
 // Alternative-addative
-fragment ANOTHER: A 'nother';
+ANOTHER: A 'nother';
 // Universal
 UNIVERSAL: ALL;
-fragment ALL: LetterA 'll';
+ALL: LetterA 'll';
 // Distributive
 DISTRIBUTIVE: EACH;
-fragment EACH: E 'ach';
+EACH: E 'ach';
 // Existential
 EXISTENTIAL: ANY;
-fragment ANY: LetterA 'ny';
+ANY: LetterA 'ny';
 
+// Conjunctions
 CONJUNCTION: LetterA 'nd'
            | O 'r'
            | LetterA 'nd' SLASH 'or'
            | T 'hen';
 
-// Assorted Nouns
+// Concept Nouns
 SOURCE: S 'ource';
 PILE: P 'ile';
+
+// Object attributes
+
+CHARACTERISTIC: POWER
+              | TOUGHNESS
+              | MANA SPACE VALUE;
+
+POWER: P 'ower';
+TOUGHNESS: T 'oughness';
+MANA: M 'ana';
+VALUE: V 'alue';
 
 // Object verbs
 ATTACK: LetterA 'ttack';
@@ -65,9 +77,16 @@ PREVENT: P 'revent';
 REGENERATE: R 'egenerate';
 
 // Zones
+ZONE: ANTE
+    | BATTLEFIELD
+    | EXILE
+    | GRAVEYARD
+    | HAND
+    | LIBRARY;
+
 ANTE: LetterA 'nte';
-EXILE: E 'xile';
 BATTLEFIELD: B 'attlefield';
+EXILE: E 'xile';
 GRAVEYARD: G 'raveyard';
 HAND: H 'and';
 LIBRARY: L 'ibrary';
@@ -84,13 +103,17 @@ HASTE: H 'aste';
 TRAMPLE: T 'rample';
 REACH: R 'each';
 
+TYPE: CARD_TYPE
+    | CREATURE_TYPE
+    | ENCHANTMENT_TYPE
+    | LAND_TYPE;
+
 CARD_TYPE: C 'reature'
          | L 'and'
          | LetterA 'rtifact'
          | E 'nchantment'
          | I 'nstant';
 
-// Creature types
 CREATURE_TYPE: G 'oblin'
              | G 'olem'
              | M 'erfolk'
@@ -99,7 +122,6 @@ CREATURE_TYPE: G 'oblin'
 
 ENCHANTMENT_TYPE: LetterA 'ura';
 
-// Land types
 LAND_TYPE: P 'lains'
          | I 'sland'
          | S 'wamp'
@@ -143,6 +165,9 @@ MANA_COLOR: W
           | R
           | G
           | C;
+
+MANA_SYMBOL: LBRACKET (MANA_COLOR | NUMBER) RBRACKET;
+TAP_TYMBOL: LBRACKET T RBRACKET;
 
 // Case insensitive alphabet
 fragment LetterA: [Aa];

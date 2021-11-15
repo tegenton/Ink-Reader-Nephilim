@@ -128,10 +128,6 @@ amount : 'half ' amount COMMA ' rounded ' ('up'|'down')
        | 'the number of attacking creatures for whom that player is the defending player'
        | 'the amount of mana that player paid this way';
 
-characteristic : 'power'
-               | 'toughness'
-               | 'mana value';
-
 characteristics : characteristic (conjunction characteristic)?;
 
 condition : object (SPACE)? verbIs SPACE ('un')? 'tapped'
@@ -145,18 +141,16 @@ condition : object (SPACE)? verbIs SPACE ('un')? 'tapped'
 
 costs : ('pay' SPACE)? cost (COMMA SPACE costs)?;
 
-cost :(mana)+
-     | LBRACKET tap RBRACKET
+cost :(MANA_SYMBOL)+
+     | TAP_SYMBOL
      | NUMBER SPACE 'life'
      | playerVerbPhrase;
 
 counter : statMod
         | counterType;
 
-determiner : rawDeterminer
-           | article
-           | demonstrative
-           | amount;
+determiner: DETERMINER
+          | amount;
 
 distinguisher : 'that would be' SPACE verbDealt SPACE prepositionTo SPACE object;
 
@@ -180,8 +174,6 @@ keyword : ENCHANT SPACE object
         | HASTE
         | TRAMPLE
         | REACH;
-
-mana : (LBRACKET (manaLetter | number) RBRACKET)+;
 
 object : rawObject
        | (premodifier SPACE)+ object
@@ -467,13 +459,6 @@ preposition : 'with' ('out')?
 plusMinus : PLUS
           | DASH;
 
-rawDeterminer : ALL
-              | EACH
-              | ANY
-              | OTHER
-              | TARGET
-              | NO;
-
 rawObjectVerb : ATTACK
               | BECOME
               | BLOCK
@@ -494,12 +479,6 @@ rawPlayerVerb : ADD
 	          | 'play'
 	          | REGENERATE
 	          | ('un')? 'tap';
-
-rawZone : GRAVEYARD
-        | BATTLEFIELD
-        | HAND
-        | LIBRARY
-        | ANTE;
 
 subordinateConjunction : 'as'
                        | 'if'
@@ -531,9 +510,6 @@ rawWordStep : 'step';
 
 
 // Lexemes
-
-letterS : 's';
-
 negation : 'non'
          | 'un'
          | 'n’t';
