@@ -76,7 +76,7 @@ rawEffect :
        | delayedTrigger COMMA SPACE 'destroy that creature if it attacked this turn'
        | player SPACE verbChooses SPACE 'a number of lands they control equal to ' amount ', then sacrifices the rest. Players discard cards and sacrifice creatures the same way'
        | duration COMMA SPACE player ' can’t be attacked except by ' object
-       | player SPACE 'may pay any amount of mana. ' object ' deals 2 damage to that player. Prevent X of that damage, where X is the amount of mana that player paid this way'
+       | player SPACE 'may pay any amount of mana. ' object ' deals 2 damage to that player. Prevent X of that damage, where ' variableDefinition
        | player SPACE verbMay SPACE verbChoose SPACE 'a creature card in your hand whose mana cost could be paid by some amount of, or all of, the mana you spent on {X}. If you do, you may cast that card face down as a 2/2 creature spell without paying its mana cost. If the creature that spell becomes as it resolves has not been turned face up and would assign or deal damage, be dealt damage, or become tapped, instead it’s turned face up and assigns or deals damage, is dealt damage, or becomes tapped. Activate only as a sorcery.'
        | player ' divides all creatures without flying they control into a “left” pile and a “right” pile. Then, for each attacking creature you control, ' verbChoose ' “left” or “right.” That creature can’t be blocked this combat except by creatures with flying and creatures in a pile with the chosen label'
        | 'it loses “enchant creature card in a graveyard” and gains “enchant creature put onto the battlefield with ~.” Return enchanted creature card to the battlefield under your control and attach ~ to it. When ~ leaves the battlefield, that creature’s controller sacrifices it'
@@ -119,13 +119,14 @@ amount : 'half ' amount COMMA ' rounded ' ('up'|'down')
        | comparator ' than ' englishNumber
        | englishNumber (SPACE conjunction SPACE comparator)?
        | rawObject saxon SPACE characteristics
-       | 'X'
+       | VARIABLE
        | article SPACE 'number of ' object (' minus ' number)?
        | article SPACE 'damage dealt to ' player ' this turn'
        | playerPossessive ' life total'
        | 'that many'
        | 'any number of'
-       | 'the number of attacking creatures for whom that player is the defending player';
+       | 'the number of attacking creatures for whom that player is the defending player'
+       | 'the amount of mana that player paid this way';
 
 characteristic : 'power'
                | 'toughness'
@@ -146,7 +147,7 @@ costs : ('pay' SPACE)? cost (COMMA SPACE costs)?;
 
 cost :(mana)+
      | LBRACKET tap RBRACKET
-     | number SPACE 'life'
+     | NUMBER SPACE 'life'
      | playerVerbPhrase;
 
 counter : statMod
@@ -404,10 +405,12 @@ something : determiner SPACE something
 source : premodifier SPACE source
        | source SPACE postmodifier
        | object
-       | SPACE color SPACE 'source'
-       | 'source';
+       | COLOR SPACE SOURCE
+       | SOURCE;
 
-statMod : plusMinus number SLASH plusMinus number (' where X is ' amount (', and Y is ' amount)?)?;
+statMod : plusMinus NUMBER SLASH plusMinus NUMBER (SPACE 'where' SPACE variableDefinition (COMMA SPACE CONJUNCTION variableDefinition)?)?;
+
+variableDefinition: VARIABLE SPACE IS SPACE AMOUNT;
 
 subordinateClause : subordinateConjunction SPACE 'long' SPACE subordinateClause
                   | subordinateConjunction SPACE condition
@@ -430,10 +433,10 @@ triggerEvent : 'the beginning of' SPACE phase
              | phrase;
 
 type : negation (DASH)? type
-     | cardType
-     | landType
-     | creatureType
-     | enchantmentType
+     | CARD_TYPE
+     | LAND_TYPE
+     | CREATURE_TYPE
+     | ENCHANTMENT_TYPE
      | 'chosen type';
 
 verbIs : rawVerbIs (negation)?;
@@ -442,16 +445,6 @@ zone : playerPossessive SPACE rawZone
      | article SPACE rawZone;
 
 // Morphemes
-
-article : 'the'
-        | 'a'
-        | 'an';
-
-cardType : 'creature'
-         | 'land'
-         | 'artifact'
-         | 'enchantment'
-         | 'instant';
 
 comparator : 'less'
            | 'greater'
@@ -502,11 +495,11 @@ rawPlayerVerb : ADD
 	          | REGENERATE
 	          | ('un')? 'tap';
 
-rawZone : 'graveyard'
-        | 'battlefield'
-        | 'hand'
-        | 'library'
-        | 'ante';
+rawZone : GRAVEYARD
+        | BATTLEFIELD
+        | HAND
+        | LIBRARY
+        | ANTE;
 
 subordinateConjunction : 'as'
                        | 'if'
