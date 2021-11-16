@@ -66,7 +66,7 @@ continuousObjectVerbPhrase: continuousObjectVerbPhrase SPACE CONJUNCTION SPACE c
                       	  | CAN 'be' SPACE ENCHANTED SPACE 'by ' object
                           | GAINS SPACE keyword
                           | GAINS SPACE quotedAbility
-                      	  | GETS SPACE statMod
+                      	  | GETS SPACE STAT_MOD
                           | HAS SPACE quotedAbility
              	          | HAS SPACE ability
                           | LOSES SPACE quotedAbility;
@@ -141,8 +141,6 @@ amount : 'half ' amount COMMA ' rounded ' ('up'|'down')
        | THE SPACE 'amount of mana that player paid this way'
        | THE SPACE 'damage prevented this way';
 
-characteristics : characteristic (conjunction characteristic)?;
-
 condition : object (SPACE)? IS SPACE TAPPED
           | object (SPACE)? IS SPACE ATTACKING
           | object (SPACE)? IS SPACE prepositionalPhrase
@@ -175,7 +173,7 @@ duration : 'until end of' SPACE TURN
          | THIS SPACE TURN
          | DETERMINER SPACE COMBAT
          | 'during' SPACE phase
-         | FOR SPACE 'as long as ' object HAS A COUNTER_TYPE SPACE COUNTER SPACE prepositionalPhrase
+         | FOR SPACE 'as long as' SPACE object HAS A COUNTER_TYPE SPACE COUNTER SPACE prepositionalPhrase
          | 'as long as ' player ' control' SPACE object;
 
 keyword : SIMPLE_KEYWORD
@@ -188,32 +186,30 @@ object : OBJECT
        | OBJECT
        | (OBJECT COMMA SPACE)* OBJECT SPACE CONJUNCTION OBJECT;
 
-objectPossesive : object saxon;
-
 objectPhrase : object SPACE objectVerbPhrase;
 
-objectVerbPhrase : IS SPACE DEALT damage
-                 | IS SPACE TAPPED prepositionalPhrase
-                 | IS SPACE PUT SPACE prepositionalPhrase SPACE prepositionalPhrase
+objectVerbPhrase : IS SPACE DEALT SPACE damage
+                 | IS SPACE TAPPED SPACE prepositionalPhrase
+                 | IS SPACE PUT SPACE prepositionalPhrase
                  | IS SPACE COLOR
-                 | ENTERS SPACE zone TAPPED
-                 | LEAVES SPACE zone
-                 | BLOCKS SPACE object (' if able')?
-                 | ATTACKS SPACE duration ' if able'
-                 | BLOCKS SPACE OR SPACE BECOMES SPACE 'blocked by ' object
-                 | DEAL SPACE damage SPACE TO SPACE player
-                 | DOES SPACE TAP SPACE duration
-                 | DOES SPACE 'so'
-                 | COST SPACE costs SPACE COMPARATIVE SPACE TO SPACE CAST
-             	 | GAINS SPACE KEYWORD SPACE AND SPACE GETS SPACE STAT_MOD SPACE duration ', where X is ' amount
-                 | GAINS '"Enchanted creature loses flying"'
+                 | ATTACKS SPACE duration SPACE IF SPACE 'able'
              	 | BECOMES SPACE BLOCKED
+                 | BLOCKS SPACE object (SPACE IF SPACE 'able')?
+                 | BLOCKS SPACE OR SPACE BECOMES SPACE BLOCKED SPACE 'by ' object
+                 | COST SPACE costs SPACE COMPARATIVE SPACE TO SPACE CAST
              	 | DEAL SPACE damage SPACE TO SPACE something
                  | DEAL SPACE damage SPACE TO SPACE something SPACE AND SPACE damage SPACE TO SPACE something
                  | DEAL SPACE damage SPACE TO SPACE something COMMA SPACE 'where X is ' amount
                  | DEAL SPACE damage SPACE TO SPACE something SPACE 'equal' SPACE TO SPACE amount
                  | DEAL SPACE damage SPACE 'equal' SPACE TO SPACE amount SPACE TO SPACE something
-                 | DEAL SPACE damage SPACE 'divided evenly, rounded down, among any number of targets';
+                 | DEAL SPACE damage SPACE 'divided evenly, rounded down, among any number of targets'
+                 | DOES SPACE TAP SPACE duration
+                 | DOES SPACE 'so'
+                 | ENTERS SPACE zone TAPPED
+             	 | GAINS SPACE keyword SPACE AND SPACE GETS SPACE STAT_MOD SPACE duration ', where X is ' amount
+                 | GAINS SPACE quotedAbility
+                 | LEAVES SPACE zone
+                 | LOSES SPACE keyword;
 
 postmodifier : player SPACE CONTROL
              | player ' controlled at the beginning of this turn'
@@ -236,11 +232,10 @@ postmodifier : player SPACE CONTROL
              | 'that pile is assigned ' TO
              | 'of your choice'
              | 'of an opponent’s choice'
-             | ' of their choice'
-             | 'of' SPACE zone;
+             | ' of their choice';
 
-premodifier : (negation (SPACE|DASH))? adjective
-            | (negation (SPACE|DASH))? COLOR
+premodifier : ADJECTIVE
+            | COLOR
             | determiner
             | TYPE
             | NUMBER SLASH NUMBER;
@@ -361,13 +356,13 @@ quotedAbility : OPENQUOTE ability CLOSEQUOTE;
 rawPhase : turnPart
          | (turnPart SPACE)? turnPart SPACE STEP;
 
-restriction : CAST SPACE object ' only during ' phase
-            | CAST object ' only before ' phase
-            | SPEND SPACE 'only ' COLOR SPACE MANA SPACE 'on' VARIABLE
+restriction : CAST SPACE object SPACE 'only during' SPACE phase
+            | CAST object SPACE 'only before ' phase
+            | SPEND SPACE 'only' SPACE COLOR SPACE MANA SPACE 'on' VARIABLE
             | 'As an additional cost ' TO SPACE CAST ' this spell, ' costs
             | object SPACE COSTS costs SPACE COMPARATIVE SPACE TO SPACE CAST prepositionalPhrase
-            | ACTIVATE SPACE 'only during ' phase ('and only once each turn')?
-            | ACTIVATE SPACE 'only during an opponent’s ' TURN ', before attackers are declared'
+            | ACTIVATE SPACE 'only during' SPACE phase (SPACE 'and only once each turn')?
+            | ACTIVATE SPACE 'only during' playerPossessive SPACE TURN ', before attackers are declared'
             | REMOVE SPACE object SPACE prepositionalPhrase SPACE 'before playing if you’re' SPACE NOT SPACE 'playing ' FOR ' ante'
             | 'Only' SPACE player SPACE MAY SPACE ACTIVATE SPACE THIS SPACE ABILITY;
 
@@ -386,12 +381,12 @@ variableDefinition: VARIABLE SPACE IS SPACE AMOUNT;
 
 subordinateClause : SUBORDINATE_CONJUNCTION SPACE condition
                   | SUBORDINATE_CONJUNCTION SPACE phrase
-                  | SUBORDINATE_CONJUNCTION SPACE player ' would' SPACE DRAW SPACE object SPACE duration
-                  | SUBORDINATE_CONJUNCTION SPACE player ' would' SPACE GAIN SPACE LIFE
-                  | SUBORDINATE_CONJUNCTION SPACE player ' would begin your turn while ' condition
-                  | IF SPACE AN SPACE 'effect causes ' player SPACE TO SPACE 'discard a card'
-                  | EXCEPT SPACE object '’s' SPACE object ' in addition' SPACE TO SPACE 'its other types'
-                  | EXCEPT SPACE object SPACE 'doesn’t copy that creature’s color and it has “At the beginning of your upkeep, you may have this creature become a copy of target creature, except it doesn’t copy that creature’s color and it has this ability.”'
+                  | SUBORDINATE_CONJUNCTION SPACE player SPACE 'would' SPACE DRAW SPACE object SPACE duration
+                  | SUBORDINATE_CONJUNCTION SPACE player SPACE 'would' SPACE GAIN SPACE LIFE
+                  | SUBORDINATE_CONJUNCTION SPACE player SPACE 'would begin your turn while ' condition
+                  | IF SPACE AN SPACE EFFECT SPACE 'causes' SPACE player SPACE TO SPACE 'discard' SPACE object
+                  | EXCEPT SPACE object IS SPACE ARTICLE SPACE CARD_TYPE SPACE IN SPACE ADDITION SPACE TO SPACE objectPossessive OTHER 'types'
+                  | EXCEPT SPACE object SPACE DO SPACE 'copy that creature’s color and it has “At the beginning of your upkeep, you may have this creature become a copy of target creature, except it doesn’t copy that creature’s color and it has this ability.”'
                   | EXCEPT SPACE object SPACE IS SPACE COLOR
                   | EXCEPT SPACE 'by' SPACE object;
 
@@ -404,28 +399,11 @@ triggerEvent : THE SPACE 'beginning of' SPACE phase
              | 'end of' SPACE COMBAT
              | phrase;
 
-type : negation (DASH)? type
-     | TYPE
+type : TYPE
      | 'chosen type';
 
 zone : playerPossessive SPACE ZONE
      | ARTICLE SPACE ZONE;
-
-rawPlayerVerb : ADD
-              | ANTE
-              | CAN
-              | CAST
-              | CHANGE
-              | CONTROL
-              | DESTROY
-	          | DISCARD
-	          | 'do'
-	          | DRAW
-	          | OWN
-	          | PLAY
-	          | REGENERATE
-	          | SHUFFLE
-	          | ('un')? 'tap';
 
 turnPart : 'untap'
          | 'upkeep'

@@ -31,15 +31,18 @@ EACH: E 'ach';
 EXISTENTIAL: ANY;
 ANY: LetterA 'ny';
 
-ENCHANTED: (NOT)? ENCHANT ED;
-TAPPED: TAP P ED;
 ATTACKED: ATTACK ED;
-ATTACKING: ATTACK ING;
 BLOCKED: (NOT)? BLOCK ED;
+ADDITION: A 'ddition';
+
+ADJECTIVE: ADDITIONAL | ATTACKING | BLOCKING | ENCHANTED | SACRIFICED | TAPPED | TOKEN | TOP;
+ADDITIONAL: ADDITION 'al';
+ATTACKING: ATTACK ING;
 BLOCKING: BLOCK ING;
+ENCHANTED: (NOT)? ENCHANT ED;
 SACRIFICED: SACRIFICE D;
+TAPPED: TAP P ED;
 TOKEN: T 'oken';
-ADDITIONAL: A 'dditional';
 TOP: T 'op';
 
 // Conjunctions
@@ -49,7 +52,7 @@ CONJUNCTION: O 'r'
 AND: LetterA 'nd';
 
 // Prepositions
-PREPOSITION: ABOVE | FOR | FROM | IN | ON | TO | UNDER | WITH;
+PREPOSITION: ABOVE | FOR | FROM | IN | OF | ON | TO | UNDER | WITH;
 ABOVE: A 'bove';
 FOR: F 'or';
 FROM: F 'rom';
@@ -225,10 +228,7 @@ VIGILANCE: V 'igilance';
 FIRST: F 'irst';
 STRIKE: S 'trike';
 
-TYPE: CARD_TYPE
-    | CREATURE_TYPE
-    | ENCHANTMENT_TYPE
-    | LAND_TYPE;
+TYPE:(NOT)? (CARD_TYPE | CREATURE_TYPE | ENCHANTMENT_TYPE | LAND_TYPE);
 
 CARD_TYPE: C 'reature'
          | L 'and'
@@ -281,11 +281,12 @@ NUMBER: [0-9]+
 VARIABLE: X | Y;
 
 // Colors
-COLOR: W 'hite'
-     | B 'lue'
-     | B 'lack'
-     | G 'reen'
-     | R 'ed';
+COLOR:(NOT)? (WHITE | BLUE | BLACK | RED | GREEN);
+WHITE: W 'hite';
+BLUE: B 'lue';
+BLACK: B 'lack';
+RED: R 'ed';
+GREEN: G 'reen';
 
 MANA_COLOR: W
           | U
@@ -333,7 +334,6 @@ fragment ING: 'ing';
 // To Sort
 abilityType : 'activated abilities'
             | 'mana ability';
-verbCost : 'cost';
 adverbInstead : 'instead';
 adjectiveRandom : 'random';
 adjectiveDifferent : 'different';
@@ -341,7 +341,6 @@ verbAssign : 'assign';
 verbBe : 'be';
 verbLikewise : 'likewise';
 adjectiveEqual : 'equal';
-prepositionOf : 'of';
 nounNumber : 'number';
 pronounThem : 'them';
 nounBlockers : 'blockers';
