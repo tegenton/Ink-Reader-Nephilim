@@ -32,10 +32,11 @@ EXISTENTIAL: ANY;
 ANY: LetterA 'ny';
 
 ENCHANTED: (NOT)? ENCHANT ED;
-TAPPED: (NOT)? TAP P ED;
+TAPPED: TAP P ED;
+ATTACKED: ATTACK ED;
+ATTACKING: ATTACK ING;
 BLOCKED: (NOT)? BLOCK ED;
 BLOCKING: BLOCK ING;
-ATTACKING: ATTACK ING;
 SACRIFICED: SACRIFICE D;
 TOKEN: T 'oken';
 ADDITIONAL: A 'dditional';
@@ -48,11 +49,15 @@ CONJUNCTION: O 'r'
 AND: LetterA 'nd';
 
 // Prepositions
-PREPOSITION: ABOVE | IN | ON | WITH;
+PREPOSITION: ABOVE | FOR | FROM | IN | ON | TO | UNDER | WITH;
 ABOVE: A 'bove';
 FOR: F 'or';
-IN: I 'n' ('to')?;
-ON: O 'n' ('to')?;
+FROM: F 'rom';
+IN: I 'n' (TO)?;
+OF: O 'f';
+ON: O 'n' (TO)?;
+TO: T 'o';
+UNDER: U 'nder';
 WITH: W 'ith';
 
 COMPARATIVE: LESS | GREATER | MORE;
@@ -118,11 +123,11 @@ BLOCK: B 'lock' (S)?;
 DIE: D 'ie' (S)?;
 ENTER: E 'nter' (S)?;
 LEAVE: L 'eave' (S)?;
-TAP: T 'ap';
+TAP: (NOT)? T 'ap';
 
 // Player nouns
 ANY_PLAYER: CONTROLLER | OWNER | PLAYER | OPPONENT | YOU | THEY;
-CONTROLLER: CONTROL 'l' ER;
+CONTROLLER: CONTROL L ER;
 OWNER: OWN ER;
 PLAYER: PLAY ER (S)?;
 OPPONENT: O 'pponent' (S)?;
@@ -330,7 +335,6 @@ abilityType : 'activated abilities'
             | 'mana ability';
 verbCost : 'cost';
 adverbInstead : 'instead';
-prepositionTo : 'to';
 adjectiveRandom : 'random';
 adjectiveDifferent : 'different';
 verbAssign : 'assign';
