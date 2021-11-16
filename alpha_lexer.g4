@@ -50,8 +50,13 @@ EXCEPT: E 'xcept';
 IF: I 'f';
 
 // Concept Nouns
+ABILITY: A 'bility';
+COMBAT: C 'ombat';
+DAMAGE: D 'amage';
+EFFECT: E 'ffect';
+GAME: G 'ame';
 LIFE: L 'ife';
-PILE: P 'ile';
+PILE: P 'ile' (S)?;
 SOURCE: S 'ource';
 STEP: S 'tep';
 TURN: T 'urn';
@@ -72,16 +77,16 @@ VALUE: V 'alue';
 
 // Object nouns
 OBJECT: TILDE | TYPE | COPY | CARD | SPELL | PERMANENT | IT;
-CARD: C 'ard';
-COPY: C 'opy';
-PERMANENT: P 'ermanent';
-SPELL: S 'pell';
+CARD: C 'ard' (S)?;
+COPY: C 'op' ('y'| 'ies');
+PERMANENT: P 'ermanent' (S)?;
+SPELL: S 'pell' (S)?;
 IT: I 't';
 
 // Object verbs
-CONTINUOUS_OBJECT_VERB: BECOMES
-                      | HAS;
 BECOMES: B 'ecome' (S)?;
+COSTS: C 'ost' (S)?;
+DOES: D 'o' ('es')? (SPACE? NOT)?;
 GAINS: G 'ain' (S)?;
 GETS: G 'et' (S)?;
 HAS: H 'as' | H 'ave';
@@ -89,14 +94,12 @@ IS: ((I 's' | A 're') (SPACE? NOT)?) | APOSTROPHE S;
 
 NOT: N 'ot' | N APOSTROPHE T;
 LOSES: L 'oses';
-ONESHOT_OBJECT_VERB: ATTACK
-                   | BLOCK
-                   | DIE
-                   | ENTER;
-ATTACK: LetterA 'ttack';
-BLOCK: B 'lock';
-DIE: D 'ie';
-ENTER: E 'nter';
+
+ATTACKS: LetterA 'ttack' (S)?;
+BLOCKS: B 'lock' (S)?;
+DIES: D 'ie' (S)?;
+ENTERS: E 'nter' (S)?;
+LEAVES: L 'eave' (S)?;
 
 // Player nouns
 ANY_PLAYER: CONTROLLER | OWNER | PLAYER | OPPONENT | YOU | THEY;
@@ -108,28 +111,38 @@ YOU: 'you';
 THEY: 'they';
 
 // Possessive players
-
-PLAYER_POSSESSIVE: YOUR | THEIR | ANY_PLAYER APOSTROPHE (S)?;
 YOUR: YOU R;
 THEIR: T 'heir';
 
 // Player verbs
 ADD: LetterA 'dd';
 CHANGE: C 'hange';
-CHOOSE: C 'hoose';
-CONTROL: C 'ontrol' ('s')?;
+CHOOSE: C 'hoose' (S)?;
+CONTROL: C 'ontrol' (S)?;
+COUNTER: C 'ounter' (S)?;
+CREATE: C 'reate';
 DESTROY: D 'estroy';
 DISCARD: D 'iscard';
-DIVIDE: D 'ivide';
+DIVIDE: D 'ivide' (S)?;
 DRAW: D 'raw';
 EXCHANGE: E 'xchange';
 IGNORE: I 'gnore';
+LOOK: L 'ook';
+LOSE: L 'ose' (S)?;
+MAY: M 'ay';
 OWN: O 'wn';
 PAY: P 'ay';
 PUT: P 'ut';
 PREVENT: P 'revent';
 REGENERATE: R 'egenerate';
-SHUFFLE: 'shuffle';
+REMOVE: R 'emove';
+RETURN: R 'eturn';
+SACRIFICE: S 'acrifice';
+SEARCH: S 'earch';
+SHUFFLE: S 'huffle' (S)?;
+SKIP: S 'kip';
+TAKE: T 'ake';
+SPEND: S 'pend';
 
 ANY_PLAY: ACTIVATE | CAST | PLAY;
 ACTIVATE: A 'ctivate';
@@ -137,7 +150,7 @@ CAST: C 'ast';
 PLAY: P 'lay';
 
 // Source verb
-DEAL: D 'eal';
+DEAL: D 'eal' (S)?;
 DEALT: DEAL 't';
 CAN: C 'an' (APOSTROPHE 't')?;
 
@@ -149,19 +162,19 @@ ZONE: ANTE
     | HAND
     | LIBRARY;
 
-ANTE: LetterA 'nte';
+ANTE: LetterA 'nte' (S)?;
 BATTLEFIELD: B 'attlefield';
-EXILE: E 'xile';
+EXILE: E 'xile' (S)?;
 GRAVEYARD: G 'raveyard';
 HAND: H 'and';
 LIBRARY: L 'ibrary';
 
 ABILITY_TYPE: ACTIVATE 'd' | MANA;
 
-COUNTER: C 'orpse'
-       | V 'itality'
-       | M 'ire'
-       | STAT_MOD;
+COUNTER_TYPE: C 'orpse'
+            | V 'itality'
+            | M 'ire'
+            | STAT_MOD;
 
 STAT_MOD: PLUSMINUS NUMBER SLASH PLUSMINUS NUMBER;
 
