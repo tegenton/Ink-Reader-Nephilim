@@ -42,15 +42,17 @@ LESS: L 'ess';
 GREATER:  G 'reater';
 MORE: M 'ore';
 
-SUBORDINATE_CONJUNCTION: A 's' (SPACE 'though')
-                       | E 'xcept'
-                       | I 'f'
+SUBORDINATE_CONJUNCTION: A 's' (SPACE 'though' | SPACE 'long' SPACE 'as')
+                       | EXCEPT
+                       | IF
                        | U 'nless';
+EXCEPT: E 'xcept';
+IF: I 'f';
 
 // Concept Nouns
-SOURCE: S 'ource';
 LIFE: L 'ife';
 PILE: P 'ile';
+SOURCE: S 'ource';
 STEP: S 'tep';
 TURN: T 'urn';
 
@@ -68,15 +70,24 @@ TOUGHNESS: T 'oughness';
 MANA: M 'ana';
 VALUE: V 'alue';
 
+// Object nouns
+OBJECT: TILDE | TYPE | COPY | CARD | SPELL | PERMANENT | IT;
+CARD: C 'ard';
+COPY: C 'opy';
+PERMANENT: P 'ermanent';
+SPELL: S 'pell';
+IT: I 't';
+
 // Object verbs
 CONTINUOUS_OBJECT_VERB: BECOMES
                       | HAS;
-BECOMES: B 'ecome' ('s')?;
-CAN: C 'an' (APOSTROPHE 't')?;
-GAINS: G 'ains';
-GETS: G 'et' ('s')?;
+BECOMES: B 'ecome' (S)?;
+GAINS: G 'ain' (S)?;
+GETS: G 'et' (S)?;
 HAS: H 'as' | H 'ave';
-IS: ((I 's' | A 're') ('n' APOSTROPHE 't')?) | APOSTROPHE S;
+IS: ((I 's' | A 're') (SPACE? NOT)?) | APOSTROPHE S;
+
+NOT: N 'ot' | N APOSTROPHE T;
 LOSES: L 'oses';
 ONESHOT_OBJECT_VERB: ATTACK
                    | BLOCK
@@ -87,13 +98,26 @@ BLOCK: B 'lock';
 DIE: D 'ie';
 ENTER: E 'nter';
 
+// Player nouns
+ANY_PLAYER: CONTROLLER | OWNER | PLAYER | OPPONENT | YOU | THEY;
+CONTROLLER: CONTROL 'l' ER;
+OWNER: OWN ER;
+PLAYER: PLAY ER (S)?;
+OPPONENT: O 'pponent' (S)?;
+YOU: 'you';
+THEY: 'they';
+
+// Possessive players
+
+PLAYER_POSSESSIVE: YOUR | THEIR | ANY_PLAYER APOSTROPHE (S)?;
+YOUR: YOU R;
+THEIR: T 'heir';
+
 // Player verbs
 ADD: LetterA 'dd';
-ACTIVATE: A 'ctivate';
-CAST: C 'ast';
 CHANGE: C 'hange';
 CHOOSE: C 'hoose';
-CONTROL: C 'ontrol';
+CONTROL: C 'ontrol' ('s')?;
 DESTROY: D 'estroy';
 DISCARD: D 'iscard';
 DIVIDE: D 'ivide';
@@ -107,10 +131,15 @@ PREVENT: P 'revent';
 REGENERATE: R 'egenerate';
 SHUFFLE: 'shuffle';
 
+ANY_PLAY: ACTIVATE | CAST | PLAY;
+ACTIVATE: A 'ctivate';
+CAST: C 'ast';
+PLAY: P 'lay';
+
 // Source verb
 DEAL: D 'eal';
 DEALT: DEAL 't';
-
+CAN: C 'an' (APOSTROPHE 't')?;
 
 // Zones
 ZONE: ANTE
@@ -257,6 +286,9 @@ fragment W: [Ww];
 fragment X: [Xx];
 fragment Y: [Yy];
 fragment Z: [Zz];
+
+// Conjugation fragments
+fragment ER: 'er';
 
 // To Sort
 abilityType : 'activated abilities'
