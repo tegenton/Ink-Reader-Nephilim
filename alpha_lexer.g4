@@ -31,11 +31,29 @@ EACH: E 'ach';
 EXISTENTIAL: ANY;
 ANY: LetterA 'ny';
 
+ENCHANTED: (NOT)? ENCHANT ED;
+TAPPED: (NOT)? TAP P ED;
+BLOCKED: (NOT)? BLOCK ED;
+BLOCKING: BLOCK ING;
+ATTACKING: ATTACK ING;
+SACRIFICED: SACRIFICE D;
+TOKEN: T 'oken';
+ADDITIONAL: A 'dditional';
+TOP: T 'op';
+
 // Conjunctions
 CONJUNCTION: O 'r'
            | LetterA 'nd' SLASH 'or'
            | T 'hen';
 AND: LetterA 'nd';
+
+// Prepositions
+PREPOSITION: ABOVE | IN | ON | WITH;
+ABOVE: A 'bove';
+FOR: F 'or';
+IN: I 'n' ('to')?;
+ON: O 'n' ('to')?;
+WITH: W 'ith';
 
 COMPARATIVE: LESS | GREATER | MORE;
 LESS: L 'ess';
@@ -84,22 +102,23 @@ SPELL: S 'pell' (S)?;
 IT: I 't';
 
 // Object verbs
-BECOMES: B 'ecome' (S)?;
-COSTS: C 'ost' (S)?;
-DOES: D 'o' ('es')? (SPACE? NOT)?;
-GAINS: G 'ain' (S)?;
-GETS: G 'et' (S)?;
-HAS: H 'as' | H 'ave';
+BECOME: B 'ecome' (S)?;
+COST: C 'ost' (S)?;
+DO: D 'o' ('es')? (SPACE? NOT)?;
+GAIN: G 'ain' (S)?;
+GET: G 'et' (S)?;
+HAVE: H 'as' | H 'ave';
 IS: ((I 's' | A 're') (SPACE? NOT)?) | APOSTROPHE S;
 
-NOT: N 'ot' | N APOSTROPHE T;
+NOT: U N | N O (T|N(DASH)?) | N APOSTROPHE T;
 LOSES: L 'oses';
 
-ATTACKS: LetterA 'ttack' (S)?;
-BLOCKS: B 'lock' (S)?;
-DIES: D 'ie' (S)?;
-ENTERS: E 'nter' (S)?;
-LEAVES: L 'eave' (S)?;
+ATTACK: LetterA 'ttack' (S)?;
+BLOCK: B 'lock' (S)?;
+DIE: D 'ie' (S)?;
+ENTER: E 'nter' (S)?;
+LEAVE: L 'eave' (S)?;
+TAP: T 'ap';
 
 // Player nouns
 ANY_PLAYER: CONTROLLER | OWNER | PLAYER | OPPONENT | YOU | THEY;
@@ -116,6 +135,7 @@ THEIR: T 'heir';
 
 // Player verbs
 ADD: LetterA 'dd';
+ATTACH: A 'ttach';
 CHANGE: C 'hange';
 CHOOSE: C 'hoose' (S)?;
 CONTROL: C 'ontrol' (S)?;
@@ -301,7 +321,9 @@ fragment Y: [Yy];
 fragment Z: [Zz];
 
 // Conjugation fragments
+fragment ED: 'ed';
 fragment ER: 'er';
+fragment ING: 'ing';
 
 // To Sort
 abilityType : 'activated abilities'
@@ -309,23 +331,18 @@ abilityType : 'activated abilities'
 verbCost : 'cost';
 adverbInstead : 'instead';
 prepositionTo : 'to';
-prepositionFor : 'for';
-verbDealt : 'dealt';
 adjectiveRandom : 'random';
 adjectiveDifferent : 'different';
 verbAssign : 'assign';
 verbBe : 'be';
 verbLikewise : 'likewise';
-verbMay : 'may';
 adjectiveEqual : 'equal';
 prepositionOf : 'of';
 nounNumber : 'number';
 pronounThem : 'them';
 nounBlockers : 'blockers';
 verbChooses : 'chooses';
-verbDivides : 'divides';
 verbDeclaring : 'declaring';
-nounEffect : 'effect';
 nounTop : 'top';
 prepositionBut : 'but';
 nounTime : 'time';
