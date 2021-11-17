@@ -106,7 +106,8 @@ rawEffect: PREVENT SPACE damage
        | object CAN SPACE BE SPACE REGENERATED duration
        | THIS SPACE EFFECT SPACE DO REMOVE SPACE object
        | THIS SPACE ABILITY SPACE CAN SPACE CAUSE SPACE THE SPACE TOTAL SPACE NUMBER OF SPACE counterType prepositionalPhrase
-       | EXILE object SPACE INSTEAD;
+       | EXILE object SPACE INSTEAD
+       | 'destroy all nontoken permanents it touches';
 
 damage : DAMAGE
        | NUMBER SPACE DAMAGE
@@ -171,7 +172,7 @@ duration : UNTIL SPACE END SPACE OF SPACE TURN
          | WHILE SPACE object SPACE IS SPACE RESOLVING;
 
 keyword : SIMPLE_KEYWORD
-        | PROTECTION SPACE FROM SPACE COLOR
+        | PROTECTION SPACE FROM SPACE ANY_COLOR
         | ENCHANT SPACE object;
 
 object : OBJECT
@@ -187,7 +188,7 @@ objectPossessive: object SAXON;
 objectVerbPhrase : IS SPACE DEALT SPACE damage
                  | IS SPACE TAPPED SPACE prepositionalPhrase
                  | IS SPACE PUT SPACE prepositionalPhrase
-                 | IS SPACE COLOR
+                 | IS SPACE ANY_COLOR
                  | ATTACK SPACE duration SPACE IF SPACE ABLE
              	 | BECOME SPACE BLOCKED
                  | BLOCK SPACE object (SPACE IF SPACE ABLE)?
@@ -231,7 +232,7 @@ postmodifier : player SPACE CONTROL
              | THAT SPACE A SPACE counterType SPACE WAS SPACE PUT SPACE ON SPACE WITH SPACE object SPACE BUT SPACE THAT SPACE A SPACE counterType SPACE HAVE SPACE NOT BEEN REMOVED FROM WITH object;
 
 premodifier : ADJECTIVE
-            | COLOR
+            | ANY_COLOR
             | determiner
             | CHOSEN
             | type
@@ -243,6 +244,7 @@ prepositionalPhrase : prepositionalPhrase SPACE prepositionalPhrase
                     | WITH SPACE quality
                     | WITH SPACE amount SPACE counterType
                     | WITH SPACE keyword SPACE CONJUNCTION SPACE keyword
+                    | WITH SPACE MANA SPACE ABILITY
                     | FOR SPACE MANA
                     | FOR SPACE HAVING SPACE amount SPACE LIFE
                     | FOR SPACE WHOM SPACE THAT SPACE PLAYER SPACE IS SPACE THE SPACE DEFENDING SPACE PLAYER
@@ -293,34 +295,36 @@ playerVerbPhrase : MAY SPACE playerVerbPhrase
                  | IS SPACE DEALT SPACE damage
                  | ADD SPACE MANA_SYMBOL+
                  | ADD SPACE ARTICLE SPACE AMOUNT SPACE OF SPACE MANA_SYMBOL SPACE EQUAL SPACE TO SPACE amount
-                 | ADD SPACE amount SPACE MANA SPACE OF SPACE ANY SPACE (ONE SPACE)? COLOR
+                 | ADD SPACE amount SPACE MANA SPACE OF SPACE ANY SPACE (ONE SPACE)? ANY_COLOR
                  | ADD SPACE amount SPACE MANA SPACE OF SPACE ANY SPACE type SPACE THAT SPACE object SPACE PRODUCED
                  | ADD SPACE ARTICLE SPACE ADDITIONAL SPACE MANA_SYMBOL
                  | ATTACH SPACE object SPACE TO SPACE object
-                 | 'can activate mana abilities only if they’re from lands that player controls and only if mana they produce is spent ' TO ' activate other mana abilities of lands the player controls and/or ' TO ' play that card'
+                 | CAN SPACE ACTIVATE SPACE MANA SPACE ABILIY SPACE ONLY SPACE IF SPACE THEY IS SPACE FROM SPACE object AND SPACE ONLY SPACE IF SPACE MANA SPACE THEY SPACE PRODUCE SPACE IS SPACE SPENT SPACE TO SPACE ACTIVATE SPACE OTHER SPACE MANA SPACE ABILITY SPACE OF object CONJUNCTION SPACE TO SPACE PLAY SPACE object
                  | COPY SPACE object COMMA SPACE subordinateClause
-                 | COUNTER SPACE object (' unless its controller pays {X}. If that player doesn’t, they tap all lands with mana abilities they control and lose all unspent mana')
+                 | COUNTER SPACE object (subordinateClause)?
+                 | TAP object AND playerVerbPhrase
                  | CHOOSE SPACE object
-                 | CHOOSE ' new targets ' prepositionalPhrase
+                 | CHOOSE SPACE NEW SPACE TARGET SPACE prepositionalPhrase
                  | CHOOSE SPACE object SPACE prepositionalPhrase
-                 | CREATE SPACE 'a 1/1 colorless Insect artifact creature token with flying named Wasp'
+                 | CREATE SPACE object
                  | DESTROY SPACE object
                  | DESTROY SPACE object SPACE delayedTrigger
-                 | DESTROY SPACE object SPACE delayedTrigger SPACE 'if it didn’t attack this turn'
+                 | DESTROY SPACE object SPACE delayedTrigger SPACE subordinateClause
                  | EXCHANGE SPACE object SPACE WITH SPACE object
                  | EXILE SPACE object
-                 | FLIP SPACE object SPACE prepositionalPhrase PERIOD SPACE IF object ' turns over completely at least once during the flip, destroy all nontoken permanents it touches'
+                 | FLIP SPACE object SPACE prepositionalPhrase
                  | GAIN SPACE LIFE SPACE EQUAL SPACE TO SPACE amount
                  | GAIN SPACE NUMBER SPACE LIFE
-                 | GAIN SPACE LIFE SPACE EQUAL SPACE TO ' the damage dealt, but' SPACE NOT SPACE COMPARATIVE ' life than the player’s life total before the damage was dealt, the planeswalker’s loyalty before the damage was dealt, or the creature’s toughness'
+                 | GAIN SPACE LIFE SPACE EQUAL SPACE TO SPACE THE DAMAGE DEALT COMMA SPACE subordinateClause
                  | GAIN SPACE LIFE SPACE EQUAL SPACE TO SPACE amount
-                 | LOOK SPACE AT SPACE object ', then put them back in any order'
+                 | LOOK SPACE AT SPACE object
                  | LOOK SPACE AT SPACE zone
                  | LOSE SPACE THE SPACE GAME
                  | LOSE SPACE LIFE SPACE EQUAL SPACE TO SPACE amount
-                 | LOSE SPACE HALF SPACE playerPossessive SPACE LIFE ', rounded up'
+                 | LOSE SPACE HALF SPACE playerPossessive SPACE LIFE COMMA SPACE ROUNDED SPACE ROUND_DIRECTION
                  | LOSE SPACE ALL SPACE UNSPENT SPACE MANA
                  | PLAY SPACE OBJECT SPACE IF SPACE ABLE
+                 | PUT SPACE THEM SPACE BACK SPACE IN SPACE ANY SPACE ORDER
                  | PUT SPACE object SPACE prepositionalPhrase
                  | PUT SPACE amount SPACE counterType SPACE prepositionalPhrase
                  | REMOVE SPACE ARTICLE SPACE counterType SPACE prepositionalPhrase
@@ -330,19 +334,21 @@ playerVerbPhrase : MAY SPACE playerVerbPhrase
                  | SKIPS SPACE phase
                  | SKIPS SPACE THAT SPACE (TURN|DRAW)
                  | TAKE SPACE AN SPACE EXTRA SPACE TURN SPACE AFTER SPACE THIS SPACE ONE
-                 | HAVE SPACE object SPACE ENTER SPACE zone SPACE 'as a copy of any' SPACE object SPACE 'on' SPACE zone (SPACE prepositionalPhrase)?
+                 | HAVE SPACE object SPACE ENTER SPACE zone SPACE AS SPACE A SPACE COPY SPACE prepositionalPhrase
                  | HAVE SPACE player SHUFFLE
                  | HAVE SPACE object SPACE BLOCK SPACE object
-                 | SPEND SPACE COLOR SPACE MANA 'as though it were ' COLOR SPACE MANA
-                 | PLAY SPACE object SPACE 'on each of your turns'
+                 | SPEND SPACE ANY_COLOR SPACE MANA SPACE AS SPACE THOUGH SPACE IT SPACE WERE SPACE ANY_COLOR SPACE MANA
+                 | PLAY SPACE object SPACE ON SPACE EACH SPACE OF SPACE duration
                  | PAY SPACE amount SPACE OF SPACE MANA
                  | costs
                  | ANTE SPACE object
                  | TAP SPACE OR SPACE TAP SPACE object
                  | SHUFFLE SPACE zone SPACE prepositionalPhrase
-                 | CHOOSE SPACE 'a number of lands they control equal ' TO SPACE amount ', then sacrifices the rest. Players discard cards and sacrifice creatures the same way'
-                 | CHOOSE SPACE 'a creature card in your hand whose mana cost ' COULD ' be paid by some amount of, or all of, the mana you spent on {X}. If you do, you ' MAY ' cast that card face down as a 2/2 creature spell without paying its mana cost. If the creature that spell becomes as it resolves has' SPACE NOT SPACE 'been turned face up and would assign or deal damage, be dealt damage, or become tapped, ' INSTEAD ' it’s turned face up and assigns or deals damage, is dealt damage, or becomes tapped. Activate only as a sorcery.'
-                 | DIVIDE SPACE 'all creatures without flying they control into a “left” pile and a “right” pile. Then, for each attacking creature you control, ' CHOOSE ' “left” or “right.” That creature can’t be blocked this ' COMBAT ' except by creatures with flying and creatures in a pile with the chosen label'
+                 | CHOOSE SPACE 'a number of lands they control equal ' TO SPACE amount
+                 | SACRIFICE 'the rest'
+                 | 'discard cards and sacrifice creatures the same way'
+                 | CHOOSE SPACE 'a creature card in your hand whose mana cost ' COULD ' be paid by some amount of, or all of, the mana you spent on {X}. If you do, you ' MAY ' cast that card face down as a 2/2 creature spell without paying its mana cost. If the creature that spell becomes as it resolves has' SPACE NOT SPACE 'been turned face up and would assign or deal damage, be dealt damage, or become tapped, ' INSTEAD ' it’s turned face up and assigns or deals damage, is dealt damage, or becomes tapped'
+                 | DIVIDE SPACE object SPACE 'into a “left” pile and a “right” pile. ' 'Then, for each attacking creature you control, ' CHOOSE ' “left” or “right.” That creature can’t be blocked this ' COMBAT ' except by creatures with flying and creatures in a pile with the chosen label'
                  | ACTIVATE SPACE A SPACE MANA SPACE ABILITY SPACE OF SPACE object
                  | ADD SPACE THE SPACE MANA SPACE LOST SPACE THIS SPACE WAY
                  | PREVENT VARIABLE SPACE OF SPACE damage COMMA SPACE subordinateClause
@@ -361,12 +367,13 @@ rawPhase : turnPart
 
 restriction : CAST SPACE object SPACE ONLY SPACE DURING SPACE phase
             | CAST object SPACE ONLY SPACE BEFORE SPACE phase
-            | SPEND SPACE ONLY SPACE COLOR SPACE MANA SPACE ON VARIABLE
+            | SPEND SPACE ONLY SPACE ANY_COLOR SPACE MANA SPACE ON VARIABLE
             | AS SPACE AN SPACE ADDITIONAL SPACE COST SPACE TO SPACE CAST object COMMA SPACE costs
             | object SPACE COST costs SPACE COMPARATIVE SPACE TO SPACE CAST prepositionalPhrase
-            | ACTIVATE SPACE ONLY SPACE DURING SPACE phase (SPACE 'and only once each turn')?
-            | ACTIVATE SPACE ONLY SPACE DURING SPACE playerPossessive SPACE TURN COMMA SPACE 'before attackers are ' DECLARED
-            | REMOVE SPACE object SPACE prepositionalPhrase SPACE 'before playing if you’re' SPACE NOT SPACE PLAYING SPACE FOR SPACE ANTE
+            | ACTIVATE SPACE ONLY SPACE AS SPACE A SPACE SORCERY
+            | ACTIVATE SPACE ONLY SPACE DURING SPACE phase (SPACE AND SPACE ONLY SPACE ONCE SPACE duration)?
+            | ACTIVATE SPACE ONLY SPACE DURING SPACE playerPossessive SPACE TURN COMMA SPACE BEFORE SPACE ATTACKERS SPACE IS DECLARED
+            | REMOVE SPACE object SPACE prepositionalPhrase SPACE BEFORE SPACE PLAYING SPACE IF SPACE YOU IS SPACE NOT SPACE PLAYING SPACE FOR SPACE ANTE
             | ONLY SPACE player SPACE MAY SPACE ACTIVATE SPACE THIS SPACE ABILITY;
 
 something : determiner SPACE something
@@ -377,7 +384,7 @@ something : determiner SPACE something
 source : premodifier SPACE source
        | source SPACE postmodifier
        | object
-       | COLOR SPACE SOURCE
+       | ANY_COLOR SPACE SOURCE
        | SOURCE;
 
 variableDefinition: VARIABLE SPACE IS SPACE AMOUNT;
@@ -386,19 +393,24 @@ subordinateClause : SUBORDINATE_CONJUNCTION SPACE condition
                   | SUBORDINATE_CONJUNCTION SPACE phrase
                   | SUBORDINATE_CONJUNCTION SPACE player SPACE WOULD SPACE DRAW SPACE object SPACE duration
                   | SUBORDINATE_CONJUNCTION SPACE player SPACE WOULD SPACE GAIN SPACE LIFE
-                  | SUBORDINATE_CONJUNCTION SPACE player SPACE WOULD SPACE 'begin your turn while ' condition
+                  | SUBORDINATE_CONJUNCTION SPACE player SPACE WOULD SPACE BEGIN SPACE YOUR SPACE TURN SPACE WHILE condition
                   | IF SPACE AN SPACE EFFECT SPACE CAUSE SPACE player SPACE TO SPACE DISCARD SPACE object
                   | IF SPACE object SPACE WOULD SPACE DIE SPACE duration
-                  | 'If this ability has been activated' SPACE amount SPACE TIME SPACE duration
-                  | EXCEPT SPACE object IS SPACE ARTICLE SPACE CARD_TYPE SPACE IN SPACE ADDITION SPACE TO SPACE objectPossessive OTHER 'types'
-                  | EXCEPT SPACE object SPACE DO SPACE 'copy that creature’s color and it has “At the beginning of your upkeep, you may have this creature become a copy of target creature, except it doesn’t copy that creature’s color and it has this ability.”'
-                  | EXCEPT SPACE object SPACE IS SPACE COLOR
+                  | IF SPACE THIS SPACE ABILITY SPACE HAVE SPACE BEEN SPACE ACTIVATED SPACE amount SPACE TIME SPACE duration
+                  | EXCEPT SPACE object IS SPACE ARTICLE SPACE CARD_TYPE SPACE IN SPACE ADDITION SPACE TO SPACE objectPossessive OTHER TYPE
+                  | EXCEPT SPACE object SPACE DO SPACE COPY objectPossessive SPACE COLOR SPACE 'and it has “At the beginning of your upkeep, you may have this creature become a copy of target creature, except it doesn’t copy that creature’s color and it has this ability.”'
+                  | EXCEPT SPACE object SPACE IS SPACE ANY_COLOR
                   | EXCEPT SPACE BY SPACE object
                   | WHERE variableDefinition
                   | WHILE SPACE DOING SPACE SO
-                  | IF SPACE object IS CAST AS object;
+                  | IF SPACE object IS CAST AS object
+                  | IF SPACE object SPACE DID SPACE ATTACK SPACE duration
+                  | BUT SPACE NOT SPACE COMPARATIVE SPACE LIFE SPACE THAN SPACE playerPossessive SPACE LIFE SPACE TOTAL SPACE BEFORE SPACE damage SPACE WAS SPACE DEALT COMMA SPACE objectPossessive SPACE LOYALTY SPACE BEFORE SPACE damage SPACE WAS SPACE DEALT COMMA SPACE OR SPACE amount
+                  | IF object SPACE TURNS SPACE OVER SPACE COMPLETELY SPACE AT SPACE LEAST SPACE ONCE SPACE DURING SPACE THE SPACE FLIP
+                  | UNLESS player costs
+                  | IF player DO;
 
-textAspect : 'color word'
+textAspect : COLOR SPACE WORD
            | object TYPE;
 
 triggerCondition : TRIGGER_WORD SPACE triggerEvent (COMMA SPACE subordinateClause)?;

@@ -4,7 +4,7 @@ DETERMINER: ARTICLE | DEMONSTRATIVE | NEGATIVE | ALTERNATIVE | UNIVERSAL | DISTR
 // Articles
 ARTICLE: A | AN | THE;
 A: LetterA;
-AN: A 'n';
+AN: LetterA 'n';
 THE: T 'he';
 // Demonstrative
 DEMONSTRATIVE: TARGET | THIS | THESE | THAT | THOSE;
@@ -38,7 +38,7 @@ BLOCKING: BLOCK ING;
 ENCHANTED: (NOT)? ENCHANT ED;
 SACRIFICED: SACRIFICE D;
 TAPPED: TAP P ED;
-TOKEN: T 'oken';
+TOKEN: (NOT)? T 'oken';
 TOP: T 'op';
 
 // Conjunctions
@@ -58,7 +58,7 @@ OF: O 'f';
 ON: O 'n' (TO)?;
 TO: T 'o';
 UNDER: U 'nder';
-WITH: W 'ith';
+WITH: W 'ith' ('out')?;
 
 COMPARATIVE: LOW | HIGH;
 HIGH: GREATER | M 'ore';
@@ -72,6 +72,7 @@ SUBORDINATE_CONJUNCTION: AS (SPACE 'though' | SPACE LONG SPACE AS)
                        | U 'nless';
 AS: A 's';
 LONG: L 'ong';
+BUT: B 'ut';
 EXCEPT: E 'xcept';
 IF: I 'f';
 WHERE: W 'here';
@@ -108,7 +109,7 @@ MANA: M 'ana';
 VALUE: V 'alue';
 
 // Object nouns
-OBJECT: TILDE | TYPE | COPY | CARD | SPELL | PERMANENT | IT;
+OBJECT: TILDE | TYPE | COPY | CARD | SPELL | PERMANENT | TOKEN | IT;
 CARD: C 'ard' (S)?;
 COPY: C 'op' ('y'| 'ies');
 PERMANENT: P 'ermanent' (S)?;
@@ -288,7 +289,7 @@ INT: [0-9]+
 VARIABLE: X | Y;
 
 // Colors
-COLOR:(NOT)? (WHITE | BLUE | BLACK | RED | GREEN);
+ANY_COLOR:(NOT)? (WHITE | BLUE | BLACK | RED | GREEN);
 WHITE: W 'hite';
 BLUE: B 'lue';
 BLACK: B 'lack';
@@ -358,7 +359,6 @@ ASSIGN: A 'ssign';
 LIKEWISE: L 'ikewise';
 EQUAL: E 'qual';
 THEM : T 'hem';
-BUT: B 'ut';
 TIME: T 'ime' (S)?;
 MAXIMUM: M 'aximum';
 SIZE: S 'ize';
@@ -370,7 +370,8 @@ ROUND_DIRECTION: UP | DOWN;
 UP: U 'p';
 DOWN: D 'own';
 UPKEEP: U 'pkeep';
-BEGINNING: B 'eginning';
+BEGIN: B 'egin';
+BEGINNING: BEGIN N ING;
 END: E 'nd';
 ONLY: O 'nly';
 CAUSE: C 'ause';
@@ -408,6 +409,7 @@ DIED: DIE D;
 BEYOND: B 'eyond';
 REMOVED: REMOVE D;
 BEEN: BE 'en';
-TYPE: T 'ype';
+TYPE: T 'ype' (S)?;
 DOING: DO ING;
 CHOSEN: CHOOSE N;
+COLOR: C 'olor';
