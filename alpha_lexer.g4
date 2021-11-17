@@ -122,7 +122,7 @@ DO: D 'o' ('es')? (SPACE? NOT)?;
 GAIN: G 'ain' (S)?;
 GET: G 'et' (S)?;
 HAVE: H 'as' | H 'ave';
-IS: ((I 's' | A 're') (SPACE? NOT)?) | APOSTROPHE S;
+IS: ((I 's' | LetterA 're') (SPACE? NOT)?) | APOSTROPHE ('s'|'re');
 
 NOT: U N | N O (T|N(DASH)?) | N APOSTROPHE T;
 
@@ -151,7 +151,7 @@ THEIR: T 'heir';
 ADD: LetterA 'dd';
 ATTACH: A 'ttach';
 CHANGE: C 'hange';
-CHOOSE: C 'hoose' (S)?;
+CHOOSE: C 'ho' ('o')? 'se' (S)?;
 CONTROL: C 'ontrol' (S)?;
 COULD: C 'ould';
 COUNTER: C 'ounter' (S)?;
@@ -235,7 +235,7 @@ VIGILANCE: V 'igilance';
 FIRST: F 'irst';
 STRIKE: S 'trike';
 
-TYPE:(NOT)? (CARD_TYPE | CREATURE_TYPE | ENCHANTMENT_TYPE | LAND_TYPE);
+OBJECT_TYPE:(NOT)? (CARD_TYPE | CREATURE_TYPE | ENCHANTMENT_TYPE | LAND_TYPE);
 
 CARD_TYPE: C 'reature'
          | L 'and'
@@ -359,7 +359,7 @@ LIKEWISE: L 'ikewise';
 EQUAL: E 'qual';
 THEM : T 'hem';
 BUT: B 'ut';
-TIME: T 'ime';
+TIME: T 'ime' (S)?;
 MAXIMUM: M 'aximum';
 SIZE: S 'ize';
 BY: B 'y';
@@ -407,4 +407,7 @@ ASSIGNED: ASSIGN ED;
 DIED: DIE D;
 BEYOND: B 'eyond';
 REMOVED: REMOVE D;
-BEEN: BE E N;
+BEEN: BE 'en';
+TYPE: T 'ype';
+DOING: DO ING;
+CHOSEN: CHOOSE N;

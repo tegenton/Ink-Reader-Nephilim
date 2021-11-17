@@ -233,7 +233,8 @@ postmodifier : player SPACE CONTROL
 premodifier : ADJECTIVE
             | COLOR
             | determiner
-            | TYPE
+            | CHOSEN
+            | type
             | NUMBER SLASH NUMBER;
 
 prepositionalPhrase : prepositionalPhrase SPACE prepositionalPhrase
@@ -245,7 +246,7 @@ prepositionalPhrase : prepositionalPhrase SPACE prepositionalPhrase
                     | FOR SPACE MANA
                     | FOR SPACE HAVING SPACE amount SPACE LIFE
                     | FOR SPACE WHOM SPACE THAT SPACE PLAYER SPACE IS SPACE THE SPACE DEFENDING SPACE PLAYER
-                    | FROM SPACE A 'height of at least one foot'
+                    | FROM SPACE A SPACE HEIGHT SPACE OF SPACE AT SPACE LEAST SPACE ONE SPACE FOOT
                     | UNDER SPACE playerPossessive SPACE CONTROL
                     | ON SPACE TOP SPACE OF SPACE zone
                     | AT SPACE RANDOM
@@ -259,12 +260,12 @@ phase : playerPossessive SPACE TURN
       | playerPossessive SPACE rawPhase
       | ARTICLE SPACE rawPhase SPACE OF SPACE player
       | ARTICLE SPACE rawPhase
-      | ARTICLE SPACE playerPossessive TURN COMMA SPACE 'before attackers are' SPACE DECLARED
+      | ARTICLE SPACE playerPossessive TURN COMMA SPACE BEFORE SPACE ATTACKERS SPACE IS SPACE DECLARED
       | ARTICLE SPACE NEXT SPACE rawPhase
       | COMBAT
       | COMBAT SPACE BEFORE SPACE BLOCKERS SPACE IS SPACE DECLARED
       | THE TURN
-      | EACH SPACE OF SPACE playerPossessive SPACE 'upkeeps for the rest of the game'
+      | EACH SPACE OF SPACE playerPossessive SPACE UPKEEP SPACE FOR SPACE THE SPACE REST SPACE OF SPACE THE SPACE GAME
       | THE SPACE NEXT SPACE END SPACE STEP;
 
 phrase : playerPhrase
@@ -276,9 +277,9 @@ player : ANY_PLAYER
        | ANY_PLAYER playerPostmodifier
        | objectPossessive ANY_PLAYER;
 
-playerPremodifier: 'active' | 'chosen' | 'defending';
+playerPremodifier: ACTIVE | CHOSEN | DEFENDING;
 
-playerPostmodifier: 'who controls the fewest';
+playerPostmodifier: WHO SPACE CONTROL SPACE THE SPACE FEWEST;
 
 playerPhrase : player SPACE playerVerbPhrase;
 
@@ -287,13 +288,13 @@ playerPossessive : YOUR
                  | player SAXON;
 
 playerVerbPhrase : MAY SPACE playerVerbPhrase
-                 | CHANGE SPACE ARTICLE SPACE 'text of ' object ' by replacing all instances of one ' textAspect ' with another'
+                 | CHANGE SPACE ARTICLE SPACE TEXT SPACE OF SPACE object SPACE BY SPACE REPLACING SPACE ALL SPACE INSTANCES SPACE OF SPACE ONE SPACE textAspect SPACE WITH SPACE ANOTHER
                  | CHOOSE SPACE ARTICLE SPACE textAspect
-                 | '’re dealt damage'
+                 | IS SPACE DEALT SPACE damage
                  | ADD SPACE MANA_SYMBOL+
                  | ADD SPACE ARTICLE SPACE AMOUNT SPACE OF SPACE MANA_SYMBOL SPACE EQUAL SPACE TO SPACE amount
                  | ADD SPACE amount SPACE MANA SPACE OF SPACE ANY SPACE (ONE SPACE)? COLOR
-                 | ADD SPACE amount SPACE MANA SPACE OF SPACE ANY SPACE TYPE SPACE THAT SPACE object SPACE PRODUCED
+                 | ADD SPACE amount SPACE MANA SPACE OF SPACE ANY SPACE type SPACE THAT SPACE object SPACE PRODUCED
                  | ADD SPACE ARTICLE SPACE ADDITIONAL SPACE MANA_SYMBOL
                  | ATTACH SPACE object SPACE TO SPACE object
                  | 'can activate mana abilities only if they’re from lands that player controls and only if mana they produce is spent ' TO ' activate other mana abilities of lands the player controls and/or ' TO ' play that card'
@@ -388,17 +389,17 @@ subordinateClause : SUBORDINATE_CONJUNCTION SPACE condition
                   | SUBORDINATE_CONJUNCTION SPACE player SPACE WOULD SPACE 'begin your turn while ' condition
                   | IF SPACE AN SPACE EFFECT SPACE CAUSE SPACE player SPACE TO SPACE DISCARD SPACE object
                   | IF SPACE object SPACE WOULD SPACE DIE SPACE duration
-                  | 'If this ability has been activated four or ' COMPARATIVE SPACE TIMES SPACE duration
+                  | 'If this ability has been activated' SPACE amount SPACE TIME SPACE duration
                   | EXCEPT SPACE object IS SPACE ARTICLE SPACE CARD_TYPE SPACE IN SPACE ADDITION SPACE TO SPACE objectPossessive OTHER 'types'
                   | EXCEPT SPACE object SPACE DO SPACE 'copy that creature’s color and it has “At the beginning of your upkeep, you may have this creature become a copy of target creature, except it doesn’t copy that creature’s color and it has this ability.”'
                   | EXCEPT SPACE object SPACE IS SPACE COLOR
                   | EXCEPT SPACE BY SPACE object
                   | WHERE variableDefinition
-                  | 'While doing so'
-                  | 'If the chosen card is cast as a spell';
+                  | WHILE SPACE DOING SPACE SO
+                  | IF SPACE object IS CAST AS object;
 
 textAspect : 'color word'
-           | 'basic land type';
+           | object TYPE;
 
 triggerCondition : TRIGGER_WORD SPACE triggerEvent (COMMA SPACE subordinateClause)?;
 
@@ -406,8 +407,8 @@ triggerEvent : THE SPACE BEGINNING SPACE OF SPACE phase
              | END SPACE OF SPACE COMBAT
              | phrase;
 
-type : TYPE
-     | 'chosen type';
+type : OBJECT_TYPE
+     | CHOSEN TYPE;
 
 zone : playerPossessive SPACE ZONE
      | ARTICLE SPACE ZONE
