@@ -168,7 +168,7 @@ duration : UNTIL SPACE END SPACE OF SPACE TURN
          | DURING SPACE phase
          | FOR SPACE AS SPACE LONG SPACE AS SPACE object HAVE A counterType SPACE prepositionalPhrase
          | AS SPACE LONG SPACE AS SPACE player SPACE CONTROL SPACE object
-         | 'while that spell is resolving';
+         | WHILE SPACE object SPACE IS SPACE RESOLVING;
 
 keyword : SIMPLE_KEYWORD
         | PROTECTION SPACE FROM SPACE COLOR
@@ -178,8 +178,7 @@ object : OBJECT
        | (premodifier SPACE)+ object
        | OBJECT (SPACE postmodifier)+
        | OBJECT
-       | (OBJECT COMMA SPACE)* OBJECT SPACE CONJUNCTION OBJECT
-       | 'a land that a' SPACE counterType SPACE 'was put onto with ' object ' but that a' SPACE counterType SPACE 'has ' NOT 'been removed from with ' object;
+       | (OBJECT COMMA SPACE)* OBJECT SPACE CONJUNCTION OBJECT;
 
 objectPhrase : object SPACE objectVerbPhrase;
 
@@ -199,7 +198,7 @@ objectVerbPhrase : IS SPACE DEALT SPACE damage
                  | DEAL SPACE damage SPACE TO SPACE something COMMA SPACE subordinateClause
                  | DEAL SPACE damage SPACE TO SPACE something SPACE EQUAL SPACE TO SPACE amount
                  | DEAL SPACE damage SPACE EQUAL SPACE TO SPACE amount SPACE TO SPACE something
-                 | DEAL SPACE damage SPACE 'divided evenly, rounded down, among any number of targets'
+                 | DEAL SPACE damage SPACE DIVIDED SPACE EVENLY COMMA SPACE ROUNDED SPACE ROUND_DIRECTION COMMA SPACE AMONG SPACE object
                  | DO SPACE TAP SPACE duration
                  | DO SPACE SO
                  | ENTER SPACE zone TAPPED
@@ -231,7 +230,8 @@ postmodifier : player SPACE CONTROL
              | 'of an opponent’s choice'
              | 'of their choice'
              | 'that died' SPACE duration
-             | 'beyond the first';
+             | 'beyond the first'
+             | 'that a' SPACE counterType SPACE 'was put onto with ' object ' but that a' SPACE counterType SPACE 'has ' NOT 'been removed from with ' object;
 
 premodifier : ADJECTIVE
             | COLOR
@@ -332,20 +332,19 @@ playerVerbPhrase : MAY SPACE playerVerbPhrase
                  | SKIPS SPACE phase
                  | SKIPS SPACE THAT SPACE (TURN|DRAW)
                  | TAKE SPACE AN SPACE 'extra' SPACE TURN SPACE 'after' SPACE THIS SPACE ONE
-                 | HAVE object SPACE ENTER SPACE zone SPACE 'as a copy of any' SPACE object SPACE 'on' SPACE zone (SPACE prepositionalPhrase)?
-                 | HAVE player SHUFFLE
+                 | HAVE SPACE object SPACE ENTER SPACE zone SPACE 'as a copy of any' SPACE object SPACE 'on' SPACE zone (SPACE prepositionalPhrase)?
+                 | HAVE SPACE player SHUFFLE
+                 | HAVE SPACE object SPACE BLOCK SPACE object
                  | SPEND SPACE COLOR SPACE MANA 'as though it were ' COLOR SPACE MANA
                  | PLAY SPACE object SPACE 'on each of your turns'
-                 | ANTE SPACE object
+                 | PAY SPACE amount SPACE OF SPACE MANA
                  | costs
-                 | effect
+                 | ANTE SPACE object
                  | TAP SPACE OR SPACE TAP SPACE object
                  | SHUFFLE SPACE zone SPACE prepositionalPhrase
                  | CHOOSE SPACE 'a number of lands they control equal ' TO SPACE amount ', then sacrifices the rest. Players discard cards and sacrifice creatures the same way'
+                 | CHOOSE SPACE 'a creature card in your hand whose mana cost ' COULD ' be paid by some amount of, or all of, the mana you spent on {X}. If you do, you ' MAY ' cast that card face down as a 2/2 creature spell without paying its mana cost. If the creature that spell becomes as it resolves has' SPACE NOT SPACE 'been turned face up and would assign or deal damage, be dealt damage, or become tapped, ' INSTEAD ' it’s turned face up and assigns or deals damage, is dealt damage, or becomes tapped. Activate only as a sorcery.'
                  | DIVIDE SPACE 'all creatures without flying they control into a “left” pile and a “right” pile. Then, for each attacking creature you control, ' CHOOSE ' “left” or “right.” That creature can’t be blocked this ' COMBAT ' except by creatures with flying and creatures in a pile with the chosen label'
-                 | MAY SPACE PAY SPACE amount SPACE OF SPACE MANA
-                 | MAY SPACE CHOOSE SPACE 'a creature card in your hand whose mana cost ' COULD ' be paid by some amount of, or all of, the mana you spent on {X}. If you do, you ' MAY ' cast that card face down as a 2/2 creature spell without paying its mana cost. If the creature that spell becomes as it resolves has' SPACE NOT SPACE 'been turned face up and would assign or deal damage, be dealt damage, or become tapped, ' INSTEAD ' it’s turned face up and assigns or deals damage, is dealt damage, or becomes tapped. Activate only as a sorcery.'
-                 | MAY SPACE HAVE SPACE object SPACE BLOCK SPACE object
                  | ACTIVATE SPACE A SPACE MANA SPACE ABILITY SPACE OF SPACE object
                  | ADD SPACE THE SPACE MANA SPACE LOST SPACE THIS SPACE WAY
                  | PREVENT VARIABLE SPACE OF SPACE damage COMMA SPACE subordinateClause

@@ -66,10 +66,12 @@ GREATER:  G 'reater';
 LOW: LESS;
 LESS: L 'ess';
 
-SUBORDINATE_CONJUNCTION: A 's' (SPACE 'though' | SPACE 'long' SPACE 'as')
+SUBORDINATE_CONJUNCTION: AS (SPACE 'though' | SPACE LONG SPACE AS)
                        | EXCEPT
                        | IF
                        | U 'nless';
+AS: A 's';
+LONG: L 'ong';
 EXCEPT: E 'xcept';
 IF: I 'f';
 WHERE: W 'here';
@@ -164,7 +166,7 @@ LOOK: L 'ook';
 LOSE: L 'ose' (S)?;
 MAY: M 'ay';
 OWN: O 'wn';
-PAY: P 'ay';
+PAY: P 'a' ('i'|'y');
 PUT: P 'ut';
 PREVENT: P 'revent';
 REGENERATE: R 'egenerate';
@@ -369,3 +371,28 @@ UPKEEP: U 'pkeep';
 BEGINNING: B 'eginning';
 END: E 'nd';
 ONLY: O 'nly';
+CAUSE: C 'ause';
+TOTAL: T 'otal';
+HALF: H 'alf';
+ROUNDED: R 'ounded';
+THAN: T 'han';
+MINUS: M 'inus';
+MANY: M 'any';
+AMOUNT: A 'mount';
+PAID: PAY D;
+PREVENTED: PREVENT ED;
+HAD: HAVE D;
+DID: DO D;
+WAS: W 'as';
+PLAYED: PLAY ED;
+UNTIL: U 'ntil';
+FINISHES: F 'inishes';
+RESOLVING: R 'esolving';
+DURING: D 'uring';
+WHILE: W 'hile';
+ABLE: A 'ble';
+DIVIDED: DIVIDE D;
+EVENLY: E 'venly';
+AMONG: A 'mong';
+SO: S 'o';
+WAY: W 'ay';
