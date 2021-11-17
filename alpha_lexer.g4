@@ -269,7 +269,7 @@ PLUS: '+';
 RBRACKET: '}';
 SEMICOLON: ';';
 SLASH: '/';
-SPACE: ' ';
+SPACE: ' ' -> skip;
 TILDE: '~';
 
 // Numbers
@@ -355,3 +355,8 @@ EQUAL: E 'qual';
 THEM : T 'hem';
 BUT: B 'ut';
 TIME: T 'ime';
+MAXIMUM: M 'aximum';
+SIZE: S 'ize';
+BY: B 'y';
+NEXT: N 'ext';
+WOULD: W 'ould';

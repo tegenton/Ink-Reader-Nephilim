@@ -24,7 +24,7 @@ staticAbility : staticAbility SPACE staticAbility
               | subordinateClause COMMA SPACE staticAbility
               | continuousEffect (PERIOD)?
               | replacementEffect PERIOD
-              | abilityType SPACE OF SPACE object SPACE COSTS SPACE costs SPACE COMPARATIVE SPACE TO SPACE ACTIVATE PERIOD
+              | abilityType SPACE OF SPACE object SPACE COST SPACE costs SPACE COMPARATIVE SPACE TO SPACE ACTIVATE PERIOD
               | damage SPACE IS SPACE DEALT SPACE TO SPACE object INSTEAD PERIOD
               | FOR SPACE EACH SPACE damage SPACE distinguisher COMMA SPACE triggerEffect PERIOD;
 
@@ -53,10 +53,10 @@ playableType: CARD_TYPE | abilityType;
 
 continuousEffect : anyTime COMMA SPACE player SPACE MAY SPACE costs PERIOD SPACE effect
                  | player SPACE MAY SPACE costs SPACE anyTime PERIOD SPACE effect
-                 | player SPACE CAN SPACE 'be' SPACE ATTACKED SPACE subordinateClause
+                 | player SPACE CAN SPACE BE SPACE ATTACKED SPACE subordinateClause
                  | player SPACE CAN SPACE TAP SPACE object SPACE duration
-                 | player SPACE DOES SPACE LOSE SPACE THE SPACE GAME SPACE prepositionalPhrase
-                 | player SPACE HAS SPACE NO SPACE 'maximum' SPACE HAND SPACE 'size'
+                 | player SPACE DO SPACE LOSE SPACE THE SPACE GAME SPACE prepositionalPhrase
+                 | player SPACE HAVE SPACE NO SPACE MAXIMUM SPACE HAND SPACE SIZE
                  | player SPACE CONTROL SPACE player
                  | continuousObjectPhrase;
 
@@ -66,14 +66,14 @@ continuousObjectVerbPhrase: continuousObjectVerbPhrase SPACE CONJUNCTION SPACE c
                           | IS SPACE object
                 	      | CAN SPACE ATTACK (SPACE subordinateClause)?
              	          | CAN SPACE BLOCK SPACE object
-                      	  | CAN 'be' SPACE BLOCKED
-                      	  | CAN 'be' SPACE BLOCKED SPACE (EXCEPT)? 'by ' object
-                      	  | CAN 'be' SPACE ENCHANTED SPACE 'by ' object
-                          | GAINS SPACE keyword
-                          | GAINS SPACE quotedAbility
-                      	  | GETS SPACE STAT_MOD
-                          | HAS SPACE quotedAbility
-             	          | HAS SPACE ability
+                      	  | CAN BE SPACE BLOCKED
+                      	  | CAN BE SPACE BLOCKED SPACE (EXCEPT)? SPACE BY object
+                      	  | CAN BE SPACE ENCHANTED SPACE BY SPACE object
+                          | GAIN SPACE keyword
+                          | GAIN SPACE quotedAbility
+                      	  | GET SPACE STAT_MOD
+                          | HAVE SPACE quotedAbility
+             	          | HAVE SPACE ability
                           | LOSES SPACE quotedAbility;
 
 replacementEffect : subordinateClause COMMA SPACE (SPACE INSTEAD)? effect (SPACE INSTEAD)?
@@ -93,27 +93,26 @@ effect : rawEffect
 
 rawEffect: PREVENT SPACE damage
        | source SPACE DEAL SPACE damage SPACE TO SPACE player SPACE INSTEAD
-       | THE SPACE 'next time' SPACE source SPACE 'would' SPACE DEAL SPACE COMBAT DAMAGE SPACE TO SPACE something SPACE DURATION COMMA SPACE effect
-       | 'The next ' damage ' that would be dealt' SPACE TO SPACE object SPACE duration SPACE IS SPACE DEALT SPACE TO SPACE player SPACE INSTEAD
-       | subordinateClause ', flip ' object SPACE prepositionalPhrase '. If ' object ' turns over completely at least once during the flip, destroy all nontoken permanents it touches'
-       | delayedTrigger COMMA SPACE REMOVE SPACE ALL SPACE counterType SPACE 'from a land that a' SPACE counterType SPACE 'was put onto with ' object ' but that a' SPACE counterType SPACE 'has ' NOT 'been removed from with ' object
+       | THE SPACE NEXT TIME SPACE source SPACE WOULD SPACE DEAL SPACE COMBAT DAMAGE SPACE TO SPACE something SPACE duration COMMA SPACE effect
+       | THE SPACE NEXT damage SPACE THAT SPACE WOULD SPACE BE SPACE DEALT SPACE TO SPACE object SPACE duration SPACE IS SPACE DEALT SPACE TO SPACE player SPACE INSTEAD
+       | subordinateClause COMMA SPACE FLIP SPACE object SPACE prepositionalPhrase PERIOD SPACE IF object ' turns over completely at least once during the flip, destroy all nontoken permanents it touches'
+       | delayedTrigger COMMA SPACE REMOVE SPACE ALL SPACE counterType SPACE FROM SPACE 'a land that a' SPACE counterType SPACE 'was put onto with ' object ' but that a' SPACE counterType SPACE 'has ' NOT 'been removed from with ' object
        | delayedTrigger COMMA SPACE DESTROY SPACE object subordinateClause
        | player SPACE CHOOSE SPACE 'a number of lands they control equal ' TO SPACE amount ', then sacrifices the rest. Players discard cards and sacrifice creatures the same way'
-       | player ' divides all creatures without flying they control into a “left” pile and a “right” pile. Then, for each attacking creature you control, ' CHOOSE ' “left” or “right.” That creature can’t be blocked this ' COMBAT ' except by creatures with flying and creatures in a pile with the chosen label'
+       | player SPACE DIVIDE SPACE 'all creatures without flying they control into a “left” pile and a “right” pile. Then, for each attacking creature you control, ' CHOOSE ' “left” or “right.” That creature can’t be blocked this ' COMBAT ' except by creatures with flying and creatures in a pile with the chosen label'
        | WHEN SPACE object SPACE 'leaves the battlefield' COMMA SPACE 'that creature’s controller sacrifices it'
        | player SPACE MAY SPACE PAY SPACE 'any amount' SPACE OF SPACE MANA
        | PREVENT VARIABLE SPACE OF SPACE damage COMMA SPACE 'where' SPACE variableDefinition
        | player SPACE MAY SPACE CHOOSE SPACE 'a creature card in your hand whose mana cost ' COULD ' be paid by some amount of, or all of, the mana you spent on {X}. If you do, you ' MAY ' cast that card face down as a 2/2 creature spell without paying its mana cost. If the creature that spell becomes as it resolves has' SPACE NOT SPACE 'been turned face up and would assign or deal damage, be dealt damage, or become tapped, ' INSTEAD ' it’s turned face up and assigns or deals damage, is dealt damage, or becomes tapped. Activate only as a sorcery.'
        | REMOVE SPACE object SPACE FROM SPACE COMBAT
-       | player SPACE MAY SPACE HAS SPACE object SPACE BLOCK SPACE object
-       | player SPACE ACTIVATE SPACE A SPACE MANA SPACE ABILITY SPACE 'of' SPACE object
-       | player SPACE ADD SPACE THE SPACE MANA SPACE 'lost' SPACE THIS SPACE 'way'
+       | player SPACE MAY SPACE HAVE SPACE object SPACE BLOCK SPACE object
+       | player SPACE ACTIVATE SPACE A SPACE MANA SPACE ABILITY SPACE OF SPACE object
+       | player SPACE ADD SPACE THE SPACE MANA SPACE LOST SPACE THIS SPACE WAY
        | 'If this ability has been activated four or ' COMPARATIVE ' times this turn, sacrifice ' object ' at the beginning of the next end step'
        | 'The player plays that card if able. While doing so, the player can activate mana abilities only if they’re from lands that player controls and only if mana they produce is spent ' TO ' activate other mana abilities of lands the player controls and/or ' TO ' play that card. If the chosen card is cast as a spell, you control the player while that spell is resolving'
        | objectPossessive SPACE characteristics SPACE IS ' each equal ' TO SPACE amount
        | phrase
        | playerVerbPhrase
-       | player ' loses all unspent mana'
        | player MAY ' attach ' object SPACE TO SPACE object
        | object CAN SPACE 'be regenerated'
        | object CAN SPACE 'be regenerated this turn'
