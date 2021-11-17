@@ -31,10 +31,6 @@ EACH: E 'ach';
 EXISTENTIAL: ANY;
 ANY: LetterA 'ny';
 
-ATTACKED: ATTACK ED;
-BLOCKED: (NOT)? BLOCK ED;
-ADDITION: A 'ddition';
-
 ADJECTIVE: ADDITIONAL | ATTACKING | BLOCKING | ENCHANTED | SACRIFICED | TAPPED | TOKEN | TOP;
 ADDITIONAL: ADDITION 'al';
 ATTACKING: ATTACK ING;
@@ -63,10 +59,11 @@ TO: T 'o';
 UNDER: U 'nder';
 WITH: W 'ith';
 
-COMPARATIVE: LESS | GREATER | MORE;
-LESS: L 'ess';
+COMPARATIVE: LOW | HIGH;
+HIGH: GREATER | M 'ore';
 GREATER:  G 'reater';
-MORE: M 'ore';
+LOW: LESS;
+LESS: L 'ess';
 
 SUBORDINATE_CONJUNCTION: A 's' (SPACE 'though' | SPACE 'long' SPACE 'as')
                        | EXCEPT
@@ -75,8 +72,10 @@ SUBORDINATE_CONJUNCTION: A 's' (SPACE 'though' | SPACE 'long' SPACE 'as')
 EXCEPT: E 'xcept';
 IF: I 'f';
 
+INSTEAD: I 'nstead';
+
 // Concept Nouns
-ABILITY: A 'bility';
+ABILITY: A 'bilit' ('y'|'ies');
 COMBAT: C 'ombat';
 DAMAGE: D 'amage';
 EFFECT: E 'ffect';
@@ -86,6 +85,9 @@ PILE: P 'ile' (S)?;
 SOURCE: S 'ource';
 STEP: S 'tep';
 TURN: T 'urn';
+
+ACTIVATED: ACTIVATE D;
+
 
 TRIGGER_WORD: AT | WHEN | WHENEVER;
 AT: A 't';
@@ -137,6 +139,7 @@ OPPONENT: O 'pponent' (S)?;
 YOU: 'you';
 THEY: 'they';
 
+SAXON: (APOSTROPHE)? S;
 // Possessive players
 YOUR: YOU R;
 THEIR: T 'heir';
@@ -147,6 +150,7 @@ ATTACH: A 'ttach';
 CHANGE: C 'hange';
 CHOOSE: C 'hoose' (S)?;
 CONTROL: C 'ontrol' (S)?;
+COULD: C 'ould';
 COUNTER: C 'ounter' (S)?;
 CREATE: C 'reate';
 DESTROY: D 'estroy';
@@ -168,7 +172,7 @@ RETURN: R 'eturn';
 SACRIFICE: S 'acrifice';
 SEARCH: S 'earch';
 SHUFFLE: S 'huffle' (S)?;
-SKIP: S 'kip';
+SKIPS: S 'kip' (S)?;
 TAKE: T 'ake';
 SPEND: S 'pend';
 
@@ -204,7 +208,7 @@ COUNTER_TYPE: C 'orpse'
             | M 'ire'
             | STAT_MOD;
 
-STAT_MOD: PLUSMINUS NUMBER SLASH PLUSMINUS NUMBER;
+STAT_MOD: PLUSMINUS INT SLASH PLUSMINUS INT;
 
 PLUSMINUS: PLUS | DASH;
 
@@ -251,22 +255,22 @@ LAND_TYPE: P 'lains'
          | F 'orest';
 
 // Literal symbols
-fragment APOSTROPHE: '’';
-fragment BULLET: '•';
-fragment CLOSEQUOTE: '”';
-fragment COMMA: ',';
-fragment COLON: ':';
-fragment DASH: '-' | '—';
-fragment LBRACKET: '{';
-fragment NEWLINE: '\n';
-fragment OPENQUOTE: '“';
-fragment PERIOD: '.';
-fragment PLUS: '+';
-fragment RBRACKET: '}';
-fragment SEMICOLON: ';';
-fragment SLASH: '/';
-fragment SPACE: ' ';
-fragment TILDE: '~';
+APOSTROPHE: '’';
+BULLET: '•';
+CLOSEQUOTE: '”';
+COMMA: ',';
+COLON: ':';
+DASH: '-' | '—';
+LBRACKET: '{';
+NEWLINE: '\n';
+OPENQUOTE: '“';
+PERIOD: '.';
+PLUS: '+';
+RBRACKET: '}';
+SEMICOLON: ';';
+SLASH: '/';
+SPACE: ' ';
+TILDE: '~';
 
 // Numbers
 ENGLISH_NUMBER : ONE
@@ -275,8 +279,8 @@ ENGLISH_NUMBER : ONE
               | S 'even';
 ONE: O 'ne';
 
-NUMBER: [0-9]+
-      | VARIABLE;
+INT: [0-9]+
+   | VARIABLE;
 
 VARIABLE: X | Y;
 
@@ -332,23 +336,22 @@ fragment ER: 'er';
 fragment ING: 'ing';
 
 // To Sort
-abilityType : 'activated abilities'
-            | 'mana ability';
-adverbInstead : 'instead';
-adjectiveRandom : 'random';
-adjectiveDifferent : 'different';
-verbAssign : 'assign';
-verbBe : 'be';
-verbLikewise : 'likewise';
-adjectiveEqual : 'equal';
-nounNumber : 'number';
-pronounThem : 'them';
-nounBlockers : 'blockers';
-verbChooses : 'chooses';
-verbDeclaring : 'declaring';
-nounTop : 'top';
-prepositionBut : 'but';
-nounTime : 'time';
-verbCould : 'could';
-damageType : 'combat damage'
-           | 'damage';
+ATTACKED: ATTACK ED;
+ATTACKERS: ATTACK ER (S)?;
+BLOCKED: (NOT)? BLOCK ED;
+BLOCKERS: BLOCK ER (S)?;
+ADDITION: A 'ddition';
+DECLARE: D 'eclar' (E)?;
+DECLARING: DECLARE ING;
+DECLARED: DECLARE D;
+
+BE: B 'e';
+RANDOM: R 'andom';
+NUMBER: N 'umber';
+DIFFERENT: D 'ifferent';
+ASSIGN: A 'ssign';
+LIKEWISE: L 'ikewise';
+EQUAL: E 'qual';
+THEM : T 'hem';
+BUT: B 'ut';
+TIME: T 'ime';
