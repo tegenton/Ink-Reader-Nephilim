@@ -74,7 +74,7 @@ continuousObjectVerbPhrase: continuousObjectVerbPhrase SPACE CONJUNCTION SPACE c
                       	  | GET SPACE STAT_MOD
                           | HAVE SPACE quotedAbility
              	          | HAVE SPACE ability
-                          | LOSES SPACE quotedAbility;
+                          | LOSE SPACE quotedAbility;
 
 replacementEffect : subordinateClause COMMA SPACE (SPACE INSTEAD)? effect (SPACE INSTEAD)?
                   | subordinateClause COMMA SPACE playerPhrase SPACE INSTEAD PERIOD SPACE subordinateClause COMMA SPACE effect
@@ -95,12 +95,10 @@ rawEffect: PREVENT SPACE damage
        | source SPACE DEAL SPACE damage SPACE TO SPACE player SPACE INSTEAD
        | THE SPACE NEXT TIME SPACE source SPACE WOULD SPACE DEAL SPACE COMBAT DAMAGE SPACE TO SPACE something SPACE duration COMMA SPACE effect
        | THE SPACE NEXT damage SPACE THAT SPACE WOULD SPACE BE SPACE DEALT SPACE TO SPACE object SPACE duration SPACE IS SPACE DEALT SPACE TO SPACE player SPACE INSTEAD
-       | subordinateClause COMMA SPACE FLIP SPACE object SPACE prepositionalPhrase PERIOD SPACE IF object ' turns over completely at least once during the flip, destroy all nontoken permanents it touches'
-       | delayedTrigger COMMA SPACE REMOVE SPACE ALL SPACE counterType SPACE FROM SPACE 'a land that a' SPACE counterType SPACE 'was put onto with ' object ' but that a' SPACE counterType SPACE 'has ' NOT 'been removed from with ' object
+       | FLIP SPACE object SPACE prepositionalPhrase PERIOD SPACE IF object ' turns over completely at least once during the flip, destroy all nontoken permanents it touches'
+       | delayedTrigger COMMA SPACE REMOVE SPACE ALL SPACE counterType SPACE FROM SPACE object
        | delayedTrigger COMMA SPACE DESTROY SPACE object subordinateClause
-       | WHEN SPACE object SPACE 'leaves the battlefield' COMMA SPACE 'that creature’s controller sacrifices it'
-       | PREVENT VARIABLE SPACE OF SPACE damage COMMA SPACE 'where' SPACE variableDefinition
-       | REMOVE SPACE object SPACE FROM SPACE COMBAT
+       | WHEN SPACE object SPACE LEAVE SPACE ZONE COMMA SPACE player SACRIFICE object
        | 'If this ability has been activated four or ' COMPARATIVE ' times this turn, sacrifice ' object ' at the beginning of the next end step'
        | 'The player plays that card if able. While doing so, the player can activate mana abilities only if they’re from lands that player controls and only if mana they produce is spent ' TO ' activate other mana abilities of lands the player controls and/or ' TO ' play that card. If the chosen card is cast as a spell, you control the player while that spell is resolving'
        | objectPossessive SPACE characteristics SPACE IS ' each equal ' TO SPACE amount
@@ -110,7 +108,7 @@ rawEffect: PREVENT SPACE damage
        | object CAN SPACE BE SPACE REGENERATED duration
        | THIS SPACE EFFECT SPACE DO REMOVE SPACE object
        | THIS SPACE ABILITY SPACE CAN SPACE 'cause the total number ' OF SPACE counterType ' on ' object SPACE TO SPACE BE SPACE amount
-       | 'if ' object ' would die ' duration ', exile ' object SPACE INSTEAD;
+       | EXILE object SPACE INSTEAD;
 
 damage : DAMAGE
        | NUMBER SPACE DAMAGE
@@ -121,20 +119,20 @@ damage : DAMAGE
        | THE SPACE NEXT SPACE damage SPACE THAT SPACE WOULD SPACE BE SPACE DEALT SPACE TO SPACE something SPACE duration;
 
 // Definitions
-amount : 'half ' amount COMMA ' rounded ' ('up'|'down')
-       | 'up ' TO SPACE amount
-       | COMPARATIVE ' than ' ENGLISH_NUMBER
+amount : HALF SPACE amount COMMA SPACE ROUNDED SPACE ('up'|'down')
+       | UP SPACE TO SPACE amount
+       | COMPARATIVE SPACE THAN SPACE ENGLISH_NUMBER
        | ENGLISH_NUMBER (SPACE CONJUNCTION SPACE COMPARATIVE)?
        | objectPossessive SPACE characteristics
        | VARIABLE
-       | ARTICLE SPACE NUMBER SPACE OF SPACE object (' minus ' NUMBER)?
+       | ARTICLE SPACE NUMBER SPACE OF SPACE object (SPACE MINUS SPACE NUMBER)?
        | ANY SPACE NUMBER SPACE OF
-       | ARTICLE SPACE 'damage dealt ' TO SPACE player SPACE duration
-       | playerPossessive SPACE LIFE ' total'
-       | THAT SPACE 'many'
-       | THE SPACE 'amount of mana that player paid this way'
-       | THE SPACE 'damage prevented this way'
-       | 'any amount';
+       | damage SPACE DEALT SPACE TO SPACE player SPACE duration
+       | playerPossessive SPACE LIFE SPACE TOTAL
+       | THAT SPACE MANY
+       | THE SPACE AMOUNT SPACE OF SPACE MANA SPACE THAT SPACE PLAYER SPACE PAID SPACE THIS SPACE WAY
+       | damage SPACE PREVENTED SPACE THIS SPACE WAY
+       | ANY SPACE AMOUNT;
 
 characteristics: CHARACTERISTIC (SPACE CONJUNCTION SPACE CHARACTERISTIC)*;
 
@@ -142,11 +140,11 @@ condition : object (SPACE)? IS SPACE TAPPED
           | object (SPACE)? IS SPACE ATTACKING
           | object (SPACE)? IS SPACE prepositionalPhrase
           | object (SPACE)? IS SPACE object
-          | object SPACE HAS SPACE A SPACE counterType SPACE prepositionalPhrase
-          | object SPACE HAS SPACE keyword
-          | object SPACE 'had haste'
-          | object SPACE 'didn’t have defender'
-          | object SPACE 'wasn’t the first land you played' SPACE duration
+          | object SPACE HAVE SPACE A SPACE counterType SPACE prepositionalPhrase
+          | object SPACE HAVE SPACE keyword
+          | object SPACE HAD SPACE keyword
+          | object SPACE DID SPACE HAVE keyword
+          | object SPACE WAS SPACE THE SPACE FIRST SPACE object SPACE YOU SPACE PLAYED duration
           | object SPACE ATTACKED SPACE OR SPACE BLOCKED SPACE duration
           | object SPACE ATTACKED SPACE duration;
 
@@ -164,14 +162,14 @@ distinguisher : THAT SPACE WOULD SPACE BE SPACE DEALT SPACE TO SPACE object;
 
 duration : UNTIL SPACE END SPACE OF SPACE TURN
          | UNTIL SPACE END SPACE OF SPACE COMBAT
-         | UNTIL SPACE object SPACE LEAVES SPACE zone
+         | UNTIL SPACE object SPACE LEAVE SPACE zone
          | UNTIL SPACE YOUR SPACE NEXT SPACE TURN
          | UNTIL SPACE object SPACE FINISHES SPACE RESOLVING
          | THIS SPACE TURN
          | DETERMINER SPACE COMBAT
          | DURING SPACE phase
-         | FOR SPACE 'as long as' SPACE object HAS A counterType SPACE prepositionalPhrase
-         | 'as long as ' player ' control' SPACE object;
+         | FOR SPACE AS SPACE LONG SPACE AS SPACE object HAVE A counterType SPACE prepositionalPhrase
+         | AS SPACE LONG SPACE AS SPACE player SPACE CONTROL SPACE object;
 
 keyword : SIMPLE_KEYWORD
         | PROTECTION SPACE FROM SPACE COLOR
@@ -181,7 +179,8 @@ object : OBJECT
        | (premodifier SPACE)+ object
        | OBJECT (SPACE postmodifier)+
        | OBJECT
-       | (OBJECT COMMA SPACE)* OBJECT SPACE CONJUNCTION OBJECT;
+       | (OBJECT COMMA SPACE)* OBJECT SPACE CONJUNCTION OBJECT
+       | 'a land that a' SPACE counterType SPACE 'was put onto with ' object ' but that a' SPACE counterType SPACE 'has ' NOT 'been removed from with ' object;
 
 objectPhrase : object SPACE objectVerbPhrase;
 
@@ -207,8 +206,8 @@ objectVerbPhrase : IS SPACE DEALT SPACE damage
                  | ENTER SPACE zone TAPPED
              	 | GAIN SPACE keyword SPACE AND SPACE GET SPACE STAT_MOD SPACE duration ', where X is ' amount
                  | GAIN SPACE quotedAbility
-                 | LEAVES SPACE zone
-                 | LOSES SPACE keyword;
+                 | LEAVE SPACE zone
+                 | LOSE SPACE keyword;
 
 postmodifier : player SPACE CONTROL
              | player ' controlled at the beginning of this turn'
@@ -305,16 +304,16 @@ playerVerbPhrase : MAY SPACE playerVerbPhrase
                  | DESTROY SPACE object
                  | DESTROY SPACE object SPACE delayedTrigger
                  | DESTROY SPACE object SPACE delayedTrigger SPACE 'if it didn’t attack this turn'
-                 | EXCHANGE SPACE object SPACE 'with' SPACE object
+                 | EXCHANGE SPACE object SPACE WITH SPACE object
                  | EXILE SPACE object
-                 | GAIN SPACE LIFE ' equal ' TO SPACE amount
+                 | GAIN SPACE LIFE SPACE EQUAL SPACE TO SPACE amount
                  | GAIN SPACE NUMBER SPACE LIFE
-                 | GAIN SPACE LIFE SPACE 'equal ' TO ' the damage dealt, but' SPACE NOT SPACE COMPARATIVE ' life than the player’s life total before the damage was dealt, the planeswalker’s loyalty before the damage was dealt, or the creature’s toughness'
-                 | GAIN SPACE LIFE SPACE 'equal ' TO SPACE amount
+                 | GAIN SPACE LIFE SPACE EQUAL SPACE TO ' the damage dealt, but' SPACE NOT SPACE COMPARATIVE ' life than the player’s life total before the damage was dealt, the planeswalker’s loyalty before the damage was dealt, or the creature’s toughness'
+                 | GAIN SPACE LIFE SPACE EQUAL SPACE TO SPACE amount
                  | LOOK SPACE AT SPACE object ', then put them back in any order'
                  | LOOK SPACE AT SPACE zone
                  | LOSE SPACE THE SPACE 'game'
-                 | LOSE SPACE LIFE SPACE 'equal ' TO SPACE amount
+                 | LOSE SPACE LIFE SPACE EQUAL SPACE TO SPACE amount
                  | LOSE SPACE 'half their' SPACE LIFE ', rounded up'
                  | LOSE SPACE ALL SPACE 'unspent' SPACE MANA
                  | PUT SPACE object SPACE prepositionalPhrase
@@ -342,7 +341,9 @@ playerVerbPhrase : MAY SPACE playerVerbPhrase
                  | MAY SPACE CHOOSE SPACE 'a creature card in your hand whose mana cost ' COULD ' be paid by some amount of, or all of, the mana you spent on {X}. If you do, you ' MAY ' cast that card face down as a 2/2 creature spell without paying its mana cost. If the creature that spell becomes as it resolves has' SPACE NOT SPACE 'been turned face up and would assign or deal damage, be dealt damage, or become tapped, ' INSTEAD ' it’s turned face up and assigns or deals damage, is dealt damage, or becomes tapped. Activate only as a sorcery.'
                  | MAY SPACE HAVE SPACE object SPACE BLOCK SPACE object
                  | ACTIVATE SPACE A SPACE MANA SPACE ABILITY SPACE OF SPACE object
-                 | ADD SPACE THE SPACE MANA SPACE LOST SPACE THIS SPACE WAY;
+                 | ADD SPACE THE SPACE MANA SPACE LOST SPACE THIS SPACE WAY
+                 | PREVENT VARIABLE SPACE OF SPACE damage COMMA SPACE 'where' SPACE variableDefinition
+                 | REMOVE SPACE object SPACE FROM SPACE COMBAT;
 
 delayedTrigger : AT SPACE 'end of' SPACE COMBAT
                | AT SPACE THE 'beginning of ' phase;
@@ -383,14 +384,15 @@ variableDefinition: VARIABLE SPACE IS SPACE AMOUNT;
 
 subordinateClause : SUBORDINATE_CONJUNCTION SPACE condition
                   | SUBORDINATE_CONJUNCTION SPACE phrase
-                  | SUBORDINATE_CONJUNCTION SPACE player SPACE 'would' SPACE DRAW SPACE object SPACE duration
-                  | SUBORDINATE_CONJUNCTION SPACE player SPACE 'would' SPACE GAIN SPACE LIFE
-                  | SUBORDINATE_CONJUNCTION SPACE player SPACE 'would begin your turn while ' condition
-                  | IF SPACE AN SPACE EFFECT SPACE 'causes' SPACE player SPACE TO SPACE DISCARD SPACE object
+                  | SUBORDINATE_CONJUNCTION SPACE player SPACE WOULD SPACE DRAW SPACE object SPACE duration
+                  | SUBORDINATE_CONJUNCTION SPACE player SPACE WOULD SPACE GAIN SPACE LIFE
+                  | SUBORDINATE_CONJUNCTION SPACE player SPACE WOULD SPACE 'begin your turn while ' condition
+                  | IF SPACE AN SPACE EFFECT SPACE CAUSE SPACE player SPACE TO SPACE DISCARD SPACE object
+                  | IF SPACE object SPACE WOULD SPACE DIE SPACE duration
                   | EXCEPT SPACE object IS SPACE ARTICLE SPACE CARD_TYPE SPACE IN SPACE ADDITION SPACE TO SPACE objectPossessive OTHER 'types'
                   | EXCEPT SPACE object SPACE DO SPACE 'copy that creature’s color and it has “At the beginning of your upkeep, you may have this creature become a copy of target creature, except it doesn’t copy that creature’s color and it has this ability.”'
                   | EXCEPT SPACE object SPACE IS SPACE COLOR
-                  | EXCEPT SPACE 'by' SPACE object;
+                  | EXCEPT SPACE BY SPACE object;
 
 textAspect : 'color word'
            | 'basic land type';

@@ -42,10 +42,11 @@ TOKEN: T 'oken';
 TOP: T 'op';
 
 // Conjunctions
-CONJUNCTION: O 'r'
-           | LetterA 'nd' SLASH 'or'
+CONJUNCTION: OR
+           | AND SLASH OR
            | T 'hen';
 AND: LetterA 'nd';
+OR: O 'r';
 
 // Prepositions
 PREPOSITION: ABOVE | FOR | FROM | IN | OF | ON | TO | UNDER | WITH;
@@ -121,7 +122,6 @@ HAVE: H 'as' | H 'ave';
 IS: ((I 's' | A 're') (SPACE? NOT)?) | APOSTROPHE S;
 
 NOT: U N | N O (T|N(DASH)?) | N APOSTROPHE T;
-LOSES: L 'oses';
 
 ATTACK: LetterA 'ttack' (S)?;
 BLOCK: B 'lock' (S)?;
@@ -360,3 +360,4 @@ SIZE: S 'ize';
 BY: B 'y';
 NEXT: N 'ext';
 WOULD: W 'ould';
+REGENERATED: REGENERATE D;
