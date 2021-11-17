@@ -72,6 +72,7 @@ SUBORDINATE_CONJUNCTION: A 's' (SPACE 'though' | SPACE 'long' SPACE 'as')
                        | U 'nless';
 EXCEPT: E 'xcept';
 IF: I 'f';
+WHERE: W 'here';
 
 INSTEAD: I 'nstead';
 
@@ -361,3 +362,10 @@ BY: B 'y';
 NEXT: N 'ext';
 WOULD: W 'ould';
 REGENERATED: REGENERATE D;
+ROUND_DIRECTION: UP | DOWN;
+UP: U 'p';
+DOWN: D 'own';
+UPKEEP: U 'pkeep';
+BEGINNING: B 'eginning';
+END: E 'nd';
+ONLY: O 'nly';
