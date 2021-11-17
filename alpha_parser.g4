@@ -57,7 +57,7 @@ continuousEffect : anyTime COMMA SPACE player SPACE MAY SPACE costs PERIOD SPACE
                  | player SPACE CAN SPACE TAP SPACE object SPACE duration
                  | player SPACE DO SPACE LOSE SPACE THE SPACE GAME SPACE prepositionalPhrase
                  | player SPACE HAVE SPACE NO SPACE MAXIMUM SPACE HAND SPACE SIZE
-                 | player SPACE CONTROL SPACE player
+                 | player SPACE CONTROL SPACE something
                  | continuousObjectPhrase;
 
 continuousObjectPhrase: object SPACE continuousObjectVerbPhrase;
@@ -99,9 +99,6 @@ rawEffect: PREVENT SPACE damage
        | delayedTrigger COMMA SPACE DESTROY SPACE object subordinateClause
        | WHEN SPACE object SPACE LEAVE SPACE ZONE COMMA SPACE player SACRIFICE object
        | SACRIFICE SPACE object delayedTrigger
-       | 'The player plays that card if ' ABLE
-       | 'While doing so, the player can activate mana abilities only if they’re from lands that player controls and only if mana they produce is spent ' TO ' activate other mana abilities of lands the player controls and/or ' TO ' play that card'
-       | 'If the chosen card is cast as a spell, you control the player while that spell is resolving'
        | objectPossessive SPACE characteristics SPACE IS SPACE EACH SPACE EQUAL TO SPACE amount
        | phrase
        | playerVerbPhrase
@@ -170,7 +167,8 @@ duration : UNTIL SPACE END SPACE OF SPACE TURN
          | DETERMINER SPACE COMBAT
          | DURING SPACE phase
          | FOR SPACE AS SPACE LONG SPACE AS SPACE object HAVE A counterType SPACE prepositionalPhrase
-         | AS SPACE LONG SPACE AS SPACE player SPACE CONTROL SPACE object;
+         | AS SPACE LONG SPACE AS SPACE player SPACE CONTROL SPACE object
+         | 'while that spell is resolving';
 
 keyword : SIMPLE_KEYWORD
         | PROTECTION SPACE FROM SPACE COLOR
@@ -300,6 +298,7 @@ playerVerbPhrase : MAY SPACE playerVerbPhrase
                  | ADD SPACE amount SPACE MANA SPACE 'of any type that land produced'
                  | ADD SPACE ARTICLE SPACE 'additional ' MANA_SYMBOL
                  | ATTACH SPACE object SPACE TO SPACE object
+                 | 'can activate mana abilities only if they’re from lands that player controls and only if mana they produce is spent ' TO ' activate other mana abilities of lands the player controls and/or ' TO ' play that card'
                  | COPY SPACE object COMMA SPACE subordinateClause
                  | COUNTER SPACE object (' unless its controller pays {X}. If that player doesn’t, they tap all lands with mana abilities they control and lose all unspent mana')
                  | CHOOSE SPACE object
@@ -322,6 +321,7 @@ playerVerbPhrase : MAY SPACE playerVerbPhrase
                  | LOSE SPACE LIFE SPACE EQUAL SPACE TO SPACE amount
                  | LOSE SPACE 'half their' SPACE LIFE ', rounded up'
                  | LOSE SPACE ALL SPACE 'unspent' SPACE MANA
+                 | PLAY SPACE OBJECT SPACE IF SPACE ABLE
                  | PUT SPACE object SPACE prepositionalPhrase
                  | PUT SPACE amount SPACE counterType ' on ' object (prepositionalPhrase)?
                  | REMOVE SPACE ARTICLE SPACE counterType SPACE prepositionalPhrase
@@ -397,7 +397,9 @@ subordinateClause : SUBORDINATE_CONJUNCTION SPACE condition
                   | EXCEPT SPACE object SPACE DO SPACE 'copy that creature’s color and it has “At the beginning of your upkeep, you may have this creature become a copy of target creature, except it doesn’t copy that creature’s color and it has this ability.”'
                   | EXCEPT SPACE object SPACE IS SPACE COLOR
                   | EXCEPT SPACE BY SPACE object
-                  | WHERE variableDefinition;
+                  | WHERE variableDefinition
+                  | 'While doing so'
+                  | 'If the chosen card is cast as a spell';
 
 textAspect : 'color word'
            | 'basic land type';
