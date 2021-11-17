@@ -269,7 +269,7 @@ PLUS: '+';
 RBRACKET: '}';
 SEMICOLON: ';';
 SLASH: '/';
-SPACE: ' ' -> skip;
+SPACE: ' ';
 TILDE: '~';
 
 // Numbers
@@ -300,7 +300,7 @@ MANA_COLOR: W
           | C;
 
 MANA_SYMBOL: LBRACKET (MANA_COLOR | NUMBER) RBRACKET;
-TAP_TYMBOL: LBRACKET T RBRACKET;
+TAP_SYMBOL: LBRACKET T RBRACKET;
 
 // Case insensitive alphabet
 fragment LetterA: [Aa];

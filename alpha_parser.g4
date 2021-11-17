@@ -98,37 +98,27 @@ rawEffect: PREVENT SPACE damage
        | subordinateClause COMMA SPACE FLIP SPACE object SPACE prepositionalPhrase PERIOD SPACE IF object ' turns over completely at least once during the flip, destroy all nontoken permanents it touches'
        | delayedTrigger COMMA SPACE REMOVE SPACE ALL SPACE counterType SPACE FROM SPACE 'a land that a' SPACE counterType SPACE 'was put onto with ' object ' but that a' SPACE counterType SPACE 'has ' NOT 'been removed from with ' object
        | delayedTrigger COMMA SPACE DESTROY SPACE object subordinateClause
-       | player SPACE CHOOSE SPACE 'a number of lands they control equal ' TO SPACE amount ', then sacrifices the rest. Players discard cards and sacrifice creatures the same way'
-       | player SPACE DIVIDE SPACE 'all creatures without flying they control into a “left” pile and a “right” pile. Then, for each attacking creature you control, ' CHOOSE ' “left” or “right.” That creature can’t be blocked this ' COMBAT ' except by creatures with flying and creatures in a pile with the chosen label'
        | WHEN SPACE object SPACE 'leaves the battlefield' COMMA SPACE 'that creature’s controller sacrifices it'
-       | player SPACE MAY SPACE PAY SPACE 'any amount' SPACE OF SPACE MANA
        | PREVENT VARIABLE SPACE OF SPACE damage COMMA SPACE 'where' SPACE variableDefinition
-       | player SPACE MAY SPACE CHOOSE SPACE 'a creature card in your hand whose mana cost ' COULD ' be paid by some amount of, or all of, the mana you spent on {X}. If you do, you ' MAY ' cast that card face down as a 2/2 creature spell without paying its mana cost. If the creature that spell becomes as it resolves has' SPACE NOT SPACE 'been turned face up and would assign or deal damage, be dealt damage, or become tapped, ' INSTEAD ' it’s turned face up and assigns or deals damage, is dealt damage, or becomes tapped. Activate only as a sorcery.'
        | REMOVE SPACE object SPACE FROM SPACE COMBAT
-       | player SPACE MAY SPACE HAVE SPACE object SPACE BLOCK SPACE object
-       | player SPACE ACTIVATE SPACE A SPACE MANA SPACE ABILITY SPACE OF SPACE object
-       | player SPACE ADD SPACE THE SPACE MANA SPACE LOST SPACE THIS SPACE WAY
        | 'If this ability has been activated four or ' COMPARATIVE ' times this turn, sacrifice ' object ' at the beginning of the next end step'
        | 'The player plays that card if able. While doing so, the player can activate mana abilities only if they’re from lands that player controls and only if mana they produce is spent ' TO ' activate other mana abilities of lands the player controls and/or ' TO ' play that card. If the chosen card is cast as a spell, you control the player while that spell is resolving'
        | objectPossessive SPACE characteristics SPACE IS ' each equal ' TO SPACE amount
        | phrase
        | playerVerbPhrase
-       | player MAY ' attach ' object SPACE TO SPACE object
-       | object CAN SPACE 'be regenerated'
-       | object CAN SPACE 'be regenerated this turn'
-       | player SPACE MAY SPACE CHOOSE ' new targets ' prepositionalPhrase
-       | THIS SPACE EFFECT SPACE DOES 'remove' SPACE object
-       | THIS SPACE ABILITY SPACE CAN SPACE 'cause the total number ' OF SPACE counterType ' on ' object SPACE TO ' be ' amount
-       | player SPACE GAINS SPACE LIFE SPACE 'equal ' TO ' the damage dealt, but' SPACE NOT SPACE COMPARATIVE ' life than the player’s life total before the damage was dealt, the planeswalker’s loyalty before the damage was dealt, or the creature’s toughness'
-       | 'if it would die ' DURATION ', exile it' SPACE INSTEAD;
+       | object CAN SPACE BE SPACE REGENERATED
+       | object CAN SPACE BE SPACE REGENERATED duration
+       | THIS SPACE EFFECT SPACE DO REMOVE SPACE object
+       | THIS SPACE ABILITY SPACE CAN SPACE 'cause the total number ' OF SPACE counterType ' on ' object SPACE TO SPACE BE SPACE amount
+       | 'if ' object ' would die ' duration ', exile ' object SPACE INSTEAD;
 
 damage : DAMAGE
        | NUMBER SPACE DAMAGE
-       | ALL SPACE COMBAT SPACE DAMAGE SPACE THAT SPACE 'would be dealt' SPACE duration
-       | ALL SPACE DAMAGE SPACE THAT SPACE 'would be dealt ' TO SPACE player ' by ' object
-       | ALL SPACE 'but' SPACE NUMBER SPACE OF SPACE damage
+       | ALL SPACE COMBAT SPACE DAMAGE SPACE THAT SPACE WOULD SPACE BE SPACE DEALT SPACE duration
+       | ALL SPACE DAMAGE SPACE THAT SPACE WOULD SPACE BE SPACE DEALT SPACE TO SPACE player SPACE BY SPACE object
+       | ALL SPACE BUT SPACE NUMBER SPACE OF SPACE damage
        | THAT SPACE damage
-       | THE SPACE 'next' SPACE damage SPACE THAT SPACE 'would be' SPACE DEALT SPACE TO SPACE something SPACE duration;
+       | THE SPACE NEXT SPACE damage SPACE THAT SPACE WOULD SPACE BE SPACE DEALT SPACE TO SPACE something SPACE duration;
 
 // Definitions
 amount : 'half ' amount COMMA ' rounded ' ('up'|'down')
@@ -143,7 +133,8 @@ amount : 'half ' amount COMMA ' rounded ' ('up'|'down')
        | playerPossessive SPACE LIFE ' total'
        | THAT SPACE 'many'
        | THE SPACE 'amount of mana that player paid this way'
-       | THE SPACE 'damage prevented this way';
+       | THE SPACE 'damage prevented this way'
+       | 'any amount';
 
 characteristics: CHARACTERISTIC (SPACE CONJUNCTION SPACE CHARACTERISTIC)*;
 
@@ -169,16 +160,16 @@ cost :(MANA_SYMBOL)+
 determiner: DETERMINER
           | amount;
 
-distinguisher : THAT 'would be' SPACE DEALT SPACE TO SPACE object;
+distinguisher : THAT SPACE WOULD SPACE BE SPACE DEALT SPACE TO SPACE object;
 
-duration : 'until end of' SPACE TURN
-         | 'until end of' SPACE COMBAT
-         | 'until' SPACE object SPACE 'leaves' SPACE zone
-         | 'until' SPACE YOUR SPACE 'next' SPACE TURN
-         | 'until' SPACE object SPACE 'finishes resolving'
+duration : UNTIL SPACE END SPACE OF SPACE TURN
+         | UNTIL SPACE END SPACE OF SPACE COMBAT
+         | UNTIL SPACE object SPACE LEAVES SPACE zone
+         | UNTIL SPACE YOUR SPACE NEXT SPACE TURN
+         | UNTIL SPACE object SPACE FINISHES SPACE RESOLVING
          | THIS SPACE TURN
          | DETERMINER SPACE COMBAT
-         | 'during' SPACE phase
+         | DURING SPACE phase
          | FOR SPACE 'as long as' SPACE object HAS A counterType SPACE prepositionalPhrase
          | 'as long as ' player ' control' SPACE object;
 
@@ -200,22 +191,22 @@ objectVerbPhrase : IS SPACE DEALT SPACE damage
                  | IS SPACE TAPPED SPACE prepositionalPhrase
                  | IS SPACE PUT SPACE prepositionalPhrase
                  | IS SPACE COLOR
-                 | ATTACKS SPACE duration SPACE IF SPACE 'able'
-             	 | BECOMES SPACE BLOCKED
-                 | BLOCKS SPACE object (SPACE IF SPACE 'able')?
-                 | BLOCKS SPACE OR SPACE BECOMES SPACE BLOCKED SPACE 'by ' object
+                 | ATTACK SPACE duration SPACE IF SPACE ABLE
+             	 | BECOME SPACE BLOCKED
+                 | BLOCK SPACE object (SPACE IF SPACE ABLE)?
+                 | BLOCK SPACE OR SPACE BECOME SPACE BLOCKED SPACE BY SPACE object
                  | COST SPACE costs SPACE COMPARATIVE SPACE TO SPACE CAST
              	 | DEAL SPACE damage SPACE TO SPACE something
                  | DEAL SPACE damage SPACE TO SPACE something SPACE AND SPACE damage SPACE TO SPACE something
-                 | DEAL SPACE damage SPACE TO SPACE something COMMA SPACE 'where X is ' amount
-                 | DEAL SPACE damage SPACE TO SPACE something SPACE 'equal' SPACE TO SPACE amount
-                 | DEAL SPACE damage SPACE 'equal' SPACE TO SPACE amount SPACE TO SPACE something
+                 | DEAL SPACE damage SPACE TO SPACE something COMMA SPACE WHERE variableDefinition
+                 | DEAL SPACE damage SPACE TO SPACE something SPACE EQUAL SPACE TO SPACE amount
+                 | DEAL SPACE damage SPACE EQUAL SPACE TO SPACE amount SPACE TO SPACE something
                  | DEAL SPACE damage SPACE 'divided evenly, rounded down, among any number of targets'
-                 | DOES SPACE TAP SPACE duration
-                 | DOES SPACE 'so'
-                 | ENTERS SPACE zone TAPPED
-             	 | GAINS SPACE keyword SPACE AND SPACE GETS SPACE STAT_MOD SPACE duration ', where X is ' amount
-                 | GAINS SPACE quotedAbility
+                 | DO SPACE TAP SPACE duration
+                 | DO SPACE SO
+                 | ENTER SPACE zone TAPPED
+             	 | GAIN SPACE keyword SPACE AND SPACE GET SPACE STAT_MOD SPACE duration ', where X is ' amount
+                 | GAIN SPACE quotedAbility
                  | LEAVES SPACE zone
                  | LOSES SPACE keyword;
 
@@ -230,7 +221,7 @@ postmodifier : player SPACE CONTROL
              | THAT SPACE CAN BLOCK object
              | THAT SPACE IS ' still ' object
              | OTHER SPACE 'than ' object
-             | THAT SPACE 'didn’t ' ATTACK SPACE DURATION
+             | THAT SPACE 'didn’t ' ATTACK SPACE duration
              | THAT SPACE CAN SPACE BLOCK SPACE 'additional creatures'
              | object ' was blocking that had become blocked by ' object SPACE DURATION
              | PUT prepositionalPhrase ' this way'
@@ -308,6 +299,7 @@ playerVerbPhrase : MAY SPACE playerVerbPhrase
                  | COPY SPACE object COMMA SPACE subordinateClause
                  | COUNTER SPACE object (' unless its controller pays {X}. If that player doesn’t, they tap all lands with mana abilities they control and lose all unspent mana')
                  | CHOOSE SPACE object
+                 | CHOOSE ' new targets ' prepositionalPhrase
                  | CHOOSE SPACE object SPACE prepositionalPhrase
                  | CREATE SPACE 'a 1/1 colorless Insect artifact creature token with flying named Wasp'
                  | DESTROY SPACE object
@@ -315,9 +307,10 @@ playerVerbPhrase : MAY SPACE playerVerbPhrase
                  | DESTROY SPACE object SPACE delayedTrigger SPACE 'if it didn’t attack this turn'
                  | EXCHANGE SPACE object SPACE 'with' SPACE object
                  | EXILE SPACE object
-                 | GAINS SPACE LIFE ' equal ' TO SPACE amount
-                 | GAINS SPACE NUMBER SPACE LIFE
-                 | GAINS SPACE LIFE SPACE 'equal ' TO SPACE amount
+                 | GAIN SPACE LIFE ' equal ' TO SPACE amount
+                 | GAIN SPACE NUMBER SPACE LIFE
+                 | GAIN SPACE LIFE SPACE 'equal ' TO ' the damage dealt, but' SPACE NOT SPACE COMPARATIVE ' life than the player’s life total before the damage was dealt, the planeswalker’s loyalty before the damage was dealt, or the creature’s toughness'
+                 | GAIN SPACE LIFE SPACE 'equal ' TO SPACE amount
                  | LOOK SPACE AT SPACE object ', then put them back in any order'
                  | LOOK SPACE AT SPACE zone
                  | LOSE SPACE THE SPACE 'game'
@@ -342,7 +335,14 @@ playerVerbPhrase : MAY SPACE playerVerbPhrase
                  | costs
                  | effect
                  | TAP SPACE OR SPACE TAP SPACE object
-                 | SHUFFLE SPACE zone SPACE prepositionalPhrase;
+                 | SHUFFLE SPACE zone SPACE prepositionalPhrase
+                 | CHOOSE SPACE 'a number of lands they control equal ' TO SPACE amount ', then sacrifices the rest. Players discard cards and sacrifice creatures the same way'
+                 | DIVIDE SPACE 'all creatures without flying they control into a “left” pile and a “right” pile. Then, for each attacking creature you control, ' CHOOSE ' “left” or “right.” That creature can’t be blocked this ' COMBAT ' except by creatures with flying and creatures in a pile with the chosen label'
+                 | MAY SPACE PAY SPACE amount SPACE OF SPACE MANA
+                 | MAY SPACE CHOOSE SPACE 'a creature card in your hand whose mana cost ' COULD ' be paid by some amount of, or all of, the mana you spent on {X}. If you do, you ' MAY ' cast that card face down as a 2/2 creature spell without paying its mana cost. If the creature that spell becomes as it resolves has' SPACE NOT SPACE 'been turned face up and would assign or deal damage, be dealt damage, or become tapped, ' INSTEAD ' it’s turned face up and assigns or deals damage, is dealt damage, or becomes tapped. Activate only as a sorcery.'
+                 | MAY SPACE HAVE SPACE object SPACE BLOCK SPACE object
+                 | ACTIVATE SPACE A SPACE MANA SPACE ABILITY SPACE OF SPACE object
+                 | ADD SPACE THE SPACE MANA SPACE LOST SPACE THIS SPACE WAY;
 
 delayedTrigger : AT SPACE 'end of' SPACE COMBAT
                | AT SPACE THE 'beginning of ' phase;
