@@ -163,7 +163,7 @@ duration : UNTIL SPACE END SPACE OF SPACE TURN
          | UNTIL SPACE object SPACE LEAVE SPACE zone
          | UNTIL SPACE YOUR SPACE NEXT SPACE TURN
          | UNTIL SPACE object SPACE FINISHES SPACE RESOLVING
-         | THIS SPACE TURN
+         | DETERMINER SPACE TURN
          | DETERMINER SPACE COMBAT
          | DURING SPACE phase
          | FOR SPACE AS SPACE LONG SPACE AS SPACE object HAVE A counterType SPACE prepositionalPhrase
@@ -208,30 +208,27 @@ objectVerbPhrase : IS SPACE DEALT SPACE damage
                  | LOSE SPACE keyword;
 
 postmodifier : player SPACE CONTROL
-             | player ' controlled at the beginning of this turn'
-             | player ' has controlled continuously since the beginning of the turn'
-             | player ' didn’t ' CONTROL ' continuously since the beginning of the turn'
-             | 'controlled by ' player
+             | player SPACE CONTROLLED SPACE AT SPACE THE SPACE BEGINNING SPACE OF SPACE duration
+             | player SPACE HAVE SPACE CONTROLLED SPACE CONTINUOUSLY SPACE SINCE SPACE THE SPACE BEGINNING SPACE OF duration
+             | player SPACE DID SPACE CONTROL SPACE CONTINUOUSLY SPACE SINCE SPACE THE SPACE BEGINNING SPACE OF duration
+             | CONTROLLED SPACE BY SPACE player
              | prepositionalPhrase
-             | 'named Plague Rats' SPACE prepositionalPhrase
+             | NAMED SPACE LITERAL_NAME SPACE prepositionalPhrase
              | ABLE SPACE TO SPACE BLOCK SPACE object
              | THAT SPACE CAN BLOCK object
-             | THAT SPACE IS ' still ' object
-             | OTHER SPACE 'than ' object
-             | THAT SPACE 'didn’t ' ATTACK SPACE duration
-             | THAT SPACE CAN SPACE BLOCK SPACE 'additional creatures'
-             | object ' was blocking that had become blocked by ' object SPACE DURATION
-             | PUT prepositionalPhrase ' this way'
-             | 'dealt damage by ' object SPACE DURATION
-             | 'with' SPACE keyword SPACE CONJUNCTION SPACE keyword
-             | 'in a pile'
-             | 'that pile is assigned ' TO
-             | 'of your choice'
-             | 'of an opponent’s choice'
-             | 'of their choice'
-             | 'that died' SPACE duration
-             | 'beyond the first'
-             | 'that a' SPACE counterType SPACE 'was put onto with ' object ' but that a' SPACE counterType SPACE 'has ' NOT 'been removed from with ' object;
+             | THAT SPACE IS SPACE STILL SPACE object
+             | THAT SPACE DID SPACE ATTACK SPACE duration
+             | THAT SPACE CAN SPACE BLOCK SPACE ADDITIONAL object
+             | THAT SPACE HAD SPACE BECOME SPACE BLOCKED SPACE BY SPACE object SPACE duration
+             | THAT SPACE PILE SPACE IS SPACE ASSIGNED SPACE TO
+             | THAT SPACE DIED SPACE duration
+             | OTHER SPACE THAN SPACE object
+             | object SPACE WAS SPACE BLOCKING
+             | PUT prepositionalPhrase SPACE THIS SPACE WAY
+             | DEALT SPACE DAMAGE SPACE BY SPACE object SPACE duration
+             | IN SPACE A SPACE PILE
+             | BEYOND SPACE THE SPACE FIRST
+             | THAT SPACE A SPACE counterType SPACE WAS SPACE PUT SPACE ON SPACE WITH SPACE object SPACE BUT SPACE THAT SPACE A SPACE counterType SPACE HAVE SPACE NOT BEEN REMOVED FROM WITH object;
 
 premodifier : ADJECTIVE
             | COLOR
@@ -244,29 +241,31 @@ prepositionalPhrase : prepositionalPhrase SPACE prepositionalPhrase
                     | PREPOSITION SPACE object
                     | WITH SPACE quality
                     | WITH SPACE amount SPACE counterType
+                    | WITH SPACE keyword SPACE CONJUNCTION SPACE keyword
                     | FOR SPACE MANA
-                    | FOR SPACE 'having' SPACE amount SPACE LIFE
-                    | FOR SPACE 'whom that player is the defending player'
+                    | FOR SPACE HAVING SPACE amount SPACE LIFE
+                    | FOR SPACE WHOM SPACE THAT SPACE PLAYER SPACE IS SPACE THE SPACE DEFENDING SPACE PLAYER
                     | FROM SPACE A 'height of at least one foot'
                     | UNDER SPACE playerPossessive SPACE CONTROL
                     | ON SPACE TOP SPACE OF SPACE zone
                     | AT SPACE RANDOM
-                    | TO SPACE BE SPACE amount;
+                    | TO SPACE BE SPACE amount
+                    | OF SPACE playerPossessive SPACE CHOICE;
 
-delayedTrigger : AT SPACE 'end of' SPACE COMBAT
-               | AT SPACE THE 'beginning of ' phase;
+delayedTrigger : AT SPACE END SPACE OF SPACE COMBAT
+               | AT SPACE THE SPACE BEGINNING SPACE OF SPACE phase;
 
 phase : playerPossessive SPACE TURN
       | playerPossessive SPACE rawPhase
       | ARTICLE SPACE rawPhase SPACE OF SPACE player
       | ARTICLE SPACE rawPhase
-      | ARTICLE SPACE playerPossessive TURN COMMA ' before attackers are ' DECLARED
-      | ARTICLE SPACE 'next' SPACE rawPhase
+      | ARTICLE SPACE playerPossessive TURN COMMA SPACE 'before attackers are' SPACE DECLARED
+      | ARTICLE SPACE NEXT SPACE rawPhase
       | COMBAT
-      | COMBAT SPACE 'before ' BLOCKERS ' are ' DECLARED
+      | COMBAT SPACE BEFORE SPACE BLOCKERS SPACE IS SPACE DECLARED
       | THE TURN
-      | EACH SPACE OF SPACE playerPossessive ' upkeeps for the rest of the game'
-      | THE SPACE 'next end' SPACE STEP;
+      | EACH SPACE OF SPACE playerPossessive SPACE 'upkeeps for the rest of the game'
+      | THE SPACE NEXT SPACE END SPACE STEP;
 
 phrase : playerPhrase
        | objectPhrase;
@@ -275,8 +274,7 @@ player : ANY_PLAYER
        | determiner SPACE player
        | playerPremodifier SPACE player
        | ANY_PLAYER playerPostmodifier
-       | objectPossessive ANY_PLAYER
-       | 'the chosen player';
+       | objectPossessive ANY_PLAYER;
 
 playerPremodifier: 'active' | 'chosen' | 'defending';
 
@@ -293,10 +291,10 @@ playerVerbPhrase : MAY SPACE playerVerbPhrase
                  | CHOOSE SPACE ARTICLE SPACE textAspect
                  | '’re dealt damage'
                  | ADD SPACE MANA_SYMBOL+
-                 | ADD SPACE ARTICLE SPACE 'amount of ' MANA_SYMBOL ' equal ' TO SPACE amount
-                 | ADD SPACE amount SPACE MANA SPACE 'of any ' ('one' SPACE)? 'color'
-                 | ADD SPACE amount SPACE MANA SPACE 'of any type that land produced'
-                 | ADD SPACE ARTICLE SPACE 'additional ' MANA_SYMBOL
+                 | ADD SPACE ARTICLE SPACE AMOUNT SPACE OF SPACE MANA_SYMBOL SPACE EQUAL SPACE TO SPACE amount
+                 | ADD SPACE amount SPACE MANA SPACE OF SPACE ANY SPACE (ONE SPACE)? COLOR
+                 | ADD SPACE amount SPACE MANA SPACE OF SPACE ANY SPACE TYPE SPACE THAT SPACE object SPACE PRODUCED
+                 | ADD SPACE ARTICLE SPACE ADDITIONAL SPACE MANA_SYMBOL
                  | ATTACH SPACE object SPACE TO SPACE object
                  | 'can activate mana abilities only if they’re from lands that player controls and only if mana they produce is spent ' TO ' activate other mana abilities of lands the player controls and/or ' TO ' play that card'
                  | COPY SPACE object COMMA SPACE subordinateClause
@@ -317,21 +315,20 @@ playerVerbPhrase : MAY SPACE playerVerbPhrase
                  | GAIN SPACE LIFE SPACE EQUAL SPACE TO SPACE amount
                  | LOOK SPACE AT SPACE object ', then put them back in any order'
                  | LOOK SPACE AT SPACE zone
-                 | LOSE SPACE THE SPACE 'game'
+                 | LOSE SPACE THE SPACE GAME
                  | LOSE SPACE LIFE SPACE EQUAL SPACE TO SPACE amount
-                 | LOSE SPACE 'half their' SPACE LIFE ', rounded up'
-                 | LOSE SPACE ALL SPACE 'unspent' SPACE MANA
+                 | LOSE SPACE HALF SPACE playerPossessive SPACE LIFE ', rounded up'
+                 | LOSE SPACE ALL SPACE UNSPENT SPACE MANA
                  | PLAY SPACE OBJECT SPACE IF SPACE ABLE
                  | PUT SPACE object SPACE prepositionalPhrase
-                 | PUT SPACE amount SPACE counterType ' on ' object (prepositionalPhrase)?
+                 | PUT SPACE amount SPACE counterType SPACE prepositionalPhrase
                  | REMOVE SPACE ARTICLE SPACE counterType SPACE prepositionalPhrase
-                 | RETURN SPACE object SPACE prepositionalPhrase
                  | RETURN SPACE object SPACE prepositionalPhrase
                  | SACRIFICE SPACE object (subordinateClause)?
                  | SEARCH SPACE zone SPACE prepositionalPhrase
                  | SKIPS SPACE phase
                  | SKIPS SPACE THAT SPACE (TURN|DRAW)
-                 | TAKE SPACE AN SPACE 'extra' SPACE TURN SPACE 'after' SPACE THIS SPACE ONE
+                 | TAKE SPACE AN SPACE EXTRA SPACE TURN SPACE AFTER SPACE THIS SPACE ONE
                  | HAVE SPACE object SPACE ENTER SPACE zone SPACE 'as a copy of any' SPACE object SPACE 'on' SPACE zone (SPACE prepositionalPhrase)?
                  | HAVE SPACE player SHUFFLE
                  | HAVE SPACE object SPACE BLOCK SPACE object
@@ -361,13 +358,13 @@ quotedAbility : OPENQUOTE ability CLOSEQUOTE;
 rawPhase : turnPart
          | (turnPart SPACE)? turnPart SPACE STEP;
 
-restriction : CAST SPACE object SPACE ONLY SPACE 'during' SPACE phase
-            | CAST object SPACE ONLY SPACE 'before' SPACE phase
+restriction : CAST SPACE object SPACE ONLY SPACE DURING SPACE phase
+            | CAST object SPACE ONLY SPACE BEFORE SPACE phase
             | SPEND SPACE ONLY SPACE COLOR SPACE MANA SPACE ON VARIABLE
             | AS SPACE AN SPACE ADDITIONAL SPACE COST SPACE TO SPACE CAST object COMMA SPACE costs
             | object SPACE COST costs SPACE COMPARATIVE SPACE TO SPACE CAST prepositionalPhrase
-            | ACTIVATE SPACE ONLY SPACE 'during' SPACE phase (SPACE 'and only once each turn')?
-            | ACTIVATE SPACE ONLY SPACE 'during' SPACE playerPossessive SPACE TURN COMMA SPACE 'before attackers are ' DECLARED
+            | ACTIVATE SPACE ONLY SPACE DURING SPACE phase (SPACE 'and only once each turn')?
+            | ACTIVATE SPACE ONLY SPACE DURING SPACE playerPossessive SPACE TURN COMMA SPACE 'before attackers are ' DECLARED
             | REMOVE SPACE object SPACE prepositionalPhrase SPACE 'before playing if you’re' SPACE NOT SPACE PLAYING SPACE FOR SPACE ANTE
             | ONLY SPACE player SPACE MAY SPACE ACTIVATE SPACE THIS SPACE ABILITY;
 
@@ -391,7 +388,7 @@ subordinateClause : SUBORDINATE_CONJUNCTION SPACE condition
                   | SUBORDINATE_CONJUNCTION SPACE player SPACE WOULD SPACE 'begin your turn while ' condition
                   | IF SPACE AN SPACE EFFECT SPACE CAUSE SPACE player SPACE TO SPACE DISCARD SPACE object
                   | IF SPACE object SPACE WOULD SPACE DIE SPACE duration
-                  | 'If this ability has been activated four or ' COMPARATIVE ' times ' duration
+                  | 'If this ability has been activated four or ' COMPARATIVE SPACE TIMES SPACE duration
                   | EXCEPT SPACE object IS SPACE ARTICLE SPACE CARD_TYPE SPACE IN SPACE ADDITION SPACE TO SPACE objectPossessive OTHER 'types'
                   | EXCEPT SPACE object SPACE DO SPACE 'copy that creature’s color and it has “At the beginning of your upkeep, you may have this creature become a copy of target creature, except it doesn’t copy that creature’s color and it has this ability.”'
                   | EXCEPT SPACE object SPACE IS SPACE COLOR

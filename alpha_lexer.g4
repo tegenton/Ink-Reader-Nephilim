@@ -338,6 +338,8 @@ fragment ED: 'ed';
 fragment ER: 'er';
 fragment ING: 'ing';
 
+LITERAL_NAME: 'Plague' SPACE 'Rats';
+
 // To Sort
 ATTACKED: ATTACK ED;
 ATTACKERS: ATTACK ER (S)?;
@@ -396,3 +398,13 @@ EVENLY: E 'venly';
 AMONG: A 'mong';
 SO: S 'o';
 WAY: W 'ay';
+CONTROLLED: CONTROL L ED;
+CONTINUOUSLY: C 'ontinuously';
+SINCE: S 'ince';
+NAMED: N 'ame' D;
+STILL: S 'till';
+ASSIGNED: ASSIGN ED;
+DIED: DIE D;
+BEYOND: B 'eyond';
+REMOVED: REMOVE D;
+BEEN: BE E N;
