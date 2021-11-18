@@ -178,8 +178,7 @@ ABILITY_TYPE: ACTIVATE 'd' | MANA;
 
 COUNTER_TYPE: C 'orpse'
             | V 'itality'
-            | M 'ire'
-            | STAT_MOD;
+            | M 'ire';
 
 STAT_MOD: PLUSMINUS INT SLASH PLUSMINUS INT;
 

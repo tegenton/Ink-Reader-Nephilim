@@ -24,13 +24,13 @@ staticAbility : staticAbility SPACE staticAbility
               | subordinateClause COMMA SPACE staticAbility
               | continuousEffect (PERIOD)?
               | replacementEffect PERIOD
-              | abilityType SPACE OF SPACE object SPACE COST SPACE costs SPACE comparative SPACE TO SPACE ACTIVATE PERIOD
-              | damage SPACE IS SPACE DEALT SPACE TO SPACE object INSTEAD PERIOD
+              | abilityType SPACE prepositionalPhrase SPACE COST SPACE costs SPACE comparative SPACE TO SPACE ACTIVATE PERIOD
+              | damage SPACE IS SPACE DEALT SPACE prepositionalPhrase INSTEAD PERIOD
               | FOR SPACE EACH SPACE damage SPACE distinguisher COMMA SPACE triggerEffect PERIOD;
 
 abilityType: (ACTIVATED | MANA) SPACE ABILITY;
 
-counterType: COUNTER_TYPE SPACE COUNTER;
+counterType: (COUNTER_TYPE | STAT_MOD) SPACE COUNTER;
 
 triggeredAbility : triggerCondition COMMA SPACE triggerEffect PERIOD;
 
@@ -100,7 +100,7 @@ rawEffect: PREVENT SPACE damage
        | THE SPACE NEXT damage SPACE THAT SPACE WOULD SPACE BE SPACE DEALT SPACE TO SPACE object SPACE duration SPACE IS SPACE DEALT SPACE TO SPACE player SPACE INSTEAD
        | delayedTrigger COMMA SPACE REMOVE SPACE ALL SPACE counterType SPACE FROM SPACE object
        | delayedTrigger COMMA SPACE DESTROY SPACE object subordinateClause
-       | WHEN SPACE object SPACE LEAVE SPACE ZONE COMMA SPACE player SACRIFICE object
+       | WHEN SPACE object SPACE LEAVE SPACE zone COMMA SPACE player SACRIFICE object
        | SACRIFICE SPACE object delayedTrigger
        | objectPossessive SPACE characteristics SPACE IS SPACE EACH SPACE EQUAL TO SPACE amount
        | phrase
@@ -272,7 +272,7 @@ prepositionalPhrase : prepositionalPhrase SPACE prepositionalPhrase
                     | WITH SPACE quality
                     | WITH SPACE amount SPACE counterType
                     | WITH SPACE keyword SPACE conjunction SPACE keyword
-                    | WITH SPACE MANA SPACE ABILITY
+                    | WITH SPACE abilityType
                     | WITH SPACE THE SPACE CHOSEN SPACE LABEL
                     | FOR SPACE MANA
                     | FOR SPACE HAVING SPACE amount SPACE LIFE
@@ -463,7 +463,7 @@ type : CARD_TYPE | CREATURE_TYPE | ENCHANTMENT_TYPE | LAND_TYPE
 
 zone : playerPossessive SPACE (HAND | LIBRARY | GRAVEYARD)
      | article SPACE BATTLEFIELD
-     | THEIR SPAcE HAND SPACE AND SPACE GRAVEYARD;
+     | THEIR SPACE HAND SPACE AND SPACE GRAVEYARD;
 
 turnPart : TAP
          | UPKEEP
