@@ -191,6 +191,7 @@ duration : UNTIL SPACE END SPACE OF SPACE TURN
          | WHILE SPACE object SPACE IS SPACE RESOLVING;
 
 keyword: BANDING | DEFENDER | FEAR | FLYING | HASTE | INDESTRUCTIBLE | LANDWALK | REACH | TRAMPLE | VIGILANCE
+       | FIRST SPACE STRIKE
        | PROTECTION SPACE FROM SPACE color
        | ENCHANT SPACE object;
 
@@ -223,7 +224,7 @@ objectVerbPhrase : IS SPACE DEALT SPACE damage
                  | DEAL SPACE damage SPACE DIVIDED SPACE EVENLY COMMA SPACE ROUNDED SPACE ROUND_DIRECTION COMMA SPACE AMONG SPACE object
                  | DO SPACE TAP SPACE duration
                  | DO SPACE SO
-                 | ENTER SPACE zone TAPPED
+                 | ENTER SPACE zone (TAPPED)?
              	 | GAIN SPACE keyword SPACE AND SPACE GET SPACE STAT_MOD SPACE duration COMMA SPACE subordinateClause
                  | GAIN SPACE quotedAbility
                  | LEAVE SPACE zone
@@ -331,7 +332,7 @@ playerVerbPhrase : MAY SPACE playerVerbPhrase
                  | CAN SPACE ACTIVATE SPACE MANA SPACE ABILITY SPACE ONLY SPACE IF SPACE THEY IS SPACE FROM SPACE object AND SPACE ONLY SPACE IF SPACE MANA SPACE THEY SPACE PRODUCE SPACE IS SPACE SPENT SPACE TO SPACE ACTIVATE SPACE OTHER SPACE MANA SPACE ABILITY SPACE OF object conjunction SPACE TO SPACE PLAY SPACE object
                  | COPY SPACE object COMMA SPACE subordinateClause
                  | COUNTER SPACE object (subordinateClause)?
-                 | TAP object AND playerVerbPhrase
+                 | TAP SPACE object
                  | CHOOSE SPACE object
                  | CHOOSE SPACE NEW SPACE TARGET SPACE prepositionalPhrase
                  | CHOOSE SPACE object SPACE prepositionalPhrase
@@ -340,6 +341,7 @@ playerVerbPhrase : MAY SPACE playerVerbPhrase
                  | DESTROY SPACE object
                  | DESTROY SPACE object SPACE delayedTrigger
                  | DESTROY SPACE object SPACE delayedTrigger SPACE subordinateClause
+                 | DRAW SPACE object
                  | EXCHANGE SPACE object SPACE WITH SPACE object
                  | EXILE SPACE object
                  | FLIP SPACE object SPACE prepositionalPhrase
@@ -372,7 +374,7 @@ playerVerbPhrase : MAY SPACE playerVerbPhrase
                  | PLAY SPACE object SPACE ON SPACE EACH SPACE OF SPACE duration
                  | PAY SPACE amount SPACE OF SPACE MANA
                  | ANTE SPACE object
-                 | TAP SPACE OR SPACE TAP SPACE object
+                 | conjoinedObjectVerb SPACE object
                  | SHUFFLE SPACE zone SPACE prepositionalPhrase
                  | SACRIFICE SPACE THE SPACE REST
                  | DISCARD SPACE object SPACE AND SPACE SACRIFICE SPACE object SPACE THE SPACE SAME SPACE WAY
@@ -383,6 +385,8 @@ playerVerbPhrase : MAY SPACE playerVerbPhrase
                  | ADD SPACE THE SPACE MANA SPACE LOST SPACE THIS SPACE WAY
                  | PREVENT VARIABLE SPACE OF SPACE damage COMMA SPACE subordinateClause
                  | REMOVE SPACE object SPACE FROM SPACE COMBAT;
+
+conjoinedObjectVerb: TAP SPACE conjunction SPACE TAP;
 
 quality : MANA VALUE SPACE NUMBER
         | POWER SPACE amount
@@ -457,9 +461,9 @@ triggerEvent : THE SPACE BEGINNING SPACE OF SPACE phase
 type : CARD_TYPE | CREATURE_TYPE | ENCHANTMENT_TYPE | LAND_TYPE
      | CHOSEN TYPE;
 
-zone : playerPossessive SPACE ZONE
-     | article SPACE ZONE
-     | THEIR SPACE HAND SPACE AND SPACE GRAVEYARD;
+zone : playerPossessive SPACE (HAND | LIBRARY | GRAVEYARD)
+     | article SPACE BATTLEFIELD
+     | THEIR SPAcE HAND SPACE AND SPACE GRAVEYARD;
 
 turnPart : TAP
          | UPKEEP

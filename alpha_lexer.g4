@@ -116,8 +116,8 @@ CONTROLLER: CONTROL L ER;
 OWNER: OWN ER;
 PLAYER: PLAY ER (S)?;
 OPPONENT: O 'pponent' (S)?;
-YOU: 'you';
-THEY: 'they';
+YOU: Y 'ou';
+THEY: T 'hey';
 
 SAXON: (APOSTROPHE)? S;
 // Possessive players
@@ -167,13 +167,6 @@ DEALT: DEAL 't';
 CAN: C 'an' (APOSTROPHE 't')?;
 
 // Zones
-ZONE: ANTE
-    | BATTLEFIELD
-    | EXILE
-    | GRAVEYARD
-    | HAND
-    | LIBRARY;
-
 ANTE: LetterA 'nte' (S)?;
 BATTLEFIELD: B 'attlefield';
 EXILE: E 'xile' (S)?;
