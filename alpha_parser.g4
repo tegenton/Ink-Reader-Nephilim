@@ -79,7 +79,8 @@ continuousObjectVerbPhrase: continuousObjectVerbPhrase SPACE CONJUNCTION SPACE c
 replacementEffect : subordinateClause COMMA SPACE (SPACE INSTEAD)? effect (SPACE INSTEAD)?
                   | subordinateClause COMMA SPACE playerPhrase SPACE INSTEAD PERIOD SPACE subordinateClause COMMA SPACE effect
                   | subordinateClause COMMA SPACE playerVerbPhrase COMMA SPACE BUT SPACE player SPACE MAY SPACE PUT SPACE object prepositionalPhrase SPACE INSTEAD SPACE OF SPACE prepositionalPhrase
-                  | objectPhrase SPACE prepositionalPhrase;
+                  | objectPhrase SPACE prepositionalPhrase
+                  | IF SPACE object SPACE HAVE SPACE NOT SPACE BEEN SPACE TURNED SPACE FACE SPACE UP SPACE AND SPACE WOULD SPACE ASSIGN SPACE OR SPACE DEAL SPACE DAMAGE COMMA SPACE BE SPACE DEALT SPACE DAMAGE COMMA SPACE OR SPACE BECOME SPACE TAPPED COMMA SPACE INSTEAD SPACE object IS SPACE TURNED SPACE FACE SPACE UP SPACE AND SPACE ASSIGNS SPACE OR SPACE DEALS SPACE DAMAGE COMMA SPACE IS SPACE DEALT SPACE DAMAGE COMMA SPACE OR SPACE BECOMES SPACE TAPPED;
 
 triggerEffect : effect (SPACE subordinateClause)?;
 
@@ -107,7 +108,7 @@ rawEffect: PREVENT SPACE damage
        | THIS SPACE EFFECT SPACE DO REMOVE SPACE object
        | THIS SPACE ABILITY SPACE CAN SPACE CAUSE SPACE THE SPACE TOTAL SPACE NUMBER OF SPACE counterType prepositionalPhrase
        | EXILE object SPACE INSTEAD
-       | 'destroy all nontoken permanents it touches';
+       | THEN COMMA SPACE FOR SPACE EACH SPACE object COMMA SPACE CHOOSE PILE_LABEL OR PILE_LABEL SPACE object CAN SPACE BE SPACE BLOCKED SPACE duration SPACE EXCEPT SPACE BY SPACE object AND object;
 
 damage : DAMAGE
        | NUMBER SPACE DAMAGE
@@ -125,7 +126,7 @@ amount : HALF SPACE amount COMMA SPACE ROUNDED SPACE (ROUND_DIRECTION)
        | objectPossessive SPACE characteristics
        | VARIABLE
        | ARTICLE SPACE NUMBER SPACE OF SPACE object (SPACE MINUS SPACE NUMBER)?
-       | ANY SPACE NUMBER SPACE OF
+       | DETERMINER SPACE NUMBER SPACE OF
        | damage SPACE DEALT SPACE TO SPACE player SPACE duration
        | playerPossessive SPACE LIFE SPACE TOTAL
        | THAT SPACE MANY
@@ -225,11 +226,15 @@ postmodifier : player SPACE CONTROL
              | THAT SPACE DIED SPACE duration
              | OTHER SPACE THAN SPACE object
              | object SPACE WAS SPACE BLOCKING
+             | object BECOME AS IT RESOLVES
              | PUT prepositionalPhrase SPACE THIS SPACE WAY
              | DEALT SPACE DAMAGE SPACE BY SPACE object SPACE duration
-             | IN SPACE A SPACE PILE
+             | IN SPACE A SPACE PILE (prepositionalPhrase)?
              | BEYOND SPACE THE SPACE FIRST
-             | THAT SPACE A SPACE counterType SPACE WAS SPACE PUT SPACE ON SPACE WITH SPACE object SPACE BUT SPACE THAT SPACE A SPACE counterType SPACE HAVE SPACE NOT BEEN REMOVED FROM WITH object;
+             | THAT SPACE A SPACE counterType SPACE WAS SPACE PUT SPACE ON SPACE WITH SPACE object SPACE BUT SPACE THAT SPACE A SPACE counterType SPACE HAVE SPACE NOT BEEN REMOVED FROM WITH object
+             | EQUAL SPACE TO SPACE amount
+             | WHOSE SPACE MANA SPACE COST SPACE COULD SPACE BE SPACE PAID SPACE BY SPACE SOME SPACE AMOUNT SPACE OF COMMA SPACE OR SPACE ALL SPACE OF COMMA SPACE THE SPACE MANA SPACE YOU SPACE SPENT SPACE ON SPACE MANA_SYMBOL
+             | object SPACE TOUCHES;
 
 premodifier : ADJECTIVE
             | ANY_COLOR
@@ -245,6 +250,7 @@ prepositionalPhrase : prepositionalPhrase SPACE prepositionalPhrase
                     | WITH SPACE amount SPACE counterType
                     | WITH SPACE keyword SPACE CONJUNCTION SPACE keyword
                     | WITH SPACE MANA SPACE ABILITY
+                    | WITH SPACE THE SPACE CHOSEN SPACE LABEL
                     | FOR SPACE MANA
                     | FOR SPACE HAVING SPACE amount SPACE LIFE
                     | FOR SPACE WHOM SPACE THAT SPACE PLAYER SPACE IS SPACE THE SPACE DEFENDING SPACE PLAYER
@@ -306,6 +312,7 @@ playerVerbPhrase : MAY SPACE playerVerbPhrase
                  | CHOOSE SPACE object
                  | CHOOSE SPACE NEW SPACE TARGET SPACE prepositionalPhrase
                  | CHOOSE SPACE object SPACE prepositionalPhrase
+                 | CHOOSE SPACE object
                  | CREATE SPACE object
                  | DESTROY SPACE object
                  | DESTROY SPACE object SPACE delayedTrigger
@@ -335,6 +342,7 @@ playerVerbPhrase : MAY SPACE playerVerbPhrase
                  | SKIPS SPACE THAT SPACE (TURN|DRAW)
                  | TAKE SPACE AN SPACE EXTRA SPACE TURN SPACE AFTER SPACE THIS SPACE ONE
                  | HAVE SPACE object SPACE ENTER SPACE zone SPACE AS SPACE A SPACE COPY SPACE prepositionalPhrase
+                 | HAVE SPACE object SPACE BECOME SPACE A SPACE COPY SPACE prepositionalPhrase SPACE subordinateClause
                  | HAVE SPACE player SHUFFLE
                  | HAVE SPACE object SPACE BLOCK SPACE object
                  | SPEND SPACE ANY_COLOR SPACE MANA SPACE AS SPACE THOUGH SPACE IT SPACE WERE SPACE ANY_COLOR SPACE MANA
@@ -344,11 +352,11 @@ playerVerbPhrase : MAY SPACE playerVerbPhrase
                  | ANTE SPACE object
                  | TAP SPACE OR SPACE TAP SPACE object
                  | SHUFFLE SPACE zone SPACE prepositionalPhrase
-                 | CHOOSE SPACE 'a number of lands they control equal ' TO SPACE amount
-                 | SACRIFICE 'the rest'
-                 | 'discard cards and sacrifice creatures the same way'
-                 | CHOOSE SPACE 'a creature card in your hand whose mana cost ' COULD ' be paid by some amount of, or all of, the mana you spent on {X}. If you do, you ' MAY ' cast that card face down as a 2/2 creature spell without paying its mana cost. If the creature that spell becomes as it resolves has' SPACE NOT SPACE 'been turned face up and would assign or deal damage, be dealt damage, or become tapped, ' INSTEAD ' it’s turned face up and assigns or deals damage, is dealt damage, or becomes tapped'
-                 | DIVIDE SPACE object SPACE 'into a “left” pile and a “right” pile. ' 'Then, for each attacking creature you control, ' CHOOSE ' “left” or “right.” That creature can’t be blocked this ' COMBAT ' except by creatures with flying and creatures in a pile with the chosen label'
+                 | SACRIFICE SPACE THE SPACE REST
+                 | DISCARD SPACE object SPACE AND SPACE SACRIFICE SPACE object SPACE THE SPACE SAME SPACE WAY
+                 | CHOOSE SPACE object
+                 | CAST SPACE object SPACE AS SPACE object SPACE WITHOUT SPACE PAYING SPACE objectPossessive SPACE MANA SPACE COST
+                 | DIVIDE SPACE object SPACE IN SPACE A SPACE PILE_LABEL SPACE PILE SPACE AND SPACE A SPACE PILE_LABEL SPACE PILE
                  | ACTIVATE SPACE A SPACE MANA SPACE ABILITY SPACE OF SPACE object
                  | ADD SPACE THE SPACE MANA SPACE LOST SPACE THIS SPACE WAY
                  | PREVENT VARIABLE SPACE OF SPACE damage COMMA SPACE subordinateClause
@@ -360,7 +368,7 @@ quality : MANA VALUE SPACE NUMBER
         | POWER SPACE AND SPACE TOUGHNESS SPACE EACH SPACE EQUAL SPACE TO SPACE amount
         | SIMPLE_KEYWORD;
 
-quotedAbility : OPENQUOTE ability CLOSEQUOTE;
+quotedAbility: OPENQUOTE ability CLOSEQUOTE;
 
 rawPhase : turnPart
          | (turnPart SPACE)? turnPart SPACE STEP;
@@ -398,8 +406,9 @@ subordinateClause : SUBORDINATE_CONJUNCTION SPACE condition
                   | IF SPACE object SPACE WOULD SPACE DIE SPACE duration
                   | IF SPACE THIS SPACE ABILITY SPACE HAVE SPACE BEEN SPACE ACTIVATED SPACE amount SPACE TIME SPACE duration
                   | EXCEPT SPACE object IS SPACE ARTICLE SPACE CARD_TYPE SPACE IN SPACE ADDITION SPACE TO SPACE objectPossessive OTHER TYPE
-                  | EXCEPT SPACE object SPACE DO SPACE COPY objectPossessive SPACE COLOR SPACE 'and it has “At the beginning of your upkeep, you may have this creature become a copy of target creature, except it doesn’t copy that creature’s color and it has this ability.”'
+                  | EXCEPT SPACE object SPACE DO SPACE COPY objectPossessive SPACE COLOR
                   | EXCEPT SPACE object SPACE IS SPACE ANY_COLOR
+                  | EXCEPT SPACE object SPACE DO SPACE COPY objectPossessive SPACE COLOR SPACE AND SPACE object SPACE HAVE SPACE THIS SPACE ABILITY
                   | EXCEPT SPACE BY SPACE object
                   | WHERE variableDefinition
                   | WHILE SPACE DOING SPACE SO

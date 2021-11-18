@@ -413,3 +413,4 @@ TYPE: T 'ype' (S)?;
 DOING: DO ING;
 CHOSEN: CHOOSE N;
 COLOR: C 'olor';
+PILE_LABEL: OPENQUOTE ('left'|'right') (PERIOD)? CLOSEQUOTE;
