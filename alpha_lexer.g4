@@ -1,37 +1,28 @@
 lexer grammar alpha_lexer;
 // Determiner types
-DETERMINER: ARTICLE | DEMONSTRATIVE | NEGATIVE | ALTERNATIVE | UNIVERSAL | DISTRIBUTIVE | EXISTENTIAL;
 // Articles
-ARTICLE: A | AN | THE;
 A: LetterA;
 AN: LetterA 'n';
 THE: T 'he';
 // Demonstrative
-DEMONSTRATIVE: TARGET | THIS | THESE | THAT | THOSE;
 TARGET: T 'arget';
 THIS: T 'his';
 THESE: T 'hese';
 THAT: T 'hat';
 THOSE: T 'hose';
 // Negative
-NEGATIVE: NO;
 NO: N 'o';
 // Alternative
-ALTERNATIVE: OTHER | ANOTHER;
 OTHER: O 'ther';
 // Alternative-addative
 ANOTHER: A 'nother';
 // Universal
-UNIVERSAL: ALL;
 ALL: LetterA 'll';
 // Distributive
-DISTRIBUTIVE: EACH;
 EACH: E 'ach';
 // Existential
-EXISTENTIAL: ANY;
 ANY: LetterA 'ny';
 
-ADJECTIVE: ADDITIONAL | ATTACKING | BLOCKING | ENCHANTED | SACRIFICED | TAPPED | TOKEN | TOP;
 ADDITIONAL: ADDITION 'al';
 ATTACKING: ATTACK ING;
 BLOCKING: BLOCK ING;
@@ -42,14 +33,11 @@ TOKEN: (NOT)? T 'oken';
 TOP: T 'op';
 
 // Conjunctions
-CONJUNCTION: OR
-           | AND SLASH OR
-           | T 'hen';
 AND: LetterA 'nd';
 OR: O 'r';
+THEN: T 'hen';
 
 // Prepositions
-PREPOSITION: ABOVE | FOR | FROM | IN | OF | ON | TO | UNDER | WITH;
 ABOVE: A 'bove';
 FOR: F 'or';
 FROM: F 'rom';
@@ -60,24 +48,18 @@ TO: T 'o';
 UNDER: U 'nder';
 WITH: W 'ith' ('out')?;
 
-COMPARATIVE: LOW | HIGH;
-HIGH: GREATER | M 'ore';
+// Comparatives
 GREATER:  G 'reater';
-LOW: LESS;
+MORE_: M 'ore';
 LESS: L 'ess';
 
-SUBORDINATE_CONJUNCTION: AS (SPACE 'though' | SPACE LONG SPACE AS)
-                       | EXCEPT
-                       | IF
-                       | U 'nless';
+// Subordinate Conjunctions
 AS: A 's';
 LONG: L 'ong';
 BUT: B 'ut';
 EXCEPT: E 'xcept';
 IF: I 'f';
 WHERE: W 'here';
-
-INSTEAD: I 'nstead';
 
 // Concept Nouns
 ABILITY: A 'bilit' ('y'|'ies');
@@ -93,23 +75,17 @@ TURN: T 'urn' (S)?;
 
 ACTIVATED: ACTIVATE D;
 
-
-TRIGGER_WORD: AT | WHEN | WHENEVER;
 AT: A 't';
 WHEN: W 'hen';
 WHENEVER: W 'henever';
 
 // Object attributes
-CHARACTERISTIC: POWER
-              | TOUGHNESS
-              | MANA SPACE VALUE;
 POWER: P 'ower';
 TOUGHNESS: T 'oughness';
 MANA: M 'ana';
 VALUE: V 'alue';
 
 // Object nouns
-OBJECT: TILDE | TYPE | COPY | CARD | SPELL | PERMANENT | TOKEN | IT;
 CARD: C 'ard' (S)?;
 COPY: C 'op' ('y'| 'ies');
 PERMANENT: P 'ermanent' (S)?;
@@ -125,6 +101,7 @@ GET: G 'et' (S)?;
 HAVE: H 'as' | H 'av' ('e')?;
 IS: ((I 's' | LetterA 're') (SPACE? NOT)?) | APOSTROPHE ('s'|'re');
 
+// Negation
 NOT: U N | N O (T|N(DASH)?) | N APOSTROPHE T;
 
 ATTACK: LetterA 'ttack' (S)?;
@@ -135,7 +112,6 @@ LEAVE: L 'eave' (S)?;
 TAP: (NOT)? T 'ap';
 
 // Player nouns
-ANY_PLAYER: CONTROLLER | OWNER | PLAYER | OPPONENT | YOU | THEY;
 CONTROLLER: CONTROL L ER;
 OWNER: OWN ER;
 PLAYER: PLAY ER (S)?;
@@ -219,12 +195,9 @@ PLUSMINUS: PLUS | DASH;
 // Keywords
 ENCHANT: E 'nchant';
 PROTECTION: P 'rotection';
-// Keywords that need no context
-SIMPLE_KEYWORD: BANDING | DEFENDER | FEAR | FIRST_STRIKE | FLYING | HASTE | INDESTRUCTIBLE | LANDWALK | REACH | TRAMPLE | VIGILANCE;
 BANDING: B 'anding';
 DEFENDER: D 'efender';
 FEAR: F 'ear';
-FIRST_STRIKE: FIRST SPACE STRIKE;
 FLYING: F 'lying';
 HASTE: H 'aste';
 INDESTRUCTIBLE: I 'ndesctructible';
@@ -235,8 +208,6 @@ VIGILANCE: V 'igilance';
 
 FIRST: F 'irst';
 STRIKE: S 'trike';
-
-OBJECT_TYPE:(NOT)? (CARD_TYPE | CREATURE_TYPE | ENCHANTMENT_TYPE | LAND_TYPE);
 
 CARD_TYPE: C 'reature'
          | L 'and'
@@ -278,7 +249,7 @@ SPACE: ' ';
 TILDE: '~';
 
 // Numbers
-ENGLISH_NUMBER : ONE
+ENGLISH_NUMBER: ONE
               | T 'wo'
               | T 'hree'
               | S 'even';
@@ -290,7 +261,6 @@ INT: [0-9]+
 VARIABLE: X | Y;
 
 // Colors
-ANY_COLOR:(NOT)? (WHITE | BLUE | BLACK | RED | GREEN);
 WHITE: W 'hite';
 BLUE: B 'lue';
 BLACK: B 'lack';
@@ -416,7 +386,6 @@ CHOSEN: CHOOSE N;
 COLOR: C 'olor';
 PILE_LABEL: OPENQUOTE ('left'|'right') (PERIOD)? CLOSEQUOTE;
 TURNED: TURN ED;
-THEN: T 'hen';
 FACE: F 'ace';
 RESOLVE: R 'esolv' ('e' ('s')?)?;
 WHO: W 'ho';
@@ -459,3 +428,4 @@ OVER: O 'ver';
 COMPLETELY: C 'ompletely';
 UNLESS: U 'nless';
 WORD: W 'ord';
+INSTEAD: I 'nstead';
