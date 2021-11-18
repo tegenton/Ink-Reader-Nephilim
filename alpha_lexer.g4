@@ -89,7 +89,7 @@ LIFE: L 'ife';
 PILE: P 'ile' (S)?;
 SOURCE: S 'ource';
 STEP: S 'tep';
-TURN: T 'urn';
+TURN: T 'urn' (S)?;
 
 ACTIVATED: ACTIVATE D;
 
@@ -122,7 +122,7 @@ COST: C 'ost' (S)?;
 DO: D 'o' ('es')? (SPACE? NOT)?;
 GAIN: G 'ain' (S)?;
 GET: G 'et' (S)?;
-HAVE: H 'as' | H 'ave';
+HAVE: H 'as' | H 'av' ('e')?;
 IS: ((I 's' | LetterA 're') (SPACE? NOT)?) | APOSTROPHE ('s'|'re');
 
 NOT: U N | N O (T|N(DASH)?) | N APOSTROPHE T;
@@ -152,7 +152,7 @@ THEIR: T 'heir';
 ADD: LetterA 'dd';
 ATTACH: A 'ttach';
 CHANGE: C 'hange';
-CHOOSE: C 'ho' ('o')? 'se' (S)?;
+CHOOSE: C 'ho' ('o')? ('se' (S)?)?;
 CONTROL: C 'ontrol' (S)?;
 COULD: C 'ould';
 COUNTER: C 'ounter' (S)?;
@@ -164,7 +164,7 @@ DRAW: D 'raw';
 EXCHANGE: E 'xchange';
 IGNORE: I 'gnore';
 LOOK: L 'ook';
-LOSE: L 'ose' (S)?;
+LOSE: L 'os' ('e' (S)?)?;
 MAY: M 'ay';
 OWN: O 'wn';
 PAY: P 'a' ('i'|'y');
@@ -178,7 +178,7 @@ SEARCH: S 'earch';
 SHUFFLE: S 'huffle' (S)?;
 SKIPS: S 'kip' (S)?;
 TAKE: T 'ake';
-SPEND: S 'pend';
+SPEND: S 'pen' ('d')?;
 
 ANY_PLAY: ACTIVATE | CAST | PLAY;
 ACTIVATE: A 'ctivate';
@@ -242,7 +242,8 @@ CARD_TYPE: C 'reature'
          | L 'and'
          | LetterA 'rtifact'
          | E 'nchantment'
-         | I 'nstant';
+         | I 'nstant'
+         | S 'orcery';
 
 CREATURE_TYPE: G 'oblin'
              | G 'olem'
@@ -355,7 +356,7 @@ BE: B 'e';
 RANDOM: R 'andom';
 NUMBER: N 'umber';
 DIFFERENT: D 'ifferent';
-ASSIGN: A 'ssign';
+ASSIGN: A 'ssign' (S)?;
 LIKEWISE: L 'ikewise';
 EQUAL: E 'qual';
 THEM : T 'hem';
@@ -390,7 +391,7 @@ WAS: W 'as';
 PLAYED: PLAY ED;
 UNTIL: U 'ntil';
 FINISHES: F 'inishes';
-RESOLVING: R 'esolving';
+RESOLVING: RESOLVE ING;
 DURING: D 'uring';
 WHILE: W 'hile';
 ABLE: A 'ble';
@@ -414,3 +415,47 @@ DOING: DO ING;
 CHOSEN: CHOOSE N;
 COLOR: C 'olor';
 PILE_LABEL: OPENQUOTE ('left'|'right') (PERIOD)? CLOSEQUOTE;
+TURNED: TURN ED;
+THEN: T 'hen';
+FACE: F 'ace';
+RESOLVE: R 'esolv' ('e' ('s')?)?;
+WHO: W 'ho';
+WHOSE: WHO 'se';
+WHOM: WHO 'm';
+SOME: S 'ome';
+TOUCHES: T 'ouches';
+LABEL: L 'abel';
+HAVING: HAVE ING;
+DEFENDING: D 'efending';
+HEIGHT: H 'eight';
+LEAST: L 'east';
+FOOT: F 'oot';
+CHOICE: CHOOSE 'ice';
+BEFORE: B 'efore';
+REST: R 'est';
+ACTIVE: A 'ctive';
+FEWEST: F 'ewest';
+TEXT: T 'ext';
+REPLACING: R 'eplacing';
+INSTANCES: I 'nstances';
+PRODUCE: P 'roduce';
+PRODUCED: PRODUCE D;
+NEW: N 'ew';
+FLIP: F 'lip';
+SPENT: (NOT)? SPEND T;
+BACK: B 'ack';
+ORDER: O 'rder';
+EXTRA: E 'xtra';
+AFTER: A 'fter';
+THOUGH: T 'hough';
+WERE: W 'ere';
+SAME: S 'ame';
+PAYING:PAY ING;
+PLAYING:PLAY ING;
+LOST: LOSE T;
+ONCE: O 'nce';
+LOYALTY: L 'oyalty';
+OVER: O 'ver';
+COMPLETELY: C 'ompletely';
+UNLESS: U 'nless';
+WORD: W 'ord';
