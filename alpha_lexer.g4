@@ -191,7 +191,7 @@ DEFENDER: D 'efender';
 FEAR: F 'ear';
 FLYING: F 'lying';
 HASTE: H 'aste';
-INDESTRUCTIBLE: I 'ndesctructible';
+INDESTRUCTIBLE: I 'ndestructible';
 LANDWALK: LAND_TYPE 'walk';
 REACH: R 'each';
 TRAMPLE: T 'rample';

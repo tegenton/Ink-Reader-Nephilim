@@ -62,15 +62,15 @@ continuousEffect : anyTime COMMA SPACE player SPACE MAY SPACE costs PERIOD SPACE
                  | player SPACE CONTROL SPACE something
                  | continuousObjectPhrase;
 
-continuousObjectPhrase: object SPACE continuousObjectVerbPhrase;
+continuousObjectPhrase: object SPACE continuousObjectVerbPhrase (SPACE AND SPACE continuousObjectVerbPhrase)*;
 
 continuousObjectVerbPhrase: continuousObjectVerbPhrase SPACE conjunction SPACE continuousObjectVerbPhrase
                           | IS SPACE object
                 	      | CAN SPACE ATTACK (SPACE subordinateClause)?
              	          | CAN SPACE BLOCK SPACE object
-                      	  | CAN BE SPACE BLOCKED
-                      	  | CAN BE SPACE BLOCKED SPACE (EXCEPT)? SPACE BY object
-                      	  | CAN BE SPACE ENCHANTED SPACE BY SPACE object
+                      	  | CAN SPACE BE SPACE BLOCKED
+                      	  | CAN SPACE BE SPACE BLOCKED SPACE (EXCEPT)? SPACE BY object
+                      	  | CAN SPACE BE SPACE ENCHANTED SPACE BY SPACE object
                           | GAIN SPACE keyword
                           | GAIN SPACE quotedAbility
                       	  | GET SPACE STAT_MOD
