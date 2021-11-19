@@ -362,6 +362,7 @@ playerVerbPhrase : MAY SPACE playerVerbPhrase
                  | PUT SPACE THEM SPACE BACK SPACE IN SPACE ANY SPACE ORDER
                  | PUT SPACE object SPACE prepositionalPhrase
                  | PUT SPACE amount SPACE counterType SPACE prepositionalPhrase
+                 | REGENERATE SPACE object
                  | REMOVE SPACE article SPACE counterType SPACE prepositionalPhrase
                  | RETURN SPACE object SPACE prepositionalPhrase
                  | SACRIFICE SPACE object (subordinateClause)?
