@@ -316,7 +316,7 @@ playerPremodifier: ACTIVE | CHOSEN | DEFENDING;
 
 playerPostmodifier: WHO SPACE CONTROL SPACE THE SPACE FEWEST;
 
-playerPhrase : player SPACE playerVerbPhrase;
+playerPhrase: player SPACE playerVerbPhrase;
 
 playerPossessive : YOUR
                  | THEIR
@@ -349,7 +349,7 @@ playerVerbPhrase : MAY SPACE playerVerbPhrase
                  | EXILE SPACE object
                  | FLIP SPACE object SPACE prepositionalPhrase
                  | GAIN SPACE LIFE SPACE EQUAL SPACE TO SPACE amount
-                 | GAIN SPACE NUMBER SPACE LIFE
+                 | GAIN SPACE INT SPACE LIFE
                  | GAIN SPACE LIFE SPACE EQUAL SPACE TO SPACE THE DAMAGE DEALT COMMA SPACE subordinateClause
                  | GAIN SPACE LIFE SPACE EQUAL SPACE TO SPACE amount
                  | LOOK SPACE AT SPACE object
@@ -377,6 +377,7 @@ playerVerbPhrase : MAY SPACE playerVerbPhrase
                  | SPEND SPACE color SPACE MANA SPACE AS SPACE THOUGH SPACE IT SPACE WERE SPACE color SPACE MANA
                  | PLAY SPACE object SPACE ON SPACE EACH SPACE OF SPACE duration
                  | PAY SPACE amount SPACE OF SPACE MANA
+                 | PAY SPACE mana
                  | ANTE SPACE object
                  | conjoinedObjectVerb SPACE object
                  | SHUFFLE SPACE zone SPACE prepositionalPhrase
@@ -447,7 +448,7 @@ subordinateClause : subordinate_conjunction SPACE condition
                   | BUT SPACE NOT SPACE comparative SPACE LIFE SPACE THAN SPACE playerPossessive SPACE LIFE SPACE TOTAL SPACE BEFORE SPACE damage SPACE WAS SPACE DEALT COMMA SPACE objectPossessive SPACE LOYALTY SPACE BEFORE SPACE damage SPACE WAS SPACE DEALT COMMA SPACE OR SPACE amount
                   | IF object SPACE TURN SPACE OVER SPACE COMPLETELY SPACE AT SPACE LEAST SPACE ONCE SPACE DURING SPACE THE SPACE FLIP
                   | UNLESS SPACE player SPACE costs
-                  | IF player DO;
+                  | IF SPACE player SPACE DO;
 
 subordinate_conjunction: AS (SPACE LONG SPACE AS | SPACE THOUGH)? | BUT | EXCEPT | IF | WHERE;
 
