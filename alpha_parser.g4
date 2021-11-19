@@ -60,6 +60,7 @@ continuousEffect : anyTime COMMA SPACE player SPACE MAY SPACE costs PERIOD SPACE
                  | player SPACE DO SPACE LOSE SPACE THE SPACE GAME SPACE prepositionalPhrase
                  | player SPACE HAVE SPACE NO SPACE MAXIMUM SPACE HAND SPACE SIZE
                  | player SPACE CONTROL SPACE something
+                 | object SPACE IS SPACE object
                  | continuousObjectPhrase;
 
 continuousObjectPhrase: object SPACE continuousObjectVerbPhrase (SPACE AND SPACE continuousObjectVerbPhrase)*;
@@ -157,10 +158,12 @@ condition : object (SPACE)? IS SPACE adjective
 
 costs : (PAY SPACE)? cost (COMMA SPACE costs)?;
 
-cost :(MANA_SYMBOL)+
+cost : mana
      | TAP_SYMBOL
      | NUMBER SPACE LIFE
      | playerVerbPhrase;
+
+mana: (LBRACKET (MANA_COLOR | INT) RBRACKET)+;
 
 determiner: article | demonstrative | negative | alternative | universal | distributive | existential;
 
@@ -442,7 +445,7 @@ subordinateClause : subordinate_conjunction SPACE condition
                   | IF SPACE object SPACE DID SPACE ATTACK SPACE duration
                   | BUT SPACE NOT SPACE comparative SPACE LIFE SPACE THAN SPACE playerPossessive SPACE LIFE SPACE TOTAL SPACE BEFORE SPACE damage SPACE WAS SPACE DEALT COMMA SPACE objectPossessive SPACE LOYALTY SPACE BEFORE SPACE damage SPACE WAS SPACE DEALT COMMA SPACE OR SPACE amount
                   | IF object SPACE TURN SPACE OVER SPACE COMPLETELY SPACE AT SPACE LEAST SPACE ONCE SPACE DURING SPACE THE SPACE FLIP
-                  | UNLESS player costs
+                  | UNLESS SPACE player SPACE costs
                   | IF player DO;
 
 subordinate_conjunction: AS (SPACE LONG SPACE AS | SPACE THOUGH)? | BUT | EXCEPT | IF | WHERE;

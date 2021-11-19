@@ -218,7 +218,7 @@ ENCHANTMENT_TYPE: LetterA 'ura';
 LAND_TYPE: P 'lains'
          | I 'sland'
          | S 'wamp'
-         | M 'ountain'
+         | M 'ountain' (S)?
          | F 'orest';
 
 // Literal symbols
@@ -265,7 +265,6 @@ MANA_COLOR: W
           | G
           | C;
 
-MANA_SYMBOL: LBRACKET (MANA_COLOR | INT) RBRACKET;
 TAP_SYMBOL: LBRACKET T RBRACKET;
 
 // Case insensitive alphabet
