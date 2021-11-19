@@ -462,8 +462,8 @@ triggerEvent : THE SPACE BEGINNING SPACE OF SPACE phase
              | END SPACE OF SPACE COMBAT
              | phrase;
 
-type : CARD_TYPE | CREATURE_TYPE | ENCHANTMENT_TYPE | LAND_TYPE
-     | CHOSEN TYPE;
+type: (CARD_TYPE | CREATURE_TYPE | ENCHANTMENT_TYPE | LAND_TYPE) (SPACE conjunction SPACE type)?
+    | CHOSEN TYPE;
 
 zone : playerPossessive SPACE (HAND | LIBRARY | GRAVEYARD)
      | article SPACE BATTLEFIELD
