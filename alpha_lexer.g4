@@ -202,7 +202,7 @@ FIRST: F 'irst';
 STRIKE: S 'trike';
 
 CARD_TYPE: C 'reature'
-         | L 'and'
+         | L 'and' (S)?
          | LetterA 'rtifact'
          | E 'nchantment'
          | I 'nstant'
