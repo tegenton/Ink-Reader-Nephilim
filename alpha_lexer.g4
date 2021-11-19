@@ -75,7 +75,7 @@ TURN: T 'urn' (S)?;
 
 ACTIVATED: ACTIVATE D;
 
-AT: A 't';
+AT: LetterA 't';
 WHEN: W 'hen';
 WHENEVER: W 'henever';
 
