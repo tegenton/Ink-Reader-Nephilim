@@ -95,10 +95,10 @@ IT: I 't';
 // Object verbs
 BECOME: B 'ecome' (S)?;
 COST: C 'ost' (S)?;
-DO: D 'o' ('es')? (SPACE? NOT)?;
+DO: D ('o' ('es')? (SPACE? NOT)?|'i');
 GAIN: G 'ain' (S)?;
 GET: G 'et' (S)?;
-HAVE: H 'as' | H 'av' ('e')?;
+HAVE: H 'a' ('s'|'v'('e')?)?;
 IS: ((I 's' | LetterA 're') (SPACE? NOT)?) | APOSTROPHE ('s'|'re');
 
 // Negation
@@ -348,7 +348,7 @@ AMOUNT: A 'mount';
 PAID: PAY D;
 PREVENTED: PREVENT ED;
 HAD: HAVE D;
-DID: DO D;
+DID: DO D (NOT)?;
 WAS: W 'as';
 PLAYED: PLAY ED;
 UNTIL: U 'ntil';

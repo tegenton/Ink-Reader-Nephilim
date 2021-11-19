@@ -150,7 +150,7 @@ condition : object (SPACE)? IS SPACE adjective
           | object SPACE HAVE SPACE A SPACE counterType SPACE prepositionalPhrase
           | object SPACE HAVE SPACE keyword
           | object SPACE HAD SPACE keyword
-          | object SPACE DID SPACE HAVE keyword
+          | object SPACE DID SPACE HAVE SPACE keyword
           | object SPACE WAS SPACE THE SPACE FIRST SPACE object SPACE YOU SPACE PLAYED duration
           | object SPACE ATTACKED SPACE OR SPACE BLOCKED SPACE duration
           | object SPACE ATTACKED SPACE duration;
@@ -445,7 +445,7 @@ subordinateClause : subordinate_conjunction SPACE condition
                   | UNLESS player costs
                   | IF player DO;
 
-subordinate_conjunction: AS (LONG AS)? | BUT | EXCEPT | IF | WHERE;
+subordinate_conjunction: AS (SPACE LONG SPACE AS | SPACE THOUGH)? | BUT | EXCEPT | IF | WHERE;
 
 textAspect : COLOR SPACE WORD
            | object TYPE;
