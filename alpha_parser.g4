@@ -49,7 +49,9 @@ spellAbility : effect PERIOD
 conjunction: AND | OR | AND SLASH OR | THEN;
 
 // Effects
-anyTime : ANY SPACE TIME SPACE player SPACE COULD SPACE ANY_PLAY SPACE A SPACE playableType;
+anyTime : ANY SPACE TIME SPACE player SPACE COULD SPACE play SPACE article SPACE playableType;
+
+play: PLAY | CAST | ACTIVATE;
 
 playableType: CARD_TYPE | abilityType;
 
@@ -95,8 +97,7 @@ effect : rawEffect
        | subordinateClause COMMA SPACE effect
        | (rawEffect COMMA SPACE)? rawEffect COMMA SPACE conjunction SPACE rawEffect;
 
-rawEffect: PREVENT SPACE damage
-       | source SPACE DEAL SPACE damage SPACE TO SPACE player SPACE INSTEAD
+rawEffect: source SPACE DEAL SPACE damage SPACE TO SPACE player SPACE INSTEAD
        | THE SPACE NEXT SPACE TIME SPACE source SPACE WOULD SPACE DEAL SPACE damage SPACE TO SPACE something SPACE duration COMMA SPACE effect
        | THE SPACE NEXT damage SPACE THAT SPACE WOULD SPACE BE SPACE DEALT SPACE TO SPACE object SPACE duration SPACE IS SPACE DEALT SPACE TO SPACE player SPACE INSTEAD
        | delayedTrigger COMMA SPACE REMOVE SPACE ALL SPACE counterType SPACE FROM SPACE object
@@ -359,6 +360,7 @@ playerVerbPhrase : MAY SPACE playerVerbPhrase
                  | LOSE SPACE HALF SPACE playerPossessive SPACE LIFE COMMA SPACE ROUNDED SPACE ROUND_DIRECTION
                  | LOSE SPACE ALL SPACE SPENT SPACE MANA
                  | PLAY SPACE object SPACE IF SPACE ABLE
+                 | PREVENT SPACE damage
                  | PUT SPACE THEM SPACE BACK SPACE IN SPACE ANY SPACE ORDER
                  | PUT SPACE object SPACE prepositionalPhrase
                  | PUT SPACE amount SPACE counterType SPACE prepositionalPhrase
@@ -418,7 +420,8 @@ restriction : CAST SPACE object SPACE ONLY SPACE DURING SPACE phase
 something : determiner SPACE something
           | object
           | player
-          | something SPACE conjunction SPACE something;
+          | something SPACE conjunction SPACE something
+          | ANY SPACE TARGET;
 
 source : premodifier SPACE source
        | source SPACE postmodifier
