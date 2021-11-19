@@ -156,7 +156,6 @@ SKIPS: S 'kip' (S)?;
 TAKE: T 'ake';
 SPEND: S 'pen' ('d')?;
 
-ANY_PLAY: ACTIVATE | CAST | PLAY;
 ACTIVATE: A 'ctivate';
 CAST: C 'ast';
 PLAY: P 'lay';
