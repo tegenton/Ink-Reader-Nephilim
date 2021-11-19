@@ -117,12 +117,12 @@ OWNER: OWN ER;
 PLAYER: PLAY ER (S)?;
 OPPONENT: O 'pponent' (S)?;
 YOU: Y 'ou';
-THEY: T 'hey';
+THEY: T 'he' ('y'|'i');
 
 SAXON: (APOSTROPHE)? S;
 // Possessive players
 YOUR: YOU R;
-THEIR: T 'heir';
+THEIR: THEY R;
 
 // Player verbs
 ADD: LetterA 'dd';
@@ -164,7 +164,7 @@ PLAY: P 'lay';
 // Source verb
 DEAL: D 'eal' (S)?;
 DEALT: DEAL 't';
-CAN: C 'an' (APOSTROPHE 't')?;
+CAN: C 'a' (N | NOT);
 
 // Zones
 ANTE: LetterA 'nte' (S)?;
@@ -174,7 +174,7 @@ GRAVEYARD: G 'raveyard';
 HAND: H 'and';
 LIBRARY: L 'ibrary';
 
-ABILITY_TYPE: ACTIVATE 'd' | MANA;
+ABILITY_TYPE: ACTIVATE D | MANA;
 
 COUNTER_TYPE: C 'orpse'
             | V 'itality'
