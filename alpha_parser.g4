@@ -38,7 +38,7 @@ triggeredAbility : triggerCondition COMMA SPACE triggerEffect PERIOD;
 
 spellCard : spellAbility (NEWLINE spellAbility)*;
 
-modal : CHOOSE SPACE ENGLISH_NUMBER DASH (NEWLINE BULLET SPACE effect PERIOD)+;
+modal : CHOOSE SPACE ENGLISH_NUMBER SPACE DASH (NEWLINE BULLET SPACE effect PERIOD)+;
 
 spellAbility : effect PERIOD
              | restriction PERIOD

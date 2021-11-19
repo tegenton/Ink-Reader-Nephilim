@@ -179,9 +179,7 @@ COUNTER_TYPE: C 'orpse'
             | V 'itality'
             | M 'ire';
 
-STAT_MOD: PLUSMINUS INT SLASH PLUSMINUS INT;
-
-PLUSMINUS: PLUS | DASH;
+STAT_MOD: (PLUS | DASH) INT SLASH (PLUS | DASH) INT;
 
 // Keywords
 ENCHANT: E 'nchant';
