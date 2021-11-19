@@ -1,11 +1,13 @@
 package tegenton.card.game.concepts.object.characteristics;
 
-final class PowerToughnessCharacteristic extends Characteristic<Integer[]> {
-    private final Integer[] powerToughness;
+import java.util.List;
+
+final class PowerToughnessCharacteristic extends Characteristic {
+    private final List<Integer> powerToughness;
 
     private PowerToughnessCharacteristic(final int power, final int toughness) {
         super();
-        powerToughness = new Integer[]{power, toughness};
+        powerToughness = List.of(power, toughness);
     }
 
     public static PowerToughnessCharacteristic fromString(final String s) {
@@ -23,7 +25,7 @@ final class PowerToughnessCharacteristic extends Characteristic<Integer[]> {
     }
 
     @Override
-    public Integer[] value() {
+    public List<Integer> value() {
         return powerToughness;
     }
 

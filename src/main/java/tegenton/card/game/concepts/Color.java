@@ -17,27 +17,14 @@ public enum Color {
      */
     public static Color
     fromString(final String s) throws InvalidColorException {
-        switch (s.toUpperCase()) {
-            case "{W}":
-            case "W":
-                return white;
-            case "{U}":
-            case "U":
-                return blue;
-            case "{B}":
-            case "B":
-                return black;
-            case "{R}":
-            case "R":
-                return red;
-            case "{G}":
-            case "G":
-                return green;
-            case "{C}":
-            case "C":
-                return null;
-            default:
-                throw new InvalidColorException();
-        }
+        return switch (s.toUpperCase()) {
+            case "{W}", "W" -> white;
+            case "{U}", "U" -> blue;
+            case "{B}", "B" -> black;
+            case "{R}", "R" -> red;
+            case "{G}", "G" -> green;
+            case "{C}", "C" -> null;
+            default -> throw new InvalidColorException();
+        };
     }
 }
