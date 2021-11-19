@@ -128,7 +128,7 @@ amount : HALF SPACE amount COMMA SPACE ROUNDED SPACE (ROUND_DIRECTION)
        | objectPossessive SPACE characteristics
        | VARIABLE
        | article SPACE NUMBER SPACE OF SPACE object (SPACE MINUS SPACE NUMBER)?
-       | (THE | ANY) SPACE NUMBER SPACE OF
+       | (THE | ANY | A) SPACE NUMBER SPACE OF
        | damage SPACE DEALT SPACE TO SPACE player SPACE duration
        | playerPossessive SPACE LIFE SPACE TOTAL
        | THAT SPACE MANY
@@ -257,6 +257,7 @@ postmodifier : player SPACE CONTROL
              | object SPACE TOUCHES;
 
 premodifier : adjective
+            | amount
             | color
             | determiner
             | CHOSEN
@@ -303,7 +304,7 @@ phase : playerPossessive SPACE TURN
 phrase : playerPhrase
        | objectPhrase;
 
-player : (CONTROLLER | OWNER | PLAYER | OPPONENT | YOU | THEY) (playerPostmodifier)?
+player : (CONTROLLER | OWNER | PLAYER | OPPONENT | YOU | THEY) (SPACE playerPostmodifier)?
        | determiner SPACE player
        | playerPremodifier SPACE player
        | objectPossessive player;

@@ -201,7 +201,7 @@ VIGILANCE: V 'igilance';
 FIRST: F 'irst';
 STRIKE: S 'trike';
 
-CARD_TYPE: C 'reature'
+CARD_TYPE: C 'reature' (S)?
          | L 'and' (S)?
          | LetterA 'rtifact'
          | E 'nchantment'
