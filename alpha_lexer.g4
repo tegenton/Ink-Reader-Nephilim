@@ -99,7 +99,7 @@ DO: D ('o' ('es')? (SPACE? NOT)?|'i');
 GAIN: G 'ain' (S)?;
 GET: G 'et' (S)?;
 HAVE: H 'a' ('s'|'v'('e')?)?;
-IS: ((I 's' | LetterA 're') (SPACE? NOT)?) | APOSTROPHE ('s'|'re');
+IS: ((I 's' | LetterA 're') (SPACE? NOT)?);
 
 // Negation
 NOT: U N | N O (T|N(DASH)?) | N APOSTROPHE T;
@@ -119,7 +119,6 @@ OPPONENT: O 'pponent' (S)?;
 YOU: Y 'ou';
 THEY: T 'he' ('y'|'i');
 
-SAXON: (APOSTROPHE)? S;
 // Possessive players
 YOUR: YOU R;
 THEIR: THEY R;
@@ -215,7 +214,7 @@ ENCHANTMENT_TYPE: LetterA 'ura';
 
 LAND_TYPE: P 'lains'
          | I 'sland'
-         | S 'wamp'
+         | S 'wamp' (S)?
          | M 'ountain' (S)?
          | F 'orest';
 
@@ -244,8 +243,7 @@ ENGLISH_NUMBER: ONE
               | S 'even';
 ONE: O 'ne';
 
-INT: [0-9]+
-   | VARIABLE;
+INT: [0-9]+;
 
 VARIABLE: X | Y;
 
@@ -284,7 +282,7 @@ fragment O: [Oo];
 fragment P: [Pp];
 fragment Q: [Qq];
 fragment R: [Rr];
-fragment S: [Ss];
+S: [Ss];
 fragment T: [Tt];
 fragment U: [Uu];
 fragment V: [Vv];

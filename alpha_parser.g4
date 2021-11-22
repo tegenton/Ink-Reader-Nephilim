@@ -116,7 +116,7 @@ rawEffect: source SPACE DEAL SPACE damage SPACE TO SPACE player SPACE INSTEAD
        | THEN COMMA SPACE FOR SPACE EACH SPACE object COMMA SPACE CHOOSE PILE_LABEL OR PILE_LABEL SPACE object CAN SPACE BE SPACE BLOCKED SPACE duration SPACE EXCEPT SPACE BY SPACE object AND object;
 
 damage : DAMAGE
-       | INT SPACE DAMAGE
+       | (INT | VARIABLE) SPACE DAMAGE
        | ALL SPACE COMBAT SPACE DAMAGE SPACE THAT SPACE WOULD SPACE BE SPACE DEALT SPACE duration
        | ALL SPACE DAMAGE SPACE THAT SPACE WOULD SPACE BE SPACE DEALT SPACE TO SPACE player SPACE BY SPACE object
        | ALL SPACE BUT SPACE NUMBER SPACE OF SPACE damage
@@ -209,7 +209,9 @@ objectNoun: TILDE | type | COPY | CARD | SPELL | PERMANENT | TOKEN | IT;
 
 objectPhrase : object SPACE objectVerbPhrase;
 
-objectPossessive: (determiner)? SPACE object SAXON;
+objectPossessive: (determiner)? SPACE (IT S | object saxon);
+
+saxon: APOSTROPHE S;
 
 objectVerbPhrase : IS SPACE DEALT SPACE damage
                  | IS SPACE TAPPED SPACE prepositionalPhrase
@@ -322,7 +324,7 @@ playerPhrase: player SPACE playerVerbPhrase;
 
 playerPossessive : YOUR
                  | THEIR
-                 | player SAXON;
+                 | player saxon;
 
 playerVerbPhrase : MAY SPACE playerVerbPhrase
                  | CHANGE SPACE article SPACE TEXT SPACE OF SPACE object SPACE BY SPACE REPLACING SPACE ALL SPACE INSTANCES SPACE OF SPACE ONE SPACE textAspect SPACE WITH SPACE ANOTHER
@@ -439,20 +441,23 @@ subordinateClause : subordinate_conjunction SPACE condition
                   | IF SPACE AN SPACE EFFECT SPACE CAUSE SPACE player SPACE TO SPACE DISCARD SPACE object
                   | IF SPACE object SPACE WOULD SPACE DIE SPACE duration
                   | IF SPACE THIS SPACE ABILITY SPACE HAVE SPACE BEEN SPACE ACTIVATED SPACE amount SPACE TIME SPACE duration
-                  | EXCEPT SPACE object IS SPACE article SPACE CARD_TYPE SPACE IN SPACE ADDITION SPACE TO SPACE objectPossessive OTHER TYPE
+                  | EXCEPT SPACE objectIs SPACE article SPACE CARD_TYPE SPACE IN SPACE ADDITION SPACE TO SPACE objectPossessive OTHER TYPE
+                  | EXCEPT SPACE objectIs SPACE color
                   | EXCEPT SPACE object SPACE DO SPACE COPY objectPossessive SPACE COLOR
-                  | EXCEPT SPACE object SPACE IS SPACE color
                   | EXCEPT SPACE object SPACE DO SPACE COPY objectPossessive SPACE COLOR SPACE AND SPACE object SPACE HAVE SPACE THIS SPACE ABILITY
                   | EXCEPT SPACE BY SPACE object
                   | WHERE variableDefinition
                   | WHILE SPACE DOING SPACE SO
-                  | IF SPACE object IS CAST AS object
+                  | IF SPACE objectIs CAST AS object
                   | IF SPACE object SPACE DID SPACE ATTACK SPACE duration
                   | BUT SPACE NOT SPACE comparative SPACE LIFE SPACE THAN SPACE playerPossessive SPACE LIFE SPACE TOTAL SPACE BEFORE SPACE damage SPACE WAS SPACE DEALT COMMA SPACE objectPossessive SPACE LOYALTY SPACE BEFORE SPACE damage SPACE WAS SPACE DEALT COMMA SPACE OR SPACE amount
                   | IF object SPACE TURN SPACE OVER SPACE COMPLETELY SPACE AT SPACE LEAST SPACE ONCE SPACE DURING SPACE THE SPACE FLIP
                   | IF SPACE player SPACE WOULD SPACE playerVerbPhrase SPACE duration
                   | UNLESS SPACE player SPACE costs
                   | IF SPACE player SPACE DO;
+
+objectIs: object SPACE IS
+        | IT APOSTROPHE S;
 
 subordinate_conjunction: AS (SPACE LONG SPACE AS | SPACE THOUGH)? | BUT | EXCEPT | IF | WHERE;
 
