@@ -203,7 +203,7 @@ color: (NOT)? (WHITE | BLUE | BLACK | RED | GREEN);
 object: (premodifier SPACE)* (objectNoun) (SPACE postmodifier)*
       | (objectNoun COMMA SPACE)* objectNoun SPACE conjunction objectNoun;
 
-objectNoun: TILDE | type | COPY | CARD | SPELL | PERMANENT | TOKEN | IT;
+objectNoun: (TILDE | type | COPY | CARD | SPELL | PERMANENT | TOKEN | IT) (SPACE conjunction SPACE objectNoun)?;
 
 objectPhrase : object SPACE objectVerbPhrase;
 
@@ -217,6 +217,7 @@ objectVerbPhrase : IS SPACE DEALT SPACE damage
                  | IS SPACE color
                  | ATTACK SPACE duration SPACE IF SPACE ABLE
              	 | BECOME SPACE BLOCKED
+             	 | BECOME SPACE color
                  | BLOCK SPACE object (SPACE duration)? (SPACE IF SPACE ABLE)?
                  | BLOCK SPACE OR SPACE BECOME SPACE BLOCKED SPACE BY SPACE object
                  | COST SPACE costs SPACE comparative SPACE TO SPACE CAST
