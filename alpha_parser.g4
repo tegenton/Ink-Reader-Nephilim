@@ -9,7 +9,7 @@ options {
 card : permanentCard | spellCard;
 
 // Permanents
-permanentCard : ability (NEWLINE ability)*; // or nothing
+permanentCard : ability (NEWLINE ability)*|; // or nothing
 
 ability : keywords
         | staticAbility
