@@ -18,14 +18,13 @@ ability : keywords
 
 keywords : keyword ((SEMICOLON|COMMA) SPACE keyword)*;
 
-activatedAbility : costs COLON SPACE effect PERIOD (restriction PERIOD)?;
+activatedAbility : costs COLON SPACE effect PERIOD (SPACE restriction PERIOD)?;
 
 staticAbility : staticAbility SPACE staticAbility
               | subordinateClause COMMA SPACE staticAbility
               | continuousEffect (PERIOD)?
               | replacementEffect PERIOD
               | abilityType SPACE prepositionalPhrase SPACE COST SPACE costs SPACE comparative SPACE TO SPACE ACTIVATE PERIOD
-              | damage SPACE IS SPACE DEALT SPACE prepositionalPhrase INSTEAD PERIOD
               | FOR SPACE EACH SPACE damage SPACE distinguisher COMMA SPACE triggerEffect PERIOD;
 
 abilityType: (ACTIVATED | MANA) SPACE ABILITY;
@@ -63,6 +62,7 @@ continuousEffect : anyTime COMMA SPACE player SPACE MAY SPACE costs PERIOD SPACE
                  | player SPACE HAVE SPACE NO SPACE MAXIMUM SPACE HAND SPACE SIZE
                  | player SPACE CONTROL SPACE something
                  | object SPACE IS SPACE object
+                 | damage SPACE IS SPACE DEALT SPACE prepositionalPhrase SPACE INSTEAD
                  | continuousObjectPhrase;
 
 continuousObjectPhrase: object SPACE continuousObjectVerbPhrase (SPACE AND SPACE continuousObjectVerbPhrase)*;
@@ -93,14 +93,12 @@ triggerEffect : effect (SPACE subordinateClause)?;
 effect : rawEffect
        | rawEffect (PERIOD)? SPACE conjunction SPACE effect
        | rawEffect PERIOD SPACE effect
-       | continuousEffect SPACE duration
+       | continuousEffect (SPACE duration)?
        | duration COMMA SPACE continuousEffect
        | subordinateClause COMMA SPACE effect
        | (rawEffect COMMA SPACE)? rawEffect COMMA SPACE conjunction SPACE rawEffect;
 
 rawEffect: source SPACE DEAL SPACE damage SPACE TO SPACE player SPACE INSTEAD
-       | THE SPACE NEXT SPACE TIME SPACE source SPACE WOULD SPACE DEAL SPACE damage SPACE TO SPACE something SPACE duration COMMA SPACE effect
-       | THE SPACE NEXT damage SPACE THAT SPACE WOULD SPACE BE SPACE DEALT SPACE TO SPACE object SPACE duration SPACE IS SPACE DEALT SPACE TO SPACE player SPACE INSTEAD
        | delayedTrigger COMMA SPACE REMOVE SPACE ALL SPACE counterType SPACE FROM SPACE object
        | delayedTrigger COMMA SPACE DESTROY SPACE object subordinateClause
        | WHEN SPACE object SPACE LEAVE SPACE zone COMMA SPACE player SACRIFICE object
@@ -209,7 +207,7 @@ objectNoun: TILDE | type | COPY | CARD | SPELL | PERMANENT | TOKEN | IT;
 
 objectPhrase : object SPACE objectVerbPhrase;
 
-objectPossessive: (determiner)? SPACE (IT S | object saxon);
+objectPossessive: (determiner SPACE)? (IT S | objectNoun saxon);
 
 saxon: APOSTROPHE S;
 
@@ -228,6 +226,7 @@ objectVerbPhrase : IS SPACE DEALT SPACE damage
                  | DEAL SPACE damage SPACE TO SPACE something SPACE EQUAL SPACE TO SPACE amount
                  | DEAL SPACE damage SPACE EQUAL SPACE TO SPACE amount SPACE TO SPACE something
                  | DEAL SPACE damage SPACE DIVIDED SPACE EVENLY COMMA SPACE ROUNDED SPACE ROUND_DIRECTION COMMA SPACE AMONG SPACE object
+                 | DIE
                  | DO SPACE TAP SPACE duration
                  | DO SPACE SO
                  | ENTER SPACE zone (TAPPED)?
@@ -260,7 +259,7 @@ postmodifier : player SPACE CONTROL
              | BEYOND SPACE THE SPACE FIRST
              | THAT SPACE A SPACE counterType SPACE WAS SPACE PUT SPACE ON SPACE WITH SPACE object SPACE BUT SPACE THAT SPACE A SPACE counterType SPACE HAVE SPACE NOT BEEN REMOVED FROM WITH object
              | EQUAL SPACE TO SPACE amount
-             | WHOSE SPACE MANA SPACE COST SPACE COULD SPACE BE SPACE PAID SPACE BY SPACE SOME SPACE AMOUNT SPACE OF COMMA SPACE OR SPACE ALL SPACE OF COMMA SPACE THE SPACE MANA SPACE YOU SPACE SPENT SPACE ON SPACE MANA_SYMBOL
+             | WHOSE SPACE MANA SPACE COST SPACE COULD SPACE BE SPACE PAID SPACE BY SPACE SOME SPACE AMOUNT SPACE OF COMMA SPACE OR SPACE ALL SPACE OF COMMA SPACE THE SPACE MANA SPACE YOU SPACE SPENT SPACE ON SPACE mana
              | object SPACE TOUCHES;
 
 premodifier : adjective
@@ -275,7 +274,7 @@ adjective: ADDITIONAL | ATTACKING | BLOCKING | ENCHANTED | SACRIFICED | TAPPED |
 
 prepositionalPhrase : prepositionalPhrase SPACE prepositionalPhrase
                     | preposition SPACE zone
-                    | preposition SPACE object
+                    | preposition SPACE something
                     | WITH SPACE quality
                     | WITH SPACE amount SPACE counterType
                     | WITH SPACE keyword SPACE conjunction SPACE keyword
@@ -314,7 +313,7 @@ phrase : playerPhrase
 player : (CONTROLLER | OWNER | PLAYER | OPPONENT | YOU | THEY) (SPACE playerPostmodifier)?
        | determiner SPACE player
        | playerPremodifier SPACE player
-       | objectPossessive player;
+       | objectPossessive SPACE player;
 
 playerPremodifier: ACTIVE | CHOSEN | DEFENDING;
 
@@ -330,11 +329,11 @@ playerVerbPhrase : MAY SPACE playerVerbPhrase
                  | CHANGE SPACE article SPACE TEXT SPACE OF SPACE object SPACE BY SPACE REPLACING SPACE ALL SPACE INSTANCES SPACE OF SPACE ONE SPACE textAspect SPACE WITH SPACE ANOTHER
                  | CHOOSE SPACE article SPACE textAspect
                  | IS SPACE DEALT SPACE damage
-                 | ADD SPACE MANA_SYMBOL+
-                 | ADD SPACE article SPACE AMOUNT SPACE OF SPACE MANA_SYMBOL SPACE EQUAL SPACE TO SPACE amount
+                 | ADD SPACE mana+
+                 | ADD SPACE article SPACE AMOUNT SPACE OF SPACE mana SPACE EQUAL SPACE TO SPACE amount
                  | ADD SPACE amount SPACE MANA SPACE OF SPACE ANY SPACE (ONE SPACE)? color
                  | ADD SPACE amount SPACE MANA SPACE OF SPACE ANY SPACE type SPACE THAT SPACE object SPACE PRODUCED
-                 | ADD SPACE article SPACE ADDITIONAL SPACE MANA_SYMBOL
+                 | ADD SPACE article SPACE ADDITIONAL SPACE mana
                  | ATTACH SPACE object SPACE TO SPACE object
                  | CAN SPACE ACTIVATE SPACE MANA SPACE ABILITY SPACE ONLY SPACE IF SPACE THEY IS SPACE FROM SPACE object AND SPACE ONLY SPACE IF SPACE MANA SPACE THEY SPACE PRODUCE SPACE IS SPACE SPENT SPACE TO SPACE ACTIVATE SPACE OTHER SPACE MANA SPACE ABILITY SPACE OF object conjunction SPACE TO SPACE PLAY SPACE object
                  | COPY SPACE object COMMA SPACE subordinateClause
