@@ -63,6 +63,7 @@ continuousEffect : anyTime COMMA SPACE player SPACE MAY SPACE costs PERIOD SPACE
                  | player SPACE CONTROL SPACE something
                  | object SPACE IS SPACE object
                  | damage SPACE IS SPACE DEALT SPACE prepositionalPhrase SPACE INSTEAD
+                 | THIS SPACE EFFECT SPACE DO (NOT)? SPACE REMOVE SPACE object
                  | continuousObjectPhrase;
 
 continuousObjectPhrase: object SPACE continuousObjectVerbPhrase (SPACE AND SPACE continuousObjectVerbPhrase)*;
@@ -109,7 +110,6 @@ rawEffect: source SPACE DEAL SPACE damage SPACE TO SPACE player SPACE INSTEAD
        | playerVerbPhrase
        | object CAN SPACE BE SPACE REGENERATED
        | object CAN SPACE BE SPACE REGENERATED duration
-       | THIS SPACE EFFECT SPACE DO SPACE REMOVE SPACE object
        | THIS SPACE ABILITY SPACE CAN SPACE CAUSE SPACE THE SPACE TOTAL SPACE NUMBER OF SPACE counterType prepositionalPhrase
        | EXILE object SPACE INSTEAD
        | THEN COMMA SPACE FOR SPACE EACH SPACE object COMMA SPACE CHOOSE PILE_LABEL OR PILE_LABEL SPACE object CAN SPACE BE SPACE BLOCKED SPACE duration SPACE EXCEPT SPACE BY SPACE object AND object;

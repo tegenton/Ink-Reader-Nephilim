@@ -95,7 +95,7 @@ IT: I 't';
 // Object verbs
 BECOME: B 'ecome' (S)?;
 COST: C 'ost' (S)?;
-DO: D ('o' ('es')? (SPACE? NOT)?|'i');
+DO: D ('o' ('es')?|'i');
 GAIN: G 'ain' (S)?;
 GET: G 'et' (S)?;
 HAVE: H 'a' ('s'|'v'('e')?)?;
