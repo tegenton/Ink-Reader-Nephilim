@@ -211,7 +211,7 @@ objectNoun: (TILDE | type | COPY | CARD | SPELL | PERMANENT | TOKEN | IT | THEY)
 
 objectPhrase : object SPACE objectVerbPhrase;
 
-objectPossessive: (determiner SPACE)? (IT S | objectNoun saxon) | THAT SPACE CARD_TYPE APOSTROPHE S;
+objectPossessive: ((determiner | adjective) SPACE)* (IT S | objectNoun saxon) | THAT SPACE CARD_TYPE APOSTROPHE S;
 
 saxon: APOSTROPHE S;
 
