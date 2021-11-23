@@ -159,14 +159,14 @@ condition : object (SPACE)? IS (NOT)? SPACE adjective
           | object SPACE ATTACKED SPACE OR SPACE BLOCKED SPACE duration
           | object SPACE ATTACKED SPACE duration;
 
-costs : (PAY SPACE)? cost (COMMA SPACE costs)?;
+costs : (PAY (S)? SPACE)? cost (COMMA SPACE costs)?;
 
 cost : mana
      | TAP_SYMBOL
      | life
      | playerVerbPhrase;
 
-mana: (LBRACKET (MANA_COLOR | INT) RBRACKET)+;
+mana: (LBRACKET (MANA_COLOR | INT | VARIABLE) RBRACKET)+;
 
 determiner: article | demonstrative | negative | alternative | universal | distributive | existential;
 
@@ -342,7 +342,7 @@ playerVerbPhrase : MAY SPACE playerVerbPhrase
                  | ATTACH SPACE object SPACE TO SPACE object
                  | CAN SPACE ACTIVATE SPACE MANA SPACE ABILITY SPACE ONLY SPACE IF SPACE THEY IS SPACE FROM SPACE object AND SPACE ONLY SPACE IF SPACE MANA SPACE THEY SPACE PRODUCE SPACE IS SPACE SPENT SPACE TO SPACE ACTIVATE SPACE OTHER SPACE MANA SPACE ABILITY SPACE OF object conjunction SPACE TO SPACE PLAY SPACE object
                  | COPY SPACE object COMMA SPACE subordinateClause
-                 | COUNTER SPACE object (subordinateClause)?
+                 | COUNTER SPACE object (SPACE subordinateClause)?
                  | CHOOSE SPACE object
                  | CHOOSE SPACE NEW SPACE TARGET SPACE prepositionalPhrase
                  | CHOOSE SPACE object SPACE prepositionalPhrase
@@ -459,7 +459,7 @@ subordinateClause : subordinateConjunction SPACE condition
                   | IF SPACE player SPACE WOULD SPACE playerVerbPhrase SPACE duration
                   | UNLESS SPACE player SPACE costs
                   | UNLESS SPACE player SPACE CONTROL SPACE object
-                  | IF SPACE player SPACE DO
+                  | IF SPACE player SPACE DO (NOT)?
                   | AS SPACE object COMMA SPACE subordinateClause;
 
 objectIs: object SPACE IS
