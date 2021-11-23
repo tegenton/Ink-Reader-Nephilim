@@ -225,11 +225,11 @@ objectVerbPhrase : IS SPACE DEALT SPACE damage
                  | BLOCK SPACE object (SPACE duration)? (SPACE IF SPACE ABLE)?
                  | BLOCK SPACE OR SPACE BECOME SPACE BLOCKED SPACE BY SPACE object
                  | COST SPACE costs SPACE comparative SPACE TO SPACE CAST
-             	 | DEAL SPACE damage SPACE TO SPACE something
-                 | DEAL SPACE damage SPACE TO SPACE something SPACE AND SPACE damage SPACE TO SPACE something
-                 | DEAL SPACE damage SPACE TO SPACE something COMMA SPACE subordinateClause
-                 | DEAL SPACE damage SPACE TO SPACE something SPACE EQUAL SPACE TO SPACE amount
-                 | DEAL SPACE damage SPACE EQUAL SPACE TO SPACE amount SPACE TO SPACE something
+             	 | DEAL SPACE damage SPACE prepositionalPhrase
+                 | DEAL SPACE damage SPACE prepositionalPhrase SPACE AND SPACE damage SPACE prepositionalPhrase
+                 | DEAL SPACE damage SPACE prepositionalPhrase COMMA SPACE subordinateClause
+                 | DEAL SPACE damage SPACE prepositionalPhrase SPACE EQUAL SPACE TO SPACE amount
+                 | DEAL SPACE damage SPACE EQUAL SPACE TO SPACE amount SPACE prepositionalPhrase
                  | DEAL SPACE damage SPACE DIVIDED SPACE EVENLY COMMA SPACE ROUNDED SPACE ROUND_DIRECTION COMMA SPACE AMONG SPACE object
                  | DIE
                  | DO SPACE TAP SPACE duration
