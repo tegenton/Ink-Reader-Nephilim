@@ -349,7 +349,7 @@ playerVerbPhrase : MAY SPACE playerVerbPhrase
                  | DESTROY SPACE object
                  | DESTROY SPACE object SPACE delayedTrigger
                  | DESTROY SPACE object SPACE delayedTrigger SPACE subordinateClause
-                 | DRAW SPACE object
+                 | DRAW (S)? SPACE object
                  | EXCHANGE SPACE object SPACE WITH SPACE object
                  | EXILE SPACE object
                  | FLIP SPACE object SPACE prepositionalPhrase
@@ -476,9 +476,10 @@ triggerEvent : THE SPACE BEGINNING SPACE OF SPACE phase
 type: (CARD_TYPE | CREATURE_TYPE | ENCHANTMENT_TYPE | LAND_TYPE) (SPACE conjunction SPACE type)?
     | CHOSEN TYPE;
 
-zone : playerPossessive SPACE (HAND | LIBRARY | GRAVEYARD)
-     | article SPACE BATTLEFIELD
-     | THEIR SPACE HAND SPACE AND SPACE GRAVEYARD;
+zone : playerPossessive SPACE playerZone
+     | article SPACE BATTLEFIELD;
+
+playerZone: (HAND | LIBRARY | GRAVEYARD) (SPACE AND playerZone);
 
 turnPart : TAP
          | UPKEEP
