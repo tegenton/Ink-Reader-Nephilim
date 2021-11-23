@@ -363,6 +363,7 @@ playerVerbPhrase : playerVerbPhrase (COMMA SPACE playerVerbPhrase)* SPACE conjun
                  | LOSE SPACE life
                  | LOSE SPACE HALF SPACE playerPossessive SPACE LIFE COMMA SPACE ROUNDED SPACE ROUND_DIRECTION
                  | LOSE SPACE ALL SPACE SPENT SPACE MANA
+                 | OWN SPACE object
                  | PLAY SPACE object SPACE subordinateClause
                  | PREVENT SPACE damage
                  | PUT SPACE THEM SPACE BACK SPACE IN SPACE ANY SPACE ORDER
@@ -487,8 +488,7 @@ type: (NOT)? (SUPER_TYPE | CARD_TYPE | CREATURE_TYPE | ENCHANTMENT_TYPE | LAND_T
     | CHOSEN SPACE TYPE;
 
 zone: playerPossessive SPACE playerZone
-    | article SPACE BATTLEFIELD
-    | determiner SPACE GRAVEYARD;
+    | determiner SPACE (BATTLEFIELD | ANTE | playerZone);
 
 playerZone: (HAND | LIBRARY | DECK | GRAVEYARD) (SPACE AND SPACE playerZone)?;
 
