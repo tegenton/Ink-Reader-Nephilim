@@ -70,7 +70,7 @@ continuousObjectPhrase: object SPACE continuousObjectVerbPhrase (SPACE AND SPACE
                       | objectIs SPACE object;
 
 continuousObjectVerbPhrase: continuousObjectVerbPhrase SPACE conjunction SPACE continuousObjectVerbPhrase
-                	      | CAN SPACE objectAuxiliary
+                	      | CAN (NOT)? SPACE objectAuxiliary
                           | HAVE SPACE quotedAbility
              	          | HAVE SPACE ability
                           | LOSE SPACE quotedAbility;
