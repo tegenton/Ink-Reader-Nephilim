@@ -70,18 +70,17 @@ continuousObjectPhrase: object SPACE continuousObjectVerbPhrase (SPACE AND SPACE
                       | objectIs SPACE object;
 
 continuousObjectVerbPhrase: continuousObjectVerbPhrase SPACE conjunction SPACE continuousObjectVerbPhrase
-                          | CAN (NOT)? SPACE BE SPACE REGENERATED
-                	      | CAN SPACE ATTACK (SPACE subordinateClause)?
-             	          | CAN SPACE BLOCK SPACE object
-                      	  | CAN SPACE BE SPACE BLOCKED
-                      	  | CAN SPACE BE SPACE BLOCKED SPACE (EXCEPT)? SPACE BY object
-                      	  | CAN SPACE BE SPACE ENCHANTED SPACE BY SPACE object
-                          | GAIN SPACE keyword
-                          | GAIN SPACE quotedAbility
-                      	  | GET SPACE STAT_MOD
+                	      | CAN SPACE objectAuxiliary
                           | HAVE SPACE quotedAbility
              	          | HAVE SPACE ability
                           | LOSE SPACE quotedAbility;
+
+objectAuxiliary: ATTACK (SPACE subordinateClause)?
+               | BLOCK SPACE object
+               | BE SPACE BLOCKED
+               | BE SPACE BLOCKED SPACE (EXCEPT)? SPACE BY object
+               | BE SPACE ENCHANTED SPACE BY SPACE object
+               | BE SPACE REGENERATED;
 
 replacementEffect : subordinateClause COMMA SPACE (SPACE INSTEAD)? effect (SPACE INSTEAD)?
                   | subordinateClause COMMA SPACE playerPhrase SPACE INSTEAD PERIOD SPACE subordinateClause COMMA SPACE effect
