@@ -66,10 +66,10 @@ continuousEffect : anyTime COMMA SPACE player SPACE MAY SPACE costs PERIOD SPACE
                  | THIS SPACE EFFECT SPACE DO (NOT)? SPACE REMOVE SPACE object
                  | continuousObjectPhrase;
 
-continuousObjectPhrase: object SPACE continuousObjectVerbPhrase (SPACE AND SPACE continuousObjectVerbPhrase)*;
+continuousObjectPhrase: object SPACE continuousObjectVerbPhrase (SPACE AND SPACE continuousObjectVerbPhrase)*
+                      | objectIs SPACE object;
 
 continuousObjectVerbPhrase: continuousObjectVerbPhrase SPACE conjunction SPACE continuousObjectVerbPhrase
-                          | IS SPACE object
                           | CAN (NOT)? SPACE BE SPACE REGENERATED
                 	      | CAN SPACE ATTACK (SPACE subordinateClause)?
              	          | CAN SPACE BLOCK SPACE object
@@ -148,7 +148,7 @@ comparative: LESS | MORE_ | GREATER;
 
 condition : object (SPACE)? IS (NOT)? SPACE adjective
           | object (SPACE)? IS SPACE prepositionalPhrase
-          | object (SPACE)? IS SPACE object
+          | object (SPACE)? IS (NOT)? SPACE object
           | object SPACE HAVE SPACE A SPACE counterType SPACE prepositionalPhrase
           | object SPACE HAVE SPACE keyword
           | object SPACE HAD SPACE keyword
