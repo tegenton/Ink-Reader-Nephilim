@@ -70,6 +70,7 @@ continuousObjectPhrase: object SPACE continuousObjectVerbPhrase (SPACE AND SPACE
 
 continuousObjectVerbPhrase: continuousObjectVerbPhrase SPACE conjunction SPACE continuousObjectVerbPhrase
                           | IS SPACE object
+                          | CAN (NOT)? SPACE BE SPACE REGENERATED
                 	      | CAN SPACE ATTACK (SPACE subordinateClause)?
              	          | CAN SPACE BLOCK SPACE object
                       	  | CAN SPACE BE SPACE BLOCKED
@@ -108,7 +109,6 @@ rawEffect: source SPACE DEAL SPACE damage SPACE TO SPACE player SPACE INSTEAD
        | objectPossessive SPACE characteristics SPACE IS SPACE EACH SPACE EQUAL TO SPACE amount
        | phrase
        | playerVerbPhrase
-       | object CAN SPACE BE SPACE REGENERATED
        | object CAN SPACE BE SPACE REGENERATED duration
        | THIS SPACE ABILITY SPACE CAN SPACE CAUSE SPACE THE SPACE TOTAL SPACE NUMBER OF SPACE counterType prepositionalPhrase
        | EXILE object SPACE INSTEAD
@@ -204,7 +204,7 @@ color: (NOT)? (WHITE | BLUE | BLACK | RED | GREEN);
 object: (premodifier SPACE)* (objectNoun) (SPACE postmodifier)*
       | (objectNoun COMMA SPACE)* objectNoun SPACE conjunction objectNoun;
 
-objectNoun: (TILDE | type | COPY | CARD | SPELL | PERMANENT | TOKEN | IT) (SPACE conjunction SPACE objectNoun)?;
+objectNoun: (TILDE | type | COPY | CARD | SPELL | PERMANENT | TOKEN | IT | THEY) (SPACE conjunction SPACE objectNoun)?;
 
 objectPhrase : object SPACE objectVerbPhrase;
 

@@ -102,7 +102,7 @@ HAVE: H 'a' ('s'|'v'('e')?)?;
 IS: (I 's' | LetterA 're');
 
 // Negation
-NOT: U N | N O (T|N(DASH)?) | N APOSTROPHE T;
+NOT: U N | N O (T|N(DASH)?) | (N)? APOSTROPHE T;
 
 ATTACK: LetterA 'ttack' (S)?;
 BLOCK: B 'lock' (S)?;
