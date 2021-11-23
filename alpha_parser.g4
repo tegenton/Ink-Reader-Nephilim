@@ -160,7 +160,7 @@ costs : (PAY SPACE)? cost (COMMA SPACE costs)?;
 
 cost : mana
      | TAP_SYMBOL
-     | NUMBER SPACE LIFE
+     | life
      | playerVerbPhrase;
 
 mana: (LBRACKET (MANA_COLOR | INT) RBRACKET)+;
@@ -216,6 +216,7 @@ objectVerbPhrase : IS SPACE DEALT SPACE damage
                  | IS SPACE PUT SPACE prepositionalPhrase
                  | IS SPACE color
                  | ATTACK SPACE duration SPACE IF SPACE ABLE
+             	 | BECOME (S)? SPACE TAPPED
              	 | BECOME SPACE BLOCKED
              	 | BECOME SPACE color
                  | BLOCK SPACE object (SPACE duration)? (SPACE IF SPACE ABLE)?
@@ -282,7 +283,7 @@ prepositionalPhrase : prepositionalPhrase SPACE prepositionalPhrase
                     | WITH SPACE abilityType
                     | WITH SPACE THE SPACE CHOSEN SPACE LABEL
                     | FOR SPACE MANA
-                    | FOR SPACE HAVING SPACE amount SPACE LIFE
+                    | FOR SPACE HAVING SPACE life
                     | FOR SPACE WHOM SPACE THAT SPACE PLAYER SPACE IS SPACE THE SPACE DEFENDING SPACE PLAYER
                     | FROM SPACE A SPACE HEIGHT SPACE OF SPACE AT SPACE LEAST SPACE ONE SPACE FOOT
                     | UNDER SPACE playerPossessive SPACE CONTROL
@@ -352,14 +353,11 @@ playerVerbPhrase : MAY SPACE playerVerbPhrase
                  | EXCHANGE SPACE object SPACE WITH SPACE object
                  | EXILE SPACE object
                  | FLIP SPACE object SPACE prepositionalPhrase
-                 | GAIN SPACE LIFE SPACE EQUAL SPACE TO SPACE amount
-                 | GAIN SPACE INT SPACE LIFE
-                 | GAIN SPACE LIFE SPACE EQUAL SPACE TO SPACE THE DAMAGE DEALT COMMA SPACE subordinateClause
-                 | GAIN SPACE LIFE SPACE EQUAL SPACE TO SPACE amount
+                 | GAIN SPACE life
                  | LOOK SPACE AT SPACE object
                  | LOOK SPACE AT SPACE zone
                  | LOSE SPACE THE SPACE GAME
-                 | LOSE SPACE LIFE SPACE EQUAL SPACE TO SPACE amount
+                 | LOSE SPACE life
                  | LOSE SPACE HALF SPACE playerPossessive SPACE LIFE COMMA SPACE ROUNDED SPACE ROUND_DIRECTION
                  | LOSE SPACE ALL SPACE SPENT SPACE MANA
                  | PLAY SPACE object SPACE IF SPACE ABLE
@@ -393,6 +391,11 @@ playerVerbPhrase : MAY SPACE playerVerbPhrase
                  | ADD SPACE THE SPACE MANA SPACE LOST SPACE THIS SPACE WAY
                  | PREVENT VARIABLE SPACE OF SPACE damage COMMA SPACE subordinateClause
                  | REMOVE SPACE object SPACE FROM SPACE COMBAT;
+
+life: INT SPACE LIFE
+    | amount SPACE LIFE
+    | LIFE SPACE EQUAL SPACE TO SPACE amount
+    | LIFE SPACE EQUAL SPACE TO SPACE THE DAMAGE DEALT COMMA SPACE subordinateClause;
 
 conjoinedObjectVerb: TAP SPACE conjunction SPACE TAP;
 
