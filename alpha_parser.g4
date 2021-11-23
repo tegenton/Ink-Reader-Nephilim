@@ -86,6 +86,7 @@ replacementEffect : subordinateClause COMMA SPACE (SPACE INSTEAD)? effect (SPACE
                   | subordinateClause COMMA SPACE playerPhrase SPACE INSTEAD PERIOD SPACE subordinateClause COMMA SPACE effect
                   | subordinateClause COMMA SPACE playerVerbPhrase COMMA SPACE BUT SPACE player SPACE MAY SPACE PUT SPACE object prepositionalPhrase SPACE INSTEAD SPACE OF SPACE prepositionalPhrase
                   | objectPhrase SPACE prepositionalPhrase
+                  | player SPACE MAY SPACE HAVE SPACE object SPACE ENTER SPACE zone SPACE subordinateClause
                   | IF SPACE object SPACE HAVE SPACE NOT SPACE BEEN SPACE TURNED SPACE FACE SPACE UP SPACE AND SPACE WOULD SPACE ASSIGN SPACE OR SPACE DEAL SPACE DAMAGE COMMA SPACE BE SPACE DEALT SPACE DAMAGE COMMA SPACE OR SPACE BECOME SPACE TAPPED COMMA SPACE INSTEAD SPACE object IS SPACE TURNED SPACE FACE SPACE UP SPACE AND SPACE ASSIGN SPACE OR SPACE DEAL SPACE DAMAGE COMMA SPACE IS SPACE DEALT SPACE DAMAGE COMMA SPACE OR SPACE BECOME SPACE TAPPED
                   | subordinateClause COMMA SPACE INSTEAD SPACE playerPhrase PERIOD SPACE effect;
 
@@ -108,7 +109,6 @@ rawEffect: source SPACE DEAL SPACE damage SPACE TO SPACE player SPACE INSTEAD
        | objectPossessive SPACE characteristics SPACE IS SPACE EACH SPACE EQUAL TO SPACE amount
        | phrase
        | playerVerbPhrase
-       | object CAN SPACE BE SPACE REGENERATED duration
        | THIS SPACE ABILITY SPACE CAN SPACE CAUSE SPACE THE SPACE TOTAL SPACE NUMBER OF SPACE counterType prepositionalPhrase
        | EXILE object SPACE INSTEAD
        | THEN COMMA SPACE FOR SPACE EACH SPACE object COMMA SPACE CHOOSE PILE_LABEL OR PILE_LABEL SPACE object CAN SPACE BE SPACE BLOCKED SPACE duration SPACE EXCEPT SPACE BY SPACE object AND object;
@@ -189,8 +189,8 @@ duration : UNTIL SPACE END SPACE OF SPACE TURN
          | determiner SPACE TURN
          | determiner SPACE COMBAT
          | DURING SPACE phase
-         | FOR SPACE AS SPACE LONG SPACE AS SPACE object HAVE A counterType SPACE prepositionalPhrase
-         | AS SPACE LONG SPACE AS SPACE player SPACE CONTROL SPACE object
+         | FOR SPACE subordinateConjunction SPACE object HAVE A counterType SPACE prepositionalPhrase
+         | subordinateConjunction SPACE player SPACE CONTROL SPACE object
          | WHILE SPACE object SPACE IS SPACE RESOLVING;
 
 keyword: BANDING | DEFENDER | FEAR | FLYING | HASTE | INDESTRUCTIBLE | LANDWALK | REACH | TRAMPLE | VIGILANCE
@@ -375,7 +375,6 @@ playerVerbPhrase : MAY SPACE playerVerbPhrase
                  | SKIPS SPACE phase
                  | SKIPS SPACE THAT SPACE (TURN|DRAW)
                  | TAKE SPACE AN SPACE EXTRA SPACE TURN SPACE AFTER SPACE THIS SPACE ONE
-                 | HAVE SPACE object SPACE ENTER SPACE zone SPACE AS SPACE A SPACE COPY SPACE prepositionalPhrase
                  | HAVE SPACE object SPACE BECOME SPACE A SPACE COPY SPACE prepositionalPhrase SPACE subordinateClause
                  | HAVE SPACE player SHUFFLE
                  | HAVE SPACE object SPACE BLOCK SPACE object
@@ -434,14 +433,14 @@ source : premodifier SPACE source
 
 variableDefinition: VARIABLE SPACE IS SPACE AMOUNT;
 
-subordinateClause : subordinate_conjunction SPACE condition
-                  | subordinate_conjunction SPACE phrase
-                  | subordinate_conjunction SPACE player SPACE WOULD SPACE GAIN SPACE LIFE
-                  | subordinate_conjunction SPACE player SPACE WOULD SPACE BEGIN SPACE YOUR SPACE TURN SPACE WHILE condition
+subordinateClause : subordinateConjunction SPACE condition
+                  | subordinateConjunction SPACE phrase
+                  | subordinateConjunction SPACE player SPACE WOULD SPACE GAIN SPACE LIFE
+                  | subordinateConjunction SPACE player SPACE WOULD SPACE BEGIN SPACE YOUR SPACE TURN SPACE WHILE condition
                   | IF SPACE AN SPACE EFFECT SPACE CAUSE SPACE player SPACE TO SPACE DISCARD SPACE object
                   | IF SPACE object SPACE WOULD SPACE DIE SPACE duration
                   | IF SPACE THIS SPACE ABILITY SPACE HAVE SPACE BEEN SPACE ACTIVATED SPACE amount SPACE TIME SPACE duration
-                  | EXCEPT SPACE objectIs SPACE article SPACE CARD_TYPE SPACE IN SPACE ADDITION SPACE TO SPACE objectPossessive OTHER TYPE
+                  | EXCEPT SPACE objectIs SPACE article SPACE type SPACE IN SPACE ADDITION SPACE TO SPACE objectPossessive SPACE OTHER SPACE TYPE
                   | EXCEPT SPACE objectIs SPACE color
                   | EXCEPT SPACE object SPACE DO SPACE COPY objectPossessive SPACE COLOR
                   | EXCEPT SPACE object SPACE DO SPACE COPY objectPossessive SPACE COLOR SPACE AND SPACE object SPACE HAVE SPACE THIS SPACE ABILITY
@@ -454,12 +453,13 @@ subordinateClause : subordinate_conjunction SPACE condition
                   | IF object SPACE TURN SPACE OVER SPACE COMPLETELY SPACE AT SPACE LEAST SPACE ONCE SPACE DURING SPACE THE SPACE FLIP
                   | IF SPACE player SPACE WOULD SPACE playerVerbPhrase SPACE duration
                   | UNLESS SPACE player SPACE costs
-                  | IF SPACE player SPACE DO;
+                  | IF SPACE player SPACE DO
+                  | AS SPACE object COMMA SPACE subordinateClause;
 
 objectIs: object SPACE IS
         | IT APOSTROPHE S;
 
-subordinate_conjunction: AS (SPACE LONG SPACE AS | SPACE THOUGH)? | BUT | EXCEPT | IF | WHERE;
+subordinateConjunction: AS (SPACE LONG SPACE AS | SPACE THOUGH)? | BUT | EXCEPT | IF | WHERE;
 
 textAspect : COLOR SPACE WORD
            | object TYPE;
