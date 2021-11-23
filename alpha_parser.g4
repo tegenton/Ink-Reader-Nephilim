@@ -387,7 +387,7 @@ playerVerbPhrase : playerVerbPhrase (COMMA SPACE playerVerbPhrase)* SPACE conjun
                  | PAY SPACE mana
                  | ANTE SPACE object
                  | conjoinedObjectVerb SPACE object
-                 | SHUFFLE SPACE zone SPACE prepositionalPhrase
+                 | SHUFFLE (SPACE zone SPACE prepositionalPhrase)?
                  | SACRIFICE SPACE THE SPACE REST
                  | SACRIFICE SPACE object
                  | DISCARD SPACE zone
