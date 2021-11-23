@@ -206,7 +206,7 @@ color: (NOT)? (WHITE | BLUE | BLACK | RED | GREEN);
 
 object: (premodifier SPACE)* (objectNouns) (SPACE postmodifier)*;
 
-objectNouns: (objectNoun COMMA SPACE)* objectNoun (COMMA SPACE conjunction SPACE objectNoun)?;
+objectNouns: (objectNoun COMMA SPACE)* objectNoun ((COMMA)? SPACE conjunction SPACE objectNoun)?;
 objectNoun: (TILDE | type | COPY | CARD | SPELL | PERMANENT | TOKEN | IT | THEY);
 
 objectPhrase : object SPACE objectVerbPhrase;
