@@ -311,8 +311,8 @@ phase : playerPossessive SPACE TURN
       | EACH SPACE OF SPACE playerPossessive SPACE UPKEEP SPACE FOR SPACE THE SPACE REST SPACE OF SPACE THE SPACE GAME
       | THE SPACE NEXT SPACE END SPACE STEP;
 
-phrase : playerPhrase
-       | objectPhrase;
+phrase: playerPhrase
+      | objectPhrase;
 
 player : (CONTROLLER | OWNER | PLAYER | OPPONENT | YOU | THEY) (SPACE playerPostmodifier)?
        | determiner SPACE player
@@ -343,7 +343,6 @@ playerVerbPhrase : MAY SPACE playerVerbPhrase
                  | CAN SPACE ACTIVATE SPACE MANA SPACE ABILITY SPACE ONLY SPACE IF SPACE THEY IS SPACE FROM SPACE object AND SPACE ONLY SPACE IF SPACE MANA SPACE THEY SPACE PRODUCE SPACE IS SPACE SPENT SPACE TO SPACE ACTIVATE SPACE OTHER SPACE MANA SPACE ABILITY SPACE OF object conjunction SPACE TO SPACE PLAY SPACE object
                  | COPY SPACE object COMMA SPACE subordinateClause
                  | COUNTER SPACE object (subordinateClause)?
-                 | TAP SPACE object
                  | CHOOSE SPACE object
                  | CHOOSE SPACE NEW SPACE TARGET SPACE prepositionalPhrase
                  | CHOOSE SPACE object SPACE prepositionalPhrase
@@ -376,6 +375,7 @@ playerVerbPhrase : MAY SPACE playerVerbPhrase
                  | SKIPS SPACE phase
                  | SKIPS SPACE THAT SPACE (TURN|DRAW)
                  | TAKE SPACE AN SPACE EXTRA SPACE TURN SPACE AFTER SPACE THIS SPACE ONE
+                 | TAP SPACE object
                  | HAVE SPACE object SPACE BECOME SPACE A SPACE COPY SPACE prepositionalPhrase SPACE subordinateClause
                  | HAVE SPACE player SHUFFLE
                  | HAVE SPACE object SPACE BLOCK SPACE object
@@ -458,6 +458,7 @@ subordinateClause : subordinateConjunction SPACE condition
                   | IF object SPACE TURN SPACE OVER SPACE COMPLETELY SPACE AT SPACE LEAST SPACE ONCE SPACE DURING SPACE THE SPACE FLIP
                   | IF SPACE player SPACE WOULD SPACE playerVerbPhrase SPACE duration
                   | UNLESS SPACE player SPACE costs
+                  | UNLESS SPACE player SPACE CONTROL SPACE object
                   | IF SPACE player SPACE DO
                   | AS SPACE object COMMA SPACE subordinateClause;
 
@@ -475,7 +476,8 @@ triggerWord: WHEN | WHENEVER | AT;
 
 triggerEvent : THE SPACE BEGINNING SPACE OF SPACE phase
              | END SPACE OF SPACE COMBAT
-             | phrase;
+             | phrase
+             | continuousEffect;
 
 type: (SUPER_TYPE | CARD_TYPE | CREATURE_TYPE | ENCHANTMENT_TYPE | LAND_TYPE) (SPACE conjunction SPACE type)?
     | CHOSEN SPACE TYPE;

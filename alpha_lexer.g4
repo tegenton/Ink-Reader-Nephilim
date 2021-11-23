@@ -214,7 +214,7 @@ CREATURE_TYPE: G 'oblin'
 ENCHANTMENT_TYPE: LetterA 'ura';
 
 LAND_TYPE: P 'lains'
-         | I 'sland'
+         | I 'sland' (S)?
          | S 'wamp' (S)?
          | M 'ountain' (S)?
          | F 'orest';
