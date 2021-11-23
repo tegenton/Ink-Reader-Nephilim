@@ -77,8 +77,7 @@ continuousObjectVerbPhrase: continuousObjectVerbPhrase SPACE conjunction SPACE c
 
 objectAuxiliary: ATTACK (SPACE subordinateClause)?
                | BLOCK SPACE object
-               | BE SPACE BLOCKED
-               | BE SPACE BLOCKED SPACE (EXCEPT)? SPACE BY object
+               | BE SPACE BLOCKED (SPACE subordinateClause)?
                | BE SPACE ENCHANTED SPACE BY SPACE object
                | BE SPACE REGENERATED;
 
