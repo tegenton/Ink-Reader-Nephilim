@@ -77,7 +77,7 @@ continuousObjectVerbPhrase: continuousObjectVerbPhrase SPACE conjunction SPACE c
                 	      | CAN (NOT)? SPACE objectAuxiliary
              	          | (HAVE | GAIN) SPACE ability
              	          | GET SPACE STAT_MOD
-                          | HAVE SPACE quotedAbility
+                          | (HAVE | GAIN) SPACE quotedAbility
                           | LOSE SPACE quotedAbility;
 
 objectAuxiliary: ATTACK (SPACE subordinateClause)?
@@ -99,7 +99,7 @@ triggerEffect : effect (SPACE subordinateClause)?;
 effect : rawEffect
        | rawEffect (PERIOD)? SPACE conjunction SPACE effect
        | rawEffect PERIOD SPACE effect
-       | continuousEffect (SPACE duration)?
+       | continuousEffect (SPACE duration)? (SPACE effect)?
        | duration COMMA SPACE continuousEffect
        | subordinateClause COMMA SPACE effect
        | (rawEffect COMMA SPACE)? rawEffect COMMA SPACE conjunction SPACE rawEffect
@@ -149,9 +149,9 @@ characteristic: POWER | TOUGHNESS | MANA SPACE VALUE;
 
 comparative: LESS | MORE_ | GREATER;
 
-condition : object (SPACE)? IS (NOT)? SPACE adjective
-          | object (SPACE)? IS SPACE prepositionalPhrase
-          | object (SPACE)? IS (NOT)? SPACE object
+condition : objectIs SPACE adjective
+          | objectIs SPACE prepositionalPhrase
+          | objectIs SPACE object
           | object SPACE HAVE SPACE A SPACE counterType SPACE prepositionalPhrase
           | object SPACE HAVE SPACE keyword
           | object SPACE HAD SPACE keyword
@@ -211,7 +211,7 @@ objectNoun: (TILDE | type | COPY | CARD | SPELL | PERMANENT | TOKEN | IT | THEY)
 
 objectPhrase : object SPACE objectVerbPhrase;
 
-objectPossessive: (determiner SPACE)? (IT S | (adjective SPACE)? objectNoun saxon);
+objectPossessive: (determiner SPACE)? (IT S | objectNoun saxon) | THAT SPACE CARD_TYPE APOSTROPHE S;
 
 saxon: APOSTROPHE S;
 
@@ -246,7 +246,7 @@ postmodifier : player SPACE CONTROL
              | player SPACE HAVE SPACE CONTROLLED SPACE CONTINUOUSLY SPACE SINCE SPACE THE SPACE BEGINNING SPACE OF duration
              | player SPACE DID SPACE CONTROL SPACE CONTINUOUSLY SPACE SINCE SPACE THE SPACE BEGINNING SPACE OF duration
              | CONTROLLED SPACE BY SPACE player
-             | prepositionalPhrase
+             | IN SPACE zone
              | NAMED SPACE LITERAL_NAME SPACE prepositionalPhrase
              | ABLE SPACE TO SPACE BLOCK SPACE object
              | THAT SPACE CAN BLOCK object
@@ -260,6 +260,7 @@ postmodifier : player SPACE CONTROL
              | object SPACE WAS SPACE BLOCKING
              | object BECOME AS IT RESOLVE
              | PUT SPACE prepositionalPhrase SPACE THIS SPACE WAY
+             | PUT SPACE prepositionalPhrase SPACE WITH SPACE TILDE
              | DEALT SPACE DAMAGE SPACE BY SPACE object SPACE duration
              | IN SPACE A SPACE PILE (prepositionalPhrase)?
              | BEYOND SPACE THE SPACE FIRST
@@ -328,7 +329,8 @@ playerPossessive : YOUR
                  | THEIR
                  | player saxon;
 
-playerVerbPhrase : MAY SPACE playerVerbPhrase
+playerVerbPhrase : playerVerbPhrase SPACE conjunction playerVerbPhrase
+                 | MAY SPACE playerVerbPhrase
                  | CHANGE SPACE article SPACE TEXT SPACE prepositionalPhrase SPACE BY SPACE REPLACING SPACE ALL SPACE INSTANCES SPACE OF SPACE ONE SPACE textAspect SPACE WITH SPACE ANOTHER
                  | CHOOSE SPACE article SPACE textAspect
                  | IS SPACE DEALT SPACE damage
@@ -369,7 +371,7 @@ playerVerbPhrase : MAY SPACE playerVerbPhrase
                  | REGENERATE SPACE object
                  | REMOVE SPACE article SPACE counterType SPACE prepositionalPhrase
                  | RETURN SPACE object SPACE prepositionalPhrase
-                 | SACRIFICE SPACE object (subordinateClause)?
+                 | SACRIFICE (S)? SPACE object (subordinateClause)?
                  | SEARCH SPACE zone SPACE prepositionalPhrase
                  | SKIPS SPACE THAT SPACE (TURN|DRAW)
                  | TAKE SPACE AN SPACE EXTRA SPACE TURN SPACE AFTER SPACE THIS SPACE ONE
@@ -406,7 +408,7 @@ quality : MANA SPACE VALUE SPACE (INT | VARIABLE)
         | POWER SPACE AND SPACE TOUGHNESS SPACE EACH SPACE EQUAL SPACE TO SPACE amount
         | keyword;
 
-quotedAbility: OPENQUOTE ability CLOSEQUOTE;
+quotedAbility: OPENQUOTE ability (PERIOD)? CLOSEQUOTE;
 
 rawPhase : turnPart
          | (turnPart SPACE)? turnPart SPACE STEP (S)?;
