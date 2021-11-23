@@ -63,6 +63,7 @@ continuousEffect : anyTime COMMA SPACE player SPACE MAY SPACE costs PERIOD SPACE
                  | player SPACE DO SPACE LOSE SPACE THE SPACE GAME SPACE prepositionalPhrase
                  | player SPACE HAVE SPACE NO SPACE MAXIMUM SPACE HAND SPACE SIZE
                  | player SPACE CONTROL SPACE something
+                 | player SPACE SKIPS SPACE phase
                  | object SPACE IS SPACE object
                  | damage SPACE IS SPACE DEALT SPACE prepositionalPhrase SPACE INSTEAD
                  | THIS SPACE EFFECT SPACE DO (NOT)? SPACE REMOVE SPACE object
@@ -312,7 +313,7 @@ phase: (article SPACE)? playerPossessive SPACE TURN (COMMA SPACE BEFORE SPACE AT
 phrase: playerPhrase
       | objectPhrase;
 
-player : (CONTROLLER | OWNER | PLAYER | OPPONENT | YOU | THEY) (SPACE playerPostmodifier)?
+player : ((CONTROLLER | OWNER | PLAYER | OPPONENT) (S)? | YOU | THEY) (SPACE playerPostmodifier)?
        | determiner SPACE player
        | playerPremodifier SPACE player
        | objectPossessive SPACE player;
@@ -370,7 +371,6 @@ playerVerbPhrase : MAY SPACE playerVerbPhrase
                  | RETURN SPACE object SPACE prepositionalPhrase
                  | SACRIFICE SPACE object (subordinateClause)?
                  | SEARCH SPACE zone SPACE prepositionalPhrase
-                 | SKIPS SPACE phase
                  | SKIPS SPACE THAT SPACE (TURN|DRAW)
                  | TAKE SPACE AN SPACE EXTRA SPACE TURN SPACE AFTER SPACE THIS SPACE ONE
                  | TAP SPACE object
@@ -409,7 +409,7 @@ quality : MANA SPACE VALUE SPACE (INT | VARIABLE)
 quotedAbility: OPENQUOTE ability CLOSEQUOTE;
 
 rawPhase : turnPart
-         | (turnPart SPACE)? turnPart SPACE STEP;
+         | (turnPart SPACE)? turnPart SPACE STEP (S)?;
 
 restriction : CAST SPACE object SPACE ONLY SPACE DURING SPACE phase
             | CAST object SPACE ONLY SPACE BEFORE SPACE phase
@@ -486,7 +486,7 @@ zone : playerPossessive SPACE playerZone
 
 playerZone: (HAND | LIBRARY | GRAVEYARD) (SPACE AND playerZone);
 
-turnPart : TAP
+turnPart : NOT TAP
          | UPKEEP
          | DRAW
          | DECLARE
