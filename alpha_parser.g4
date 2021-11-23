@@ -259,7 +259,7 @@ postmodifier : player SPACE CONTROL
              | OTHER SPACE THAN SPACE object
              | object SPACE WAS SPACE BLOCKING
              | object BECOME AS IT RESOLVE
-             | PUT prepositionalPhrase SPACE THIS SPACE WAY
+             | PUT SPACE prepositionalPhrase SPACE THIS SPACE WAY
              | DEALT SPACE DAMAGE SPACE BY SPACE object SPACE duration
              | IN SPACE A SPACE PILE (prepositionalPhrase)?
              | BEYOND SPACE THE SPACE FIRST
@@ -482,7 +482,8 @@ type: (NOT)? (SUPER_TYPE | CARD_TYPE | CREATURE_TYPE | ENCHANTMENT_TYPE | LAND_T
     | CHOSEN SPACE TYPE;
 
 zone: playerPossessive SPACE playerZone
-    | article SPACE BATTLEFIELD;
+    | article SPACE BATTLEFIELD
+    | determiner SPACE GRAVEYARD;
 
 playerZone: (HAND | LIBRARY | GRAVEYARD) (SPACE AND SPACE playerZone)?;
 
