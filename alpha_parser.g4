@@ -96,7 +96,8 @@ effect : rawEffect
        | continuousEffect (SPACE duration)?
        | duration COMMA SPACE continuousEffect
        | subordinateClause COMMA SPACE effect
-       | (rawEffect COMMA SPACE)? rawEffect COMMA SPACE conjunction SPACE rawEffect;
+       | (rawEffect COMMA SPACE)? rawEffect COMMA SPACE conjunction SPACE rawEffect
+       | THE SPACE NEXT SPACE TIME SPACE source SPACE WOULD SPACE DEAL SPACE DAMAGE SPACE prepositionalPhrase SPACE duration COMMA SPACE effect;
 
 rawEffect: source SPACE DEAL SPACE damage SPACE TO SPACE player SPACE INSTEAD
        | delayedTrigger COMMA SPACE REMOVE SPACE ALL SPACE counterType SPACE FROM SPACE object
@@ -117,8 +118,8 @@ damage : DAMAGE
        | (INT | VARIABLE) SPACE DAMAGE
        | ALL SPACE COMBAT SPACE DAMAGE SPACE THAT SPACE WOULD SPACE BE SPACE DEALT SPACE duration
        | ALL SPACE DAMAGE SPACE THAT SPACE WOULD SPACE BE SPACE DEALT SPACE TO SPACE player SPACE BY SPACE object
-       | ALL SPACE BUT SPACE NUMBER SPACE OF SPACE damage
-       | THAT SPACE damage
+       | ALL SPACE BUT SPACE INT SPACE OF SPACE damage
+       | determiner SPACE damage
        | THE SPACE NEXT SPACE damage SPACE THAT SPACE WOULD SPACE BE SPACE DEALT SPACE TO SPACE something SPACE duration;
 
 // Definitions
