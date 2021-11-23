@@ -44,7 +44,7 @@ englishNumber: ONE | TWO | THREE | SEVEN;
 spellAbility : effect PERIOD
              | restriction PERIOD
              | modal
-             | delayedTrigger COMMA SPACE effect PERIOD SPACE IGNORE SPACE THIS SPACE EFFECT SPACE prepositionalPhrase PERIOD
+             | delayedTrigger COMMA SPACE effect PERIOD //SPACE IGNORE SPACE THIS SPACE EFFECT SPACE prepositionalPhrase PERIOD
              | duration COMMA SPACE INSTEAD SPACE OF SPACE DECLARING SPACE BLOCKERS COMMA SPACE player SPACE CHOOSE SPACE object SPACE conjunction SPACE DIVIDE SPACE THEM SPACE IN SPACE article SPACE NUMBER SPACE OF SPACE PILE SPACE EQUAL SPACE TO SPACE amount PERIOD SPACE object SPACE MAY SPACE LIKEWISE SPACE BE SPACE PUT SPACE IN SPACE ADDITIONAL SPACE PILE PERIOD SPACE ASSIGN SPACE EACH SPACE PILE TO SPACE A SPACE DIFFERENT SPACE ONE OF SPACE object SPACE prepositionalPhrase PERIOD SPACE SPACE objectPhrase PERIOD;
 
 conjunction: AND | OR | AND SLASH OR | THEN;
@@ -218,11 +218,11 @@ objectVerbPhrase : IS SPACE DEALT SPACE damage
                  | IS SPACE TAPPED SPACE prepositionalPhrase
                  | IS SPACE PUT SPACE prepositionalPhrase
                  | IS SPACE color
-                 | ATTACK SPACE duration SPACE IF SPACE ABLE
+                 | ATTACK SPACE duration SPACE subordinateClause
              	 | BECOME (S)? SPACE TAPPED
              	 | BECOME SPACE BLOCKED
              	 | BECOME SPACE color
-                 | BLOCK SPACE object (SPACE duration)? (SPACE IF SPACE ABLE)?
+                 | BLOCK SPACE object (SPACE duration)? (SPACE subordinateClause)?
                  | BLOCK SPACE OR SPACE BECOME SPACE BLOCKED SPACE BY SPACE object
                  | COST SPACE costs SPACE comparative SPACE TO SPACE CAST
              	 | DEAL SPACE damage SPACE prepositionalPhrase
@@ -300,16 +300,14 @@ preposition: ABOVE | FOR | FROM | IN | OF | ON | TO | UNDER | WITH;
 delayedTrigger : AT SPACE END SPACE OF SPACE COMBAT
                | AT SPACE THE SPACE BEGINNING SPACE OF SPACE phase;
 
-phase : playerPossessive SPACE TURN
-      | playerPossessive SPACE rawPhase
-      | article SPACE rawPhase (SPACE OF SPACE player)?
-      | article SPACE playerPossessive TURN COMMA SPACE BEFORE SPACE ATTACKERS SPACE IS SPACE DECLARED
-      | article SPACE NEXT SPACE rawPhase
-      | COMBAT
-      | COMBAT SPACE BEFORE SPACE BLOCKERS SPACE IS SPACE DECLARED
-      | THE TURN
-      | EACH SPACE OF SPACE playerPossessive SPACE UPKEEP SPACE FOR SPACE THE SPACE REST SPACE OF SPACE THE SPACE GAME
-      | THE SPACE NEXT SPACE END SPACE STEP;
+phase: (article SPACE)? playerPossessive SPACE TURN (COMMA SPACE BEFORE SPACE ATTACKERS SPACE IS SPACE DECLARED)?
+     | playerPossessive SPACE rawPhase
+     | article SPACE rawPhase (SPACE OF SPACE player)?
+     | article SPACE NEXT SPACE rawPhase
+     | COMBAT (SPACE BEFORE SPACE BLOCKERS SPACE IS SPACE DECLARED)?
+     | THE SPACE TURN
+     | EACH SPACE OF SPACE playerPossessive SPACE rawPhase SPACE FOR SPACE THE SPACE REST SPACE OF SPACE THE SPACE GAME
+     | THE SPACE NEXT SPACE END SPACE STEP;
 
 phrase: playerPhrase
       | objectPhrase;
@@ -362,7 +360,7 @@ playerVerbPhrase : MAY SPACE playerVerbPhrase
                  | LOSE SPACE life
                  | LOSE SPACE HALF SPACE playerPossessive SPACE LIFE COMMA SPACE ROUNDED SPACE ROUND_DIRECTION
                  | LOSE SPACE ALL SPACE SPENT SPACE MANA
-                 | PLAY SPACE object SPACE IF SPACE ABLE
+                 | PLAY SPACE object SPACE subordinateClause
                  | PREVENT SPACE damage
                  | PUT SPACE THEM SPACE BACK SPACE IN SPACE ANY SPACE ORDER
                  | PUT SPACE object SPACE prepositionalPhrase
@@ -442,6 +440,7 @@ subordinateClause : subordinateConjunction SPACE condition
                   | subordinateConjunction SPACE phrase
                   | subordinateConjunction SPACE player SPACE WOULD SPACE GAIN SPACE LIFE
                   | subordinateConjunction SPACE player SPACE WOULD SPACE BEGIN SPACE YOUR SPACE TURN SPACE WHILE condition
+                  | IF SPACE ABLE
                   | IF SPACE AN SPACE EFFECT SPACE CAUSE SPACE player SPACE TO SPACE DISCARD SPACE object
                   | IF SPACE object SPACE WOULD SPACE DIE SPACE duration
                   | IF SPACE THIS SPACE ABILITY SPACE HAVE SPACE BEEN SPACE ACTIVATED SPACE amount SPACE TIME SPACE duration
@@ -479,7 +478,7 @@ triggerEvent : THE SPACE BEGINNING SPACE OF SPACE phase
              | phrase
              | continuousEffect;
 
-type: (SUPER_TYPE | CARD_TYPE | CREATURE_TYPE | ENCHANTMENT_TYPE | LAND_TYPE) (SPACE conjunction SPACE type)?
+type: (NOT)? (SUPER_TYPE | CARD_TYPE | CREATURE_TYPE | ENCHANTMENT_TYPE | LAND_TYPE) (SPACE conjunction SPACE type)?
     | CHOSEN SPACE TYPE;
 
 zone : playerPossessive SPACE playerZone
