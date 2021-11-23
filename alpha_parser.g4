@@ -247,6 +247,7 @@ postmodifier : player SPACE CONTROL
              | player SPACE DID SPACE CONTROL SPACE CONTINUOUSLY SPACE SINCE SPACE THE SPACE BEGINNING SPACE OF duration
              | CONTROLLED SPACE BY SPACE player
              | (IN | OF) SPACE zone
+             | OF SPACE playerPossessive SPACE CHOICE
              | NAMED SPACE LITERAL_NAME SPACE prepositionalPhrase
              | ABLE SPACE TO SPACE BLOCK SPACE object
              | THAT SPACE CAN BLOCK object
@@ -329,7 +330,7 @@ playerPossessive : YOUR
                  | THEIR
                  | player saxon;
 
-playerVerbPhrase : playerVerbPhrase (COMMA SPACE playerVerbPhrase)* SPACE conjunction playerVerbPhrase
+playerVerbPhrase : playerVerbPhrase (COMMA SPACE playerVerbPhrase)* SPACE conjunction SPACE playerVerbPhrase
                  | MAY SPACE playerVerbPhrase
                  | CHANGE SPACE article SPACE TEXT SPACE prepositionalPhrase SPACE BY SPACE REPLACING SPACE ALL SPACE INSTANCES SPACE OF SPACE ONE SPACE textAspect SPACE WITH SPACE ANOTHER
                  | CHOOSE SPACE article SPACE textAspect
@@ -388,6 +389,7 @@ playerVerbPhrase : playerVerbPhrase (COMMA SPACE playerVerbPhrase)* SPACE conjun
                  | conjoinedObjectVerb SPACE object
                  | SHUFFLE SPACE zone SPACE prepositionalPhrase
                  | SACRIFICE SPACE THE SPACE REST
+                 | SACRIFICE SPACE object
                  | DISCARD SPACE zone
                  | DISCARD SPACE object SPACE AND SPACE SACRIFICE SPACE object SPACE THE SPACE SAME SPACE WAY
                  | CHOOSE SPACE object
