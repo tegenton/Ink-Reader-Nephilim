@@ -207,7 +207,7 @@ objectNoun: (TILDE | type | COPY | CARD | SPELL | PERMANENT | TOKEN | IT | THEY)
 
 objectPhrase : object SPACE objectVerbPhrase;
 
-objectPossessive: (determiner SPACE)? (IT S | objectNoun saxon);
+objectPossessive: (determiner SPACE)? (IT S | (adjective SPACE)? objectNoun saxon);
 
 saxon: APOSTROPHE S;
 
@@ -298,8 +298,7 @@ delayedTrigger : AT SPACE END SPACE OF SPACE COMBAT
 
 phase : playerPossessive SPACE TURN
       | playerPossessive SPACE rawPhase
-      | article SPACE rawPhase SPACE OF SPACE player
-      | article SPACE rawPhase
+      | article SPACE rawPhase (SPACE OF SPACE player)?
       | article SPACE playerPossessive TURN COMMA SPACE BEFORE SPACE ATTACKERS SPACE IS SPACE DECLARED
       | article SPACE NEXT SPACE rawPhase
       | COMBAT
