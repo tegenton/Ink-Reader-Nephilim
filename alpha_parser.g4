@@ -117,7 +117,7 @@ rawEffect: source SPACE DEAL SPACE damage SPACE TO SPACE player SPACE INSTEAD
        | THEN COMMA SPACE FOR SPACE EACH SPACE object COMMA SPACE CHOOSE PILE_LABEL OR PILE_LABEL SPACE object CAN SPACE BE SPACE BLOCKED SPACE duration SPACE EXCEPT SPACE BY SPACE object AND object;
 
 damage : DAMAGE
-       | (INT | VARIABLE) SPACE DAMAGE
+       | (INT | VARIABLE) (SPACE OF SPACE THAT)? SPACE DAMAGE (COMMA SPACE subordinateClause)?
        | ALL SPACE COMBAT SPACE DAMAGE SPACE THAT SPACE WOULD SPACE BE SPACE DEALT SPACE duration
        | ALL SPACE DAMAGE SPACE THAT SPACE WOULD SPACE BE SPACE DEALT SPACE TO SPACE player SPACE BY SPACE object
        | ALL SPACE BUT SPACE INT SPACE OF SPACE damage
@@ -436,7 +436,7 @@ source : premodifier SPACE source
        | color SPACE SOURCE
        | SOURCE;
 
-variableDefinition: VARIABLE SPACE IS SPACE AMOUNT;
+variableDefinition: VARIABLE SPACE IS SPACE amount;
 
 subordinateClause : subordinateConjunction SPACE condition
                   | subordinateConjunction SPACE phrase
@@ -450,7 +450,7 @@ subordinateClause : subordinateConjunction SPACE condition
                   | EXCEPT SPACE object SPACE DO SPACE COPY objectPossessive SPACE COLOR
                   | EXCEPT SPACE object SPACE DO SPACE COPY objectPossessive SPACE COLOR SPACE AND SPACE object SPACE HAVE SPACE THIS SPACE ABILITY
                   | EXCEPT SPACE BY SPACE object
-                  | WHERE variableDefinition
+                  | WHERE SPACE variableDefinition
                   | WHILE SPACE DOING SPACE SO
                   | IF SPACE objectIs CAST AS object
                   | IF SPACE object SPACE DID SPACE ATTACK SPACE duration
