@@ -23,7 +23,7 @@ activatedAbility : costs COLON SPACE effect PERIOD (SPACE restriction PERIOD)?;
 staticAbility : staticAbility SPACE staticAbility
               | subordinateClause COMMA SPACE staticAbility
               | continuousEffect (PERIOD)?
-              | replacementEffect PERIOD
+              | replacementEffect (PERIOD)?
               | abilityType SPACE prepositionalPhrase SPACE COST SPACE costs SPACE comparative SPACE TO SPACE ACTIVATE PERIOD
               | FOR SPACE EACH SPACE damage SPACE distinguisher COMMA SPACE triggerEffect PERIOD;
 
@@ -374,7 +374,7 @@ playerVerbPhrase : MAY SPACE playerVerbPhrase
                  | SKIPS SPACE THAT SPACE (TURN|DRAW)
                  | TAKE SPACE AN SPACE EXTRA SPACE TURN SPACE AFTER SPACE THIS SPACE ONE
                  | TAP (SPACE OR SPACE NOT TAP)? SPACE object
-                 | HAVE SPACE object SPACE BECOME SPACE A SPACE COPY SPACE prepositionalPhrase SPACE subordinateClause
+                 | HAVE SPACE object SPACE BECOME SPACE object COMMA SPACE subordinateClause
                  | HAVE SPACE player SHUFFLE
                  | HAVE SPACE object SPACE BLOCK SPACE object
                  | SPEND SPACE color SPACE MANA SPACE AS SPACE THOUGH SPACE IT SPACE WERE SPACE color SPACE MANA
@@ -446,8 +446,8 @@ subordinateClause : subordinateConjunction SPACE condition
                   | IF SPACE THIS SPACE ABILITY SPACE HAVE SPACE BEEN SPACE ACTIVATED SPACE amount SPACE TIME SPACE duration
                   | EXCEPT SPACE objectIs SPACE article SPACE type SPACE IN SPACE ADDITION SPACE TO SPACE objectPossessive SPACE OTHER SPACE TYPE
                   | EXCEPT SPACE objectIs SPACE color
-                  | EXCEPT SPACE object SPACE DO SPACE COPY objectPossessive SPACE COLOR
-                  | EXCEPT SPACE object SPACE DO SPACE COPY objectPossessive SPACE COLOR SPACE AND SPACE object SPACE HAVE SPACE THIS SPACE ABILITY
+                  | EXCEPT SPACE object SPACE DO SPACE COPY SPACE objectPossessive SPACE COLOR
+                  | EXCEPT SPACE object SPACE DO NOT SPACE COPY SPACE objectPossessive SPACE COLOR SPACE AND SPACE object SPACE HAVE SPACE (quotedAbility | THIS SPACE ABILITY)
                   | EXCEPT SPACE BY SPACE object
                   | WHERE SPACE variableDefinition
                   | WHILE SPACE DOING SPACE SO
