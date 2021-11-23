@@ -6,7 +6,7 @@ options {
     tokenVocab = alpha_lexer;
 }
 
-card : permanentCard | spellCard;
+card: permanentCard | spellCard;
 
 // Permanents
 permanentCard : ability (NEWLINE ability)*|; // or nothing
@@ -146,7 +146,7 @@ characteristic: POWER | TOUGHNESS | MANA SPACE VALUE;
 
 comparative: LESS | MORE_ | GREATER;
 
-condition : object (SPACE)? IS SPACE adjective
+condition : object (SPACE)? IS (NOT)? SPACE adjective
           | object (SPACE)? IS SPACE prepositionalPhrase
           | object (SPACE)? IS SPACE object
           | object SPACE HAVE SPACE A SPACE counterType SPACE prepositionalPhrase
@@ -272,7 +272,7 @@ premodifier : adjective
             | type
             | NUMBER SLASH NUMBER;
 
-adjective: ADDITIONAL | ATTACKING | BLOCKING | ENCHANTED | SACRIFICED | TAPPED | TOKEN | TOP;
+adjective: (NOT)? (ADDITIONAL | ATTACKING | BLOCKED | BLOCKING | ENCHANTED | SACRIFICED | TAPPED | TOKEN | TOP);
 
 prepositionalPhrase : prepositionalPhrase SPACE prepositionalPhrase
                     | preposition SPACE zone

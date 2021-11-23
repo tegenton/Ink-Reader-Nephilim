@@ -99,7 +99,7 @@ DO: D ('o' ('es')? (SPACE? NOT)?|'i');
 GAIN: G 'ain' (S)?;
 GET: G 'et' (S)?;
 HAVE: H 'a' ('s'|'v'('e')?)?;
-IS: ((I 's' | LetterA 're') (SPACE? NOT)?);
+IS: (I 's' | LetterA 're');
 
 // Negation
 NOT: U N | N O (T|N(DASH)?) | N APOSTROPHE T;
@@ -109,7 +109,7 @@ BLOCK: B 'lock' (S)?;
 DIE: D 'ie' (S)?;
 ENTER: E 'nter' (S)?;
 LEAVE: L 'eave' (S)?;
-TAP: (NOT)? T 'ap';
+TAP: T 'ap';
 
 // Player nouns
 CONTROLLER: CONTROL L ER;
@@ -162,7 +162,7 @@ PLAY: P 'lay';
 // Source verb
 DEAL: D 'eal' (S)?;
 DEALT: DEAL 't';
-CAN: C 'a' (N | NOT);
+CAN: C 'an';
 
 // Zones
 ANTE: LetterA 'nte' (S)?;
