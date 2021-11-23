@@ -204,10 +204,10 @@ keyword: BANDING | DEFENDER | FEAR | FLYING | HASTE | INDESTRUCTIBLE | LANDWALK 
 
 color: (NOT)? (WHITE | BLUE | BLACK | RED | GREEN);
 
-object: (premodifier SPACE)* (objectNoun) (SPACE postmodifier)*
-      | (objectNoun COMMA SPACE)* objectNoun SPACE conjunction objectNoun;
+object: (premodifier SPACE)* (objectNouns) (SPACE postmodifier)*;
 
-objectNoun: (TILDE | type | COPY | CARD | SPELL | PERMANENT | TOKEN | IT | THEY) (SPACE conjunction SPACE objectNoun)?;
+objectNouns: (objectNoun COMMA SPACE)* objectNoun (COMMA SPACE conjunction SPACE objectNoun)?;
+objectNoun: (TILDE | type | COPY | CARD | SPELL | PERMANENT | TOKEN | IT | THEY);
 
 objectPhrase : object SPACE objectVerbPhrase;
 
@@ -373,7 +373,7 @@ playerVerbPhrase : MAY SPACE playerVerbPhrase
                  | SEARCH SPACE zone SPACE prepositionalPhrase
                  | SKIPS SPACE THAT SPACE (TURN|DRAW)
                  | TAKE SPACE AN SPACE EXTRA SPACE TURN SPACE AFTER SPACE THIS SPACE ONE
-                 | TAP SPACE object
+                 | TAP (SPACE OR SPACE NOT TAP)? SPACE object
                  | HAVE SPACE object SPACE BECOME SPACE A SPACE COPY SPACE prepositionalPhrase SPACE subordinateClause
                  | HAVE SPACE player SHUFFLE
                  | HAVE SPACE object SPACE BLOCK SPACE object
