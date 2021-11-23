@@ -71,8 +71,9 @@ continuousObjectPhrase: object SPACE continuousObjectVerbPhrase (SPACE AND SPACE
 
 continuousObjectVerbPhrase: continuousObjectVerbPhrase SPACE conjunction SPACE continuousObjectVerbPhrase
                 	      | CAN (NOT)? SPACE objectAuxiliary
-                          | HAVE SPACE quotedAbility
              	          | HAVE SPACE ability
+                          | GAIN SPACE ability
+                          | HAVE SPACE quotedAbility
                           | LOSE SPACE quotedAbility;
 
 objectAuxiliary: ATTACK (SPACE subordinateClause)?
