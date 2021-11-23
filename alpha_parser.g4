@@ -246,7 +246,7 @@ postmodifier : player SPACE CONTROL
              | player SPACE HAVE SPACE CONTROLLED SPACE CONTINUOUSLY SPACE SINCE SPACE THE SPACE BEGINNING SPACE OF duration
              | player SPACE DID SPACE CONTROL SPACE CONTINUOUSLY SPACE SINCE SPACE THE SPACE BEGINNING SPACE OF duration
              | CONTROLLED SPACE BY SPACE player
-             | IN SPACE zone
+             | (IN | OF) SPACE zone
              | NAMED SPACE LITERAL_NAME SPACE prepositionalPhrase
              | ABLE SPACE TO SPACE BLOCK SPACE object
              | THAT SPACE CAN BLOCK object
@@ -329,7 +329,7 @@ playerPossessive : YOUR
                  | THEIR
                  | player saxon;
 
-playerVerbPhrase : playerVerbPhrase SPACE conjunction playerVerbPhrase
+playerVerbPhrase : playerVerbPhrase (COMMA SPACE playerVerbPhrase)* SPACE conjunction playerVerbPhrase
                  | MAY SPACE playerVerbPhrase
                  | CHANGE SPACE article SPACE TEXT SPACE prepositionalPhrase SPACE BY SPACE REPLACING SPACE ALL SPACE INSTANCES SPACE OF SPACE ONE SPACE textAspect SPACE WITH SPACE ANOTHER
                  | CHOOSE SPACE article SPACE textAspect
@@ -387,6 +387,7 @@ playerVerbPhrase : playerVerbPhrase SPACE conjunction playerVerbPhrase
                  | conjoinedObjectVerb SPACE object
                  | SHUFFLE SPACE zone SPACE prepositionalPhrase
                  | SACRIFICE SPACE THE SPACE REST
+                 | DISCARD SPACE zone
                  | DISCARD SPACE object SPACE AND SPACE SACRIFICE SPACE object SPACE THE SPACE SAME SPACE WAY
                  | CHOOSE SPACE object
                  | CAST SPACE object SPACE AS SPACE object SPACE WITH SPACE PAYING SPACE objectPossessive SPACE MANA SPACE COST
@@ -421,8 +422,10 @@ restriction : CAST SPACE object SPACE ONLY SPACE DURING SPACE phase
             | ACTIVATE SPACE ONLY SPACE AS SPACE A SPACE CARD_TYPE
             | ACTIVATE SPACE ONLY SPACE DURING SPACE phase (SPACE AND SPACE ONLY SPACE ONCE SPACE duration)?
             | ACTIVATE SPACE ONLY SPACE DURING SPACE playerPossessive SPACE TURN COMMA SPACE BEFORE SPACE ATTACKERS SPACE IS DECLARED
-            | REMOVE SPACE object SPACE prepositionalPhrase SPACE BEFORE SPACE PLAYING SPACE IF SPACE YOU IS SPACE NOT SPACE PLAYING SPACE FOR SPACE ANTE
+            | REMOVE SPACE object SPACE prepositionalPhrase SPACE BEFORE SPACE PLAYING SPACE IF SPACE playerIs SPACE NOT SPACE PLAYING SPACE FOR SPACE ANTE
             | ONLY SPACE player SPACE MAY SPACE ACTIVATE SPACE THIS SPACE ABILITY;
+
+playerIs: (YOU | THEY) APOSTROPHE RE | player SPACE IS;
 
 something : determiner SPACE something
           | object
@@ -487,7 +490,7 @@ zone: playerPossessive SPACE playerZone
     | article SPACE BATTLEFIELD
     | determiner SPACE GRAVEYARD;
 
-playerZone: (HAND | LIBRARY | GRAVEYARD) (SPACE AND SPACE playerZone)?;
+playerZone: (HAND | LIBRARY | DECK | GRAVEYARD) (SPACE AND SPACE playerZone)?;
 
 turnPart : NOT TAP
          | UPKEEP

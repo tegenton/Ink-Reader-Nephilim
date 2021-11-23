@@ -296,6 +296,8 @@ fragment ED: 'ed';
 fragment ER: 'er';
 fragment ING: 'ing';
 
+RE: R E;
+
 LITERAL_NAME: 'Plague' SPACE 'Rats';
 
 // To Sort
@@ -415,3 +417,4 @@ COMPLETELY: C 'ompletely';
 UNLESS: U 'nless';
 WORD: W 'ord';
 INSTEAD: I 'nstead';
+DECK: D 'eck';
