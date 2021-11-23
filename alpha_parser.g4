@@ -69,7 +69,8 @@ continuousEffect : anyTime COMMA SPACE player SPACE MAY SPACE costs PERIOD SPACE
                  | continuousObjectPhrase;
 
 continuousObjectPhrase: object SPACE continuousObjectVerbPhrase (SPACE AND SPACE continuousObjectVerbPhrase)*
-                      | objectIs SPACE object;
+                      | objectIs SPACE object
+                      | objectIs SPACE type;
 
 continuousObjectVerbPhrase: continuousObjectVerbPhrase SPACE conjunction SPACE continuousObjectVerbPhrase
                 	      | CAN (NOT)? SPACE objectAuxiliary
@@ -477,7 +478,7 @@ triggerEvent : THE SPACE BEGINNING SPACE OF SPACE phase
              | phrase;
 
 type: (SUPER_TYPE | CARD_TYPE | CREATURE_TYPE | ENCHANTMENT_TYPE | LAND_TYPE) (SPACE conjunction SPACE type)?
-    | CHOSEN TYPE;
+    | CHOSEN SPACE TYPE;
 
 zone : playerPossessive SPACE playerZone
      | article SPACE BATTLEFIELD;
