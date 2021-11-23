@@ -481,10 +481,10 @@ triggerEvent : THE SPACE BEGINNING SPACE OF SPACE phase
 type: (NOT)? (SUPER_TYPE | CARD_TYPE | CREATURE_TYPE | ENCHANTMENT_TYPE | LAND_TYPE) (SPACE conjunction SPACE type)?
     | CHOSEN SPACE TYPE;
 
-zone : playerPossessive SPACE playerZone
-     | article SPACE BATTLEFIELD;
+zone: playerPossessive SPACE playerZone
+    | article SPACE BATTLEFIELD;
 
-playerZone: (HAND | LIBRARY | GRAVEYARD) (SPACE AND playerZone);
+playerZone: (HAND | LIBRARY | GRAVEYARD) (SPACE AND SPACE playerZone)?;
 
 turnPart : NOT TAP
          | UPKEEP
