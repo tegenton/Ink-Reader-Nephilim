@@ -328,7 +328,7 @@ playerPossessive : YOUR
                  | player saxon;
 
 playerVerbPhrase : MAY SPACE playerVerbPhrase
-                 | CHANGE SPACE article SPACE TEXT SPACE prepositionalPhrase SPACE BY SPACE REPLACING SPACE ALL SPACE INSTANCES SPACE OF SPACE englishNumber SPACE textAspect SPACE WITH SPACE ANOTHER
+                 | CHANGE SPACE article SPACE TEXT SPACE prepositionalPhrase SPACE BY SPACE REPLACING SPACE ALL SPACE INSTANCES SPACE OF SPACE ONE SPACE textAspect SPACE WITH SPACE ANOTHER
                  | CHOOSE SPACE article SPACE textAspect
                  | IS SPACE DEALT SPACE damage
                  | ADD SPACE mana+
