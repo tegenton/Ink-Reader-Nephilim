@@ -37,7 +37,9 @@ triggeredAbility : triggerCondition COMMA SPACE triggerEffect PERIOD;
 
 spellCard : spellAbility (NEWLINE spellAbility)*;
 
-modal : CHOOSE SPACE ENGLISH_NUMBER SPACE DASH (NEWLINE BULLET SPACE effect PERIOD)+;
+modal : CHOOSE SPACE englishNumber SPACE DASH (NEWLINE BULLET SPACE effect PERIOD)+;
+
+englishNumber: ONE | TWO | THREE | SEVEN;
 
 spellAbility : effect PERIOD
              | restriction PERIOD
@@ -71,8 +73,8 @@ continuousObjectPhrase: object SPACE continuousObjectVerbPhrase (SPACE AND SPACE
 
 continuousObjectVerbPhrase: continuousObjectVerbPhrase SPACE conjunction SPACE continuousObjectVerbPhrase
                 	      | CAN (NOT)? SPACE objectAuxiliary
-             	          | HAVE SPACE ability
-                          | GAIN SPACE ability
+             	          | (HAVE | GAIN) SPACE ability
+             	          | GET SPACE STAT_MOD
                           | HAVE SPACE quotedAbility
                           | LOSE SPACE quotedAbility;
 
@@ -124,8 +126,8 @@ damage : DAMAGE
 // Definitions
 amount : HALF SPACE amount COMMA SPACE ROUNDED SPACE (ROUND_DIRECTION)
        | UP SPACE TO SPACE amount
-       | comparative SPACE THAN SPACE ENGLISH_NUMBER
-       | ENGLISH_NUMBER (SPACE conjunction SPACE comparative)?
+       | comparative SPACE THAN SPACE englishNumber
+       | englishNumber (SPACE conjunction SPACE comparative)?
        | objectPossessive SPACE characteristics
        | VARIABLE
        | article SPACE NUMBER SPACE OF SPACE object (SPACE MINUS SPACE NUMBER)?
@@ -327,7 +329,7 @@ playerPossessive : YOUR
                  | player saxon;
 
 playerVerbPhrase : MAY SPACE playerVerbPhrase
-                 | CHANGE SPACE article SPACE TEXT SPACE OF SPACE object SPACE BY SPACE REPLACING SPACE ALL SPACE INSTANCES SPACE OF SPACE ONE SPACE textAspect SPACE WITH SPACE ANOTHER
+                 | CHANGE SPACE article SPACE TEXT SPACE prepositionalPhrase SPACE BY SPACE REPLACING SPACE ALL SPACE INSTANCES SPACE OF SPACE englishNumber SPACE textAspect SPACE WITH SPACE ANOTHER
                  | CHOOSE SPACE article SPACE textAspect
                  | IS SPACE DEALT SPACE damage
                  | ADD SPACE mana+
@@ -464,7 +466,7 @@ objectIs: object SPACE IS
 subordinateConjunction: AS (SPACE LONG SPACE AS | SPACE THOUGH)? | BUT | EXCEPT | IF | WHERE;
 
 textAspect : COLOR SPACE WORD
-           | object TYPE;
+           | object SPACE TYPE;
 
 triggerCondition : triggerWord SPACE triggerEvent (COMMA SPACE subordinateClause)?;
 
@@ -474,7 +476,7 @@ triggerEvent : THE SPACE BEGINNING SPACE OF SPACE phase
              | END SPACE OF SPACE COMBAT
              | phrase;
 
-type: (CARD_TYPE | CREATURE_TYPE | ENCHANTMENT_TYPE | LAND_TYPE) (SPACE conjunction SPACE type)?
+type: (SUPER_TYPE | CARD_TYPE | CREATURE_TYPE | ENCHANTMENT_TYPE | LAND_TYPE) (SPACE conjunction SPACE type)?
     | CHOSEN TYPE;
 
 zone : playerPossessive SPACE playerZone

@@ -197,6 +197,7 @@ VIGILANCE: V 'igilance';
 FIRST: F 'irst';
 STRIKE: S 'trike';
 
+SUPER_TYPE : B 'asic';
 CARD_TYPE: C 'reature' (S)?
          | L 'and' (S)?
          | LetterA 'rtifact'
@@ -237,11 +238,10 @@ SPACE: ' ';
 TILDE: '~';
 
 // Numbers
-ENGLISH_NUMBER: ONE
-              | T 'wo'
-              | T 'hree'
-              | S 'even';
 ONE: O 'ne';
+TWO: T 'wo';
+THREE: T 'hree';
+SEVEN: S 'even';
 
 INT: [0-9]+;
 
