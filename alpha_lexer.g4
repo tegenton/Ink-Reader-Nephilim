@@ -201,7 +201,7 @@ SUPER_TYPE : B 'asic';
 CARD_TYPE: C 'reature' (S)?
          | L 'and' (S)?
          | LetterA 'rtifact'
-         | E 'nchantment'
+         | E 'nchantment' (S)?
          | I 'nstant'
          | S 'orcery'
          | P 'laneswalker';

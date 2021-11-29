@@ -24,7 +24,6 @@ staticAbility : staticAbility SPACE staticAbility
               | subordinateClause COMMA SPACE staticAbility
               | continuousEffect (PERIOD)?
               | replacementEffect (PERIOD)?
-              | abilityType SPACE prepositionalPhrase SPACE COST SPACE costs SPACE comparative SPACE TO SPACE ACTIVATE PERIOD
               | FOR SPACE EACH SPACE damage SPACE distinguisher COMMA SPACE triggerEffect PERIOD;
 
 abilityType: (ACTIVATED | MANA) SPACE ABILITY;
@@ -64,7 +63,7 @@ continuousEffect : anyTime COMMA SPACE player SPACE MAY SPACE costs PERIOD SPACE
                  | player SPACE HAVE SPACE NO SPACE MAXIMUM SPACE HAND SPACE SIZE
                  | player SPACE CONTROL SPACE something
                  | player SPACE SKIPS SPACE phase
-                 | object SPACE IS SPACE object
+                 | abilityType SPACE prepositionalPhrase SPACE COST SPACE costs SPACE comparative SPACE TO SPACE ACTIVATE
                  | damage SPACE IS SPACE DEALT SPACE prepositionalPhrase SPACE INSTEAD
                  | THIS SPACE EFFECT SPACE DO (NOT)? SPACE REMOVE SPACE object
                  | continuousObjectPhrase;
@@ -78,7 +77,8 @@ continuousObjectVerbPhrase: continuousObjectVerbPhrase SPACE conjunction SPACE c
              	          | (HAVE | GAIN) SPACE ability
              	          | GET SPACE STAT_MOD
                           | (HAVE | GAIN) SPACE quotedAbility
-                          | LOSE SPACE quotedAbility;
+                          | LOSE SPACE quotedAbility
+                          | COST SPACE costs SPACE comparative SPACE TO SPACE CAST;
 
 objectAuxiliary: ATTACK (SPACE subordinateClause)?
                | BLOCK SPACE object
@@ -227,7 +227,6 @@ objectVerbPhrase : IS SPACE DEALT SPACE damage
              	 | BECOME SPACE color
                  | BLOCK SPACE object (SPACE duration)? (SPACE subordinateClause)?
                  | BLOCK SPACE OR SPACE BECOME SPACE BLOCKED SPACE BY SPACE object
-                 | COST SPACE costs SPACE comparative SPACE TO SPACE CAST
              	 | DEAL SPACE damage SPACE prepositionalPhrase
                  | DEAL SPACE damage SPACE prepositionalPhrase SPACE AND SPACE damage SPACE prepositionalPhrase
                  | DEAL SPACE damage SPACE prepositionalPhrase COMMA SPACE subordinateClause
