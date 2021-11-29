@@ -350,7 +350,7 @@ playerVerbPhrase : playerVerbPhrase (COMMA SPACE playerVerbPhrase)* SPACE conjun
                  | ADD (S)? SPACE mana+
                  | ADD (S)? SPACE article SPACE AMOUNT SPACE OF SPACE mana SPACE EQUAL SPACE TO SPACE amount
                  | ADD (S)? SPACE amount SPACE MANA SPACE OF SPACE ANY SPACE (ONE SPACE)? color
-                 | ADD (S)? SPACE amount SPACE MANA SPACE OF SPACE ANY SPACE TYPE SPACE THAT SPACE object SPACE PRODUCED
+                 | ADD (S)? SPACE amount SPACE MANA SPACE OF SPACE ANY SPACE TYPE SPACE object SPACE PRODUCED
                  | ADD (S)? SPACE article SPACE ADDITIONAL SPACE mana
                  | ACTIVATE (S)? SPACE (A SPACE)? abilityType SPACE prepositionalPhrase
                  | ATTACH SPACE object SPACE TO SPACE object
