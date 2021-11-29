@@ -394,6 +394,7 @@ playerVerbPhrase : playerVerbPhrase (COMMA SPACE playerVerbPhrase)* SPACE conjun
                  | SACRIFICE SPACE THE SPACE REST
                  | SACRIFICE SPACE object
                  | DISCARD SPACE zone
+                 | DISCARD SPACE object (SPACE prepositionalPhrase)?
                  | DISCARD SPACE object SPACE AND SPACE SACRIFICE SPACE object SPACE THE SPACE SAME SPACE WAY
                  | CHOOSE SPACE object
                  | CAST SPACE object SPACE AS SPACE object SPACE WITH SPACE PAYING SPACE objectPossessive SPACE MANA SPACE COST

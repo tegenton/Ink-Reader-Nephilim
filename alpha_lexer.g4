@@ -133,7 +133,7 @@ COULD: C 'ould';
 COUNTER: C 'ounter' (S)?;
 CREATE: C 'reate';
 DESTROY: D 'estroy';
-DISCARD: D 'iscard';
+DISCARD: D 'iscard' (S)?;
 DIVIDE: D 'ivide' (S)?;
 DRAW: D 'raw';
 EXCHANGE: E 'xchange';
