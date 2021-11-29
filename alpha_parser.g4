@@ -26,7 +26,7 @@ staticAbility : staticAbility SPACE staticAbility
               | replacementEffect (PERIOD)?
               | FOR SPACE EACH SPACE damage SPACE distinguisher COMMA SPACE triggerEffect PERIOD;
 
-abilityType: (ACTIVATED | MANA) SPACE ABILITY;
+abilityType: (determiner SPACE)? (ACTIVATED | MANA) SPACE ABILITY;
 
 counterType: (COUNTER_TYPE | statMod) SPACE COUNTER;
 
@@ -49,11 +49,11 @@ spellAbility : effect PERIOD
 conjunction: AND | OR | AND SLASH OR | THEN;
 
 // Effects
-anyTime : ANY SPACE TIME SPACE player SPACE COULD SPACE play SPACE article SPACE playableType;
+anyTime : ANY SPACE TIME SPACE player SPACE COULD SPACE play SPACE playable;
 
 play: PLAY | CAST | ACTIVATE;
 
-playableType: CARD_TYPE | abilityType;
+playable: object | abilityType;
 
 continuousEffect : anyTime COMMA SPACE player SPACE MAY SPACE costs PERIOD SPACE effect
                  | player SPACE MAY SPACE costs SPACE anyTime PERIOD SPACE effect
@@ -284,7 +284,7 @@ premodifier : adjective
 
 adjective: (NOT)? (ADDITIONAL | ATTACKING | BLOCKED | BLOCKING | ENCHANTED | SACRIFICED | TAPPED | TOKEN | TOP);
 
-prepositionalPhrase : prepositionalPhrase SPACE prepositionalPhrase
+prepositionalPhrase : prepositionalPhrase SPACE (conjunction SPACE)? prepositionalPhrase
                     | preposition SPACE zone
                     | preposition SPACE something
                     | WITH SPACE quality
@@ -300,7 +300,11 @@ prepositionalPhrase : prepositionalPhrase SPACE prepositionalPhrase
                     | ON SPACE TOP SPACE OF SPACE zone
                     | AT SPACE RANDOM
                     | TO SPACE BE SPACE amount
-                    | OF SPACE playerPossessive SPACE CHOICE;
+                    | TO SPACE play SPACE playable
+                    | TO SPACE play SPACE playable SPACE OF SPACE object
+                    | OF SPACE playerPossessive SPACE CHOICE
+                    | ONLY SPACE IF SPACE THEY APOSTROPHE RE SPACE FROM SPACE object
+                    | ONLY SPACE IF SPACE MANA SPACE THEY SPACE PRODUCE SPACE IS SPACE SPENT SPACE prepositionalPhrase;
 
 preposition: ABOVE | FOR | FROM | IN | OF | ON | TO | UNDER | WITH;
 
@@ -337,6 +341,7 @@ playerPossessive : YOUR
 
 playerVerbPhrase : playerVerbPhrase (COMMA SPACE playerVerbPhrase)* SPACE conjunction SPACE playerVerbPhrase
                  | MAY SPACE playerVerbPhrase
+                 | CAN SPACE playerVerbPhrase
                  | CHANGE SPACE article SPACE TEXT SPACE prepositionalPhrase SPACE BY SPACE REPLACING SPACE ALL SPACE INSTANCES SPACE OF SPACE ONE SPACE textAspect SPACE WITH SPACE ANOTHER
                  | CHOOSE SPACE article SPACE textAspect
                  | IS SPACE DEALT SPACE damage
@@ -345,9 +350,8 @@ playerVerbPhrase : playerVerbPhrase (COMMA SPACE playerVerbPhrase)* SPACE conjun
                  | ADD SPACE amount SPACE MANA SPACE OF SPACE ANY SPACE (ONE SPACE)? color
                  | ADD SPACE amount SPACE MANA SPACE OF SPACE ANY SPACE type SPACE THAT SPACE object SPACE PRODUCED
                  | ADD SPACE article SPACE ADDITIONAL SPACE mana
-                 | ACTIVATE (S)? SPACE A SPACE abilityType SPACE prepositionalPhrase
+                 | ACTIVATE (S)? SPACE (A SPACE)? abilityType SPACE prepositionalPhrase
                  | ATTACH SPACE object SPACE TO SPACE object
-                 | CAN SPACE ACTIVATE SPACE MANA SPACE ABILITY SPACE ONLY SPACE IF SPACE THEY IS SPACE FROM SPACE object AND SPACE ONLY SPACE IF SPACE MANA SPACE THEY SPACE PRODUCE SPACE IS SPACE SPENT SPACE TO SPACE ACTIVATE SPACE OTHER SPACE MANA SPACE ABILITY SPACE OF object conjunction SPACE TO SPACE PLAY SPACE object
                  | COPY SPACE object COMMA SPACE subordinateClause
                  | COUNTER SPACE object (SPACE subordinateClause)?
                  | CHOOSE SPACE NEW SPACE TARGET SPACE prepositionalPhrase
@@ -369,7 +373,7 @@ playerVerbPhrase : playerVerbPhrase (COMMA SPACE playerVerbPhrase)* SPACE conjun
                  | LOSE SPACE HALF SPACE playerPossessive SPACE LIFE COMMA SPACE ROUNDED SPACE ROUND_DIRECTION
                  | LOSE SPACE ALL SPACE SPENT SPACE MANA
                  | OWN SPACE object
-                 | PLAY SPACE object SPACE subordinateClause
+                 | PLAY (S)? SPACE object SPACE subordinateClause
                  | PREVENT SPACE damage
                  | PUT SPACE THEM SPACE BACK SPACE IN SPACE ANY SPACE ORDER
                  | PUT SPACE object SPACE prepositionalPhrase
@@ -464,7 +468,7 @@ subordinateClause : subordinateConjunction SPACE condition
                   | EXCEPT SPACE BY SPACE object
                   | WHERE SPACE variableDefinition
                   | WHILE SPACE DOING SPACE SO
-                  | IF SPACE objectIs CAST AS object
+                  | IF SPACE objectIs SPACE CAST SPACE AS SPACE object
                   | IF SPACE object SPACE DID SPACE ATTACK SPACE duration
                   | IF object SPACE TURN SPACE OVER SPACE COMPLETELY SPACE AT SPACE LEAST SPACE ONCE SPACE DURING SPACE THE SPACE FLIP
                   | IF SPACE player SPACE WOULD SPACE playerVerbPhrase SPACE duration
