@@ -309,7 +309,7 @@ delayedTrigger : AT SPACE END SPACE OF SPACE COMBAT
 
 phase: (article SPACE)? playerPossessive SPACE TURN (COMMA SPACE subordinateClause)?
      | playerPossessive SPACE rawPhase
-     | article SPACE rawPhase (SPACE OF SPACE player)?
+     | determiner SPACE rawPhase (SPACE OF SPACE player)?
      | article SPACE NEXT SPACE rawPhase
      | COMBAT (SPACE subordinateClause)?
      | THE SPACE TURN
@@ -373,7 +373,7 @@ playerVerbPhrase : playerVerbPhrase (COMMA SPACE playerVerbPhrase)* SPACE conjun
                  | PREVENT SPACE damage
                  | PUT SPACE THEM SPACE BACK SPACE IN SPACE ANY SPACE ORDER
                  | PUT SPACE object SPACE prepositionalPhrase
-                 | PUT SPACE amount SPACE counterType SPACE prepositionalPhrase
+                 | PUT SPACE (amount|A) SPACE counterType SPACE prepositionalPhrase
                  | REGENERATE SPACE object
                  | REMOVE SPACE article SPACE counterType SPACE prepositionalPhrase
                  | RETURN SPACE object SPACE prepositionalPhrase
