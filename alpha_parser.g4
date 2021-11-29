@@ -75,10 +75,12 @@ continuousObjectPhrase: object SPACE continuousObjectVerbPhrase (SPACE AND SPACE
 continuousObjectVerbPhrase: continuousObjectVerbPhrase SPACE conjunction SPACE continuousObjectVerbPhrase
                 	      | CAN (NOT)? SPACE objectAuxiliary
              	          | (HAVE | GAIN) SPACE ability
-             	          | GET SPACE STAT_MOD
+             	          | GET SPACE statMod
                           | (HAVE | GAIN) SPACE quotedAbility
                           | LOSE SPACE quotedAbility
                           | COST SPACE costs SPACE comparative SPACE TO SPACE CAST;
+
+statMod: (PLUS | DASH) (INT|VARIABLE) SLASH (PLUS | DASH) (INT|VARIABLE);
 
 objectAuxiliary: ATTACK (SPACE subordinateClause)?
                | BLOCK SPACE object
