@@ -356,7 +356,7 @@ playerVerbPhrase : playerVerbPhrase (COMMA SPACE playerVerbPhrase)* SPACE conjun
                  | ATTACH SPACE object SPACE TO SPACE object
                  | COPY SPACE object COMMA SPACE subordinateClause
                  | COUNTER SPACE object (SPACE subordinateClause)?
-                 | CHOOSE SPACE NEW SPACE TARGET SPACE prepositionalPhrase
+                 | CHOOSE SPACE NEW SPACE TARGET (S)? SPACE prepositionalPhrase
                  | CHOOSE SPACE object SPACE prepositionalPhrase
                  | CHOOSE SPACE object
                  | CREATE SPACE object
