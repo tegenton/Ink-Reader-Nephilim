@@ -28,7 +28,7 @@ staticAbility : staticAbility SPACE staticAbility
 
 abilityType: (ACTIVATED | MANA) SPACE ABILITY;
 
-counterType: (COUNTER_TYPE | STAT_MOD) SPACE COUNTER;
+counterType: (COUNTER_TYPE | statMod) SPACE COUNTER;
 
 triggeredAbility : triggerCondition COMMA SPACE triggerEffect PERIOD;
 
@@ -59,7 +59,7 @@ continuousEffect : anyTime COMMA SPACE player SPACE MAY SPACE costs PERIOD SPACE
                  | player SPACE MAY SPACE costs SPACE anyTime PERIOD SPACE effect
                  | player SPACE CAN SPACE BE SPACE ATTACKED SPACE subordinateClause
                  | player SPACE CAN SPACE TAP SPACE object SPACE duration
-                 | player SPACE DO SPACE LOSE SPACE THE SPACE GAME SPACE prepositionalPhrase
+                 | player SPACE DO (NOT)? SPACE LOSE SPACE THE SPACE GAME SPACE prepositionalPhrase
                  | player SPACE HAVE SPACE NO SPACE MAXIMUM SPACE HAND SPACE SIZE
                  | player SPACE CONTROL SPACE something
                  | player SPACE SKIPS SPACE phase
@@ -132,7 +132,7 @@ amount: amount COMMA SPACE amount COMMA SPACE conjunction SPACE amount
       | HALF SPACE amount COMMA SPACE ROUNDED SPACE (ROUND_DIRECTION)
       | UP SPACE TO SPACE amount
       | comparative SPACE THAN SPACE englishNumber
-      | englishNumber (SPACE conjunction SPACE comparative)?
+      | (englishNumber | INT) (SPACE conjunction SPACE comparative)?
       | objectPossessive SPACE characteristics (SPACE subordinateClause)?
       | VARIABLE
       | article SPACE NUMBER SPACE OF SPACE object (SPACE MINUS SPACE INT)?
@@ -239,7 +239,7 @@ objectVerbPhrase : IS SPACE DEALT SPACE damage
                  | DO SPACE TAP SPACE duration
                  | DO SPACE SO
                  | ENTER SPACE zone (TAPPED)?
-             	 | GAIN SPACE keyword SPACE AND SPACE GET SPACE STAT_MOD SPACE duration COMMA SPACE subordinateClause
+             	 | GAIN SPACE keyword SPACE AND SPACE GET SPACE statMod SPACE duration COMMA SPACE subordinateClause
                  | GAIN SPACE quotedAbility
                  | LEAVE SPACE zone
                  | LOSE SPACE keyword;
@@ -327,7 +327,8 @@ playerPremodifier: ACTIVE | CHOSEN | DEFENDING;
 
 playerPostmodifier: WHO SPACE CONTROL SPACE THE SPACE FEWEST;
 
-playerPhrase: player SPACE playerVerbPhrase;
+playerPhrase: player SPACE playerVerbPhrase
+            | playerIs SPACE DEALT SPACE DAMAGE;
 
 playerPossessive : YOUR
                  | THEIR
@@ -376,7 +377,7 @@ playerVerbPhrase : playerVerbPhrase (COMMA SPACE playerVerbPhrase)* SPACE conjun
                  | REGENERATE SPACE object
                  | REMOVE SPACE article SPACE counterType SPACE prepositionalPhrase
                  | RETURN SPACE object SPACE prepositionalPhrase
-                 | SACRIFICE (S)? SPACE object (subordinateClause)?
+                 | SACRIFICE (S)? SPACE object ((PERIOD)? SPACE subordinateClause)?
                  | SEARCH SPACE zone SPACE prepositionalPhrase
                  | SKIPS SPACE THAT SPACE (TURN|DRAW)
                  | TAKE SPACE AN SPACE EXTRA SPACE TURN SPACE AFTER SPACE THIS SPACE ONE
@@ -471,7 +472,8 @@ subordinateClause : subordinateConjunction SPACE condition
                   | UNLESS SPACE player SPACE CONTROL SPACE object
                   | IF SPACE player SPACE DO (NOT)?
                   | AS SPACE object COMMA SPACE subordinateClause
-                  | BEFORE SPACE THE SPACE DAMAGE SPACE WAS SPACE DEALT;
+                  | BEFORE SPACE THE SPACE DAMAGE SPACE WAS SPACE DEALT
+                  | IF SPACE player SPACE CAN (NOT)? COMMA SPACE effect;
 
 objectIs: object SPACE IS
         | IT APOSTROPHE S;
