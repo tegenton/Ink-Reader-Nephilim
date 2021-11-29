@@ -342,6 +342,7 @@ playerPossessive : YOUR
                  | player saxon;
 
 playerVerbPhrase : playerVerbPhrase (COMMA SPACE playerVerbPhrase)* SPACE conjunction SPACE playerVerbPhrase
+                 | (ANTE | CHOOSE | CREATE | DESTROY | DRAW | EXILE | OWN | REGENERATE | SACRIFICE) (S)? SPACE object
                  | MAY SPACE playerVerbPhrase
                  | CAN SPACE playerVerbPhrase
                  | CHANGE SPACE article SPACE TEXT SPACE prepositionalPhrase SPACE BY SPACE REPLACING SPACE ALL SPACE INSTANCES SPACE OF SPACE ONE SPACE textAspect SPACE WITH SPACE ANOTHER
@@ -358,14 +359,9 @@ playerVerbPhrase : playerVerbPhrase (COMMA SPACE playerVerbPhrase)* SPACE conjun
                  | COUNTER SPACE object (SPACE subordinateClause)?
                  | CHOOSE SPACE NEW SPACE TARGET (S)? SPACE prepositionalPhrase
                  | CHOOSE SPACE object SPACE prepositionalPhrase
-                 | CHOOSE SPACE object
-                 | CREATE SPACE object
-                 | DESTROY SPACE object
                  | DESTROY SPACE object SPACE delayedTrigger
                  | DESTROY SPACE object SPACE delayedTrigger SPACE subordinateClause
-                 | DRAW (S)? SPACE object
                  | EXCHANGE SPACE object SPACE WITH SPACE object
-                 | EXILE SPACE object
                  | FLIP SPACE object SPACE prepositionalPhrase
                  | GAIN SPACE life
                  | LOOK SPACE AT SPACE object
@@ -374,13 +370,11 @@ playerVerbPhrase : playerVerbPhrase (COMMA SPACE playerVerbPhrase)* SPACE conjun
                  | LOSE SPACE life
                  | LOSE SPACE HALF SPACE playerPossessive SPACE LIFE COMMA SPACE ROUNDED SPACE ROUND_DIRECTION
                  | LOSE SPACE ALL SPACE SPENT SPACE MANA
-                 | OWN SPACE object
                  | PLAY (S)? SPACE object SPACE subordinateClause
                  | PREVENT SPACE damage
                  | PUT SPACE THEM SPACE BACK SPACE IN SPACE ANY SPACE ORDER
                  | PUT SPACE object SPACE prepositionalPhrase
                  | PUT SPACE (amount|A) SPACE counterType SPACE prepositionalPhrase
-                 | REGENERATE SPACE object
                  | REMOVE SPACE article SPACE counterType SPACE prepositionalPhrase
                  | RETURN SPACE object SPACE prepositionalPhrase
                  | SACRIFICE (S)? SPACE object ((PERIOD)? SPACE subordinateClause)?
@@ -395,14 +389,11 @@ playerVerbPhrase : playerVerbPhrase (COMMA SPACE playerVerbPhrase)* SPACE conjun
                  | PLAY SPACE object SPACE ON SPACE EACH SPACE OF SPACE duration
                  | PAY SPACE amount SPACE OF SPACE MANA
                  | PAY SPACE mana
-                 | ANTE SPACE object
                  | SHUFFLE (SPACE zone SPACE prepositionalPhrase)?
                  | SACRIFICE SPACE THE SPACE REST
-                 | SACRIFICE SPACE object
                  | DISCARD SPACE zone
                  | DISCARD SPACE object (SPACE prepositionalPhrase)?
                  | DISCARD SPACE object SPACE AND SPACE SACRIFICE SPACE object SPACE THE SPACE SAME SPACE WAY
-                 | CHOOSE SPACE object
                  | CAST SPACE object SPACE AS SPACE object SPACE WITH SPACE PAYING SPACE objectPossessive SPACE MANA SPACE COST
                  | DIVIDE SPACE object SPACE IN SPACE A SPACE PILE_LABEL SPACE PILE SPACE AND SPACE A SPACE PILE_LABEL SPACE PILE
                  | ADD SPACE THE SPACE MANA SPACE LOST SPACE THIS SPACE WAY
