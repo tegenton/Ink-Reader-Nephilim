@@ -109,7 +109,7 @@ BLOCK: B 'lock' (S)?;
 DIE: D 'ie' (S)?;
 ENTER: E 'nter' (S)?;
 LEAVE: L 'eave' (S)?;
-TAP: T 'ap';
+TAP: (NOT)? T 'ap';
 
 // Player nouns
 CONTROLLER: CONTROL L ER;

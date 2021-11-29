@@ -79,7 +79,8 @@ continuousObjectVerbPhrase: continuousObjectVerbPhrase SPACE conjunction SPACE c
              	          | GET SPACE statMod
                           | (HAVE | GAIN) SPACE quotedAbility
                           | LOSE SPACE quotedAbility
-                          | COST SPACE costs SPACE comparative SPACE TO SPACE CAST;
+                          | COST SPACE costs SPACE comparative SPACE TO SPACE CAST
+                          | DO (NOT)? SPACE TAP SPACE DURING SPACE phase;
 
 statMod: (PLUS | DASH) (INT|VARIABLE) SLASH (PLUS | DASH) (INT|VARIABLE);
 
@@ -500,7 +501,7 @@ zone: playerPossessive SPACE playerZone
 
 playerZone: (HAND | LIBRARY | DECK | GRAVEYARD) (SPACE AND SPACE playerZone)?;
 
-turnPart : NOT TAP
+turnPart : TAP
          | UPKEEP
          | DRAW
          | DECLARE
