@@ -23,14 +23,13 @@ activatedAbility : costs COLON SPACE effect PERIOD (SPACE restriction PERIOD)?;
 staticAbility : staticAbility SPACE staticAbility
               | subordinateClause COMMA SPACE staticAbility
               | continuousEffect (PERIOD)?
-              | replacementEffect (PERIOD)?
               | FOR SPACE EACH SPACE damage SPACE distinguisher COMMA SPACE triggerEffect PERIOD;
 
 abilityType: (determiner SPACE)? (ACTIVATED | MANA) SPACE ABILITY;
 
 counterType: (COUNTER_TYPE | statMod) SPACE COUNTER;
 
-triggeredAbility : triggerCondition COMMA SPACE triggerEffect PERIOD;
+triggeredAbility : triggerCondition COMMA SPACE triggerEffect (PERIOD)?;
 
 // Spells
 
@@ -79,7 +78,7 @@ continuousObjectVerbPhrase: continuousObjectVerbPhrase SPACE conjunction SPACE c
              	          | (HAVE | GAIN) SPACE ability
              	          | GET SPACE statMod
                           | (HAVE | GAIN) SPACE quotedAbility
-                          | LOSE SPACE quotedAbility
+                          | LOSE SPACE (keyword | quotedAbility)
                           | COST SPACE costs SPACE comparative SPACE TO SPACE CAST
                           | DO (NOT)? SPACE TAP SPACE DURING SPACE phase;
 
