@@ -126,26 +126,28 @@ damage : DAMAGE
        | THE SPACE NEXT SPACE damage SPACE THAT SPACE WOULD SPACE BE SPACE DEALT SPACE TO SPACE something SPACE duration;
 
 // Definitions
-amount : HALF SPACE amount COMMA SPACE ROUNDED SPACE (ROUND_DIRECTION)
-       | UP SPACE TO SPACE amount
-       | comparative SPACE THAN SPACE englishNumber
-       | englishNumber (SPACE conjunction SPACE comparative)?
-       | objectPossessive SPACE characteristics
-       | VARIABLE
-       | article SPACE NUMBER SPACE OF SPACE object (SPACE MINUS SPACE NUMBER)?
-       | (THE | ANY | A) SPACE NUMBER SPACE OF
-       | damage SPACE DEALT SPACE TO SPACE player SPACE duration
-       | playerPossessive SPACE LIFE SPACE TOTAL
-       | THAT SPACE MANY
-       | THE SPACE AMOUNT SPACE OF SPACE MANA SPACE THAT SPACE player SPACE PAID SPACE THIS SPACE WAY
-       | damage SPACE PREVENTED SPACE THIS SPACE WAY
-       | ANY SPACE AMOUNT;
+amount: amount COMMA SPACE amount COMMA SPACE conjunction SPACE amount
+      | HALF SPACE amount COMMA SPACE ROUNDED SPACE (ROUND_DIRECTION)
+      | UP SPACE TO SPACE amount
+      | comparative SPACE THAN SPACE englishNumber
+      | englishNumber (SPACE conjunction SPACE comparative)?
+      | objectPossessive SPACE characteristics (SPACE subordinateClause)?
+      | VARIABLE
+      | article SPACE NUMBER SPACE OF SPACE object (SPACE MINUS SPACE INT)?
+      | (THE | ANY | A) SPACE NUMBER SPACE OF
+      | damage SPACE DEALT SPACE prepositionalPhrase SPACE duration
+      | playerPossessive SPACE LIFE SPACE TOTAL (SPACE subordinateClause)?
+      | THAT SPACE MANY
+      | THE SPACE AMOUNT SPACE OF SPACE MANA SPACE THAT SPACE player SPACE PAID SPACE THIS SPACE WAY
+      | damage SPACE PREVENTED SPACE THIS SPACE WAY
+      | ANY SPACE AMOUNT
+      | THE SPACE DAMAGE SPACE DEALT COMMA SPACE BUT SPACE NOT SPACE MORE_ SPACE LIFE SPACE THAN SPACE amount;
 
 article: A | AN | THE;
 
 characteristics: characteristic (SPACE conjunction SPACE characteristic)*;
 
-characteristic: POWER | TOUGHNESS | MANA SPACE VALUE;
+characteristic: POWER | TOUGHNESS | MANA SPACE VALUE | LOYALTY;
 
 comparative: LESS | MORE_ | GREATER;
 
@@ -418,7 +420,7 @@ rawPhase : turnPart
          | (turnPart SPACE)? turnPart SPACE STEP (S)?;
 
 restriction : CAST SPACE object SPACE ONLY SPACE DURING SPACE phase
-            | CAST object SPACE ONLY SPACE BEFORE SPACE phase
+            | CAST SPACE object SPACE ONLY SPACE BEFORE SPACE phase
             | SPEND SPACE ONLY SPACE color SPACE MANA SPACE ON SPACE VARIABLE
             | AS SPACE AN SPACE ADDITIONAL SPACE COST SPACE TO SPACE CAST object COMMA SPACE costs
             | object SPACE COST costs SPACE comparative SPACE TO SPACE CAST prepositionalPhrase
@@ -461,13 +463,13 @@ subordinateClause : subordinateConjunction SPACE condition
                   | WHILE SPACE DOING SPACE SO
                   | IF SPACE objectIs CAST AS object
                   | IF SPACE object SPACE DID SPACE ATTACK SPACE duration
-                  | BUT SPACE NOT SPACE comparative SPACE LIFE SPACE THAN SPACE playerPossessive SPACE LIFE SPACE TOTAL SPACE BEFORE SPACE damage SPACE WAS SPACE DEALT COMMA SPACE objectPossessive SPACE LOYALTY SPACE BEFORE SPACE damage SPACE WAS SPACE DEALT COMMA SPACE OR SPACE amount
                   | IF object SPACE TURN SPACE OVER SPACE COMPLETELY SPACE AT SPACE LEAST SPACE ONCE SPACE DURING SPACE THE SPACE FLIP
                   | IF SPACE player SPACE WOULD SPACE playerVerbPhrase SPACE duration
                   | UNLESS SPACE player SPACE costs
                   | UNLESS SPACE player SPACE CONTROL SPACE object
                   | IF SPACE player SPACE DO (NOT)?
-                  | AS SPACE object COMMA SPACE subordinateClause;
+                  | AS SPACE object COMMA SPACE subordinateClause
+                  | BEFORE SPACE THE SPACE DAMAGE SPACE WAS SPACE DEALT;
 
 objectIs: object SPACE IS
         | IT APOSTROPHE S;

@@ -203,7 +203,8 @@ CARD_TYPE: C 'reature' (S)?
          | LetterA 'rtifact'
          | E 'nchantment'
          | I 'nstant'
-         | S 'orcery';
+         | S 'orcery'
+         | P 'laneswalker';
 
 CREATURE_TYPE: G 'oblin'
              | G 'olem'
