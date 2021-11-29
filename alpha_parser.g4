@@ -237,7 +237,7 @@ objectVerbPhrase : IS SPACE DEALT SPACE damage
                  | DEAL SPACE damage SPACE prepositionalPhrase COMMA SPACE subordinateClause
                  | DEAL SPACE damage SPACE prepositionalPhrase SPACE EQUAL SPACE TO SPACE amount
                  | DEAL SPACE damage SPACE EQUAL SPACE TO SPACE amount SPACE prepositionalPhrase
-                 | DEAL SPACE damage SPACE DIVIDED SPACE EVENLY COMMA SPACE ROUNDED SPACE ROUND_DIRECTION COMMA SPACE AMONG SPACE object
+                 | DEAL SPACE damage SPACE DIVIDED SPACE EVENLY COMMA SPACE ROUNDED SPACE ROUND_DIRECTION COMMA SPACE AMONG SPACE something
                  | DIE
                  | DO SPACE TAP SPACE duration
                  | DO SPACE SO
@@ -432,7 +432,7 @@ restriction : CAST SPACE object SPACE ONLY SPACE DURING SPACE phase
             | CAST SPACE object SPACE ONLY SPACE BEFORE SPACE phase
             | SPEND SPACE ONLY SPACE color SPACE MANA SPACE ON SPACE VARIABLE
             | AS SPACE AN SPACE ADDITIONAL SPACE COST SPACE TO SPACE CAST SPACE object COMMA SPACE costs
-            | object SPACE COST costs SPACE comparative SPACE TO SPACE CAST prepositionalPhrase
+            | object SPACE COST SPACE costs SPACE comparative SPACE TO SPACE CAST SPACE prepositionalPhrase
             | ACTIVATE SPACE ONLY SPACE AS SPACE A SPACE CARD_TYPE
             | ACTIVATE SPACE ONLY SPACE DURING SPACE phase (SPACE AND SPACE ONLY SPACE ONCE SPACE duration)?
             | ACTIVATE SPACE ONLY SPACE DURING SPACE phase
@@ -445,7 +445,9 @@ something : determiner SPACE something
           | object
           | player
           | something SPACE conjunction SPACE something
-          | ANY SPACE TARGET;
+          | target;
+
+target: premodifier SPACE TARGET (S)? (SPACE BEYOND SPACE THE SPACE FIRST)?;
 
 source : premodifier SPACE source
        | source SPACE postmodifier
