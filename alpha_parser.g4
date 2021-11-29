@@ -209,7 +209,7 @@ keyword: BANDING | DEFENDER | FEAR | FLYING | HASTE | INDESTRUCTIBLE | LANDWALK 
 
 color: (NOT)? (WHITE | BLUE | BLACK | RED | GREEN);
 
-object: (premodifier SPACE)* (objectNouns) (SPACE postmodifier)*;
+object: (premodifier (COMMA)? SPACE)* (objectNouns) (SPACE postmodifier)*;
 
 objectNouns: (objectNoun COMMA SPACE)* objectNoun ((COMMA)? SPACE conjunction SPACE objectNoun)?;
 objectNoun: (TILDE | type | COPY | CARD | SPELL | PERMANENT | TOKEN | IT | THEY);
