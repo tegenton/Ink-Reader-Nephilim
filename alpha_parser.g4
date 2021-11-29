@@ -38,7 +38,7 @@ spellCard : spellAbility (NEWLINE spellAbility)*;
 
 modal : CHOOSE SPACE englishNumber SPACE DASH (NEWLINE BULLET SPACE effect PERIOD)+;
 
-englishNumber: ONE | TWO | THREE | SEVEN;
+englishNumber: ONE | TWO | THREE | FOUR | FIVE | SIX | SEVEN;
 
 spellAbility : effect PERIOD
              | restriction PERIOD
@@ -91,7 +91,7 @@ objectAuxiliary: ATTACK (SPACE subordinateClause)?
                | BE SPACE ENCHANTED SPACE BY SPACE object
                | BE SPACE REGENERATED;
 
-replacementEffect : subordinateClause COMMA SPACE (SPACE INSTEAD)? effect (SPACE INSTEAD)?
+replacementEffect : subordinateClause COMMA SPACE (INSTEAD SPACE effect | effect SPACE INSTEAD)
                   | subordinateClause COMMA SPACE playerPhrase SPACE INSTEAD PERIOD SPACE subordinateClause COMMA SPACE effect
                   | subordinateClause COMMA SPACE playerVerbPhrase COMMA SPACE BUT SPACE player SPACE MAY SPACE PUT SPACE object prepositionalPhrase SPACE INSTEAD SPACE OF SPACE prepositionalPhrase
                   | subordinateClause SPACE duration COMMA SPACE effect SPACE INSTEAD
@@ -103,19 +103,19 @@ replacementEffect : subordinateClause COMMA SPACE (SPACE INSTEAD)? effect (SPACE
 triggerEffect : effect (SPACE subordinateClause)?;
 
 effect : rawEffect
+       | subordinateClause COMMA SPACE effect
        | rawEffect (PERIOD)? SPACE conjunction SPACE effect
        | rawEffect PERIOD SPACE effect
        | continuousEffect (SPACE duration)? ((COMMA SPACE conjunction)? SPACE effect)?
        | duration COMMA SPACE continuousEffect
-       | subordinateClause COMMA SPACE effect
        | (rawEffect COMMA SPACE)? rawEffect COMMA SPACE conjunction SPACE rawEffect
        | THE SPACE NEXT SPACE TIME SPACE source SPACE WOULD SPACE DEAL SPACE DAMAGE SPACE prepositionalPhrase SPACE duration COMMA SPACE effect;
 
 rawEffect: source SPACE DEAL SPACE damage SPACE TO SPACE player SPACE INSTEAD
        | delayedTrigger COMMA SPACE REMOVE SPACE ALL SPACE counterType SPACE FROM SPACE object
-       | delayedTrigger COMMA SPACE DESTROY SPACE object subordinateClause
+       | delayedTrigger COMMA SPACE DESTROY SPACE object SPACE subordinateClause
        | WHEN SPACE object SPACE LEAVE SPACE zone COMMA SPACE player SACRIFICE object
-       | SACRIFICE SPACE object delayedTrigger
+       | SACRIFICE SPACE object SPACE delayedTrigger
        | phrase
        | playerVerbPhrase
        | THIS SPACE ABILITY SPACE CAN SPACE CAUSE SPACE THE SPACE TOTAL SPACE NUMBER OF SPACE counterType prepositionalPhrase

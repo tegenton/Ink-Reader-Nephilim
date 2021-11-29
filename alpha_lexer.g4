@@ -241,6 +241,9 @@ TILDE: '~';
 ONE: O 'ne';
 TWO: T 'wo';
 THREE: T 'hree';
+FOUR: F 'our';
+FIVE: F 'ive';
+SIX: S 'ix';
 SEVEN: S 'even';
 
 INT: [0-9]+;
