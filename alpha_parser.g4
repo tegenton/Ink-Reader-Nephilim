@@ -246,7 +246,7 @@ objectVerbPhrase : IS SPACE DEALT SPACE damage
 
 postmodifier : player SPACE CONTROL
              | player SPACE CONTROLLED SPACE AT SPACE THE SPACE BEGINNING SPACE OF SPACE duration
-             | player SPACE HAVE SPACE CONTROLLED SPACE CONTINUOUSLY SPACE SINCE SPACE THE SPACE BEGINNING SPACE OF duration
+             | player SPACE HAVE SPACE CONTROLLED SPACE CONTINUOUSLY SPACE SINCE SPACE THE SPACE BEGINNING SPACE OF SPACE duration
              | player SPACE DID SPACE CONTROL SPACE CONTINUOUSLY SPACE SINCE SPACE THE SPACE BEGINNING SPACE OF duration
              | CONTROLLED SPACE BY SPACE player
              | (IN | OF) SPACE zone
@@ -306,11 +306,11 @@ preposition: ABOVE | FOR | FROM | IN | OF | ON | TO | UNDER | WITH;
 delayedTrigger : AT SPACE END SPACE OF SPACE COMBAT
                | AT SPACE THE SPACE BEGINNING SPACE OF SPACE phase;
 
-phase: (article SPACE)? playerPossessive SPACE TURN (COMMA SPACE BEFORE SPACE ATTACKERS SPACE IS SPACE DECLARED)?
+phase: (article SPACE)? playerPossessive SPACE TURN (COMMA SPACE subordinateClause)?
      | playerPossessive SPACE rawPhase
      | article SPACE rawPhase (SPACE OF SPACE player)?
      | article SPACE NEXT SPACE rawPhase
-     | COMBAT (SPACE BEFORE SPACE BLOCKERS SPACE IS SPACE DECLARED)?
+     | COMBAT (SPACE subordinateClause)?
      | THE SPACE TURN
      | EACH SPACE OF SPACE playerPossessive SPACE rawPhase SPACE FOR SPACE THE SPACE REST SPACE OF SPACE THE SPACE GAME
      | THE SPACE NEXT SPACE END SPACE STEP;
@@ -349,7 +349,6 @@ playerVerbPhrase : playerVerbPhrase (COMMA SPACE playerVerbPhrase)* SPACE conjun
                  | CAN SPACE ACTIVATE SPACE MANA SPACE ABILITY SPACE ONLY SPACE IF SPACE THEY IS SPACE FROM SPACE object AND SPACE ONLY SPACE IF SPACE MANA SPACE THEY SPACE PRODUCE SPACE IS SPACE SPENT SPACE TO SPACE ACTIVATE SPACE OTHER SPACE MANA SPACE ABILITY SPACE OF object conjunction SPACE TO SPACE PLAY SPACE object
                  | COPY SPACE object COMMA SPACE subordinateClause
                  | COUNTER SPACE object (SPACE subordinateClause)?
-                 | CHOOSE SPACE object
                  | CHOOSE SPACE NEW SPACE TARGET SPACE prepositionalPhrase
                  | CHOOSE SPACE object SPACE prepositionalPhrase
                  | CHOOSE SPACE object
@@ -429,7 +428,7 @@ restriction : CAST SPACE object SPACE ONLY SPACE DURING SPACE phase
             | object SPACE COST costs SPACE comparative SPACE TO SPACE CAST prepositionalPhrase
             | ACTIVATE SPACE ONLY SPACE AS SPACE A SPACE CARD_TYPE
             | ACTIVATE SPACE ONLY SPACE DURING SPACE phase (SPACE AND SPACE ONLY SPACE ONCE SPACE duration)?
-            | ACTIVATE SPACE ONLY SPACE DURING SPACE playerPossessive SPACE TURN COMMA SPACE BEFORE SPACE ATTACKERS SPACE IS DECLARED
+            | ACTIVATE SPACE ONLY SPACE DURING SPACE phase
             | REMOVE SPACE object SPACE prepositionalPhrase SPACE BEFORE SPACE PLAYING SPACE IF SPACE playerIs SPACE NOT SPACE PLAYING SPACE FOR SPACE ANTE
             | ONLY SPACE player SPACE MAY SPACE ACTIVATE SPACE THIS SPACE ABILITY;
 
@@ -473,6 +472,7 @@ subordinateClause : subordinateConjunction SPACE condition
                   | IF SPACE player SPACE DO (NOT)?
                   | AS SPACE object COMMA SPACE subordinateClause
                   | BEFORE SPACE THE SPACE DAMAGE SPACE WAS SPACE DEALT
+                  | BEFORE SPACE (ATTACKERS|BLOCKERS) SPACE IS SPACE DECLARED
                   | IF SPACE player SPACE CAN (NOT)? COMMA SPACE effect;
 
 objectIs: object SPACE IS
