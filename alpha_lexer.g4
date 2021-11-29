@@ -196,10 +196,10 @@ FIRST: F 'irst';
 STRIKE: S 'trike';
 
 SUPER_TYPE : B 'asic';
-CARD_TYPE: C 'reature' (S)?
-         | L 'and' (S)?
+CARD_TYPE: C 'reature'
+         | L 'and'
          | LetterA 'rtifact'
-         | E 'nchantment' (S)?
+         | E 'nchantment'
          | I 'nstant'
          | S 'orcery'
          | P 'laneswalker';
@@ -213,9 +213,9 @@ CREATURE_TYPE: G 'oblin'
 ENCHANTMENT_TYPE: LetterA 'ura';
 
 LAND_TYPE: P 'lains'
-         | I 'sland' (S)?
-         | S 'wamp' (S)?
-         | M 'ountain' (S)?
+         | I 'sland'
+         | S 'wamp'
+         | M 'ountain'
          | F 'orest';
 
 // Literal symbols
