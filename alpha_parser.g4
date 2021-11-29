@@ -70,7 +70,8 @@ continuousEffect : anyTime COMMA SPACE player SPACE MAY SPACE costs PERIOD SPACE
 
 continuousObjectPhrase: object SPACE continuousObjectVerbPhrase (SPACE AND SPACE continuousObjectVerbPhrase)*
                       | objectIs SPACE object
-                      | objectIs SPACE type;
+                      | objectIs SPACE type
+                      | objectPossessive SPACE characteristics SPACE IS SPACE EACH SPACE EQUAL SPACE TO SPACE amount;
 
 continuousObjectVerbPhrase: continuousObjectVerbPhrase SPACE conjunction SPACE continuousObjectVerbPhrase
                 	      | CAN (NOT)? SPACE objectAuxiliary
@@ -112,7 +113,6 @@ rawEffect: source SPACE DEAL SPACE damage SPACE TO SPACE player SPACE INSTEAD
        | delayedTrigger COMMA SPACE DESTROY SPACE object subordinateClause
        | WHEN SPACE object SPACE LEAVE SPACE zone COMMA SPACE player SACRIFICE object
        | SACRIFICE SPACE object delayedTrigger
-       | objectPossessive SPACE characteristics SPACE IS SPACE EACH SPACE EQUAL TO SPACE amount
        | phrase
        | playerVerbPhrase
        | THIS SPACE ABILITY SPACE CAN SPACE CAUSE SPACE THE SPACE TOTAL SPACE NUMBER OF SPACE counterType prepositionalPhrase
@@ -215,7 +215,7 @@ objectNoun: (TILDE | type | COPY | CARD | SPELL | PERMANENT | TOKEN | IT | THEY)
 
 objectPhrase : object SPACE objectVerbPhrase;
 
-objectPossessive: ((determiner | adjective) SPACE)* (IT S | objectNoun saxon) | THAT SPACE CARD_TYPE APOSTROPHE S;
+objectPossessive: ((determiner | adjective) SPACE)* (IT S | objectNoun saxon);
 
 saxon: APOSTROPHE S;
 
