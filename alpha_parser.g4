@@ -347,11 +347,11 @@ playerVerbPhrase : playerVerbPhrase (COMMA SPACE playerVerbPhrase)* SPACE conjun
                  | CHANGE SPACE article SPACE TEXT SPACE prepositionalPhrase SPACE BY SPACE REPLACING SPACE ALL SPACE INSTANCES SPACE OF SPACE ONE SPACE textAspect SPACE WITH SPACE ANOTHER
                  | CHOOSE SPACE article SPACE textAspect
                  | IS SPACE DEALT SPACE damage
-                 | ADD SPACE mana+
-                 | ADD SPACE article SPACE AMOUNT SPACE OF SPACE mana SPACE EQUAL SPACE TO SPACE amount
-                 | ADD SPACE amount SPACE MANA SPACE OF SPACE ANY SPACE (ONE SPACE)? color
-                 | ADD SPACE amount SPACE MANA SPACE OF SPACE ANY SPACE type SPACE THAT SPACE object SPACE PRODUCED
-                 | ADD SPACE article SPACE ADDITIONAL SPACE mana
+                 | ADD (S)? SPACE mana+
+                 | ADD (S)? SPACE article SPACE AMOUNT SPACE OF SPACE mana SPACE EQUAL SPACE TO SPACE amount
+                 | ADD (S)? SPACE amount SPACE MANA SPACE OF SPACE ANY SPACE (ONE SPACE)? color
+                 | ADD (S)? SPACE amount SPACE MANA SPACE OF SPACE ANY SPACE TYPE SPACE THAT SPACE object SPACE PRODUCED
+                 | ADD (S)? SPACE article SPACE ADDITIONAL SPACE mana
                  | ACTIVATE (S)? SPACE (A SPACE)? abilityType SPACE prepositionalPhrase
                  | ATTACH SPACE object SPACE TO SPACE object
                  | COPY SPACE object COMMA SPACE subordinateClause
@@ -387,7 +387,7 @@ playerVerbPhrase : playerVerbPhrase (COMMA SPACE playerVerbPhrase)* SPACE conjun
                  | SEARCH SPACE zone SPACE prepositionalPhrase
                  | SKIPS SPACE THAT SPACE (TURN|DRAW)
                  | TAKE SPACE AN SPACE EXTRA SPACE TURN SPACE AFTER SPACE THIS SPACE ONE
-                 | TAP (SPACE OR SPACE NOT TAP)? SPACE object
+                 | TAP (S)? (SPACE OR SPACE NOT TAP)? SPACE object (SPACE prepositionalPhrase)
                  | HAVE SPACE object SPACE BECOME SPACE object COMMA SPACE subordinateClause
                  | HAVE SPACE player SHUFFLE
                  | HAVE SPACE object SPACE BLOCK SPACE object
@@ -396,7 +396,6 @@ playerVerbPhrase : playerVerbPhrase (COMMA SPACE playerVerbPhrase)* SPACE conjun
                  | PAY SPACE amount SPACE OF SPACE MANA
                  | PAY SPACE mana
                  | ANTE SPACE object
-                 | conjoinedObjectVerb SPACE object
                  | SHUFFLE (SPACE zone SPACE prepositionalPhrase)?
                  | SACRIFICE SPACE THE SPACE REST
                  | SACRIFICE SPACE object
@@ -414,8 +413,6 @@ life: INT SPACE LIFE
     | amount SPACE LIFE
     | LIFE SPACE EQUAL SPACE TO SPACE amount
     | LIFE SPACE EQUAL SPACE TO SPACE THE DAMAGE DEALT COMMA SPACE subordinateClause;
-
-conjoinedObjectVerb: TAP SPACE conjunction SPACE TAP;
 
 quality : MANA SPACE VALUE SPACE (INT | VARIABLE)
         | POWER SPACE amount
