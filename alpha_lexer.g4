@@ -187,10 +187,11 @@ FEAR: F 'ear';
 FLYING: F 'lying';
 HASTE: H 'aste';
 INDESTRUCTIBLE: I 'ndestructible';
-LANDWALK: LAND_TYPE 'walk';
 REACH: R 'each';
 TRAMPLE: T 'rample';
 VIGILANCE: V 'igilance';
+
+WALK: W 'alk';
 
 FIRST: F 'irst';
 STRIKE: S 'trike';
