@@ -275,6 +275,7 @@ postmodifier : player SPACE CONTROL
              | THAT SPACE A SPACE counterType SPACE WAS SPACE PUT SPACE ON SPACE WITH SPACE object SPACE BUT SPACE THAT SPACE A SPACE counterType SPACE HAVE SPACE NOT BEEN REMOVED FROM WITH object
              | EQUAL SPACE TO SPACE amount
              | WHOSE SPACE MANA SPACE COST SPACE COULD SPACE BE SPACE PAID SPACE BY SPACE SOME SPACE AMOUNT SPACE OF COMMA SPACE OR SPACE ALL SPACE OF COMMA SPACE THE SPACE MANA SPACE YOU SPACE SPENT SPACE ON SPACE mana
+             | WITH SPACE quality
              | object SPACE TOUCHES;
 
 premodifier : adjective
@@ -290,7 +291,6 @@ adjective: (NOT)? (ADDITIONAL | ATTACKING | BLOCKED | BLOCKING | ENCHANTED | SAC
 prepositionalPhrase : prepositionalPhrase SPACE (conjunction SPACE)? prepositionalPhrase
                     | preposition SPACE zone
                     | preposition SPACE something
-                    | WITH SPACE quality
                     | WITH SPACE amount SPACE counterType
                     | WITH SPACE keyword SPACE conjunction SPACE keyword
                     | WITH SPACE abilityType
