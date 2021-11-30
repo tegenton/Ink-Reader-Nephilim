@@ -97,7 +97,7 @@ effect: effect punctuation (SPACE conjunction)? SPACE effect
       | (delayedTrigger SPACE)? oneShotEffect (SPACE delayedTrigger)?
       | subordinateClause COMMA SPACE (oneShotEffect|continuousEffect)
       | continuousEffect
-      | THE SPACE NEXT SPACE TIME SPACE source SPACE WOULD SPACE DEAL SPACE DAMAGE SPACE prepositionalPhrase SPACE duration COMMA SPACE effect;
+      | THE SPACE NEXT SPACE TIME SPACE source SPACE WOULD SPACE DEAL SPACE (COMBAT SPACE)? DAMAGE SPACE prepositionalPhrase SPACE duration COMMA SPACE effect;
 
 punctuation: COMMA | PERIOD;
 
