@@ -227,7 +227,7 @@ objectVerbPhrase : IS SPACE DEALT SPACE damage
                  | IS SPACE TAPPED SPACE prepositionalPhrase
                  | IS SPACE PUT SPACE prepositionalPhrase
                  | IS SPACE color
-                 | ATTACK SPACE duration SPACE subordinateClause
+                 | ATTACK (SPACE duration SPACE subordinateClause)?
              	 | BECOME (S)? SPACE TAPPED
              	 | BECOME SPACE BLOCKED
              	 | BECOME SPACE color
