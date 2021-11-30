@@ -284,7 +284,7 @@ premodifier : adjective
             | determiner
             | CHOSEN
             | type
-            | NUMBER SLASH NUMBER;
+            | INT SLASH INT;
 
 adjective: (NOT)? (ADDITIONAL | ATTACKING | BLOCKED | BLOCKING | ENCHANTED | SACRIFICED | TAPPED | TOKEN | TOP);
 
