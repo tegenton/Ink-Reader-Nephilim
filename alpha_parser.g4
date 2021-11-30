@@ -78,7 +78,7 @@ continuousObjectPhrase: object SPACE continuousObjectVerbPhrase (SPACE AND SPACE
 continuousObjectVerbPhrase: continuousObjectVerbPhrase SPACE conjunction SPACE continuousObjectVerbPhrase
                 	      | CAN (NOT)? SPACE objectAuxiliary
              	          | (HAVE | GAIN) SPACE ability
-             	          | GET SPACE statMod (SPACE subordinateClause)?
+             	          | GET SPACE statMod ((COMMA)? SPACE subordinateClause)?
                           | (HAVE | GAIN) SPACE quotedAbility
                           | LOSE SPACE (keyword | quotedAbility)
                           | COST SPACE costs SPACE comparative SPACE TO SPACE CAST
@@ -351,6 +351,7 @@ playerVerbPhrase : playerVerbPhrase (COMMA SPACE playerVerbPhrase)* (COMMA)? SPA
                  | ADD (S)? SPACE amount SPACE MANA SPACE OF SPACE ANY SPACE (ONE SPACE)? color
                  | ADD (S)? SPACE amount SPACE MANA SPACE OF SPACE ANY SPACE TYPE SPACE object SPACE PRODUCED
                  | ADD (S)? SPACE article SPACE ADDITIONAL SPACE mana
+                 | ADD SPACE THE SPACE MANA SPACE LOST SPACE THIS SPACE WAY
                  | ACTIVATE (S)? SPACE (A SPACE)? abilityType SPACE prepositionalPhrase
                  | ATTACH SPACE object SPACE TO SPACE object
                  | COPY SPACE object COMMA SPACE subordinateClause
@@ -394,7 +395,6 @@ playerVerbPhrase : playerVerbPhrase (COMMA SPACE playerVerbPhrase)* (COMMA)? SPA
                  | DISCARD SPACE object SPACE AND SPACE SACRIFICE SPACE object SPACE THE SPACE SAME SPACE WAY
                  | CAST SPACE object SPACE AS SPACE object SPACE WITH SPACE PAYING SPACE objectPossessive SPACE MANA SPACE COST
                  | DIVIDE SPACE object SPACE IN SPACE A SPACE PILE_LABEL SPACE PILE SPACE AND SPACE A SPACE PILE_LABEL SPACE PILE
-                 | ADD SPACE THE SPACE MANA SPACE LOST SPACE THIS SPACE WAY
                  | PREVENT VARIABLE SPACE OF SPACE damage COMMA SPACE subordinateClause
                  | REMOVE SPACE object SPACE FROM SPACE COMBAT;
 
@@ -441,7 +441,7 @@ source : premodifier SPACE source
        | color SPACE SOURCE
        | SOURCE;
 
-variableDefinition: VARIABLE SPACE IS SPACE amount;
+variableDefinition: VARIABLE SPACE IS SPACE amount (COMMA SPACE AND SPACE variableDefinition)?;
 
 subordinateClause : subordinateConjunction SPACE condition
                   | subordinateConjunction SPACE phrase
