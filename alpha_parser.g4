@@ -342,7 +342,7 @@ playerPossessive : YOUR
                  | player saxon;
 
 playerVerbPhrase : playerVerbPhrase (COMMA SPACE playerVerbPhrase)* (COMMA)? SPACE conjunction SPACE playerVerbPhrase
-                 | (ANTE | CHOOSE | CREATE | DESTROY | DRAW | EXILE | OWN | REGENERATE | SACRIFICE) (S)? SPACE object
+                 | (ANTE | CAST | CHOOSE | CREATE | DESTROY | DRAW | EXILE | OWN | REGENERATE | SACRIFICE) (S)? SPACE object
                  | MAY SPACE playerVerbPhrase
                  | CAN SPACE playerVerbPhrase
                  | CHANGE SPACE article SPACE TEXT SPACE prepositionalPhrase SPACE BY SPACE REPLACING SPACE ALL SPACE INSTANCES SPACE OF SPACE ONE SPACE textAspect SPACE WITH SPACE ANOTHER
