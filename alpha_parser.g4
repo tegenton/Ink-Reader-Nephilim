@@ -376,7 +376,7 @@ playerVerbPhrase : playerVerbPhrase (COMMA SPACE playerVerbPhrase)* (COMMA)? SPA
                  | SEARCH SPACE zone SPACE prepositionalPhrase
                  | SKIPS SPACE THAT SPACE (TURN|DRAW)
                  | TAKE SPACE AN SPACE EXTRA SPACE TURN SPACE AFTER SPACE THIS SPACE ONE
-                 | TAP (S)? (SPACE OR SPACE NOT TAP)? SPACE object (SPACE prepositionalPhrase)
+                 | TAP (S)? (SPACE OR SPACE NOT TAP)? SPACE object (SPACE prepositionalPhrase)?
                  | HAVE SPACE object SPACE BECOME SPACE object COMMA SPACE subordinateClause
                  | HAVE SPACE player SHUFFLE
                  | HAVE SPACE object SPACE BLOCK SPACE object
