@@ -86,6 +86,7 @@ replacementEffect : subordinateClause COMMA SPACE (INSTEAD SPACE effect | effect
                   | subordinateClause COMMA SPACE playerVerbPhrase COMMA SPACE BUT SPACE player SPACE MAY SPACE PUT SPACE object SPACE prepositionalPhrase SPACE INSTEAD SPACE OF SPACE prepositionalPhrase
                   | subordinateClause SPACE duration COMMA SPACE effect SPACE INSTEAD
                   | objectPhrase SPACE prepositionalPhrase
+                  | objectPhrase SPACE adjective
                   | player SPACE MAY SPACE HAVE SPACE object SPACE ENTER SPACE zone SPACE subordinateClause
                   | IF SPACE object  SPACE HAVE SPACE NOT SPACE BEEN SPACE TURNED SPACE FACE SPACE UP SPACE AND SPACE WOULD SPACE ASSIGN SPACE OR SPACE DEAL SPACE DAMAGE COMMA SPACE BE SPACE DEALT SPACE DAMAGE COMMA SPACE OR SPACE BECOME SPACE TAPPED COMMA SPACE INSTEAD SPACE objectIs SPACE TURNED SPACE FACE SPACE UP SPACE AND SPACE ASSIGN SPACE OR SPACE DEAL SPACE DAMAGE COMMA SPACE IS SPACE DEALT SPACE DAMAGE COMMA SPACE OR SPACE BECOME SPACE TAPPED
                   | subordinateClause COMMA SPACE INSTEAD SPACE playerPhrase PERIOD SPACE effect
@@ -244,7 +245,7 @@ objectVerbPhrase : IS SPACE DEALT SPACE damage
                  | DEAL SPACE damage SPACE DIVIDED SPACE EVENLY COMMA SPACE ROUNDED SPACE direction COMMA SPACE AMONG SPACE something
                  | DIE
                  | DO SPACE TAP SPACE duration
-                 | ENTER SPACE zone (TAPPED)?
+                 | ENTER SPACE zone
              	 | GAIN SPACE keyword SPACE AND SPACE GET SPACE statMod SPACE duration COMMA SPACE subordinateClause
                  | GAIN SPACE quotedAbility
                  | LEAVE SPACE zone
