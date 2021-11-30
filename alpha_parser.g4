@@ -56,8 +56,8 @@ playable: object | abilityType;
 
 continuousEffect : anyTime COMMA SPACE player SPACE MAY SPACE costs PERIOD SPACE effect
                  | player SPACE MAY SPACE costs SPACE anyTime PERIOD SPACE effect
-                 | player SPACE CAN SPACE BE SPACE ATTACKED SPACE subordinateClause
-                 | player SPACE CAN SPACE TAP SPACE object SPACE duration
+                 | player SPACE CAN (NOT)? SPACE BE SPACE ATTACKED SPACE subordinateClause
+                 | player SPACE CAN (NOT)? SPACE TAP SPACE object SPACE duration
                  | player SPACE DO (NOT)? SPACE LOSE SPACE THE SPACE GAME SPACE prepositionalPhrase
                  | player SPACE HAVE SPACE NO SPACE MAXIMUM SPACE HAND SPACE SIZE
                  | player SPACE CONTROL SPACE something
