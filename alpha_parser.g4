@@ -49,6 +49,7 @@ continuousEffect : continuousEffect SPACE duration
                  | player SPACE CONTROL SPACE something
                  | player SPACE SKIPS SPACE phase
                  | abilityType SPACE prepositionalPhrase SPACE COST SPACE costs SPACE comparative SPACE TO SPACE ACTIVATE
+                 | THIS SPACE ABILITY SPACE CAN NOT SPACE CAUSE SPACE THE SPACE TOTAL SPACE NUMBER SPACE OF SPACE counterType SPACE prepositionalPhrase
                  | damage SPACE IS SPACE DEALT SPACE prepositionalPhrase SPACE INSTEAD
                  | THIS SPACE EFFECT SPACE DO (NOT)? SPACE REMOVE SPACE object
                  | INSTEAD SPACE OF SPACE DECLARING SPACE BLOCKERS COMMA SPACE player SPACE CHOOSE SPACE object SPACE conjunction SPACE DIVIDE SPACE THEM SPACE IN SPACE article SPACE NUMBER SPACE OF SPACE PILE SPACE EQUAL SPACE TO SPACE amount PERIOD SPACE object SPACE MAY SPACE LIKEWISE SPACE BE SPACE PUT SPACE IN SPACE ADDITIONAL SPACE PILE PERIOD SPACE ASSIGN SPACE EACH SPACE PILE SPACE TO SPACE A SPACE DIFFERENT SPACE ONE SPACE OF SPACE object SPACE prepositionalPhrase
@@ -103,7 +104,6 @@ punctuation: COMMA | PERIOD;
 oneShotEffect: source SPACE DEAL SPACE damage SPACE TO SPACE player SPACE INSTEAD
              | phrase
              | playerVerbPhrase
-             | THIS SPACE ABILITY SPACE CAN SPACE CAUSE SPACE THE SPACE TOTAL SPACE NUMBER OF SPACE counterType prepositionalPhrase
              | THEN COMMA SPACE FOR SPACE EACH SPACE object COMMA SPACE CHOOSE SPACE PILE_LABEL SPACE OR SPACE PILE_LABEL SPACE object SPACE CAN NOT SPACE BE SPACE BLOCKED SPACE duration SPACE EXCEPT SPACE BY SPACE object;
 
 damage : DAMAGE
@@ -124,7 +124,7 @@ playable: object | abilityType;
 abilityType: (determiner SPACE)? (ACTIVATED | MANA) SPACE ABILITY;
 
 amount: amount COMMA SPACE amount COMMA SPACE conjunction SPACE amount
-      | HALF SPACE amount COMMA SPACE ROUNDED SPACE (ROUND_DIRECTION)
+      | HALF SPACE amount COMMA SPACE ROUNDED SPACE (direction)
       | (UP SPACE TO|comparative SPACE THAN) SPACE amount
       | (englishNumber | INT) (SPACE conjunction SPACE comparative)?
       | objectPossessive SPACE characteristics (SPACE subordinateClause)?
@@ -138,6 +138,8 @@ amount: amount COMMA SPACE amount COMMA SPACE conjunction SPACE amount
       | damage SPACE PREVENTED SPACE THIS SPACE WAY
       | ANY SPACE AMOUNT
       | THE SPACE DAMAGE SPACE DEALT COMMA SPACE BUT SPACE NOT SPACE MORE_ SPACE LIFE SPACE THAN SPACE amount;
+
+direction: UP | DOWN;
 
 article: A | AN | THE;
 
@@ -239,7 +241,7 @@ objectVerbPhrase : IS SPACE DEALT SPACE damage
                  | DEAL SPACE damage SPACE prepositionalPhrase COMMA SPACE subordinateClause
                  | DEAL SPACE damage SPACE prepositionalPhrase SPACE EQUAL SPACE TO SPACE amount
                  | DEAL SPACE damage SPACE EQUAL SPACE TO SPACE amount SPACE prepositionalPhrase
-                 | DEAL SPACE damage SPACE DIVIDED SPACE EVENLY COMMA SPACE ROUNDED SPACE ROUND_DIRECTION COMMA SPACE AMONG SPACE something
+                 | DEAL SPACE damage SPACE DIVIDED SPACE EVENLY COMMA SPACE ROUNDED SPACE direction COMMA SPACE AMONG SPACE something
                  | DIE
                  | DO SPACE TAP SPACE duration
                  | ENTER SPACE zone (TAPPED)?
@@ -365,7 +367,7 @@ playerVerbPhrase : playerVerbPhrase (COMMA SPACE playerVerbPhrase)* (COMMA)? SPA
                  | LOOK SPACE AT SPACE zone
                  | LOSE SPACE THE SPACE GAME
                  | LOSE SPACE life
-                 | LOSE SPACE HALF SPACE playerPossessive SPACE LIFE COMMA SPACE ROUNDED SPACE ROUND_DIRECTION
+                 | LOSE SPACE HALF SPACE playerPossessive SPACE LIFE COMMA SPACE ROUNDED SPACE direction
                  | LOSE SPACE ALL SPACE SPENT SPACE MANA
                  | PLAY (S)? SPACE object (SPACE subordinateClause)?
                  | PREVENT SPACE damage

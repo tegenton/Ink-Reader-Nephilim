@@ -328,7 +328,6 @@ BY: B 'y';
 NEXT: N 'ext';
 WOULD: W 'ould';
 REGENERATED: REGENERATE D;
-ROUND_DIRECTION: UP | DOWN;
 UP: U 'p';
 DOWN: D 'own';
 UPKEEP: U 'pkeep';
