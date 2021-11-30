@@ -91,7 +91,7 @@ replacementEffect : subordinateClause COMMA SPACE (INSTEAD SPACE effect | effect
                   | subordinateClause COMMA SPACE INSTEAD SPACE playerPhrase PERIOD SPACE effect
                   | AS SPACE objectPhrase COMMA SPACE effect;
 
-triggerEffect : effect (SPACE subordinateClause)?;
+triggerEffect : effect (SPACE subordinateClause)? | triggeredAbility;
 
 effect: effect punctuation (SPACE conjunction)? SPACE effect
       | (delayedTrigger SPACE)? oneShotEffect (SPACE delayedTrigger)?
@@ -199,7 +199,7 @@ duration : UNTIL SPACE END SPACE OF SPACE TURN
          | ON SPACE EACH SPACE OF SPACE YOUR SPACE TURN
          | determiner SPACE COMBAT
          | DURING SPACE phase
-         | FOR SPACE subordinateConjunction SPACE object HAVE A counterType SPACE prepositionalPhrase
+         | FOR SPACE subordinateConjunction SPACE object SPACE HAVE SPACE A SPACE counterType SPACE prepositionalPhrase
          | subordinateConjunction SPACE player SPACE CONTROL SPACE object
          | WHILE SPACE object SPACE IS SPACE RESOLVING
          | anyTime;
@@ -322,7 +322,7 @@ phase: (article SPACE)? playerPossessive SPACE TURN (COMMA SPACE subordinateClau
      | article SPACE NEXT SPACE rawPhase
      | COMBAT (SPACE subordinateClause)?
      | THE SPACE TURN
-     | EACH SPACE OF SPACE playerPossessive SPACE rawPhase SPACE FOR SPACE THE SPACE REST SPACE OF SPACE THE SPACE GAME
+     | EACH SPACE OF SPACE playerPossessive SPACE rawPhase (S)? SPACE FOR SPACE THE SPACE REST SPACE OF SPACE THE SPACE GAME
      | THE SPACE NEXT SPACE END SPACE STEP;
 
 phrase: playerPhrase
@@ -374,7 +374,7 @@ playerVerbPhrase : playerVerbPhrase (COMMA SPACE playerVerbPhrase)* (COMMA)? SPA
                  | PUT SPACE THEM SPACE BACK SPACE IN SPACE ANY SPACE ORDER
                  | PUT SPACE object SPACE prepositionalPhrase
                  | PUT SPACE (amount|A) SPACE counterType SPACE prepositionalPhrase
-                 | REMOVE SPACE article SPACE counterType SPACE prepositionalPhrase
+                 | REMOVE SPACE determiner SPACE counterType SPACE prepositionalPhrase
                  | RETURN SPACE object SPACE prepositionalPhrase
                  | SACRIFICE (S)? SPACE object ((PERIOD)? SPACE subordinateClause)?
                  | SEARCH SPACE zone SPACE prepositionalPhrase
