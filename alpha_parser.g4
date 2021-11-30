@@ -164,12 +164,12 @@ condition : objectIs SPACE adjective
 
 costs : (PAY (S)? SPACE)? cost (COMMA SPACE costs)?;
 
-cost : mana
+cost : manaSymbol
      | TAP_SYMBOL
      | life
      | playerVerbPhrase;
 
-mana: (LBRACKET (MANA_COLOR | INT | VARIABLE) RBRACKET)+;
+manaSymbol: (LBRACKET (MANA_COLOR | INT | VARIABLE) RBRACKET)+;
 
 determiner: article | demonstrative | negative | alternative | universal | distributive | existential;
 
@@ -271,7 +271,7 @@ postmodifier : player SPACE CONTROL
              | BEYOND SPACE THE SPACE FIRST
              | THAT SPACE A SPACE counterType SPACE WAS SPACE PUT SPACE ON SPACE WITH SPACE object SPACE BUT SPACE THAT SPACE A SPACE counterType SPACE HAVE SPACE NOT BEEN REMOVED FROM WITH object
              | EQUAL SPACE TO SPACE amount
-             | WHOSE SPACE MANA SPACE COST SPACE COULD SPACE BE SPACE PAID SPACE BY SPACE SOME SPACE AMOUNT SPACE OF COMMA SPACE OR SPACE ALL SPACE OF COMMA SPACE THE SPACE MANA SPACE YOU SPACE SPENT SPACE ON SPACE mana
+             | WHOSE SPACE MANA SPACE COST SPACE COULD SPACE BE SPACE PAID SPACE BY SPACE SOME SPACE AMOUNT SPACE OF COMMA SPACE OR SPACE ALL SPACE OF COMMA SPACE THE SPACE MANA SPACE YOU SPACE SPENT SPACE ON SPACE manaSymbol
              | WITH SPACE quality
              | object SPACE TOUCHES;
 
@@ -346,12 +346,7 @@ playerVerbPhrase : playerVerbPhrase (COMMA SPACE playerVerbPhrase)* (COMMA)? SPA
                  | CHANGE SPACE article SPACE TEXT SPACE prepositionalPhrase SPACE BY SPACE REPLACING SPACE ALL SPACE INSTANCES SPACE OF SPACE ONE SPACE textAspect SPACE WITH SPACE ANOTHER
                  | CHOOSE SPACE article SPACE textAspect
                  | IS SPACE DEALT SPACE damage
-                 | ADD (S)? SPACE mana+
-                 | ADD (S)? SPACE article SPACE AMOUNT SPACE OF SPACE mana SPACE EQUAL SPACE TO SPACE amount
-                 | ADD (S)? SPACE amount SPACE MANA SPACE OF SPACE ANY SPACE (ONE SPACE)? color
-                 | ADD (S)? SPACE amount SPACE MANA SPACE OF SPACE ANY SPACE TYPE SPACE object SPACE PRODUCED
-                 | ADD (S)? SPACE article SPACE ADDITIONAL SPACE mana
-                 | ADD SPACE THE SPACE MANA SPACE LOST SPACE THIS SPACE WAY
+                 | ADD (S)? SPACE mana
                  | ACTIVATE (S)? SPACE (A SPACE)? abilityType SPACE prepositionalPhrase
                  | ATTACH SPACE object SPACE TO SPACE object
                  | COPY SPACE object COMMA SPACE subordinateClause
@@ -386,7 +381,7 @@ playerVerbPhrase : playerVerbPhrase (COMMA SPACE playerVerbPhrase)* (COMMA)? SPA
                  | SPEND SPACE color SPACE MANA SPACE AS SPACE THOUGH SPACE IT SPACE WERE SPACE color SPACE MANA
                  | PLAY SPACE object SPACE ON SPACE EACH SPACE OF SPACE duration
                  | PAY SPACE amount SPACE OF SPACE MANA
-                 | PAY SPACE mana
+                 | PAY SPACE manaSymbol
                  | SHUFFLE (SPACE zone SPACE prepositionalPhrase)?
                  | SACRIFICE SPACE THE SPACE REST
                  | DISCARD SPACE zone
@@ -396,6 +391,13 @@ playerVerbPhrase : playerVerbPhrase (COMMA SPACE playerVerbPhrase)* (COMMA)? SPA
                  | DIVIDE SPACE object SPACE IN SPACE A SPACE PILE_LABEL SPACE PILE SPACE AND SPACE A SPACE PILE_LABEL SPACE PILE
                  | PREVENT VARIABLE SPACE OF SPACE damage COMMA SPACE subordinateClause
                  | REMOVE SPACE object SPACE FROM SPACE COMBAT;
+
+mana: manaSymbol+
+    | article SPACE AMOUNT SPACE OF SPACE manaSymbol SPACE EQUAL SPACE TO SPACE amount
+    | amount SPACE MANA SPACE OF SPACE ANY SPACE (ONE SPACE)? COLOR
+    | amount SPACE MANA SPACE OF SPACE ANY SPACE TYPE SPACE object SPACE PRODUCED
+    | article SPACE ADDITIONAL SPACE manaSymbol
+    | THE SPACE MANA SPACE LOST SPACE THIS SPACE WAY;
 
 life: INT SPACE LIFE
     | amount SPACE LIFE
