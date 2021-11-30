@@ -68,7 +68,8 @@ continuousObjectVerbPhrase: continuousObjectVerbPhrase SPACE conjunction SPACE c
                           | (HAVE | GAIN) SPACE quotedAbility
                           | LOSE SPACE (keyword | quotedAbility)
                           | COST SPACE costs SPACE comparative SPACE TO SPACE CAST
-                          | DO (NOT)? SPACE TAP SPACE DURING SPACE phase;
+                          | DO (NOT)? SPACE TAP SPACE DURING SPACE phase
+                          | BECOME (S)? SPACE object;
 
 statMod: (PLUS | DASH) (INT|VARIABLE) SLASH (PLUS | DASH) (INT|VARIABLE);
 
@@ -144,7 +145,7 @@ characteristic: POWER | TOUGHNESS | MANA SPACE VALUE | LOYALTY;
 
 comparative: LESS | MORE_ | GREATER;
 
-condition : objectIs SPACE adjective
+condition : objectIs (NOT)? SPACE adjective
           | objectIs SPACE prepositionalPhrase
           | objectIs SPACE object
           | object SPACE HAVE SPACE A SPACE counterType SPACE prepositionalPhrase
