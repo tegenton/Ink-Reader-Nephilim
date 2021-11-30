@@ -42,8 +42,7 @@ englishNumber: ONE | TWO | THREE | FOUR | FIVE | SIX | SEVEN;
 spellAbility : effect PERIOD
              | restriction PERIOD
              | modal
-             | delayedTrigger COMMA SPACE effect PERIOD //SPACE IGNORE SPACE THIS SPACE EFFECT SPACE prepositionalPhrase PERIOD
-             | duration COMMA SPACE INSTEAD SPACE OF SPACE DECLARING SPACE BLOCKERS COMMA SPACE player SPACE CHOOSE SPACE object SPACE conjunction SPACE DIVIDE SPACE THEM SPACE IN SPACE article SPACE NUMBER SPACE OF SPACE PILE SPACE EQUAL SPACE TO SPACE amount PERIOD SPACE object SPACE MAY SPACE LIKEWISE SPACE BE SPACE PUT SPACE IN SPACE ADDITIONAL SPACE PILE PERIOD SPACE ASSIGN SPACE EACH SPACE PILE TO SPACE A SPACE DIFFERENT SPACE ONE OF SPACE object SPACE prepositionalPhrase PERIOD SPACE SPACE objectPhrase PERIOD;
+             | delayedTrigger COMMA SPACE effect PERIOD; //SPACE IGNORE SPACE THIS SPACE EFFECT SPACE prepositionalPhrase PERIOD
 
 conjunction: AND | OR | AND SLASH OR | THEN;
 
@@ -67,6 +66,7 @@ continuousEffect : continuousEffect SPACE duration
                  | abilityType SPACE prepositionalPhrase SPACE COST SPACE costs SPACE comparative SPACE TO SPACE ACTIVATE
                  | damage SPACE IS SPACE DEALT SPACE prepositionalPhrase SPACE INSTEAD
                  | THIS SPACE EFFECT SPACE DO (NOT)? SPACE REMOVE SPACE object
+                 | INSTEAD SPACE OF SPACE DECLARING SPACE BLOCKERS COMMA SPACE player SPACE CHOOSE SPACE object SPACE conjunction SPACE DIVIDE SPACE THEM SPACE IN SPACE article SPACE NUMBER SPACE OF SPACE PILE SPACE EQUAL SPACE TO SPACE amount PERIOD SPACE object SPACE MAY SPACE LIKEWISE SPACE BE SPACE PUT SPACE IN SPACE ADDITIONAL SPACE PILE PERIOD SPACE ASSIGN SPACE EACH SPACE PILE SPACE TO SPACE A SPACE DIFFERENT SPACE ONE SPACE OF SPACE object SPACE prepositionalPhrase
                  | replacementEffect
                  | continuousObjectPhrase;
 
@@ -254,7 +254,7 @@ postmodifier : player SPACE CONTROL
              | OF SPACE playerPossessive SPACE CHOICE
              | NAMED SPACE LITERAL_NAME SPACE prepositionalPhrase
              | ABLE SPACE TO SPACE BLOCK SPACE object
-             | THAT SPACE CAN BLOCK object
+             | THAT SPACE CAN SPACE BLOCK SPACE object
              | THAT SPACE IS SPACE STILL SPACE object
              | THAT SPACE DID SPACE ATTACK SPACE duration
              | THAT SPACE CAN SPACE BLOCK SPACE ADDITIONAL object
@@ -273,6 +273,7 @@ postmodifier : player SPACE CONTROL
              | EQUAL SPACE TO SPACE amount
              | WHOSE SPACE MANA SPACE COST SPACE COULD SPACE BE SPACE PAID SPACE BY SPACE SOME SPACE AMOUNT SPACE OF COMMA SPACE OR SPACE ALL SPACE OF COMMA SPACE THE SPACE MANA SPACE YOU SPACE SPENT SPACE ON SPACE manaSymbol
              | WITH SPACE quality
+             | FOR SPACE WHOM SPACE player SPACE IS SPACE player
              | object SPACE TOUCHES;
 
 premodifier : adjective
@@ -294,7 +295,6 @@ prepositionalPhrase : prepositionalPhrase SPACE (conjunction SPACE)? preposition
                     | WITH SPACE THE SPACE CHOSEN SPACE LABEL
                     | FOR SPACE MANA
                     | FOR SPACE HAVING SPACE life
-                    | FOR SPACE WHOM SPACE THAT SPACE PLAYER SPACE IS SPACE THE SPACE DEFENDING SPACE PLAYER
                     | FROM SPACE A SPACE HEIGHT SPACE OF SPACE AT SPACE LEAST SPACE ONE SPACE FOOT
                     | UNDER SPACE playerPossessive SPACE CONTROL
                     | ON SPACE TOP SPACE OF SPACE zone
@@ -381,7 +381,7 @@ playerVerbPhrase : playerVerbPhrase (COMMA SPACE playerVerbPhrase)* (COMMA)? SPA
                  | SPEND SPACE color SPACE MANA SPACE AS SPACE THOUGH SPACE IT SPACE WERE SPACE color SPACE MANA
                  | PLAY SPACE object SPACE ON SPACE EACH SPACE OF SPACE duration
                  | PAY SPACE amount SPACE OF SPACE MANA
-                 | PAY SPACE manaSymbol
+                 | PAY SPACE mana
                  | SHUFFLE (SPACE zone SPACE prepositionalPhrase)?
                  | SACRIFICE SPACE THE SPACE REST
                  | DISCARD SPACE zone
