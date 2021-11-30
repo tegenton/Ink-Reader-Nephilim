@@ -211,7 +211,7 @@ keyword: BANDING | DEFENDER | FEAR | FLYING | HASTE | INDESTRUCTIBLE | REACH | T
        | ENCHANT SPACE object
        | type WALK;
 
-color: (NOT)? (WHITE | BLUE | BLACK | RED | GREEN);
+color: (NOT)? (WHITE | BLUE | BLACK | RED | GREEN) | COLOR LESS;
 
 englishNumber: ONE | TWO | THREE | FOUR | FIVE | SIX | SEVEN;
 
@@ -258,7 +258,7 @@ postmodifier : player SPACE CONTROL
              | CONTROLLED SPACE BY SPACE player
              | (IN | OF) SPACE zone
              | OF SPACE playerPossessive SPACE CHOICE
-             | NAMED SPACE LITERAL_NAME SPACE prepositionalPhrase
+             | NAMED SPACE LITERAL_NAME (SPACE prepositionalPhrase)?
              | ABLE SPACE TO SPACE BLOCK SPACE object
              | THAT SPACE CAN SPACE BLOCK SPACE object
              | THAT SPACE IS SPACE STILL SPACE object

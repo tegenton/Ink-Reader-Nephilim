@@ -207,6 +207,7 @@ CARD_TYPE: C 'reature'
 
 CREATURE_TYPE: G 'oblin'
              | G 'olem'
+             | I 'nsect'
              | M 'erfolk'
              | W 'all'
              | Z 'ombie';
@@ -301,7 +302,7 @@ fragment ING: 'ing';
 
 RE: R E;
 
-LITERAL_NAME: 'Plague' SPACE 'Rats';
+LITERAL_NAME: 'Plague' SPACE 'Rats' | 'Wasp';
 
 // To Sort
 ATTACKED: ATTACK ED;
