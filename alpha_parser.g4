@@ -119,7 +119,7 @@ rawEffect: source SPACE DEAL SPACE damage SPACE TO SPACE player SPACE INSTEAD
        | playerVerbPhrase
        | THIS SPACE ABILITY SPACE CAN SPACE CAUSE SPACE THE SPACE TOTAL SPACE NUMBER OF SPACE counterType prepositionalPhrase
        | EXILE object SPACE INSTEAD
-       | THEN COMMA SPACE FOR SPACE EACH SPACE object COMMA SPACE CHOOSE PILE_LABEL OR PILE_LABEL SPACE object CAN SPACE BE SPACE BLOCKED SPACE duration SPACE EXCEPT SPACE BY SPACE object AND object;
+       | THEN COMMA SPACE FOR SPACE EACH SPACE object COMMA SPACE CHOOSE SPACE PILE_LABEL SPACE OR SPACE PILE_LABEL SPACE object SPACE CAN NOT SPACE BE SPACE BLOCKED SPACE duration SPACE EXCEPT SPACE BY SPACE object;
 
 damage : DAMAGE
        | (INT | VARIABLE) (SPACE OF SPACE THAT)? SPACE DAMAGE (COMMA SPACE subordinateClause)?
@@ -211,7 +211,8 @@ keyword: BANDING | DEFENDER | FEAR | FLYING | HASTE | INDESTRUCTIBLE | REACH | T
 
 color: (NOT)? (WHITE | BLUE | BLACK | RED | GREEN);
 
-object: (premodifier (COMMA)? SPACE)* (objectNouns) (SPACE postmodifier)*;
+object: object SPACE conjunction SPACE object
+      | (premodifier (COMMA)? SPACE)* (objectNouns) (SPACE postmodifier)*;
 
 objectNouns: (objectNoun COMMA SPACE)* objectNoun ((COMMA)? SPACE conjunction SPACE objectNoun)?;
 objectNoun: (TILDE | type | COPY | CARD | SPELL | PERMANENT | TOKEN | IT | THEY);
