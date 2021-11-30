@@ -358,8 +358,7 @@ playerVerbPhrase : playerVerbPhrase (COMMA SPACE playerVerbPhrase)* (COMMA)? SPA
                  | COUNTER SPACE object (SPACE subordinateClause)?
                  | CHOOSE SPACE NEW SPACE TARGET (S)? SPACE prepositionalPhrase
                  | CHOOSE SPACE object SPACE prepositionalPhrase
-                 | DESTROY SPACE object SPACE delayedTrigger
-                 | DESTROY SPACE object SPACE delayedTrigger SPACE subordinateClause
+                 | DESTROY SPACE object SPACE subordinateClause
                  | EXCHANGE SPACE object SPACE WITH SPACE object
                  | FLIP SPACE object SPACE prepositionalPhrase
                  | GAIN SPACE life
