@@ -101,25 +101,20 @@ replacementEffect : subordinateClause COMMA SPACE (INSTEAD SPACE effect | effect
 
 triggerEffect : effect (SPACE subordinateClause)?;
 
-effect : rawEffect
-       | subordinateClause COMMA SPACE effect
-       | rawEffect (PERIOD)? SPACE conjunction SPACE effect
-       | rawEffect PERIOD SPACE effect
-       | continuousEffect (SPACE duration)? ((COMMA SPACE conjunction)? SPACE effect)?
-       | duration COMMA SPACE continuousEffect
-       | (rawEffect COMMA SPACE)? rawEffect COMMA SPACE conjunction SPACE rawEffect
-       | THE SPACE NEXT SPACE TIME SPACE source SPACE WOULD SPACE DEAL SPACE DAMAGE SPACE prepositionalPhrase SPACE duration COMMA SPACE effect;
+effect: effect punctuation (SPACE conjunction)? SPACE effect
+      | (delayedTrigger SPACE)? oneShotEffect (SPACE delayedTrigger)?
+      | subordinateClause COMMA SPACE effect
+      | continuousEffect (SPACE duration)?
+      | duration COMMA SPACE continuousEffect
+      | THE SPACE NEXT SPACE TIME SPACE source SPACE WOULD SPACE DEAL SPACE DAMAGE SPACE prepositionalPhrase SPACE duration COMMA SPACE effect;
 
-rawEffect: source SPACE DEAL SPACE damage SPACE TO SPACE player SPACE INSTEAD
-       | delayedTrigger COMMA SPACE REMOVE SPACE ALL SPACE counterType SPACE FROM SPACE object
-       | delayedTrigger COMMA SPACE DESTROY SPACE object SPACE subordinateClause
-       | WHEN SPACE object SPACE LEAVE SPACE zone COMMA SPACE player SACRIFICE object
-       | SACRIFICE SPACE object SPACE delayedTrigger
-       | phrase
-       | playerVerbPhrase
-       | THIS SPACE ABILITY SPACE CAN SPACE CAUSE SPACE THE SPACE TOTAL SPACE NUMBER OF SPACE counterType prepositionalPhrase
-       | EXILE object SPACE INSTEAD
-       | THEN COMMA SPACE FOR SPACE EACH SPACE object COMMA SPACE CHOOSE SPACE PILE_LABEL SPACE OR SPACE PILE_LABEL SPACE object SPACE CAN NOT SPACE BE SPACE BLOCKED SPACE duration SPACE EXCEPT SPACE BY SPACE object;
+punctuation: COMMA | PERIOD;
+
+oneShotEffect: source SPACE DEAL SPACE damage SPACE TO SPACE player SPACE INSTEAD
+             | phrase
+             | playerVerbPhrase
+             | THIS SPACE ABILITY SPACE CAN SPACE CAUSE SPACE THE SPACE TOTAL SPACE NUMBER OF SPACE counterType prepositionalPhrase
+             | THEN COMMA SPACE FOR SPACE EACH SPACE object COMMA SPACE CHOOSE SPACE PILE_LABEL SPACE OR SPACE PILE_LABEL SPACE object SPACE CAN NOT SPACE BE SPACE BLOCKED SPACE duration SPACE EXCEPT SPACE BY SPACE object;
 
 damage : DAMAGE
        | (INT | VARIABLE) (SPACE OF SPACE THAT)? SPACE DAMAGE (COMMA SPACE subordinateClause)?
@@ -132,8 +127,7 @@ damage : DAMAGE
 // Definitions
 amount: amount COMMA SPACE amount COMMA SPACE conjunction SPACE amount
       | HALF SPACE amount COMMA SPACE ROUNDED SPACE (ROUND_DIRECTION)
-      | UP SPACE TO SPACE amount
-      | comparative SPACE THAN SPACE englishNumber
+      | (UP SPACE TO|comparative SPACE THAN) SPACE amount
       | (englishNumber | INT) (SPACE conjunction SPACE comparative)?
       | objectPossessive SPACE characteristics (SPACE subordinateClause)?
       | VARIABLE
