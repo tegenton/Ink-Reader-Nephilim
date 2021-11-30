@@ -69,6 +69,7 @@ continuousObjectVerbPhrase: continuousObjectVerbPhrase SPACE conjunction SPACE c
                           | LOSE SPACE (keyword | quotedAbility)
                           | COST SPACE costs SPACE comparative SPACE TO SPACE CAST
                           | DO (NOT)? SPACE TAP SPACE DURING SPACE phase
+                          | DO SPACE SO
                           | BECOME (S)? SPACE object;
 
 statMod: (PLUS | DASH) (INT|VARIABLE) SLASH (PLUS | DASH) (INT|VARIABLE);
@@ -240,7 +241,6 @@ objectVerbPhrase : IS SPACE DEALT SPACE damage
                  | DEAL SPACE damage SPACE DIVIDED SPACE EVENLY COMMA SPACE ROUNDED SPACE ROUND_DIRECTION COMMA SPACE AMONG SPACE something
                  | DIE
                  | DO SPACE TAP SPACE duration
-                 | DO SPACE SO
                  | ENTER SPACE zone (TAPPED)?
              	 | GAIN SPACE keyword SPACE AND SPACE GET SPACE statMod SPACE duration COMMA SPACE subordinateClause
                  | GAIN SPACE quotedAbility
