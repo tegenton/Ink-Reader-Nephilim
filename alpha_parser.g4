@@ -53,7 +53,8 @@ continuousEffect : continuousEffect SPACE duration
                  | damage SPACE IS SPACE DEALT SPACE prepositionalPhrase SPACE INSTEAD
                  | THIS SPACE EFFECT SPACE DO (NOT)? SPACE REMOVE SPACE object
                  | INSTEAD SPACE OF SPACE DECLARING SPACE BLOCKERS COMMA SPACE player SPACE CHOOSE SPACE object SPACE conjunction SPACE DIVIDE SPACE THEM SPACE IN SPACE article SPACE NUMBER SPACE OF SPACE PILE SPACE EQUAL SPACE TO SPACE amount PERIOD SPACE object SPACE MAY SPACE LIKEWISE SPACE BE SPACE PUT SPACE IN SPACE ADDITIONAL SPACE PILE PERIOD SPACE ASSIGN SPACE EACH SPACE PILE SPACE TO SPACE A SPACE DIFFERENT SPACE ONE SPACE OF SPACE object SPACE prepositionalPhrase
-                 | FOR SPACE EACH SPACE damage SPACE distinguisher COMMA SPACE triggerEffect
+                 | FOR SPACE EACH SPACE damage COMMA SPACE triggerEffect
+                 | THE SPACE NEXT SPACE TIME SPACE source SPACE WOULD SPACE DEAL SPACE (COMBAT SPACE)? DAMAGE SPACE prepositionalPhrase SPACE duration COMMA SPACE effect
                  | replacementEffect
                  | continuousObjectPhrase;
 
@@ -68,7 +69,7 @@ continuousObjectVerbPhrase: continuousObjectVerbPhrase SPACE conjunction SPACE c
              	          | GET SPACE statMod ((COMMA)? SPACE subordinateClause)?
                           | (HAVE | GAIN) SPACE quotedAbility
                           | LOSE SPACE (keyword | quotedAbility)
-                          | COST SPACE costs SPACE comparative SPACE TO SPACE CAST
+                          | COST SPACE costs SPACE comparative SPACE TO SPACE play
                           | DO (NOT)? SPACE TAP SPACE DURING SPACE phase
                           | DO SPACE SO
                           | BECOME (S)? SPACE object;
@@ -97,8 +98,7 @@ triggerEffect : effect (SPACE subordinateClause)? | triggeredAbility;
 effect: effect punctuation (SPACE conjunction)? SPACE effect
       | (delayedTrigger SPACE)? oneShotEffect (SPACE delayedTrigger)?
       | subordinateClause COMMA SPACE (oneShotEffect|continuousEffect)
-      | continuousEffect
-      | THE SPACE NEXT SPACE TIME SPACE source SPACE WOULD SPACE DEAL SPACE (COMBAT SPACE)? DAMAGE SPACE prepositionalPhrase SPACE duration COMMA SPACE effect;
+      | continuousEffect;
 
 punctuation: COMMA | PERIOD;
 
@@ -107,13 +107,13 @@ oneShotEffect: source SPACE DEAL SPACE damage SPACE TO SPACE player SPACE INSTEA
              | playerVerbPhrase
              | THEN COMMA SPACE FOR SPACE EACH SPACE object COMMA SPACE CHOOSE SPACE PILE_LABEL SPACE OR SPACE PILE_LABEL SPACE object SPACE CAN NOT SPACE BE SPACE BLOCKED SPACE duration SPACE EXCEPT SPACE BY SPACE object;
 
-damage : DAMAGE
+damage : (COMBAT SPACE)? DAMAGE
        | (INT | VARIABLE) (SPACE OF SPACE THAT)? SPACE DAMAGE (COMMA SPACE subordinateClause)?
-       | ALL SPACE COMBAT SPACE DAMAGE SPACE THAT SPACE WOULD SPACE BE SPACE DEALT SPACE duration
-       | ALL SPACE DAMAGE SPACE THAT SPACE WOULD SPACE BE SPACE DEALT SPACE TO SPACE player SPACE BY SPACE object
+       | damage SPACE THAT SPACE WOULD SPACE BE SPACE DEALT SPACE duration
+       | damage SPACE THAT SPACE WOULD SPACE BE SPACE DEALT SPACE prepositionalPhrase (SPACE BY SPACE object)?
        | ALL SPACE BUT SPACE INT SPACE OF SPACE damage
        | determiner SPACE damage
-       | THE SPACE NEXT SPACE damage SPACE THAT SPACE WOULD SPACE BE SPACE DEALT SPACE TO SPACE something SPACE duration;
+       | THE SPACE NEXT SPACE damage SPACE THAT SPACE WOULD SPACE BE SPACE DEALT SPACE prepositionalPhrase SPACE duration;
 
 // Definitions
 anyTime : ANY SPACE TIME SPACE player SPACE COULD SPACE play SPACE playable;
@@ -190,8 +190,6 @@ negative: NO;
 
 demonstrative: TARGET | THIS | THESE | THAT | THOSE;
 
-distinguisher : THAT SPACE WOULD SPACE BE SPACE DEALT SPACE TO SPACE object;
-
 duration : UNTIL SPACE END SPACE OF SPACE TURN
          | UNTIL SPACE END SPACE OF SPACE COMBAT
          | UNTIL SPACE object SPACE LEAVE SPACE zone
@@ -245,12 +243,7 @@ objectVerbPhrase : IS SPACE DEALT SPACE damage
                  | DEAL SPACE damage SPACE EQUAL SPACE TO SPACE amount SPACE prepositionalPhrase
                  | DEAL SPACE damage SPACE DIVIDED SPACE EVENLY COMMA SPACE ROUNDED SPACE direction COMMA SPACE AMONG SPACE something
                  | DIE
-                 | DO SPACE TAP SPACE duration
-                 | ENTER SPACE zone
-             	 | GAIN SPACE keyword SPACE AND SPACE GET SPACE statMod SPACE duration COMMA SPACE subordinateClause
-                 | GAIN SPACE quotedAbility
-                 | LEAVE SPACE zone
-                 | LOSE SPACE keyword;
+                 | (ENTER|LEAVE) SPACE zone;
 
 postmodifier : player SPACE CONTROL
              | player SPACE CONTROLLED SPACE AT SPACE THE SPACE BEGINNING SPACE OF SPACE duration
@@ -264,7 +257,6 @@ postmodifier : player SPACE CONTROL
              | THAT SPACE CAN SPACE BLOCK SPACE object
              | THAT SPACE IS SPACE STILL SPACE object
              | THAT SPACE DID SPACE ATTACK SPACE duration
-             | THAT SPACE CAN SPACE BLOCK SPACE ADDITIONAL object
              | THAT SPACE HAD SPACE BECOME SPACE BLOCKED SPACE BY SPACE ONLY SPACE object SPACE duration
              | THAT SPACE PILE SPACE IS SPACE ASSIGNED SPACE TO
              | THAT SPACE DIED SPACE duration
@@ -272,10 +264,9 @@ postmodifier : player SPACE CONTROL
              | object SPACE WAS SPACE BLOCKING
              | object SPACE BECOME SPACE AS SPACE IT SPACE RESOLVE
              | PUT SPACE prepositionalPhrase SPACE THIS SPACE WAY
-             | PUT SPACE prepositionalPhrase SPACE WITH SPACE TILDE
+             | PUT SPACE prepositionalPhrase SPACE WITH SPACE object
              | DEALT SPACE DAMAGE SPACE BY SPACE object SPACE duration
              | IN SPACE A SPACE PILE (prepositionalPhrase)?
-             | BEYOND SPACE THE SPACE FIRST
              | THAT SPACE A SPACE counterType SPACE WAS SPACE PUT SPACE ON SPACE WITH SPACE object SPACE BUT SPACE THAT SPACE A SPACE counterType SPACE HAVE SPACE NOT BEEN REMOVED FROM WITH object
              | EQUAL SPACE TO SPACE amount
              | WHOSE SPACE MANA SPACE COST SPACE COULD SPACE BE SPACE PAID SPACE BY SPACE SOME SPACE AMOUNT SPACE OF COMMA SPACE OR SPACE ALL SPACE OF COMMA SPACE THE SPACE MANA SPACE YOU SPACE SPENT SPACE ON SPACE manaSymbol
@@ -309,7 +300,6 @@ prepositionalPhrase : prepositionalPhrase SPACE (conjunction SPACE)? preposition
                     | TO SPACE BE SPACE amount
                     | TO SPACE play SPACE playable
                     | TO SPACE play SPACE playable SPACE OF SPACE object
-                    | OF SPACE playerPossessive SPACE CHOICE
                     | ONLY SPACE IF SPACE THEY APOSTROPHE RE SPACE FROM SPACE object
                     | ONLY SPACE IF SPACE MANA SPACE THEY SPACE PRODUCE SPACE IS SPACE SPENT SPACE prepositionalPhrase;
 
