@@ -153,6 +153,7 @@ comparative: LESS | MORE_ | GREATER;
 condition : objectIs (NOT)? SPACE adjective
           | objectIs SPACE prepositionalPhrase
           | objectIs SPACE object
+          | objectIs SPACE RESOLVING
           | object SPACE HAVE SPACE A SPACE counterType SPACE prepositionalPhrase
           | object SPACE HAVE SPACE keyword
           | object SPACE HAD SPACE keyword
@@ -202,7 +203,7 @@ duration : UNTIL SPACE END SPACE OF SPACE TURN
          | DURING SPACE phase
          | FOR SPACE subordinateConjunction SPACE object SPACE HAVE SPACE A SPACE counterType SPACE prepositionalPhrase
          | subordinateConjunction SPACE player SPACE CONTROL SPACE object
-         | WHILE SPACE object SPACE IS SPACE RESOLVING
+         | WHILE SPACE condition
          | anyTime;
 
 keyword: BANDING | DEFENDER | FEAR | FLYING | HASTE | INDESTRUCTIBLE | REACH | TRAMPLE | VIGILANCE
@@ -454,7 +455,7 @@ variableDefinition: VARIABLE SPACE IS SPACE amount (COMMA SPACE AND SPACE variab
 subordinateClause : subordinateConjunction SPACE condition
                   | subordinateConjunction SPACE phrase
                   | subordinateConjunction SPACE player SPACE WOULD SPACE GAIN SPACE LIFE
-                  | subordinateConjunction SPACE player SPACE WOULD SPACE BEGIN SPACE YOUR SPACE TURN SPACE WHILE condition
+                  | subordinateConjunction SPACE player SPACE WOULD SPACE BEGIN SPACE YOUR SPACE TURN SPACE duration
                   | IF SPACE ABLE
                   | IF SPACE AN SPACE EFFECT SPACE CAUSE (S)? SPACE player SPACE TO SPACE DISCARD SPACE object
                   | IF SPACE object SPACE WOULD SPACE objectVerbPhrase
