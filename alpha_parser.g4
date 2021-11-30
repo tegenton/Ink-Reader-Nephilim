@@ -9,7 +9,7 @@ options {
 card: permanentCard | spellCard;
 
 // Permanents
-permanentCard : ability (NEWLINE ability)*|; // or nothing
+permanentCard : ability (NEWLINE ability)*|;
 
 ability : keywords
         | staticAbility
@@ -22,12 +22,7 @@ activatedAbility : costs COLON SPACE effect PERIOD (SPACE restriction PERIOD)?;
 
 staticAbility : staticAbility SPACE staticAbility
               | subordinateClause COMMA SPACE staticAbility
-              | continuousEffect (PERIOD)?
-              | FOR SPACE EACH SPACE damage SPACE distinguisher COMMA SPACE triggerEffect PERIOD;
-
-abilityType: (determiner SPACE)? (ACTIVATED | MANA) SPACE ABILITY;
-
-counterType: (COUNTER_TYPE | statMod) SPACE COUNTER;
+              | continuousEffect (PERIOD)?;
 
 triggeredAbility : triggerCondition COMMA SPACE triggerEffect (PERIOD)?;
 
@@ -37,26 +32,16 @@ spellCard : spellAbility (NEWLINE spellAbility)*;
 
 modal : CHOOSE SPACE englishNumber SPACE DASH (NEWLINE BULLET SPACE effect PERIOD)+;
 
-englishNumber: ONE | TWO | THREE | FOUR | FIVE | SIX | SEVEN;
-
 spellAbility : effect PERIOD
              | restriction PERIOD
-             | modal
-             | delayedTrigger COMMA SPACE effect PERIOD; //SPACE IGNORE SPACE THIS SPACE EFFECT SPACE prepositionalPhrase PERIOD
-
-conjunction: AND | OR | AND SLASH OR | THEN;
+             | modal;
 
 // Effects
-anyTime : ANY SPACE TIME SPACE player SPACE COULD SPACE play SPACE playable;
-
-play: PLAY | CAST | ACTIVATE;
-
-playable: object | abilityType;
-
 continuousEffect : continuousEffect SPACE duration
                  | duration COMMA SPACE continuousEffect
                  | player SPACE MAY SPACE costs PERIOD SPACE effect
                  | player SPACE MAY SPACE costs SPACE anyTime PERIOD SPACE effect
+                 | player SPACE MAY SPACE PLAY SPACE object
                  | player SPACE CAN (NOT)? SPACE BE SPACE ATTACKED SPACE subordinateClause
                  | player SPACE CAN (NOT)? SPACE TAP SPACE object SPACE duration
                  | player SPACE DO (NOT)? SPACE LOSE SPACE THE SPACE GAME SPACE prepositionalPhrase
@@ -67,6 +52,7 @@ continuousEffect : continuousEffect SPACE duration
                  | damage SPACE IS SPACE DEALT SPACE prepositionalPhrase SPACE INSTEAD
                  | THIS SPACE EFFECT SPACE DO (NOT)? SPACE REMOVE SPACE object
                  | INSTEAD SPACE OF SPACE DECLARING SPACE BLOCKERS COMMA SPACE player SPACE CHOOSE SPACE object SPACE conjunction SPACE DIVIDE SPACE THEM SPACE IN SPACE article SPACE NUMBER SPACE OF SPACE PILE SPACE EQUAL SPACE TO SPACE amount PERIOD SPACE object SPACE MAY SPACE LIKEWISE SPACE BE SPACE PUT SPACE IN SPACE ADDITIONAL SPACE PILE PERIOD SPACE ASSIGN SPACE EACH SPACE PILE SPACE TO SPACE A SPACE DIFFERENT SPACE ONE SPACE OF SPACE object SPACE prepositionalPhrase
+                 | FOR SPACE EACH SPACE damage SPACE distinguisher COMMA SPACE triggerEffect
                  | replacementEffect
                  | continuousObjectPhrase;
 
@@ -126,6 +112,14 @@ damage : DAMAGE
        | THE SPACE NEXT SPACE damage SPACE THAT SPACE WOULD SPACE BE SPACE DEALT SPACE TO SPACE something SPACE duration;
 
 // Definitions
+anyTime : ANY SPACE TIME SPACE player SPACE COULD SPACE play SPACE playable;
+
+play: PLAY | CAST | ACTIVATE;
+
+playable: object | abilityType;
+
+abilityType: (determiner SPACE)? (ACTIVATED | MANA) SPACE ABILITY;
+
 amount: amount COMMA SPACE amount COMMA SPACE conjunction SPACE amount
       | HALF SPACE amount COMMA SPACE ROUNDED SPACE (ROUND_DIRECTION)
       | (UP SPACE TO|comparative SPACE THAN) SPACE amount
@@ -157,10 +151,12 @@ condition : objectIs SPACE adjective
           | object SPACE HAVE SPACE keyword
           | object SPACE HAD SPACE keyword
           | object SPACE DID SPACE HAVE SPACE keyword
-          | object SPACE WAS SPACE THE SPACE FIRST SPACE object SPACE YOU SPACE PLAYED duration
+          | object SPACE WAS NOT SPACE THE SPACE FIRST SPACE object SPACE YOU SPACE PLAYED SPACE duration
           | object SPACE ATTACKED SPACE OR SPACE BLOCKED SPACE duration
           | object SPACE ATTACKED SPACE duration
           | player SPACE CONTROL SPACE object;
+
+conjunction: AND | OR | AND SLASH OR | THEN;
 
 costs : (PAY (S)? SPACE)? cost (COMMA SPACE costs)?;
 
@@ -168,6 +164,8 @@ cost : manaSymbol
      | TAP_SYMBOL
      | life
      | playerVerbPhrase;
+
+counterType: (COUNTER_TYPE | statMod) SPACE COUNTER;
 
 manaSymbol: (LBRACKET (MANA_COLOR | INT | VARIABLE) RBRACKET)+;
 
@@ -193,6 +191,7 @@ duration : UNTIL SPACE END SPACE OF SPACE TURN
          | UNTIL SPACE YOUR SPACE NEXT SPACE TURN
          | UNTIL SPACE object SPACE FINISHES SPACE RESOLVING
          | determiner SPACE TURN
+         | ON SPACE EACH SPACE OF SPACE YOUR SPACE TURN
          | determiner SPACE COMBAT
          | DURING SPACE phase
          | FOR SPACE subordinateConjunction SPACE object HAVE A counterType SPACE prepositionalPhrase
@@ -207,6 +206,8 @@ keyword: BANDING | DEFENDER | FEAR | FLYING | HASTE | INDESTRUCTIBLE | REACH | T
        | type WALK;
 
 color: (NOT)? (WHITE | BLUE | BLACK | RED | GREEN);
+
+englishNumber: ONE | TWO | THREE | FOUR | FIVE | SIX | SEVEN;
 
 object: object SPACE conjunction SPACE object
       | (premodifier (COMMA)? SPACE)* (objectNouns) (SPACE postmodifier)*;
@@ -363,7 +364,7 @@ playerVerbPhrase : playerVerbPhrase (COMMA SPACE playerVerbPhrase)* (COMMA)? SPA
                  | LOSE SPACE life
                  | LOSE SPACE HALF SPACE playerPossessive SPACE LIFE COMMA SPACE ROUNDED SPACE ROUND_DIRECTION
                  | LOSE SPACE ALL SPACE SPENT SPACE MANA
-                 | PLAY (S)? SPACE object SPACE subordinateClause
+                 | PLAY (S)? SPACE object (SPACE subordinateClause)?
                  | PREVENT SPACE damage
                  | PUT SPACE THEM SPACE BACK SPACE IN SPACE ANY SPACE ORDER
                  | PUT SPACE object SPACE prepositionalPhrase
