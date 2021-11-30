@@ -87,7 +87,8 @@ replacementEffect : subordinateClause COMMA SPACE (INSTEAD SPACE effect | effect
                   | objectPhrase SPACE prepositionalPhrase
                   | player SPACE MAY SPACE HAVE SPACE object SPACE ENTER SPACE zone SPACE subordinateClause
                   | IF SPACE object SPACE HAVE SPACE NOT SPACE BEEN SPACE TURNED SPACE FACE SPACE UP SPACE AND SPACE WOULD SPACE ASSIGN SPACE OR SPACE DEAL SPACE DAMAGE COMMA SPACE BE SPACE DEALT SPACE DAMAGE COMMA SPACE OR SPACE BECOME SPACE TAPPED COMMA SPACE INSTEAD SPACE object IS SPACE TURNED SPACE FACE SPACE UP SPACE AND SPACE ASSIGN SPACE OR SPACE DEAL SPACE DAMAGE COMMA SPACE IS SPACE DEALT SPACE DAMAGE COMMA SPACE OR SPACE BECOME SPACE TAPPED
-                  | subordinateClause COMMA SPACE INSTEAD SPACE playerPhrase PERIOD SPACE effect;
+                  | subordinateClause COMMA SPACE INSTEAD SPACE playerPhrase PERIOD SPACE effect
+                  | AS SPACE objectPhrase COMMA SPACE effect;
 
 triggerEffect : effect (SPACE subordinateClause)?;
 
@@ -347,6 +348,7 @@ playerVerbPhrase : playerVerbPhrase (COMMA SPACE playerVerbPhrase)* (COMMA)? SPA
                  | CAN SPACE playerVerbPhrase
                  | CHANGE SPACE article SPACE TEXT SPACE prepositionalPhrase SPACE BY SPACE REPLACING SPACE ALL SPACE INSTANCES SPACE OF SPACE ONE SPACE textAspect SPACE WITH SPACE ANOTHER
                  | CHOOSE SPACE article SPACE textAspect
+                 | CHOOSE SPACE player
                  | IS SPACE DEALT SPACE damage
                  | ADD (S)? SPACE mana
                  | ACTIVATE (S)? SPACE (A SPACE)? abilityType SPACE prepositionalPhrase
