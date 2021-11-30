@@ -222,7 +222,7 @@ objectNoun: (TILDE | type | COPY | CARD | SPELL | PERMANENT | TOKEN | IT | THEY)
 
 objectPhrase : object SPACE objectVerbPhrase;
 
-objectPossessive: ((determiner | adjective) SPACE)* (IT S | objectNoun saxon);
+objectPossessive: ((determiner | adjective) SPACE)* (IT S | THEIR | objectNoun saxon);
 
 saxon: APOSTROPHE S;
 
