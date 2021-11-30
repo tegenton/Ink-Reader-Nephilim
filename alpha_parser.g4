@@ -94,7 +94,7 @@ triggerEffect : effect (SPACE subordinateClause)?;
 
 effect: effect punctuation (SPACE conjunction)? SPACE effect
       | (delayedTrigger SPACE)? oneShotEffect (SPACE delayedTrigger)?
-      | subordinateClause COMMA SPACE effect
+      | subordinateClause COMMA SPACE (oneShotEffect|continuousEffect)
       | continuousEffect
       | THE SPACE NEXT SPACE TIME SPACE source SPACE WOULD SPACE DEAL SPACE DAMAGE SPACE prepositionalPhrase SPACE duration COMMA SPACE effect;
 
@@ -465,7 +465,7 @@ subordinateClause : subordinateConjunction SPACE condition
                   | WHILE SPACE DOING SPACE SO
                   | IF SPACE objectIs SPACE CAST SPACE AS SPACE object
                   | IF SPACE object SPACE DID SPACE ATTACK SPACE duration
-                  | IF object SPACE TURN SPACE OVER SPACE COMPLETELY SPACE AT SPACE LEAST SPACE ONCE SPACE DURING SPACE THE SPACE FLIP
+                  | IF SPACE object SPACE TURN SPACE OVER SPACE COMPLETELY SPACE AT SPACE LEAST SPACE ONCE SPACE DURING SPACE THE SPACE FLIP
                   | IF SPACE player SPACE WOULD SPACE playerVerbPhrase SPACE duration
                   | UNLESS SPACE player SPACE costs
                   | UNLESS SPACE player SPACE CONTROL SPACE object
