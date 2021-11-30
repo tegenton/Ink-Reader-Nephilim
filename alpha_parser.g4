@@ -83,7 +83,7 @@ objectAuxiliary: ATTACK (SPACE subordinateClause)?
 
 replacementEffect : subordinateClause COMMA SPACE (INSTEAD SPACE effect | effect SPACE INSTEAD)
                   | subordinateClause COMMA SPACE playerPhrase SPACE INSTEAD PERIOD SPACE subordinateClause COMMA SPACE effect
-                  | subordinateClause COMMA SPACE playerVerbPhrase COMMA SPACE BUT SPACE player SPACE MAY SPACE PUT SPACE object prepositionalPhrase SPACE INSTEAD SPACE OF SPACE prepositionalPhrase
+                  | subordinateClause COMMA SPACE playerVerbPhrase COMMA SPACE BUT SPACE player SPACE MAY SPACE PUT SPACE object SPACE prepositionalPhrase SPACE INSTEAD SPACE OF SPACE prepositionalPhrase
                   | subordinateClause SPACE duration COMMA SPACE effect SPACE INSTEAD
                   | objectPhrase SPACE prepositionalPhrase
                   | player SPACE MAY SPACE HAVE SPACE object SPACE ENTER SPACE zone SPACE subordinateClause
@@ -455,7 +455,7 @@ subordinateClause : subordinateConjunction SPACE condition
                   | subordinateConjunction SPACE player SPACE WOULD SPACE GAIN SPACE LIFE
                   | subordinateConjunction SPACE player SPACE WOULD SPACE BEGIN SPACE YOUR SPACE TURN SPACE WHILE condition
                   | IF SPACE ABLE
-                  | IF SPACE AN SPACE EFFECT SPACE CAUSE SPACE player SPACE TO SPACE DISCARD SPACE object
+                  | IF SPACE AN SPACE EFFECT SPACE CAUSE (S)? SPACE player SPACE TO SPACE DISCARD SPACE object
                   | IF SPACE object SPACE WOULD SPACE objectVerbPhrase
                   | IF SPACE THIS SPACE ABILITY SPACE HAVE SPACE BEEN SPACE ACTIVATED SPACE amount SPACE TIME SPACE duration
                   | EXCEPT SPACE objectIs SPACE article SPACE type SPACE IN SPACE ADDITION SPACE TO SPACE objectPossessive SPACE OTHER SPACE TYPE
