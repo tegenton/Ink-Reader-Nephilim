@@ -54,7 +54,9 @@ play: PLAY | CAST | ACTIVATE;
 
 playable: object | abilityType;
 
-continuousEffect : anyTime COMMA SPACE player SPACE MAY SPACE costs PERIOD SPACE effect
+continuousEffect : continuousEffect SPACE duration
+                 | duration COMMA SPACE continuousEffect
+                 | player SPACE MAY SPACE costs PERIOD SPACE effect
                  | player SPACE MAY SPACE costs SPACE anyTime PERIOD SPACE effect
                  | player SPACE CAN (NOT)? SPACE BE SPACE ATTACKED SPACE subordinateClause
                  | player SPACE CAN (NOT)? SPACE TAP SPACE object SPACE duration
@@ -104,8 +106,7 @@ triggerEffect : effect (SPACE subordinateClause)?;
 effect: effect punctuation (SPACE conjunction)? SPACE effect
       | (delayedTrigger SPACE)? oneShotEffect (SPACE delayedTrigger)?
       | subordinateClause COMMA SPACE effect
-      | continuousEffect (SPACE duration)?
-      | duration COMMA SPACE continuousEffect
+      | continuousEffect
       | THE SPACE NEXT SPACE TIME SPACE source SPACE WOULD SPACE DEAL SPACE DAMAGE SPACE prepositionalPhrase SPACE duration COMMA SPACE effect;
 
 punctuation: COMMA | PERIOD;
@@ -196,7 +197,8 @@ duration : UNTIL SPACE END SPACE OF SPACE TURN
          | DURING SPACE phase
          | FOR SPACE subordinateConjunction SPACE object HAVE A counterType SPACE prepositionalPhrase
          | subordinateConjunction SPACE player SPACE CONTROL SPACE object
-         | WHILE SPACE object SPACE IS SPACE RESOLVING;
+         | WHILE SPACE object SPACE IS SPACE RESOLVING
+         | anyTime;
 
 keyword: BANDING | DEFENDER | FEAR | FLYING | HASTE | INDESTRUCTIBLE | REACH | TRAMPLE | VIGILANCE
        | FIRST SPACE STRIKE
