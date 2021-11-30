@@ -77,7 +77,7 @@ statMod: (PLUS | DASH) (INT|VARIABLE) SLASH (PLUS | DASH) (INT|VARIABLE);
 
 objectAuxiliary: ATTACK (SPACE subordinateClause)?
                | BLOCK SPACE object
-               | BE SPACE BLOCKED (SPACE subordinateClause)?
+               | BE SPACE BLOCKED (SPACE BY SPACE object)? (SPACE subordinateClause)?
                | BE SPACE ENCHANTED SPACE BY SPACE object
                | BE SPACE REGENERATED;
 
