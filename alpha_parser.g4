@@ -76,7 +76,7 @@ continuousObjectPhrase: object SPACE continuousObjectVerbPhrase (SPACE AND SPACE
 continuousObjectVerbPhrase: continuousObjectVerbPhrase SPACE conjunction SPACE continuousObjectVerbPhrase
                 	      | CAN (NOT)? SPACE objectAuxiliary
              	          | (HAVE | GAIN) SPACE ability
-             	          | GET SPACE statMod
+             	          | GET SPACE statMod (SPACE subordinateClause)?
                           | (HAVE | GAIN) SPACE quotedAbility
                           | LOSE SPACE (keyword | quotedAbility)
                           | COST SPACE costs SPACE comparative SPACE TO SPACE CAST
@@ -164,7 +164,8 @@ condition : objectIs SPACE adjective
           | object SPACE DID SPACE HAVE SPACE keyword
           | object SPACE WAS SPACE THE SPACE FIRST SPACE object SPACE YOU SPACE PLAYED duration
           | object SPACE ATTACKED SPACE OR SPACE BLOCKED SPACE duration
-          | object SPACE ATTACKED SPACE duration;
+          | object SPACE ATTACKED SPACE duration
+          | player SPACE CONTROL SPACE object;
 
 costs : (PAY (S)? SPACE)? cost (COMMA SPACE costs)?;
 
