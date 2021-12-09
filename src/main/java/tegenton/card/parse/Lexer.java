@@ -1,60 +1,40 @@
 package tegenton.card.parse;
 
-import tegenton.card.parse.token.lexicon.EnglishNumber;
-import tegenton.card.parse.token.lexicon.Subject;
-import tegenton.card.parse.token.lexicon.Verb;
-import tegenton.card.parse.token.lexicon.Word;
-import java.util.ArrayDeque;
-import java.util.Queue;
+import tegenton.card.parse.lexicon.Word;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.BinaryOperator;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.stream.Collector;
+import java.util.stream.Stream;
 
-public class Lexer {
-    Queue<Word> words = new ArrayDeque<>();
-
-    public void consume(String s) {
-        int index = 0;
-        FiniteStateAutomata state;
-        while (index != s.length()) {
-            state = new FiniteStateAutomata();
-            while (!state.isAccepting()) {
-                if (index > s.length()) {
-                    throw new ArrayIndexOutOfBoundsException();
-                }
-                state.transition(s.charAt(index++));
-            }
-            words.add(state.getWord());
-        }
+public class Lexer implements Collector<String, Stream.Builder<Word>, Stream<Word>> {
+    @Override
+    public Supplier<Stream.Builder<Word>> supplier() {
+        return Stream::builder;
     }
 
-    public Word next() {
-        return words.poll();
+    @Override
+    public BiConsumer<Stream.Builder<Word>, String> accumulator() {
+        return (stream, s) -> stream.add(Lexicon.lookup(s));
     }
 
-    private static class FiniteStateAutomata {
-        private int state = 0;
+    @Override
+    public BinaryOperator<Stream.Builder<Word>> combiner() {
+        return (streamA, streamB)-> {
+            streamB.build().forEach(streamA::add);
+            return streamA;
+        };
+    }
 
-        public boolean isAccepting() {
-            return state == 'w' || state == 'o' || state == 'd';
-        }
+    @Override
+    public Function<Stream.Builder<Word>, Stream<Word>> finisher() {
+        return Stream.Builder::build;
+    }
 
-        public void transition(char c) {
-            if (state < 2) {
-                state++;
-            } else {
-                state = c;
-            }
-        }
-
-        public Word getWord() {
-            switch (state) {
-                case 'w':
-                    return Verb.draw;
-                case 'o':
-                    return EnglishNumber.two;
-                case 'd':
-                    return Subject.card;
-                default:
-                    throw new IllegalArgumentException();
-            }
-        }
+    @Override
+    public Set<Characteristics> characteristics() {
+        return Set.of();
     }
 }

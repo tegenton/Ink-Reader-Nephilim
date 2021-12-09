@@ -5,7 +5,7 @@ import tegenton.card.game.concepts.permanent.State;
 import java.util.EnumMap;
 
 /**
- * Within the game rules, the term “permanent card” is used to refer to a card
+ * Within the game rules, the term "permanent card" is used to refer to a card
  * that could be put onto the battlefield. Specifically, it means an artifact,
  * creature, enchantment, land, or planeswalker card. Here it is used to
  * represent one of those cards that is currently on the battlefield.

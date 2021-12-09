@@ -1,15 +1,14 @@
 package tegenton.card.parse;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import tegenton.card.game.type.subtype.Subtype;
-import tegenton.card.parse.token.lexicon.EnglishNumber;
-import tegenton.card.parse.token.lexicon.Subject;
-import tegenton.card.parse.token.lexicon.Verb;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+import tegenton.card.parse.lexicon.Word;
+import java.util.List;
+import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class LexerTest {
-    public static String text;
     public static Lexer lex;
 
     @BeforeEach
@@ -17,25 +16,14 @@ public class LexerTest {
         lex = new Lexer();
     }
 
-    @Test
-    void draw() {
-        text = "draw";
-        lex.consume(text);
-        assertEquals(Verb.draw, lex.next());
-    }
-
-    @Test
-    void two() {
-        text = "two";
-        lex.consume(text);
-        assertEquals(EnglishNumber.two, lex.next());
-    }
-
-    @Test
-    void card() {
-        text = "card";
-        lex = new Lexer();
-        lex.consume(text);
-        assertEquals(Subject.card, lex.next());
+    @ParameterizedTest
+    @ValueSource(strings = {"a", "one", "flying", "draw", "1", ".", "any", "when"})
+    void singleWord(String text) {
+        List<Word> tokens = Stream.of(text).collect(lex).toList();
+        StringBuilder s = new StringBuilder();
+        for (Word token : tokens) {
+            s.append(token.getWord());
+        }
+        assertEquals(text.toLowerCase(), s.toString().toLowerCase());
     }
 }

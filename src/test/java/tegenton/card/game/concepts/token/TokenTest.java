@@ -18,8 +18,8 @@ public class TokenTest {
 
     @Test
     void jadeMage() {
-        /*Example: Jade Mage has the ability “{2}{G}: Create a 1/1 green Saproling creature
-        token.” The resulting token has no mana cost, supertypes, rules text, or abilities */
+        /*Example: Jade Mage has the ability "{2}{G}: Create a 1/1 green Saproling creature
+        token." The resulting token has no mana cost, supertypes, rules text, or abilities */
         token = Token.create("1/1 green Saproling creature");
         assertTrue(token.getPower().isPresent());
         assertTrue(token.getToughness().isPresent());
@@ -42,7 +42,7 @@ public class TokenTest {
 
     @Test
     void goblinScout() {
-        /* A “Goblin Scout creature token,” for example, is named “Goblin Scout” and has the
+        /* A "Goblin Scout creature token," for example, is named "Goblin Scout" and has the
         creature subtypes Goblin and Scout */
         token = Token.create("Goblin Scout creature");
         assertTrue(token.getCardTypes().isPresent());
