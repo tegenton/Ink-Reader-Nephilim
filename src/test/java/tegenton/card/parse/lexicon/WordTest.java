@@ -18,8 +18,21 @@ public class WordTest {
     }
 
     @Test
-    void article() {
+    void determiner() {
         words = Determiner.values();
-        values = List.of("a", "an");
+        values = List.of("A","AN","THE","TARGET","THIS","THESE","THAT","THOSE",
+                "NO","OTHER","ANOTHER","ALL","EACH","ANY");
+    }
+
+    @Test
+    void conjunction() {
+        words = Conjunction.values();
+        values = List.of("AND", "OR", "THEN");
+    }
+
+    @Test
+    void preposition() {
+        words = Preposition.values();
+        values=List.of("ABOVE","FOR","FROM","IN","OF","ON","TO","UNDER","WITH");
     }
 }
