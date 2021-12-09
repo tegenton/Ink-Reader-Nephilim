@@ -140,6 +140,156 @@ public class RulesTextParserTest {
             void greenWard() {
                 text = "Enchant creature\nEnchanted creature has protection from green. This effect doesn’t remove Green Ward.";
             }
+
+            @Test
+            @DisplayName("Guardian Angel")
+            void guardianAngel() {
+                text = "Prevent the next X damage that would be dealt to any target this turn. Until end of turn, you may pay {1} any time you could cast an instant. If you do, prevent the next 1 damage that would be dealt to that permanent or player this turn.";
+            }
+
+            @Test
+            @DisplayName("Healing Salve")
+            void healingSalve() {
+                text = "Choose one —\n• Target player gains 3 life.\n• Prevent the next 3 damage that would be dealt to any target this turn.";
+            }
+
+            @Test
+            @DisplayName("Holy Armor")
+            void holyArmor() {
+                text = "Enchant creature\nEnchanted creature gets +0/+2.\n{W}: Enchanted creature gets +0/+1 until end of turn.";
+            }
+
+            @Test
+            @DisplayName("Holy Strength")
+            void holyStrength() {
+                text = "Enchant creature\nEnchanted creature gets +1/+2.";
+            }
+
+            @Test
+            @DisplayName("Island Sanctuary")
+            void islandSanctuary() {
+                text = "If you would draw a card during your draw step, instead you may skip that draw. If you do, until your next turn, you can’t be attacked except by creatures with flying and/or islandwalk.";
+            }
+
+            @Test
+            @DisplayName("Karma")
+            void karma() {
+                text = "At the beginning of each player’s upkeep, ~ deals damage to that player equal to the number of Swamps they control.";
+            }
+
+            @Test
+            @DisplayName("Lance")
+            void holyStrength() {
+                text = "Enchant creature\nEnchanted creature has first strike.";
+            }
+
+            @Test
+            @DisplayName("Mesa Pegasus")
+            void mesaPegasus() {
+                text = "Flying; banding";
+            }
+
+            @Test
+            @DisplayName("Northern Paladin")
+            void northernPaladin() {
+                text = "{W}{W}, {T}: Destroy target black permanent.";
+            }
+
+            @Test
+            @DisplayName("Pearled Unicorn")
+            void pearledUnicorn() {
+                text = "";
+            }
+
+            @Test
+            @DisplayName("Personal Incarnation")
+            void personalIncarnation() {
+                text = "{0}: The next 1 damage that would be dealt to ~ this turn is dealt to its owner instead. Only Personal Incarnation’s owner may activate this ability.\nWhen ~ dies, its owner loses half their life, rounded up.";
+            }
+
+            @Test
+            @DisplayName("Purelace")
+            void purelace() {
+                text = "Target spell or permanent becomes white.";
+            }
+
+            @Test
+            @DisplayName("Red Ward")
+            void redWard() {
+                text = "Enchant creature\nEnchanted creature has protection from red. This effect doesn’t remove ~.";
+            }
+
+            @Test
+            @DisplayName("Resurrection")
+            void resurrection() {
+                text = "Return target creature card from your graveyard to the battlefield.";
+            }
+
+            @Test
+            @DisplayName("Reverse Damage")
+            void reverseDamage() {
+                text = "The next time a source of your choice would deal damage to you this turn, prevent that damage. You gain life equal to the damage prevented this way.";
+            }
+
+            @Test
+            @DisplayName("Righteousness")
+            void righteousness() {
+                text = "Target blocking creature gets +7/+7 until end of turn.";
+            }
+
+            @Test
+            @DisplayName("Samite Healer")
+            void samiteHealer() {
+                text = "{T}: Prevent the next 1 damage that would be dealt to any target this turn.";
+            }
+
+            @Test
+            @DisplayName("Savannah Lions")
+            void savannahLions() {
+                text = "";
+            }
+
+            @Test
+            @DisplayName("Serra Angel")
+            void serraAngel() {
+                text = "Flying, vigilance";
+            }
+
+            @Test
+            @DisplayName("Swords to Plowshares")
+            void swordsToPlowshares() {
+                text = "Exile target creature. Its controller gains life equal to its power.";
+            }
+
+            @Test
+            @DisplayName("Veteran Bodyguard")
+            void veteranBodyguard() {
+                text = "As long as ~ is untapped, all damage that would be dealt to you by unblocked creatures is dealt to ~ instead.";
+            }
+
+            @Test
+            @DisplayName("Wall of Swords")
+            void wallOfSwords() {
+                text = "Defender\nFlying";
+            }
+
+            @Test
+            @DisplayName("White Knight")
+            void whiteKnight() {
+                text = "First strike\nProtection from black";
+            }
+
+            @Test
+            @DisplayName("White Ward")
+            void whiteWard() {
+                text = "Enchant creature\nEnchanted creature has protection from white. This effect doesn’t remove ~.";
+            }
+
+            @Test
+            @DisplayName("Wrath of God")
+            void wrathOfGod() {
+                text = "Destroy all creatures. They can’t be regenerated.";
+            }
         }
     }
 }
