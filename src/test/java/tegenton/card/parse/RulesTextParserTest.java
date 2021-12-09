@@ -17,10 +17,10 @@ public class RulesTextParserTest {
 
     @Nested
     @DisplayName("Alpha")
-    class LEA {
+    class LimitedEditionAlphaTests {
         @Nested
         @DisplayName("White cards")
-        class White {
+        class WhiteCardTests {
             @Test
             @DisplayName("Animate Wall")
             void animateWall() {
@@ -179,7 +179,7 @@ public class RulesTextParserTest {
 
             @Test
             @DisplayName("Lance")
-            void holyStrength() {
+            void lance() {
                 text = "Enchant creature\nEnchanted creature has first strike.";
             }
 
