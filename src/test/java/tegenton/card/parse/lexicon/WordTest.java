@@ -19,7 +19,7 @@ public class WordTest {
 
     @Test
     void article() {
-        words = Article.values();
+        words = Determiner.values();
         values = List.of("a", "an");
     }
 }
