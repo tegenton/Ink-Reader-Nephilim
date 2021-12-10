@@ -1,8 +1,9 @@
 package tegenton.card.parse.lexicon;
 
 public enum Punctuation implements Word {
-    period("."),
-    comma(",");
+    PERIOD("."),
+    COMMA(","),
+    SPACE(" ");
 
     private final String name;
 

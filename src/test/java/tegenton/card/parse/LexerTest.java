@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import tegenton.card.parse.lexicon.Word;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -25,5 +26,16 @@ public class LexerTest {
             s.append(token.getWord());
         }
         assertEquals(text.toLowerCase(), s.toString().toLowerCase());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"a one flying draw 1 . any when "})
+    void multiWord(String text) {
+        List<Word> tokens = Arrays.stream(text.split(" ")).map(s -> s + " ").collect(lex).toList();
+        StringBuilder actual = new StringBuilder();
+        for (Word token : tokens) {
+            actual.append(token.getWord());
+        }
+        assertEquals(text, actual.toString().toLowerCase());
     }
 }

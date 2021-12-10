@@ -17,20 +17,21 @@ public class NumberState extends State {
 
     @Override
     public State transition(char c) {
-        switch (c) {
+        return switch (c) {
+            case ' ' -> SpaceState.state();
             case '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' -> {
                 number *= 10;
                 number += c - '0';
-                return this;
+                yield this;
             }
             default -> throw new IllegalStateException("Cannot transition from NumberState on " + c);
-        }
+        };
     }
 
     @Override
     public Optional<Word> produce(char c) {
         return switch (c) {
-            case '\0' -> Optional.of(Number.valueOf(number));
+            case '\0', ' ' -> Optional.of(Number.valueOf(number));
             default -> Optional.empty();
         };
     }

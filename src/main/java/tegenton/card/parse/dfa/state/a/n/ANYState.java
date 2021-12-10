@@ -1,5 +1,6 @@
 package tegenton.card.parse.dfa.state.a.n;
 
+import tegenton.card.parse.dfa.state.SpaceState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.lexicon.Determiner;
 import tegenton.card.parse.lexicon.Word;
@@ -14,14 +15,17 @@ public class ANYState extends State {
 
     @Override
     public State transition(char c) {
-        throw new IllegalStateException("Cannot transition from ANYState on " + c);
+        return switch (c) {
+            case ' ' -> SpaceState.state();
+            default -> throw new IllegalStateException("Cannot transition from ANYState on " + c);
+        };
     }
 
     @Override
     public Optional<Word> produce(char c) {
-        if (c == '\0') {
-            return Optional.of(Determiner.ANY);
-        }
-        return Optional.empty();
+        return switch (c) {
+            case '\0', ' ' -> Optional.of(Determiner.ANY);
+            default -> Optional.empty();
+        };
     }
 }

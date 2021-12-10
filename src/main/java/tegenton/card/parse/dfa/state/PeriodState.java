@@ -14,15 +14,16 @@ public class PeriodState extends State {
 
     @Override
     public State transition(char c) {
-        switch (c) {
+        return switch (c) {
+            case ' ' -> SpaceState.state();
             default -> throw new IllegalStateException("Cannot transition from PeriodState on " + c);
-        }
+        };
     }
 
     @Override
     public Optional<Word> produce(char c) {
         return switch (c) {
-            case '\0' -> Optional.of(Punctuation.period);
+            case '\0', ' ' -> Optional.of(Punctuation.PERIOD);
             default -> Optional.empty();
         };
     }

@@ -1,5 +1,6 @@
 package tegenton.card.parse.dfa.state.i.n;
 
+import tegenton.card.parse.dfa.state.SpaceState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.lexicon.Morpheme;
 import tegenton.card.parse.lexicon.Word;
@@ -14,16 +15,17 @@ public class INGState extends State {
 
     @Override
     public State transition(char c) {
-        switch (c) {
+        return switch (c) {
+            case ' ' -> SpaceState.state();
             default -> throw new IllegalStateException("Cannot transition from INGState on " + c);
-        }
+        };
     }
 
     @Override
     public Optional<Word> produce(char c) {
-        if (c == '\0') {
-            return Optional.of(Morpheme.ING);
-        }
-        return Optional.empty();
+        return switch (c) {
+            case '\0', ' ' -> Optional.of(Morpheme.ING);
+            default -> Optional.empty();
+        };
     }
 }

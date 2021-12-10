@@ -1,5 +1,6 @@
 package tegenton.card.parse.dfa.state.d.r.a;
 
+import tegenton.card.parse.dfa.state.SpaceState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.source.player.PlayerVerb;
@@ -14,16 +15,17 @@ public class DRAWState extends State {
 
     @Override
     public State transition(char c) {
-        switch (c) {
+        return switch (c) {
+            case ' ' -> SpaceState.state();
             default -> throw new IllegalStateException("Cannot transition from DRAWState on " + c);
-        }
+        };
     }
 
     @Override
     public Optional<Word> produce(char c) {
-        if (c == '\0') {
-            return Optional.of(PlayerVerb.DRAW);
-        }
-        return Optional.empty();
+        return switch (c) {
+            case '\0', ' ' -> Optional.of(PlayerVerb.DRAW);
+            default -> Optional.empty();
+        };
     }
 }
