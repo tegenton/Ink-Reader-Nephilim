@@ -54,4 +54,16 @@ public class WordTest {
         values = List.of("WHEN", "WHENEVER", "AT");
     }
 
+    @Test
+    void zone() {
+        words = Zone.values();
+        values = List.of(
+                "ANTE",
+                "BATTLEFIELD",
+                "EXILE",
+                "GRAVEYARD",
+                "HAND",
+                "LIBRARY");
+    }
+
 }
