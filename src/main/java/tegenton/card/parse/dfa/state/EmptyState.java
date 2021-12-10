@@ -16,7 +16,9 @@ class EmptyState extends State {
             case 'A' -> AState.state();
             case 'D' -> DState.state();
             case 'F' -> FState.state();
+            case 'P' -> PState.state();
             case 'O' -> OState.state();
+            case 'T' -> TState.state();
             case 'W' -> WState.state();
             case '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' -> NumberState.state(c);
             case '.' -> PeriodState.state();

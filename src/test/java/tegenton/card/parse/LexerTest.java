@@ -1,13 +1,17 @@
 package tegenton.card.parse;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import tegenton.card.parse.lexicon.Word;
+import tegenton.card.parse.lexicon.*;
+import tegenton.card.parse.lexicon.source.object.ObjectNoun;
+import tegenton.card.parse.lexicon.source.player.PlayerVerb;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 
 public class LexerTest {
     public static Lexer lex;
@@ -37,5 +41,12 @@ public class LexerTest {
             actual.append(token.getWord());
         }
         assertEquals(text, actual.toString().toLowerCase());
+    }
+
+    @Test
+    void ancestrallRecall() {
+        List<Word> expected = List.of(Determiner.TARGET, Punctuation.SPACE, PlayerVerb.PLAY, Morpheme.ER, Punctuation.SPACE, PlayerVerb.DRAW, Morpheme.S, Punctuation.SPACE, EnglishNumber.THREE, ObjectNoun.CARD, Morpheme.S, Punctuation.PERIOD);
+        List<Word> actual = lex.lex("Target player draws three cards");
+        assertIterableEquals(expected, actual);
     }
 }

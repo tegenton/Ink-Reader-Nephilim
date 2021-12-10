@@ -1,6 +1,8 @@
 package tegenton.card.parse;
 
 import tegenton.card.parse.lexicon.Word;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 import java.util.function.BiConsumer;
 import java.util.function.BinaryOperator;
@@ -36,5 +38,13 @@ public class Lexer implements Collector<String, Stream.Builder<Word>, Stream<Wor
     @Override
     public Set<Characteristics> characteristics() {
         return Set.of();
+    }
+
+    public List<Word> lex(final String s) {
+        String[] text = s.split(" ");
+        for (int i = 0; i < text.length - 1; i++) {
+            text[i] += ' ';
+        }
+        return Arrays.stream(text).collect(this).toList();
     }
 }
