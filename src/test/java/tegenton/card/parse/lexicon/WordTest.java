@@ -37,6 +37,12 @@ public class WordTest {
     }
 
     @Test
+    void object() {
+        words = ObjectWord.values();
+        values = List.of("CARD", "COPY", "PERMANENT", "SPELL", "IT");
+    }
+
+    @Test
     void preposition() {
         words = Preposition.values();
         values = List.of("ABOVE", "FOR", "FROM", "IN", "OF", "ON", "TO", "UNDER", "WITH");
