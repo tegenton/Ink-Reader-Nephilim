@@ -5,12 +5,10 @@ import tegenton.card.game.concepts.Color;
 import tegenton.card.game.type.SuperType;
 import tegenton.card.game.type.Type;
 import tegenton.card.game.type.subtype.CreatureType;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.EnumSet;
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TokenTest {
@@ -18,8 +16,8 @@ public class TokenTest {
 
     @Test
     void jadeMage() {
-        /*Example: Jade Mage has the ability "{2}{G}: Create a 1/1 green Saproling creature
-        token." The resulting token has no mana cost, supertypes, rules text, or abilities */
+        /*Example: Jade Mage has the ability “{2}{G}: Create a 1/1 green Saproling creature
+        token.” The resulting token has no mana cost, supertypes, rules text, or abilities */
         token = Token.create("1/1 green Saproling creature");
         assertTrue(token.getPower().isPresent());
         assertTrue(token.getToughness().isPresent());

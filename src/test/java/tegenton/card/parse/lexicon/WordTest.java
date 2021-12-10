@@ -41,4 +41,10 @@ public class WordTest {
         words = Preposition.values();
         values = List.of("ABOVE", "FOR", "FROM", "IN", "OF", "ON", "TO", "UNDER", "WITH");
     }
+
+    @Test
+    void triggerWord() {
+        words = TriggerWord.values();
+        values = List.of("WHEN", "WHENEVER", "AT");
+    }
 }
