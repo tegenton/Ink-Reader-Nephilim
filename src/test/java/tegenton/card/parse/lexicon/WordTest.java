@@ -43,6 +43,12 @@ public class WordTest {
     }
 
     @Test
+    void objectVerb() {
+        words = ObjectVerb.values();
+        values = List.of("ATTACK", "BLOCK", "DIE", "ENTER", "LEAVE", "TAP");
+    }
+
+    @Test
     void preposition() {
         words = Preposition.values();
         values = List.of("ABOVE", "FOR", "FROM", "IN", "OF", "ON", "TO", "UNDER", "WITH");
