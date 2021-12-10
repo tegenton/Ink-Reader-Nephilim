@@ -37,6 +37,12 @@ public class WordTest {
     }
 
     @Test
+    void keyword() {
+        words = Keyword.values();
+        values = List.of("BAND", "DEFENDER", "ENCHANT", "FEAR", "FIRST", "FLY", "HASTE", "INDESTRUCTIBLE", "PROTECTION", "REACH", "STRIKE", "TRAMPLE", "VIGILANCE", "WALK");
+    }
+
+    @Test
     void preposition() {
         words = Preposition.values();
         values = List.of("ABOVE", "FOR", "FROM", "IN", "OF", "ON", "TO", "UNDER", "WITH");
