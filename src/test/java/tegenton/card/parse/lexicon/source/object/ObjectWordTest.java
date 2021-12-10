@@ -20,7 +20,19 @@ public class ObjectWordTest extends WordTest {
     @Test
     void verb() {
         words = ObjectVerb.values();
-        values = List.of("ATTACK", "BLOCK", "DIE", "ENTER", "LEAVE", "TAP");
+        values = List.of(
+                "ATTACK",
+                "BECOME",
+                "BLOCK",
+                "COST",
+                "DIE",
+                "ENTER",
+                "GAIN",
+                "GET",
+                "HAVE",
+                "IS",
+                "LEAVE",
+                "TAP");
     }
 
 }

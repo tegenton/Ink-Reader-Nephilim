@@ -4,9 +4,15 @@ import tegenton.card.parse.lexicon.Word;
 
 public enum ObjectVerb implements Word {
     ATTACK,
+    BECOME,
     BLOCK,
+    COST,
     DIE,
     ENTER,
+    GAIN,
+    GET,
+    HAVE,
+    IS,
     LEAVE,
     TAP;
 
