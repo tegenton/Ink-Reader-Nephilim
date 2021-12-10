@@ -138,7 +138,7 @@ public class RulesTextParserTest {
             @Test
             @DisplayName("Green Ward")
             void greenWard() {
-                text = "Enchant creature\nEnchanted creature has protection from green. This effect doesn’t remove Green Ward.";
+                text = "Enchant creature\nEnchanted creature has protection from green. This effect doesn’t remove ~.";
             }
 
             @Test
