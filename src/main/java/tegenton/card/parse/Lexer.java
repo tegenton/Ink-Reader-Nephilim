@@ -17,12 +17,12 @@ public class Lexer implements Collector<String, Stream.Builder<Word>, Stream<Wor
 
     @Override
     public BiConsumer<Stream.Builder<Word>, String> accumulator() {
-        return (stream, s) -> stream.add(Lexicon.lookup(s));
+        return (stream, s) -> Lexicon.lookup(s).forEach(stream::add);
     }
 
     @Override
     public BinaryOperator<Stream.Builder<Word>> combiner() {
-        return (streamA, streamB)-> {
+        return (streamA, streamB) -> {
             streamB.build().forEach(streamA::add);
             return streamA;
         };
