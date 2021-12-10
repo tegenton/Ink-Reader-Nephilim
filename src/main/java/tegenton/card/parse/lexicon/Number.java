@@ -11,6 +11,10 @@ public final class Number implements ValueWord {
         return new Number(Integer.parseInt(s));
     }
 
+    public static Number valueOf(int i) {
+        return new Number(i);
+    }
+
     @Override
     public String getWord() {
         return Integer.toString(value);

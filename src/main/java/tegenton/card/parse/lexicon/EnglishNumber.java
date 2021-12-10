@@ -1,31 +1,31 @@
 package tegenton.card.parse.lexicon;
 
 /**
- * A number written out, such as "two" or "seven".
- * This enum contains zero to twenty.
+ * A number written out, such as "two" or "seven". This enum contains zero to
+ * twenty.
  */
 public enum EnglishNumber implements ValueWord {
-    zero(0),
-    one(1),
-    two(2),
-    three(3),
-    four(4),
-    five(5),
-    six(6),
-    seven(7),
-    eight(8),
-    nine(9),
-    ten(10),
-    eleven(11),
-    twelve(12),
-    thirteen(13),
-    fourteen(14),
-    fifteen(15),
-    sixteen(16),
-    seventeen(17),
-    eighteen(18),
-    nineteen(19),
-    twenty(20);
+    ZERO(0),
+    ONE(1),
+    TWO(2),
+    THREE(3),
+    FOUR(4),
+    FIVE(5),
+    SIX(6),
+    SEVEN(7),
+    EIGHt(8),
+    NINE(9),
+    TEN(10),
+    ELEVEN(11),
+    TWELVE(12),
+    THIRTEEN(13),
+    FOURTEEN(14),
+    FIFTEEN(15),
+    SIXTEEN(16),
+    SEVEnTEEN(17),
+    EIGHTEEN(18),
+    NINETEEN(19),
+    TWENTY(20);
 
     private final int val;
 
