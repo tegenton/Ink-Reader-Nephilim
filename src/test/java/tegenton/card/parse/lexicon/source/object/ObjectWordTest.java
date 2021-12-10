@@ -6,13 +6,19 @@ import java.util.List;
 
 public class ObjectWordTest extends WordTest {
     @Test
-    void object() {
+    void attribute() {
+        words = ObjectAttribute.values();
+        values = List.of("POWER", "TOUGHNESS", "VALUE");
+    }
+
+    @Test
+    void noun() {
         words = ObjectNoun.values();
         values = List.of("CARD", "COPY", "PERMANENT", "SPELL", "IT");
     }
 
     @Test
-    void objectVerb() {
+    void verb() {
         words = ObjectVerb.values();
         values = List.of("ATTACK", "BLOCK", "DIE", "ENTER", "LEAVE", "TAP");
     }
