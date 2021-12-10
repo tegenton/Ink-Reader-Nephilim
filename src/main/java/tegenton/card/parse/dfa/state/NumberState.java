@@ -1,7 +1,7 @@
 package tegenton.card.parse.dfa.state;
 
 import tegenton.card.parse.lexicon.Number;
-import tegenton.card.parse.lexicon.Word;
+import tegenton.card.parse.lexicon.ValueWord;
 import java.util.Optional;
 
 public class NumberState extends State {
@@ -11,7 +11,7 @@ public class NumberState extends State {
         number = i;
     }
 
-    public static State state(char c) {
+    public static NumberState state(char c) {
         return new NumberState(c - '0');
     }
 
@@ -29,7 +29,7 @@ public class NumberState extends State {
     }
 
     @Override
-    public Optional<Word> produce(char c) {
+    public Optional<ValueWord> produce(char c) {
         return switch (c) {
             case '\0', ' ' -> Optional.of(Number.valueOf(number));
             default -> Optional.empty();

@@ -11,5 +11,5 @@ public abstract class State {
 
     public abstract State transition(char c);
 
-    public abstract Optional<Word> produce(char c);
+    public abstract Optional<? extends Word> produce(char c);
 }
