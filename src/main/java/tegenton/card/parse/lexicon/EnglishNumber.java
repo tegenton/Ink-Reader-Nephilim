@@ -13,7 +13,7 @@ public enum EnglishNumber implements ValueWord {
     FIVE(5),
     SIX(6),
     SEVEN(7),
-    EIGHt(8),
+    EIGHT(8),
     NINE(9),
     TEN(10),
     ELEVEN(11),
@@ -22,7 +22,7 @@ public enum EnglishNumber implements ValueWord {
     FOURTEEN(14),
     FIFTEEN(15),
     SIXTEEN(16),
-    SEVEnTEEN(17),
+    SEVENTEEN(17),
     EIGHTEEN(18),
     NINETEEN(19),
     TWENTY(20);

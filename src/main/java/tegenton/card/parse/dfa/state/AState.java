@@ -1,5 +1,6 @@
 package tegenton.card.parse.dfa.state;
 
+import tegenton.card.parse.dfa.state.a.ANState;
 import tegenton.card.parse.lexicon.Determiner;
 import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
@@ -13,16 +14,17 @@ public class AState extends State {
 
     @Override
     public State transition(char c) {
-        switch (c) {
+        return switch (c) {
+            case 'N' -> ANState.state();
             default -> throw new IllegalStateException("Cannot transition from AState on " + c);
-        }
+        };
     }
 
     @Override
     public Optional<Word> produce(char c) {
-        return switch (c) {
-            case '\0' -> Optional.of(Determiner.A);
-            default -> Optional.empty();
-        };
+        if (c == '\0') {
+            return Optional.of(Determiner.A);
+        }
+        return Optional.empty();
     }
 }

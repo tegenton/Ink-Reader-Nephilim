@@ -12,7 +12,7 @@ public class ValueWordTest {
                 "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty");
         EnglishNumber number;
         for (int i = 0; i < strings.size(); i++) {
-            number = EnglishNumber.valueOf(strings.get(i));
+            number = EnglishNumber.valueOf(strings.get(i).toUpperCase());
             assertEquals(number.getVal(), i);
         }
     }
