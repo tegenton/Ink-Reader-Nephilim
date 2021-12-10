@@ -1,4 +1,4 @@
-package tegenton.card.parse.lexicon.object;
+package tegenton.card.parse.lexicon.source.object;
 
 import org.junit.jupiter.api.Test;
 import tegenton.card.parse.lexicon.WordTest;

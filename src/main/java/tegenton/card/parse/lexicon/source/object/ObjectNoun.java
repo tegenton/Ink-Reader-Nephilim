@@ -1,4 +1,4 @@
-package tegenton.card.parse.lexicon.object;
+package tegenton.card.parse.lexicon.source.object;
 
 import tegenton.card.parse.lexicon.Word;
 
