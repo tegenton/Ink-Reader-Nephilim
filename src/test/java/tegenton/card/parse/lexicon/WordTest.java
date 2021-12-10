@@ -37,18 +37,6 @@ public class WordTest {
     }
 
     @Test
-    void object() {
-        words = ObjectWord.values();
-        values = List.of("CARD", "COPY", "PERMANENT", "SPELL", "IT");
-    }
-
-    @Test
-    void objectVerb() {
-        words = ObjectVerb.values();
-        values = List.of("ATTACK", "BLOCK", "DIE", "ENTER", "LEAVE", "TAP");
-    }
-
-    @Test
     void preposition() {
         words = Preposition.values();
         values = List.of("ABOVE", "FOR", "FROM", "IN", "OF", "ON", "TO", "UNDER", "WITH");
@@ -59,4 +47,5 @@ public class WordTest {
         words = TriggerWord.values();
         values = List.of("WHEN", "WHENEVER", "AT");
     }
+
 }

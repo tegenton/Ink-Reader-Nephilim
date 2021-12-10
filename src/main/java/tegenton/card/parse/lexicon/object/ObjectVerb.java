@@ -1,4 +1,6 @@
-package tegenton.card.parse.lexicon;
+package tegenton.card.parse.lexicon.object;
+
+import tegenton.card.parse.lexicon.Word;
 
 public enum ObjectVerb implements Word {
     ATTACK,

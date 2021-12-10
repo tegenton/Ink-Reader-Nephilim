@@ -1,9 +1,11 @@
-package tegenton.card.parse.lexicon;
+package tegenton.card.parse.lexicon.object;
+
+import tegenton.card.parse.lexicon.Word;
 
 /**
  * The (grammatical) object of a sentence.
  */
-public enum ObjectWord implements Word {
+public enum ObjectNoun implements Word {
     CARD,
     COPY,
     PERMANENT,
