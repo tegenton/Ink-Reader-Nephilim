@@ -3,8 +3,10 @@ package tegenton.card.parse.dfa.state.a;
 import tegenton.card.parse.dfa.state.AState;
 import tegenton.card.parse.dfa.state.OState;
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.a.n.ANDState;
 import tegenton.card.parse.dfa.state.a.n.ANYState;
 import tegenton.card.parse.lexicon.Determiner;
+import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
 public class ANState extends AState {
@@ -17,6 +19,7 @@ public class ANState extends AState {
     @Override
     public State transition(char c) {
         return switch (c) {
+            case 'D' -> ANDState.state();
             case 'O' -> OState.state();
             case 'Y' -> ANYState.state();
             default -> throw new IllegalStateException("Cannot transition from ANState on " + c);
@@ -24,7 +27,7 @@ public class ANState extends AState {
     }
 
     @Override
-    public Optional<Determiner> produce(char c) {
+    public Optional<? extends Word> produce(char c) {
         return switch (c) {
             case 'O', '\0', ' ' -> Optional.of(Determiner.AN);
             default -> Optional.empty();

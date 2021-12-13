@@ -2,6 +2,7 @@ package tegenton.card.parse.dfa.state.t.h.e;
 
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.t.h.THEState;
+import tegenton.card.parse.dfa.state.t.h.e.s.THESEState;
 import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 

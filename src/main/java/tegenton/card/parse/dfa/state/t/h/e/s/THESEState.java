@@ -1,29 +1,29 @@
-package tegenton.card.parse.dfa.state.e.a.c;
+package tegenton.card.parse.dfa.state.t.h.e.s;
 
 import tegenton.card.parse.dfa.state.State;
-import tegenton.card.parse.dfa.state.e.a.EACState;
+import tegenton.card.parse.dfa.state.t.h.e.THESState;
 import tegenton.card.parse.lexicon.Determiner;
 import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
-public class EACHState extends EACState {
-    private static final EACHState instance = new EACHState();
+public class THESEState extends THESState {
+    private static final THESEState instance = new THESEState();
 
-    public static EACHState state() {
+    public static THESEState state() {
         return instance;
     }
 
     @Override
     public State transition(char c) {
         switch (c) {
-            default -> throw new IllegalStateException("Cannot transition from EACHState on " + c);
+            default -> throw new IllegalStateException("Cannot transition from THESEState on " + c);
         }
     }
 
     @Override
     public Optional<? extends Word> produce(char c) {
         return switch (c) {
-            case '\0', ' ' -> Optional.of(Determiner.EACH);
+            case ' ', '\0' -> Optional.of(Determiner.THESE);
             default -> Optional.empty();
         };
     }
