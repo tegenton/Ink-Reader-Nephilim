@@ -17,6 +17,7 @@ class EmptyState extends State {
             case 'C' -> CState.state();
             case 'D' -> DState.state();
             case 'F' -> FState.state();
+            case 'G' -> GState.state();
             case 'P' -> PState.state();
             case 'O' -> OState.state();
             case 'T' -> TState.state();
