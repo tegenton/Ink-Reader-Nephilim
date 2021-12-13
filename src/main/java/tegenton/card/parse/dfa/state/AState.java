@@ -1,5 +1,6 @@
 package tegenton.card.parse.dfa.state;
 
+import tegenton.card.parse.dfa.state.a.ALState;
 import tegenton.card.parse.dfa.state.a.ANState;
 import tegenton.card.parse.lexicon.Determiner;
 import tegenton.card.parse.lexicon.Word;
@@ -15,6 +16,7 @@ public class AState extends State {
     @Override
     public State transition(char c) {
         return switch (c) {
+            case 'L' -> ALState.state();
             case 'N' -> ANState.state();
             case ' ' -> SpaceState.state();
             default -> throw new IllegalStateException("Cannot transition from AState on " + c);
@@ -22,7 +24,7 @@ public class AState extends State {
     }
 
     @Override
-    public Optional<Determiner> produce(char c) {
+    public Optional<? extends Word> produce(char c) {
         return switch (c) {
             case '\0', ' ' -> Optional.of(Determiner.A);
             default -> Optional.empty();
