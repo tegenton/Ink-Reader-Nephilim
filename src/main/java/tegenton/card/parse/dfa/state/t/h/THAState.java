@@ -2,22 +2,22 @@ package tegenton.card.parse.dfa.state.t.h;
 
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.t.THState;
-import tegenton.card.parse.dfa.state.t.h.o.THOSState;
+import tegenton.card.parse.dfa.state.t.h.a.THATState;
 import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
-public class THOState extends THState {
-    private static final THOState instance = new THOState();
+public class THAState extends THState {
+    private static final THAState instance = new THAState();
 
-    public static THOState state() {
+    public static THAState state() {
         return instance;
     }
 
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'S' -> THOSState.state();
-            default -> throw new IllegalStateException("Cannot transition from THOState on " + c);
+            case 'T' -> THATState.state();
+            default -> throw new IllegalStateException("Cannot transition from THAState on " + c);
         };
     }
 
