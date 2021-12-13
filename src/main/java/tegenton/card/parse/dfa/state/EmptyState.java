@@ -14,6 +14,7 @@ class EmptyState extends State {
     public State transition(char c) {
         return switch (c) {
             case 'A' -> AState.state();
+            case 'C' -> CState.state();
             case 'D' -> DState.state();
             case 'F' -> FState.state();
             case 'P' -> PState.state();
