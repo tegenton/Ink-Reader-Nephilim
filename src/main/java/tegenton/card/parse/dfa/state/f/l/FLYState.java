@@ -2,14 +2,15 @@ package tegenton.card.parse.dfa.state.f.l;
 
 import tegenton.card.parse.dfa.state.IState;
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.f.FLState;
 import tegenton.card.parse.lexicon.Keyword;
 import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
-public class FLYState extends State {
+public class FLYState extends FLState {
     private static final FLYState instance = new FLYState();
 
-    public static State state() {
+    public static FLYState state() {
         return instance;
     }
 
@@ -22,10 +23,10 @@ public class FLYState extends State {
     }
 
     @Override
-    public Optional<Word> produce(char c) {
-        if (c == 'I') {
-            return Optional.of(Keyword.FLY);
-        }
-        return Optional.empty();
+    public Optional<Keyword> produce(char c) {
+        return switch (c) {
+            case 'I' -> Optional.of(Keyword.FLY);
+            default -> Optional.empty();
+        };
     }
 }

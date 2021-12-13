@@ -7,7 +7,7 @@ import java.util.Optional;
 public class SpaceState extends State {
     private static final SpaceState instance = new SpaceState();
 
-    public static State state() {
+    public static SpaceState state() {
         return instance;
     }
 
@@ -17,7 +17,7 @@ public class SpaceState extends State {
     }
 
     @Override
-    public Optional<Word> produce(char c) {
+    public Optional<Punctuation> produce(char c) {
         return Optional.of(Punctuation.SPACE);
     }
 }

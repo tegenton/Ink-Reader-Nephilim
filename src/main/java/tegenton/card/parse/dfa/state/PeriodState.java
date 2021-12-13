@@ -7,7 +7,7 @@ import java.util.Optional;
 public class PeriodState extends State {
     private static final PeriodState instance = new PeriodState();
 
-    public static State state() {
+    public static PeriodState state() {
         return instance;
     }
 
@@ -21,7 +21,7 @@ public class PeriodState extends State {
     }
 
     @Override
-    public Optional<Word> produce(char c) {
+    public Optional<Punctuation> produce(char c) {
         return switch (c) {
             case '\0', ' ' -> Optional.of(Punctuation.PERIOD);
             default -> Optional.empty();

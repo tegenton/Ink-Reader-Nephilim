@@ -2,14 +2,15 @@ package tegenton.card.parse.dfa.state.o.n;
 
 import tegenton.card.parse.dfa.state.SpaceState;
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.o.ONState;
 import tegenton.card.parse.lexicon.EnglishNumber;
 import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
-public class ONEState extends State {
+public class ONEState extends ONState {
     private static final ONEState instance = new ONEState();
 
-    public static State state() {
+    public static ONEState state() {
         return instance;
     }
 
@@ -22,7 +23,7 @@ public class ONEState extends State {
     }
 
     @Override
-    public Optional<Word> produce(char c) {
+    public Optional<? extends Word> produce(char c) {
         return switch (c) {
             case '\0', ' ' -> Optional.of(EnglishNumber.ONE);
             default -> Optional.empty();

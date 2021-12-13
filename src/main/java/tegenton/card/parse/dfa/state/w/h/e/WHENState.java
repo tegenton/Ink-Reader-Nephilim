@@ -2,14 +2,15 @@ package tegenton.card.parse.dfa.state.w.h.e;
 
 import tegenton.card.parse.dfa.state.SpaceState;
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.w.h.WHEState;
 import tegenton.card.parse.lexicon.TriggerWord;
 import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
-public class WHENState extends State {
+public class WHENState extends WHEState {
     private static final WHENState instance = new WHENState();
 
-    public static State state() {
+    public static WHENState state() {
         return instance;
     }
 
@@ -22,7 +23,7 @@ public class WHENState extends State {
     }
 
     @Override
-    public Optional<Word> produce(char c) {
+    public Optional<TriggerWord> produce(char c) {
         return switch (c) {
             case '\0', ' ' -> Optional.of(TriggerWord.WHEN);
             default -> Optional.empty();

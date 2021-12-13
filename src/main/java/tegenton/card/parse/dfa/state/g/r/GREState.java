@@ -1,11 +1,12 @@
 package tegenton.card.parse.dfa.state.g.r;
 
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.g.GRState;
 import tegenton.card.parse.dfa.state.g.r.e.GREAState;
 import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
-public class GREState extends State {
+public class GREState extends GRState {
     private static final GREState instance = new GREState();
 
     public static GREState state() {

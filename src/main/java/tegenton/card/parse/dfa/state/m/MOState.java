@@ -1,11 +1,12 @@
 package tegenton.card.parse.dfa.state.m;
 
+import tegenton.card.parse.dfa.state.MState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.m.o.MORState;
 import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
-public class MOState extends State {
+public class MOState extends MState {
     private static final MOState instance = new MOState();
 
     public static MOState state() {

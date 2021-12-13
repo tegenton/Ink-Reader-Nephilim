@@ -1,14 +1,15 @@
 package tegenton.card.parse.dfa.state.d;
 
+import tegenton.card.parse.dfa.state.DState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.d.r.DRAState;
 import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
-public class DRState extends State {
+public class DRState extends DState {
     private static final DRState instance = new DRState();
 
-    public static State state() {
+    public static DRState state() {
         return instance;
     }
 
@@ -21,7 +22,7 @@ public class DRState extends State {
     }
 
     @Override
-    public Optional<Word> produce(char c) {
+    public Optional<? extends Word> produce(char c) {
         return Optional.empty();
     }
 }

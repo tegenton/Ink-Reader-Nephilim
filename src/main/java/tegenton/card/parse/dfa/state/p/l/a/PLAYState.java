@@ -2,11 +2,11 @@ package tegenton.card.parse.dfa.state.p.l.a;
 
 import tegenton.card.parse.dfa.state.EState;
 import tegenton.card.parse.dfa.state.State;
-import tegenton.card.parse.lexicon.Word;
+import tegenton.card.parse.dfa.state.p.l.PLAState;
 import tegenton.card.parse.lexicon.source.player.PlayerVerb;
 import java.util.Optional;
 
-public class PLAYState extends State {
+public class PLAYState extends PLAState {
     private static final PLAYState instance = new PLAYState();
 
     public static PLAYState state() {
@@ -22,7 +22,7 @@ public class PLAYState extends State {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<PlayerVerb> produce(char c) {
         return switch (c) {
             case 'E' -> Optional.of(PlayerVerb.PLAY);
             default -> Optional.empty();

@@ -7,7 +7,7 @@ import java.util.Optional;
 public class DState extends State {
     private static final DState instance = new DState();
 
-    public static State state() {
+    public static DState state() {
         return instance;
     }
 
@@ -20,7 +20,7 @@ public class DState extends State {
     }
 
     @Override
-    public Optional<Word> produce(char c) {
+    public Optional<? extends Word> produce(char c) {
         return Optional.empty();
     }
 }

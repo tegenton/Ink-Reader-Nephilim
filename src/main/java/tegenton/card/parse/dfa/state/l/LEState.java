@@ -1,11 +1,12 @@
 package tegenton.card.parse.dfa.state.l;
 
+import tegenton.card.parse.dfa.state.LState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.l.e.LESState;
 import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
-public class LEState extends State {
+public class LEState extends LState {
     private static final LEState instance = new LEState();
 
     public static LEState state() {

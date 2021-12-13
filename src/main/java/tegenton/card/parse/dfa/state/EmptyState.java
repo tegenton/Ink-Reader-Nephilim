@@ -18,6 +18,8 @@ class EmptyState extends State {
             case 'D' -> DState.state();
             case 'F' -> FState.state();
             case 'G' -> GState.state();
+            case 'L' -> LState.state();
+            case 'M' -> MState.state();
             case 'P' -> PState.state();
             case 'O' -> OState.state();
             case 'T' -> TState.state();

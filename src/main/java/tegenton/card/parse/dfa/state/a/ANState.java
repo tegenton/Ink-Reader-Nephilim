@@ -1,15 +1,15 @@
 package tegenton.card.parse.dfa.state.a;
 
+import tegenton.card.parse.dfa.state.AState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.a.n.ANYState;
 import tegenton.card.parse.lexicon.Determiner;
-import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
-public class ANState extends State {
+public class ANState extends AState {
     private static final ANState instance = new ANState();
 
-    public static State state() {
+    public static ANState state() {
         return instance;
     }
 
@@ -22,7 +22,7 @@ public class ANState extends State {
     }
 
     @Override
-    public Optional<Word> produce(char c) {
+    public Optional<Determiner> produce(char c) {
         if (c == '\0') {
             return Optional.of(Determiner.AN);
         }

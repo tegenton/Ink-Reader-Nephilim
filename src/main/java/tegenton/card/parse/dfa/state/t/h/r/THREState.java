@@ -1,11 +1,12 @@
 package tegenton.card.parse.dfa.state.t.h.r;
 
 import tegenton.card.parse.dfa.state.State;
-import tegenton.card.parse.dfa.state.THREEState;
+import tegenton.card.parse.dfa.state.t.h.THRState;
+import tegenton.card.parse.dfa.state.t.h.r.e.THREEState;
 import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
-public class THREState extends State {
+public class THREState extends THRState {
     private static final THREState instance = new THREState();
 
     public static THREState state() {

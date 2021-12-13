@@ -1,11 +1,12 @@
 package tegenton.card.parse.dfa.state.t.a;
 
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.t.TAState;
 import tegenton.card.parse.dfa.state.t.a.r.TARGState;
 import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
-public class TARState extends State {
+public class TARState extends TAState {
     private static final TARState instance = new TARState();
 
     public static TARState state() {

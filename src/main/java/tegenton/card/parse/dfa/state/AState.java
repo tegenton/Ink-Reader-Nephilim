@@ -22,7 +22,7 @@ public class AState extends State {
     }
 
     @Override
-    public Optional<Word> produce(char c) {
+    public Optional<Determiner> produce(char c) {
         return switch (c) {
             case '\0', ' ' -> Optional.of(Determiner.A);
             default -> Optional.empty();

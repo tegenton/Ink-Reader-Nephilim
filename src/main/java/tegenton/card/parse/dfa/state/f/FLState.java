@@ -1,14 +1,15 @@
 package tegenton.card.parse.dfa.state.f;
 
+import tegenton.card.parse.dfa.state.FState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.f.l.FLYState;
 import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
-public class FLState extends State {
+public class FLState extends FState {
     private static final FLState instance = new FLState();
 
-    public static State state() {
+    public static FLState state() {
         return instance;
     }
 
@@ -21,7 +22,7 @@ public class FLState extends State {
     }
 
     @Override
-    public Optional<Word> produce(char c) {
+    public Optional<? extends Word> produce(char c) {
         return Optional.empty();
     }
 }

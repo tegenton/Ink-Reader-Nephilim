@@ -2,14 +2,14 @@ package tegenton.card.parse.dfa.state.a.n;
 
 import tegenton.card.parse.dfa.state.SpaceState;
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.a.ANState;
 import tegenton.card.parse.lexicon.Determiner;
-import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
-public class ANYState extends State {
+public class ANYState extends ANState {
     private static final ANYState instance = new ANYState();
 
-    public static State state() {
+    public static ANYState state() {
         return instance;
     }
 
@@ -22,7 +22,7 @@ public class ANYState extends State {
     }
 
     @Override
-    public Optional<Word> produce(char c) {
+    public Optional<Determiner> produce(char c) {
         return switch (c) {
             case '\0', ' ' -> Optional.of(Determiner.ANY);
             default -> Optional.empty();

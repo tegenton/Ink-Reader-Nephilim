@@ -1,12 +1,13 @@
 package tegenton.card.parse.dfa.state.e;
 
+import tegenton.card.parse.dfa.state.EState;
 import tegenton.card.parse.dfa.state.SpaceState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.lexicon.Morpheme;
 import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
-public class ERState extends State {
+public class ERState extends EState {
     private static final ERState instance = new ERState();
 
     public static ERState state() {
@@ -22,7 +23,7 @@ public class ERState extends State {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<Morpheme> produce(char c) {
         return switch (c) {
             case '\0', ' ' -> Optional.of(Morpheme.ER);
             default -> Optional.empty();

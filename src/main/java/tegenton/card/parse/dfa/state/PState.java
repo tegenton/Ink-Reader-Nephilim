@@ -7,7 +7,7 @@ import java.util.Optional;
 public class PState extends State {
     private static final PState instance = new PState();
 
-    public static State state() {
+    public static PState state() {
         return instance;
     }
 

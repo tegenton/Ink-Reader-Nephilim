@@ -2,11 +2,12 @@ package tegenton.card.parse.dfa.state.c.a.r;
 
 import tegenton.card.parse.dfa.state.SState;
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.c.a.CARState;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.source.object.ObjectNoun;
 import java.util.Optional;
 
-public class CARDState extends State {
+public class CARDState extends CARState {
     private static final CARDState instance = new CARDState();
 
     public static CARDState state() {
@@ -22,7 +23,7 @@ public class CARDState extends State {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<ObjectNoun> produce(char c) {
         return switch (c) {
             case 'S' -> Optional.of(ObjectNoun.CARD);
             default -> Optional.empty();

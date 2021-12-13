@@ -1,11 +1,11 @@
-package tegenton.card.parse.dfa.state.g.r.e.a.t;
+package tegenton.card.parse.dfa.state.g.r.e.a.t.e;
 
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.g.r.e.a.t.GREATEState;
 import tegenton.card.parse.lexicon.Comparative;
-import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
-public class GREATERState extends State {
+public class GREATERState extends GREATEState {
     private static final GREATERState instance = new GREATERState();
 
     public static GREATERState state() {
@@ -20,7 +20,7 @@ public class GREATERState extends State {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<Comparative> produce(char c) {
         return switch (c) {
             case '\0', ' ' -> Optional.of(Comparative.GREATER);
             default -> Optional.empty();

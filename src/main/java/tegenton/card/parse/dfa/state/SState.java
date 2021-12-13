@@ -21,7 +21,7 @@ public class SState extends State {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<Morpheme> produce(char c) {
         return switch (c) {
             case '\0', ' ', '.' -> Optional.of(Morpheme.S);
             default -> Optional.empty();

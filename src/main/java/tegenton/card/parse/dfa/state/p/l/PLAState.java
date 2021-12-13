@@ -1,11 +1,12 @@
 package tegenton.card.parse.dfa.state.p.l;
 
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.p.PLState;
 import tegenton.card.parse.dfa.state.p.l.a.PLAYState;
 import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
-public class PLAState extends State {
+public class PLAState extends PLState {
     private static final PLAState instance = new PLAState();
 
     public static PLAState state() {
