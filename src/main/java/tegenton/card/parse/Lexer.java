@@ -11,7 +11,7 @@ import java.util.function.Supplier;
 import java.util.stream.Collector;
 import java.util.stream.Stream;
 
-public class Lexer implements Collector<String, Stream.Builder<Word>, Stream<Word>> {
+public final class Lexer implements Collector<String, Stream.Builder<Word>, Stream<Word>> {
     @Override
     public Supplier<Stream.Builder<Word>> supplier() {
         return Stream::builder;

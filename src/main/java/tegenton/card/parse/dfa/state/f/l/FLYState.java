@@ -4,18 +4,17 @@ import tegenton.card.parse.dfa.state.IState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.f.FLState;
 import tegenton.card.parse.lexicon.Keyword;
-import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
-public class FLYState extends FLState {
-    private static final FLYState instance = new FLYState();
+public final class FLYState extends FLState {
+    private static final FLYState INSTANCE = new FLYState();
 
     public static FLYState state() {
-        return instance;
+        return INSTANCE;
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'I' -> IState.state();
             default -> throw new IllegalStateException("Cannot transition from FLYState on " + c);
@@ -23,7 +22,7 @@ public class FLYState extends FLState {
     }
 
     @Override
-    public Optional<Keyword> produce(char c) {
+    public Optional<Keyword> produce(final char c) {
         return switch (c) {
             case 'I' -> Optional.of(Keyword.FLY);
             default -> Optional.empty();

@@ -7,14 +7,14 @@ import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
 public class AState extends State {
-    private static final AState instance = new AState();
+    private static final AState INSTANCE = new AState();
 
     public static State state() {
-        return instance;
+        return INSTANCE;
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'L' -> ALState.state();
             case 'N' -> ANState.state();
@@ -24,7 +24,7 @@ public class AState extends State {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return switch (c) {
             case '\0', ' ' -> Optional.of(Determiner.A);
             default -> Optional.empty();
