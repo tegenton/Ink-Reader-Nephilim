@@ -40,4 +40,16 @@ class LexiconTest {
     void englishNumber(Word number) {
         word = number;
     }
+
+    @ParameterizedTest
+    @EnumSource(Keyword.class)
+    void keyword(Word keyword) {
+        word = keyword;
+    }
+
+    @ParameterizedTest
+    @EnumSource(Preposition.class)
+    void preposition(Word preposition) {
+        word = preposition;
+    }
 }

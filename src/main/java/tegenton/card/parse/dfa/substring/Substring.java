@@ -1,14 +1,14 @@
-package tegenton.card.parse.dfa.state.morpheme;
+package tegenton.card.parse.dfa.substring;
 
 import tegenton.card.parse.dfa.state.SpaceState;
 import tegenton.card.parse.dfa.state.State;
 import java.util.Arrays;
 
-public abstract class Morpheme extends State {
+public abstract class Substring extends State {
     private final char[] text;
     private int index = 1;
 
-    protected Morpheme(char[] text) {
+    protected Substring(char[] text) {
         this.text = text;
     }
 

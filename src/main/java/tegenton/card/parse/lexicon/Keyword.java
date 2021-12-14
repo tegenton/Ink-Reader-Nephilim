@@ -1,12 +1,12 @@
 package tegenton.card.parse.lexicon;
 
 public enum Keyword implements Word {
-    BAND,
+    BANDING,
     DEFENDER,
     ENCHANT,
     FEAR,
     FIRST,
-    FLY,
+    FLYING,
     HASTE,
     INDESTRUCTIBLE,
     PROTECTION,

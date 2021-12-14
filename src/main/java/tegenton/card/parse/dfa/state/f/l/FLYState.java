@@ -1,8 +1,8 @@
 package tegenton.card.parse.dfa.state.f.l;
 
-import tegenton.card.parse.dfa.state.IState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.f.FLState;
+import tegenton.card.parse.dfa.substring.morpheme.INGMorpheme;
 import tegenton.card.parse.lexicon.Keyword;
 import java.util.Optional;
 
@@ -16,7 +16,7 @@ public final class FLYState extends FLState {
     @Override
     public State transition(final char c) {
         return switch (c) {
-            case 'I' -> IState.state();
+            case 'I' -> new INGMorpheme(Keyword.FLYING);
             default -> throw new IllegalStateException("Cannot transition from FLYState on " + c);
         };
     }
@@ -24,7 +24,6 @@ public final class FLYState extends FLState {
     @Override
     public Optional<Keyword> produce(final char c) {
         return switch (c) {
-            case 'I' -> Optional.of(Keyword.FLY);
             default -> Optional.empty();
         };
     }

@@ -2,7 +2,9 @@ package tegenton.card.parse.dfa.state;
 
 import tegenton.card.parse.dfa.state.a.ALState;
 import tegenton.card.parse.dfa.state.a.ANState;
+import tegenton.card.parse.dfa.substring.StateSequence;
 import tegenton.card.parse.lexicon.Determiner;
+import tegenton.card.parse.lexicon.Preposition;
 import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
@@ -16,6 +18,7 @@ public class AState extends State {
     @Override
     public State transition(final char c) {
         return switch (c) {
+            case 'B' -> new StateSequence("BOVE", Preposition.ABOVE);
             case 'L' -> ALState.state();
             case 'N' -> ANState.state();
             case ' ' -> SpaceState.state();

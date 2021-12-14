@@ -1,5 +1,8 @@
 package tegenton.card.parse.dfa.state;
 
+import tegenton.card.parse.dfa.substring.StateSequence;
+import tegenton.card.parse.lexicon.Keyword;
+import tegenton.card.parse.lexicon.Preposition;
 import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
@@ -14,18 +17,24 @@ class EmptyState extends State {
     public State transition(char c) {
         return switch (c) {
             case 'A' -> AState.state();
+            case 'B' -> BState.state();
             case 'C' -> CState.state();
             case 'D' -> DState.state();
             case 'E' -> EState.state();
             case 'F' -> FState.state();
             case 'G' -> GState.state();
+            case 'H' -> new StateSequence("HASTE", Keyword.HASTE);
+            case 'I' -> IState.state();
             case 'L' -> LState.state();
             case 'M' -> MState.state();
             case 'N' -> NState.state();
             case 'P' -> PState.state();
             case 'O' -> OState.state();
+            case 'R' -> new StateSequence("REACH", Keyword.REACH);
             case 'S' -> SState.state();
             case 'T' -> TState.state();
+            case 'U' -> new StateSequence("UNDER", Preposition.UNDER);
+            case 'V' -> new StateSequence("VIGILANCE", Keyword.VIGILANCE);
             case 'W' -> WState.state();
             case 'Z' -> ZState.state();
             case '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' -> NumberState.state(c);

@@ -2,6 +2,8 @@ package tegenton.card.parse.dfa.state;
 
 import tegenton.card.parse.dfa.state.s.SEState;
 import tegenton.card.parse.dfa.state.s.SIState;
+import tegenton.card.parse.dfa.substring.StateSequence;
+import tegenton.card.parse.lexicon.Keyword;
 import tegenton.card.parse.lexicon.Morpheme;
 import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
@@ -18,6 +20,7 @@ public class SState extends State {
         return switch (c) {
             case 'E' -> SEState.state();
             case 'I' -> SIState.state();
+            case 'T' -> new StateSequence("TRIKE", Keyword.STRIKE);
             case '\0', ' ' -> SpaceState.state();
             case '.' -> PeriodState.state();
             default -> throw new IllegalStateException("Cannot transition from SState on " + c);

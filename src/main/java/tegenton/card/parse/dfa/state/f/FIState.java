@@ -4,6 +4,8 @@ import tegenton.card.parse.dfa.state.FState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.f.i.FIFState;
 import tegenton.card.parse.dfa.state.f.i.FIVState;
+import tegenton.card.parse.dfa.substring.StateSequence;
+import tegenton.card.parse.lexicon.Keyword;
 import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
@@ -18,6 +20,7 @@ public class FIState extends FState {
     public State transition(char c) {
         return switch (c) {
             case 'F' -> FIFState.state();
+            case 'R' -> new StateSequence("RST", Keyword.FIRST);
             case 'V' -> FIVState.state();
             default -> throw new IllegalStateException("Cannot transition from FIState on " + c);
         };

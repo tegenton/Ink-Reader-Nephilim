@@ -1,8 +1,8 @@
 package tegenton.card.parse.dfa.state.s.e.v.e;
 
 import tegenton.card.parse.dfa.state.State;
-import tegenton.card.parse.dfa.state.morpheme.TEENMorpheme;
 import tegenton.card.parse.dfa.state.s.e.v.SEVEState;
+import tegenton.card.parse.dfa.substring.morpheme.TEENMorpheme;
 import tegenton.card.parse.lexicon.EnglishNumber;
 import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;

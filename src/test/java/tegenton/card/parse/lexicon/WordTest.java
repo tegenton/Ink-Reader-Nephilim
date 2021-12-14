@@ -39,7 +39,7 @@ public class WordTest {
     @Test
     void keyword() {
         words = Keyword.values();
-        values = List.of("BAND", "DEFENDER", "ENCHANT", "FEAR", "FIRST", "FLY", "HASTE", "INDESTRUCTIBLE", "PROTECTION", "REACH", "STRIKE", "TRAMPLE", "VIGILANCE", "WALK");
+        values = List.of("BANDING", "DEFENDER", "ENCHANT", "FEAR", "FIRST", "FLYING", "HASTE", "INDESTRUCTIBLE", "PROTECTION", "REACH", "STRIKE", "TRAMPLE", "VIGILANCE", "WALK");
     }
 
     @Test

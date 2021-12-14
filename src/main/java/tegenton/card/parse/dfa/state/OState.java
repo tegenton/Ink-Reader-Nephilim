@@ -1,5 +1,6 @@
 package tegenton.card.parse.dfa.state;
 
+import tegenton.card.parse.dfa.state.o.OFState;
 import tegenton.card.parse.dfa.state.o.ONState;
 import tegenton.card.parse.dfa.state.o.ORState;
 import tegenton.card.parse.dfa.state.o.OTState;
@@ -16,6 +17,7 @@ public class OState extends State {
     @Override
     public State transition(char c) {
         return switch (c) {
+            case 'F' -> OFState.state();
             case 'N' -> ONState.state();
             case 'R' -> ORState.state();
             case 'T' -> OTState.state();
