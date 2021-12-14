@@ -28,8 +28,8 @@ class EmptyState extends State {
             case 'L' -> LState.state();
             case 'M' -> MState.state();
             case 'N' -> NState.state();
-            case 'P' -> PState.state();
             case 'O' -> OState.state();
+            case 'P' -> PState.state();
             case 'R' -> new StateSequence("REACH", Keyword.REACH);
             case 'S' -> SState.state();
             case 'T' -> TState.state();
@@ -38,8 +38,10 @@ class EmptyState extends State {
             case 'W' -> WState.state();
             case 'Z' -> ZState.state();
             case '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' -> NumberState.state(c);
+            case ',' -> CommaState.state();
             case '.' -> PeriodState.state();
             case '\0' -> EmptyState.state();
+            case ' ' -> SpaceState.state();
             default -> throw new IllegalStateException("Cannot transition from EmptyState on " + c);
         };
     }

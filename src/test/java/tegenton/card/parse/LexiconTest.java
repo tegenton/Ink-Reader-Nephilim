@@ -52,4 +52,16 @@ class LexiconTest {
     void preposition(Word preposition) {
         word = preposition;
     }
+
+    @ParameterizedTest
+    @EnumSource(Punctuation.class)
+    void punctuation(Word punctuation) {
+        word = punctuation;
+    }
+
+    @ParameterizedTest
+    @EnumSource(TriggerWord.class)
+    void trigger(Word trigger) {
+        word = trigger;
+    }
 }

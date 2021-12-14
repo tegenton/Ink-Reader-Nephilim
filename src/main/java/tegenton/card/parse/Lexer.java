@@ -45,6 +45,6 @@ public final class Lexer implements Collector<String, Stream.Builder<Word>, Stre
         for (int i = 0; i < text.length - 1; i++) {
             text[i] += ' ';
         }
-        return Arrays.stream(text).collect(this).toList();
+        return Arrays.stream(text).parallel().collect(this).toList();
     }
 }
