@@ -1,7 +1,7 @@
 package tegenton.card.parse.dfa.substring;
 
-import tegenton.card.parse.dfa.state.SpaceState;
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.SymbolState;
 import java.util.Arrays;
 
 public abstract class Substring extends State {
@@ -20,7 +20,7 @@ public abstract class Substring extends State {
             throw new IllegalStateException("Morpheme " + Arrays.toString(text) + " does not contain " + c);
         } else {
             return switch (c) {
-                case ' ' -> SpaceState.state();
+                case ' ' -> SymbolState.state(c);
                 default -> throw new IllegalStateException("Cannot transition from morpheme " + Arrays.toString(text) + " on " + c);
             };
         }

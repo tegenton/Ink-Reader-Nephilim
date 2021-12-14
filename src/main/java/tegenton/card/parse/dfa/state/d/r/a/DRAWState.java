@@ -1,8 +1,8 @@
 package tegenton.card.parse.dfa.state.d.r.a;
 
 import tegenton.card.parse.dfa.state.SState;
-import tegenton.card.parse.dfa.state.SpaceState;
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.dfa.state.d.r.DRAState;
 import tegenton.card.parse.lexicon.source.player.PlayerVerb;
 import java.util.Optional;
@@ -18,7 +18,7 @@ public final class DRAWState extends DRAState {
     public State transition(final char c) {
         return switch (c) {
             case 'S' -> SState.state();
-            case ' ' -> SpaceState.state();
+            case ' ' -> SymbolState.state(c);
             default -> throw new IllegalStateException("Cannot transition from DRAWState on " + c);
         };
     }

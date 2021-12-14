@@ -1,7 +1,7 @@
 package tegenton.card.parse.dfa.state.t.a.r.g.e;
 
-import tegenton.card.parse.dfa.state.SpaceState;
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.dfa.state.t.a.r.g.TARGEState;
 import tegenton.card.parse.lexicon.Determiner;
 import java.util.Optional;
@@ -16,7 +16,7 @@ public final class TARGETState extends TARGEState {
     @Override
     public State transition(final char c) {
         return switch (c) {
-            case ' ' -> SpaceState.state();
+            case ' ' -> SymbolState.state(c);
             default -> throw new IllegalStateException("Cannot transition from EmptyState on " + c);
         };
     }

@@ -1,22 +1,22 @@
 package tegenton.card.parse.dfa.state.a.n;
 
-import tegenton.card.parse.dfa.state.SpaceState;
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.dfa.state.a.ANState;
 import tegenton.card.parse.lexicon.Determiner;
 import java.util.Optional;
 
 public class ANYState extends ANState {
-    private static final ANYState instance = new ANYState();
+    private static final ANYState INSTANCE = new ANYState();
 
     public static ANYState state() {
-        return instance;
+        return INSTANCE;
     }
 
     @Override
     public State transition(char c) {
         return switch (c) {
-            case ' ' -> SpaceState.state();
+            case ' ' -> SymbolState.state(c);
             default -> throw new IllegalStateException("Cannot transition from ANYState on " + c);
         };
     }

@@ -39,6 +39,6 @@ class NumberStateTest {
 
     @Test
     void transitionSpace() {
-        assertTrue(numberState.transition(' ') instanceof SpaceState);
+        assertTrue(numberState.transition(' ') instanceof SymbolState);
     }
 }

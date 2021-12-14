@@ -23,7 +23,7 @@ public class AState extends State {
             case 'L' -> ALState.state();
             case 'N' -> ANState.state();
             case 'T' -> ATState.state();
-            case ' ' -> SpaceState.state();
+            case ' ' -> SymbolState.state(c);
             default -> throw new IllegalStateException("Cannot transition from AState on " + c);
         };
     }

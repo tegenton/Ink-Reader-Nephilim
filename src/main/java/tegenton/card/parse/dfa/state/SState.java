@@ -21,8 +21,7 @@ public class SState extends State {
             case 'E' -> SEState.state();
             case 'I' -> SIState.state();
             case 'T' -> new StateSequence("TRIKE", Keyword.STRIKE);
-            case '\0', ' ' -> SpaceState.state();
-            case '.' -> SymbolState.state(c);
+            case '\0', ' ', '.' -> SymbolState.state(c);
             default -> throw new IllegalStateException("Cannot transition from SState on " + c);
         };
     }

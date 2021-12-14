@@ -6,24 +6,25 @@ import java.util.Optional;
 
 public class SymbolState extends State {
     private static final SymbolState INSTANCE = new SymbolState();
+    private static char symbol;
 
     public static SymbolState state(char c) {
+        symbol = c;
         return INSTANCE;
     }
 
     @Override
     public State transition(char c) {
-        return switch (c) {
-            case ' ' -> SpaceState.state();
-            default -> throw new IllegalStateException("Cannot transition from SymbolState on " + c);
-        };
+        return EmptyState.state().transition(c);
     }
 
     @Override
     public Optional<? extends Word> produce(char c) {
-        return switch (c) {
-            case '\0', ' ' -> Optional.of(Symbol.PERIOD);
-            default -> Optional.empty();
-        };
+        return Optional.ofNullable(switch (symbol) {
+            case ',' -> Symbol.COMMA;
+            case '.' -> Symbol.PERIOD;
+            case ' ' -> Symbol.SPACE;
+            default -> null;
+        });
     }
 }
