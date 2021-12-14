@@ -1,23 +1,25 @@
 package tegenton.card.parse.dfa.state.s.i;
 
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.morpheme.TEENMorpheme;
 import tegenton.card.parse.dfa.state.s.SIState;
 import tegenton.card.parse.lexicon.EnglishNumber;
 import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
 public class SIXState extends SIState {
-    private static final SIXState instance = new SIXState();
+    private static final SIXState INSTANCE = new SIXState();
 
     public static SIXState state() {
-        return instance;
+        return INSTANCE;
     }
 
     @Override
     public State transition(char c) {
-        switch (c) {
+        return switch (c) {
+            case 'T' -> new TEENMorpheme(EnglishNumber.SIX);
             default -> throw new IllegalStateException("Cannot transition from SIXState on " + c);
-        }
+        };
     }
 
     @Override

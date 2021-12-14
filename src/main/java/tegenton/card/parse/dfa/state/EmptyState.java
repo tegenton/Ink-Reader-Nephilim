@@ -4,10 +4,10 @@ import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
 class EmptyState extends State {
-    private static final EmptyState instance = new EmptyState();
+    private static final EmptyState INSTANCE = new EmptyState();
 
     public static State state() {
-        return instance;
+        return INSTANCE;
     }
 
     @Override
@@ -24,8 +24,10 @@ class EmptyState extends State {
             case 'N' -> NState.state();
             case 'P' -> PState.state();
             case 'O' -> OState.state();
+            case 'S' -> SState.state();
             case 'T' -> TState.state();
             case 'W' -> WState.state();
+            case 'Z' -> ZState.state();
             case '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' -> NumberState.state(c);
             case '.' -> PeriodState.state();
             case '\0' -> EmptyState.state();

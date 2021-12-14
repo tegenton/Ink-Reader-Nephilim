@@ -1,8 +1,9 @@
 package tegenton.card.parse.lexicon;
 
 public enum Morpheme implements Word {
+    ER,
     ING,
-    S, ER;
+    S;
 
     @Override
     public String getWord() {

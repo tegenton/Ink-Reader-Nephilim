@@ -1,6 +1,7 @@
 package tegenton.card.parse.dfa.state.s.e.v.e;
 
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.morpheme.TEENMorpheme;
 import tegenton.card.parse.dfa.state.s.e.v.SEVEState;
 import tegenton.card.parse.lexicon.EnglishNumber;
 import tegenton.card.parse.lexicon.Word;
@@ -15,9 +16,10 @@ public class SEVENState extends SEVEState {
 
     @Override
     public State transition(char c) {
-        switch (c) {
+        return switch (c) {
+            case 'T' -> new TEENMorpheme(EnglishNumber.SEVEN);
             default -> throw new IllegalStateException("Cannot transition from SEVENState on " + c);
-        }
+        };
     }
 
     @Override
