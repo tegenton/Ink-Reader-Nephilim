@@ -1,12 +1,13 @@
 package tegenton.card.parse.dfa.state.t.h.i;
 
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.t.h.THIState;
 import tegenton.card.parse.dfa.substring.morpheme.TEENMorpheme;
 import tegenton.card.parse.lexicon.EnglishNumber;
 import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
-public class THIRState extends State {
+public class THIRState extends THIState {
     private static final THIRState INSTANCE = new THIRState();
 
     public static THIRState state() {

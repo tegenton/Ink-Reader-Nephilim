@@ -1,11 +1,12 @@
 package tegenton.card.parse.dfa.state.t.w.e.l.v;
 
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.t.w.e.l.TWELVState;
 import tegenton.card.parse.lexicon.EnglishNumber;
 import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
-public class TWELVEState extends State {
+public class TWELVEState extends TWELVState {
     private static final TWELVEState INSTANCE = new TWELVEState();
 
     public static TWELVEState state() {
