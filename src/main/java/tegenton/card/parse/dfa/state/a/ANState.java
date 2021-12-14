@@ -1,7 +1,6 @@
 package tegenton.card.parse.dfa.state.a;
 
 import tegenton.card.parse.dfa.state.AState;
-import tegenton.card.parse.dfa.state.OState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.a.n.ANDState;
 import tegenton.card.parse.dfa.state.a.n.ANYState;
@@ -23,7 +22,7 @@ public class ANState extends AState {
         return switch (c) {
             case 'D' -> ANDState.state();
             case 'T' -> new StateSequence("TE", Zone.ANTE);
-            case 'O' -> OState.state();
+            case 'O' -> new StateSequence("OTHER", Determiner.ANOTHER);
             case 'Y' -> ANYState.state();
             default -> throw new IllegalStateException("Cannot transition from ANState on " + c);
         };
@@ -32,7 +31,7 @@ public class ANState extends AState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return switch (c) {
-            case 'O', '\0', ' ' -> Optional.of(Determiner.AN);
+            case '\0', ' ' -> Optional.of(Determiner.AN);
             default -> Optional.empty();
         };
     }

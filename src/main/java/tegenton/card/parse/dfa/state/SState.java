@@ -22,7 +22,7 @@ public class SState extends State {
             case 'I' -> SIState.state();
             case 'T' -> new StateSequence("TRIKE", Keyword.STRIKE);
             case '\0', ' ' -> SpaceState.state();
-            case '.' -> PeriodState.state();
+            case '.' -> SymbolState.state(c);
             default -> throw new IllegalStateException("Cannot transition from SState on " + c);
         };
     }

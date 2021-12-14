@@ -38,10 +38,7 @@ class EmptyState extends State {
             case 'W' -> WState.state();
             case 'Z' -> ZState.state();
             case '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' -> NumberState.state(c);
-            case ',' -> CommaState.state();
-            case '.' -> PeriodState.state();
-            case '\0' -> EmptyState.state();
-            case ' ' -> SpaceState.state();
+            case ',', '.', '\0', ' ' -> SymbolState.state(c);
             default -> throw new IllegalStateException("Cannot transition from EmptyState on " + c);
         };
     }

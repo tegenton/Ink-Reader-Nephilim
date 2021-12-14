@@ -14,7 +14,7 @@ public class ObjectWordTest extends WordTest {
     @Test
     void noun() {
         words = ObjectNoun.values();
-        values = List.of("CARD", "COPY", "PERMANENT", "SPELL", "IT");
+        values = List.of("CARD", "COPY", "IT", "PERMANENT", "SPELL", "TOKEN");
     }
 
     @Test

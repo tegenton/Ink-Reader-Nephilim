@@ -18,6 +18,8 @@ public enum Determiner implements Word {
     NO,
     // Alternative
     OTHER,
+    // Alternative-additive
+    ANOTHER,
     // Universal
     ALL,
     // Distributive

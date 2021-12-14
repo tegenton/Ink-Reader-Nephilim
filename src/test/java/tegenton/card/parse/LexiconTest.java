@@ -54,7 +54,7 @@ class LexiconTest {
     }
 
     @ParameterizedTest
-    @EnumSource(Punctuation.class)
+    @EnumSource(Symbol.class)
     void punctuation(Word punctuation) {
         word = punctuation;
     }

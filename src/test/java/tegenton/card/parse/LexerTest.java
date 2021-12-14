@@ -45,7 +45,7 @@ public class LexerTest {
 
     @Test
     void ancestrallRecall() {
-        List<Word> expected = List.of(Determiner.TARGET, Punctuation.SPACE, PlayerVerb.PLAY, Morpheme.ER, Punctuation.SPACE, PlayerVerb.DRAW, Morpheme.S, Punctuation.SPACE, EnglishNumber.THREE, Punctuation.SPACE, ObjectNoun.CARD, Morpheme.S, Punctuation.PERIOD);
+        List<Word> expected = List.of(Determiner.TARGET, Symbol.SPACE, PlayerVerb.PLAY, Morpheme.ER, Symbol.SPACE, PlayerVerb.DRAW, Morpheme.S, Symbol.SPACE, EnglishNumber.THREE, Symbol.SPACE, ObjectNoun.CARD, Morpheme.S, Symbol.PERIOD);
         List<Word> actual = lex.lex("Target player draws three cards.");
         assertIterableEquals(expected, actual);
     }

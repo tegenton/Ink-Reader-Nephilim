@@ -1,6 +1,6 @@
 package tegenton.card.parse.dfa.state;
 
-import tegenton.card.parse.lexicon.Punctuation;
+import tegenton.card.parse.lexicon.Symbol;
 import java.util.Optional;
 
 public class SpaceState extends State {
@@ -16,7 +16,7 @@ public class SpaceState extends State {
     }
 
     @Override
-    public Optional<Punctuation> produce(char c) {
-        return Optional.of(Punctuation.SPACE);
+    public Optional<Symbol> produce(char c) {
+        return Optional.of(Symbol.SPACE);
     }
 }

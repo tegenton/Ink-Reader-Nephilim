@@ -8,9 +8,10 @@ import tegenton.card.parse.lexicon.Word;
 public enum ObjectNoun implements Word {
     CARD,
     COPY,
+    IT,
     PERMANENT,
     SPELL,
-    IT;
+    TOKEN;
 
     @Override
     public String getWord() {
