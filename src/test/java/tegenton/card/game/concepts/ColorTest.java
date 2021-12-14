@@ -1,7 +1,6 @@
 package tegenton.card.game.concepts;
 
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ColorTest {
@@ -47,7 +46,6 @@ public class ColorTest {
 
     @Test
     void invalidColor() {
-        //noinspection ResultOfMethodCallIgnored
         assertThrows(InvalidColorException.class, () -> Color.fromString("W/U"));
     }
 }

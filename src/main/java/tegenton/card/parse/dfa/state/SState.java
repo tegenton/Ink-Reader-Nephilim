@@ -1,7 +1,6 @@
 package tegenton.card.parse.dfa.state;
 
 import tegenton.card.parse.lexicon.Morpheme;
-import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
 public class SState extends State {

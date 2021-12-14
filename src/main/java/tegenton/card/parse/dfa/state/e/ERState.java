@@ -4,7 +4,6 @@ import tegenton.card.parse.dfa.state.EState;
 import tegenton.card.parse.dfa.state.SpaceState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.lexicon.Morpheme;
-import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
 public class ERState extends EState {
