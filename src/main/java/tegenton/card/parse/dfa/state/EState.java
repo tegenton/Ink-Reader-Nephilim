@@ -2,6 +2,7 @@ package tegenton.card.parse.dfa.state;
 
 import tegenton.card.parse.dfa.state.e.EAState;
 import tegenton.card.parse.dfa.state.e.EIState;
+import tegenton.card.parse.dfa.state.e.ELState;
 import tegenton.card.parse.dfa.state.e.ERState;
 import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
@@ -18,6 +19,7 @@ public class EState extends State {
         return switch (c) {
             case 'A' -> EAState.state();
             case 'I' -> EIState.state();
+            case 'L' -> ELState.state();
             case 'R' -> ERState.state();
             default -> throw new IllegalStateException("Cannot transition from EState on " + c);
         };
