@@ -7,6 +7,7 @@ import tegenton.card.parse.dfa.state.e.ERState;
 import tegenton.card.parse.dfa.substring.StateSequence;
 import tegenton.card.parse.lexicon.Keyword;
 import tegenton.card.parse.lexicon.Word;
+import tegenton.card.parse.lexicon.Zone;
 import java.util.Optional;
 
 public class EState extends State {
@@ -24,6 +25,7 @@ public class EState extends State {
             case 'L' -> ELState.state();
             case 'N' -> new StateSequence("NCHANT", Keyword.ENCHANT);
             case 'R' -> ERState.state();
+            case 'X' -> new StateSequence("XILE", Zone.EXILE);
             default -> throw new IllegalStateException("Cannot transition from EState on " + c);
         };
     }

@@ -23,7 +23,7 @@ class EmptyState extends State {
             case 'E' -> EState.state();
             case 'F' -> FState.state();
             case 'G' -> GState.state();
-            case 'H' -> new StateSequence("HASTE", Keyword.HASTE);
+            case 'H' -> HState.state();
             case 'I' -> IState.state();
             case 'L' -> LState.state();
             case 'M' -> MState.state();

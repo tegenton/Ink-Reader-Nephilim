@@ -64,4 +64,10 @@ class LexiconTest {
     void trigger(Word trigger) {
         word = trigger;
     }
+
+    @ParameterizedTest
+    @EnumSource(Zone.class)
+    void zone(Word zone) {
+        word = zone;
+    }
 }

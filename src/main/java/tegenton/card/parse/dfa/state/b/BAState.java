@@ -3,7 +3,9 @@ package tegenton.card.parse.dfa.state.b;
 import tegenton.card.parse.dfa.state.BState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.b.a.BANState;
+import tegenton.card.parse.dfa.substring.StateSequence;
 import tegenton.card.parse.lexicon.Word;
+import tegenton.card.parse.lexicon.Zone;
 import java.util.Optional;
 
 public class BAState extends BState {
@@ -16,6 +18,7 @@ public class BAState extends BState {
     @Override
     public State transition(char c) {
         return switch (c) {
+            case 'T' -> new StateSequence("TTLEFIELD", Zone.BATTLEFIELD);
             case 'N' -> BANState.state();
             default -> throw new IllegalStateException("Cannot transition from BAState on " + c);
         };
