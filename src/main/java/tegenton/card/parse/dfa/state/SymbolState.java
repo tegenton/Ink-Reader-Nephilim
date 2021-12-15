@@ -23,12 +23,18 @@ public class SymbolState extends State {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (symbol) {
+            case '\u2019' -> Symbol.APOSTROPHE;
+            case '\u2022' -> Symbol.BULLET;
+            case '\u201D' -> Symbol.CLOSEQUOTE;
             case ':' -> Symbol.COLON;
             case ',' -> Symbol.COMMA;
+            case '\u2014' -> Symbol.DASH;
             case '{' -> Symbol.LBRACKET;
+            case '-' -> Symbol.MINUS;
+            case '\n' -> Symbol.NEWLINE;
+            case '\u201C' -> Symbol.OPENQUOTE;
             case '.' -> Symbol.PERIOD;
             case '+' -> Symbol.PLUS;
-            case '\n' -> Symbol.NEWLINE;
             case '}' -> Symbol.RBRACKET;
             case ';' -> Symbol.SEMICOLON;
             case '/' -> Symbol.SLASH;

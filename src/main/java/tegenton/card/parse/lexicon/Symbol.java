@@ -1,15 +1,16 @@
 package tegenton.card.parse.lexicon;
 
 public enum Symbol implements Word {
-    APOSTROPHE("’"),
-    BULLET("•"),
-    CLOSEQUOTE("”"),
+    APOSTROPHE("\u2019"),
+    BULLET("\u2022"),
+    CLOSEQUOTE("\u201D"),
     COMMA(","),
     COLON(":"),
-    DASH("—"),
+    DASH("\u2014"),
     LBRACKET("{"),
+    MINUS("-"),
     NEWLINE("\n"),
-    OPENQUOTE("“"),
+    OPENQUOTE("\u201C"),
     PERIOD("."),
     PLUS("+"),
     RBRACKET("}"),

@@ -1,4 +1,4 @@
-package tegenton.card.parse;
+package tegenton.card.parse.dfa;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -7,12 +7,16 @@ import tegenton.card.parse.lexicon.*;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class LexiconTest {
+class DFATest {
     public static Word word;
 
     @AfterEach
     void compare() {
-        List<Word> actual = Lexicon.lookup(word.getWord());
+        DFA dfa = new DFA();
+        for (char c : word.getWord().toCharArray()) {
+            dfa.consume(c);
+        }
+        List<Word> actual = dfa.products();
         assertEquals(1, actual.size());
         assertEquals(word, actual.get(0));
     }
