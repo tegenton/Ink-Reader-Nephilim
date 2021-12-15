@@ -22,7 +22,7 @@ public class OState extends State {
             case 'R' -> ORState.state();
             case 'T' -> OTState.state();
             case 'W' -> OWState.state();
-            default -> throw new IllegalStateException("Cannot transition from OState on " + c);
+            default -> invalid(c);
         };
     }
 

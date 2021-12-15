@@ -18,7 +18,7 @@ public class IState extends State {
         return switch (c) {
             case 'G' -> new StateSequence("GNORE", PlayerVerb.IGNORE);
             case 'N' -> INState.state();
-            default -> throw new IllegalStateException("Cannot transition from IState on " + c);
+            default -> invalid(c);
         };
     }
 

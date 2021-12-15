@@ -5,17 +5,17 @@ import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
 public class GState extends State {
-    private static final GState instance = new GState();
+    private static final GState INSTANCE = new GState();
 
     public static GState state() {
-        return instance;
+        return INSTANCE;
     }
 
     @Override
     public State transition(char c) {
         return switch (c) {
             case 'R' -> GRState.state();
-            default -> throw new IllegalStateException("Cannot transition from GState on " + c);
+            default -> invalid(c);
         };
     }
 

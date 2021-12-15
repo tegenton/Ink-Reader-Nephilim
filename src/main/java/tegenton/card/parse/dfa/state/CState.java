@@ -22,7 +22,7 @@ public class CState extends State {
             case 'H' -> CHState.state();
             case 'O' -> COState.state();
             case 'R' -> new StateSequence("REATE", PlayerVerb.CREATE);
-            default -> throw new IllegalStateException("Cannot transition from CState on " + c);
+            default -> invalid(c);
         };
     }
 

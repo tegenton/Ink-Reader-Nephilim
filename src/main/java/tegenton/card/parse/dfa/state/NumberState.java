@@ -25,7 +25,7 @@ public final class NumberState extends State {
                 number += c - '0';
                 yield this;
             }
-            default -> throw new IllegalStateException("Cannot transition from NumberState on " + c);
+            default -> invalid(c);
         };
     }
 

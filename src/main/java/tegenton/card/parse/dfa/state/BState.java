@@ -15,7 +15,7 @@ public class BState extends State {
     public State transition(char c) {
         return switch (c) {
             case 'A' -> BAState.state();
-            default -> throw new IllegalStateException("Cannot transition from BState on " + c);
+            default -> invalid(c);
         };
     }
 

@@ -22,7 +22,7 @@ public class TState extends State {
             case 'O' -> TOState.state();
             case 'R' -> new StateSequence("RAMPLE", Keyword.TRAMPLE);
             case 'W' -> TWState.state();
-            default -> throw new IllegalStateException("Cannot transition from TState on " + c);
+            default -> invalid(c);
         };
     }
 

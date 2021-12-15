@@ -15,7 +15,7 @@ public class HState extends State {
     public State transition(char c) {
         return switch (c) {
             case 'A' -> HAState.state();
-            default -> throw new IllegalStateException("Cannot transition from HState on " + c);
+            default -> invalid(c);
         };
     }
 

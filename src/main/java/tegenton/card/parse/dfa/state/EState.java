@@ -22,7 +22,7 @@ public class EState extends State {
             case 'N' -> new StateSequence("NCHANT", Keyword.ENCHANT);
             case 'R' -> ERState.state();
             case 'X' -> EXState.state();
-            default -> throw new IllegalStateException("Cannot transition from EState on " + c);
+            default -> invalid(c);
         };
     }
 

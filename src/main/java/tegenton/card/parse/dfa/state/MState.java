@@ -18,7 +18,7 @@ public class MState extends State {
         return switch (c) {
             case 'A' -> new StateSequence("AY", PlayerVerb.MAY);
             case 'O' -> MOState.state();
-            default -> throw new IllegalStateException("Cannot transition from MState on " + c);
+            default -> invalid(c);
         };
     }
 

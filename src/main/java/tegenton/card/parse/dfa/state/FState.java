@@ -24,7 +24,7 @@ public class FState extends State {
             case 'L' -> FLState.state();
             case 'O' -> FOState.state();
             case 'R' -> new StateSequence("ROM", Preposition.FROM);
-            default -> throw new IllegalStateException("Cannot transition from FState on " + c);
+            default -> invalid(c);
         };
     }
 

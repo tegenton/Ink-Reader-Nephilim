@@ -20,7 +20,7 @@ public class WState extends State {
             case 'A' -> new StateSequence("ALK", Keyword.WALK);
             case 'H' -> WHState.state();
             case 'I' -> new StateSequence("ITH", Preposition.WITH);
-            default -> throw new IllegalStateException("Cannot transition from WState on " + c);
+            default -> invalid(c);
         };
     }
 

@@ -17,7 +17,7 @@ public class NState extends State {
         return switch (c) {
             case 'I' -> NIState.state();
             case 'O' -> NOState.state();
-            default -> throw new IllegalStateException("Cannot transition from NState on " + c);
+            default -> invalid(c);
         };
     }
 

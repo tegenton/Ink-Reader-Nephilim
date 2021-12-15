@@ -19,7 +19,7 @@ public class DState extends State {
             case 'E' -> DEState.state();
             case 'I' -> DIState.state();
             case 'R' -> DRState.state();
-            default -> throw new IllegalStateException("Cannot transition from DState on " + c);
+            default -> invalid(c);
         };
     }
 
