@@ -1,46 +1,13 @@
 package tegenton.card.parse.lexicon.source.player;
 
-import org.junit.jupiter.api.Test;
-import tegenton.card.parse.lexicon.WordTest;
-import java.util.List;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EnumSource;
+import tegenton.card.parse.LexiconTest;
 
-public class PlayerVerbTest extends WordTest {
-    @Test
-    void playerVerb() {
-        words = PlayerVerb.values();
-        values = List.of(
-                "ACTIVATE",
-                "ADD",
-                "ATTACH",
-                "CAST",
-                "CHANGE",
-                "CHOOSE",
-                "CONTROL",
-                "COULD",
-                "COUNTER",
-                "CREATE",
-                "DESTROY",
-                "DISCARD",
-                "DIVIDE",
-                "DRAW",
-                "EXCHANGE",
-                "IGNORE",
-                "LOOK",
-                "LOSE",
-                "MAY",
-                "OWN",
-                "PAY",
-                "PLAY",
-                "PREVENT",
-                "PUT",
-                "REGENERATE",
-                "REMOVE",
-                "RETURN",
-                "SACRIFICE",
-                "SEARCH",
-                "SHUFFLE",
-                "SKIPS",
-                "SPEND",
-                "TAKE");
+public class PlayerVerbTest extends LexiconTest {
+    @ParameterizedTest
+    @EnumSource(PlayerVerb.class)
+    void playerVerb(PlayerVerb verb) {
+        word = verb;
     }
 }

@@ -7,7 +7,7 @@ import tegenton.card.parse.lexicon.*;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class LexiconTest {
+public class LexiconTest {
     public static Word word;
 
     @AfterEach

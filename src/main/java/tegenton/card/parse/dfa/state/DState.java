@@ -1,8 +1,8 @@
 package tegenton.card.parse.dfa.state;
 
+import tegenton.card.parse.dfa.state.d.DEState;
+import tegenton.card.parse.dfa.state.d.DIState;
 import tegenton.card.parse.dfa.state.d.DRState;
-import tegenton.card.parse.dfa.substring.StateSequence;
-import tegenton.card.parse.lexicon.Keyword;
 import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
@@ -16,7 +16,8 @@ public class DState extends State {
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'E' -> new StateSequence("EFENDER", Keyword.DEFENDER);
+            case 'E' -> DEState.state();
+            case 'I' -> DIState.state();
             case 'R' -> DRState.state();
             default -> throw new IllegalStateException("Cannot transition from DState on " + c);
         };

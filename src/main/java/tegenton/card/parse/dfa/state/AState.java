@@ -7,6 +7,7 @@ import tegenton.card.parse.dfa.substring.StateSequence;
 import tegenton.card.parse.lexicon.Determiner;
 import tegenton.card.parse.lexicon.Preposition;
 import tegenton.card.parse.lexicon.Word;
+import tegenton.card.parse.lexicon.source.player.PlayerVerb;
 import java.util.Optional;
 
 public class AState extends State {
@@ -20,6 +21,8 @@ public class AState extends State {
     public State transition(final char c) {
         return switch (c) {
             case 'B' -> new StateSequence("BOVE", Preposition.ABOVE);
+            case 'C' -> new StateSequence("CTIVATE", PlayerVerb.ACTIVATE);
+            case 'D' -> new StateSequence("DD", PlayerVerb.ADD);
             case 'L' -> ALState.state();
             case 'N' -> ANState.state();
             case 'T' -> ATState.state();

@@ -1,13 +1,13 @@
-package tegenton.card.parse.lexicon;
+package tegenton.card.parse.lexicon.type;
 
 public enum CardType implements Type {
-    CREATURE,
-    LAND,
     ARTIFACT,
+    CREATURE,
     ENCHANTMENT,
     INSTANT,
-    SORCERY,
-    PLANESWALKER;
+    LAND,
+    PLANESWALKER,
+    SORCERY;
 
     @Override
     public String getWord() {

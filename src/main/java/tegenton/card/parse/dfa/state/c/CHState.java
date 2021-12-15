@@ -2,30 +2,29 @@ package tegenton.card.parse.dfa.state.c;
 
 import tegenton.card.parse.dfa.state.CState;
 import tegenton.card.parse.dfa.state.State;
-import tegenton.card.parse.dfa.state.c.a.CARState;
 import tegenton.card.parse.dfa.substring.StateSequence;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.source.player.PlayerVerb;
 import java.util.Optional;
 
-public class CAState extends CState {
-    private static final CAState instance = new CAState();
+public class CHState extends CState {
+    private static final CHState INSTANCE = new CHState();
 
-    public static CAState state() {
-        return instance;
+    public static CHState state() {
+        return INSTANCE;
     }
 
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'R' -> CARState.state();
-            case 'S' -> new StateSequence("ST", PlayerVerb.CAST);
-            default -> throw new IllegalStateException("Cannot transition from CAState on " + c);
+            case 'A' -> new StateSequence("ANGE", PlayerVerb.CHANGE);
+            case 'O' -> new StateSequence("OOSE", PlayerVerb.CHOOSE);
+            default -> throw new IllegalStateException("Cannot transition from CHState on " + c);
         };
     }
 
     @Override
     public Optional<? extends Word> produce(char c) {
-        return Optional.empty();
+        return super.produce(c);
     }
 }

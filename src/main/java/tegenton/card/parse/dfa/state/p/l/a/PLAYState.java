@@ -7,10 +7,10 @@ import tegenton.card.parse.lexicon.source.player.PlayerVerb;
 import java.util.Optional;
 
 public class PLAYState extends PLAState {
-    private static final PLAYState instance = new PLAYState();
+    private static final PLAYState INSTANCE = new PLAYState();
 
     public static PLAYState state() {
-        return instance;
+        return INSTANCE;
     }
 
     @Override
@@ -24,7 +24,7 @@ public class PLAYState extends PLAState {
     @Override
     public Optional<PlayerVerb> produce(char c) {
         return switch (c) {
-            case 'E' -> Optional.of(PlayerVerb.PLAY);
+            case 'E', '\0', ' ' -> Optional.of(PlayerVerb.PLAY);
             default -> Optional.empty();
         };
     }
