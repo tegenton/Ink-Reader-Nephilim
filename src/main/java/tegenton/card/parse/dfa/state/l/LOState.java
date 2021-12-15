@@ -1,25 +1,24 @@
-package tegenton.card.parse.dfa.state.s;
+package tegenton.card.parse.dfa.state.l;
 
-import tegenton.card.parse.dfa.state.SState;
+import tegenton.card.parse.dfa.state.LState;
 import tegenton.card.parse.dfa.state.State;
-import tegenton.card.parse.dfa.state.s.e.SEVState;
 import tegenton.card.parse.dfa.substring.StateSequence;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.source.player.PlayerVerb;
 import java.util.Optional;
 
-public class SEState extends SState {
-    private static final SEState instance = new SEState();
+public class LOState extends LState {
+    private static final LOState INSTANCE = new LOState();
 
-    public static SEState state() {
-        return instance;
+    public static LOState state() {
+        return INSTANCE;
     }
 
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'A' -> new StateSequence("ARCH", PlayerVerb.SEARCH);
-            case 'V' -> SEVState.state();
+            case 'O' -> new StateSequence("OK", PlayerVerb.LOOK);
+            case 'S' -> new StateSequence("SE", PlayerVerb.LOSE);
             default -> invalid(c);
         };
     }

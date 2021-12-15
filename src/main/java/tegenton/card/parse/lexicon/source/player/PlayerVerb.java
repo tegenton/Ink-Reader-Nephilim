@@ -33,7 +33,7 @@ public enum PlayerVerb implements Word {
     SACRIFICE,
     SEARCH,
     SHUFFLE,
-    SKIPS,
+    SKIP,
     SPEND,
     TAKE;
 

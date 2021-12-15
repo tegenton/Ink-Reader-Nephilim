@@ -31,7 +31,7 @@ class EmptyState extends State {
             case 'N' -> NState.state();
             case 'O' -> OState.state();
             case 'P' -> PState.state();
-            case 'R' -> new StateSequence("REACH", Keyword.REACH);
+            case 'R' -> RState.state();
             case 'S' -> SState.state();
             case 'T' -> TState.state();
             case 'U' -> new StateSequence("UNDER", Preposition.UNDER);
@@ -41,7 +41,7 @@ class EmptyState extends State {
             case 'Z' -> ZState.state();
             case '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' -> NumberState.state(c);
             case '\u2019', '\u2022', '\u201D', ':', '\u2014', ',', '{', '-', '\u201C', '.', '+', '}', '/', ';', '~', '\n', '\0', ' ' -> SymbolState.state(c);
-            default -> throw new IllegalStateException("Cannot transition from EmptyState on " + c);
+            default -> invalid(c);
         };
     }
 

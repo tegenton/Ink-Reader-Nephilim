@@ -3,21 +3,24 @@ package tegenton.card.parse.dfa.state.t;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.TState;
 import tegenton.card.parse.dfa.state.t.a.TARState;
+import tegenton.card.parse.dfa.substring.StateSequence;
 import tegenton.card.parse.lexicon.Word;
+import tegenton.card.parse.lexicon.source.player.PlayerVerb;
 import java.util.Optional;
 
 public class TAState extends TState {
-    private static final TAState instance = new TAState();
+    private static final TAState INSTANCE = new TAState();
 
     public static TAState state() {
-        return instance;
+        return INSTANCE;
     }
 
     @Override
     public State transition(char c) {
         return switch (c) {
+            case 'K' -> new StateSequence("KE", PlayerVerb.TAKE);
             case 'R' -> TARState.state();
-            default -> throw new IllegalStateException("Cannot transition from EmptyState on " + c);
+            default -> invalid(c);
         };
     }
 

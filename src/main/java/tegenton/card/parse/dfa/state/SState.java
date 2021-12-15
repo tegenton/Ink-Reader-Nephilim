@@ -6,6 +6,7 @@ import tegenton.card.parse.dfa.substring.StateSequence;
 import tegenton.card.parse.lexicon.Keyword;
 import tegenton.card.parse.lexicon.Morpheme;
 import tegenton.card.parse.lexicon.Word;
+import tegenton.card.parse.lexicon.source.player.PlayerVerb;
 import java.util.Optional;
 
 public class SState extends State {
@@ -18,11 +19,15 @@ public class SState extends State {
     @Override
     public State transition(char c) {
         return switch (c) {
+            case 'A' -> new StateSequence("ACRIFICE", PlayerVerb.SACRIFICE);
             case 'E' -> SEState.state();
+            case 'H' -> new StateSequence("HUFFLE", PlayerVerb.SHUFFLE);
             case 'I' -> SIState.state();
+            case 'K' -> new StateSequence("KIP", PlayerVerb.SKIP);
+            case 'P' -> new StateSequence("PEND", PlayerVerb.SPEND);
             case 'T' -> new StateSequence("TRIKE", Keyword.STRIKE);
             case '\0', ' ', '.' -> SymbolState.state(c);
-            default -> throw new IllegalStateException("Cannot transition from SState on " + c);
+            default -> invalid(c);
         };
     }
 
