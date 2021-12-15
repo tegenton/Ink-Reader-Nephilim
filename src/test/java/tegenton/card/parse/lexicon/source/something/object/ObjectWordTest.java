@@ -1,4 +1,4 @@
-package tegenton.card.parse.lexicon.source.object;
+package tegenton.card.parse.lexicon.source.something.object;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;

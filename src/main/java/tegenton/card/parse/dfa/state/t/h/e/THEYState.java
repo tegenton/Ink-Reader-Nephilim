@@ -3,7 +3,7 @@ package tegenton.card.parse.dfa.state.t.h.e;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.t.h.THEState;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.source.player.PlayerNoun;
+import tegenton.card.parse.lexicon.source.something.SomethingNoun;
 import java.util.Optional;
 
 public class THEYState extends THEState {
@@ -23,7 +23,7 @@ public class THEYState extends THEState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return switch (c) {
-            case '\0', ' ' -> Optional.of(PlayerNoun.THEY);
+            case '\0', ' ' -> Optional.of(SomethingNoun.THEY);
             default -> Optional.empty();
         };
     }

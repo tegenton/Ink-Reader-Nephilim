@@ -1,8 +1,6 @@
 package tegenton.card.parse.dfa.state;
 
 import tegenton.card.parse.dfa.state.e.*;
-import tegenton.card.parse.dfa.substring.StateSequence;
-import tegenton.card.parse.lexicon.Keyword;
 import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
@@ -19,7 +17,7 @@ public class EState extends State {
             case 'A' -> EAState.state();
             case 'I' -> EIState.state();
             case 'L' -> ELState.state();
-            case 'N' -> new StateSequence("NCHANT", Keyword.ENCHANT);
+            case 'N' -> ENState.state();
             case 'R' -> ERState.state();
             case 'X' -> EXState.state();
             default -> invalid(c);

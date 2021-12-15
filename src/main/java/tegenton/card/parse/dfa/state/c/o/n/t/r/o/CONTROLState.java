@@ -5,7 +5,7 @@ import tegenton.card.parse.dfa.state.c.o.n.t.r.CONTROState;
 import tegenton.card.parse.dfa.substring.StateSequence;
 import tegenton.card.parse.lexicon.Morpheme;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.source.player.PlayerVerb;
+import tegenton.card.parse.lexicon.source.something.player.PlayerVerb;
 import java.util.Optional;
 
 public class CONTROLState extends CONTROState {

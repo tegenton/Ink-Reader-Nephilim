@@ -1,15 +1,15 @@
-package tegenton.card.parse.dfa.state.i;
+package tegenton.card.parse.dfa.state.d.i;
 
-import tegenton.card.parse.dfa.state.IState;
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.d.DIState;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.source.something.object.ObjectNoun;
+import tegenton.card.parse.lexicon.source.something.object.ObjectVerb;
 import java.util.Optional;
 
-public class ITState extends IState {
-    private static final ITState INSTANCE = new ITState();
+public class DIEState extends DIState {
+    private static final DIEState INSTANCE = new DIEState();
 
-    public static ITState state() {
+    public static DIEState state() {
         return INSTANCE;
     }
 
@@ -23,7 +23,7 @@ public class ITState extends IState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return switch (c) {
-            case '\0', ' ' -> Optional.of(ObjectNoun.IT);
+            case '\0', ' ' -> Optional.of(ObjectVerb.DIE);
             default -> Optional.empty();
         };
     }

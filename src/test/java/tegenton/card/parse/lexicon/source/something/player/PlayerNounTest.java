@@ -1,4 +1,4 @@
-package tegenton.card.parse.lexicon.source.player;
+package tegenton.card.parse.lexicon.source.something.player;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
@@ -41,12 +41,6 @@ public class PlayerNounTest {
     void player() {
         expected = List.of(PlayerVerb.PLAY, Morpheme.ER);
         input = "player";
-    }
-
-    @Test
-    void they() {
-        expected = List.of(PlayerNoun.THEY);
-        input = "they";
     }
 
     @Test

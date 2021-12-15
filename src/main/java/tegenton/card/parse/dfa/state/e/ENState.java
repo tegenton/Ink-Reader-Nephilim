@@ -1,27 +1,25 @@
-package tegenton.card.parse.dfa.state.h;
+package tegenton.card.parse.dfa.state.e;
 
-import tegenton.card.parse.dfa.state.HState;
+import tegenton.card.parse.dfa.state.EState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.substring.StateSequence;
 import tegenton.card.parse.lexicon.Keyword;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.Zone;
 import tegenton.card.parse.lexicon.source.something.object.ObjectVerb;
 import java.util.Optional;
 
-public class HAState extends HState {
-    private static final HAState INSTANCE = new HAState();
+public class ENState extends EState {
+    private static final ENState INSTANCE = new ENState();
 
-    public static HAState state() {
+    public static ENState state() {
         return INSTANCE;
     }
 
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'N' -> new StateSequence("ND", Zone.HAND);
-            case 'S' -> new StateSequence("STE", Keyword.HASTE);
-            case 'V' -> new StateSequence("VE", ObjectVerb.HAVE);
+            case 'C' -> new StateSequence("CHANT", Keyword.ENCHANT);
+            case 'T' -> new StateSequence("TER", ObjectVerb.ENTER);
             default -> invalid(c);
         };
     }

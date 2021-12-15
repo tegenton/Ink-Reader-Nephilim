@@ -1,4 +1,4 @@
-package tegenton.card.parse.lexicon.source.object;
+package tegenton.card.parse.lexicon.source.something.object;
 
 import tegenton.card.parse.lexicon.Word;
 
@@ -9,7 +9,6 @@ public enum ObjectVerb implements Word {
     COST,
     DIE,
     ENTER,
-    GAIN,
     GET,
     HAVE,
     IS,

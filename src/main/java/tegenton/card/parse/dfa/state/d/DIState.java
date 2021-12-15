@@ -2,9 +2,10 @@ package tegenton.card.parse.dfa.state.d;
 
 import tegenton.card.parse.dfa.state.DState;
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.d.i.DIEState;
 import tegenton.card.parse.dfa.substring.StateSequence;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.source.player.PlayerVerb;
+import tegenton.card.parse.lexicon.source.something.player.PlayerVerb;
 import java.util.Optional;
 
 public class DIState extends DState {
@@ -17,9 +18,10 @@ public class DIState extends DState {
     @Override
     public State transition(char c) {
         return switch (c) {
+            case 'E' -> DIEState.state();
             case 'S' -> new StateSequence("SCARD", PlayerVerb.DISCARD);
             case 'V' -> new StateSequence("VIDE", PlayerVerb.DIVIDE);
-            default -> throw new IllegalStateException("Cannot transition from DIState on " + c);
+            default -> invalid(c);
         };
     }
 

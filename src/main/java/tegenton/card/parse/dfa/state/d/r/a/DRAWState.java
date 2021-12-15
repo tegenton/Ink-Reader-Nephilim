@@ -4,7 +4,7 @@ import tegenton.card.parse.dfa.state.SState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.dfa.state.d.r.DRAState;
-import tegenton.card.parse.lexicon.source.player.PlayerVerb;
+import tegenton.card.parse.lexicon.source.something.player.PlayerVerb;
 import java.util.Optional;
 
 public final class DRAWState extends DRAState {
