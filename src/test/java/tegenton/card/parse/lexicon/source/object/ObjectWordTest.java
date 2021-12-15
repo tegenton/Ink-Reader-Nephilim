@@ -1,38 +1,25 @@
 package tegenton.card.parse.lexicon.source.object;
 
-import org.junit.jupiter.api.Test;
-import tegenton.card.parse.lexicon.WordTest;
-import java.util.List;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EnumSource;
+import tegenton.card.parse.LexiconTest;
 
-public class ObjectWordTest extends WordTest {
-    @Test
-    void attribute() {
-        words = ObjectAttribute.values();
-        values = List.of("POWER", "TOUGHNESS", "VALUE");
+public class ObjectWordTest extends LexiconTest {
+    @ParameterizedTest
+    @EnumSource(ObjectAttribute.class)
+    void attribute(ObjectAttribute attribute) {
+        word = attribute;
     }
 
-    @Test
-    void noun() {
-        words = ObjectNoun.values();
-        values = List.of("CARD", "COPY", "IT", "PERMANENT", "SPELL", "TOKEN");
+    @ParameterizedTest
+    @EnumSource(ObjectNoun.class)
+    void noun(ObjectNoun noun) {
+        word = noun;
     }
 
-    @Test
-    void verb() {
-        words = ObjectVerb.values();
-        values = List.of(
-                "ATTACK",
-                "BECOME",
-                "BLOCK",
-                "COST",
-                "DIE",
-                "ENTER",
-                "GAIN",
-                "GET",
-                "HAVE",
-                "IS",
-                "LEAVE",
-                "TAP");
+    @ParameterizedTest
+    @EnumSource(ObjectVerb.class)
+    void verb(ObjectVerb verb) {
+        word = verb;
     }
-
 }

@@ -1,25 +1,23 @@
 package tegenton.card.parse.dfa.state;
 
-import tegenton.card.parse.dfa.state.i.INState;
-import tegenton.card.parse.dfa.state.i.ITState;
 import tegenton.card.parse.dfa.substring.StateSequence;
+import tegenton.card.parse.lexicon.Keyword;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.source.player.PlayerVerb;
+import tegenton.card.parse.lexicon.source.object.ObjectAttribute;
 import java.util.Optional;
 
-public class IState extends State {
-    private static final IState INSTANCE = new IState();
+public class VState extends State {
+    private static final VState INSTANCE = new VState();
 
-    public static IState state() {
+    public static VState state() {
         return INSTANCE;
     }
 
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'G' -> new StateSequence("GNORE", PlayerVerb.IGNORE);
-            case 'N' -> INState.state();
-            case 'T' -> ITState.state();
+            case 'A' -> new StateSequence("ALUE", ObjectAttribute.VALUE);
+            case 'I' -> new StateSequence("IGILANCE", Keyword.VIGILANCE);
             default -> invalid(c);
         };
     }

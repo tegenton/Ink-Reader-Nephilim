@@ -2,8 +2,11 @@ package tegenton.card.parse.dfa.state.t;
 
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.TState;
+import tegenton.card.parse.dfa.substring.StateSequence;
 import tegenton.card.parse.lexicon.Preposition;
 import tegenton.card.parse.lexicon.Word;
+import tegenton.card.parse.lexicon.source.object.ObjectAttribute;
+import tegenton.card.parse.lexicon.source.object.ObjectNoun;
 import java.util.Optional;
 
 public class TOState extends TState {
@@ -15,9 +18,11 @@ public class TOState extends TState {
 
     @Override
     public State transition(char c) {
-        switch (c) {
-            default -> throw new IllegalStateException("Cannot transition from TOState on " + c);
-        }
+        return switch (c) {
+            case 'K' -> new StateSequence("KEN", ObjectNoun.TOKEN);
+            case 'U' -> new StateSequence("UGHNESS", ObjectAttribute.TOUGHNESS);
+            default -> invalid(c);
+        };
     }
 
     @Override

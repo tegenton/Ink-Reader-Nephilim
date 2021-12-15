@@ -17,14 +17,14 @@ public final class CARDState extends CARState {
     public State transition(final char c) {
         return switch (c) {
             case 'S' -> SState.state();
-            default -> throw new IllegalStateException("Cannot transition from CARDState on " + c);
+            default -> invalid(c);
         };
     }
 
     @Override
     public Optional<ObjectNoun> produce(final char c) {
         return switch (c) {
-            case 'S' -> Optional.of(ObjectNoun.CARD);
+            case 'S', '\0', ' ' -> Optional.of(ObjectNoun.CARD);
             default -> Optional.empty();
         };
     }

@@ -1,7 +1,6 @@
 package tegenton.card.parse.dfa.state;
 
 import tegenton.card.parse.dfa.substring.StateSequence;
-import tegenton.card.parse.lexicon.Keyword;
 import tegenton.card.parse.lexicon.Preposition;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.source.player.PlayerNoun;
@@ -35,7 +34,7 @@ class EmptyState extends State {
             case 'S' -> SState.state();
             case 'T' -> TState.state();
             case 'U' -> new StateSequence("UNDER", Preposition.UNDER);
-            case 'V' -> new StateSequence("VIGILANCE", Keyword.VIGILANCE);
+            case 'V' -> VState.state();
             case 'W' -> WState.state();
             case 'Y' -> new StateSequence("YOU", PlayerNoun.YOU);
             case 'Z' -> ZState.state();

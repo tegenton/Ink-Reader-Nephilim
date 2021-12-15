@@ -1,27 +1,25 @@
-package tegenton.card.parse.dfa.state.c;
+package tegenton.card.parse.dfa.state.s.p;
 
-import tegenton.card.parse.dfa.state.CState;
 import tegenton.card.parse.dfa.state.State;
-import tegenton.card.parse.dfa.state.c.o.CONState;
-import tegenton.card.parse.dfa.state.c.o.COUState;
+import tegenton.card.parse.dfa.state.s.SPState;
 import tegenton.card.parse.dfa.substring.StateSequence;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.source.object.ObjectNoun;
+import tegenton.card.parse.lexicon.source.player.PlayerVerb;
 import java.util.Optional;
 
-public class COState extends CState {
-    private static final COState INSTANCE = new COState();
+public class SPEState extends SPState {
+    private static final SPEState INSTANCE = new SPEState();
 
-    public static COState state() {
+    public static SPEState state() {
         return INSTANCE;
     }
 
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'N' -> CONState.state();
-            case 'P' -> new StateSequence("PY", ObjectNoun.COPY);
-            case 'U' -> COUState.state();
+            case 'L' -> new StateSequence("LL", ObjectNoun.SPELL);
+            case 'N' -> new StateSequence("ND", PlayerVerb.SPEND);
             default -> invalid(c);
         };
     }

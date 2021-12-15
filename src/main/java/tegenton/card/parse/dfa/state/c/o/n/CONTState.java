@@ -1,11 +1,12 @@
 package tegenton.card.parse.dfa.state.c.o.n;
 
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.c.o.CONState;
 import tegenton.card.parse.dfa.state.c.o.n.t.CONTRState;
 import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
-public class CONTState extends State {
+public class CONTState extends CONState {
     private static final CONTState INSTANCE = new CONTState();
 
     public static CONTState state() {
