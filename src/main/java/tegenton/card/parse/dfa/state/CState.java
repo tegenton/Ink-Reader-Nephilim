@@ -1,6 +1,7 @@
 package tegenton.card.parse.dfa.state;
 
 import tegenton.card.parse.dfa.state.c.CAState;
+import tegenton.card.parse.dfa.state.c.COState;
 import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
@@ -15,6 +16,7 @@ public class CState extends State {
     public State transition(char c) {
         return switch (c) {
             case 'A' -> CAState.state();
+            case 'O' -> COState.state();
             default -> throw new IllegalStateException("Cannot transition from CState on " + c);
         };
     }

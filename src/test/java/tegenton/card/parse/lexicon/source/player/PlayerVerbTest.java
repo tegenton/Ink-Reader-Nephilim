@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import tegenton.card.parse.lexicon.WordTest;
 import java.util.List;
 
-public class PlayerWordTest extends WordTest {
+public class PlayerVerbTest extends WordTest {
     @Test
     void playerVerb() {
         words = PlayerVerb.values();
