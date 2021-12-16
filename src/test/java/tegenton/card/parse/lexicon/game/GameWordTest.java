@@ -2,6 +2,7 @@ package tegenton.card.parse.lexicon.game;
 
 import org.junit.jupiter.api.Test;
 import tegenton.card.parse.lexicon.WordTest;
+
 import java.util.List;
 
 public class GameWordTest extends WordTest {
@@ -9,8 +10,15 @@ public class GameWordTest extends WordTest {
     void keyword() {
         words = Keyword.values();
         values = List.of("BANDING", "DEFENDER", "ENCHANT", "FEAR", "FIRST",
-                         "FLYING", "HASTE", "INDESTRUCTIBLE", "PROTECTION",
-                         "REACH", "STRIKE", "TRAMPLE", "VIGILANCE", "WALK");
+                "FLYING", "HASTE", "INDESTRUCTIBLE", "PROTECTION",
+                "REACH", "STRIKE", "TRAMPLE", "VIGILANCE", "WALK");
+    }
+
+    @Test
+    void noun() {
+        words = GameNoun.values();
+        values = List.of("ABILITY", "DAMAGE", "EFFECT", "GAME",
+                "LIFE", "PILE", "STEP", "TURN");
     }
 
     @Test
@@ -23,6 +31,6 @@ public class GameWordTest extends WordTest {
     void zone() {
         words = Zone.values();
         values = List.of("ANTE", "BATTLEFIELD", "EXILE", "GRAVEYARD", "HAND",
-                         "LIBRARY");
+                "LIBRARY");
     }
 }

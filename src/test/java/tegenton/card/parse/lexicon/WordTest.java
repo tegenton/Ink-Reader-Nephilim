@@ -15,7 +15,7 @@ public class WordTest {
     void compare() {
         assertEquals(words.length, values.size());
         for (int i = 0; i < words.length; i++) {
-            assertEquals(words[i].getWord(), values.get(i));
+            assertEquals(values.get(i), words[i].getWord());
         }
     }
 
