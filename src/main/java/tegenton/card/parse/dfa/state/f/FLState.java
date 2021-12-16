@@ -3,21 +3,25 @@ package tegenton.card.parse.dfa.state.f;
 import tegenton.card.parse.dfa.state.FState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.f.l.FLYState;
+import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Word;
+import tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb;
+
 import java.util.Optional;
 
 public class FLState extends FState {
-    private static final FLState instance = new FLState();
+    private static final FLState INSTANCE = new FLState();
 
     public static FLState state() {
-        return instance;
+        return INSTANCE;
     }
 
     @Override
     public State transition(char c) {
         return switch (c) {
+            case 'I' -> new SuffixSubstring("IP", PlayerVerb.FLIP);
             case 'Y' -> FLYState.state();
-            default -> throw new IllegalStateException("Cannot transition from FLState on " + c);
+            default -> invalid(c);
         };
     }
 

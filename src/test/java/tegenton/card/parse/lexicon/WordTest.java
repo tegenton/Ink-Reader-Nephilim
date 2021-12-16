@@ -46,6 +46,12 @@ public class WordTest {
     }
 
     @Test
+    void noun() {
+        words = Noun.values();
+        values = List.of("AMOUNT", "NUMBER", "TEXT", "WORD");
+    }
+
+    @Test
     void preposition() {
         words = Preposition.values();
         values = List.of("ABOVE", "FOR", "FROM", "IN", "OF", "ON", "TO", "UNDER",
