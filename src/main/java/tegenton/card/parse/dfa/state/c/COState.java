@@ -6,8 +6,8 @@ import tegenton.card.parse.dfa.state.c.o.CONState;
 import tegenton.card.parse.dfa.state.c.o.COUState;
 import tegenton.card.parse.dfa.substring.StateSequence;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.source.something.object.ObjectNoun;
-import tegenton.card.parse.lexicon.source.something.object.ObjectVerb;
+import tegenton.card.parse.lexicon.source.target.object.ObjectNoun;
+import tegenton.card.parse.lexicon.source.target.object.ObjectVerb;
 import java.util.Optional;
 
 public class COState extends CState {

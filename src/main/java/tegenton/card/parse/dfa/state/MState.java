@@ -3,7 +3,7 @@ package tegenton.card.parse.dfa.state;
 import tegenton.card.parse.dfa.state.m.MOState;
 import tegenton.card.parse.dfa.substring.StateSequence;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.source.something.player.PlayerVerb;
+import tegenton.card.parse.lexicon.source.target.player.PlayerVerb;
 import java.util.Optional;
 
 public class MState extends State {

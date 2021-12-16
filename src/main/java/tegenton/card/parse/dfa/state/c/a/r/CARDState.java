@@ -3,7 +3,7 @@ package tegenton.card.parse.dfa.state.c.a.r;
 import tegenton.card.parse.dfa.state.SState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.c.a.CARState;
-import tegenton.card.parse.lexicon.source.something.object.ObjectNoun;
+import tegenton.card.parse.lexicon.source.target.object.ObjectNoun;
 import java.util.Optional;
 
 public final class CARDState extends CARState {

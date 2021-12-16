@@ -5,7 +5,7 @@ import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.substring.StateSequence;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.Zone;
-import tegenton.card.parse.lexicon.source.something.player.PlayerVerb;
+import tegenton.card.parse.lexicon.source.target.player.PlayerVerb;
 import java.util.Optional;
 
 public class EXState extends EState {
@@ -20,7 +20,8 @@ public class EXState extends EState {
         return switch (c) {
             case 'C' -> new StateSequence("CHANGE", PlayerVerb.EXCHANGE);
             case 'I' -> new StateSequence("ILE", Zone.EXILE);
-            default -> throw new IllegalStateException("Cannot transition from EXState on " + c);
+            default -> throw new IllegalStateException(
+                    "Cannot transition from EXState on " + c);
         };
     }
 

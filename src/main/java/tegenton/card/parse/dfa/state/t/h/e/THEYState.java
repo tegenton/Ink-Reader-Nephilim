@@ -3,7 +3,7 @@ package tegenton.card.parse.dfa.state.t.h.e;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.t.h.THEState;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.source.something.SomethingNoun;
+import tegenton.card.parse.lexicon.source.target.TargetNoun;
 import java.util.Optional;
 
 public class THEYState extends THEState {
@@ -16,14 +16,15 @@ public class THEYState extends THEState {
     @Override
     public State transition(char c) {
         switch (c) {
-            default -> throw new IllegalStateException("Cannot transition from THEYState on " + c);
+            default -> throw new IllegalStateException(
+                    "Cannot transition from THEYState on " + c);
         }
     }
 
     @Override
     public Optional<? extends Word> produce(char c) {
         return switch (c) {
-            case '\0', ' ' -> Optional.of(SomethingNoun.THEY);
+            case '\0', ' ' -> Optional.of(TargetNoun.THEY);
             default -> Optional.empty();
         };
     }

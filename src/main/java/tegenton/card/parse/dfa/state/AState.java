@@ -7,7 +7,7 @@ import tegenton.card.parse.dfa.substring.StateSequence;
 import tegenton.card.parse.lexicon.Determiner;
 import tegenton.card.parse.lexicon.Preposition;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.source.something.player.PlayerVerb;
+import tegenton.card.parse.lexicon.source.target.player.PlayerVerb;
 import java.util.Optional;
 
 public class AState extends State {

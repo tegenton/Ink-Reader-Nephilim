@@ -3,7 +3,7 @@ package tegenton.card.parse.dfa.state;
 import tegenton.card.parse.dfa.substring.StateSequence;
 import tegenton.card.parse.lexicon.Preposition;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.source.something.player.PlayerNoun;
+import tegenton.card.parse.lexicon.source.target.player.PlayerNoun;
 import java.util.Optional;
 
 class EmptyState extends State {
@@ -38,8 +38,10 @@ class EmptyState extends State {
             case 'W' -> WState.state();
             case 'Y' -> new StateSequence("YOU", PlayerNoun.YOU);
             case 'Z' -> ZState.state();
-            case '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' -> NumberState.state(c);
-            case '\u2019', '\u2022', '\u201D', ':', '\u2014', ',', '{', '-', '\u201C', '.', '+', '}', '/', ';', '~', '\n', '\0', ' ' -> SymbolState.state(c);
+            case '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' -> NumberState.state(
+                    c);
+            case '\u2019', '\u2022', '\u201D', ':', '\u2014', ',', '{', '-', '\u201C', '.', '+', '}', '/', ';', '~', '\n', '\0', ' ' -> SymbolState.state(
+                    c);
             default -> invalid(c);
         };
     }

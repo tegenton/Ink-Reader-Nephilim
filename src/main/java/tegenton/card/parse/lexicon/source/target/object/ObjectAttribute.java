@@ -1,11 +1,9 @@
-package tegenton.card.parse.lexicon.source.something.object;
+package tegenton.card.parse.lexicon.source.target.object;
 
 import tegenton.card.parse.lexicon.Word;
 
 public enum ObjectAttribute implements Word {
-    POWER,
-    TOUGHNESS,
-    VALUE;
+    POWER, TOUGHNESS, VALUE;
 
     @Override
     public String getWord() {

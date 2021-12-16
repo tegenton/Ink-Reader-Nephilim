@@ -3,7 +3,7 @@ package tegenton.card.parse.dfa.state.p.l.a;
 import tegenton.card.parse.dfa.state.EState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.p.l.PLAState;
-import tegenton.card.parse.lexicon.source.something.player.PlayerVerb;
+import tegenton.card.parse.lexicon.source.target.player.PlayerVerb;
 import java.util.Optional;
 
 public class PLAYState extends PLAState {
@@ -17,7 +17,8 @@ public class PLAYState extends PLAState {
     public State transition(char c) {
         return switch (c) {
             case 'E' -> EState.state();
-            default -> throw new IllegalStateException("Cannot transition from PLAYState on " + c);
+            default -> throw new IllegalStateException(
+                    "Cannot transition from PLAYState on " + c);
         };
     }
 

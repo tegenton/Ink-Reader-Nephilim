@@ -1,10 +1,10 @@
-package tegenton.card.parse.lexicon.source.something.object;
+package tegenton.card.parse.lexicon.source.target.object;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 import tegenton.card.parse.LexiconTest;
 
-public class ObjectWordTest extends LexiconTest {
+public class ObjectLexiconTest extends LexiconTest {
     @ParameterizedTest
     @EnumSource(ObjectAttribute.class)
     void attribute(ObjectAttribute attribute) {

@@ -4,9 +4,9 @@ import tegenton.card.parse.dfa.state.p.PLState;
 import tegenton.card.parse.dfa.state.p.PRState;
 import tegenton.card.parse.dfa.substring.StateSequence;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.source.something.object.ObjectAttribute;
-import tegenton.card.parse.lexicon.source.something.object.ObjectNoun;
-import tegenton.card.parse.lexicon.source.something.player.PlayerVerb;
+import tegenton.card.parse.lexicon.source.target.object.ObjectAttribute;
+import tegenton.card.parse.lexicon.source.target.object.ObjectNoun;
+import tegenton.card.parse.lexicon.source.target.player.PlayerVerb;
 import java.util.Optional;
 
 public class PState extends State {

@@ -5,7 +5,7 @@ import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.substring.StateSequence;
 import tegenton.card.parse.lexicon.Keyword;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.source.something.object.ObjectVerb;
+import tegenton.card.parse.lexicon.source.target.object.ObjectVerb;
 import java.util.Optional;
 
 public class ENState extends EState {

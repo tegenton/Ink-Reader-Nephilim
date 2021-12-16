@@ -1,8 +1,8 @@
-package tegenton.card.parse.lexicon.source.something;
+package tegenton.card.parse.lexicon.source.target;
 
 import tegenton.card.parse.lexicon.Word;
 
-public enum SomethingVerb implements Word {
+public enum TargetVerb implements Word {
     GAIN;
 
     @Override

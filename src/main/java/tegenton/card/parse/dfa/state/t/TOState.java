@@ -5,8 +5,8 @@ import tegenton.card.parse.dfa.state.TState;
 import tegenton.card.parse.dfa.substring.StateSequence;
 import tegenton.card.parse.lexicon.Preposition;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.source.something.object.ObjectAttribute;
-import tegenton.card.parse.lexicon.source.something.object.ObjectNoun;
+import tegenton.card.parse.lexicon.source.target.object.ObjectAttribute;
+import tegenton.card.parse.lexicon.source.target.object.ObjectNoun;
 import java.util.Optional;
 
 public class TOState extends TState {

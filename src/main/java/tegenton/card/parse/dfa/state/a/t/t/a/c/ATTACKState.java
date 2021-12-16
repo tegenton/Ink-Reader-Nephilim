@@ -3,7 +3,7 @@ package tegenton.card.parse.dfa.state.a.t.t.a.c;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.a.t.t.a.ATTACState;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.source.something.object.ObjectVerb;
+import tegenton.card.parse.lexicon.source.target.object.ObjectVerb;
 import java.util.Optional;
 
 public class ATTACKState extends ATTACState {

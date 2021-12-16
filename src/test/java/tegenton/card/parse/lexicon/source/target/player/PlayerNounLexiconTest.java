@@ -1,4 +1,4 @@
-package tegenton.card.parse.lexicon.source.something.player;
+package tegenton.card.parse.lexicon.source.target.player;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
@@ -8,7 +8,7 @@ import tegenton.card.parse.lexicon.Word;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 
-public class PlayerNounTest {
+public class PlayerNounLexiconTest {
     public static List<Word> expected;
     public static String input;
 

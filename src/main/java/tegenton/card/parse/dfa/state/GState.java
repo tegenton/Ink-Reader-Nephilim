@@ -3,8 +3,8 @@ package tegenton.card.parse.dfa.state;
 import tegenton.card.parse.dfa.state.g.GRState;
 import tegenton.card.parse.dfa.substring.StateSequence;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.source.something.SomethingVerb;
-import tegenton.card.parse.lexicon.source.something.object.ObjectVerb;
+import tegenton.card.parse.lexicon.source.target.TargetVerb;
+import tegenton.card.parse.lexicon.source.target.object.ObjectVerb;
 import java.util.Optional;
 
 public class GState extends State {
@@ -17,7 +17,7 @@ public class GState extends State {
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'A' -> new StateSequence("AIN", SomethingVerb.GAIN);
+            case 'A' -> new StateSequence("AIN", TargetVerb.GAIN);
             case 'E' -> new StateSequence("ET", ObjectVerb.GET);
             case 'R' -> GRState.state();
             default -> invalid(c);
