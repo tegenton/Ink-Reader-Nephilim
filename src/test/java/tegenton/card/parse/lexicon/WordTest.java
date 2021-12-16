@@ -20,6 +20,12 @@ public class WordTest {
     }
 
     @Test
+    void adjective() {
+        words = Adjective.values();
+        values = List.of("CHOSEN");
+    }
+
+    @Test
     void conjunction() {
         words = Conjunction.values();
         values = List.of("AND", "OR", "THEN");

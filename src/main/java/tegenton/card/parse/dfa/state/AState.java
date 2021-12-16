@@ -4,6 +4,8 @@ import tegenton.card.parse.dfa.state.a.ABState;
 import tegenton.card.parse.dfa.state.a.ALState;
 import tegenton.card.parse.dfa.state.a.ANState;
 import tegenton.card.parse.dfa.state.a.ATState;
+import tegenton.card.parse.dfa.state.a.c.t.i.ACTIVState;
+import tegenton.card.parse.dfa.substring.InfixSubstring;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Determiner;
 import tegenton.card.parse.lexicon.Word;
@@ -24,7 +26,7 @@ public class AState extends State {
     public State transition(final char c) {
         return switch (c) {
             case 'B' -> ABState.state();
-            case 'C' -> new SuffixSubstring("CTIVATE", PlayerVerb.ACTIVATE);
+            case 'C' -> new InfixSubstring("CTI", 'V', ACTIVState::state);
             case 'D' -> new SuffixSubstring("DD", PlayerVerb.ADD);
             case 'L' -> ALState.state();
             case 'N' -> ANState.state();

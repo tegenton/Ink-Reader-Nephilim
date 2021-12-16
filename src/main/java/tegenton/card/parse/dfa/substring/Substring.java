@@ -2,6 +2,7 @@ package tegenton.card.parse.dfa.substring;
 
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.SymbolState;
+
 import java.util.Arrays;
 
 public abstract class Substring extends State {
@@ -17,11 +18,11 @@ public abstract class Substring extends State {
             index++;
             return this;
         } else if (index < text.length) {
-            throw new IllegalStateException("Morpheme " + Arrays.toString(text) + " does not contain " + c);
+            throw new IllegalStateException("Substring " + Arrays.toString(text) + " does not contain " + c + " at index " + index);
         } else {
             return switch (c) {
                 case ' ' -> SymbolState.state(c);
-                default -> throw new IllegalStateException("Cannot transition from morpheme " + Arrays.toString(text) + " on " + c);
+                default -> throw new IllegalStateException("Cannot transition from substring " + Arrays.toString(text) + " on " + c);
             };
         }
     }

@@ -7,6 +7,12 @@ import java.util.List;
 
 public class PlayerWordTest extends WordTest {
     @Test
+    void adjective() {
+        words = PlayerAdjective.values();
+        values = List.of("ACTIVE");
+    }
+
+    @Test
     void attribute() {
         words = PlayerAttribute.values();
         values = List.of("SIZE", "TOTAL");
