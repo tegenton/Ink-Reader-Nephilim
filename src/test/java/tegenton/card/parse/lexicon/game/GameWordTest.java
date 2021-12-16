@@ -18,7 +18,7 @@ public class GameWordTest extends WordTest {
     void noun() {
         words = GameNoun.values();
         values = List.of("ABILITY", "DAMAGE", "EFFECT", "GAME",
-                "LIFE", "PILE", "STEP", "TURN");
+                "LIFE", "MANA", "PILE", "STEP", "TURN");
     }
 
     @Test

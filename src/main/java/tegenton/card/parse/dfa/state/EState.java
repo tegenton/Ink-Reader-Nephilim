@@ -1,7 +1,10 @@
 package tegenton.card.parse.dfa.state;
 
 import tegenton.card.parse.dfa.state.e.*;
+import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Word;
+import tegenton.card.parse.lexicon.game.GameNoun;
+
 import java.util.Optional;
 
 public class EState extends State {
@@ -15,6 +18,7 @@ public class EState extends State {
     public State transition(char c) {
         return switch (c) {
             case 'A' -> EAState.state();
+            case 'F' -> new SuffixSubstring("FFECT", GameNoun.EFFECT);
             case 'I' -> EIState.state();
             case 'L' -> ELState.state();
             case 'N' -> ENState.state();

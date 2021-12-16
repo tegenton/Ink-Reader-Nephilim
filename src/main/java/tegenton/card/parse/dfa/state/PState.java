@@ -4,9 +4,11 @@ import tegenton.card.parse.dfa.state.p.PLState;
 import tegenton.card.parse.dfa.state.p.PRState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Word;
+import tegenton.card.parse.lexicon.game.GameNoun;
 import tegenton.card.parse.lexicon.game.source.target.object.ObjectAttribute;
 import tegenton.card.parse.lexicon.game.source.target.object.ObjectNoun;
 import tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb;
+
 import java.util.Optional;
 
 public class PState extends State {
@@ -21,6 +23,7 @@ public class PState extends State {
         return switch (c) {
             case 'A' -> new SuffixSubstring("AY", PlayerVerb.PAY);
             case 'E' -> new SuffixSubstring("ERMANENT", ObjectNoun.PERMANENT);
+            case 'I' -> new SuffixSubstring("ILE", GameNoun.PILE);
             case 'O' -> new SuffixSubstring("OWER", ObjectAttribute.POWER);
             case 'L' -> PLState.state();
             case 'R' -> PRState.state();

@@ -3,12 +3,13 @@ package tegenton.card.parse.dfa.state;
 import tegenton.card.parse.dfa.state.s.SEState;
 import tegenton.card.parse.dfa.state.s.SIState;
 import tegenton.card.parse.dfa.state.s.SPState;
+import tegenton.card.parse.dfa.state.s.STState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
-import tegenton.card.parse.lexicon.game.Keyword;
 import tegenton.card.parse.lexicon.Morpheme;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb;
 import tegenton.card.parse.lexicon.game.type.CardType;
+
 import java.util.Optional;
 
 public class SState extends State {
@@ -28,7 +29,7 @@ public class SState extends State {
             case 'K' -> new SuffixSubstring("KIP", PlayerVerb.SKIP);
             case 'P' -> SPState.state();
             case 'O' -> new SuffixSubstring("ORCERY", CardType.SORCERY);
-            case 'T' -> new SuffixSubstring("TRIKE", Keyword.STRIKE);
+            case 'T' -> STState.state();
             case '\0', ' ', '.' -> SymbolState.state(c);
             default -> invalid(c);
         };

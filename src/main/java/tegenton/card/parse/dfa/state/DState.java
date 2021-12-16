@@ -4,7 +4,10 @@ import tegenton.card.parse.dfa.state.d.DEState;
 import tegenton.card.parse.dfa.state.d.DIState;
 import tegenton.card.parse.dfa.state.d.DOState;
 import tegenton.card.parse.dfa.state.d.DRState;
+import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Word;
+import tegenton.card.parse.lexicon.game.GameNoun;
+
 import java.util.Optional;
 
 public class DState extends State {
@@ -17,6 +20,7 @@ public class DState extends State {
     @Override
     public State transition(char c) {
         return switch (c) {
+            case 'A' -> new SuffixSubstring("AMAGE", GameNoun.DAMAGE);
             case 'E' -> DEState.state();
             case 'O' -> DOState.state();
             case 'I' -> DIState.state();

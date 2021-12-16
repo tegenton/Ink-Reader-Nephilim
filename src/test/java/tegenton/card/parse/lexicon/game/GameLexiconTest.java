@@ -13,6 +13,12 @@ public class GameLexiconTest extends LexiconTest {
     }
 
     @ParameterizedTest
+    @EnumSource(GameNoun.class)
+    void noun(Word noun) {
+        word = noun;
+    }
+
+    @ParameterizedTest
     @EnumSource(TriggerWord.class)
     void trigger(Word trigger) {
         word = trigger;

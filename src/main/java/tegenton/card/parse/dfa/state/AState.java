@@ -1,15 +1,16 @@
 package tegenton.card.parse.dfa.state;
 
+import tegenton.card.parse.dfa.state.a.ABState;
 import tegenton.card.parse.dfa.state.a.ALState;
 import tegenton.card.parse.dfa.state.a.ANState;
 import tegenton.card.parse.dfa.state.a.ATState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Determiner;
-import tegenton.card.parse.lexicon.Preposition;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb;
 import tegenton.card.parse.lexicon.game.type.CardType;
 import tegenton.card.parse.lexicon.game.type.EnchantmentType;
+
 import java.util.Optional;
 
 public class AState extends State {
@@ -22,7 +23,7 @@ public class AState extends State {
     @Override
     public State transition(final char c) {
         return switch (c) {
-            case 'B' -> new SuffixSubstring("BOVE", Preposition.ABOVE);
+            case 'B' -> ABState.state();
             case 'C' -> new SuffixSubstring("CTIVATE", PlayerVerb.ACTIVATE);
             case 'D' -> new SuffixSubstring("DD", PlayerVerb.ADD);
             case 'L' -> ALState.state();
