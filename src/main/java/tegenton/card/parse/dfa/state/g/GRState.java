@@ -5,7 +5,7 @@ import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.g.r.GREState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.Zone;
+import tegenton.card.parse.lexicon.game.Zone;
 import java.util.Optional;
 
 public class GRState extends GState {
@@ -20,8 +20,7 @@ public class GRState extends GState {
         return switch (c) {
             case 'A' -> new SuffixSubstring("AVEYARD", Zone.GRAVEYARD);
             case 'E' -> GREState.state();
-            default -> throw new IllegalStateException(
-                    "Cannot transition from GRState on " + c);
+            default -> invalid(c);
         };
     }
 

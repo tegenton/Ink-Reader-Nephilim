@@ -4,7 +4,7 @@ import tegenton.card.parse.dfa.state.GState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.type.CreatureType;
+import tegenton.card.parse.lexicon.game.type.CreatureType;
 import java.util.Optional;
 
 public class GOState extends GState {

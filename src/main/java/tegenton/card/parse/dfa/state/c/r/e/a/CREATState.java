@@ -5,7 +5,7 @@ import tegenton.card.parse.dfa.state.c.r.e.CREAState;
 import tegenton.card.parse.dfa.state.c.r.e.a.t.CREATEState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.type.CardType;
+import tegenton.card.parse.lexicon.game.type.CardType;
 import java.util.Optional;
 
 public class CREATState extends CREAState {

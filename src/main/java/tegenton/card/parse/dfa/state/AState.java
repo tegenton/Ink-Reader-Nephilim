@@ -7,9 +7,9 @@ import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Determiner;
 import tegenton.card.parse.lexicon.Preposition;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.source.target.player.PlayerVerb;
-import tegenton.card.parse.lexicon.type.CardType;
-import tegenton.card.parse.lexicon.type.EnchantmentType;
+import tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb;
+import tegenton.card.parse.lexicon.game.type.CardType;
+import tegenton.card.parse.lexicon.game.type.EnchantmentType;
 import java.util.Optional;
 
 public class AState extends State {

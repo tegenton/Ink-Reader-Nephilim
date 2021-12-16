@@ -4,8 +4,8 @@ import tegenton.card.parse.dfa.state.g.GOState;
 import tegenton.card.parse.dfa.state.g.GRState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.source.target.TargetVerb;
-import tegenton.card.parse.lexicon.source.target.object.ObjectVerb;
+import tegenton.card.parse.lexicon.game.source.target.TargetVerb;
+import tegenton.card.parse.lexicon.game.source.target.object.ObjectVerb;
 import java.util.Optional;
 
 public class GState extends State {

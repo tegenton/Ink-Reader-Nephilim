@@ -3,7 +3,7 @@ package tegenton.card.parse.dfa.state.p.l.a;
 import tegenton.card.parse.dfa.state.EState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.p.l.PLAState;
-import tegenton.card.parse.lexicon.source.target.player.PlayerVerb;
+import tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb;
 import java.util.Optional;
 
 public class PLAYState extends PLAState {

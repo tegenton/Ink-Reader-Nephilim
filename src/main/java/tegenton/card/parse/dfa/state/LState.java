@@ -4,8 +4,8 @@ import tegenton.card.parse.dfa.state.l.LEState;
 import tegenton.card.parse.dfa.state.l.LOState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.Zone;
-import tegenton.card.parse.lexicon.type.CardType;
+import tegenton.card.parse.lexicon.game.Zone;
+import tegenton.card.parse.lexicon.game.type.CardType;
 import java.util.Optional;
 
 public class LState extends State {

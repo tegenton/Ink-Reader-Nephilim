@@ -5,7 +5,7 @@ import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.l.e.LESState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.source.target.object.ObjectVerb;
+import tegenton.card.parse.lexicon.game.source.target.object.ObjectVerb;
 import java.util.Optional;
 
 public class LEState extends LState {

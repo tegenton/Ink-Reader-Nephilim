@@ -7,7 +7,7 @@ import tegenton.card.parse.dfa.state.a.n.ANYState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Determiner;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.Zone;
+import tegenton.card.parse.lexicon.game.Zone;
 import java.util.Optional;
 
 public class ANState extends AState {

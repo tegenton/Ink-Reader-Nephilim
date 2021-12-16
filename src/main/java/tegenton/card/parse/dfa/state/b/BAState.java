@@ -5,8 +5,8 @@ import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.b.a.BANState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.Zone;
-import tegenton.card.parse.lexicon.type.SuperType;
+import tegenton.card.parse.lexicon.game.Zone;
+import tegenton.card.parse.lexicon.game.type.SuperType;
 import java.util.Optional;
 
 public class BAState extends BState {

@@ -4,7 +4,7 @@ import tegenton.card.parse.dfa.state.EState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.o.OWState;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.source.target.player.PlayerVerb;
+import tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb;
 import java.util.Optional;
 
 public class OWNState extends OWState {

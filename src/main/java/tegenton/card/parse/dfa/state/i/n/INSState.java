@@ -3,9 +3,9 @@ package tegenton.card.parse.dfa.state.i.n;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.i.INState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
-import tegenton.card.parse.lexicon.Morpheme;
-import tegenton.card.parse.lexicon.type.CardType;
-import tegenton.card.parse.lexicon.type.CreatureType;
+import tegenton.card.parse.lexicon.Word;
+import tegenton.card.parse.lexicon.game.type.CardType;
+import tegenton.card.parse.lexicon.game.type.CreatureType;
 import java.util.Optional;
 
 public class INSState extends INState {
@@ -25,7 +25,7 @@ public class INSState extends INState {
     }
 
     @Override
-    public Optional<Morpheme> produce(char c) {
+    public Optional<? extends Word> produce(char c) {
         return Optional.empty();
     }
 }

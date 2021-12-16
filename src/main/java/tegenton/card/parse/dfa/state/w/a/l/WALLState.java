@@ -3,7 +3,7 @@ package tegenton.card.parse.dfa.state.w.a.l;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.w.a.WALState;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.type.CreatureType;
+import tegenton.card.parse.lexicon.game.type.CreatureType;
 import java.util.Optional;
 
 public class WALLState extends WALState {

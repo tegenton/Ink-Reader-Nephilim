@@ -3,7 +3,7 @@ package tegenton.card.parse.dfa.state;
 import tegenton.card.parse.dfa.state.z.ZEState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.type.CreatureType;
+import tegenton.card.parse.lexicon.game.type.CreatureType;
 import java.util.Optional;
 
 public class ZState extends State {

@@ -32,20 +32,25 @@ public class WordTest {
     @Test
     void determiner() {
         words = Determiner.values();
-        values = List.of("A", "AN", "THE", "TARGET", "THIS", "THESE", "THAT", "THOSE",
-                "NO", "OTHER", "ANOTHER", "ALL", "EACH", "ANY");
+        values = List.of("A", "AN", "THE", "TARGET", "THIS", "THESE", "THAT",
+                         "THOSE", "NO", "OTHER", "ANOTHER", "ALL", "EACH",
+                         "ANY");
     }
 
     @Test
     void keyword() {
         words = Keyword.values();
-        values = List.of("BANDING", "DEFENDER", "ENCHANT", "FEAR", "FIRST", "FLYING", "HASTE", "INDESTRUCTIBLE", "PROTECTION", "REACH", "STRIKE", "TRAMPLE", "VIGILANCE", "WALK");
+        values = List.of("BANDING", "DEFENDER", "ENCHANT", "FEAR", "FIRST",
+                         "FLYING", "HASTE", "INDESTRUCTIBLE", "PROTECTION",
+                         "REACH", "STRIKE", "TRAMPLE", "VIGILANCE", "WALK");
     }
 
     @Test
     void preposition() {
         words = Preposition.values();
-        values = List.of("ABOVE", "FOR", "FROM", "IN", "OF", "ON", "TO", "UNDER", "WITH");
+        values =
+                List.of("ABOVE", "FOR", "FROM", "IN", "OF", "ON", "TO", "UNDER",
+                        "WITH");
     }
 
     @Test
@@ -53,17 +58,4 @@ public class WordTest {
         words = TriggerWord.values();
         values = List.of("WHEN", "WHENEVER", "AT");
     }
-
-    @Test
-    void zone() {
-        words = Zone.values();
-        values = List.of(
-                "ANTE",
-                "BATTLEFIELD",
-                "EXILE",
-                "GRAVEYARD",
-                "HAND",
-                "LIBRARY");
-    }
-
 }

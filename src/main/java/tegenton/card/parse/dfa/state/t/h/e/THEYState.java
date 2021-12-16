@@ -3,7 +3,7 @@ package tegenton.card.parse.dfa.state.t.h.e;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.t.h.THEState;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.source.target.TargetNoun;
+import tegenton.card.parse.lexicon.game.source.target.TargetNoun;
 import java.util.Optional;
 
 public class THEYState extends THEState {

@@ -3,7 +3,7 @@ package tegenton.card.parse.dfa.state;
 import tegenton.card.parse.dfa.state.b.BAState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.source.target.object.ObjectVerb;
+import tegenton.card.parse.lexicon.game.source.target.object.ObjectVerb;
 import java.util.Optional;
 
 public class BState extends State {

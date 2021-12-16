@@ -3,8 +3,8 @@ package tegenton.card.parse.dfa.state;
 import tegenton.card.parse.dfa.state.m.MOState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.source.target.player.PlayerVerb;
-import tegenton.card.parse.lexicon.type.CreatureType;
+import tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb;
+import tegenton.card.parse.lexicon.game.type.CreatureType;
 import java.util.Optional;
 
 public class MState extends State {

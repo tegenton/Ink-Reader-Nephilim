@@ -3,7 +3,7 @@ package tegenton.card.parse.dfa.state.c.a;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.c.CAState;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.source.SourceVerb;
+import tegenton.card.parse.lexicon.game.source.SourceVerb;
 import java.util.Optional;
 
 public class CANState extends CAState {

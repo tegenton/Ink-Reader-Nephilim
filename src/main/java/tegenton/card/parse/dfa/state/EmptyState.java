@@ -3,7 +3,7 @@ package tegenton.card.parse.dfa.state;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Preposition;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.source.target.player.PlayerNoun;
+import tegenton.card.parse.lexicon.game.source.target.player.PlayerNoun;
 import java.util.Optional;
 
 class EmptyState extends State {

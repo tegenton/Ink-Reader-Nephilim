@@ -5,7 +5,7 @@ import tegenton.card.parse.dfa.state.p.PLState;
 import tegenton.card.parse.dfa.state.p.l.a.PLAYState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.type.CardType;
+import tegenton.card.parse.lexicon.game.type.CardType;
 import java.util.Optional;
 
 public class PLAState extends PLState {
