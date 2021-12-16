@@ -2,11 +2,16 @@ package tegenton.card.parse.lexicon.game.source.target.player;
 
 import org.junit.jupiter.api.Test;
 import tegenton.card.parse.lexicon.WordTest;
-import tegenton.card.parse.lexicon.game.source.target.player.PlayerNoun;
-import tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb;
+
 import java.util.List;
 
 public class PlayerWordTest extends WordTest {
+    @Test
+    void attribute() {
+        words = PlayerAttribute.values();
+        values = List.of("SIZE", "TOTAL");
+    }
+
     @Test
     void noun() {
         words = PlayerNoun.values();

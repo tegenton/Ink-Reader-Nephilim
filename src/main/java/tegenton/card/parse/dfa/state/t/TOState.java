@@ -7,6 +7,8 @@ import tegenton.card.parse.lexicon.Preposition;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.source.target.object.ObjectAttribute;
 import tegenton.card.parse.lexicon.game.source.target.object.ObjectNoun;
+import tegenton.card.parse.lexicon.game.source.target.player.PlayerAttribute;
+
 import java.util.Optional;
 
 public class TOState extends TState {
@@ -20,8 +22,9 @@ public class TOState extends TState {
     public State transition(char c) {
         return switch (c) {
             case 'K' -> new SuffixSubstring("KEN", ObjectNoun.TOKEN);
+            case 'T' -> new SuffixSubstring("TAL", PlayerAttribute.TOTAL);
             case 'U' -> new SuffixSubstring("UGHNESS",
-                                            ObjectAttribute.TOUGHNESS);
+                    ObjectAttribute.TOUGHNESS);
             default -> invalid(c);
         };
     }
