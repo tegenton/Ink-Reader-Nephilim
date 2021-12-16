@@ -25,6 +25,7 @@ public class TState extends State {
             case 'R' -> new SuffixSubstring("RAMPLE", Keyword.TRAMPLE);
             case 'U' -> new SuffixSubstring("URN", GameNoun.TURN);
             case 'W' -> TWState.state();
+            case 'Y' -> new SuffixSubstring("YPE", GameNoun.TYPE);
             default -> invalid(c);
         };
     }
