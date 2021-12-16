@@ -51,4 +51,10 @@ public class WordTest {
         values = List.of("ABOVE", "FOR", "FROM", "IN", "OF", "ON", "TO", "UNDER",
                 "WITH");
     }
+
+    @Test
+    void subordinateConjunction() {
+        words = SubordinateConjunction.values();
+        values = List.of("AS", "BUT", "EXCEPT", "IF", "LONG", "WHERE");
+    }
 }
