@@ -3,8 +3,11 @@ package tegenton.card.parse.lexicon.value;
 import org.junit.jupiter.api.Test;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.WordTest;
+
 import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class ValueWordTest extends WordTest {
     public static final List<String> englishWords =
@@ -33,5 +36,10 @@ public class ValueWordTest extends WordTest {
         for (int i = 0; i < words.length; i++) {
             assertEquals(((ValueWord) words[i]).getVal(), i);
         }
+    }
+
+    @Test
+    void englishAndDigitsNotEqual() {
+        assertNotEquals(Number.valueOf(1), EnglishNumber.ONE);
     }
 }

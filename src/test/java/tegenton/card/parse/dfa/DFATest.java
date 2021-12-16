@@ -4,8 +4,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 import tegenton.card.parse.lexicon.*;
-import tegenton.card.parse.lexicon.game.Zone;
-import tegenton.card.parse.lexicon.value.EnglishNumber;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -40,18 +38,6 @@ class DFATest {
     }
 
     @ParameterizedTest
-    @EnumSource(EnglishNumber.class)
-    void englishNumber(Word number) {
-        word = number;
-    }
-
-    @ParameterizedTest
-    @EnumSource(Keyword.class)
-    void keyword(Word keyword) {
-        word = keyword;
-    }
-
-    @ParameterizedTest
     @EnumSource(Preposition.class)
     void preposition(Word preposition) {
         word = preposition;
@@ -63,15 +49,4 @@ class DFATest {
         word = symbol;
     }
 
-    @ParameterizedTest
-    @EnumSource(TriggerWord.class)
-    void trigger(Word trigger) {
-        word = trigger;
-    }
-
-    @ParameterizedTest
-    @EnumSource(Zone.class)
-    void zone(Word zone) {
-        word = zone;
-    }
 }

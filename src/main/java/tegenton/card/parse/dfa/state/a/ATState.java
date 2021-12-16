@@ -3,7 +3,7 @@ package tegenton.card.parse.dfa.state.a;
 import tegenton.card.parse.dfa.state.AState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.a.t.ATTState;
-import tegenton.card.parse.lexicon.TriggerWord;
+import tegenton.card.parse.lexicon.game.TriggerWord;
 import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 

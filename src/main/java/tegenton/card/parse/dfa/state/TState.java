@@ -2,7 +2,7 @@ package tegenton.card.parse.dfa.state;
 
 import tegenton.card.parse.dfa.state.t.*;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
-import tegenton.card.parse.lexicon.Keyword;
+import tegenton.card.parse.lexicon.game.Keyword;
 import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 

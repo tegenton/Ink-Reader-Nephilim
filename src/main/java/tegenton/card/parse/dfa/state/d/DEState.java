@@ -3,7 +3,7 @@ package tegenton.card.parse.dfa.state.d;
 import tegenton.card.parse.dfa.state.DState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
-import tegenton.card.parse.lexicon.Keyword;
+import tegenton.card.parse.lexicon.game.Keyword;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.source.SourceVerb;
 import tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb;

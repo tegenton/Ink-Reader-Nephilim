@@ -5,7 +5,7 @@ import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.f.i.FIFState;
 import tegenton.card.parse.dfa.state.f.i.FIVState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
-import tegenton.card.parse.lexicon.Keyword;
+import tegenton.card.parse.lexicon.game.Keyword;
 import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 

@@ -4,7 +4,7 @@ import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.dfa.state.w.h.WHEState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
-import tegenton.card.parse.lexicon.TriggerWord;
+import tegenton.card.parse.lexicon.game.TriggerWord;
 import java.util.Optional;
 
 public final class WHENState extends WHEState {

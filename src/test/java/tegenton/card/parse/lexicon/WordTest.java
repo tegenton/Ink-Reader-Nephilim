@@ -2,7 +2,9 @@ package tegenton.card.parse.lexicon;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
+
 import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class WordTest {
@@ -33,29 +35,20 @@ public class WordTest {
     void determiner() {
         words = Determiner.values();
         values = List.of("A", "AN", "THE", "TARGET", "THIS", "THESE", "THAT",
-                         "THOSE", "NO", "OTHER", "ANOTHER", "ALL", "EACH",
-                         "ANY");
+                "THOSE", "NO", "OTHER", "ANOTHER", "ALL", "EACH",
+                "ANY");
     }
 
     @Test
-    void keyword() {
-        words = Keyword.values();
-        values = List.of("BANDING", "DEFENDER", "ENCHANT", "FEAR", "FIRST",
-                         "FLYING", "HASTE", "INDESTRUCTIBLE", "PROTECTION",
-                         "REACH", "STRIKE", "TRAMPLE", "VIGILANCE", "WALK");
+    void morpheme() {
+        words = Morpheme.values();
+        values = List.of("ER", "ING", "S");
     }
 
     @Test
     void preposition() {
         words = Preposition.values();
-        values =
-                List.of("ABOVE", "FOR", "FROM", "IN", "OF", "ON", "TO", "UNDER",
-                        "WITH");
-    }
-
-    @Test
-    void triggerWord() {
-        words = TriggerWord.values();
-        values = List.of("WHEN", "WHENEVER", "AT");
+        values = List.of("ABOVE", "FOR", "FROM", "IN", "OF", "ON", "TO", "UNDER",
+                "WITH");
     }
 }

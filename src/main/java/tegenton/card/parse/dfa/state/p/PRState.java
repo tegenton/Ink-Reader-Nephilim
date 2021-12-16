@@ -3,7 +3,7 @@ package tegenton.card.parse.dfa.state.p;
 import tegenton.card.parse.dfa.state.PState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
-import tegenton.card.parse.lexicon.Keyword;
+import tegenton.card.parse.lexicon.game.Keyword;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb;
 import java.util.Optional;

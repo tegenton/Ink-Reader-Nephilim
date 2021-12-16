@@ -1,6 +1,6 @@
 package tegenton.card.parse.dfa.substring.morpheme;
 
-import tegenton.card.parse.lexicon.Keyword;
+import tegenton.card.parse.lexicon.game.Keyword;
 import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 

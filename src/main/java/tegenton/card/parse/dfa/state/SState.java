@@ -4,7 +4,7 @@ import tegenton.card.parse.dfa.state.s.SEState;
 import tegenton.card.parse.dfa.state.s.SIState;
 import tegenton.card.parse.dfa.state.s.SPState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
-import tegenton.card.parse.lexicon.Keyword;
+import tegenton.card.parse.lexicon.game.Keyword;
 import tegenton.card.parse.lexicon.Morpheme;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb;

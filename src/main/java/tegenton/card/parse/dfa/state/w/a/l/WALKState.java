@@ -2,7 +2,7 @@ package tegenton.card.parse.dfa.state.w.a.l;
 
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.w.a.WALState;
-import tegenton.card.parse.lexicon.Keyword;
+import tegenton.card.parse.lexicon.game.Keyword;
 import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 

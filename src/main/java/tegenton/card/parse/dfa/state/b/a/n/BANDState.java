@@ -3,7 +3,7 @@ package tegenton.card.parse.dfa.state.b.a.n;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.b.a.BANState;
 import tegenton.card.parse.dfa.substring.morpheme.INGMorpheme;
-import tegenton.card.parse.lexicon.Keyword;
+import tegenton.card.parse.lexicon.game.Keyword;
 import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
@@ -18,7 +18,8 @@ public class BANDState extends BANState {
     public State transition(char c) {
         return switch (c) {
             case 'I' -> new INGMorpheme(Keyword.BANDING);
-            default -> throw new IllegalStateException("Cannot transition from BANDState on " + c);
+            default -> throw new IllegalStateException(
+                    "Cannot transition from BANDState on " + c);
         };
     }
 

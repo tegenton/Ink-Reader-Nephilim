@@ -3,7 +3,7 @@ package tegenton.card.parse.dfa.state.f.l;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.f.FLState;
 import tegenton.card.parse.dfa.substring.morpheme.INGMorpheme;
-import tegenton.card.parse.lexicon.Keyword;
+import tegenton.card.parse.lexicon.game.Keyword;
 import java.util.Optional;
 
 public final class FLYState extends FLState {
@@ -17,7 +17,8 @@ public final class FLYState extends FLState {
     public State transition(final char c) {
         return switch (c) {
             case 'I' -> new INGMorpheme(Keyword.FLYING);
-            default -> throw new IllegalStateException("Cannot transition from FLYState on " + c);
+            default -> throw new IllegalStateException(
+                    "Cannot transition from FLYState on " + c);
         };
     }
 
