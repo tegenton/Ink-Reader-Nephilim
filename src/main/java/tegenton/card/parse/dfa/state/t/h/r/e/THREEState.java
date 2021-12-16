@@ -3,7 +3,7 @@ package tegenton.card.parse.dfa.state.t.h.r.e;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.dfa.state.t.h.r.THREState;
-import tegenton.card.parse.lexicon.EnglishNumber;
+import tegenton.card.parse.lexicon.value.EnglishNumber;
 import java.util.Optional;
 
 public class THREEState extends THREState {
@@ -17,7 +17,8 @@ public class THREEState extends THREState {
     public State transition(char c) {
         return switch (c) {
             case '\0', ' ' -> SymbolState.state(c);
-            default -> throw new IllegalStateException("Cannot transition from THREEState on " + c);
+            default -> throw new IllegalStateException(
+                    "Cannot transition from THREEState on " + c);
         };
     }
 

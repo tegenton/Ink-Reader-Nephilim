@@ -2,7 +2,7 @@ package tegenton.card.parse.dfa.state.e.l.e.v.e;
 
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.e.l.e.v.ELEVEState;
-import tegenton.card.parse.lexicon.EnglishNumber;
+import tegenton.card.parse.lexicon.value.EnglishNumber;
 import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
@@ -16,7 +16,8 @@ public class ELEVENState extends ELEVEState {
     @Override
     public State transition(char c) {
         switch (c) {
-            default -> throw new IllegalStateException("Cannot transition from ELEVENState on " + c);
+            default -> throw new IllegalStateException(
+                    "Cannot transition from ELEVENState on " + c);
         }
     }
 

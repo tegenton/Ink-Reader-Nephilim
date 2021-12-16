@@ -1,6 +1,6 @@
 package tegenton.card.parse.dfa.substring.morpheme;
 
-import tegenton.card.parse.lexicon.EnglishNumber;
+import tegenton.card.parse.lexicon.value.EnglishNumber;
 import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
@@ -24,7 +24,8 @@ public class TEENMorpheme extends Morpheme {
                 case SEVEN -> EnglishNumber.SEVENTEEN;
                 case EIGHT -> EnglishNumber.EIGHTEEN;
                 case NINE -> EnglishNumber.NINETEEN;
-                default -> throw new IllegalStateException("Cannot apply morpheme TEEN to " + word);
+                default -> throw new IllegalStateException(
+                        "Cannot apply morpheme TEEN to " + word);
             });
             default -> Optional.empty();
         };

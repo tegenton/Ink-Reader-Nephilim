@@ -6,7 +6,7 @@ import java.util.List;
 
 public class SourceWordTest extends WordTest {
     @Test
-    void sourceVerb() {
+    void verb() {
         words = SourceVerb.values();
         values = List.of("DEAL", "CAN", "DO");
     }

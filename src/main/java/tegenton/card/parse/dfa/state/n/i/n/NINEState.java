@@ -3,7 +3,7 @@ package tegenton.card.parse.dfa.state.n.i.n;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.n.i.NINState;
 import tegenton.card.parse.dfa.substring.morpheme.TEENMorpheme;
-import tegenton.card.parse.lexicon.EnglishNumber;
+import tegenton.card.parse.lexicon.value.EnglishNumber;
 import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
@@ -18,7 +18,8 @@ public class NINEState extends NINState {
     public State transition(char c) {
         return switch (c) {
             case 'T' -> new TEENMorpheme(EnglishNumber.NINE);
-            default -> throw new IllegalStateException("Cannot transition from NINEState on " + c);
+            default -> throw new IllegalStateException(
+                    "Cannot transition from NINEState on " + c);
         };
     }
 

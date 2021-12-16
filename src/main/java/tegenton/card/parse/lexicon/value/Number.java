@@ -1,4 +1,4 @@
-package tegenton.card.parse.lexicon;
+package tegenton.card.parse.lexicon.value;
 
 public final class Number implements ValueWord {
     private final int value;
@@ -27,5 +27,12 @@ public final class Number implements ValueWord {
      */
     public int getVal() {
         return value;
+    }
+
+    public boolean equals(Object o) {
+        if (o instanceof Number n) {
+            return n.getVal() == this.getVal();
+        }
+        return false;
     }
 }

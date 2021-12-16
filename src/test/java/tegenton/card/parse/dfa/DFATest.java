@@ -4,6 +4,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 import tegenton.card.parse.lexicon.*;
+import tegenton.card.parse.lexicon.value.EnglishNumber;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -13,9 +14,7 @@ class DFATest {
     @AfterEach
     void compare() {
         DFA dfa = new DFA();
-        for (char c : word.getWord().toCharArray()) {
-            dfa.consume(c);
-        }
+        word.getWord().chars().forEach(dfa::consume);
         List<Word> actual = dfa.products();
         assertEquals(1, actual.size());
         assertEquals(word, actual.get(0));

@@ -1,7 +1,7 @@
 package tegenton.card.parse.dfa.state;
 
-import tegenton.card.parse.lexicon.Number;
-import tegenton.card.parse.lexicon.ValueWord;
+import tegenton.card.parse.lexicon.value.Number;
+import tegenton.card.parse.lexicon.value.ValueWord;
 import java.util.Optional;
 
 public final class NumberState extends State {
