@@ -2,7 +2,7 @@ package tegenton.card.parse.dfa.state.l;
 
 import tegenton.card.parse.dfa.state.LState;
 import tegenton.card.parse.dfa.state.State;
-import tegenton.card.parse.dfa.substring.StateSequence;
+import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.source.target.player.PlayerVerb;
 import java.util.Optional;
@@ -17,8 +17,8 @@ public class LOState extends LState {
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'O' -> new StateSequence("OK", PlayerVerb.LOOK);
-            case 'S' -> new StateSequence("SE", PlayerVerb.LOSE);
+            case 'O' -> new SuffixSubstring("OK", PlayerVerb.LOOK);
+            case 'S' -> new SuffixSubstring("SE", PlayerVerb.LOSE);
             default -> invalid(c);
         };
     }

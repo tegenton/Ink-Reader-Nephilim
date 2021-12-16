@@ -3,9 +3,8 @@ package tegenton.card.parse.dfa.state;
 import tegenton.card.parse.dfa.state.c.CAState;
 import tegenton.card.parse.dfa.state.c.CHState;
 import tegenton.card.parse.dfa.state.c.COState;
-import tegenton.card.parse.dfa.substring.StateSequence;
+import tegenton.card.parse.dfa.state.c.CRState;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.source.target.player.PlayerVerb;
 import java.util.Optional;
 
 public class CState extends State {
@@ -21,7 +20,7 @@ public class CState extends State {
             case 'A' -> CAState.state();
             case 'H' -> CHState.state();
             case 'O' -> COState.state();
-            case 'R' -> new StateSequence("REATE", PlayerVerb.CREATE);
+            case 'R' -> CRState.state();
             default -> invalid(c);
         };
     }

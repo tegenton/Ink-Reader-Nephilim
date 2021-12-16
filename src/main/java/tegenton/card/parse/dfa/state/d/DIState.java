@@ -3,7 +3,7 @@ package tegenton.card.parse.dfa.state.d;
 import tegenton.card.parse.dfa.state.DState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.d.i.DIEState;
-import tegenton.card.parse.dfa.substring.StateSequence;
+import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.source.target.player.PlayerVerb;
 import java.util.Optional;
@@ -19,8 +19,8 @@ public class DIState extends DState {
     public State transition(char c) {
         return switch (c) {
             case 'E' -> DIEState.state();
-            case 'S' -> new StateSequence("SCARD", PlayerVerb.DISCARD);
-            case 'V' -> new StateSequence("VIDE", PlayerVerb.DIVIDE);
+            case 'S' -> new SuffixSubstring("SCARD", PlayerVerb.DISCARD);
+            case 'V' -> new SuffixSubstring("VIDE", PlayerVerb.DIVIDE);
             default -> invalid(c);
         };
     }

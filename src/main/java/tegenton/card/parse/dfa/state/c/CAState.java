@@ -4,7 +4,7 @@ import tegenton.card.parse.dfa.state.CState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.c.a.CANState;
 import tegenton.card.parse.dfa.state.c.a.CARState;
-import tegenton.card.parse.dfa.substring.StateSequence;
+import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.source.target.player.PlayerVerb;
 import java.util.Optional;
@@ -21,7 +21,7 @@ public class CAState extends CState {
         return switch (c) {
             case 'N' -> CANState.state();
             case 'R' -> CARState.state();
-            case 'S' -> new StateSequence("ST", PlayerVerb.CAST);
+            case 'S' -> new SuffixSubstring("ST", PlayerVerb.CAST);
             default -> invalid(c);
         };
     }

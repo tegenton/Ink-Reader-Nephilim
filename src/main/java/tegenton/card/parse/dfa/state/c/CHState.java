@@ -2,7 +2,7 @@ package tegenton.card.parse.dfa.state.c;
 
 import tegenton.card.parse.dfa.state.CState;
 import tegenton.card.parse.dfa.state.State;
-import tegenton.card.parse.dfa.substring.StateSequence;
+import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.source.target.player.PlayerVerb;
 import java.util.Optional;
@@ -17,8 +17,8 @@ public class CHState extends CState {
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'A' -> new StateSequence("ANGE", PlayerVerb.CHANGE);
-            case 'O' -> new StateSequence("OOSE", PlayerVerb.CHOOSE);
+            case 'A' -> new SuffixSubstring("ANGE", PlayerVerb.CHANGE);
+            case 'O' -> new SuffixSubstring("OOSE", PlayerVerb.CHOOSE);
             default -> throw new IllegalStateException(
                     "Cannot transition from CHState on " + c);
         };

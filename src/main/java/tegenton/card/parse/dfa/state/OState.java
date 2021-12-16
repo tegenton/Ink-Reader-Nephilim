@@ -1,7 +1,7 @@
 package tegenton.card.parse.dfa.state;
 
 import tegenton.card.parse.dfa.state.o.*;
-import tegenton.card.parse.dfa.substring.StateSequence;
+import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.source.target.player.PlayerNoun;
 import java.util.Optional;
@@ -18,7 +18,7 @@ public class OState extends State {
         return switch (c) {
             case 'F' -> OFState.state();
             case 'N' -> ONState.state();
-            case 'P' -> new StateSequence("PPONENT", PlayerNoun.OPPONENT);
+            case 'P' -> new SuffixSubstring("PPONENT", PlayerNoun.OPPONENT);
             case 'R' -> ORState.state();
             case 'T' -> OTState.state();
             case 'W' -> OWState.state();

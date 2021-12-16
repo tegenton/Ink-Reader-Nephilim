@@ -3,11 +3,13 @@ package tegenton.card.parse.dfa.state;
 import tegenton.card.parse.dfa.state.a.ALState;
 import tegenton.card.parse.dfa.state.a.ANState;
 import tegenton.card.parse.dfa.state.a.ATState;
-import tegenton.card.parse.dfa.substring.StateSequence;
+import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Determiner;
 import tegenton.card.parse.lexicon.Preposition;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.source.target.player.PlayerVerb;
+import tegenton.card.parse.lexicon.type.CardType;
+import tegenton.card.parse.lexicon.type.EnchantmentType;
 import java.util.Optional;
 
 public class AState extends State {
@@ -20,12 +22,14 @@ public class AState extends State {
     @Override
     public State transition(final char c) {
         return switch (c) {
-            case 'B' -> new StateSequence("BOVE", Preposition.ABOVE);
-            case 'C' -> new StateSequence("CTIVATE", PlayerVerb.ACTIVATE);
-            case 'D' -> new StateSequence("DD", PlayerVerb.ADD);
+            case 'B' -> new SuffixSubstring("BOVE", Preposition.ABOVE);
+            case 'C' -> new SuffixSubstring("CTIVATE", PlayerVerb.ACTIVATE);
+            case 'D' -> new SuffixSubstring("DD", PlayerVerb.ADD);
             case 'L' -> ALState.state();
             case 'N' -> ANState.state();
+            case 'R' -> new SuffixSubstring("RTIFACT", CardType.ARTIFACT);
             case 'T' -> ATState.state();
+            case 'U' -> new SuffixSubstring("URA", EnchantmentType.AURA);
             case ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };

@@ -2,7 +2,7 @@ package tegenton.card.parse.dfa.state.h;
 
 import tegenton.card.parse.dfa.state.HState;
 import tegenton.card.parse.dfa.state.State;
-import tegenton.card.parse.dfa.substring.StateSequence;
+import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Keyword;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.Zone;
@@ -19,9 +19,9 @@ public class HAState extends HState {
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'N' -> new StateSequence("ND", Zone.HAND);
-            case 'S' -> new StateSequence("STE", Keyword.HASTE);
-            case 'V' -> new StateSequence("VE", ObjectVerb.HAVE);
+            case 'N' -> new SuffixSubstring("ND", Zone.HAND);
+            case 'S' -> new SuffixSubstring("STE", Keyword.HASTE);
+            case 'V' -> new SuffixSubstring("VE", ObjectVerb.HAVE);
             default -> invalid(c);
         };
     }

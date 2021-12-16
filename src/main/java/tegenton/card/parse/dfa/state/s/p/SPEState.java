@@ -2,7 +2,7 @@ package tegenton.card.parse.dfa.state.s.p;
 
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.s.SPState;
-import tegenton.card.parse.dfa.substring.StateSequence;
+import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.source.target.object.ObjectNoun;
 import tegenton.card.parse.lexicon.source.target.player.PlayerVerb;
@@ -18,8 +18,8 @@ public class SPEState extends SPState {
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'L' -> new StateSequence("LL", ObjectNoun.SPELL);
-            case 'N' -> new StateSequence("ND", PlayerVerb.SPEND);
+            case 'L' -> new SuffixSubstring("LL", ObjectNoun.SPELL);
+            case 'N' -> new SuffixSubstring("ND", PlayerVerb.SPEND);
             default -> invalid(c);
         };
     }

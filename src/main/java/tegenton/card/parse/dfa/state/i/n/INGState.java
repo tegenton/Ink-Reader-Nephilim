@@ -17,7 +17,7 @@ public class INGState extends INState {
     public State transition(char c) {
         return switch (c) {
             case ' ' -> SymbolState.state(c);
-            default -> throw new IllegalStateException("Cannot transition from INGState on " + c);
+            default -> invalid(c);
         };
     }
 

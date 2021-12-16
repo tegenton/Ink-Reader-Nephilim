@@ -3,25 +3,28 @@ package tegenton.card.parse.dfa.state.i;
 import tegenton.card.parse.dfa.state.IState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.i.n.INGState;
-import tegenton.card.parse.dfa.substring.StateSequence;
+import tegenton.card.parse.dfa.state.i.n.INSState;
+import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Keyword;
 import tegenton.card.parse.lexicon.Preposition;
 import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
 public class INState extends IState {
-    private static final INState instance = new INState();
+    private static final INState INSTANCE = new INState();
 
     public static INState state() {
-        return instance;
+        return INSTANCE;
     }
 
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'D' -> new StateSequence("DESTRUCTIBLE", Keyword.INDESTRUCTIBLE);
+            case 'D' -> new SuffixSubstring("DESTRUCTIBLE",
+                                            Keyword.INDESTRUCTIBLE);
             case 'G' -> INGState.state();
-            default -> throw new IllegalStateException("Cannot transition from INState on " + c);
+            case 'S' -> INSState.state();
+            default -> invalid(c);
         };
     }
 

@@ -3,7 +3,7 @@ package tegenton.card.parse.dfa.state.w.h.e;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.dfa.state.w.h.WHEState;
-import tegenton.card.parse.dfa.substring.StateSequence;
+import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.TriggerWord;
 import java.util.Optional;
 
@@ -17,9 +17,10 @@ public final class WHENState extends WHEState {
     @Override
     public State transition(final char c) {
         return switch (c) {
-            case 'E' -> new StateSequence("EVER", TriggerWord.WHENEVER);
+            case 'E' -> new SuffixSubstring("EVER", TriggerWord.WHENEVER);
             case ' ' -> SymbolState.state(c);
-            default -> throw new IllegalStateException("Cannot transition from WHENState on " + c);
+            default -> throw new IllegalStateException(
+                    "Cannot transition from WHENState on " + c);
         };
     }
 

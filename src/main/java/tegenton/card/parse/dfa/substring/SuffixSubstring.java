@@ -3,10 +3,10 @@ package tegenton.card.parse.dfa.substring;
 import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
-public class StateSequence extends Substring {
+public class SuffixSubstring extends Substring {
     private final Word product;
 
-    public StateSequence(String text, Word product) {
+    public SuffixSubstring(String text, Word product) {
         super(text.toCharArray());
         this.product = product;
     }

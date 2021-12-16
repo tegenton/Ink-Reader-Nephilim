@@ -4,7 +4,7 @@ import tegenton.card.parse.dfa.state.CState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.c.o.CONState;
 import tegenton.card.parse.dfa.state.c.o.COUState;
-import tegenton.card.parse.dfa.substring.StateSequence;
+import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.source.target.object.ObjectNoun;
 import tegenton.card.parse.lexicon.source.target.object.ObjectVerb;
@@ -21,8 +21,8 @@ public class COState extends CState {
     public State transition(char c) {
         return switch (c) {
             case 'N' -> CONState.state();
-            case 'P' -> new StateSequence("PY", ObjectNoun.COPY);
-            case 'S' -> new StateSequence("ST", ObjectVerb.COST);
+            case 'P' -> new SuffixSubstring("PY", ObjectNoun.COPY);
+            case 'S' -> new SuffixSubstring("ST", ObjectVerb.COST);
             case 'U' -> COUState.state();
             default -> invalid(c);
         };

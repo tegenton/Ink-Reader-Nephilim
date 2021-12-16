@@ -3,7 +3,7 @@ package tegenton.card.parse.dfa.state;
 import tegenton.card.parse.dfa.state.f.FIState;
 import tegenton.card.parse.dfa.state.f.FLState;
 import tegenton.card.parse.dfa.state.f.FOState;
-import tegenton.card.parse.dfa.substring.StateSequence;
+import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Keyword;
 import tegenton.card.parse.lexicon.Preposition;
 import tegenton.card.parse.lexicon.Word;
@@ -19,11 +19,11 @@ public class FState extends State {
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'E' -> new StateSequence("EAR", Keyword.FEAR);
+            case 'E' -> new SuffixSubstring("EAR", Keyword.FEAR);
             case 'I' -> FIState.state();
             case 'L' -> FLState.state();
             case 'O' -> FOState.state();
-            case 'R' -> new StateSequence("ROM", Preposition.FROM);
+            case 'R' -> new SuffixSubstring("ROM", Preposition.FROM);
             default -> invalid(c);
         };
     }

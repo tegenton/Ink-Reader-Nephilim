@@ -2,7 +2,7 @@ package tegenton.card.parse.dfa.state.p;
 
 import tegenton.card.parse.dfa.state.PState;
 import tegenton.card.parse.dfa.state.State;
-import tegenton.card.parse.dfa.substring.StateSequence;
+import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Keyword;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.source.target.player.PlayerVerb;
@@ -18,8 +18,8 @@ public class PRState extends PState {
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'E' -> new StateSequence("EVENT", PlayerVerb.PREVENT);
-            case 'O' -> new StateSequence("OTECTION", Keyword.PROTECTION);
+            case 'E' -> new SuffixSubstring("EVENT", PlayerVerb.PREVENT);
+            case 'O' -> new SuffixSubstring("OTECTION", Keyword.PROTECTION);
             default -> throw new IllegalStateException(
                     "Cannot transition from PRState on " + c);
         };

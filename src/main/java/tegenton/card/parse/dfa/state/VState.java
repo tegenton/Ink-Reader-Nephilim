@@ -1,6 +1,6 @@
 package tegenton.card.parse.dfa.state;
 
-import tegenton.card.parse.dfa.substring.StateSequence;
+import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Keyword;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.source.target.object.ObjectAttribute;
@@ -16,8 +16,8 @@ public class VState extends State {
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'A' -> new StateSequence("ALUE", ObjectAttribute.VALUE);
-            case 'I' -> new StateSequence("IGILANCE", Keyword.VIGILANCE);
+            case 'A' -> new SuffixSubstring("ALUE", ObjectAttribute.VALUE);
+            case 'I' -> new SuffixSubstring("IGILANCE", Keyword.VIGILANCE);
             default -> invalid(c);
         };
     }

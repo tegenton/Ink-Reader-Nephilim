@@ -1,8 +1,8 @@
 package tegenton.card.parse.dfa.state;
 
+import tegenton.card.parse.dfa.state.w.WAState;
 import tegenton.card.parse.dfa.state.w.WHState;
-import tegenton.card.parse.dfa.substring.StateSequence;
-import tegenton.card.parse.lexicon.Keyword;
+import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Preposition;
 import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
@@ -17,9 +17,9 @@ public class WState extends State {
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'A' -> new StateSequence("ALK", Keyword.WALK);
+            case 'A' -> WAState.state();
             case 'H' -> WHState.state();
-            case 'I' -> new StateSequence("ITH", Preposition.WITH);
+            case 'I' -> new SuffixSubstring("ITH", Preposition.WITH);
             default -> invalid(c);
         };
     }

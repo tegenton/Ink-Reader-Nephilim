@@ -4,7 +4,7 @@ import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.TState;
 import tegenton.card.parse.dfa.state.t.a.TAPState;
 import tegenton.card.parse.dfa.state.t.a.TARState;
-import tegenton.card.parse.dfa.substring.StateSequence;
+import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.source.target.player.PlayerVerb;
 import java.util.Optional;
@@ -19,7 +19,7 @@ public class TAState extends TState {
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'K' -> new StateSequence("KE", PlayerVerb.TAKE);
+            case 'K' -> new SuffixSubstring("KE", PlayerVerb.TAKE);
             case 'P' -> TAPState.state();
             case 'R' -> TARState.state();
             default -> invalid(c);

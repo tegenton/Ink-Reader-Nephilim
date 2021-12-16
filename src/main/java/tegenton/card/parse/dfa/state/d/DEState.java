@@ -2,7 +2,7 @@ package tegenton.card.parse.dfa.state.d;
 
 import tegenton.card.parse.dfa.state.DState;
 import tegenton.card.parse.dfa.state.State;
-import tegenton.card.parse.dfa.substring.StateSequence;
+import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Keyword;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.source.SourceVerb;
@@ -19,9 +19,9 @@ public class DEState extends DState {
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'A' -> new StateSequence("AL", SourceVerb.DEAL);
-            case 'F' -> new StateSequence("FENDER", Keyword.DEFENDER);
-            case 'S' -> new StateSequence("STROY", PlayerVerb.DESTROY);
+            case 'A' -> new SuffixSubstring("AL", SourceVerb.DEAL);
+            case 'F' -> new SuffixSubstring("FENDER", Keyword.DEFENDER);
+            case 'S' -> new SuffixSubstring("STROY", PlayerVerb.DESTROY);
             default -> invalid(c);
         };
     }

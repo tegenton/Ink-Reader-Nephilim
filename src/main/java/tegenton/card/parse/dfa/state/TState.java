@@ -1,7 +1,7 @@
 package tegenton.card.parse.dfa.state;
 
 import tegenton.card.parse.dfa.state.t.*;
-import tegenton.card.parse.dfa.substring.StateSequence;
+import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Keyword;
 import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
@@ -20,7 +20,7 @@ public class TState extends State {
             case 'E' -> TEState.state();
             case 'H' -> THState.state();
             case 'O' -> TOState.state();
-            case 'R' -> new StateSequence("RAMPLE", Keyword.TRAMPLE);
+            case 'R' -> new SuffixSubstring("RAMPLE", Keyword.TRAMPLE);
             case 'W' -> TWState.state();
             default -> invalid(c);
         };

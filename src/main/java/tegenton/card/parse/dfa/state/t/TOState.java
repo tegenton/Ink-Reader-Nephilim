@@ -2,7 +2,7 @@ package tegenton.card.parse.dfa.state.t;
 
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.TState;
-import tegenton.card.parse.dfa.substring.StateSequence;
+import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Preposition;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.source.target.object.ObjectAttribute;
@@ -19,8 +19,9 @@ public class TOState extends TState {
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'K' -> new StateSequence("KEN", ObjectNoun.TOKEN);
-            case 'U' -> new StateSequence("UGHNESS", ObjectAttribute.TOUGHNESS);
+            case 'K' -> new SuffixSubstring("KEN", ObjectNoun.TOKEN);
+            case 'U' -> new SuffixSubstring("UGHNESS",
+                                            ObjectAttribute.TOUGHNESS);
             default -> invalid(c);
         };
     }

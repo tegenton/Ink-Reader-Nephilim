@@ -1,9 +1,10 @@
 package tegenton.card.parse.dfa.state;
 
 import tegenton.card.parse.dfa.state.m.MOState;
-import tegenton.card.parse.dfa.substring.StateSequence;
+import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.source.target.player.PlayerVerb;
+import tegenton.card.parse.lexicon.type.CreatureType;
 import java.util.Optional;
 
 public class MState extends State {
@@ -16,7 +17,8 @@ public class MState extends State {
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'A' -> new StateSequence("AY", PlayerVerb.MAY);
+            case 'A' -> new SuffixSubstring("AY", PlayerVerb.MAY);
+            case 'E' -> new SuffixSubstring("ERFOLK", CreatureType.MERFOLK);
             case 'O' -> MOState.state();
             default -> invalid(c);
         };

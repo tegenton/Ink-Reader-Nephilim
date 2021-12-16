@@ -1,7 +1,8 @@
 package tegenton.card.parse.dfa.state;
 
+import tegenton.card.parse.dfa.state.g.GOState;
 import tegenton.card.parse.dfa.state.g.GRState;
-import tegenton.card.parse.dfa.substring.StateSequence;
+import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.source.target.TargetVerb;
 import tegenton.card.parse.lexicon.source.target.object.ObjectVerb;
@@ -17,8 +18,9 @@ public class GState extends State {
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'A' -> new StateSequence("AIN", TargetVerb.GAIN);
-            case 'E' -> new StateSequence("ET", ObjectVerb.GET);
+            case 'A' -> new SuffixSubstring("AIN", TargetVerb.GAIN);
+            case 'E' -> new SuffixSubstring("ET", ObjectVerb.GET);
+            case 'O' -> GOState.state();
             case 'R' -> GRState.state();
             default -> invalid(c);
         };

@@ -4,7 +4,7 @@ import tegenton.card.parse.dfa.state.AState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.a.n.ANDState;
 import tegenton.card.parse.dfa.state.a.n.ANYState;
-import tegenton.card.parse.dfa.substring.StateSequence;
+import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Determiner;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.Zone;
@@ -21,10 +21,11 @@ public class ANState extends AState {
     public State transition(char c) {
         return switch (c) {
             case 'D' -> ANDState.state();
-            case 'T' -> new StateSequence("TE", Zone.ANTE);
-            case 'O' -> new StateSequence("OTHER", Determiner.ANOTHER);
+            case 'T' -> new SuffixSubstring("TE", Zone.ANTE);
+            case 'O' -> new SuffixSubstring("OTHER", Determiner.ANOTHER);
             case 'Y' -> ANYState.state();
-            default -> throw new IllegalStateException("Cannot transition from ANState on " + c);
+            default -> throw new IllegalStateException(
+                    "Cannot transition from ANState on " + c);
         };
     }
 

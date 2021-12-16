@@ -2,7 +2,7 @@ package tegenton.card.parse.dfa.state.c.o.n.t.r.o;
 
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.c.o.n.t.r.CONTROState;
-import tegenton.card.parse.dfa.substring.StateSequence;
+import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Morpheme;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.source.target.player.PlayerVerb;
@@ -18,7 +18,7 @@ public class CONTROLState extends CONTROState {
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'L' -> new StateSequence("LER", Morpheme.ER);
+            case 'L' -> new SuffixSubstring("LER", Morpheme.ER);
             default -> throw new IllegalStateException(
                     "Cannot transition from CONTROLState on " + c);
         };
