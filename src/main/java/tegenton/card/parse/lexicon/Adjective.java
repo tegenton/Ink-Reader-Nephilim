@@ -1,7 +1,7 @@
 package tegenton.card.parse.lexicon;
 
 public enum Adjective implements Word {
-    CHOSEN, DIFFERENT, EQUAL, FIRST;
+    CHOSEN, DIFFERENT, EQUAL, FIRST, NEXT;
 
     @Override
     public String getWord() {

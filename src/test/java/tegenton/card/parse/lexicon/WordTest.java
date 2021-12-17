@@ -22,7 +22,7 @@ public class WordTest {
     @Test
     void adjective() {
         words = Adjective.values();
-        values = List.of("CHOSEN", "DIFFERENT", "EQUAL", "FIRST");
+        values = List.of("CHOSEN", "DIFFERENT", "EQUAL", "FIRST", "NEXT");
     }
 
     @Test
