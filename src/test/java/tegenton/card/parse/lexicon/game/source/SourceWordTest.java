@@ -15,6 +15,6 @@ public class SourceWordTest extends WordTest {
     @Test
     void verb() {
         words = SourceVerb.values();
-        values = List.of("DEAL", "CAN", "DO");
+        values = List.of("DEAL", "DO", "CAN", "PRODUCE");
     }
 }
