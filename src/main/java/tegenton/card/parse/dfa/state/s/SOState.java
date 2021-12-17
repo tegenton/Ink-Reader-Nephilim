@@ -4,6 +4,7 @@ import tegenton.card.parse.dfa.state.SState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Determiner;
+import tegenton.card.parse.lexicon.Pronoun;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.type.CardType;
 
@@ -27,6 +28,9 @@ public class SOState extends SState {
 
     @Override
     public Optional<? extends Word> produce(char c) {
-        return Optional.empty();
+        return Optional.ofNullable(switch (c) {
+            case '\0', ' ' -> Pronoun.SO;
+            default -> null;
+        });
     }
 }

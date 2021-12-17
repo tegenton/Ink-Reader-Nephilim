@@ -54,6 +54,12 @@ public class WordLexiconTest extends LexiconTest {
     }
 
     @ParameterizedTest
+    @EnumSource(Pronoun.class)
+    void pronoun(Word pronoun) {
+        word = pronoun;
+    }
+
+    @ParameterizedTest
     @EnumSource(SubordinateConjunction.class)
     void subordinateConjunction(Word subordinateConjunction) {
         word = subordinateConjunction;

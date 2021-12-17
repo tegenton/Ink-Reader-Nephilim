@@ -71,6 +71,12 @@ public class WordTest {
     }
 
     @Test
+    void pronoun() {
+        words = Pronoun.values();
+        values = List.of("SO");
+    }
+
+    @Test
     void subordinateConjunction() {
         words = SubordinateConjunction.values();
         values = List.of("AS", "BUT", "EXCEPT", "IF", "LONG", "WHERE");
