@@ -3,6 +3,7 @@ package tegenton.card.parse.dfa.state.s;
 import tegenton.card.parse.dfa.state.SState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
+import tegenton.card.parse.lexicon.Adverb;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.GameNoun;
 import tegenton.card.parse.lexicon.game.Keyword;
@@ -19,8 +20,9 @@ public class STState extends SState {
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'R' -> new SuffixSubstring("RIKE", Keyword.STRIKE);
             case 'E' -> new SuffixSubstring("EP", GameNoun.STEP);
+            case 'I' -> new SuffixSubstring("ILL", Adverb.STILL);
+            case 'R' -> new SuffixSubstring("RIKE", Keyword.STRIKE);
             default -> invalid(c);
         };
     }

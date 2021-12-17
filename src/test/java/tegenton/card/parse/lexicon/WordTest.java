@@ -28,7 +28,7 @@ public class WordTest {
     @Test
     void adverb() {
         words = Adverb.values();
-        values = List.of("LIKEWISE", "ONLY", "OVER");
+        values = List.of("LIKEWISE", "ONLY", "OVER", "STILL");
     }
 
     @Test
