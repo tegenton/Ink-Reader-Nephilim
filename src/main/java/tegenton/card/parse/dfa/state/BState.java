@@ -2,6 +2,7 @@ package tegenton.card.parse.dfa.state;
 
 import tegenton.card.parse.dfa.state.b.BAState;
 import tegenton.card.parse.dfa.state.b.BEState;
+import tegenton.card.parse.dfa.state.b.BYState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.SubordinateConjunction;
 import tegenton.card.parse.lexicon.Word;
@@ -23,6 +24,7 @@ public class BState extends State {
             case 'E' -> BEState.state();
             case 'L' -> new SuffixSubstring("LOCK", ObjectVerb.BLOCK);
             case 'U' -> new SuffixSubstring("UT", SubordinateConjunction.BUT);
+            case 'Y' -> BYState.state();
             default -> invalid(c);
         };
     }

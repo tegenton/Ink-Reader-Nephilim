@@ -66,7 +66,7 @@ public class WordTest {
     @Test
     void preposition() {
         words = Preposition.values();
-        values = List.of("ABOVE", "BEYOND", "FOR", "FROM", "IN", "OF", "ON", "TO", "UNDER",
+        values = List.of("ABOVE", "BEYOND", "BY", "FOR", "FROM", "IN", "OF", "ON", "TO", "UNDER",
                 "WITH");
     }
 
