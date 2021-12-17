@@ -4,7 +4,10 @@ import tegenton.card.parse.dfa.state.FState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.f.o.FORState;
 import tegenton.card.parse.dfa.state.f.o.FOUState;
+import tegenton.card.parse.dfa.substring.SuffixSubstring;
+import tegenton.card.parse.lexicon.Noun;
 import tegenton.card.parse.lexicon.Word;
+
 import java.util.Optional;
 
 public class FOState extends FState {
@@ -17,9 +20,10 @@ public class FOState extends FState {
     @Override
     public State transition(char c) {
         return switch (c) {
+            case 'O' -> new SuffixSubstring("OT", Noun.FOOT);
             case 'R' -> FORState.state();
             case 'U' -> FOUState.state();
-            default -> throw new IllegalStateException("Cannot transition from FOState on " + c);
+            default -> invalid(c);
         };
     }
 
