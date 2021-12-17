@@ -5,7 +5,7 @@ import java.util.Optional;
 
 public abstract class State {
 
-    public static State empty() {
+    public static State state() {
         return EmptyState.state();
     }
 

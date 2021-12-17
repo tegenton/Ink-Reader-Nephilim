@@ -12,6 +12,7 @@ public enum Preposition implements Word {
     ON,
     TO,
     UNDER,
+    UNTIL,
     WITH;
 
     @Override

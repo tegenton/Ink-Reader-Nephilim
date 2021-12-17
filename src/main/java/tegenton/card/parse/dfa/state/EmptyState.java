@@ -1,9 +1,9 @@
 package tegenton.card.parse.dfa.state;
 
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
-import tegenton.card.parse.lexicon.Preposition;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.source.target.player.PlayerNoun;
+
 import java.util.Optional;
 
 class EmptyState extends State {
@@ -33,7 +33,7 @@ class EmptyState extends State {
             case 'R' -> RState.state();
             case 'S' -> SState.state();
             case 'T' -> TState.state();
-            case 'U' -> new SuffixSubstring("UNDER", Preposition.UNDER);
+            case 'U' -> UState.state();
             case 'V' -> VState.state();
             case 'W' -> WState.state();
             case 'Y' -> new SuffixSubstring("YOU", PlayerNoun.YOU);
