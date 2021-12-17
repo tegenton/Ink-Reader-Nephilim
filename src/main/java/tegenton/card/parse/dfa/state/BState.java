@@ -2,8 +2,10 @@ package tegenton.card.parse.dfa.state;
 
 import tegenton.card.parse.dfa.state.b.BAState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
+import tegenton.card.parse.lexicon.SubordinateConjunction;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.source.target.object.ObjectVerb;
+
 import java.util.Optional;
 
 public class BState extends State {
@@ -19,6 +21,7 @@ public class BState extends State {
             case 'A' -> BAState.state();
             case 'E' -> new SuffixSubstring("ECOME", ObjectVerb.BECOME);
             case 'L' -> new SuffixSubstring("LOCK", ObjectVerb.BLOCK);
+            case 'U' -> new SuffixSubstring("UT", SubordinateConjunction.BUT);
             default -> invalid(c);
         };
     }

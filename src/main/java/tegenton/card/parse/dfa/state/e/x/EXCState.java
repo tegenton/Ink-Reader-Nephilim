@@ -1,26 +1,26 @@
-package tegenton.card.parse.dfa.state.w.h;
+package tegenton.card.parse.dfa.state.e.x;
 
 import tegenton.card.parse.dfa.state.State;
-import tegenton.card.parse.dfa.state.w.WHState;
-import tegenton.card.parse.dfa.state.w.h.e.WHENState;
+import tegenton.card.parse.dfa.state.e.EXState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.SubordinateConjunction;
 import tegenton.card.parse.lexicon.Word;
+import tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb;
 
 import java.util.Optional;
 
-public class WHEState extends WHState {
-    private static final WHEState INSTANCE = new WHEState();
+public class EXCState extends EXState {
+    private static final EXCState INSTANCE = new EXCState();
 
-    public static WHEState state() {
+    public static EXCState state() {
         return INSTANCE;
     }
 
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'N' -> WHENState.state();
-            case 'R' -> new SuffixSubstring("RE", SubordinateConjunction.WHERE);
+            case 'E' -> new SuffixSubstring("EPT", SubordinateConjunction.EXCEPT);
+            case 'H' -> new SuffixSubstring("HANGE", PlayerVerb.EXCHANGE);
             default -> invalid(c);
         };
     }

@@ -2,10 +2,11 @@ package tegenton.card.parse.dfa.state.e;
 
 import tegenton.card.parse.dfa.state.EState;
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.e.x.EXCState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.Zone;
-import tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb;
+
 import java.util.Optional;
 
 public class EXState extends EState {
@@ -18,7 +19,7 @@ public class EXState extends EState {
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'C' -> new SuffixSubstring("CHANGE", PlayerVerb.EXCHANGE);
+            case 'C' -> EXCState.state();
             case 'I' -> new SuffixSubstring("ILE", Zone.EXILE);
             default -> invalid(c);
         };

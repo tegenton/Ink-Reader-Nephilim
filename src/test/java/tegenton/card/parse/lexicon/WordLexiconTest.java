@@ -40,4 +40,16 @@ public class WordLexiconTest extends LexiconTest {
     void noun(Word noun) {
         word = noun;
     }
+
+    @ParameterizedTest
+    @EnumSource(Preposition.class)
+    void preposition(Word preposition) {
+        word = preposition;
+    }
+
+    @ParameterizedTest
+    @EnumSource(SubordinateConjunction.class)
+    void subordinateConjunction(Word subordinateConjunction) {
+        word = subordinateConjunction;
+    }
 }

@@ -1,9 +1,6 @@
 package tegenton.card.parse.dfa.state;
 
-import tegenton.card.parse.dfa.state.a.ABState;
-import tegenton.card.parse.dfa.state.a.ALState;
-import tegenton.card.parse.dfa.state.a.ANState;
-import tegenton.card.parse.dfa.state.a.ATState;
+import tegenton.card.parse.dfa.state.a.*;
 import tegenton.card.parse.dfa.state.a.c.t.i.ACTIVState;
 import tegenton.card.parse.dfa.substring.InfixSubstring;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
@@ -33,6 +30,7 @@ public class AState extends State {
             case 'M' -> new SuffixSubstring("MOUNT", Noun.AMOUNT);
             case 'N' -> ANState.state();
             case 'R' -> new SuffixSubstring("RTIFACT", CardType.ARTIFACT);
+            case 'S' -> ASState.state();
             case 'T' -> ATState.state();
             case 'U' -> new SuffixSubstring("URA", EnchantmentType.AURA);
             case ' ' -> SymbolState.state(c);
