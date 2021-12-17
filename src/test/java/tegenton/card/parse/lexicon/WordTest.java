@@ -47,7 +47,7 @@ public class WordTest {
     void determiner() {
         words = Determiner.values();
         values = List.of("A", "AN", "THE", "TARGET", "THIS", "THESE", "THAT",
-                "THOSE", "NO", "OTHER", "ANOTHER", "ALL", "EACH",
+                "THOSE", "NO", "OTHER", "ANOTHER", "MANY", "ALL", "EACH",
                 "ANY", "SOME");
     }
 

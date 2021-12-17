@@ -6,13 +6,22 @@ package tegenton.card.parse.lexicon;
  */
 public enum Determiner implements Word {
     // Articles
-    A, AN, THE, // Demonstrative
-    TARGET, THIS, THESE, THAT, THOSE, // Negative
-    NO, // Alternative
-    OTHER, // Alternative-additive
-    ANOTHER, // Universal
-    ALL, // Distributive
-    EACH, // Existential
+    A, AN, THE,
+    // Demonstrative
+    TARGET, THIS, THESE, THAT, THOSE,
+    // Negative
+    NO,
+    // Alternative
+    OTHER,
+    // Alternative-additive
+    ANOTHER,
+    // Degree
+    MANY,
+    // Universal
+    ALL,
+    // Distributive
+    EACH,
+    // Existential
     ANY,
     SOME;
 
