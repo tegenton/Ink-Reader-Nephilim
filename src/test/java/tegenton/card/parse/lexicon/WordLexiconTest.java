@@ -12,6 +12,12 @@ public class WordLexiconTest extends LexiconTest {
     }
 
     @ParameterizedTest
+    @EnumSource(Adverb.class)
+    void adverb(Word adverb) {
+        word = adverb;
+    }
+
+    @ParameterizedTest
     @EnumSource(Conjunction.class)
     void conjunction(Word conjunction) {
         word = conjunction;

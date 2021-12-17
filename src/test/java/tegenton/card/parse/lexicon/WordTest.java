@@ -26,6 +26,12 @@ public class WordTest {
     }
 
     @Test
+    void adverb() {
+        words = Adverb.values();
+        values = List.of("OVER");
+    }
+
+    @Test
     void conjunction() {
         words = Conjunction.values();
         values = List.of("AND", "OR", "THEN");
@@ -42,7 +48,7 @@ public class WordTest {
         words = Determiner.values();
         values = List.of("A", "AN", "THE", "TARGET", "THIS", "THESE", "THAT",
                 "THOSE", "NO", "OTHER", "ANOTHER", "ALL", "EACH",
-                "ANY");
+                "ANY", "SOME");
     }
 
     @Test
@@ -54,7 +60,7 @@ public class WordTest {
     @Test
     void noun() {
         words = Noun.values();
-        values = List.of("AMOUNT", "NUMBER", "TEXT", "WORD");
+        values = List.of("AMOUNT", "HEIGHT", "NUMBER", "TEXT", "WORD");
     }
 
     @Test

@@ -2,8 +2,10 @@ package tegenton.card.parse.dfa.state;
 
 import tegenton.card.parse.dfa.state.o.*;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
+import tegenton.card.parse.lexicon.Adverb;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.source.target.player.PlayerNoun;
+
 import java.util.Optional;
 
 public class OState extends State {
@@ -22,6 +24,7 @@ public class OState extends State {
             case 'R' -> ORState.state();
             case 'T' -> OTState.state();
             case 'W' -> OWState.state();
+            case 'V' -> new SuffixSubstring("VER", Adverb.OVER);
             default -> invalid(c);
         };
     }

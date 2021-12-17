@@ -1,7 +1,10 @@
 package tegenton.card.parse.dfa.state;
 
 import tegenton.card.parse.dfa.state.h.HAState;
+import tegenton.card.parse.dfa.substring.SuffixSubstring;
+import tegenton.card.parse.lexicon.Noun;
 import tegenton.card.parse.lexicon.Word;
+
 import java.util.Optional;
 
 public class HState extends State {
@@ -15,6 +18,7 @@ public class HState extends State {
     public State transition(char c) {
         return switch (c) {
             case 'A' -> HAState.state();
+            case 'E' -> new SuffixSubstring("EIGHT", Noun.HEIGHT);
             default -> invalid(c);
         };
     }

@@ -30,7 +30,7 @@ public class GameWordTest extends WordTest {
     @Test
     void verb() {
         words = GameVerb.values();
-        values = List.of("BE");
+        values = List.of("BE", "CAUSE");
     }
 
     @Test

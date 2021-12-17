@@ -13,7 +13,8 @@ public enum Determiner implements Word {
     ANOTHER, // Universal
     ALL, // Distributive
     EACH, // Existential
-    ANY;
+    ANY,
+    SOME;
 
     @Override
     public String getWord() {

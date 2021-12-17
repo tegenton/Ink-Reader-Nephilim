@@ -5,6 +5,7 @@ import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.SubordinateConjunction;
 import tegenton.card.parse.lexicon.Word;
+import tegenton.card.parse.lexicon.game.source.target.object.ObjectAttribute;
 import tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb;
 
 import java.util.Optional;
@@ -22,6 +23,7 @@ public class LOState extends LState {
             case 'N' -> new SuffixSubstring("NG", SubordinateConjunction.LONG);
             case 'O' -> new SuffixSubstring("OK", PlayerVerb.LOOK);
             case 'S' -> new SuffixSubstring("SE", PlayerVerb.LOSE);
+            case 'Y' -> new SuffixSubstring("YALTY", ObjectAttribute.LOYALTY);
             default -> invalid(c);
         };
     }
