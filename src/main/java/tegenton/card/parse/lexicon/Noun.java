@@ -1,7 +1,7 @@
 package tegenton.card.parse.lexicon;
 
 public enum Noun implements Word {
-    AMOUNT, HEIGHT, NUMBER, RANDOM, TEXT, WORD;
+    AMOUNT, HEIGHT, NUMBER, RANDOM, TEXT, TIME, WORD;
 
     @Override
     public String getWord() {
