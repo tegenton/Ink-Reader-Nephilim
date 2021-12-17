@@ -8,6 +8,7 @@ import tegenton.card.parse.dfa.state.a.c.t.i.ACTIVState;
 import tegenton.card.parse.dfa.substring.InfixSubstring;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Determiner;
+import tegenton.card.parse.lexicon.Noun;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb;
 import tegenton.card.parse.lexicon.game.type.CardType;
@@ -29,6 +30,7 @@ public class AState extends State {
             case 'C' -> new InfixSubstring("CTI", 'V', ACTIVState::state);
             case 'D' -> new SuffixSubstring("DD", PlayerVerb.ADD);
             case 'L' -> ALState.state();
+            case 'M' -> new SuffixSubstring("MOUNT", Noun.AMOUNT);
             case 'N' -> ANState.state();
             case 'R' -> new SuffixSubstring("RTIFACT", CardType.ARTIFACT);
             case 'T' -> ATState.state();

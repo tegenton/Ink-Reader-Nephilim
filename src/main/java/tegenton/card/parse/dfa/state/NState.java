@@ -2,7 +2,10 @@ package tegenton.card.parse.dfa.state;
 
 import tegenton.card.parse.dfa.state.n.NIState;
 import tegenton.card.parse.dfa.state.n.NOState;
+import tegenton.card.parse.dfa.substring.SuffixSubstring;
+import tegenton.card.parse.lexicon.Noun;
 import tegenton.card.parse.lexicon.Word;
+
 import java.util.Optional;
 
 public class NState extends State {
@@ -17,6 +20,7 @@ public class NState extends State {
         return switch (c) {
             case 'I' -> NIState.state();
             case 'O' -> NOState.state();
+            case 'U' -> new SuffixSubstring("UMBER", Noun.NUMBER);
             default -> invalid(c);
         };
     }

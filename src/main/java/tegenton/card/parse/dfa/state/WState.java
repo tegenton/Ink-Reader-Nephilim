@@ -3,8 +3,10 @@ package tegenton.card.parse.dfa.state;
 import tegenton.card.parse.dfa.state.w.WAState;
 import tegenton.card.parse.dfa.state.w.WHState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
+import tegenton.card.parse.lexicon.Noun;
 import tegenton.card.parse.lexicon.Preposition;
 import tegenton.card.parse.lexicon.Word;
+
 import java.util.Optional;
 
 public class WState extends State {
@@ -20,6 +22,7 @@ public class WState extends State {
             case 'A' -> WAState.state();
             case 'H' -> WHState.state();
             case 'I' -> new SuffixSubstring("ITH", Preposition.WITH);
+            case 'O' -> new SuffixSubstring("ORD", Noun.WORD);
             default -> invalid(c);
         };
     }

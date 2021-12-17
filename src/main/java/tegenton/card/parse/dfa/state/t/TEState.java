@@ -3,7 +3,10 @@ package tegenton.card.parse.dfa.state.t;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.TState;
 import tegenton.card.parse.dfa.state.t.e.TENState;
+import tegenton.card.parse.dfa.substring.SuffixSubstring;
+import tegenton.card.parse.lexicon.Noun;
 import tegenton.card.parse.lexicon.Word;
+
 import java.util.Optional;
 
 public class TEState extends TState {
@@ -17,7 +20,8 @@ public class TEState extends TState {
     public State transition(char c) {
         return switch (c) {
             case 'N' -> TENState.state();
-            default -> throw new IllegalStateException("Cannot transition from TEState on " + c);
+            case 'X' -> new SuffixSubstring("XT", Noun.TEXT);
+            default -> invalid(c);
         };
     }
 
