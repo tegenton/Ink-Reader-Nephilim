@@ -1,9 +1,9 @@
-package tegenton.card.parse.lexicon.game.source.target;
+package tegenton.card.parse.lexicon.game;
 
 import tegenton.card.parse.lexicon.Word;
 
-public enum TargetVerb implements Word {
-    ASSIGN, GAIN;
+public enum GameVerb implements Word {
+    BE;
 
     @Override
     public String getWord() {

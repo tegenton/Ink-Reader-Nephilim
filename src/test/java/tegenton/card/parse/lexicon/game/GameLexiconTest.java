@@ -25,6 +25,12 @@ public class GameLexiconTest extends LexiconTest {
     }
 
     @ParameterizedTest
+    @EnumSource(GameVerb.class)
+    void verb(Word verb) {
+        word = verb;
+    }
+
+    @ParameterizedTest
     @EnumSource(Zone.class)
     void zone(Word zone) {
         word = zone;

@@ -1,6 +1,7 @@
 package tegenton.card.parse.dfa.state;
 
 import tegenton.card.parse.dfa.state.b.BAState;
+import tegenton.card.parse.dfa.state.b.BEState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.SubordinateConjunction;
 import tegenton.card.parse.lexicon.Word;
@@ -19,7 +20,7 @@ public class BState extends State {
     public State transition(char c) {
         return switch (c) {
             case 'A' -> BAState.state();
-            case 'E' -> new SuffixSubstring("ECOME", ObjectVerb.BECOME);
+            case 'E' -> BEState.state();
             case 'L' -> new SuffixSubstring("LOCK", ObjectVerb.BLOCK);
             case 'U' -> new SuffixSubstring("UT", SubordinateConjunction.BUT);
             default -> invalid(c);

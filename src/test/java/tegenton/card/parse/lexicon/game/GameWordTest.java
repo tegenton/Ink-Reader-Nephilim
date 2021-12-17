@@ -28,6 +28,12 @@ public class GameWordTest extends WordTest {
     }
 
     @Test
+    void verb() {
+        words = GameVerb.values();
+        values = List.of("BE");
+    }
+
+    @Test
     void zone() {
         words = Zone.values();
         values = List.of("ANTE", "BATTLEFIELD", "EXILE", "GRAVEYARD", "HAND",
