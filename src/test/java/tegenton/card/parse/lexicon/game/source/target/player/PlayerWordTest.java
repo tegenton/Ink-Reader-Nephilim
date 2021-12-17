@@ -15,7 +15,7 @@ public class PlayerWordTest extends WordTest {
     @Test
     void attribute() {
         words = PlayerAttribute.values();
-        values = List.of("SIZE", "TOTAL");
+        values = List.of("MAXIMUM", "SIZE", "TOTAL");
     }
 
     @Test
