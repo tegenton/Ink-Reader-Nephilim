@@ -1,9 +1,9 @@
 package tegenton.card.parse.dfa.state;
 
+import tegenton.card.parse.dfa.state.n.NEState;
 import tegenton.card.parse.dfa.state.n.NIState;
 import tegenton.card.parse.dfa.state.n.NOState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
-import tegenton.card.parse.lexicon.Adjective;
 import tegenton.card.parse.lexicon.Noun;
 import tegenton.card.parse.lexicon.Word;
 
@@ -19,7 +19,7 @@ public class NState extends State {
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'E' -> new SuffixSubstring("EXT", Adjective.NEXT);
+            case 'E' -> NEState.state();
             case 'I' -> NIState.state();
             case 'O' -> NOState.state();
             case 'U' -> new SuffixSubstring("UMBER", Noun.NUMBER);
