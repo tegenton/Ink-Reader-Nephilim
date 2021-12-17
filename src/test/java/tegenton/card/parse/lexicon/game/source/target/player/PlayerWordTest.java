@@ -9,7 +9,7 @@ public class PlayerWordTest extends WordTest {
     @Test
     void adjective() {
         words = PlayerAdjective.values();
-        values = List.of("ACTIVE");
+        values = List.of("ACTIVE", "DEFENDING");
     }
 
     @Test

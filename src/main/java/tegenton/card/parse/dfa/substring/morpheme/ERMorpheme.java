@@ -4,9 +4,9 @@ import tegenton.card.parse.lexicon.Word;
 
 import java.util.Optional;
 
-public class INGMorpheme extends Morpheme {
-    public INGMorpheme(Word word) {
-        super("ING".toCharArray(), word);
+public class ERMorpheme extends Morpheme {
+    public ERMorpheme(Word word) {
+        super("ER".toCharArray(), word);
     }
 
     @Override
