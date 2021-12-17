@@ -11,6 +11,7 @@ public enum Preposition implements Word {
     MINUS,
     OF,
     ON,
+    SINCE,
     TO,
     UNDER,
     UNTIL,
