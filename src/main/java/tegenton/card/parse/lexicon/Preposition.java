@@ -7,6 +7,7 @@ public enum Preposition implements Word {
     FOR,
     FROM,
     IN,
+    MINUS,
     OF,
     ON,
     TO,
