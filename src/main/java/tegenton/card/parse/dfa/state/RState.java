@@ -1,7 +1,10 @@
 package tegenton.card.parse.dfa.state;
 
 import tegenton.card.parse.dfa.state.r.REState;
+import tegenton.card.parse.dfa.substring.SuffixSubstring;
+import tegenton.card.parse.lexicon.Noun;
 import tegenton.card.parse.lexicon.Word;
+
 import java.util.Optional;
 
 public class RState extends State {
@@ -14,6 +17,7 @@ public class RState extends State {
     @Override
     public State transition(char c) {
         return switch (c) {
+            case 'A' -> new SuffixSubstring("ANDOM", Noun.RANDOM);
             case 'E' -> REState.state();
             default -> invalid(c);
         };

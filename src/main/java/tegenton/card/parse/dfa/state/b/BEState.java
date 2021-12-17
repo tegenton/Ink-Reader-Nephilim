@@ -3,6 +3,7 @@ package tegenton.card.parse.dfa.state.b;
 import tegenton.card.parse.dfa.state.BState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
+import tegenton.card.parse.lexicon.Preposition;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.GameVerb;
 import tegenton.card.parse.lexicon.game.source.target.object.ObjectVerb;
@@ -20,6 +21,7 @@ public class BEState extends BState {
     public State transition(char c) {
         return switch (c) {
             case 'C' -> new SuffixSubstring("COME", ObjectVerb.BECOME);
+            case 'Y' -> new SuffixSubstring("YOND", Preposition.BEYOND);
             default -> invalid(c);
         };
     }

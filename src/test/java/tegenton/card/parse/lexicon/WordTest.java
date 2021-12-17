@@ -22,13 +22,13 @@ public class WordTest {
     @Test
     void adjective() {
         words = Adjective.values();
-        values = List.of("CHOSEN");
+        values = List.of("CHOSEN", "DIFFERENT", "EQUAL", "FIRST");
     }
 
     @Test
     void adverb() {
         words = Adverb.values();
-        values = List.of("OVER");
+        values = List.of("LIKEWISE", "OVER");
     }
 
     @Test
@@ -60,13 +60,13 @@ public class WordTest {
     @Test
     void noun() {
         words = Noun.values();
-        values = List.of("AMOUNT", "HEIGHT", "NUMBER", "TEXT", "WORD");
+        values = List.of("AMOUNT", "HEIGHT", "NUMBER", "RANDOM", "TEXT", "WORD");
     }
 
     @Test
     void preposition() {
         words = Preposition.values();
-        values = List.of("ABOVE", "FOR", "FROM", "IN", "OF", "ON", "TO", "UNDER",
+        values = List.of("ABOVE", "BEYOND", "FOR", "FROM", "IN", "OF", "ON", "TO", "UNDER",
                 "WITH");
     }
 

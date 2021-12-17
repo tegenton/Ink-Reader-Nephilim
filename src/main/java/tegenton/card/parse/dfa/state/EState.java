@@ -2,6 +2,7 @@ package tegenton.card.parse.dfa.state;
 
 import tegenton.card.parse.dfa.state.e.*;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
+import tegenton.card.parse.lexicon.Adjective;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.GameNoun;
 
@@ -22,6 +23,7 @@ public class EState extends State {
             case 'I' -> EIState.state();
             case 'L' -> ELState.state();
             case 'N' -> ENState.state();
+            case 'Q' -> new SuffixSubstring("QUAL", Adjective.EQUAL);
             case 'R' -> ERState.state();
             case 'X' -> EXState.state();
             default -> invalid(c);

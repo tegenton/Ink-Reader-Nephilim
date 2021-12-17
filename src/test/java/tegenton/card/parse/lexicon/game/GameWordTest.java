@@ -9,7 +9,7 @@ public class GameWordTest extends WordTest {
     @Test
     void keyword() {
         words = Keyword.values();
-        values = List.of("BANDING", "DEFENDER", "ENCHANT", "FEAR", "FIRST",
+        values = List.of("BANDING", "DEFENDER", "ENCHANT", "FEAR",
                 "FLYING", "HASTE", "INDESTRUCTIBLE", "PROTECTION",
                 "REACH", "STRIKE", "TRAMPLE", "VIGILANCE", "WALK");
     }

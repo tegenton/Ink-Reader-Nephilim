@@ -1,7 +1,7 @@
 package tegenton.card.parse.lexicon;
 
 public enum Adverb implements Word {
-    OVER;
+    LIKEWISE, OVER;
 
     @Override
     public String getWord() {

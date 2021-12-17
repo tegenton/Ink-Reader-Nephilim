@@ -3,6 +3,7 @@ package tegenton.card.parse.dfa.state.l;
 import tegenton.card.parse.dfa.state.LState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
+import tegenton.card.parse.lexicon.Adverb;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.GameNoun;
 import tegenton.card.parse.lexicon.game.Zone;
@@ -21,6 +22,7 @@ public class LIState extends LState {
         return switch (c) {
             case 'B' -> new SuffixSubstring("BRARY", Zone.LIBRARY);
             case 'F' -> new SuffixSubstring("FE", GameNoun.LIFE);
+            case 'K' -> new SuffixSubstring("KEWISE", Adverb.LIKEWISE);
             default -> invalid(c);
         };
     }
