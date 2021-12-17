@@ -4,9 +4,11 @@ import tegenton.card.parse.dfa.state.BState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.b.a.BANState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
+import tegenton.card.parse.lexicon.Adverb;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.Zone;
 import tegenton.card.parse.lexicon.game.type.SuperType;
+
 import java.util.Optional;
 
 public class BAState extends BState {
@@ -19,9 +21,10 @@ public class BAState extends BState {
     @Override
     public State transition(char c) {
         return switch (c) {
+            case 'C' -> new SuffixSubstring("CK", Adverb.BACK);
+            case 'N' -> BANState.state();
             case 'S' -> new SuffixSubstring("SIC", SuperType.BASIC);
             case 'T' -> new SuffixSubstring("TTLEFIELD", Zone.BATTLEFIELD);
-            case 'N' -> BANState.state();
             default -> invalid(c);
         };
     }
