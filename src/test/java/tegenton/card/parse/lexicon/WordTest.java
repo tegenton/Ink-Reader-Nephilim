@@ -40,7 +40,7 @@ public class WordTest {
     @Test
     void comparative() {
         words = Comparative.values();
-        values = List.of("GREATER", "LESS", "MORE");
+        values = List.of("GREATER", "LESS", "MORE", "THAN");
     }
 
     @Test
