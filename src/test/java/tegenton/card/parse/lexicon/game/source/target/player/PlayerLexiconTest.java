@@ -6,6 +6,12 @@ import tegenton.card.parse.LexiconTest;
 
 public class PlayerLexiconTest extends LexiconTest {
     @ParameterizedTest
+    @EnumSource(PlayerAdverb.class)
+    void adverb(PlayerAdverb adverb) {
+        word = adverb;
+    }
+
+    @ParameterizedTest
     @EnumSource(PlayerAdjective.class)
     void adjective(PlayerAdjective adjective) {
         word = adjective;

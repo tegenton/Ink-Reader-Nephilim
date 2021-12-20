@@ -3,7 +3,10 @@ package tegenton.card.parse.dfa.state.c.o.n;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.c.o.CONState;
 import tegenton.card.parse.dfa.state.c.o.n.t.CONTRState;
+import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Word;
+import tegenton.card.parse.lexicon.game.source.target.player.PlayerAdverb;
+
 import java.util.Optional;
 
 public class CONTState extends CONState {
@@ -16,8 +19,9 @@ public class CONTState extends CONState {
     @Override
     public State transition(char c) {
         return switch (c) {
+            case 'I' -> new SuffixSubstring("INUOUSLY", PlayerAdverb.CONTINUOUSLY);
             case 'R' -> CONTRState.state();
-            default -> throw new IllegalStateException("Cannot transition from CONTState on " + c);
+            default -> invalid(c);
         };
     }
 

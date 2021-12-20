@@ -7,6 +7,12 @@ import java.util.List;
 
 public class PlayerWordTest extends WordTest {
     @Test
+    void adverb() {
+        words = PlayerAdverb.values();
+        values = List.of("CONTINUOUSLY");
+    }
+
+    @Test
     void adjective() {
         words = PlayerAdjective.values();
         values = List.of("ACTIVE", "DEFENDING");
