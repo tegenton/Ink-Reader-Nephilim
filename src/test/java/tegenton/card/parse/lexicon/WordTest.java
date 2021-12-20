@@ -52,6 +52,12 @@ public class WordTest {
     }
 
     @Test
+    void genetive() {
+        words = Genitive.values();
+        values = List.of("HALF");
+    }
+
+    @Test
     void morpheme() {
         words = Morpheme.values();
         values = List.of("ER", "ING", "S");

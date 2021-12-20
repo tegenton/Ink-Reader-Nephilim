@@ -36,6 +36,12 @@ public class WordLexiconTest extends LexiconTest {
     }
 
     @ParameterizedTest
+    @EnumSource(Genitive.class)
+    void genitive(Word genitive) {
+        word = genitive;
+    }
+
+    @ParameterizedTest
     @EnumSource(Morpheme.class)
     void morpheme(Word morpheme) {
         word = morpheme;
