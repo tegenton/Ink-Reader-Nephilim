@@ -7,6 +7,12 @@ import java.util.List;
 
 public class TargetWordTest extends WordTest {
     @Test
+    void adjective() {
+        words = TargetAdjective.values();
+        values = List.of("ABLE");
+    }
+
+    @Test
     void noun() {
         words = TargetNoun.values();
         values = List.of("THEM", "THEY");

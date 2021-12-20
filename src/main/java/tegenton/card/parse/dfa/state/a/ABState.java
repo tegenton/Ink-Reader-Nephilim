@@ -6,6 +6,7 @@ import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Preposition;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.GameNoun;
+import tegenton.card.parse.lexicon.game.source.target.TargetAdjective;
 
 import java.util.Optional;
 
@@ -20,6 +21,7 @@ public class ABState extends AState {
     public State transition(char c) {
         return switch (c) {
             case 'I' -> new SuffixSubstring("ILITY", GameNoun.ABILITY);
+            case 'L' -> new SuffixSubstring("LE", TargetAdjective.ABLE);
             case 'O' -> new SuffixSubstring("OVE", Preposition.ABOVE);
             default -> invalid(c);
         };
