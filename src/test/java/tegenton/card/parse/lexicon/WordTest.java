@@ -28,7 +28,7 @@ public class WordTest {
     @Test
     void adverb() {
         words = Adverb.values();
-        values = List.of("BACK", "EVENLY", "LIKEWISE", "ONLY", "OVER", "STILL");
+        values = List.of("BACK", "COMPLETELY", "EVENLY", "LIKEWISE", "ONLY", "OVER", "STILL");
     }
 
     @Test

@@ -2,22 +2,25 @@ package tegenton.card.parse.dfa.state.c.o;
 
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.c.COState;
-import tegenton.card.parse.dfa.state.c.o.n.CONTState;
+import tegenton.card.parse.dfa.substring.SuffixSubstring;
+import tegenton.card.parse.lexicon.Adverb;
 import tegenton.card.parse.lexicon.Word;
+import tegenton.card.parse.lexicon.game.turn.Phase;
 
 import java.util.Optional;
 
-public class CONState extends COState {
-    private static final CONState INSTANCE = new CONState();
+public class COMState extends COState {
+    private static final COMState INSTANCE = new COMState();
 
-    public static CONState state() {
+    public static COMState state() {
         return INSTANCE;
     }
 
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'T' -> CONTState.state();
+            case 'B' -> new SuffixSubstring("BAT", Phase.COMBAT);
+            case 'P' -> new SuffixSubstring("PLETELY", Adverb.COMPLETELY);
             default -> invalid(c);
         };
     }
