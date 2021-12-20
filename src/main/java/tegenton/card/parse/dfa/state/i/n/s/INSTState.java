@@ -1,26 +1,26 @@
-package tegenton.card.parse.dfa.state.i.n.s.t.a;
+package tegenton.card.parse.dfa.state.i.n.s;
 
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.i.n.INSState;
 import tegenton.card.parse.dfa.state.i.n.s.t.INSTAState;
-import tegenton.card.parse.dfa.state.i.n.s.t.a.n.INSTANTState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
-import tegenton.card.parse.lexicon.Noun;
+import tegenton.card.parse.lexicon.Adverb;
 import tegenton.card.parse.lexicon.Word;
 
 import java.util.Optional;
 
-public class INSTANState extends INSTAState {
-    private static final INSTANState INSTANCE = new INSTANState();
+public class INSTState extends INSState {
+    private static final INSTState INSTANCE = new INSTState();
 
-    public static INSTANState state() {
+    public static INSTState state() {
         return INSTANCE;
     }
 
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'C' -> new SuffixSubstring("CE", Noun.INSTANCE);
-            case 'T' -> INSTANTState.state();
+            case 'A' -> INSTAState.state();
+            case 'E' -> new SuffixSubstring("EAD", Adverb.INSTEAD);
             default -> invalid(c);
         };
     }

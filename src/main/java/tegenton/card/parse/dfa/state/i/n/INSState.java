@@ -2,8 +2,7 @@ package tegenton.card.parse.dfa.state.i.n;
 
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.i.INState;
-import tegenton.card.parse.dfa.state.i.n.s.t.a.INSTANState;
-import tegenton.card.parse.dfa.substring.InfixSubstring;
+import tegenton.card.parse.dfa.state.i.n.s.INSTState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.type.CreatureType;
@@ -21,7 +20,7 @@ public class INSState extends INState {
     public State transition(char c) {
         return switch (c) {
             case 'E' -> new SuffixSubstring("ECT", CreatureType.INSECT);
-            case 'T' -> new InfixSubstring("TA", 'N', INSTANState::state);
+            case 'T' -> INSTState.state();
             default -> invalid(c);
         };
     }
