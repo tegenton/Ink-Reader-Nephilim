@@ -2,8 +2,11 @@ package tegenton.card.parse.dfa.state.d;
 
 import tegenton.card.parse.dfa.state.DState;
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.substring.SuffixSubstring;
+import tegenton.card.parse.lexicon.Particle;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.source.SourceVerb;
+
 import java.util.Optional;
 
 public class DOState extends DState {
@@ -16,6 +19,7 @@ public class DOState extends DState {
     @Override
     public State transition(char c) {
         return switch (c) {
+            case 'W' -> new SuffixSubstring("WN", Particle.DOWN);
             default -> invalid(c);
         };
     }

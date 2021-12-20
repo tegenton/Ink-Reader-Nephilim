@@ -54,6 +54,12 @@ public class WordLexiconTest extends LexiconTest {
     }
 
     @ParameterizedTest
+    @EnumSource(Particle.class)
+    void particle(Word particle) {
+        word = particle;
+    }
+
+    @ParameterizedTest
     @EnumSource(Preposition.class)
     void preposition(Word preposition) {
         word = preposition;

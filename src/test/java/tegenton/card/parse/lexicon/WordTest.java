@@ -72,6 +72,12 @@ public class WordTest {
     }
 
     @Test
+    void particle() {
+        words = Particle.values();
+        values = List.of("DOWN", "UP");
+    }
+
+    @Test
     void preposition() {
         words = Preposition.values();
         values = List.of("ABOVE", "AMONG", "BEYOND", "BY", "FOR", "FROM", "IN",
