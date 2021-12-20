@@ -66,8 +66,9 @@ public class WordTest {
     @Test
     void noun() {
         words = Noun.values();
-        values = List.of("AMOUNT", "FOOT", "HEIGHT", "LABEL", "NUMBER", "ORDER",
-                "RANDOM", "REST", "TEXT", "TIME", "WAY", "WORD");
+        values = List.of("AMOUNT", "FOOT", "HEIGHT", "INSTANCE", "LABEL",
+                "NUMBER", "ORDER", "RANDOM", "REST", "TEXT", "TIME", "WAY",
+                "WORD");
     }
 
     @Test
