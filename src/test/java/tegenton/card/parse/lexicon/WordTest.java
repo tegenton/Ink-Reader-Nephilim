@@ -80,6 +80,6 @@ public class WordTest {
     @Test
     void subordinateConjunction() {
         words = SubordinateConjunction.values();
-        values = List.of("AS", "BUT", "EXCEPT", "IF", "LONG", "WHERE");
+        values = List.of("AS", "BUT", "EXCEPT", "IF", "LONG", "THOUGH", "WHERE");
     }
 }
