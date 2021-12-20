@@ -6,6 +6,7 @@ import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Determiner;
 import tegenton.card.parse.lexicon.Pronoun;
 import tegenton.card.parse.lexicon.Word;
+import tegenton.card.parse.lexicon.game.source.SourceNoun;
 import tegenton.card.parse.lexicon.game.type.CardType;
 
 import java.util.Optional;
@@ -22,6 +23,7 @@ public class SOState extends SState {
         return switch (c) {
             case 'M' -> new SuffixSubstring("ME", Determiner.SOME);
             case 'R' -> new SuffixSubstring("RCERY", CardType.SORCERY);
+            case 'U' -> new SuffixSubstring("URCE", SourceNoun.SOURCE);
             default -> invalid(c);
         };
     }

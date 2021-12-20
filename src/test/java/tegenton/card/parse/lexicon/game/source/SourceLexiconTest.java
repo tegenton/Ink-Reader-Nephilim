@@ -6,6 +6,12 @@ import tegenton.card.parse.LexiconTest;
 
 public class SourceLexiconTest extends LexiconTest {
     @ParameterizedTest
+    @EnumSource(SourceNoun.class)
+    void noun(SourceNoun noun) {
+        word = noun;
+    }
+
+    @ParameterizedTest
     @EnumSource(SourceVerb.class)
     void verb(SourceVerb verb) {
         word = verb;
