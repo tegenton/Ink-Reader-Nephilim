@@ -34,11 +34,12 @@ public class PlayerWordTest extends WordTest {
     void verb() {
         words = PlayerVerb.values();
         values =
-                List.of("ACTIVATE", "ADD", "ATTACH", "CAST", "CHANGE", "CHOOSE",
-                        "CONTROL", "COULD", "COUNTER", "CREATE", "DESTROY",
-                        "DISCARD", "DIVIDE", "DRAW", "EXCHANGE", "FLIP", "IGNORE",
-                        "LOOK", "LOSE", "MAY", "OWN", "PAY", "PLAY", "PREVENT",
-                        "PUT", "REGENERATE", "REMOVE", "RETURN", "SACRIFICE",
-                        "SEARCH", "SHUFFLE", "SKIP", "SPEND", "TAKE");
+                List.of("ACTIVATE", "ADD", "ATTACH", "BEGIN", "CAST", "CHANGE",
+                        "CHOOSE", "CONTROL", "COULD", "COUNTER", "CREATE",
+                        "DESTROY", "DISCARD", "DIVIDE", "DRAW", "EXCHANGE",
+                        "FLIP", "IGNORE", "LOOK", "LOSE", "MAY", "OWN", "PAY",
+                        "PLAY", "PREVENT", "PUT", "REGENERATE", "REMOVE",
+                        "RETURN", "SACRIFICE", "SEARCH", "SHUFFLE", "SKIP",
+                        "SPEND", "TAKE");
     }
 }
