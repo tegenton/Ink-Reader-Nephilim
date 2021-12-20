@@ -2,6 +2,7 @@ package tegenton.card.parse.lexicon;
 
 public enum Preposition implements Word {
     ABOVE,
+    AFTER,
     AMONG,
     BEFORE,
     BEYOND,
