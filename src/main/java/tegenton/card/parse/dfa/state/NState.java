@@ -6,6 +6,7 @@ import tegenton.card.parse.dfa.state.n.NOState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Noun;
 import tegenton.card.parse.lexicon.Word;
+import tegenton.card.parse.lexicon.game.source.target.object.ObjectAttribute;
 
 import java.util.Optional;
 
@@ -19,6 +20,7 @@ public class NState extends State {
     @Override
     public State transition(char c) {
         return switch (c) {
+            case 'A' -> new SuffixSubstring("AME", ObjectAttribute.NAME);
             case 'E' -> NEState.state();
             case 'I' -> NIState.state();
             case 'O' -> NOState.state();
