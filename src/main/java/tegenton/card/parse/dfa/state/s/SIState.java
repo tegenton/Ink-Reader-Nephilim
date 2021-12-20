@@ -4,9 +4,9 @@ import tegenton.card.parse.dfa.state.SState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.s.i.SIXState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
-import tegenton.card.parse.lexicon.Preposition;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.source.target.player.PlayerAttribute;
+import tegenton.card.parse.lexicon.game.turn.Duration;
 
 import java.util.Optional;
 
@@ -20,7 +20,7 @@ public class SIState extends SState {
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'N' -> new SuffixSubstring("NCE", Preposition.SINCE);
+            case 'N' -> new SuffixSubstring("NCE", Duration.SINCE);
             case 'X' -> SIXState.state();
             case 'Z' -> new SuffixSubstring("ZE", PlayerAttribute.SIZE);
             default -> invalid(c);

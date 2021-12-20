@@ -7,6 +7,8 @@ import tegenton.card.parse.lexicon.Preposition;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.GameVerb;
 import tegenton.card.parse.lexicon.game.source.target.object.ObjectVerb;
+import tegenton.card.parse.lexicon.game.turn.Chronology;
+import tegenton.card.parse.lexicon.game.turn.Phase;
 
 import java.util.Optional;
 
@@ -21,7 +23,8 @@ public class BEState extends BState {
     public State transition(char c) {
         return switch (c) {
             case 'C' -> new SuffixSubstring("COME", ObjectVerb.BECOME);
-            case 'F' -> new SuffixSubstring("FORE", Preposition.BEFORE);
+            case 'F' -> new SuffixSubstring("FORE", Chronology.BEFORE);
+            case 'G' -> new SuffixSubstring("GINNING", Phase.BEGINNING);
             case 'Y' -> new SuffixSubstring("YOND", Preposition.BEYOND);
             default -> invalid(c);
         };

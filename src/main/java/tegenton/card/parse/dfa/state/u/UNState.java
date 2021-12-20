@@ -5,6 +5,7 @@ import tegenton.card.parse.dfa.state.UState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Preposition;
 import tegenton.card.parse.lexicon.Word;
+import tegenton.card.parse.lexicon.game.turn.Duration;
 
 import java.util.Optional;
 
@@ -19,7 +20,7 @@ public class UNState extends UState {
     public State transition(char c) {
         return switch (c) {
             case 'D' -> new SuffixSubstring("DER", Preposition.UNDER);
-            case 'T' -> new SuffixSubstring("TIL", Preposition.UNTIL);
+            case 'T' -> new SuffixSubstring("TIL", Duration.UNTIL);
             default -> invalid(c);
         };
     }

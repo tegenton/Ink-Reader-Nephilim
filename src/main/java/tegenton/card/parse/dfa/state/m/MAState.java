@@ -7,6 +7,7 @@ import tegenton.card.parse.dfa.state.m.a.MAYState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.source.target.player.PlayerAttribute;
+import tegenton.card.parse.lexicon.game.turn.Phase;
 
 import java.util.Optional;
 
@@ -20,8 +21,9 @@ public class MAState extends MState {
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'X' -> new SuffixSubstring("XIMUM", PlayerAttribute.MAXIMUM);
+            case 'I' -> new SuffixSubstring("IN", Phase.MAIN);
             case 'N' -> MANState.state();
+            case 'X' -> new SuffixSubstring("XIMUM", PlayerAttribute.MAXIMUM);
             case 'Y' -> MAYState.state();
             default -> invalid(c);
         };
