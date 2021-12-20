@@ -7,6 +7,7 @@ import tegenton.card.parse.dfa.state.d.DRState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.GameNoun;
+import tegenton.card.parse.lexicon.game.turn.Chronology;
 
 import java.util.Optional;
 
@@ -25,6 +26,7 @@ public class DState extends State {
             case 'O' -> DOState.state();
             case 'I' -> DIState.state();
             case 'R' -> DRState.state();
+            case 'U' -> new SuffixSubstring("URING", Chronology.DURING);
             default -> invalid(c);
         };
     }

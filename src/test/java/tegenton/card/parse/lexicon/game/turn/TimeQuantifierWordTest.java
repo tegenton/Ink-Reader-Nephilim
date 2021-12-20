@@ -15,6 +15,6 @@ public class TimeQuantifierWordTest extends WordTest {
     @Test
     void chronology() {
         words = Chronology.values();
-        values = List.of("AFTER", "BEFORE");
+        values = List.of("AFTER", "BEFORE", "DURING");
     }
 }
