@@ -21,6 +21,7 @@ public class BEState extends BState {
     public State transition(char c) {
         return switch (c) {
             case 'C' -> new SuffixSubstring("COME", ObjectVerb.BECOME);
+            case 'F' -> new SuffixSubstring("FORE", Preposition.BEFORE);
             case 'Y' -> new SuffixSubstring("YOND", Preposition.BEYOND);
             default -> invalid(c);
         };
@@ -28,9 +29,9 @@ public class BEState extends BState {
 
     @Override
     public Optional<? extends Word> produce(char c) {
-        return switch (c) {
-            case '\0', ' ' -> Optional.of(GameVerb.BE);
-            default -> Optional.empty();
-        };
+        return Optional.ofNullable(switch (c) {
+            case '\0', ' ' -> GameVerb.BE;
+            default -> null;
+        });
     }
 }
