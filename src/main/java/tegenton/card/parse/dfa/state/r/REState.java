@@ -3,9 +3,11 @@ package tegenton.card.parse.dfa.state.r;
 import tegenton.card.parse.dfa.state.RState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
-import tegenton.card.parse.lexicon.game.Keyword;
+import tegenton.card.parse.lexicon.Noun;
 import tegenton.card.parse.lexicon.Word;
+import tegenton.card.parse.lexicon.game.Keyword;
 import tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb;
+
 import java.util.Optional;
 
 public class REState extends RState {
@@ -21,6 +23,7 @@ public class REState extends RState {
             case 'A' -> new SuffixSubstring("ACH", Keyword.REACH);
             case 'G' -> new SuffixSubstring("GENERATE", PlayerVerb.REGENERATE);
             case 'M' -> new SuffixSubstring("MOVE", PlayerVerb.REMOVE);
+            case 'S' -> new SuffixSubstring("ST", Noun.REST);
             case 'T' -> new SuffixSubstring("TURN", PlayerVerb.RETURN);
             default -> invalid(c);
         };
