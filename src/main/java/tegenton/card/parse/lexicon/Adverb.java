@@ -1,7 +1,7 @@
 package tegenton.card.parse.lexicon;
 
 public enum Adverb implements Word {
-    BACK, LIKEWISE, ONLY, OVER, STILL;
+    BACK, EVENLY, LIKEWISE, ONLY, OVER, STILL;
 
     @Override
     public String getWord() {
