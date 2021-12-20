@@ -11,15 +11,16 @@ import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
 public class ONState extends OState {
-    private static final ONState instance = new ONState();
+    private static final ONState INSTANCE = new ONState();
 
     public static ONState state() {
-        return instance;
+        return INSTANCE;
     }
 
     @Override
     public State transition(char c) {
         return switch (c) {
+            case 'C' -> new SuffixSubstring("CE", Adverb.ONCE);
             case 'E' -> ONEState.state();
             case 'L' -> new SuffixSubstring("LY", Adverb.ONLY);
             default -> invalid(c);
@@ -28,9 +29,9 @@ public class ONState extends OState {
 
     @Override
     public Optional<? extends Word> produce(char c) {
-        return switch (c) {
-            case '\0' -> Optional.of(Preposition.ON);
-            default -> Optional.empty();
-        };
+        return Optional.ofNullable(switch (c) {
+            case '\0', ' ' -> Preposition.ON;
+            default -> null;
+        });
     }
 }
