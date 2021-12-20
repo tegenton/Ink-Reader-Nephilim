@@ -9,7 +9,7 @@ public class ObjectWordTest extends WordTest {
     @Test
     void attribute() {
         words = ObjectAttribute.values();
-        values = List.of("LOYALTY", "POWER", "TOUGHNESS", "VALUE");
+        values = List.of("FACE", "LOYALTY", "POWER", "TOUGHNESS", "VALUE");
     }
 
     @Test

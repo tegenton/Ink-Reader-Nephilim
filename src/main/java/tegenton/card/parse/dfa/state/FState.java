@@ -4,9 +4,11 @@ import tegenton.card.parse.dfa.state.f.FIState;
 import tegenton.card.parse.dfa.state.f.FLState;
 import tegenton.card.parse.dfa.state.f.FOState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
-import tegenton.card.parse.lexicon.game.Keyword;
 import tegenton.card.parse.lexicon.Preposition;
 import tegenton.card.parse.lexicon.Word;
+import tegenton.card.parse.lexicon.game.Keyword;
+import tegenton.card.parse.lexicon.game.source.target.object.ObjectAttribute;
+
 import java.util.Optional;
 
 public class FState extends State {
@@ -19,6 +21,7 @@ public class FState extends State {
     @Override
     public State transition(char c) {
         return switch (c) {
+            case 'A' -> new SuffixSubstring("ACE", ObjectAttribute.FACE);
             case 'E' -> new SuffixSubstring("EAR", Keyword.FEAR);
             case 'I' -> FIState.state();
             case 'L' -> FLState.state();
