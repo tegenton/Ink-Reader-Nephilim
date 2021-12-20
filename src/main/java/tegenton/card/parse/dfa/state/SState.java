@@ -18,7 +18,7 @@ public class SState extends State {
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'A' -> new SuffixSubstring("ACRIFICE", PlayerVerb.SACRIFICE);
+            case 'A' -> SAState.state();
             case 'E' -> SEState.state();
             case 'H' -> new SuffixSubstring("HUFFLE", PlayerVerb.SHUFFLE);
             case 'I' -> SIState.state();
@@ -33,9 +33,9 @@ public class SState extends State {
 
     @Override
     public Optional<? extends Word> produce(char c) {
-        return switch (c) {
-            case '\0', ' ', '.' -> Optional.of(Morpheme.S);
-            default -> Optional.empty();
-        };
+        return Optional.ofNullable(switch (c) {
+            case '\0', ' ', '.' -> Morpheme.S;
+            default -> null;
+        });
     }
 }
