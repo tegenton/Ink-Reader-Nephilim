@@ -2,6 +2,7 @@ package tegenton.card.parse.dfa.state.r;
 
 import tegenton.card.parse.dfa.state.RState;
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.r.e.REDState;
 import tegenton.card.parse.dfa.state.r.e.RESState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Word;
@@ -21,6 +22,7 @@ public class REState extends RState {
     public State transition(char c) {
         return switch (c) {
             case 'A' -> new SuffixSubstring("ACH", Keyword.REACH);
+            case 'D' -> REDState.state();
             case 'G' -> new SuffixSubstring("GENERATE", PlayerVerb.REGENERATE);
             case 'M' -> new SuffixSubstring("MOVE", PlayerVerb.REMOVE);
             case 'S' -> RESState.state();

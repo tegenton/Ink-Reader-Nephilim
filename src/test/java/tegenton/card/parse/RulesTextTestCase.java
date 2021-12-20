@@ -2,17 +2,12 @@ package tegenton.card.parse;
 
 import org.junit.jupiter.api.*;
 
-public class RulesTextParserTest {
+public class RulesTextTestCase {
     public static String text;
 
     @BeforeEach
     void setup() {
         text = null;
-    }
-
-    @AfterEach
-    void cleanup() {
-        RulesTextParser.fromString(text);
     }
 
     @Nested

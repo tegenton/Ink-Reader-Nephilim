@@ -2,11 +2,12 @@ package tegenton.card.parse.dfa.state;
 
 import tegenton.card.parse.dfa.state.b.BAState;
 import tegenton.card.parse.dfa.state.b.BEState;
+import tegenton.card.parse.dfa.state.b.BLState;
 import tegenton.card.parse.dfa.state.b.BYState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.SubordinateConjunction;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.game.source.target.object.ObjectVerb;
+import tegenton.card.parse.lexicon.game.Color;
 
 import java.util.Optional;
 
@@ -22,7 +23,7 @@ public class BState extends State {
         return switch (c) {
             case 'A' -> BAState.state();
             case 'E' -> BEState.state();
-            case 'L' -> new SuffixSubstring("LOCK", ObjectVerb.BLOCK);
+            case 'L' -> BLState.state();
             case 'U' -> new SuffixSubstring("UT", SubordinateConjunction.BUT);
             case 'Y' -> BYState.state();
             default -> invalid(c);
@@ -31,6 +32,9 @@ public class BState extends State {
 
     @Override
     public Optional<? extends Word> produce(char c) {
-        return Optional.empty();
+        return Optional.ofNullable(switch (c) {
+            case '}', '\0', ' ' -> Color.B;
+            default -> null;
+        });
     }
 }

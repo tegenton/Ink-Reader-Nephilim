@@ -2,6 +2,7 @@ package tegenton.card.parse.dfa.state.b;
 
 import tegenton.card.parse.dfa.state.BState;
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.dfa.state.b.e.g.i.BEGINState;
 import tegenton.card.parse.dfa.substring.InfixSubstring;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
@@ -27,6 +28,7 @@ public class BEState extends BState {
             case 'F' -> new SuffixSubstring("FORE", Chronology.BEFORE);
             case 'G' -> new InfixSubstring("GI", 'N', BEGINState::state);
             case 'Y' -> new SuffixSubstring("YOND", Preposition.BEYOND);
+            case ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }

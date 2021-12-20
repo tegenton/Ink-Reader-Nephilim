@@ -5,6 +5,8 @@ import tegenton.card.parse.dfa.state.c.CHState;
 import tegenton.card.parse.dfa.state.c.COState;
 import tegenton.card.parse.dfa.state.c.CRState;
 import tegenton.card.parse.lexicon.Word;
+import tegenton.card.parse.lexicon.game.Color;
+
 import java.util.Optional;
 
 public class CState extends State {
@@ -27,6 +29,9 @@ public class CState extends State {
 
     @Override
     public Optional<? extends Word> produce(char c) {
-        return Optional.empty();
+        return Optional.ofNullable(switch (c) {
+            case '}', '\0', ' ' -> Color.C;
+            default -> null;
+        });
     }
 }

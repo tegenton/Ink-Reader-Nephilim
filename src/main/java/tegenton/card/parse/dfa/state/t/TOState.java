@@ -1,6 +1,7 @@
 package tegenton.card.parse.dfa.state.t;
 
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.dfa.state.TState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Preposition;
@@ -25,15 +26,16 @@ public class TOState extends TState {
             case 'T' -> new SuffixSubstring("TAL", PlayerAttribute.TOTAL);
             case 'U' -> new SuffixSubstring("UGHNESS",
                     ObjectAttribute.TOUGHNESS);
+            case ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }
 
     @Override
     public Optional<? extends Word> produce(char c) {
-        return switch (c) {
-            case '\0', ' ' -> Optional.of(Preposition.TO);
-            default -> Optional.empty();
-        };
+        return Optional.ofNullable(switch (c) {
+            case '\0', ' ' -> Preposition.TO;
+            default -> null;
+        });
     }
 }

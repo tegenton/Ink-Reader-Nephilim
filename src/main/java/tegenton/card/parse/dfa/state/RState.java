@@ -4,6 +4,7 @@ import tegenton.card.parse.dfa.state.r.REState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Noun;
 import tegenton.card.parse.lexicon.Word;
+import tegenton.card.parse.lexicon.game.Color;
 
 import java.util.Optional;
 
@@ -25,6 +26,9 @@ public class RState extends State {
 
     @Override
     public Optional<? extends Word> produce(char c) {
-        return Optional.empty();
+        return Optional.ofNullable(switch (c) {
+            case '}', '\0', ' ' -> Color.R;
+            default -> null;
+        });
     }
 }

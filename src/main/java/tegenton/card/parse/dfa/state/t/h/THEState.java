@@ -1,6 +1,7 @@
 package tegenton.card.parse.dfa.state.t.h;
 
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.dfa.state.t.THState;
 import tegenton.card.parse.dfa.state.t.h.e.THEMState;
 import tegenton.card.parse.dfa.state.t.h.e.THENState;
@@ -25,15 +26,16 @@ public class THEState extends THState {
             case 'S' -> THESState.state();
             case 'M' -> THEMState.state();
             case 'Y' -> THEYState.state();
-            default -> throw new IllegalStateException("Cannot transition from THEState on " + c);
+            case ' ' -> SymbolState.state(c);
+            default -> invalid(c);
         };
     }
 
     @Override
     public Optional<? extends Word> produce(char c) {
-        return switch (c) {
-            case ' ', '\0' -> Optional.of(Determiner.THE);
-            default -> Optional.empty();
-        };
+        return Optional.ofNullable(switch (c) {
+            case ' ', '\0' -> Determiner.THE;
+            default -> null;
+        });
     }
 }

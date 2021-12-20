@@ -32,7 +32,7 @@ public class WState extends State {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case '}' -> Color.W;
+            case '}', '\0', ' ' -> Color.W;
             default -> null;
         });
     }

@@ -1,26 +1,26 @@
-package tegenton.card.parse.dfa.state.g.r;
+package tegenton.card.parse.dfa.state.w.h;
 
 import tegenton.card.parse.dfa.state.State;
-import tegenton.card.parse.dfa.state.g.GRState;
-import tegenton.card.parse.dfa.state.g.r.e.GREAState;
+import tegenton.card.parse.dfa.state.w.WHState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.ColorWord;
+import tegenton.card.parse.lexicon.game.turn.Duration;
 
 import java.util.Optional;
 
-public class GREState extends GRState {
-    private static final GREState INSTANCE = new GREState();
+public class WHIState extends WHState {
+    private static final WHIState INSTANCE = new WHIState();
 
-    public static GREState state() {
+    public static WHIState state() {
         return INSTANCE;
     }
 
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'A' -> GREAState.state();
-            case 'E' -> new SuffixSubstring("EN", ColorWord.GREEN);
+            case 'L' -> new SuffixSubstring("LE", Duration.WHILE);
+            case 'T' -> new SuffixSubstring("TE", ColorWord.WHITE);
             default -> invalid(c);
         };
     }

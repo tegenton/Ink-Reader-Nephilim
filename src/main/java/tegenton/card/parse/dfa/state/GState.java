@@ -5,6 +5,7 @@ import tegenton.card.parse.dfa.state.g.GOState;
 import tegenton.card.parse.dfa.state.g.GRState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Word;
+import tegenton.card.parse.lexicon.game.Color;
 import tegenton.card.parse.lexicon.game.source.target.object.ObjectVerb;
 
 import java.util.Optional;
@@ -29,6 +30,9 @@ public class GState extends State {
 
     @Override
     public Optional<? extends Word> produce(char c) {
-        return Optional.empty();
+        return Optional.ofNullable(switch (c) {
+            case '}', '\0', ' ' -> Color.G;
+            default -> null;
+        });
     }
 }
