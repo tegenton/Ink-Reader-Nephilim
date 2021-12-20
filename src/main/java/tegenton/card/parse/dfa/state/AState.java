@@ -6,7 +6,6 @@ import tegenton.card.parse.dfa.substring.InfixSubstring;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Determiner;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb;
 import tegenton.card.parse.lexicon.game.turn.Chronology;
 import tegenton.card.parse.lexicon.game.type.CardType;
 import tegenton.card.parse.lexicon.game.type.EnchantmentType;
@@ -25,7 +24,7 @@ public class AState extends State {
         return switch (c) {
             case 'B' -> ABState.state();
             case 'C' -> new InfixSubstring("CTI", 'V', ACTIVState::state);
-            case 'D' -> new SuffixSubstring("DD", PlayerVerb.ADD);
+            case 'D' -> ADState.state();
             case 'F' -> new SuffixSubstring("FTER", Chronology.AFTER);
             case 'L' -> ALState.state();
             case 'M' -> AMState.state();
