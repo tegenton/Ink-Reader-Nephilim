@@ -1,11 +1,10 @@
 package tegenton.card.parse.dfa.state;
 
+import tegenton.card.parse.dfa.state.l.LAState;
 import tegenton.card.parse.dfa.state.l.LEState;
 import tegenton.card.parse.dfa.state.l.LIState;
 import tegenton.card.parse.dfa.state.l.LOState;
-import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.game.type.CardType;
 
 import java.util.Optional;
 
@@ -19,7 +18,7 @@ public class LState extends State {
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'A' -> new SuffixSubstring("AND", CardType.LAND);
+            case 'A' -> LAState.state();
             case 'E' -> LEState.state();
             case 'I' -> LIState.state();
             case 'O' -> LOState.state();
