@@ -5,7 +5,7 @@ package tegenton.card.parse.lexicon;
  * They are usually suffixes such as "ed" or "ing"
  */
 public enum Morpheme implements Word {
-    ER, ING, S;
+    ED, ER, ING, S;
 
     @Override
     public String getWord() {

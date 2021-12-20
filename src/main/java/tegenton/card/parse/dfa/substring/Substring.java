@@ -21,7 +21,7 @@ public abstract class Substring extends State {
             throw new IllegalStateException("Substring " + Arrays.toString(text) + " does not contain " + c + " at index " + index);
         } else {
             return switch (c) {
-                case ' ' -> SymbolState.state(c);
+                case ',', '\n', '.', ' ' -> SymbolState.state(c);
                 default -> throw new IllegalStateException("Cannot transition from substring " + Arrays.toString(text) + " on " + c);
             };
         }

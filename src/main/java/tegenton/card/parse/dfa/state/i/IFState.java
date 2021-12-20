@@ -2,6 +2,7 @@ package tegenton.card.parse.dfa.state.i;
 
 import tegenton.card.parse.dfa.state.IState;
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.lexicon.SubordinateConjunction;
 import tegenton.card.parse.lexicon.Word;
 
@@ -17,15 +18,16 @@ public class IFState extends IState {
     @Override
     public State transition(char c) {
         return switch (c) {
+            case ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }
 
     @Override
     public Optional<? extends Word> produce(char c) {
-        return switch (c) {
-            case '\0', ' ' -> Optional.of(SubordinateConjunction.IF);
-            default -> Optional.empty();
-        };
+        return Optional.ofNullable(switch (c) {
+            case '\0', ' ' -> SubordinateConjunction.IF;
+            default -> null;
+        });
     }
 }

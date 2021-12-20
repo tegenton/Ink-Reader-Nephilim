@@ -42,12 +42,6 @@ public class WordLexiconTest extends LexiconTest {
     }
 
     @ParameterizedTest
-    @EnumSource(Morpheme.class)
-    void morpheme(Word morpheme) {
-        word = morpheme;
-    }
-
-    @ParameterizedTest
     @EnumSource(Noun.class)
     void noun(Word noun) {
         word = noun;

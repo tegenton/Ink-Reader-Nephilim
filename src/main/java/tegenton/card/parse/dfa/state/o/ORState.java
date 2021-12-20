@@ -2,6 +2,7 @@ package tegenton.card.parse.dfa.state.o;
 
 import tegenton.card.parse.dfa.state.OState;
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Conjunction;
 import tegenton.card.parse.lexicon.Noun;
@@ -20,6 +21,7 @@ public class ORState extends OState {
     public State transition(char c) {
         return switch (c) {
             case 'D' -> new SuffixSubstring("DER", Noun.ORDER);
+            case ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }

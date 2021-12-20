@@ -60,7 +60,7 @@ public class WordTest {
     @Test
     void morpheme() {
         words = Morpheme.values();
-        values = List.of("ER", "ING", "S");
+        values = List.of("ED", "ER", "ING", "S");
     }
 
     @Test
