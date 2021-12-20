@@ -1,9 +1,9 @@
-package tegenton.card.parse.lexicon.game.source;
+package tegenton.card.parse.lexicon.game.source.target;
 
 import tegenton.card.parse.lexicon.Word;
 
-public enum SourceVerb implements Word {
-    DEAL, DO, PRODUCE;
+public enum TargetAuxiliaryVerb implements Word {
+    CAN, WOULD;
 
     @Override
     public String getWord() {

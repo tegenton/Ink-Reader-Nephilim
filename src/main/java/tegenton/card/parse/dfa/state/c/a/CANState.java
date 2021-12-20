@@ -3,7 +3,8 @@ package tegenton.card.parse.dfa.state.c.a;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.c.CAState;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.game.source.SourceVerb;
+import tegenton.card.parse.lexicon.game.source.target.TargetAuxiliaryVerb;
+
 import java.util.Optional;
 
 public class CANState extends CAState {
@@ -22,9 +23,9 @@ public class CANState extends CAState {
 
     @Override
     public Optional<? extends Word> produce(char c) {
-        return switch (c) {
-            case '\0', ' ' -> Optional.of(SourceVerb.CAN);
-            default -> Optional.empty();
-        };
+        return Optional.ofNullable(switch (c) {
+            case '\0', ' ' -> TargetAuxiliaryVerb.CAN;
+            default -> null;
+        });
     }
 }

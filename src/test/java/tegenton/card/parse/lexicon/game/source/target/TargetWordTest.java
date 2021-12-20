@@ -17,4 +17,10 @@ public class TargetWordTest extends WordTest {
         words = TargetVerb.values();
         values = List.of("ASSIGN", "GAIN");
     }
+
+    @Test
+    void auxiliaryVerb() {
+        words = TargetAuxiliaryVerb.values();
+        values = List.of("CAN", "WOULD");
+    }
 }
