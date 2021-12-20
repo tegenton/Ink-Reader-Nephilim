@@ -9,7 +9,7 @@ public class TimeQuantifierWordTest extends WordTest {
     @Test
     void duration() {
         words = Duration.values();
-        values = List.of("SINCE", "UNTIL");
+        values = List.of("SINCE", "UNTIL", "WHILE");
     }
 
     @Test
