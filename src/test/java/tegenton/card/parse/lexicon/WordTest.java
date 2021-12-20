@@ -34,7 +34,7 @@ public class WordTest {
     @Test
     void conjunction() {
         words = Conjunction.values();
-        values = List.of("AND", "OR", "THEN");
+        values = List.of("AND", "OR", "THEN", "UNLESS");
     }
 
     @Test
@@ -52,7 +52,7 @@ public class WordTest {
     }
 
     @Test
-    void genetive() {
+    void genitive() {
         words = Genitive.values();
         values = List.of("HALF");
     }
