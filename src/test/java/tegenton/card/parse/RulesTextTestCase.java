@@ -8,10 +8,15 @@ import tegenton.card.parse.lexicon.Word;
 
 import java.util.List;
 
+import static tegenton.card.parse.lexicon.Adjective.EQUAL;
+import static tegenton.card.parse.lexicon.Adjective.SAME;
 import static tegenton.card.parse.lexicon.Adverb.NOT;
-import static tegenton.card.parse.lexicon.Determiner.ALL;
-import static tegenton.card.parse.lexicon.Morpheme.ED;
-import static tegenton.card.parse.lexicon.Morpheme.S;
+import static tegenton.card.parse.lexicon.Conjunction.AND;
+import static tegenton.card.parse.lexicon.Conjunction.THEN;
+import static tegenton.card.parse.lexicon.Determiner.*;
+import static tegenton.card.parse.lexicon.Morpheme.*;
+import static tegenton.card.parse.lexicon.Noun.*;
+import static tegenton.card.parse.lexicon.Preposition.*;
 import static tegenton.card.parse.lexicon.SubordinateConjunction.AS;
 import static tegenton.card.parse.lexicon.SubordinateConjunction.THOUGH;
 import static tegenton.card.parse.lexicon.Symbol.*;
@@ -19,10 +24,14 @@ import static tegenton.card.parse.lexicon.game.Keyword.DEFENDER;
 import static tegenton.card.parse.lexicon.game.Keyword.ENCHANT;
 import static tegenton.card.parse.lexicon.game.source.SourceVerb.DO;
 import static tegenton.card.parse.lexicon.game.source.target.TargetAuxiliaryVerb.CAN;
+import static tegenton.card.parse.lexicon.game.source.target.TargetNoun.THEY;
+import static tegenton.card.parse.lexicon.game.source.target.TargetNoun.WHO;
+import static tegenton.card.parse.lexicon.game.source.target.object.ObjectNoun.CARD;
 import static tegenton.card.parse.lexicon.game.source.target.object.ObjectNoun.IT;
 import static tegenton.card.parse.lexicon.game.source.target.object.ObjectVerb.ATTACK;
 import static tegenton.card.parse.lexicon.game.source.target.object.ObjectVerb.HAVE;
-import static tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb.DESTROY;
+import static tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb.*;
+import static tegenton.card.parse.lexicon.game.type.CardType.CREATURE;
 import static tegenton.card.parse.lexicon.game.type.CardType.LAND;
 import static tegenton.card.parse.lexicon.game.type.CreatureType.WALL;
 
@@ -60,6 +69,7 @@ public class RulesTextTestCase {
             @DisplayName("Balance")
             void balance() {
                 text = "Each player chooses a number of lands they control equal to the number of lands controlled by the player who controls the fewest, then sacrifices the rest. Players discard cards and sacrifice creatures the same way.";
+                tokens = List.of(EACH, SPACE, PLAY, ER, SPACE, CHOOSE, SPACE, A, SPACE, NUMBER, SPACE, OF, SPACE, LAND, S, SPACE, THEY, SPACE, CONTROL, SPACE, EQUAL, SPACE, TO, SPACE, THE, SPACE, NUMBER, SPACE, OF, SPACE, LAND, S, SPACE, CONTROL, ED, SPACE, BY, SPACE, THE, SPACE, PLAY, ER, SPACE, WHO, SPACE, CONTROL, SPACE, THE, SPACE, FEWEST, COMMA, SPACE, THEN, SPACE, SACRIFICE, SPACE, THE, SPACE, REST, PERIOD, SPACE, PLAY, ER, S, SPACE, DISCARD, SPACE, CARD, S, SPACE, AND, SPACE, SACRIFICE, SPACE, CREATURE, S, SPACE, THE, SPACE, SAME, SPACE, WAY, PERIOD);
             }
 
             @Test
