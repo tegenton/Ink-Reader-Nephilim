@@ -1,24 +1,25 @@
-package tegenton.card.parse.dfa.state.r.e.s;
+package tegenton.card.parse.dfa.state.s.a.c.r.i.f.i.c;
 
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.SymbolState;
-import tegenton.card.parse.dfa.state.r.e.RESState;
-import tegenton.card.parse.lexicon.Noun;
+import tegenton.card.parse.dfa.state.s.SAState;
 import tegenton.card.parse.lexicon.Word;
+import tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb;
 
 import java.util.Optional;
 
-public class RESTState extends RESState {
-    private static final RESTState INSTANCE = new RESTState();
+public class SACRIFICEState extends SAState {
+    private static final SACRIFICEState INSTANCE = new SACRIFICEState();
 
-    public static RESTState state() {
+    public static SACRIFICEState state() {
         return INSTANCE;
     }
 
     @Override
     public State transition(char c) {
         return switch (c) {
-            case '\0', '.', ' ' -> SymbolState.state(c);
+            case 'S' -> this;
+            case '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }
@@ -26,7 +27,7 @@ public class RESTState extends RESState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case '\0', '.', ' ' -> Noun.REST;
+            case '\0', ' ' -> PlayerVerb.SACRIFICE;
             default -> null;
         });
     }

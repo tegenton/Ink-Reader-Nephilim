@@ -2,10 +2,11 @@ package tegenton.card.parse.dfa.state.s;
 
 import tegenton.card.parse.dfa.state.SState;
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.s.a.c.r.i.f.i.c.SACRIFICEState;
+import tegenton.card.parse.dfa.substring.InfixSubstring;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Adjective;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb;
 
 import java.util.Optional;
 
@@ -19,7 +20,7 @@ public class SAState extends SState {
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'C' -> new SuffixSubstring("CRIFICE", PlayerVerb.SACRIFICE);
+            case 'C' -> new InfixSubstring("CRIFIC", 'E', SACRIFICEState::state);
             case 'M' -> new SuffixSubstring("ME", Adjective.SAME);
             default -> invalid(c);
         };
