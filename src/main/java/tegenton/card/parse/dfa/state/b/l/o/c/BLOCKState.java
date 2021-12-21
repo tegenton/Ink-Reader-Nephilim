@@ -1,25 +1,26 @@
-package tegenton.card.parse.dfa.state.d.i;
+package tegenton.card.parse.dfa.state.b.l.o.c;
 
 import tegenton.card.parse.dfa.state.State;
-import tegenton.card.parse.dfa.state.SymbolState;
-import tegenton.card.parse.dfa.state.d.DIState;
+import tegenton.card.parse.dfa.state.b.BLState;
+import tegenton.card.parse.dfa.substring.morpheme.EDMorpheme;
+import tegenton.card.parse.dfa.substring.morpheme.INGMorpheme;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.source.target.object.ObjectVerb;
 
 import java.util.Optional;
 
-public class DIEState extends DIState {
-    private static final DIEState INSTANCE = new DIEState();
+public class BLOCKState extends BLState {
+    private static final BLOCKState INSTANCE = new BLOCKState();
 
-    public static DIEState state() {
+    public static BLOCKState state() {
         return INSTANCE;
     }
 
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'S' -> this;
-            case ',', '\0', ' ' -> SymbolState.state(c);
+            case 'E' -> new EDMorpheme();
+            case 'I' -> new INGMorpheme();
             default -> invalid(c);
         };
     }
@@ -27,7 +28,7 @@ public class DIEState extends DIState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case ',', '\0', ' ' -> ObjectVerb.DIE;
+            case 'I', '\0', ' ' -> ObjectVerb.BLOCK;
             default -> null;
         });
     }

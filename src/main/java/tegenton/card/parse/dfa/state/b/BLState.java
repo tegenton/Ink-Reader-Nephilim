@@ -2,10 +2,11 @@ package tegenton.card.parse.dfa.state.b;
 
 import tegenton.card.parse.dfa.state.BState;
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.b.l.o.c.BLOCKState;
+import tegenton.card.parse.dfa.substring.InfixSubstring;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.ColorWord;
-import tegenton.card.parse.lexicon.game.source.target.object.ObjectVerb;
 
 import java.util.Optional;
 
@@ -20,7 +21,7 @@ public class BLState extends BState {
     public State transition(char c) {
         return switch (c) {
             case 'A' -> new SuffixSubstring("ACK", ColorWord.BLACK);
-            case 'O' -> new SuffixSubstring("OCK", ObjectVerb.BLOCK);
+            case 'O' -> new InfixSubstring("OC", 'K', BLOCKState::state);
             case 'U' -> new SuffixSubstring("UE", ColorWord.BLUE);
             default -> invalid(c);
         };
