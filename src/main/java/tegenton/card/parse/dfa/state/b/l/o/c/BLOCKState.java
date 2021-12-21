@@ -1,6 +1,7 @@
 package tegenton.card.parse.dfa.state.b.l.o.c;
 
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.dfa.state.b.BLState;
 import tegenton.card.parse.dfa.substring.morpheme.EDMorpheme;
 import tegenton.card.parse.dfa.substring.morpheme.INGMorpheme;
@@ -21,6 +22,7 @@ public class BLOCKState extends BLState {
         return switch (c) {
             case 'E' -> new EDMorpheme();
             case 'I' -> new INGMorpheme();
+            case '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }
@@ -28,7 +30,7 @@ public class BLOCKState extends BLState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case 'I', '\0', ' ' -> ObjectVerb.BLOCK;
+            case 'E', 'I', '\0', ' ' -> ObjectVerb.BLOCK;
             default -> null;
         });
     }
