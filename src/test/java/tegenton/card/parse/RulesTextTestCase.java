@@ -4,13 +4,36 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import tegenton.card.parse.lexicon.Word;
+
+import java.util.List;
+
+import static tegenton.card.parse.lexicon.Adverb.NOT;
+import static tegenton.card.parse.lexicon.Determiner.ALL;
+import static tegenton.card.parse.lexicon.Morpheme.ED;
+import static tegenton.card.parse.lexicon.Morpheme.S;
+import static tegenton.card.parse.lexicon.SubordinateConjunction.AS;
+import static tegenton.card.parse.lexicon.SubordinateConjunction.THOUGH;
+import static tegenton.card.parse.lexicon.Symbol.*;
+import static tegenton.card.parse.lexicon.game.Keyword.DEFENDER;
+import static tegenton.card.parse.lexicon.game.Keyword.ENCHANT;
+import static tegenton.card.parse.lexicon.game.source.SourceVerb.DO;
+import static tegenton.card.parse.lexicon.game.source.target.TargetAuxiliaryVerb.CAN;
+import static tegenton.card.parse.lexicon.game.source.target.object.ObjectNoun.IT;
+import static tegenton.card.parse.lexicon.game.source.target.object.ObjectVerb.ATTACK;
+import static tegenton.card.parse.lexicon.game.source.target.object.ObjectVerb.HAVE;
+import static tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb.DESTROY;
+import static tegenton.card.parse.lexicon.game.type.CardType.LAND;
+import static tegenton.card.parse.lexicon.game.type.CreatureType.WALL;
 
 public class RulesTextTestCase {
     public static String text;
+    public static List<Word> tokens;
 
     @BeforeEach
     void setup() {
         text = null;
+        tokens = null;
     }
 
     @Nested
@@ -23,12 +46,14 @@ public class RulesTextTestCase {
             @DisplayName("Animate Wall")
             void animateWall() {
                 text = "Enchant Wall\nEnchanted Wall can attack as though it didn\u2019t have defender.";
+                tokens = List.of(ENCHANT, SPACE, WALL, NEWLINE, ENCHANT, ED, SPACE, WALL, SPACE, CAN, SPACE, ATTACK, SPACE, AS, SPACE, THOUGH, SPACE, IT, SPACE, DO, NOT, SPACE, HAVE, SPACE, DEFENDER, PERIOD);
             }
 
             @Test
             @DisplayName("Armageddon")
             void armageddon() {
                 text = "Destroy all lands.";
+                tokens = List.of(DESTROY, SPACE, ALL, SPACE, LAND, S, PERIOD);
             }
 
             @Test

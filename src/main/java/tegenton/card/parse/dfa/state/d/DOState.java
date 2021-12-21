@@ -33,7 +33,7 @@ public class DOState extends DState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case 'n', ',', '\0', ' ' -> SourceVerb.DO;
+            case 'N', ',', '\0', ' ' -> SourceVerb.DO;
             default -> null;
         });
     }

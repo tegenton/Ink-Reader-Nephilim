@@ -31,7 +31,7 @@ public class ENCHANTState extends ENCState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case '\0', ' ' -> Keyword.ENCHANT;
+            case 'E', '\0', ' ' -> Keyword.ENCHANT;
             default -> null;
         });
     }
