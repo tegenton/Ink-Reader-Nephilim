@@ -3,8 +3,6 @@ package tegenton.card.parse.lexicon.game.type;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 import tegenton.card.parse.LexiconTest;
-import tegenton.card.parse.lexicon.game.type.CreatureType;
-import tegenton.card.parse.lexicon.game.type.EnchantmentType;
 
 public class SubtypeLexiconTest extends LexiconTest {
     @ParameterizedTest
@@ -18,4 +16,11 @@ public class SubtypeLexiconTest extends LexiconTest {
     void enchantment(EnchantmentType type) {
         word = type;
     }
+
+    @ParameterizedTest
+    @EnumSource(LandType.class)
+    void land(LandType type) {
+        word = type;
+    }
+
 }

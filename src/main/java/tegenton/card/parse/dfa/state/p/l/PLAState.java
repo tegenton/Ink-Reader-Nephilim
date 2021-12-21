@@ -6,6 +6,8 @@ import tegenton.card.parse.dfa.state.p.l.a.PLAYState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.type.CardType;
+import tegenton.card.parse.lexicon.game.type.LandType;
+
 import java.util.Optional;
 
 public class PLAState extends PLState {
@@ -18,6 +20,7 @@ public class PLAState extends PLState {
     @Override
     public State transition(char c) {
         return switch (c) {
+            case 'I' -> new SuffixSubstring("INS", LandType.PLAINS);
             case 'N' -> new SuffixSubstring("NESWALKER", CardType.PLANESWALKER);
             case 'Y' -> PLAYState.state();
             default -> invalid(c);

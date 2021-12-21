@@ -5,6 +5,7 @@ import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Morpheme;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb;
+import tegenton.card.parse.lexicon.game.type.LandType;
 
 import java.util.Optional;
 
@@ -26,6 +27,7 @@ public class SState extends State {
             case 'P' -> SPState.state();
             case 'O' -> SOState.state();
             case 'T' -> STState.state();
+            case 'W' -> new SuffixSubstring("WAMP", LandType.SWAMP);
             case '\0', ' ', '.' -> SymbolState.state(c);
             default -> invalid(c);
         };

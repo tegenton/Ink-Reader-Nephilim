@@ -1,9 +1,11 @@
 package tegenton.card.parse.dfa.state.e.a.c;
 
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.dfa.state.e.a.EACState;
 import tegenton.card.parse.lexicon.Determiner;
 import tegenton.card.parse.lexicon.Word;
+
 import java.util.Optional;
 
 public class EACHState extends EACState {
@@ -15,16 +17,17 @@ public class EACHState extends EACState {
 
     @Override
     public State transition(char c) {
-        switch (c) {
-            default -> throw new IllegalStateException("Cannot transition from EACHState on " + c);
-        }
+        return switch (c) {
+            case '\0', ' ' -> SymbolState.state(c);
+            default -> invalid(c);
+        };
     }
 
     @Override
     public Optional<? extends Word> produce(char c) {
-        return switch (c) {
-            case '\0', ' ' -> Optional.of(Determiner.EACH);
-            default -> Optional.empty();
-        };
+        return Optional.ofNullable(switch (c) {
+            case '\0', ' ' -> Determiner.EACH;
+            default -> null;
+        });
     }
 }
