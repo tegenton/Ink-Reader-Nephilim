@@ -1,6 +1,7 @@
 package tegenton.card.parse.dfa.state;
 
 import tegenton.card.parse.lexicon.Word;
+
 import java.util.Optional;
 
 public abstract class State {

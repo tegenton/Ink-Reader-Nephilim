@@ -1,6 +1,9 @@
 package tegenton.card.parse;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 
 public class RulesTextTestCase {
     public static String text;
@@ -43,7 +46,7 @@ public class RulesTextTestCase {
             @Test
             @DisplayName("Black Ward")
             void blackWard() {
-                text = "Enchant creature\nEnchanted creature has protection from black. This effect doesn’t remove Black Ward.";
+                text = "Enchant creature\nEnchanted creature has protection from black. This effect doesn’t remove ~.";
             }
 
             @Test
@@ -61,7 +64,7 @@ public class RulesTextTestCase {
             @Test
             @DisplayName("Blue Ward")
             void blueWard() {
-                text = "Enchant creature\nEnchanted creature has protection from blue. This effect doesn’t remove Blue Ward.";
+                text = "Enchant creature\nEnchanted creature has protection from blue. This effect doesn’t remove ~.";
             }
 
             @Test
@@ -103,7 +106,7 @@ public class RulesTextTestCase {
             @Test
             @DisplayName("Conversion")
             void conversion() {
-                text = "At the beginning of your upkeep, sacrifice Conversion unless you pay {W}{W}.\nAll Mountains are Plains.";
+                text = "At the beginning of your upkeep, sacrifice ~ unless you pay {W}{W}.\nAll Mountains are Plains.";
             }
 
             @Test

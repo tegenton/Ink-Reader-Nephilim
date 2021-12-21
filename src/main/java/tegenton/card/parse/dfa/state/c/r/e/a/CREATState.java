@@ -3,9 +3,10 @@ package tegenton.card.parse.dfa.state.c.r.e.a;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.c.r.e.CREAState;
 import tegenton.card.parse.dfa.state.c.r.e.a.t.CREATEState;
-import tegenton.card.parse.dfa.substring.SuffixSubstring;
+import tegenton.card.parse.dfa.state.c.r.e.a.t.u.r.CREATUREState;
+import tegenton.card.parse.dfa.substring.InfixSubstring;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.game.type.CardType;
+
 import java.util.Optional;
 
 public class CREATState extends CREAState {
@@ -20,7 +21,7 @@ public class CREATState extends CREAState {
     public State transition(char c) {
         return switch (c) {
             case 'E' -> CREATEState.state();
-            case 'U' -> new SuffixSubstring("URE", CardType.CREATURE);
+            case 'U' -> new InfixSubstring("UR", 'E', CREATUREState::state);
             default -> invalid(c);
         };
     }
