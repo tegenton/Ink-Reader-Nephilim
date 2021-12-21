@@ -26,7 +26,7 @@ public final class DRAWState extends DRAState {
     @Override
     public Optional<PlayerVerb> produce(final char c) {
         return Optional.ofNullable(switch (c) {
-            case 'S', '\0', '.', ' ' -> PlayerVerb.DRAW;
+            case '\0', '.', ' ' -> PlayerVerb.DRAW;
             default -> null;
         });
     }

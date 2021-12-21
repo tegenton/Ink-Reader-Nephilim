@@ -11,9 +11,11 @@ import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.source.target.object.ObjectNoun;
 import tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb;
 import tegenton.card.parse.lexicon.value.EnglishNumber;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 
@@ -27,7 +29,7 @@ public class LexerTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"a", "one", "flying", "draw", "1", ".", "any",
-                            "when"})
+            "when"})
     void singleWord(String text) {
         List<Word> tokens = Stream.of(text).collect(lex).toList();
         StringBuilder s = new StringBuilder();
@@ -42,7 +44,7 @@ public class LexerTest {
     void multiWord(String text) {
         List<Word> tokens =
                 Arrays.stream(text.split(" ")).map(s -> s + " ").collect(lex)
-                      .toList();
+                        .toList();
         StringBuilder actual = new StringBuilder();
         for (Word token : tokens) {
             actual.append(token.getWord());
@@ -54,7 +56,7 @@ public class LexerTest {
     void ancestrallRecall() {
         List<Word> expected =
                 List.of(Determiner.TARGET, Symbol.SPACE, PlayerVerb.PLAY,
-                        Morpheme.ER, Symbol.SPACE, PlayerVerb.DRAW, Morpheme.S,
+                        Morpheme.ER, Symbol.SPACE, PlayerVerb.DRAW,
                         Symbol.SPACE, EnglishNumber.THREE, Symbol.SPACE,
                         ObjectNoun.CARD, Morpheme.S, Symbol.PERIOD);
         List<Word> actual = lex.lex("Target player draws three cards.");
