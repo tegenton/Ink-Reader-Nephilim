@@ -39,6 +39,12 @@ public class ValueWordTest extends WordTest {
     }
 
     @Test
+    void variable() {
+        words = Variable.values();
+        values = List.of("X", "Y");
+    }
+
+    @Test
     void englishAndDigitsNotEqual() {
         assertNotEquals(Number.valueOf(1), EnglishNumber.ONE);
     }

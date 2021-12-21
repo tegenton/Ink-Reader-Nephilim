@@ -1,7 +1,5 @@
 package tegenton.card.parse.dfa.state;
 
-import tegenton.card.parse.dfa.state.y.o.YOUState;
-import tegenton.card.parse.dfa.substring.InfixSubstring;
 import tegenton.card.parse.lexicon.Word;
 
 import java.util.Optional;
@@ -36,7 +34,8 @@ class EmptyState extends State {
             case 'U' -> UState.state();
             case 'V' -> VState.state();
             case 'W' -> WState.state();
-            case 'Y' -> new InfixSubstring("YO", 'U', YOUState::state);
+            case 'X' -> XState.state();
+            case 'Y' -> YState.state();
             case 'Z' -> ZState.state();
             case '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' -> NumberState.state(
                     c);

@@ -3,12 +3,13 @@ package tegenton.card.parse.dfa.state.y.o;
 import tegenton.card.parse.dfa.state.PossessiveState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.SymbolState;
+import tegenton.card.parse.dfa.state.YState;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.source.target.player.PlayerNoun;
 
 import java.util.Optional;
 
-public class YOUState extends State {
+public class YOUState extends YState {
     private static final YOUState INSTANCE = new YOUState();
 
     public static YOUState state() {

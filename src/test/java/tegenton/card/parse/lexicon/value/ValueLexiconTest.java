@@ -4,6 +4,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import tegenton.card.parse.LexiconTest;
+
 import java.util.stream.Stream;
 
 public class ValueLexiconTest extends LexiconTest {
@@ -22,4 +23,11 @@ public class ValueLexiconTest extends LexiconTest {
     void number(String digit) {
         word = Number.valueOf(digit);
     }
+
+    @ParameterizedTest
+    @EnumSource(Variable.class)
+    void variable(Variable variable) {
+        word = variable;
+    }
+
 }
