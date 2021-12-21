@@ -3,10 +3,10 @@ package tegenton.card.parse.dfa.state;
 import tegenton.card.parse.dfa.state.g.GAState;
 import tegenton.card.parse.dfa.state.g.GOState;
 import tegenton.card.parse.dfa.state.g.GRState;
-import tegenton.card.parse.dfa.substring.SuffixSubstring;
+import tegenton.card.parse.dfa.state.g.e.GETState;
+import tegenton.card.parse.dfa.substring.InfixSubstring;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.Color;
-import tegenton.card.parse.lexicon.game.source.target.object.ObjectVerb;
 
 import java.util.Optional;
 
@@ -21,7 +21,7 @@ public class GState extends State {
     public State transition(char c) {
         return switch (c) {
             case 'A' -> GAState.state();
-            case 'E' -> new SuffixSubstring("ET", ObjectVerb.GET);
+            case 'E' -> new InfixSubstring("E", 'T', GETState::state);
             case 'O' -> GOState.state();
             case 'R' -> GRState.state();
             default -> invalid(c);
