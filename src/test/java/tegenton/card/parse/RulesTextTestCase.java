@@ -46,8 +46,7 @@ import static tegenton.card.parse.lexicon.game.turn.Phase.BEGINNING;
 import static tegenton.card.parse.lexicon.game.turn.Phase.COMBAT;
 import static tegenton.card.parse.lexicon.game.turn.Step.END;
 import static tegenton.card.parse.lexicon.game.turn.Step.UPKEEP;
-import static tegenton.card.parse.lexicon.game.type.CardType.CREATURE;
-import static tegenton.card.parse.lexicon.game.type.CardType.LAND;
+import static tegenton.card.parse.lexicon.game.type.CardType.*;
 import static tegenton.card.parse.lexicon.game.type.CreatureType.WALL;
 import static tegenton.card.parse.lexicon.game.type.EnchantmentType.AURA;
 import static tegenton.card.parse.lexicon.game.type.LandType.MOUNTAIN;
@@ -189,18 +188,21 @@ public class RulesTextTestCase {
             @DisplayName("Crusade")
             void crusade() {
                 text = "White creatures get +1/+1.";
+                tokens = List.of(WHITE, SPACE, CREATURE, S, SPACE, GET, SPACE, PLUS, Number.valueOf(1), SLASH, PLUS, Number.valueOf(1), PERIOD);
             }
 
             @Test
             @DisplayName("Death Ward")
             void deathWard() {
                 text = "Regenerate target creature.";
+                tokens = List.of(REGENERATE, SPACE, TARGET, SPACE, CREATURE, PERIOD);
             }
 
             @Test
             @DisplayName("Disenchant")
             void disenchant() {
                 text = "Destroy target artifact or enchantment.";
+                tokens = List.of(DESTROY, SPACE, TARGET, SPACE, ARTIFACT, SPACE, OR, SPACE, ENCHANTMENT, PERIOD);
             }
 
             @Test
