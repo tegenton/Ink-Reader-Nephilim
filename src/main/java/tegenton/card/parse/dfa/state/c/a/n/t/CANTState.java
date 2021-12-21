@@ -1,6 +1,7 @@
 package tegenton.card.parse.dfa.state.c.a.n.t;
 
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.dfa.state.c.a.n.CANtState;
 import tegenton.card.parse.lexicon.Adverb;
 import tegenton.card.parse.lexicon.Word;
@@ -17,6 +18,7 @@ public class CANTState extends CANtState {
     @Override
     public State transition(char c) {
         return switch (c) {
+            case '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }

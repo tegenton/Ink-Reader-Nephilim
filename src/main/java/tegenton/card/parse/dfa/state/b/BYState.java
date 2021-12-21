@@ -2,6 +2,7 @@ package tegenton.card.parse.dfa.state.b;
 
 import tegenton.card.parse.dfa.state.BState;
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.lexicon.Preposition;
 import tegenton.card.parse.lexicon.Word;
 
@@ -17,15 +18,16 @@ public class BYState extends BState {
     @Override
     public State transition(char c) {
         return switch (c) {
+            case '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }
 
     @Override
     public Optional<? extends Word> produce(char c) {
-        return switch (c) {
-            case '\0', ' ' -> Optional.of(Preposition.BY);
-            default -> Optional.empty();
-        };
+        return Optional.ofNullable(switch (c) {
+            case '\0', ' ' -> Preposition.BY;
+            default -> null;
+        });
     }
 }
