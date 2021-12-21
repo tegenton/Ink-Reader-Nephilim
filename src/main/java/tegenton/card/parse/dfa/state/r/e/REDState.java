@@ -18,7 +18,7 @@ public class REDState extends REState {
     @Override
     public State transition(char c) {
         return switch (c) {
-            case ' ' -> SymbolState.state(c);
+            case '\0', '.', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }
@@ -26,7 +26,7 @@ public class REDState extends REState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case '\0', ' ' -> ColorWord.RED;
+            case '\0', '.', ' ' -> ColorWord.RED;
             default -> null;
         });
     }

@@ -1,6 +1,7 @@
 package tegenton.card.parse.dfa.state.u;
 
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.dfa.state.UState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Particle;
@@ -20,6 +21,7 @@ public class UPState extends UState {
     public State transition(char c) {
         return switch (c) {
             case 'K' -> new SuffixSubstring("KEEP", Step.UPKEEP);
+            case '\0', '.', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }
@@ -27,7 +29,7 @@ public class UPState extends UState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case '\0', ' ' -> Particle.UP;
+            case '\0', '.', ' ' -> Particle.UP;
             default -> null;
         });
     }

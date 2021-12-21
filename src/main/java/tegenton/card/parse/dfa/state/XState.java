@@ -15,6 +15,7 @@ public class XState extends State {
     @Override
     public State transition(char c) {
         return switch (c) {
+            case '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }

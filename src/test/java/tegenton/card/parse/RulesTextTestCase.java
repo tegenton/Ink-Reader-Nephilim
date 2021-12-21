@@ -166,7 +166,7 @@ public class RulesTextTestCase {
             @Test
             @DisplayName("Island Sanctuary")
             void islandSanctuary() {
-                text = "If you would draw a card during your draw step, instead you may skip that draw. If you do, until your next turn, you can’t be attacked except by creatures with flying and/or islandwalk.";
+                text = "If you would draw a card during your draw step, instead you may skip that draw. If you do, until your next turn, you can\u2019t be attacked except by creatures with flying and/or islandwalk.";
             }
 
             @Test
