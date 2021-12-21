@@ -9,8 +9,7 @@ import tegenton.card.parse.lexicon.value.Number;
 
 import java.util.List;
 
-import static tegenton.card.parse.lexicon.Adjective.EQUAL;
-import static tegenton.card.parse.lexicon.Adjective.SAME;
+import static tegenton.card.parse.lexicon.Adjective.*;
 import static tegenton.card.parse.lexicon.Adverb.NOT;
 import static tegenton.card.parse.lexicon.Adverb.ONLY;
 import static tegenton.card.parse.lexicon.Conjunction.AND;
@@ -22,18 +21,22 @@ import static tegenton.card.parse.lexicon.Preposition.*;
 import static tegenton.card.parse.lexicon.SubordinateConjunction.*;
 import static tegenton.card.parse.lexicon.Symbol.*;
 import static tegenton.card.parse.lexicon.game.Color.W;
-import static tegenton.card.parse.lexicon.game.ColorWord.BLACK;
-import static tegenton.card.parse.lexicon.game.GameNoun.EFFECT;
-import static tegenton.card.parse.lexicon.game.GameNoun.TURN;
+import static tegenton.card.parse.lexicon.game.ColorWord.*;
+import static tegenton.card.parse.lexicon.game.GameNoun.*;
 import static tegenton.card.parse.lexicon.game.Keyword.*;
+import static tegenton.card.parse.lexicon.game.source.SourceNoun.SOURCE;
+import static tegenton.card.parse.lexicon.game.source.SourceVerb.DEAL;
 import static tegenton.card.parse.lexicon.game.source.SourceVerb.DO;
 import static tegenton.card.parse.lexicon.game.source.target.TargetAdjective.ABLE;
 import static tegenton.card.parse.lexicon.game.source.target.TargetAuxiliaryVerb.CAN;
+import static tegenton.card.parse.lexicon.game.source.target.TargetAuxiliaryVerb.WOULD;
+import static tegenton.card.parse.lexicon.game.source.target.TargetModifier.POSSESSIVE;
 import static tegenton.card.parse.lexicon.game.source.target.TargetNoun.THEY;
 import static tegenton.card.parse.lexicon.game.source.target.TargetNoun.WHO;
 import static tegenton.card.parse.lexicon.game.source.target.object.ObjectNoun.*;
 import static tegenton.card.parse.lexicon.game.source.target.object.ObjectVerb.*;
 import static tegenton.card.parse.lexicon.game.source.target.player.PlayerAdjective.DEFENDING;
+import static tegenton.card.parse.lexicon.game.source.target.player.PlayerNoun.YOU;
 import static tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb.*;
 import static tegenton.card.parse.lexicon.game.turn.Chronology.BEFORE;
 import static tegenton.card.parse.lexicon.game.turn.Chronology.DURING;
@@ -120,36 +123,45 @@ public class RulesTextTestCase {
             @DisplayName("Blue Ward")
             void blueWard() {
                 text = "Enchant creature\nEnchanted creature has protection from blue. This effect doesn\u2019t remove ~.";
+                tokens = List.of(ENCHANT, SPACE, CREATURE, NEWLINE,
+                        ENCHANT, ED, SPACE, CREATURE, SPACE, HAVE, SPACE, PROTECTION, SPACE, FROM, SPACE, BLUE, PERIOD,
+                        SPACE, THIS, SPACE, EFFECT, SPACE, DO, NOT, SPACE, REMOVE, SPACE, TILDE, PERIOD);
             }
 
             @Test
             @DisplayName("Castle")
             void castle() {
                 text = "Untapped creatures you control get +0/+2.";
+                tokens = List.of(NOT, TAP, ED, SPACE, CREATURE, S, SPACE, YOU, SPACE, CONTROL, SPACE, GET, SPACE, PLUS, Number.valueOf(0), SLASH, PLUS, Number.valueOf(2), PERIOD);
             }
 
             @Test
             @DisplayName("Circle of Protection: Blue")
             void circleOfProtectionBlue() {
                 text = "{1}: The next time a blue source of your choice would deal damage to you this turn, prevent that damage.";
+                tokens = List.of(LBRACKET, Number.valueOf(1), RBRACKET, COLON, SPACE, THE, SPACE, NEXT, SPACE, TIME, SPACE, A, SPACE, BLUE, SPACE, SOURCE, SPACE, OF, SPACE, YOU, POSSESSIVE, SPACE, CHOICE, SPACE, WOULD, SPACE, DEAL, SPACE, DAMAGE, SPACE, TO, SPACE, YOU, SPACE, THIS, SPACE, TURN, COMMA, SPACE, PREVENT, SPACE, THAT, SPACE, DAMAGE, PERIOD);
+
             }
 
             @Test
             @DisplayName("Circle of Protection: Green")
             void circleOfProtectionGreen() {
                 text = "{1}: The next time a green source of your choice would deal damage to you this turn, prevent that damage.";
+                tokens = List.of(LBRACKET, Number.valueOf(1), RBRACKET, COLON, SPACE, THE, SPACE, NEXT, SPACE, TIME, SPACE, A, SPACE, GREEN, SPACE, SOURCE, SPACE, OF, SPACE, YOU, POSSESSIVE, SPACE, CHOICE, SPACE, WOULD, SPACE, DEAL, SPACE, DAMAGE, SPACE, TO, SPACE, YOU, SPACE, THIS, SPACE, TURN, COMMA, SPACE, PREVENT, SPACE, THAT, SPACE, DAMAGE, PERIOD);
             }
 
             @Test
             @DisplayName("Circle of Protection: Red")
             void circleOfProtectionRed() {
                 text = "{1}: The next time a red source of your choice would deal damage to you this turn, prevent that damage.";
+                tokens = List.of(LBRACKET, Number.valueOf(1), RBRACKET, COLON, SPACE, THE, SPACE, NEXT, SPACE, TIME, SPACE, A, SPACE, RED, SPACE, SOURCE, SPACE, OF, SPACE, YOU, POSSESSIVE, SPACE, CHOICE, SPACE, WOULD, SPACE, DEAL, SPACE, DAMAGE, SPACE, TO, SPACE, YOU, SPACE, THIS, SPACE, TURN, COMMA, SPACE, PREVENT, SPACE, THAT, SPACE, DAMAGE, PERIOD);
             }
 
             @Test
             @DisplayName("Circle of Protection: White")
             void circleOfProtectionWhite() {
                 text = "{1}: The next time a white source of your choice would deal damage to you this turn, prevent that damage.";
+                tokens = List.of(LBRACKET, Number.valueOf(1), RBRACKET, COLON, SPACE, THE, SPACE, NEXT, SPACE, TIME, SPACE, A, SPACE, WHITE, SPACE, SOURCE, SPACE, OF, SPACE, YOU, POSSESSIVE, SPACE, CHOICE, SPACE, WOULD, SPACE, DEAL, SPACE, DAMAGE, SPACE, TO, SPACE, YOU, SPACE, THIS, SPACE, TURN, COMMA, SPACE, PREVENT, SPACE, THAT, SPACE, DAMAGE, PERIOD);
             }
 
             @Test
