@@ -12,8 +12,7 @@ import java.util.List;
 import static tegenton.card.parse.lexicon.Adjective.*;
 import static tegenton.card.parse.lexicon.Adverb.NOT;
 import static tegenton.card.parse.lexicon.Adverb.ONLY;
-import static tegenton.card.parse.lexicon.Conjunction.AND;
-import static tegenton.card.parse.lexicon.Conjunction.THEN;
+import static tegenton.card.parse.lexicon.Conjunction.*;
 import static tegenton.card.parse.lexicon.Determiner.*;
 import static tegenton.card.parse.lexicon.Morpheme.*;
 import static tegenton.card.parse.lexicon.Noun.*;
@@ -25,6 +24,7 @@ import static tegenton.card.parse.lexicon.game.ColorWord.*;
 import static tegenton.card.parse.lexicon.game.GameNoun.*;
 import static tegenton.card.parse.lexicon.game.GameVerb.BE;
 import static tegenton.card.parse.lexicon.game.Keyword.*;
+import static tegenton.card.parse.lexicon.game.TriggerWord.AT;
 import static tegenton.card.parse.lexicon.game.source.SourceNoun.SOURCE;
 import static tegenton.card.parse.lexicon.game.source.SourceVerb.DEAL;
 import static tegenton.card.parse.lexicon.game.source.SourceVerb.DO;
@@ -42,12 +42,16 @@ import static tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb.*
 import static tegenton.card.parse.lexicon.game.turn.Chronology.BEFORE;
 import static tegenton.card.parse.lexicon.game.turn.Chronology.DURING;
 import static tegenton.card.parse.lexicon.game.turn.Duration.UNTIL;
+import static tegenton.card.parse.lexicon.game.turn.Phase.BEGINNING;
 import static tegenton.card.parse.lexicon.game.turn.Phase.COMBAT;
 import static tegenton.card.parse.lexicon.game.turn.Step.END;
+import static tegenton.card.parse.lexicon.game.turn.Step.UPKEEP;
 import static tegenton.card.parse.lexicon.game.type.CardType.CREATURE;
 import static tegenton.card.parse.lexicon.game.type.CardType.LAND;
 import static tegenton.card.parse.lexicon.game.type.CreatureType.WALL;
 import static tegenton.card.parse.lexicon.game.type.EnchantmentType.AURA;
+import static tegenton.card.parse.lexicon.game.type.LandType.MOUNTAIN;
+import static tegenton.card.parse.lexicon.game.type.LandType.PLAINS;
 
 public class RulesTextTestCase {
     public static String text;
@@ -177,6 +181,8 @@ public class RulesTextTestCase {
             @DisplayName("Conversion")
             void conversion() {
                 text = "At the beginning of your upkeep, sacrifice ~ unless you pay {W}{W}.\nAll Mountains are Plains.";
+                tokens = List.of(AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, YOU, POSSESSIVE, SPACE, UPKEEP, COMMA, SPACE, SACRIFICE, SPACE, TILDE, SPACE, UNLESS, SPACE, YOU, SPACE, PAY, SPACE, LBRACKET, W, RBRACKET, LBRACKET, W, RBRACKET, PERIOD, NEWLINE,
+                        ALL, SPACE, MOUNTAIN, S, SPACE, IS, SPACE, PLAINS, PERIOD);
             }
 
             @Test

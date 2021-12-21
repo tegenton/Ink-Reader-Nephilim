@@ -2,6 +2,7 @@ package tegenton.card.parse.dfa.state.m.o.u.n.t.a.i;
 
 import tegenton.card.parse.dfa.state.SState;
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.dfa.state.m.MOState;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.type.LandType;
@@ -19,6 +20,7 @@ public class MOUNTAINState extends MOState {
     public State transition(char c) {
         return switch (c) {
             case 'S' -> SState.state();
+            case '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }
@@ -26,7 +28,7 @@ public class MOUNTAINState extends MOState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case '\0', ' ' -> LandType.MOUNTAIN;
+            case 'S', '\0', ' ' -> LandType.MOUNTAIN;
             default -> null;
         });
     }
