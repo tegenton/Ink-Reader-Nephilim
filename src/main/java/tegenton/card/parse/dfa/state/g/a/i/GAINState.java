@@ -1,23 +1,24 @@
-package tegenton.card.parse.dfa.state.i;
+package tegenton.card.parse.dfa.state.g.a.i;
 
-import tegenton.card.parse.dfa.state.IState;
+import tegenton.card.parse.dfa.state.GState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.game.source.target.object.ObjectVerb;
+import tegenton.card.parse.lexicon.game.source.target.TargetVerb;
 
 import java.util.Optional;
 
-public class ISState extends IState {
-    private static final ISState INSTANCE = new ISState();
+public class GAINState extends GState {
+    private static final GAINState INSTANCE = new GAINState();
 
-    public static ISState state() {
+    public static GAINState state() {
         return INSTANCE;
     }
 
     @Override
     public State transition(char c) {
         return switch (c) {
+            case 'S' -> this;
             case '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
@@ -26,7 +27,7 @@ public class ISState extends IState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case '\0', ' ' -> ObjectVerb.IS;
+            case '\0', ' ' -> TargetVerb.GAIN;
             default -> null;
         });
     }
