@@ -1,11 +1,12 @@
 package tegenton.card.parse.dfa.state;
 
 import tegenton.card.parse.dfa.state.s.*;
+import tegenton.card.parse.dfa.state.s.w.a.m.SWAMPState;
+import tegenton.card.parse.dfa.substring.InfixSubstring;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Morpheme;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb;
-import tegenton.card.parse.lexicon.game.type.LandType;
 
 import java.util.Optional;
 
@@ -27,7 +28,7 @@ public class SState extends State {
             case 'P' -> SPState.state();
             case 'O' -> SOState.state();
             case 'T' -> STState.state();
-            case 'W' -> new SuffixSubstring("WAMP", LandType.SWAMP);
+            case 'W' -> new InfixSubstring("WAM", 'P', SWAMPState::state);
             case '\0', ' ', '.' -> SymbolState.state(c);
             default -> invalid(c);
         };

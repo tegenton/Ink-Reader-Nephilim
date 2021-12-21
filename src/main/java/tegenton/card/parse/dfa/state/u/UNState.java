@@ -1,8 +1,10 @@
 package tegenton.card.parse.dfa.state.u;
 
+import tegenton.card.parse.dfa.state.BState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.UState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
+import tegenton.card.parse.lexicon.Adverb;
 import tegenton.card.parse.lexicon.Conjunction;
 import tegenton.card.parse.lexicon.Preposition;
 import tegenton.card.parse.lexicon.Word;
@@ -20,6 +22,7 @@ public class UNState extends UState {
     @Override
     public State transition(char c) {
         return switch (c) {
+            case 'B' -> BState.state();
             case 'D' -> new SuffixSubstring("DER", Preposition.UNDER);
             case 'L' -> new SuffixSubstring("LESS", Conjunction.UNLESS);
             case 'T' -> new SuffixSubstring("TIL", Duration.UNTIL);
@@ -29,6 +32,9 @@ public class UNState extends UState {
 
     @Override
     public Optional<? extends Word> produce(char c) {
-        return Optional.empty();
+        return Optional.ofNullable(switch (c) {
+            case 'B' -> Adverb.NOT;
+            default -> null;
+        });
     }
 }
