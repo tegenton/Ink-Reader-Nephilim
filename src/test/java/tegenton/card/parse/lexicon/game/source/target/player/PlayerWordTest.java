@@ -35,7 +35,7 @@ public class PlayerWordTest extends WordTest {
         words = PlayerVerb.values();
         values =
                 List.of("ACTIVATE", "ADD", "ATTACH", "BEGIN", "CAST", "CHANGE",
-                        "CHOOSE", "CONTROL", "COULD", "COUNTER", "CREATE",
+                        "CHOOSE", "CONTROL", "COULD", "COUNTER", "CREATE", "DECLARE",
                         "DESTROY", "DISCARD", "DIVIDE", "DRAW", "EXCHANGE",
                         "FLIP", "IGNORE", "LOOK", "LOSE", "MAY", "OWN", "PAY",
                         "PLAY", "PREVENT", "PUT", "REGENERATE", "REMOVE",

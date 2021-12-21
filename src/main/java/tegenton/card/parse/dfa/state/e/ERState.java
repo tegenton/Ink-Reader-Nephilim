@@ -1,6 +1,7 @@
 package tegenton.card.parse.dfa.state.e;
 
 import tegenton.card.parse.dfa.state.EState;
+import tegenton.card.parse.dfa.state.SState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
@@ -20,6 +21,7 @@ public class ERState extends EState {
     @Override
     public State transition(char c) {
         return switch (c) {
+            case 'S' -> SState.state();
             case '\u2019' -> new SuffixSubstring("\u2019S", TargetModifier.POSSESSIVE);
             case '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
@@ -29,7 +31,7 @@ public class ERState extends EState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case '\0', ' ' -> Morpheme.ER;
+            case 'S', '\0', ' ' -> Morpheme.ER;
             default -> null;
         });
     }
