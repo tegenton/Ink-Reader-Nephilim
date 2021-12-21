@@ -1,24 +1,24 @@
-package tegenton.card.parse.dfa.state.i;
+package tegenton.card.parse.dfa.state.t.h.e;
 
-import tegenton.card.parse.dfa.state.IState;
 import tegenton.card.parse.dfa.state.PossessiveState;
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.t.h.THEState;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.game.source.target.object.ObjectNoun;
+import tegenton.card.parse.lexicon.game.source.target.TargetNoun;
 
 import java.util.Optional;
 
-public class ITState extends IState {
-    private static final ITState INSTANCE = new ITState();
+public class THEIState extends THEState {
+    private static final THEIState INSTANCE = new THEIState();
 
-    public static ITState state() {
+    public static THEIState state() {
         return INSTANCE;
     }
 
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'S' -> PossessiveState.state();
+            case 'R' -> PossessiveState.state();
             default -> invalid(c);
         };
     }
@@ -26,7 +26,7 @@ public class ITState extends IState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return switch (c) {
-            case 'S', '\0', ' ' -> Optional.of(ObjectNoun.IT);
+            case 'R' -> Optional.of(TargetNoun.THEY);
             default -> Optional.empty();
         };
     }

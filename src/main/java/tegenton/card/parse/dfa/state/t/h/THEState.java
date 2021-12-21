@@ -3,10 +3,7 @@ package tegenton.card.parse.dfa.state.t.h;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.dfa.state.t.THState;
-import tegenton.card.parse.dfa.state.t.h.e.THEMState;
-import tegenton.card.parse.dfa.state.t.h.e.THENState;
-import tegenton.card.parse.dfa.state.t.h.e.THESState;
-import tegenton.card.parse.dfa.state.t.h.e.THEYState;
+import tegenton.card.parse.dfa.state.t.h.e.*;
 import tegenton.card.parse.lexicon.Determiner;
 import tegenton.card.parse.lexicon.Word;
 
@@ -22,9 +19,10 @@ public class THEState extends THState {
     @Override
     public State transition(char c) {
         return switch (c) {
+            case 'I' -> THEIState.state();
+            case 'M' -> THEMState.state();
             case 'N' -> THENState.state();
             case 'S' -> THESState.state();
-            case 'M' -> THEMState.state();
             case 'Y' -> THEYState.state();
             case ' ' -> SymbolState.state(c);
             default -> invalid(c);

@@ -1,6 +1,7 @@
 package tegenton.card.parse.dfa.state.i.n.s.t.a.n;
 
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.dfa.state.i.n.s.t.a.INSTANState;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.type.CardType;
@@ -17,6 +18,7 @@ public class INSTANTState extends INSTANState {
     @Override
     public State transition(char c) {
         return switch (c) {
+            case '\0', '.', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }
@@ -24,7 +26,7 @@ public class INSTANTState extends INSTANState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case '\0', ' ' -> CardType.INSTANT;
+            case '\0', '.', ' ' -> CardType.INSTANT;
             default -> null;
         });
     }

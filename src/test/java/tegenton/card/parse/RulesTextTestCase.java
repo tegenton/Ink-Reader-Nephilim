@@ -148,7 +148,7 @@ public class RulesTextTestCase {
             @Test
             @DisplayName("Healing Salve")
             void healingSalve() {
-                text = "Choose one —\n• Target player gains 3 life.\n• Prevent the next 3 damage that would be dealt to any target this turn.";
+                text = "Choose one \u2014\n\u2022 Target player gains 3 life.\n\u2022 Prevent the next 3 damage that would be dealt to any target this turn.";
             }
 
             @Test
