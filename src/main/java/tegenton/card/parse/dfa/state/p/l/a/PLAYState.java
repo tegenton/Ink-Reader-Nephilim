@@ -4,6 +4,7 @@ import tegenton.card.parse.dfa.state.EState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.p.l.PLAState;
 import tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb;
+
 import java.util.Optional;
 
 public class PLAYState extends PLAState {
@@ -17,16 +18,15 @@ public class PLAYState extends PLAState {
     public State transition(char c) {
         return switch (c) {
             case 'E' -> EState.state();
-            default -> throw new IllegalStateException(
-                    "Cannot transition from PLAYState on " + c);
+            default -> invalid(c);
         };
     }
 
     @Override
     public Optional<PlayerVerb> produce(char c) {
-        return switch (c) {
-            case 'E', '\0', ' ' -> Optional.of(PlayerVerb.PLAY);
-            default -> Optional.empty();
-        };
+        return Optional.ofNullable(switch (c) {
+            case 'E', '\0', ' ' -> PlayerVerb.PLAY;
+            default -> null;
+        });
     }
 }

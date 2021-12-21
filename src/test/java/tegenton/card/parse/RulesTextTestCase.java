@@ -172,7 +172,7 @@ public class RulesTextTestCase {
             @Test
             @DisplayName("Karma")
             void karma() {
-                text = "At the beginning of each player’s upkeep, ~ deals damage to that player equal to the number of Swamps they control.";
+                text = "At the beginning of each player\u2019s upkeep, ~ deals damage to that player equal to the number of Swamps they control.";
             }
 
             @Test
