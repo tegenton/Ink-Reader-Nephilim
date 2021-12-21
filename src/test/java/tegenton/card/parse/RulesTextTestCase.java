@@ -23,6 +23,7 @@ import static tegenton.card.parse.lexicon.Symbol.*;
 import static tegenton.card.parse.lexicon.game.Color.W;
 import static tegenton.card.parse.lexicon.game.ColorWord.*;
 import static tegenton.card.parse.lexicon.game.GameNoun.*;
+import static tegenton.card.parse.lexicon.game.GameVerb.BE;
 import static tegenton.card.parse.lexicon.game.Keyword.*;
 import static tegenton.card.parse.lexicon.game.source.SourceNoun.SOURCE;
 import static tegenton.card.parse.lexicon.game.source.SourceVerb.DEAL;
@@ -46,6 +47,7 @@ import static tegenton.card.parse.lexicon.game.turn.Step.END;
 import static tegenton.card.parse.lexicon.game.type.CardType.CREATURE;
 import static tegenton.card.parse.lexicon.game.type.CardType.LAND;
 import static tegenton.card.parse.lexicon.game.type.CreatureType.WALL;
+import static tegenton.card.parse.lexicon.game.type.EnchantmentType.AURA;
 
 public class RulesTextTestCase {
     public static String text;
@@ -114,8 +116,8 @@ public class RulesTextTestCase {
             @Test
             @DisplayName("Blessing")
             void blessing() {
-                text = "Enchant creature \n{W}: Enchanted creature gets +1/+1 until end of turn.";
-                tokens = List.of(ENCHANT, SPACE, CREATURE, SPACE, NEWLINE,
+                text = "Enchant creature\n{W}: Enchanted creature gets +1/+1 until end of turn.";
+                tokens = List.of(ENCHANT, SPACE, CREATURE, NEWLINE,
                         LBRACKET, W, RBRACKET, COLON, SPACE, ENCHANT, ED, SPACE, CREATURE, SPACE, GET, SPACE, PLUS, Number.valueOf(1), SLASH, PLUS, Number.valueOf(1), SPACE, UNTIL, SPACE, END, SPACE, OF, SPACE, TURN, PERIOD);
             }
 
@@ -140,7 +142,6 @@ public class RulesTextTestCase {
             void circleOfProtectionBlue() {
                 text = "{1}: The next time a blue source of your choice would deal damage to you this turn, prevent that damage.";
                 tokens = List.of(LBRACKET, Number.valueOf(1), RBRACKET, COLON, SPACE, THE, SPACE, NEXT, SPACE, TIME, SPACE, A, SPACE, BLUE, SPACE, SOURCE, SPACE, OF, SPACE, YOU, POSSESSIVE, SPACE, CHOICE, SPACE, WOULD, SPACE, DEAL, SPACE, DAMAGE, SPACE, TO, SPACE, YOU, SPACE, THIS, SPACE, TURN, COMMA, SPACE, PREVENT, SPACE, THAT, SPACE, DAMAGE, PERIOD);
-
             }
 
             @Test
@@ -168,6 +169,8 @@ public class RulesTextTestCase {
             @DisplayName("Consecrate Land")
             void consecrateLand() {
                 text = "Enchant land\nEnchanted land has indestructible and can\u2019t be enchanted by other Auras.";
+                tokens = List.of(ENCHANT, SPACE, LAND, NEWLINE,
+                        ENCHANT, ED, SPACE, LAND, SPACE, HAVE, SPACE, INDESTRUCTIBLE, SPACE, AND, SPACE, CAN, NOT, SPACE, BE, SPACE, ENCHANT, ED, SPACE, BY, SPACE, OTHER, SPACE, AURA, S, PERIOD);
             }
 
             @Test

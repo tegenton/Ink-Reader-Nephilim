@@ -28,7 +28,7 @@ public class CANState extends CAState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case '\0', ' ' -> TargetAuxiliaryVerb.CAN;
+            case '\u2019', '\0', ' ' -> TargetAuxiliaryVerb.CAN;
             default -> null;
         });
     }
