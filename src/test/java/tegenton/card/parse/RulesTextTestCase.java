@@ -20,8 +20,9 @@ import static tegenton.card.parse.lexicon.Preposition.*;
 import static tegenton.card.parse.lexicon.SubordinateConjunction.AS;
 import static tegenton.card.parse.lexicon.SubordinateConjunction.THOUGH;
 import static tegenton.card.parse.lexicon.Symbol.*;
-import static tegenton.card.parse.lexicon.game.Keyword.DEFENDER;
-import static tegenton.card.parse.lexicon.game.Keyword.ENCHANT;
+import static tegenton.card.parse.lexicon.game.ColorWord.BLACK;
+import static tegenton.card.parse.lexicon.game.GameNoun.EFFECT;
+import static tegenton.card.parse.lexicon.game.Keyword.*;
 import static tegenton.card.parse.lexicon.game.source.SourceVerb.DO;
 import static tegenton.card.parse.lexicon.game.source.target.TargetAuxiliaryVerb.CAN;
 import static tegenton.card.parse.lexicon.game.source.target.TargetNoun.THEY;
@@ -76,12 +77,14 @@ public class RulesTextTestCase {
             @DisplayName("Benalish Hero")
             void benalishHero() {
                 text = "Banding";
+                tokens = List.of(BANDING);
             }
 
             @Test
             @DisplayName("Black Ward")
             void blackWard() {
                 text = "Enchant creature\nEnchanted creature has protection from black. This effect doesn\u2019t remove ~.";
+                tokens = List.of(ENCHANT, SPACE, CREATURE, NEWLINE, ENCHANT, ED, SPACE, CREATURE, SPACE, HAVE, SPACE, PROTECTION, SPACE, FROM, SPACE, BLACK, PERIOD, SPACE, THIS, SPACE, EFFECT, SPACE, DO, NOT, SPACE, REMOVE, SPACE, TILDE, PERIOD);
             }
 
             @Test
