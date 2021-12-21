@@ -3,6 +3,7 @@ package tegenton.card.parse.dfa.state.a.t.t.a.c;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.dfa.state.a.t.t.a.ATTACState;
+import tegenton.card.parse.dfa.substring.morpheme.EDMorpheme;
 import tegenton.card.parse.dfa.substring.morpheme.INGMorpheme;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.source.target.object.ObjectVerb;
@@ -19,6 +20,7 @@ public class ATTACKState extends ATTACState {
     @Override
     public State transition(char c) {
         return switch (c) {
+            case 'E' -> new EDMorpheme();
             case 'I' -> new INGMorpheme();
             case '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
@@ -28,7 +30,7 @@ public class ATTACKState extends ATTACState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case '\0', ' ' -> ObjectVerb.ATTACK;
+            case 'E', 'I', '\0', ' ' -> ObjectVerb.ATTACK;
             default -> null;
         });
     }

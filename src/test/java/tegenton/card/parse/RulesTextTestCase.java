@@ -22,7 +22,7 @@ public class RulesTextTestCase {
             @Test
             @DisplayName("Animate Wall")
             void animateWall() {
-                text = "Enchant Wall\nEnchanted Wall can attack as though it didn't have defender.";
+                text = "Enchant Wall\nEnchanted Wall can attack as though it didn\u2019t have defender.";
             }
 
             @Test

@@ -20,6 +20,7 @@ public class DIState extends DState {
     @Override
     public State transition(char c) {
         return switch (c) {
+            case 'D' -> DOState.state();
             case 'E' -> DIEState.state();
             case 'F' -> new SuffixSubstring("FFERENT", Adjective.DIFFERENT);
             case 'S' -> new SuffixSubstring("SCARD", PlayerVerb.DISCARD);
