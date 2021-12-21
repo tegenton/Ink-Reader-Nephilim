@@ -1,6 +1,7 @@
 package tegenton.card.parse.dfa.state.w.a;
 
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.dfa.state.w.WAState;
 import tegenton.card.parse.lexicon.Noun;
 import tegenton.card.parse.lexicon.Word;
@@ -17,6 +18,7 @@ public class WAYState extends WAState {
     @Override
     public State transition(char c) {
         return switch (c) {
+            case '\0', '.', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }
@@ -24,7 +26,7 @@ public class WAYState extends WAState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case '\0', ' ' -> Noun.WAY;
+            case '\0', '.', ' ' -> Noun.WAY;
             default -> null;
         });
     }
