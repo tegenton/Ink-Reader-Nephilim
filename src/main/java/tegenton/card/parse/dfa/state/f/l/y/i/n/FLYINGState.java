@@ -18,7 +18,7 @@ public class FLYINGState extends FLYState {
     @Override
     public State transition(char c) {
         return switch (c) {
-            case ',', ';' -> SymbolState.state(c);
+            case ',', ';', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }

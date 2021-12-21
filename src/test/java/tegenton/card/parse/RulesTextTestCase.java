@@ -46,7 +46,7 @@ public class RulesTextTestCase {
             @Test
             @DisplayName("Black Ward")
             void blackWard() {
-                text = "Enchant creature\nEnchanted creature has protection from black. This effect doesn’t remove ~.";
+                text = "Enchant creature\nEnchanted creature has protection from black. This effect doesn\u2019t remove ~.";
             }
 
             @Test
@@ -64,7 +64,7 @@ public class RulesTextTestCase {
             @Test
             @DisplayName("Blue Ward")
             void blueWard() {
-                text = "Enchant creature\nEnchanted creature has protection from blue. This effect doesn’t remove ~.";
+                text = "Enchant creature\nEnchanted creature has protection from blue. This effect doesn\u2019t remove ~.";
             }
 
             @Test
@@ -100,7 +100,7 @@ public class RulesTextTestCase {
             @Test
             @DisplayName("Consecrate Land")
             void consecrateLand() {
-                text = "Enchant land\nEnchanted land has indestructible and can’t be enchanted by other Auras.";
+                text = "Enchant land\nEnchanted land has indestructible and can\u2019t be enchanted by other Auras.";
             }
 
             @Test
@@ -130,13 +130,13 @@ public class RulesTextTestCase {
             @Test
             @DisplayName("Farmstead")
             void farmstead() {
-                text = "Enchant land\nEnchanted land has “At the beginning of your upkeep, you may pay {W}{W}. If you do, you gain 1 life.”";
+                text = "Enchant land\nEnchanted land has \u201CAt the beginning of your upkeep, you may pay {W}{W}. If you do, you gain 1 life.\u201D";
             }
 
             @Test
             @DisplayName("Green Ward")
             void greenWard() {
-                text = "Enchant creature\nEnchanted creature has protection from green. This effect doesn’t remove ~.";
+                text = "Enchant creature\nEnchanted creature has protection from green. This effect doesn\u2019t remove ~.";
             }
 
             @Test
@@ -202,7 +202,7 @@ public class RulesTextTestCase {
             @Test
             @DisplayName("Personal Incarnation")
             void personalIncarnation() {
-                text = "{0}: The next 1 damage that would be dealt to ~ this turn is dealt to its owner instead. Only Personal Incarnation’s owner may activate this ability.\nWhen ~ dies, its owner loses half their life, rounded up.";
+                text = "{0}: The next 1 damage that would be dealt to ~ this turn is dealt to its owner instead. Only ~\u2019s owner may activate this ability.\nWhen ~ dies, its owner loses half their life, rounded up.";
             }
 
             @Test
@@ -214,7 +214,7 @@ public class RulesTextTestCase {
             @Test
             @DisplayName("Red Ward")
             void redWard() {
-                text = "Enchant creature\nEnchanted creature has protection from red. This effect doesn’t remove ~.";
+                text = "Enchant creature\nEnchanted creature has protection from red. This effect doesn\u2019t remove ~.";
             }
 
             @Test
@@ -280,13 +280,13 @@ public class RulesTextTestCase {
             @Test
             @DisplayName("White Ward")
             void whiteWard() {
-                text = "Enchant creature\nEnchanted creature has protection from white. This effect doesn’t remove ~.";
+                text = "Enchant creature\nEnchanted creature has protection from white. This effect doesn\u2019t remove ~.";
             }
 
             @Test
             @DisplayName("Wrath of God")
             void wrathOfGod() {
-                text = "Destroy all creatures. They can’t be regenerated.";
+                text = "Destroy all creatures. They can\u2019t be regenerated.";
             }
         }
     }

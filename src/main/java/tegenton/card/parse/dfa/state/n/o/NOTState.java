@@ -1,24 +1,22 @@
-package tegenton.card.parse.dfa.state.n;
+package tegenton.card.parse.dfa.state.n.o;
 
-import tegenton.card.parse.dfa.state.NState;
 import tegenton.card.parse.dfa.state.State;
-import tegenton.card.parse.dfa.state.n.o.NOTState;
-import tegenton.card.parse.lexicon.Determiner;
+import tegenton.card.parse.dfa.state.n.NOState;
+import tegenton.card.parse.lexicon.Adverb;
 import tegenton.card.parse.lexicon.Word;
 
 import java.util.Optional;
 
-public class NOState extends NState {
-    private static final NOState INSTANCE = new NOState();
+public class NOTState extends NOState {
+    private static final NOTState INSTANCE = new NOTState();
 
-    public static NOState state() {
+    public static NOTState state() {
         return INSTANCE;
     }
 
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'T' -> NOTState.state();
             default -> invalid(c);
         };
     }
@@ -26,7 +24,7 @@ public class NOState extends NState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case ' ', '\0' -> Determiner.NO;
+            case '\0', ' ' -> Adverb.NOT;
             default -> null;
         });
     }

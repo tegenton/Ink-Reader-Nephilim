@@ -21,6 +21,7 @@ public class CONTROLState extends CONTROState {
     public State transition(char c) {
         return switch (c) {
             case 'L' -> new SuffixSubstring("LER", Morpheme.ER);
+            case 'S' -> this;
             case ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };

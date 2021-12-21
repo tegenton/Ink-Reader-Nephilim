@@ -1,24 +1,22 @@
-package tegenton.card.parse.dfa.state.c.a;
+package tegenton.card.parse.dfa.state.c.a.n.t;
 
 import tegenton.card.parse.dfa.state.State;
-import tegenton.card.parse.dfa.state.c.CAState;
 import tegenton.card.parse.dfa.state.c.a.n.CANtState;
+import tegenton.card.parse.lexicon.Adverb;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.game.source.target.TargetAuxiliaryVerb;
 
 import java.util.Optional;
 
-public class CANState extends CAState {
-    private static final CANState INSTANCE = new CANState();
+public class CANTState extends CANtState {
+    private static final CANTState INSTANCE = new CANTState();
 
-    public static CANState state() {
+    public static CANTState state() {
         return INSTANCE;
     }
 
     @Override
     public State transition(char c) {
         return switch (c) {
-            case '\u2019' -> CANtState.state();
             default -> invalid(c);
         };
     }
@@ -26,7 +24,7 @@ public class CANState extends CAState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case '\0', ' ' -> TargetAuxiliaryVerb.CAN;
+            case '\0', ' ' -> Adverb.NOT;
             default -> null;
         });
     }
