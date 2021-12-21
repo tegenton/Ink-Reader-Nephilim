@@ -15,7 +15,7 @@ public class TargetWordTest extends WordTest {
     @Test
     void noun() {
         words = TargetNoun.values();
-        values = List.of("THEM", "THEY");
+        values = List.of("THEM", "THEY", "WHO");
     }
 
     @Test
