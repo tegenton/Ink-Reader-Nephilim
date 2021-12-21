@@ -1,30 +1,33 @@
 package tegenton.card.parse.dfa.state.t.h.e;
 
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.dfa.state.t.h.THEState;
 import tegenton.card.parse.lexicon.Conjunction;
 import tegenton.card.parse.lexicon.Word;
+
 import java.util.Optional;
 
 public class THENState extends THEState {
-    private static final THENState instance = new THENState();
+    private static final THENState INSTANCE = new THENState();
 
     public static THENState state() {
-        return instance;
+        return INSTANCE;
     }
 
     @Override
     public State transition(char c) {
-        switch (c) {
-            default -> throw new IllegalStateException("Cannot transition from THENState on " + c);
-        }
+        return switch (c) {
+            case '\0', ' ' -> SymbolState.state(c);
+            default -> invalid(c);
+        };
     }
 
     @Override
     public Optional<? extends Word> produce(char c) {
-        return switch (c) {
-            case ' ', '\0' -> Optional.of(Conjunction.THEN);
-            default -> Optional.empty();
-        };
+        return Optional.ofNullable(switch (c) {
+            case ' ', '\0' -> Conjunction.THEN;
+            default -> null;
+        });
     }
 }

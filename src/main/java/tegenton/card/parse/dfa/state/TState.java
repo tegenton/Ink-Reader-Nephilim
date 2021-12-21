@@ -6,6 +6,7 @@ import tegenton.card.parse.lexicon.Noun;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.GameNoun;
 import tegenton.card.parse.lexicon.game.Keyword;
+import tegenton.card.parse.lexicon.game.Tap;
 
 import java.util.Optional;
 
@@ -28,12 +29,16 @@ public class TState extends State {
             case 'U' -> new SuffixSubstring("URN", GameNoun.TURN);
             case 'W' -> TWState.state();
             case 'Y' -> new SuffixSubstring("YPE", GameNoun.TYPE);
+            case '}' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }
 
     @Override
     public Optional<? extends Word> produce(char c) {
-        return Optional.empty();
+        return Optional.ofNullable(switch (c) {
+            case '}' -> Tap.T;
+            default -> null;
+        });
     }
 }

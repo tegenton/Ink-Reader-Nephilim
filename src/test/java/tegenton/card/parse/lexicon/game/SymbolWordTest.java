@@ -5,7 +5,7 @@ import tegenton.card.parse.lexicon.WordTest;
 
 import java.util.List;
 
-public class ColorWordTest extends WordTest {
+public class SymbolWordTest extends WordTest {
     @Test
     void colorWord() {
         words = ColorWord.values();
@@ -16,5 +16,11 @@ public class ColorWordTest extends WordTest {
     void color() {
         words = Color.values();
         values = List.of("W", "U", "B", "R", "G", "C");
+    }
+
+    @Test
+    void tap() {
+        words = Tap.values();
+        values = List.of("T");
     }
 }

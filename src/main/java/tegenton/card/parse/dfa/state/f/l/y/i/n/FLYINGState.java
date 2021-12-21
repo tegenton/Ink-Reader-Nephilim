@@ -1,23 +1,24 @@
-package tegenton.card.parse.dfa.state.y.o;
+package tegenton.card.parse.dfa.state.f.l.y.i.n;
 
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.SymbolState;
+import tegenton.card.parse.dfa.state.f.l.FLYState;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.game.source.target.player.PlayerNoun;
+import tegenton.card.parse.lexicon.game.Keyword;
 
 import java.util.Optional;
 
-public class YOUState extends State {
-    private static final YOUState INSTANCE = new YOUState();
+public class FLYINGState extends FLYState {
+    private static final FLYINGState INSTANCE = new FLYINGState();
 
-    public static YOUState state() {
+    public static FLYINGState state() {
         return INSTANCE;
     }
 
     @Override
     public State transition(char c) {
         return switch (c) {
-            case '\0', ' ' -> SymbolState.state(c);
+            case ',', ';' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }
@@ -25,7 +26,7 @@ public class YOUState extends State {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case '\0', ' ' -> PlayerNoun.YOU;
+            case ',', '\0', ';', ' ' -> Keyword.FLYING;
             default -> null;
         });
     }

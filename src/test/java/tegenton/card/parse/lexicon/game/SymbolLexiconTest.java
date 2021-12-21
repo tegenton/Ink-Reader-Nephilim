@@ -5,7 +5,7 @@ import org.junit.jupiter.params.provider.EnumSource;
 import tegenton.card.parse.LexiconTest;
 import tegenton.card.parse.lexicon.Word;
 
-public class ColorLexiconTest extends LexiconTest {
+public class SymbolLexiconTest extends LexiconTest {
     @ParameterizedTest
     @EnumSource(ColorWord.class)
     void colorWord(ColorWord color) {
