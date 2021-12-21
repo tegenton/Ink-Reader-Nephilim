@@ -8,7 +8,6 @@ import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Determiner;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.turn.Chronology;
-import tegenton.card.parse.lexicon.game.type.CardType;
 
 import java.util.Optional;
 
@@ -29,7 +28,7 @@ public class AState extends State {
             case 'L' -> ALState.state();
             case 'M' -> AMState.state();
             case 'N' -> ANState.state();
-            case 'R' -> new SuffixSubstring("RTIFACT", CardType.ARTIFACT);
+            case 'R' -> ARState.state();
             case 'S' -> ASState.state();
             case 'T' -> ATState.state();
             case 'U' -> new InfixSubstring("UR", 'A', AURAState::state);
