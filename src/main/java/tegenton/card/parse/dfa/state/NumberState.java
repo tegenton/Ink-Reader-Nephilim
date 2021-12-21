@@ -33,7 +33,7 @@ public final class NumberState extends State {
     @Override
     public Optional<ValueWord> produce(final char c) {
         return Optional.ofNullable(switch (c) {
-            case '\0', ' ' -> Number.valueOf(number);
+            case '\0', '/', ' ' -> Number.valueOf(number);
             default -> null;
         });
     }

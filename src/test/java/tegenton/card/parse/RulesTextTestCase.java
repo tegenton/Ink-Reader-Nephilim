@@ -5,33 +5,41 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import tegenton.card.parse.lexicon.Word;
+import tegenton.card.parse.lexicon.value.Number;
 
 import java.util.List;
 
 import static tegenton.card.parse.lexicon.Adjective.EQUAL;
 import static tegenton.card.parse.lexicon.Adjective.SAME;
 import static tegenton.card.parse.lexicon.Adverb.NOT;
+import static tegenton.card.parse.lexicon.Adverb.ONLY;
 import static tegenton.card.parse.lexicon.Conjunction.AND;
 import static tegenton.card.parse.lexicon.Conjunction.THEN;
 import static tegenton.card.parse.lexicon.Determiner.*;
 import static tegenton.card.parse.lexicon.Morpheme.*;
 import static tegenton.card.parse.lexicon.Noun.*;
 import static tegenton.card.parse.lexicon.Preposition.*;
-import static tegenton.card.parse.lexicon.SubordinateConjunction.AS;
-import static tegenton.card.parse.lexicon.SubordinateConjunction.THOUGH;
+import static tegenton.card.parse.lexicon.SubordinateConjunction.*;
 import static tegenton.card.parse.lexicon.Symbol.*;
+import static tegenton.card.parse.lexicon.game.Color.W;
 import static tegenton.card.parse.lexicon.game.ColorWord.BLACK;
 import static tegenton.card.parse.lexicon.game.GameNoun.EFFECT;
+import static tegenton.card.parse.lexicon.game.GameNoun.TURN;
 import static tegenton.card.parse.lexicon.game.Keyword.*;
 import static tegenton.card.parse.lexicon.game.source.SourceVerb.DO;
+import static tegenton.card.parse.lexicon.game.source.target.TargetAdjective.ABLE;
 import static tegenton.card.parse.lexicon.game.source.target.TargetAuxiliaryVerb.CAN;
 import static tegenton.card.parse.lexicon.game.source.target.TargetNoun.THEY;
 import static tegenton.card.parse.lexicon.game.source.target.TargetNoun.WHO;
-import static tegenton.card.parse.lexicon.game.source.target.object.ObjectNoun.CARD;
-import static tegenton.card.parse.lexicon.game.source.target.object.ObjectNoun.IT;
-import static tegenton.card.parse.lexicon.game.source.target.object.ObjectVerb.ATTACK;
-import static tegenton.card.parse.lexicon.game.source.target.object.ObjectVerb.HAVE;
+import static tegenton.card.parse.lexicon.game.source.target.object.ObjectNoun.*;
+import static tegenton.card.parse.lexicon.game.source.target.object.ObjectVerb.*;
+import static tegenton.card.parse.lexicon.game.source.target.player.PlayerAdjective.DEFENDING;
 import static tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb.*;
+import static tegenton.card.parse.lexicon.game.turn.Chronology.BEFORE;
+import static tegenton.card.parse.lexicon.game.turn.Chronology.DURING;
+import static tegenton.card.parse.lexicon.game.turn.Duration.UNTIL;
+import static tegenton.card.parse.lexicon.game.turn.Phase.COMBAT;
+import static tegenton.card.parse.lexicon.game.turn.Step.END;
 import static tegenton.card.parse.lexicon.game.type.CardType.CREATURE;
 import static tegenton.card.parse.lexicon.game.type.CardType.LAND;
 import static tegenton.card.parse.lexicon.game.type.CreatureType.WALL;
@@ -56,7 +64,8 @@ public class RulesTextTestCase {
             @DisplayName("Animate Wall")
             void animateWall() {
                 text = "Enchant Wall\nEnchanted Wall can attack as though it didn\u2019t have defender.";
-                tokens = List.of(ENCHANT, SPACE, WALL, NEWLINE, ENCHANT, ED, SPACE, WALL, SPACE, CAN, SPACE, ATTACK, SPACE, AS, SPACE, THOUGH, SPACE, IT, SPACE, DO, NOT, SPACE, HAVE, SPACE, DEFENDER, PERIOD);
+                tokens = List.of(ENCHANT, SPACE, WALL, NEWLINE,
+                        ENCHANT, ED, SPACE, WALL, SPACE, CAN, SPACE, ATTACK, SPACE, AS, SPACE, THOUGH, SPACE, IT, SPACE, DO, NOT, SPACE, HAVE, SPACE, DEFENDER, PERIOD);
             }
 
             @Test
@@ -70,7 +79,8 @@ public class RulesTextTestCase {
             @DisplayName("Balance")
             void balance() {
                 text = "Each player chooses a number of lands they control equal to the number of lands controlled by the player who controls the fewest, then sacrifices the rest. Players discard cards and sacrifice creatures the same way.";
-                tokens = List.of(EACH, SPACE, PLAY, ER, SPACE, CHOOSE, SPACE, A, SPACE, NUMBER, SPACE, OF, SPACE, LAND, S, SPACE, THEY, SPACE, CONTROL, SPACE, EQUAL, SPACE, TO, SPACE, THE, SPACE, NUMBER, SPACE, OF, SPACE, LAND, S, SPACE, CONTROL, ED, SPACE, BY, SPACE, THE, SPACE, PLAY, ER, SPACE, WHO, SPACE, CONTROL, SPACE, THE, SPACE, FEWEST, COMMA, SPACE, THEN, SPACE, SACRIFICE, SPACE, THE, SPACE, REST, PERIOD, SPACE, PLAY, ER, S, SPACE, DISCARD, SPACE, CARD, S, SPACE, AND, SPACE, SACRIFICE, SPACE, CREATURE, S, SPACE, THE, SPACE, SAME, SPACE, WAY, PERIOD);
+                tokens = List.of(EACH, SPACE, PLAY, ER, SPACE, CHOOSE, SPACE, A, SPACE, NUMBER, SPACE, OF, SPACE, LAND, S, SPACE, THEY, SPACE, CONTROL, SPACE, EQUAL, SPACE, TO, SPACE, THE, SPACE, NUMBER, SPACE, OF, SPACE, LAND, S, SPACE, CONTROL, ED, SPACE, BY, SPACE, THE, SPACE, PLAY, ER, SPACE, WHO, SPACE, CONTROL, SPACE, THE, SPACE, FEWEST, COMMA, SPACE, THEN, SPACE, SACRIFICE, SPACE, THE, SPACE, REST, PERIOD, SPACE,
+                        PLAY, ER, S, SPACE, DISCARD, SPACE, CARD, S, SPACE, AND, SPACE, SACRIFICE, SPACE, CREATURE, S, SPACE, THE, SPACE, SAME, SPACE, WAY, PERIOD);
             }
 
             @Test
@@ -84,19 +94,26 @@ public class RulesTextTestCase {
             @DisplayName("Black Ward")
             void blackWard() {
                 text = "Enchant creature\nEnchanted creature has protection from black. This effect doesn\u2019t remove ~.";
-                tokens = List.of(ENCHANT, SPACE, CREATURE, NEWLINE, ENCHANT, ED, SPACE, CREATURE, SPACE, HAVE, SPACE, PROTECTION, SPACE, FROM, SPACE, BLACK, PERIOD, SPACE, THIS, SPACE, EFFECT, SPACE, DO, NOT, SPACE, REMOVE, SPACE, TILDE, PERIOD);
+                tokens = List.of(ENCHANT, SPACE, CREATURE, NEWLINE,
+                        ENCHANT, ED, SPACE, CREATURE, SPACE, HAVE, SPACE, PROTECTION, SPACE, FROM, SPACE, BLACK, PERIOD,
+                        SPACE, THIS, SPACE, EFFECT, SPACE, DO, NOT, SPACE, REMOVE, SPACE, TILDE, PERIOD);
             }
 
             @Test
             @DisplayName("Blaze of Glory")
             void blazeOfGlory() {
                 text = "Cast this spell only during combat before blockers are declared.\nTarget creature defending player controls can block any number of creatures this turn. It blocks each attacking creature this turn if able.";
+                tokens = List.of(CAST, SPACE, THIS, SPACE, SPELL, SPACE, ONLY, SPACE, DURING, SPACE, COMBAT, SPACE, BEFORE, SPACE, BLOCK, ER, S, SPACE, IS, SPACE, DECLARE, ED, PERIOD, NEWLINE,
+                        TARGET, SPACE, CREATURE, SPACE, DEFENDING, SPACE, PLAY, ER, SPACE, CONTROL, SPACE, CAN, SPACE, BLOCK, SPACE, ANY, SPACE, NUMBER, SPACE, OF, SPACE, CREATURE, S, SPACE, THIS, SPACE, TURN, PERIOD, SPACE,
+                        IT, SPACE, BLOCK, SPACE, EACH, SPACE, ATTACK, ING, SPACE, CREATURE, SPACE, THIS, SPACE, TURN, SPACE, IF, SPACE, ABLE, PERIOD);
             }
 
             @Test
             @DisplayName("Blessing")
             void blessing() {
                 text = "Enchant creature \n{W}: Enchanted creature gets +1/+1 until end of turn.";
+                tokens = List.of(ENCHANT, SPACE, CREATURE, SPACE, NEWLINE,
+                        LBRACKET, W, RBRACKET, COLON, SPACE, ENCHANT, ED, SPACE, CREATURE, SPACE, GET, SPACE, PLUS, Number.valueOf(1), SLASH, PLUS, Number.valueOf(1), SPACE, UNTIL, SPACE, END, SPACE, OF, SPACE, TURN, PERIOD);
             }
 
             @Test
