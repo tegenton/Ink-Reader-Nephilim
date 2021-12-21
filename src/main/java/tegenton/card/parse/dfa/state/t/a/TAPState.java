@@ -2,8 +2,10 @@ package tegenton.card.parse.dfa.state.t.a;
 
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.t.TAState;
+import tegenton.card.parse.dfa.state.t.a.p.TAPPState;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.source.target.object.ObjectVerb;
+
 import java.util.Optional;
 
 public class TAPState extends TAState {
@@ -16,6 +18,7 @@ public class TAPState extends TAState {
     @Override
     public State transition(char c) {
         return switch (c) {
+            case 'P' -> TAPPState.state();
             default -> invalid(c);
         };
     }
