@@ -28,7 +28,7 @@ public class ISLANDState extends ISState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case '\0', ' ' -> LandType.ISLAND;
+            case 'W', '\0', ' ' -> LandType.ISLAND;
             default -> null;
         });
     }

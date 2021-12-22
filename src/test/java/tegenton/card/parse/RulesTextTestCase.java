@@ -10,8 +10,7 @@ import tegenton.card.parse.lexicon.value.Number;
 import java.util.List;
 
 import static tegenton.card.parse.lexicon.Adjective.*;
-import static tegenton.card.parse.lexicon.Adverb.NOT;
-import static tegenton.card.parse.lexicon.Adverb.ONLY;
+import static tegenton.card.parse.lexicon.Adverb.*;
 import static tegenton.card.parse.lexicon.Conjunction.*;
 import static tegenton.card.parse.lexicon.Determiner.*;
 import static tegenton.card.parse.lexicon.Morpheme.*;
@@ -50,8 +49,7 @@ import static tegenton.card.parse.lexicon.game.turn.Step.UPKEEP;
 import static tegenton.card.parse.lexicon.game.type.CardType.*;
 import static tegenton.card.parse.lexicon.game.type.CreatureType.WALL;
 import static tegenton.card.parse.lexicon.game.type.EnchantmentType.AURA;
-import static tegenton.card.parse.lexicon.game.type.LandType.MOUNTAIN;
-import static tegenton.card.parse.lexicon.game.type.LandType.PLAINS;
+import static tegenton.card.parse.lexicon.game.type.LandType.*;
 import static tegenton.card.parse.lexicon.value.EnglishNumber.ONE;
 import static tegenton.card.parse.lexicon.value.Variable.X;
 
@@ -265,6 +263,8 @@ public class RulesTextTestCase {
             @DisplayName("Island Sanctuary")
             void islandSanctuary() {
                 text = "If you would draw a card during your draw step, instead you may skip that draw. If you do, until your next turn, you can\u2019t be attacked except by creatures with flying and/or islandwalk.";
+                tokens = List.of(IF, SPACE, YOU, SPACE, WOULD, SPACE, DRAW, SPACE, A, SPACE, CARD, SPACE, DURING, SPACE, YOU, POSSESSIVE, SPACE, DRAW, SPACE, STEP, COMMA, SPACE, INSTEAD, SPACE, YOU, SPACE, MAY, SPACE, SKIP, SPACE, THAT, SPACE, DRAW, PERIOD, SPACE,
+                        IF, SPACE, YOU, SPACE, DO, COMMA, SPACE, UNTIL, SPACE, YOU, POSSESSIVE, SPACE, NEXT, SPACE, TURN, COMMA, SPACE, YOU, SPACE, CAN, NOT, SPACE, BE, SPACE, ATTACK, ED, SPACE, EXCEPT, SPACE, BY, SPACE, CREATURE, S, SPACE, WITH, SPACE, FLYING, SPACE, AND, SLASH, OR, SPACE, ISLAND, WALK, PERIOD);
             }
 
             @Test
