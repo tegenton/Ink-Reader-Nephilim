@@ -28,8 +28,7 @@ import static tegenton.card.parse.lexicon.game.Keyword.*;
 import static tegenton.card.parse.lexicon.game.Tap.T;
 import static tegenton.card.parse.lexicon.game.TriggerWord.AT;
 import static tegenton.card.parse.lexicon.game.TriggerWord.WHEN;
-import static tegenton.card.parse.lexicon.game.Zone.BATTLEFIELD;
-import static tegenton.card.parse.lexicon.game.Zone.GRAVEYARD;
+import static tegenton.card.parse.lexicon.game.Zone.*;
 import static tegenton.card.parse.lexicon.game.source.SourceNoun.SOURCE;
 import static tegenton.card.parse.lexicon.game.source.SourceVerb.DEAL;
 import static tegenton.card.parse.lexicon.game.source.SourceVerb.DO;
@@ -40,6 +39,7 @@ import static tegenton.card.parse.lexicon.game.source.target.TargetModifier.POSS
 import static tegenton.card.parse.lexicon.game.source.target.TargetNoun.THEY;
 import static tegenton.card.parse.lexicon.game.source.target.TargetNoun.WHO;
 import static tegenton.card.parse.lexicon.game.source.target.TargetVerb.GAIN;
+import static tegenton.card.parse.lexicon.game.source.target.object.ObjectAttribute.POWER;
 import static tegenton.card.parse.lexicon.game.source.target.object.ObjectNoun.*;
 import static tegenton.card.parse.lexicon.game.source.target.object.ObjectVerb.*;
 import static tegenton.card.parse.lexicon.game.source.target.player.PlayerAdjective.DEFENDING;
@@ -353,30 +353,36 @@ public class RulesTextTestCase {
             @DisplayName("Righteousness")
             void righteousness() {
                 text = "Target blocking creature gets +7/+7 until end of turn.";
+                tokens = List.of(TARGET, SPACE, BLOCK, ING, SPACE, CREATURE, SPACE, GET, SPACE, PLUS, new Number(7), SLASH, PLUS, new Number(7), SPACE, UNTIL, SPACE, END, SPACE, OF, SPACE, TURN, PERIOD);
             }
 
             @Test
             @DisplayName("Samite Healer")
             void samiteHealer() {
                 text = "{T}: Prevent the next 1 damage that would be dealt to any target this turn.";
+                tokens = List.of(LBRACKET, T, RBRACKET, COLON, SPACE, PREVENT, SPACE, THE, SPACE, NEXT, SPACE, new Number(1), SPACE, DAMAGE, SPACE, THAT, SPACE, WOULD, SPACE, BE, SPACE, DEAL, ED, SPACE, TO, SPACE, ANY, SPACE, TARGET, SPACE, THIS, SPACE, TURN, PERIOD);
             }
 
             @Test
             @DisplayName("Savannah Lions")
             void savannahLions() {
                 text = "";
+                tokens = List.of();
             }
 
             @Test
             @DisplayName("Serra Angel")
             void serraAngel() {
                 text = "Flying, vigilance";
+                tokens = List.of(FLYING, COMMA, SPACE, VIGILANCE);
             }
 
             @Test
             @DisplayName("Swords to Plowshares")
             void swordsToPlowshares() {
                 text = "Exile target creature. Its controller gains life equal to its power.";
+                tokens = List.of(EXILE, SPACE, TARGET, SPACE, CREATURE, PERIOD, SPACE,
+                        IT, POSSESSIVE, SPACE, CONTROL, ER, SPACE, GAIN, SPACE, LIFE, SPACE, EQUAL, SPACE, TO, SPACE, IT, POSSESSIVE, SPACE, POWER, PERIOD);
             }
 
             @Test
