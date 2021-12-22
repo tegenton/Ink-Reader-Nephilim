@@ -31,7 +31,7 @@ public class ERState extends EState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case 'S', '\0', ' ' -> Morpheme.ER;
+            case 'S', '\u2019', '\0', ' ' -> Morpheme.ER;
             default -> null;
         });
     }

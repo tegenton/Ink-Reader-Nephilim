@@ -18,7 +18,7 @@ public class SWAMPState extends SState {
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'S' -> this;
+            case 'S' -> SState.state();
             case '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
@@ -27,7 +27,7 @@ public class SWAMPState extends SState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case '\0', ' ' -> LandType.SWAMP;
+            case 'S', '\0', ' ' -> LandType.SWAMP;
             default -> null;
         });
     }

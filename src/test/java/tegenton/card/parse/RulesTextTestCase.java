@@ -271,18 +271,22 @@ public class RulesTextTestCase {
             @DisplayName("Karma")
             void karma() {
                 text = "At the beginning of each player\u2019s upkeep, ~ deals damage to that player equal to the number of Swamps they control.";
+                tokens = List.of(AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, EACH, SPACE, PLAY, ER, POSSESSIVE, SPACE, UPKEEP, COMMA, SPACE, TILDE, SPACE, DEAL, SPACE, DAMAGE, SPACE, TO, SPACE, THAT, SPACE, PLAY, ER, SPACE, EQUAL, SPACE, TO, SPACE, THE, SPACE, NUMBER, SPACE, OF, SPACE, SWAMP, S, SPACE, THEY, SPACE, CONTROL, PERIOD);
             }
 
             @Test
             @DisplayName("Lance")
             void lance() {
                 text = "Enchant creature\nEnchanted creature has first strike.";
+                tokens = List.of(ENCHANT, SPACE, CREATURE, NEWLINE,
+                        ENCHANT, ED, SPACE, CREATURE, SPACE, HAVE, SPACE, FIRST, SPACE, STRIKE, PERIOD);
             }
 
             @Test
             @DisplayName("Mesa Pegasus")
             void mesaPegasus() {
                 text = "Flying; banding";
+                tokens = List.of(FLYING, SEMICOLON, SPACE, BANDING);
             }
 
             @Test
