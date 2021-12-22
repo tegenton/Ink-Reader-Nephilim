@@ -2,6 +2,7 @@ package tegenton.card.parse.dfa.state;
 
 import tegenton.card.parse.lexicon.Symbol;
 import tegenton.card.parse.lexicon.Word;
+
 import java.util.Optional;
 
 public class SymbolState extends State {
@@ -23,7 +24,6 @@ public class SymbolState extends State {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (symbol) {
-            case '\u2019' -> Symbol.APOSTROPHE;
             case '\u2022' -> Symbol.BULLET;
             case '\u201D' -> Symbol.CLOSEQUOTE;
             case ':' -> Symbol.COLON;

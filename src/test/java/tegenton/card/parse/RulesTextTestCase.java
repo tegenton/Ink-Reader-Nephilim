@@ -13,8 +13,10 @@ import static tegenton.card.parse.lexicon.Adjective.*;
 import static tegenton.card.parse.lexicon.Adverb.*;
 import static tegenton.card.parse.lexicon.Conjunction.*;
 import static tegenton.card.parse.lexicon.Determiner.*;
+import static tegenton.card.parse.lexicon.Genitive.HALF;
 import static tegenton.card.parse.lexicon.Morpheme.*;
 import static tegenton.card.parse.lexicon.Noun.*;
+import static tegenton.card.parse.lexicon.Particle.UP;
 import static tegenton.card.parse.lexicon.Preposition.*;
 import static tegenton.card.parse.lexicon.SubordinateConjunction.*;
 import static tegenton.card.parse.lexicon.Symbol.*;
@@ -23,7 +25,9 @@ import static tegenton.card.parse.lexicon.game.ColorWord.*;
 import static tegenton.card.parse.lexicon.game.GameNoun.*;
 import static tegenton.card.parse.lexicon.game.GameVerb.BE;
 import static tegenton.card.parse.lexicon.game.Keyword.*;
+import static tegenton.card.parse.lexicon.game.Tap.T;
 import static tegenton.card.parse.lexicon.game.TriggerWord.AT;
+import static tegenton.card.parse.lexicon.game.TriggerWord.WHEN;
 import static tegenton.card.parse.lexicon.game.source.SourceNoun.SOURCE;
 import static tegenton.card.parse.lexicon.game.source.SourceVerb.DEAL;
 import static tegenton.card.parse.lexicon.game.source.SourceVerb.DO;
@@ -293,18 +297,23 @@ public class RulesTextTestCase {
             @DisplayName("Northern Paladin")
             void northernPaladin() {
                 text = "{W}{W}, {T}: Destroy target black permanent.";
+                tokens = List.of(LBRACKET, W, RBRACKET, LBRACKET, W, RBRACKET, COMMA, SPACE, LBRACKET, T, RBRACKET, COLON, SPACE, DESTROY, SPACE, TARGET, SPACE, BLACK, SPACE, PERMANENT, PERIOD);
             }
 
             @Test
             @DisplayName("Pearled Unicorn")
             void pearledUnicorn() {
                 text = "";
+                tokens = List.of();
             }
 
             @Test
             @DisplayName("Personal Incarnation")
             void personalIncarnation() {
                 text = "{0}: The next 1 damage that would be dealt to ~ this turn is dealt to its owner instead. Only ~\u2019s owner may activate this ability.\nWhen ~ dies, its owner loses half their life, rounded up.";
+                tokens = List.of(LBRACKET, new Number(0), RBRACKET, COLON, SPACE, THE, SPACE, NEXT, SPACE, new Number(1), SPACE, DAMAGE, SPACE, THAT, SPACE, WOULD, SPACE, BE, SPACE, DEAL, ED, SPACE, TO, SPACE, TILDE, SPACE, THIS, SPACE, TURN, SPACE, IS, SPACE, DEAL, ED, SPACE, TO, SPACE, IT, POSSESSIVE, SPACE, OWN, ER, SPACE, INSTEAD, PERIOD, SPACE,
+                        ONLY, SPACE, TILDE, POSSESSIVE, SPACE, OWN, ER, SPACE, MAY, SPACE, ACTIVATE, SPACE, THIS, SPACE, ABILITY, PERIOD, NEWLINE,
+                        WHEN, SPACE, TILDE, SPACE, DIE, COMMA, SPACE, IT, POSSESSIVE, SPACE, OWN, ER, SPACE, LOSE, SPACE, HALF, SPACE, THEY, POSSESSIVE, SPACE, LIFE, COMMA, SPACE, ROUNDED, SPACE, UP, PERIOD);
             }
 
             @Test

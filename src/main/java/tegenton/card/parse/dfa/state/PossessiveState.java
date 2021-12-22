@@ -15,6 +15,7 @@ public class PossessiveState extends State {
     @Override
     public State transition(char c) {
         return switch (c) {
+            case 'S' -> this;
             case '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
