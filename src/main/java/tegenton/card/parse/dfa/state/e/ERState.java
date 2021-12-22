@@ -23,7 +23,7 @@ public class ERState extends EState {
         return switch (c) {
             case 'S' -> SState.state();
             case '\u2019' -> new SuffixSubstring("\u2019S", TargetModifier.POSSESSIVE);
-            case '\0', ' ' -> SymbolState.state(c);
+            case '\0', '.', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }
@@ -31,7 +31,7 @@ public class ERState extends EState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case 'S', '\u2019', '\0', ' ' -> Morpheme.ER;
+            case 'S', '\u2019', '.', '\0', ' ' -> Morpheme.ER;
             default -> null;
         });
     }

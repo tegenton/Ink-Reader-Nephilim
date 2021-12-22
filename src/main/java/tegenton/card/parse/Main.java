@@ -10,7 +10,7 @@ public class Main {
         Lexer lex = new Lexer();
         System.out.print("Card text: ");
         for (Word token : lex.lex(in.nextLine())) {
-            System.out.print(token.getWord());
+            System.out.print("<" + token.getWord() + "> ");
         }
     }
 }

@@ -28,6 +28,8 @@ import static tegenton.card.parse.lexicon.game.Keyword.*;
 import static tegenton.card.parse.lexicon.game.Tap.T;
 import static tegenton.card.parse.lexicon.game.TriggerWord.AT;
 import static tegenton.card.parse.lexicon.game.TriggerWord.WHEN;
+import static tegenton.card.parse.lexicon.game.Zone.BATTLEFIELD;
+import static tegenton.card.parse.lexicon.game.Zone.GRAVEYARD;
 import static tegenton.card.parse.lexicon.game.source.SourceNoun.SOURCE;
 import static tegenton.card.parse.lexicon.game.source.SourceVerb.DEAL;
 import static tegenton.card.parse.lexicon.game.source.SourceVerb.DO;
@@ -320,24 +322,31 @@ public class RulesTextTestCase {
             @DisplayName("Purelace")
             void purelace() {
                 text = "Target spell or permanent becomes white.";
+                tokens = List.of(TARGET, SPACE, SPELL, SPACE, OR, SPACE, PERMANENT, SPACE, BECOME, SPACE, WHITE, PERIOD);
             }
 
             @Test
             @DisplayName("Red Ward")
             void redWard() {
                 text = "Enchant creature\nEnchanted creature has protection from red. This effect doesn\u2019t remove ~.";
+                tokens = List.of(ENCHANT, SPACE, CREATURE, NEWLINE,
+                        ENCHANT, ED, SPACE, CREATURE, SPACE, HAVE, SPACE, PROTECTION, SPACE, FROM, SPACE, RED, PERIOD,
+                        SPACE, THIS, SPACE, EFFECT, SPACE, DO, NOT, SPACE, REMOVE, SPACE, TILDE, PERIOD);
             }
 
             @Test
             @DisplayName("Resurrection")
             void resurrection() {
                 text = "Return target creature card from your graveyard to the battlefield.";
+                tokens = List.of(RETURN, SPACE, TARGET, SPACE, CREATURE, SPACE, CARD, SPACE, FROM, SPACE, YOU, POSSESSIVE, SPACE, GRAVEYARD, SPACE, TO, SPACE, THE, SPACE, BATTLEFIELD, PERIOD);
             }
 
             @Test
             @DisplayName("Reverse Damage")
             void reverseDamage() {
                 text = "The next time a source of your choice would deal damage to you this turn, prevent that damage. You gain life equal to the damage prevented this way.";
+                tokens = List.of(THE, SPACE, NEXT, SPACE, TIME, SPACE, A, SPACE, SOURCE, SPACE, OF, SPACE, YOU, POSSESSIVE, SPACE, CHOICE, SPACE, WOULD, SPACE, DEAL, SPACE, DAMAGE, SPACE, TO, SPACE, YOU, SPACE, THIS, SPACE, TURN, COMMA, SPACE, PREVENT, SPACE, THAT, SPACE, DAMAGE, PERIOD, SPACE,
+                        YOU, SPACE, GAIN, SPACE, LIFE, SPACE, EQUAL, SPACE, TO, SPACE, THE, SPACE, DAMAGE, SPACE, PREVENT, ED, SPACE, THIS, SPACE, WAY, PERIOD);
             }
 
             @Test
