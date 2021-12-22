@@ -3,7 +3,7 @@ package tegenton.card.parse.lexicon.value;
 public final class Number implements ValueWord {
     private final int value;
 
-    private Number(final int val) {
+    public Number(final int val) {
         this.value = val;
     }
 

@@ -34,6 +34,7 @@ import static tegenton.card.parse.lexicon.game.source.target.TargetAuxiliaryVerb
 import static tegenton.card.parse.lexicon.game.source.target.TargetModifier.POSSESSIVE;
 import static tegenton.card.parse.lexicon.game.source.target.TargetNoun.THEY;
 import static tegenton.card.parse.lexicon.game.source.target.TargetNoun.WHO;
+import static tegenton.card.parse.lexicon.game.source.target.TargetVerb.GAIN;
 import static tegenton.card.parse.lexicon.game.source.target.object.ObjectNoun.*;
 import static tegenton.card.parse.lexicon.game.source.target.object.ObjectVerb.*;
 import static tegenton.card.parse.lexicon.game.source.target.player.PlayerAdjective.DEFENDING;
@@ -51,6 +52,8 @@ import static tegenton.card.parse.lexicon.game.type.CreatureType.WALL;
 import static tegenton.card.parse.lexicon.game.type.EnchantmentType.AURA;
 import static tegenton.card.parse.lexicon.game.type.LandType.MOUNTAIN;
 import static tegenton.card.parse.lexicon.game.type.LandType.PLAINS;
+import static tegenton.card.parse.lexicon.value.EnglishNumber.ONE;
+import static tegenton.card.parse.lexicon.value.Variable.X;
 
 public class RulesTextTestCase {
     public static String text;
@@ -121,7 +124,7 @@ public class RulesTextTestCase {
             void blessing() {
                 text = "Enchant creature\n{W}: Enchanted creature gets +1/+1 until end of turn.";
                 tokens = List.of(ENCHANT, SPACE, CREATURE, NEWLINE,
-                        LBRACKET, W, RBRACKET, COLON, SPACE, ENCHANT, ED, SPACE, CREATURE, SPACE, GET, SPACE, PLUS, Number.valueOf(1), SLASH, PLUS, Number.valueOf(1), SPACE, UNTIL, SPACE, END, SPACE, OF, SPACE, TURN, PERIOD);
+                        LBRACKET, W, RBRACKET, COLON, SPACE, ENCHANT, ED, SPACE, CREATURE, SPACE, GET, SPACE, PLUS, new Number(1), SLASH, PLUS, new Number(1), SPACE, UNTIL, SPACE, END, SPACE, OF, SPACE, TURN, PERIOD);
             }
 
             @Test
@@ -137,35 +140,35 @@ public class RulesTextTestCase {
             @DisplayName("Castle")
             void castle() {
                 text = "Untapped creatures you control get +0/+2.";
-                tokens = List.of(NOT, TAP, ED, SPACE, CREATURE, S, SPACE, YOU, SPACE, CONTROL, SPACE, GET, SPACE, PLUS, Number.valueOf(0), SLASH, PLUS, Number.valueOf(2), PERIOD);
+                tokens = List.of(NOT, TAP, ED, SPACE, CREATURE, S, SPACE, YOU, SPACE, CONTROL, SPACE, GET, SPACE, PLUS, new Number(0), SLASH, PLUS, new Number(2), PERIOD);
             }
 
             @Test
             @DisplayName("Circle of Protection: Blue")
             void circleOfProtectionBlue() {
                 text = "{1}: The next time a blue source of your choice would deal damage to you this turn, prevent that damage.";
-                tokens = List.of(LBRACKET, Number.valueOf(1), RBRACKET, COLON, SPACE, THE, SPACE, NEXT, SPACE, TIME, SPACE, A, SPACE, BLUE, SPACE, SOURCE, SPACE, OF, SPACE, YOU, POSSESSIVE, SPACE, CHOICE, SPACE, WOULD, SPACE, DEAL, SPACE, DAMAGE, SPACE, TO, SPACE, YOU, SPACE, THIS, SPACE, TURN, COMMA, SPACE, PREVENT, SPACE, THAT, SPACE, DAMAGE, PERIOD);
+                tokens = List.of(LBRACKET, new Number(1), RBRACKET, COLON, SPACE, THE, SPACE, NEXT, SPACE, TIME, SPACE, A, SPACE, BLUE, SPACE, SOURCE, SPACE, OF, SPACE, YOU, POSSESSIVE, SPACE, CHOICE, SPACE, WOULD, SPACE, DEAL, SPACE, DAMAGE, SPACE, TO, SPACE, YOU, SPACE, THIS, SPACE, TURN, COMMA, SPACE, PREVENT, SPACE, THAT, SPACE, DAMAGE, PERIOD);
             }
 
             @Test
             @DisplayName("Circle of Protection: Green")
             void circleOfProtectionGreen() {
                 text = "{1}: The next time a green source of your choice would deal damage to you this turn, prevent that damage.";
-                tokens = List.of(LBRACKET, Number.valueOf(1), RBRACKET, COLON, SPACE, THE, SPACE, NEXT, SPACE, TIME, SPACE, A, SPACE, GREEN, SPACE, SOURCE, SPACE, OF, SPACE, YOU, POSSESSIVE, SPACE, CHOICE, SPACE, WOULD, SPACE, DEAL, SPACE, DAMAGE, SPACE, TO, SPACE, YOU, SPACE, THIS, SPACE, TURN, COMMA, SPACE, PREVENT, SPACE, THAT, SPACE, DAMAGE, PERIOD);
+                tokens = List.of(LBRACKET, new Number(1), RBRACKET, COLON, SPACE, THE, SPACE, NEXT, SPACE, TIME, SPACE, A, SPACE, GREEN, SPACE, SOURCE, SPACE, OF, SPACE, YOU, POSSESSIVE, SPACE, CHOICE, SPACE, WOULD, SPACE, DEAL, SPACE, DAMAGE, SPACE, TO, SPACE, YOU, SPACE, THIS, SPACE, TURN, COMMA, SPACE, PREVENT, SPACE, THAT, SPACE, DAMAGE, PERIOD);
             }
 
             @Test
             @DisplayName("Circle of Protection: Red")
             void circleOfProtectionRed() {
                 text = "{1}: The next time a red source of your choice would deal damage to you this turn, prevent that damage.";
-                tokens = List.of(LBRACKET, Number.valueOf(1), RBRACKET, COLON, SPACE, THE, SPACE, NEXT, SPACE, TIME, SPACE, A, SPACE, RED, SPACE, SOURCE, SPACE, OF, SPACE, YOU, POSSESSIVE, SPACE, CHOICE, SPACE, WOULD, SPACE, DEAL, SPACE, DAMAGE, SPACE, TO, SPACE, YOU, SPACE, THIS, SPACE, TURN, COMMA, SPACE, PREVENT, SPACE, THAT, SPACE, DAMAGE, PERIOD);
+                tokens = List.of(LBRACKET, new Number(1), RBRACKET, COLON, SPACE, THE, SPACE, NEXT, SPACE, TIME, SPACE, A, SPACE, RED, SPACE, SOURCE, SPACE, OF, SPACE, YOU, POSSESSIVE, SPACE, CHOICE, SPACE, WOULD, SPACE, DEAL, SPACE, DAMAGE, SPACE, TO, SPACE, YOU, SPACE, THIS, SPACE, TURN, COMMA, SPACE, PREVENT, SPACE, THAT, SPACE, DAMAGE, PERIOD);
             }
 
             @Test
             @DisplayName("Circle of Protection: White")
             void circleOfProtectionWhite() {
                 text = "{1}: The next time a white source of your choice would deal damage to you this turn, prevent that damage.";
-                tokens = List.of(LBRACKET, Number.valueOf(1), RBRACKET, COLON, SPACE, THE, SPACE, NEXT, SPACE, TIME, SPACE, A, SPACE, WHITE, SPACE, SOURCE, SPACE, OF, SPACE, YOU, POSSESSIVE, SPACE, CHOICE, SPACE, WOULD, SPACE, DEAL, SPACE, DAMAGE, SPACE, TO, SPACE, YOU, SPACE, THIS, SPACE, TURN, COMMA, SPACE, PREVENT, SPACE, THAT, SPACE, DAMAGE, PERIOD);
+                tokens = List.of(LBRACKET, new Number(1), RBRACKET, COLON, SPACE, THE, SPACE, NEXT, SPACE, TIME, SPACE, A, SPACE, WHITE, SPACE, SOURCE, SPACE, OF, SPACE, YOU, POSSESSIVE, SPACE, CHOICE, SPACE, WOULD, SPACE, DEAL, SPACE, DAMAGE, SPACE, TO, SPACE, YOU, SPACE, THIS, SPACE, TURN, COMMA, SPACE, PREVENT, SPACE, THAT, SPACE, DAMAGE, PERIOD);
             }
 
             @Test
@@ -188,7 +191,7 @@ public class RulesTextTestCase {
             @DisplayName("Crusade")
             void crusade() {
                 text = "White creatures get +1/+1.";
-                tokens = List.of(WHITE, SPACE, CREATURE, S, SPACE, GET, SPACE, PLUS, Number.valueOf(1), SLASH, PLUS, Number.valueOf(1), PERIOD);
+                tokens = List.of(WHITE, SPACE, CREATURE, S, SPACE, GET, SPACE, PLUS, new Number(1), SLASH, PLUS, new Number(1), PERIOD);
             }
 
             @Test
@@ -209,36 +212,53 @@ public class RulesTextTestCase {
             @DisplayName("Farmstead")
             void farmstead() {
                 text = "Enchant land\nEnchanted land has \u201CAt the beginning of your upkeep, you may pay {W}{W}. If you do, you gain 1 life.\u201D";
+                tokens = List.of(ENCHANT, SPACE, LAND, NEWLINE,
+                        ENCHANT, ED, SPACE, LAND, SPACE, HAVE, SPACE, OPENQUOTE, AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, YOU, POSSESSIVE, SPACE, UPKEEP, COMMA, SPACE, YOU, SPACE, MAY, SPACE, PAY, SPACE, LBRACKET, W, RBRACKET, LBRACKET, W, RBRACKET, PERIOD, SPACE,
+                        IF, SPACE, YOU, SPACE, DO, COMMA, SPACE, YOU, SPACE, GAIN, SPACE, new Number(1), SPACE, LIFE, PERIOD, CLOSEQUOTE);
             }
 
             @Test
             @DisplayName("Green Ward")
             void greenWard() {
                 text = "Enchant creature\nEnchanted creature has protection from green. This effect doesn\u2019t remove ~.";
+                tokens = List.of(ENCHANT, SPACE, CREATURE, NEWLINE,
+                        ENCHANT, ED, SPACE, CREATURE, SPACE, HAVE, SPACE, PROTECTION, SPACE, FROM, SPACE, GREEN, PERIOD,
+                        SPACE, THIS, SPACE, EFFECT, SPACE, DO, NOT, SPACE, REMOVE, SPACE, TILDE, PERIOD);
             }
 
             @Test
             @DisplayName("Guardian Angel")
             void guardianAngel() {
                 text = "Prevent the next X damage that would be dealt to any target this turn. Until end of turn, you may pay {1} any time you could cast an instant. If you do, prevent the next 1 damage that would be dealt to that permanent or player this turn.";
+                tokens = List.of(PREVENT, SPACE, THE, SPACE, NEXT, SPACE, X, SPACE, DAMAGE, SPACE, THAT, SPACE, WOULD, SPACE, BE, SPACE, DEAL, ED, SPACE, TO, SPACE, ANY, SPACE, TARGET, SPACE, THIS, SPACE, TURN, PERIOD, SPACE,
+                        UNTIL, SPACE, END, SPACE, OF, SPACE, TURN, COMMA, SPACE, YOU, SPACE, MAY, SPACE, PAY, SPACE, LBRACKET, new Number(1), RBRACKET, SPACE, ANY, SPACE, TIME, SPACE, YOU, SPACE, COULD, SPACE, CAST, SPACE, AN, SPACE, INSTANT, PERIOD, SPACE,
+                        IF, SPACE, YOU, SPACE, DO, COMMA, SPACE, PREVENT, SPACE, THE, SPACE, NEXT, SPACE, new Number(1), SPACE, DAMAGE, SPACE, THAT, SPACE, WOULD, SPACE, BE, SPACE, DEAL, ED, SPACE, TO, SPACE, THAT, SPACE, PERMANENT, SPACE, OR, SPACE, PLAY, ER, SPACE, THIS, SPACE, TURN, PERIOD);
             }
 
             @Test
             @DisplayName("Healing Salve")
             void healingSalve() {
                 text = "Choose one \u2014\n\u2022 Target player gains 3 life.\n\u2022 Prevent the next 3 damage that would be dealt to any target this turn.";
+                tokens = List.of(CHOOSE, SPACE, ONE, SPACE, DASH, NEWLINE,
+                        BULLET, SPACE, TARGET, SPACE, PLAY, ER, SPACE, GAIN, SPACE, new Number(3), SPACE, LIFE, PERIOD, NEWLINE,
+                        BULLET, SPACE, PREVENT, SPACE, THE, SPACE, NEXT, SPACE, new Number(3), SPACE, DAMAGE, SPACE, THAT, SPACE, WOULD, SPACE, BE, SPACE, DEAL, ED, SPACE, TO, SPACE, ANY, SPACE, TARGET, SPACE, THIS, SPACE, TURN, PERIOD);
             }
 
             @Test
             @DisplayName("Holy Armor")
             void holyArmor() {
                 text = "Enchant creature\nEnchanted creature gets +0/+2.\n{W}: Enchanted creature gets +0/+1 until end of turn.";
+                tokens = List.of(ENCHANT, SPACE, CREATURE, NEWLINE,
+                        ENCHANT, ED, SPACE, CREATURE, SPACE, GET, SPACE, PLUS, new Number(0), SLASH, PLUS, new Number(2), PERIOD, NEWLINE,
+                        LBRACKET, W, RBRACKET, COLON, SPACE, ENCHANT, ED, SPACE, CREATURE, SPACE, GET, SPACE, PLUS, new Number(0), SLASH, PLUS, new Number(1), SPACE, UNTIL, SPACE, END, SPACE, OF, SPACE, TURN, PERIOD);
             }
 
             @Test
             @DisplayName("Holy Strength")
             void holyStrength() {
                 text = "Enchant creature\nEnchanted creature gets +1/+2.";
+                tokens = List.of(ENCHANT, SPACE, CREATURE, NEWLINE,
+                        ENCHANT, ED, SPACE, CREATURE, SPACE, GET, SPACE, PLUS, new Number(1), SLASH, PLUS, new Number(2), PERIOD);
             }
 
             @Test
