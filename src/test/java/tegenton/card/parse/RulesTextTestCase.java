@@ -396,24 +396,31 @@ public class RulesTextTestCase {
             @DisplayName("Wall of Swords")
             void wallOfSwords() {
                 text = "Defender\nFlying";
+                tokens = List.of(DEFENDER, NEWLINE, FLYING);
             }
 
             @Test
             @DisplayName("White Knight")
             void whiteKnight() {
                 text = "First strike\nProtection from black";
+                tokens = List.of(FIRST, SPACE, STRIKE, NEWLINE, PROTECTION, SPACE, FROM, SPACE, BLACK);
             }
 
             @Test
             @DisplayName("White Ward")
             void whiteWard() {
                 text = "Enchant creature\nEnchanted creature has protection from white. This effect doesn\u2019t remove ~.";
+                tokens = List.of(ENCHANT, SPACE, CREATURE, NEWLINE,
+                        ENCHANT, ED, SPACE, CREATURE, SPACE, HAVE, SPACE, PROTECTION, SPACE, FROM, SPACE, WHITE, PERIOD,
+                        SPACE, THIS, SPACE, EFFECT, SPACE, DO, NOT, SPACE, REMOVE, SPACE, TILDE, PERIOD);
             }
 
             @Test
             @DisplayName("Wrath of God")
             void wrathOfGod() {
                 text = "Destroy all creatures. They can\u2019t be regenerated.";
+                tokens = List.of(DESTROY, SPACE, ALL, SPACE, CREATURE, S, PERIOD, SPACE,
+                        THEY, SPACE, CAN, NOT, SPACE, BE, SPACE, REGENERATE, ED, PERIOD);
             }
         }
     }
