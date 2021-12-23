@@ -389,6 +389,7 @@ public class RulesTextTestCase {
             @DisplayName("Veteran Bodyguard")
             void veteranBodyguard() {
                 text = "As long as ~ is untapped, all damage that would be dealt to you by unblocked creatures is dealt to ~ instead.";
+                tokens = List.of(AS, SPACE, LONG, SPACE, AS, SPACE, TILDE, SPACE, IS, SPACE, NOT, TAP, ED, COMMA, SPACE, ALL, SPACE, DAMAGE, SPACE, THAT, SPACE, WOULD, SPACE, BE, SPACE, DEAL, ED, SPACE, TO, SPACE, YOU, SPACE, BY, SPACE, NOT, BLOCK, ED, SPACE, CREATURE, S, SPACE, IS, SPACE, DEAL, ED, SPACE, TO, SPACE, TILDE, SPACE, INSTEAD, PERIOD);
             }
 
             @Test
