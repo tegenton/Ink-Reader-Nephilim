@@ -79,7 +79,9 @@ public class RulesTextTestCase {
             @Test
             @DisplayName("Animate Wall")
             void animateWall() {
-                text = "Enchant Wall\nEnchanted Wall can attack as though it didn\u2019t have defender.";
+                text = """
+                        Enchant Wall
+                        Enchanted Wall can attack as though it didn\u2019t have defender.""";
                 tokens = List.of(ENCHANT, SPACE, WALL, NEWLINE,
                         ENCHANT, ED, SPACE, WALL, SPACE, CAN, SPACE, ATTACK, SPACE, AS, SPACE, THOUGH, SPACE, IT, SPACE, DO, NOT, SPACE, HAVE, SPACE, DEFENDER, PERIOD);
             }
@@ -109,7 +111,9 @@ public class RulesTextTestCase {
             @Test
             @DisplayName("Black Ward")
             void blackWard() {
-                text = "Enchant creature\nEnchanted creature has protection from black. This effect doesn\u2019t remove ~.";
+                text = """
+                        Enchant creature
+                        Enchanted creature has protection from black. This effect doesn\u2019t remove ~.""";
                 tokens = List.of(ENCHANT, SPACE, CREATURE, NEWLINE,
                         ENCHANT, ED, SPACE, CREATURE, SPACE, HAVE, SPACE, PROTECTION, SPACE, FROM, SPACE, BLACK, PERIOD,
                         SPACE, THIS, SPACE, EFFECT, SPACE, DO, NOT, SPACE, REMOVE, SPACE, TILDE, PERIOD);
@@ -118,7 +122,9 @@ public class RulesTextTestCase {
             @Test
             @DisplayName("Blaze of Glory")
             void blazeOfGlory() {
-                text = "Cast this spell only during combat before blockers are declared.\nTarget creature defending player controls can block any number of creatures this turn. It blocks each attacking creature this turn if able.";
+                text = """
+                        Cast this spell only during combat before blockers are declared.
+                        Target creature defending player controls can block any number of creatures this turn. It blocks each attacking creature this turn if able.""";
                 tokens = List.of(CAST, SPACE, THIS, SPACE, SPELL, SPACE, ONLY, SPACE, DURING, SPACE, COMBAT, SPACE, BEFORE, SPACE, BLOCK, ER, S, SPACE, IS, SPACE, DECLARE, ED, PERIOD, NEWLINE,
                         TARGET, SPACE, CREATURE, SPACE, DEFENDING, SPACE, PLAY, ER, SPACE, CONTROL, SPACE, CAN, SPACE, BLOCK, SPACE, ANY, SPACE, NUMBER, SPACE, OF, SPACE, CREATURE, S, SPACE, THIS, SPACE, TURN, PERIOD, SPACE,
                         IT, SPACE, BLOCK, SPACE, EACH, SPACE, ATTACK, ING, SPACE, CREATURE, SPACE, THIS, SPACE, TURN, SPACE, IF, SPACE, ABLE, PERIOD);
@@ -127,7 +133,9 @@ public class RulesTextTestCase {
             @Test
             @DisplayName("Blessing")
             void blessing() {
-                text = "Enchant creature\n{W}: Enchanted creature gets +1/+1 until end of turn.";
+                text = """
+                        Enchant creature
+                        {W}: Enchanted creature gets +1/+1 until end of turn.""";
                 tokens = List.of(ENCHANT, SPACE, CREATURE, NEWLINE,
                         LBRACKET, W, RBRACKET, COLON, SPACE, ENCHANT, ED, SPACE, CREATURE, SPACE, GET, SPACE, PLUS, new Number(1), SLASH, PLUS, new Number(1), SPACE, UNTIL, SPACE, END, SPACE, OF, SPACE, TURN, PERIOD);
             }
@@ -135,7 +143,9 @@ public class RulesTextTestCase {
             @Test
             @DisplayName("Blue Ward")
             void blueWard() {
-                text = "Enchant creature\nEnchanted creature has protection from blue. This effect doesn\u2019t remove ~.";
+                text = """
+                        Enchant creature
+                        Enchanted creature has protection from blue. This effect doesn\u2019t remove ~.""";
                 tokens = List.of(ENCHANT, SPACE, CREATURE, NEWLINE,
                         ENCHANT, ED, SPACE, CREATURE, SPACE, HAVE, SPACE, PROTECTION, SPACE, FROM, SPACE, BLUE, PERIOD,
                         SPACE, THIS, SPACE, EFFECT, SPACE, DO, NOT, SPACE, REMOVE, SPACE, TILDE, PERIOD);
@@ -179,7 +189,9 @@ public class RulesTextTestCase {
             @Test
             @DisplayName("Consecrate Land")
             void consecrateLand() {
-                text = "Enchant land\nEnchanted land has indestructible and can\u2019t be enchanted by other Auras.";
+                text = """
+                        Enchant land
+                        Enchanted land has indestructible and can\u2019t be enchanted by other Auras.""";
                 tokens = List.of(ENCHANT, SPACE, LAND, NEWLINE,
                         ENCHANT, ED, SPACE, LAND, SPACE, HAVE, SPACE, INDESTRUCTIBLE, SPACE, AND, SPACE, CAN, NOT, SPACE, BE, SPACE, ENCHANT, ED, SPACE, BY, SPACE, OTHER, SPACE, AURA, S, PERIOD);
             }
@@ -187,7 +199,9 @@ public class RulesTextTestCase {
             @Test
             @DisplayName("Conversion")
             void conversion() {
-                text = "At the beginning of your upkeep, sacrifice ~ unless you pay {W}{W}.\nAll Mountains are Plains.";
+                text = """
+                        At the beginning of your upkeep, sacrifice ~ unless you pay {W}{W}.
+                        All Mountains are Plains.""";
                 tokens = List.of(AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, YOU, POSSESSIVE, SPACE, UPKEEP, COMMA, SPACE, SACRIFICE, SPACE, TILDE, SPACE, UNLESS, SPACE, YOU, SPACE, PAY, SPACE, LBRACKET, W, RBRACKET, LBRACKET, W, RBRACKET, PERIOD, NEWLINE,
                         ALL, SPACE, MOUNTAIN, S, SPACE, IS, SPACE, PLAINS, PERIOD);
             }
@@ -216,7 +230,9 @@ public class RulesTextTestCase {
             @Test
             @DisplayName("Farmstead")
             void farmstead() {
-                text = "Enchant land\nEnchanted land has \u201CAt the beginning of your upkeep, you may pay {W}{W}. If you do, you gain 1 life.\u201D";
+                text = """
+                        Enchant land
+                        Enchanted land has \u201CAt the beginning of your upkeep, you may pay {W}{W}. If you do, you gain 1 life.\u201D""";
                 tokens = List.of(ENCHANT, SPACE, LAND, NEWLINE,
                         ENCHANT, ED, SPACE, LAND, SPACE, HAVE, SPACE, OPENQUOTE, AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, YOU, POSSESSIVE, SPACE, UPKEEP, COMMA, SPACE, YOU, SPACE, MAY, SPACE, PAY, SPACE, LBRACKET, W, RBRACKET, LBRACKET, W, RBRACKET, PERIOD, SPACE,
                         IF, SPACE, YOU, SPACE, DO, COMMA, SPACE, YOU, SPACE, GAIN, SPACE, new Number(1), SPACE, LIFE, PERIOD, CLOSEQUOTE);
@@ -225,7 +241,9 @@ public class RulesTextTestCase {
             @Test
             @DisplayName("Green Ward")
             void greenWard() {
-                text = "Enchant creature\nEnchanted creature has protection from green. This effect doesn\u2019t remove ~.";
+                text = """
+                        Enchant creature
+                        Enchanted creature has protection from green. This effect doesn\u2019t remove ~.""";
                 tokens = List.of(ENCHANT, SPACE, CREATURE, NEWLINE,
                         ENCHANT, ED, SPACE, CREATURE, SPACE, HAVE, SPACE, PROTECTION, SPACE, FROM, SPACE, GREEN, PERIOD,
                         SPACE, THIS, SPACE, EFFECT, SPACE, DO, NOT, SPACE, REMOVE, SPACE, TILDE, PERIOD);
@@ -243,7 +261,10 @@ public class RulesTextTestCase {
             @Test
             @DisplayName("Healing Salve")
             void healingSalve() {
-                text = "Choose one \u2014\n\u2022 Target player gains 3 life.\n\u2022 Prevent the next 3 damage that would be dealt to any target this turn.";
+                text = """
+                        Choose one \u2014
+                        \u2022 Target player gains 3 life.
+                        \u2022 Prevent the next 3 damage that would be dealt to any target this turn.""";
                 tokens = List.of(CHOOSE, SPACE, ONE, SPACE, DASH, NEWLINE,
                         BULLET, SPACE, TARGET, SPACE, PLAY, ER, SPACE, GAIN, SPACE, new Number(3), SPACE, LIFE, PERIOD, NEWLINE,
                         BULLET, SPACE, PREVENT, SPACE, THE, SPACE, NEXT, SPACE, new Number(3), SPACE, DAMAGE, SPACE, THAT, SPACE, WOULD, SPACE, BE, SPACE, DEAL, ED, SPACE, TO, SPACE, ANY, SPACE, TARGET, SPACE, THIS, SPACE, TURN, PERIOD);
@@ -252,7 +273,10 @@ public class RulesTextTestCase {
             @Test
             @DisplayName("Holy Armor")
             void holyArmor() {
-                text = "Enchant creature\nEnchanted creature gets +0/+2.\n{W}: Enchanted creature gets +0/+1 until end of turn.";
+                text = """
+                        Enchant creature
+                        Enchanted creature gets +0/+2.
+                        {W}: Enchanted creature gets +0/+1 until end of turn.""";
                 tokens = List.of(ENCHANT, SPACE, CREATURE, NEWLINE,
                         ENCHANT, ED, SPACE, CREATURE, SPACE, GET, SPACE, PLUS, new Number(0), SLASH, PLUS, new Number(2), PERIOD, NEWLINE,
                         LBRACKET, W, RBRACKET, COLON, SPACE, ENCHANT, ED, SPACE, CREATURE, SPACE, GET, SPACE, PLUS, new Number(0), SLASH, PLUS, new Number(1), SPACE, UNTIL, SPACE, END, SPACE, OF, SPACE, TURN, PERIOD);
@@ -261,7 +285,9 @@ public class RulesTextTestCase {
             @Test
             @DisplayName("Holy Strength")
             void holyStrength() {
-                text = "Enchant creature\nEnchanted creature gets +1/+2.";
+                text = """
+                        Enchant creature
+                        Enchanted creature gets +1/+2.""";
                 tokens = List.of(ENCHANT, SPACE, CREATURE, NEWLINE,
                         ENCHANT, ED, SPACE, CREATURE, SPACE, GET, SPACE, PLUS, new Number(1), SLASH, PLUS, new Number(2), PERIOD);
             }
@@ -284,7 +310,9 @@ public class RulesTextTestCase {
             @Test
             @DisplayName("Lance")
             void lance() {
-                text = "Enchant creature\nEnchanted creature has first strike.";
+                text = """
+                        Enchant creature
+                        Enchanted creature has first strike.""";
                 tokens = List.of(ENCHANT, SPACE, CREATURE, NEWLINE,
                         ENCHANT, ED, SPACE, CREATURE, SPACE, HAVE, SPACE, FIRST, SPACE, STRIKE, PERIOD);
             }
@@ -313,7 +341,9 @@ public class RulesTextTestCase {
             @Test
             @DisplayName("Personal Incarnation")
             void personalIncarnation() {
-                text = "{0}: The next 1 damage that would be dealt to ~ this turn is dealt to its owner instead. Only ~\u2019s owner may activate this ability.\nWhen ~ dies, its owner loses half their life, rounded up.";
+                text = """
+                        {0}: The next 1 damage that would be dealt to ~ this turn is dealt to its owner instead. Only ~\u2019s owner may activate this ability.
+                        When ~ dies, its owner loses half their life, rounded up.""";
                 tokens = List.of(LBRACKET, new Number(0), RBRACKET, COLON, SPACE, THE, SPACE, NEXT, SPACE, new Number(1), SPACE, DAMAGE, SPACE, THAT, SPACE, WOULD, SPACE, BE, SPACE, DEAL, ED, SPACE, TO, SPACE, TILDE, SPACE, THIS, SPACE, TURN, SPACE, IS, SPACE, DEAL, ED, SPACE, TO, SPACE, IT, POSSESSIVE, SPACE, OWN, ER, SPACE, INSTEAD, PERIOD, SPACE,
                         ONLY, SPACE, TILDE, POSSESSIVE, SPACE, OWN, ER, SPACE, MAY, SPACE, ACTIVATE, SPACE, THIS, SPACE, ABILITY, PERIOD, NEWLINE,
                         WHEN, SPACE, TILDE, SPACE, DIE, COMMA, SPACE, IT, POSSESSIVE, SPACE, OWN, ER, SPACE, LOSE, SPACE, HALF, SPACE, THEY, POSSESSIVE, SPACE, LIFE, COMMA, SPACE, ROUNDED, SPACE, UP, PERIOD);
@@ -329,7 +359,9 @@ public class RulesTextTestCase {
             @Test
             @DisplayName("Red Ward")
             void redWard() {
-                text = "Enchant creature\nEnchanted creature has protection from red. This effect doesn\u2019t remove ~.";
+                text = """
+                        Enchant creature
+                        Enchanted creature has protection from red. This effect doesn\u2019t remove ~.""";
                 tokens = List.of(ENCHANT, SPACE, CREATURE, NEWLINE,
                         ENCHANT, ED, SPACE, CREATURE, SPACE, HAVE, SPACE, PROTECTION, SPACE, FROM, SPACE, RED, PERIOD,
                         SPACE, THIS, SPACE, EFFECT, SPACE, DO, NOT, SPACE, REMOVE, SPACE, TILDE, PERIOD);
@@ -396,21 +428,27 @@ public class RulesTextTestCase {
             @Test
             @DisplayName("Wall of Swords")
             void wallOfSwords() {
-                text = "Defender\nFlying";
+                text = """
+                        Defender
+                        Flying""";
                 tokens = List.of(DEFENDER, NEWLINE, FLYING);
             }
 
             @Test
             @DisplayName("White Knight")
             void whiteKnight() {
-                text = "First strike\nProtection from black";
+                text = """
+                        First strike
+                        Protection from black""";
                 tokens = List.of(FIRST, SPACE, STRIKE, NEWLINE, PROTECTION, SPACE, FROM, SPACE, BLACK);
             }
 
             @Test
             @DisplayName("White Ward")
             void whiteWard() {
-                text = "Enchant creature\nEnchanted creature has protection from white. This effect doesn\u2019t remove ~.";
+                text = """
+                        Enchant creature
+                        Enchanted creature has protection from white. This effect doesn\u2019t remove ~.""";
                 tokens = List.of(ENCHANT, SPACE, CREATURE, NEWLINE,
                         ENCHANT, ED, SPACE, CREATURE, SPACE, HAVE, SPACE, PROTECTION, SPACE, FROM, SPACE, WHITE, PERIOD,
                         SPACE, THIS, SPACE, EFFECT, SPACE, DO, NOT, SPACE, REMOVE, SPACE, TILDE, PERIOD);
@@ -445,9 +483,21 @@ public class RulesTextTestCase {
             @Test
             @DisplayName("Animate Artifact")
             void animateArtifact() {
-                text = "Enchant artifact\nAs long as enchanted artifact isn\u2019t a creature, it\u2019s an artifact creature with power and toughness each equal to its mana value.";
+                text = """
+                        Enchant artifact
+                        As long as enchanted artifact isn\u2019t a creature, it\u2019s an artifact creature with power and toughness each equal to its mana value.""";
                 tokens = List.of(ENCHANT, SPACE, ARTIFACT, NEWLINE,
                         AS, SPACE, LONG, SPACE, AS, SPACE, ENCHANT, ED, SPACE, ARTIFACT, SPACE, IS, NOT, SPACE, A, SPACE, CREATURE, COMMA, SPACE, IT, IS, SPACE, AN, SPACE, ARTIFACT, SPACE, CREATURE, SPACE, WITH, SPACE, POWER, SPACE, AND, SPACE, TOUGHNESS, SPACE, EACH, SPACE, EQUAL, SPACE, TO, SPACE, IT, POSSESSIVE, SPACE, MANA, SPACE, VALUE, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Blue Elemental Blast")
+            void blueElementalBlast() {
+                text = """
+                        Choose one \u2014
+                        \u2022 Counter target red spell.
+                        \u2022 Destroy target red permanent.""";
+                tokens = List.of();
             }
         }
     }
