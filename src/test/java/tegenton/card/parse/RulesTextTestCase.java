@@ -57,6 +57,7 @@ import static tegenton.card.parse.lexicon.game.type.CreatureType.WALL;
 import static tegenton.card.parse.lexicon.game.type.EnchantmentType.AURA;
 import static tegenton.card.parse.lexicon.game.type.LandType.*;
 import static tegenton.card.parse.lexicon.value.EnglishNumber.ONE;
+import static tegenton.card.parse.lexicon.value.EnglishNumber.THREE;
 import static tegenton.card.parse.lexicon.value.Variable.X;
 
 public class RulesTextTestCase {
@@ -421,6 +422,24 @@ public class RulesTextTestCase {
                 text = "Destroy all creatures. They can\u2019t be regenerated.";
                 tokens = List.of(DESTROY, SPACE, ALL, SPACE, CREATURE, S, PERIOD, SPACE,
                         THEY, SPACE, CAN, NOT, SPACE, BE, SPACE, REGENERATE, ED, PERIOD);
+            }
+        }
+
+        @Nested
+        @DisplayName("Blue cards")
+        class BlueCardTests {
+            @Test
+            @DisplayName("Air Elemental")
+            void airElemental() {
+                text = "Flying";
+                tokens = List.of(FLYING);
+            }
+
+            @Test
+            @DisplayName("Ancestral Recall")
+            void ancestralRecall() {
+                text = "Target player draws three cards.";
+                tokens = List.of(TARGET, SPACE, PLAY, ER, SPACE, DRAW, SPACE, THREE, SPACE, CARD, S, PERIOD);
             }
         }
     }
