@@ -4,8 +4,10 @@ import tegenton.card.parse.dfa.state.IState;
 import tegenton.card.parse.dfa.state.PossessiveState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.SymbolState;
+import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.source.target.object.ObjectNoun;
+import tegenton.card.parse.lexicon.game.source.target.object.ObjectVerb;
 
 import java.util.Optional;
 
@@ -20,6 +22,7 @@ public class ITState extends IState {
     public State transition(char c) {
         return switch (c) {
             case 'S' -> PossessiveState.state();
+            case '\u2019' -> new SuffixSubstring("\u2019S", ObjectVerb.IS);
             case '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
@@ -28,7 +31,7 @@ public class ITState extends IState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return switch (c) {
-            case 'S', '\0', ' ' -> Optional.of(ObjectNoun.IT);
+            case 'S', '\u2019', '\0', ' ' -> Optional.of(ObjectNoun.IT);
             default -> Optional.empty();
         };
     }

@@ -39,7 +39,7 @@ import static tegenton.card.parse.lexicon.game.source.target.TargetModifier.POSS
 import static tegenton.card.parse.lexicon.game.source.target.TargetNoun.THEY;
 import static tegenton.card.parse.lexicon.game.source.target.TargetNoun.WHO;
 import static tegenton.card.parse.lexicon.game.source.target.TargetVerb.GAIN;
-import static tegenton.card.parse.lexicon.game.source.target.object.ObjectAttribute.POWER;
+import static tegenton.card.parse.lexicon.game.source.target.object.ObjectAttribute.*;
 import static tegenton.card.parse.lexicon.game.source.target.object.ObjectNoun.*;
 import static tegenton.card.parse.lexicon.game.source.target.object.ObjectVerb.*;
 import static tegenton.card.parse.lexicon.game.source.target.player.PlayerAdjective.DEFENDING;
@@ -440,6 +440,14 @@ public class RulesTextTestCase {
             void ancestralRecall() {
                 text = "Target player draws three cards.";
                 tokens = List.of(TARGET, SPACE, PLAY, ER, SPACE, DRAW, SPACE, THREE, SPACE, CARD, S, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Animate Artifact")
+            void animateArtifact() {
+                text = "Enchant artifact\nAs long as enchanted artifact isn\u2019t a creature, it\u2019s an artifact creature with power and toughness each equal to its mana value.";
+                tokens = List.of(ENCHANT, SPACE, ARTIFACT, NEWLINE,
+                        AS, SPACE, LONG, SPACE, AS, SPACE, ENCHANT, ED, SPACE, ARTIFACT, SPACE, IS, NOT, SPACE, A, SPACE, CREATURE, COMMA, SPACE, IT, IS, SPACE, AN, SPACE, ARTIFACT, SPACE, CREATURE, SPACE, WITH, SPACE, POWER, SPACE, AND, SPACE, TOUGHNESS, SPACE, EACH, SPACE, EQUAL, SPACE, TO, SPACE, IT, POSSESSIVE, SPACE, MANA, SPACE, VALUE, PERIOD);
             }
         }
     }

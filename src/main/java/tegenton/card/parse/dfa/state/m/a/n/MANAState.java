@@ -1,6 +1,7 @@
 package tegenton.card.parse.dfa.state.m.a.n;
 
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.dfa.state.m.a.MANState;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.GameNoun;
@@ -17,6 +18,7 @@ public class MANAState extends MANState {
     @Override
     public State transition(char c) {
         return switch (c) {
+            case '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }
