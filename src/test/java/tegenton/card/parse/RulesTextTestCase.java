@@ -19,6 +19,7 @@ import static tegenton.card.parse.lexicon.Noun.*;
 import static tegenton.card.parse.lexicon.Particle.UP;
 import static tegenton.card.parse.lexicon.Preposition.*;
 import static tegenton.card.parse.lexicon.SubordinateConjunction.*;
+import static tegenton.card.parse.lexicon.Symbol.MINUS;
 import static tegenton.card.parse.lexicon.Symbol.*;
 import static tegenton.card.parse.lexicon.game.Color.U;
 import static tegenton.card.parse.lexicon.game.Color.W;
@@ -42,12 +43,15 @@ import static tegenton.card.parse.lexicon.game.source.target.TargetVerb.GAIN;
 import static tegenton.card.parse.lexicon.game.source.target.object.ObjectAttribute.*;
 import static tegenton.card.parse.lexicon.game.source.target.object.ObjectNoun.*;
 import static tegenton.card.parse.lexicon.game.source.target.object.ObjectVerb.*;
+import static tegenton.card.parse.lexicon.game.source.target.player.PlayerAdjective.ACTIVE;
 import static tegenton.card.parse.lexicon.game.source.target.player.PlayerAdjective.DEFENDING;
+import static tegenton.card.parse.lexicon.game.source.target.player.PlayerAdverb.CONTINUOUSLY;
 import static tegenton.card.parse.lexicon.game.source.target.player.PlayerNoun.OPPONENT;
 import static tegenton.card.parse.lexicon.game.source.target.player.PlayerNoun.YOU;
 import static tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb.*;
 import static tegenton.card.parse.lexicon.game.turn.Chronology.BEFORE;
 import static tegenton.card.parse.lexicon.game.turn.Chronology.DURING;
+import static tegenton.card.parse.lexicon.game.turn.Duration.SINCE;
 import static tegenton.card.parse.lexicon.game.turn.Duration.UNTIL;
 import static tegenton.card.parse.lexicon.game.turn.Phase.BEGINNING;
 import static tegenton.card.parse.lexicon.game.turn.Phase.COMBAT;
@@ -697,6 +701,45 @@ public class RulesTextTestCase {
             void prodigalSorcerer() {
                 text = "{T}: ~ deals 1 damage to any target.";
                 tokens = List.of(LBRACKET, T, RBRACKET, COLON, SPACE, TILDE, SPACE, DEAL, SPACE, new Number(1), SPACE, DAMAGE, SPACE, TO, SPACE, ANY, SPACE, TARGET, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Psionic Blast")
+            void psionicBlast() {
+                text = "~ deals 4 damage to any target and 2 damage to you.";
+                tokens = List.of(TILDE, SPACE, DEAL, SPACE, new Number(4), SPACE, DAMAGE, SPACE, TO, SPACE, ANY, SPACE, TARGET, SPACE, AND, SPACE, new Number(2), SPACE, DAMAGE, SPACE, TO, SPACE, YOU, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Psychic Venom")
+            void psychicVenom() {
+                text = """
+                        Enchant land
+                        Whenever enchanted land becomes tapped, ~ deals 2 damage to that land\u2019s controller.""";
+                tokens = List.of(ENCHANT, SPACE, LAND, NEWLINE,
+                        WHENEVER, SPACE, ENCHANT, ED, SPACE, LAND, SPACE, BECOME, SPACE, TAP, ED, COMMA, SPACE, TILDE, SPACE, DEAL, SPACE, new Number(2), SPACE, DAMAGE, SPACE, TO, SPACE, THAT, SPACE, LAND, S, SPACE, CONTROL, ER, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Sea Serpent")
+            void seaSerpent() {
+                text = """
+                        ~ can\u2019t attack unless defending player controls an Island.
+                        When you control no Islands, sacrifice ~.""";
+                tokens = List.of(TILDE, SPACE, CAN, NOT, SPACE, ATTACK, SPACE, UNLESS, SPACE, DEFENDING, SPACE, PLAY, ER, SPACE, CONTROL, SPACE, AN, SPACE, ISLAND, PERIOD, NEWLINE,
+                        WHEN, SPACE, YOU, SPACE, CONTROL, SPACE, NO, SPACE, ISLAND, S, COMMA, SPACE, SACRIFICE, SPACE, TILDE, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Siren's Call")
+            void sirensCall() {
+                text = """
+                        Cast this spell only during an opponent\u2019s turn, before attackers are declared.
+                        Creatures the active player controls attack this turn if able.
+                        At the beginning of the next end step, destroy all non-Wall creatures that player controls that didn\u2019t attack this turn. Ignore this effect for each creature the player didn\u2019t control continuously since the beginning of the turn.""";
+                tokens = List.of(CAST, SPACE, THIS, SPACE, SPELL, SPACE, ONLY, SPACE, DURING, SPACE, AN, SPACE, OPPONENT, S, SPACE, TURN, COMMA, SPACE, BEFORE, SPACE, ATTACK, S, SPACE, IS, SPACE, DECLARE, ED, PERIOD, NEWLINE,
+                        CREATURE, S, SPACE, THE, SPACE, ACTIVE, SPACE, PLAY, ER, SPACE, CONTROL, SPACE, ATTACK, SPACE, THIS, SPACE, TURN, SPACE, IF, SPACE, ABLE, PERIOD, NEWLINE,
+                        AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, THE, SPACE, NEXT, SPACE, END, SPACE, STEP, COMMA, SPACE, DESTROY, SPACE, ALL, SPACE, NOT, MINUS, WALL, SPACE, CREATURE, S, SPACE, THAT, SPACE, PLAY, ER, SPACE, CONTROL, SPACE, THAT, SPACE, DO, NOT, SPACE, ATTACK, SPACE, THIS, SPACE, TURN, PERIOD, SPACE, IGNORE, SPACE, THIS, SPACE, EFFECT, SPACE, FOR, SPACE, EACH, SPACE, CREATURE, SPACE, THE, SPACE, PLAY, ER, SPACE, DO, NOT, SPACE, CONTROL, SPACE, CONTINUOUSLY, SPACE, SINCE, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, THE, SPACE, TURN, PERIOD);
             }
         }
     }

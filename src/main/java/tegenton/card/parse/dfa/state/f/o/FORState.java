@@ -1,6 +1,7 @@
 package tegenton.card.parse.dfa.state.f.o;
 
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.dfa.state.f.FOState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Preposition;
@@ -20,6 +21,7 @@ public class FORState extends FOState {
     public State transition(char c) {
         return switch (c) {
             case 'E' -> new SuffixSubstring("EST", LandType.FOREST);
+            case '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }
