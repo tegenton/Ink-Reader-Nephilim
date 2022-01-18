@@ -616,6 +616,27 @@ public class RulesTextTestCase {
                 text = "Change the text of target spell or permanent by replacing all instances of one basic land type with another.";
                 tokens = List.of(CHANGE, SPACE, THE, SPACE, TEXT, SPACE, OF, SPACE, TARGET, SPACE, SPELL, SPACE, OR, SPACE, PERMANENT, SPACE, BY, SPACE, REPLACE, ING, SPACE, ALL, SPACE, INSTANCE, S, SPACE, OF, SPACE, ONE, SPACE, BASIC, SPACE, LAND, SPACE, TYPE, SPACE, WITH, SPACE, ANOTHER, PERIOD);
             }
+
+            @Test
+            @DisplayName("Mahamoti Djinn")
+            void mahamotiDjinn() {
+                text = "Flying";
+                tokens = List.of(FLYING);
+            }
+
+            @Test
+            @DisplayName("Mana Short")
+            void manaShort() {
+                text = "Tap all lands target player controls and that player loses all unspent mana.";
+                tokens = List.of(TAP, SPACE, ALL, SPACE, LAND, S, SPACE, TARGET, SPACE, PLAY, ER, SPACE, CONTROL, SPACE, AND, SPACE, THAT, SPACE, PLAY, ER, SPACE, LOSE, SPACE, ALL, SPACE, NOT, SPEND, ED, SPACE, MANA, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Merfolk of the Pearl Trident")
+            void merfolkOfThePearlTrident() {
+                text = "";
+                tokens = List.of();
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 package tegenton.card.parse.dfa.state.t.a;
 
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.dfa.state.t.TAState;
 import tegenton.card.parse.dfa.state.t.a.p.TAPPState;
 import tegenton.card.parse.lexicon.Word;
@@ -19,6 +20,7 @@ public class TAPState extends TAState {
     public State transition(char c) {
         return switch (c) {
             case 'P' -> TAPPState.state();
+            case '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }
