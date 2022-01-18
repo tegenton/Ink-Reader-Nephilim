@@ -501,6 +501,20 @@ public class RulesTextTestCase {
                         BULLET, SPACE, COUNTER, SPACE, TARGET, SPACE, RED, SPACE, SPELL, PERIOD, NEWLINE,
                         BULLET, SPACE, DESTROY, SPACE, TARGET, SPACE, RED, SPACE, PERMANENT, PERIOD);
             }
+
+            @Test
+            @DisplayName("Braingeyser")
+            void braingeyser() {
+                text = "Target player draws X cards.";
+                tokens = List.of(TARGET, SPACE, PLAY, ER, SPACE, DRAW, SPACE, X, SPACE, CARD, S, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Clone")
+            void cloneTest() {
+                text = "You may have ~ enter the battlefield as a copy of any creature on the battlefield.";
+                tokens = List.of(YOU, SPACE, MAY, SPACE, HAVE, SPACE, TILDE, SPACE, ENTER, SPACE, THE, SPACE, BATTLEFIELD, SPACE, AS, SPACE, A, SPACE, COPY, SPACE, OF, SPACE, ANY, SPACE, CREATURE, SPACE, ON, SPACE, THE, SPACE, BATTLEFIELD, PERIOD);
+            }
         }
     }
 }

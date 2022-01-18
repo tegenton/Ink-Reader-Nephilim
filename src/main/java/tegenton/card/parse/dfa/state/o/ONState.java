@@ -2,6 +2,7 @@ package tegenton.card.parse.dfa.state.o;
 
 import tegenton.card.parse.dfa.state.OState;
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.dfa.state.o.n.ONEState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Adverb;
@@ -23,6 +24,7 @@ public class ONState extends OState {
             case 'C' -> new SuffixSubstring("CE", Adverb.ONCE);
             case 'E' -> ONEState.state();
             case 'L' -> new SuffixSubstring("LY", Adverb.ONLY);
+            case ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }
