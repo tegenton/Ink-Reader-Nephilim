@@ -684,6 +684,13 @@ public class RulesTextTestCase {
                         TILDE, SPACE, DEAL, SPACE, new Number(2), SPACE, DAMAGE, SPACE, TO, SPACE, THAT, SPACE, PLAY, ER, PERIOD, SPACE,
                         PREVENT, SPACE, X, SPACE, OF, SPACE, THAT, SPACE, DAMAGE, COMMA, SPACE, WHERE, SPACE, X, SPACE, IS, SPACE, THE, SPACE, AMOUNT, SPACE, OF, SPACE, MANA, SPACE, THAT, SPACE, PLAY, ER, SPACE, PAY, ED, SPACE, THIS, SPACE, WAY, PERIOD);
             }
+
+            @Test
+            @DisplayName("Power Sink")
+            void powerSink() {
+                text = "Counter target spell unless its controller pays {X}. If that player doesn\u2019t, they tap all lands with mana abilities they control and lose all unspent mana.";
+                tokens = List.of(COUNTER, SPACE, TARGET, SPACE, SPELL, SPACE, UNLESS, SPACE, IT, POSSESSIVE, SPACE, CONTROL, ER, SPACE, PAY, SPACE, LBRACKET, X, RBRACKET, PERIOD, SPACE, IF, SPACE, THAT, SPACE, PLAY, ER, SPACE, DO, NOT, COMMA, SPACE, THEY, SPACE, TAP, SPACE, ALL, SPACE, LAND, S, SPACE, WITH, SPACE, MANA, SPACE, ABILITY, S, SPACE, THEY, SPACE, CONTROL, SPACE, AND, SPACE, LOSE, SPACE, ALL, SPACE, NOT, SPEND, ED, SPACE, MANA, PERIOD);
+            }
         }
     }
 }

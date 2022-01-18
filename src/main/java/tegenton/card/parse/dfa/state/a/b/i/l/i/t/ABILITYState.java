@@ -1,25 +1,24 @@
-package tegenton.card.parse.dfa.state.p.a;
+package tegenton.card.parse.dfa.state.a.b.i.l.i.t;
 
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.SymbolState;
-import tegenton.card.parse.dfa.state.p.PAState;
+import tegenton.card.parse.dfa.state.a.b.i.l.i.ABILITState;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb;
+import tegenton.card.parse.lexicon.game.GameNoun;
 
 import java.util.Optional;
 
-public class PAYState extends PAState {
-    private static final PAYState INSTANCE = new PAYState();
+public class ABILITYState extends ABILITState {
+    private static final ABILITYState INSTANCE = new ABILITYState();
 
-    public static PAYState state() {
+    public static ABILITYState state() {
         return INSTANCE;
     }
 
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'S' -> this;
-            case '\0', ' ' -> SymbolState.state(c);
+            case '\0', '.', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }
@@ -27,7 +26,7 @@ public class PAYState extends PAState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case '\0', ' ' -> PlayerVerb.PAY;
+            case '\0', '.', ' ' -> GameNoun.ABILITY;
             default -> null;
         });
     }
