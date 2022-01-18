@@ -515,6 +515,23 @@ public class RulesTextTestCase {
                 text = "You may have ~ enter the battlefield as a copy of any creature on the battlefield.";
                 tokens = List.of(YOU, SPACE, MAY, SPACE, HAVE, SPACE, TILDE, SPACE, ENTER, SPACE, THE, SPACE, BATTLEFIELD, SPACE, AS, SPACE, A, SPACE, COPY, SPACE, OF, SPACE, ANY, SPACE, CREATURE, SPACE, ON, SPACE, THE, SPACE, BATTLEFIELD, PERIOD);
             }
+
+            @Test
+            @DisplayName("Control Magic")
+            void controlMagic() {
+                text = """
+                        Enchant creature
+                        You control enchanted creature.""";
+                tokens = List.of(ENCHANT, SPACE, CREATURE, NEWLINE,
+                        YOU, SPACE, CONTROL, SPACE, ENCHANT, ED, SPACE, CREATURE, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Copy Artifact")
+            void copyArtifact() {
+                text = "You may have ~ enter the battlefield as a copy of any artifact on the battlefield, except it\u2019s an enchantment in addition to its other types.";
+                tokens = List.of(YOU, SPACE, MAY, SPACE, HAVE, SPACE, TILDE, SPACE, ENTER, SPACE, THE, SPACE, BATTLEFIELD, SPACE, AS, SPACE, A, SPACE, COPY, SPACE, OF, SPACE, ANY, SPACE, ARTIFACT, SPACE, ON, SPACE, THE, SPACE, BATTLEFIELD, COMMA, SPACE, EXCEPT, SPACE, IT, IS, SPACE, AN, SPACE, ENCHANTMENT, SPACE, IN, SPACE, ADDITION, SPACE, TO, SPACE, IT, POSSESSIVE, SPACE, OTHER, SPACE, TYPE, S, PERIOD);
+            }
         }
     }
 }

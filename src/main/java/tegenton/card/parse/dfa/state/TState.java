@@ -1,6 +1,8 @@
 package tegenton.card.parse.dfa.state;
 
 import tegenton.card.parse.dfa.state.t.*;
+import tegenton.card.parse.dfa.state.t.y.p.TYPEState;
+import tegenton.card.parse.dfa.substring.InfixSubstring;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Noun;
 import tegenton.card.parse.lexicon.Word;
@@ -28,7 +30,7 @@ public class TState extends State {
             case 'R' -> new SuffixSubstring("RAMPLE", Keyword.TRAMPLE);
             case 'U' -> new SuffixSubstring("URN", GameNoun.TURN);
             case 'W' -> TWState.state();
-            case 'Y' -> new SuffixSubstring("YPE", GameNoun.TYPE);
+            case 'Y' -> new InfixSubstring("YP", 'E', TYPEState::state);
             case '}' -> SymbolState.state(c);
             default -> invalid(c);
         };
