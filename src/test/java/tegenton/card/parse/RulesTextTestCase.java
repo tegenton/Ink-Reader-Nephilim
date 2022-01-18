@@ -497,7 +497,9 @@ public class RulesTextTestCase {
                         Choose one \u2014
                         \u2022 Counter target red spell.
                         \u2022 Destroy target red permanent.""";
-                tokens = List.of();
+                tokens = List.of(CHOOSE, SPACE, ONE, SPACE, DASH, NEWLINE,
+                        BULLET, SPACE, COUNTER, SPACE, TARGET, SPACE, RED, SPACE, SPELL, PERIOD, NEWLINE,
+                        BULLET, SPACE, DESTROY, SPACE, TARGET, SPACE, RED, SPACE, PERMANENT, PERIOD);
             }
         }
     }
