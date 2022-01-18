@@ -4,6 +4,7 @@ import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.dfa.state.t.a.r.g.TARGEState;
 import tegenton.card.parse.lexicon.Determiner;
+
 import java.util.Optional;
 
 public final class TARGETState extends TARGEState {
@@ -16,16 +17,16 @@ public final class TARGETState extends TARGEState {
     @Override
     public State transition(final char c) {
         return switch (c) {
-            case ' ' -> SymbolState.state(c);
-            default -> throw new IllegalStateException("Cannot transition from EmptyState on " + c);
+            case '\0', '.', ' ' -> SymbolState.state(c);
+            default -> invalid(c);
         };
     }
 
     @Override
     public Optional<Determiner> produce(final char c) {
-        return switch (c) {
-            case '\0', ' ' -> Optional.of(Determiner.TARGET);
-            default -> Optional.empty();
-        };
+        return Optional.ofNullable(switch (c) {
+            case '\0', '.', ' ' -> Determiner.TARGET;
+            default -> null;
+        });
     }
 }

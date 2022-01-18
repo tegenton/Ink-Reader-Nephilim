@@ -660,6 +660,18 @@ public class RulesTextTestCase {
                         AS, SPACE, TILDE, SPACE, ENTER, SPACE, THE, SPACE, BATTLEFIELD, COMMA, SPACE, CHOOSE, SPACE, A, SPACE, BASIC, SPACE, LAND, SPACE, TYPE, PERIOD, NEWLINE,
                         ENCHANT, ED, SPACE, LAND, SPACE, IS, SPACE, THE, SPACE, CHOSEN, SPACE, TYPE, PERIOD);
             }
+
+            @Test
+            @DisplayName("Pirate Ship")
+            void pirateShip() {
+                text = """
+                        ~ can\u2019t attack unless defending player controls an Island.
+                        {T}: ~ deals 1 damage to any target.
+                        When you control no Islands, sacrifice ~.""";
+                tokens = List.of(TILDE, SPACE, CAN, NOT, SPACE, ATTACK, SPACE, UNLESS, SPACE, DEFENDING, SPACE, PLAY, ER, SPACE, CONTROL, SPACE, AN, SPACE, ISLAND, PERIOD, NEWLINE,
+                        LBRACKET, T, RBRACKET, COLON, SPACE, TILDE, SPACE, DEAL, SPACE, new Number(1), SPACE, DAMAGE, SPACE, TO, SPACE, ANY, SPACE, TARGET, PERIOD, NEWLINE,
+                        WHEN, SPACE, YOU, SPACE, CONTROL, SPACE, NO, SPACE, ISLAND, S, COMMA, SPACE, SACRIFICE, SPACE, TILDE, PERIOD);
+            }
         }
     }
 }

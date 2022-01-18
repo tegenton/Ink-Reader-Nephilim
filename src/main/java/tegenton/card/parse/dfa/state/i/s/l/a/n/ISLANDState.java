@@ -1,5 +1,6 @@
 package tegenton.card.parse.dfa.state.i.s.l.a.n;
 
+import tegenton.card.parse.dfa.state.SState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.dfa.state.WState;
@@ -19,8 +20,9 @@ public class ISLANDState extends ISState {
     @Override
     public State transition(char c) {
         return switch (c) {
+            case 'S' -> SState.state();
             case 'W' -> WState.state();
-            case '\0', ' ' -> SymbolState.state(c);
+            case '\0', '.', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }
@@ -28,7 +30,7 @@ public class ISLANDState extends ISState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case 'W', '\0', ' ' -> LandType.ISLAND;
+            case 'S', 'W', '\0', '.', ' ' -> LandType.ISLAND;
             default -> null;
         });
     }

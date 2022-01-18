@@ -2,6 +2,7 @@ package tegenton.card.parse.dfa.state.n;
 
 import tegenton.card.parse.dfa.state.NState;
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.dfa.state.n.o.NOTState;
 import tegenton.card.parse.lexicon.Determiner;
 import tegenton.card.parse.lexicon.Word;
@@ -19,6 +20,7 @@ public class NOState extends NState {
     public State transition(char c) {
         return switch (c) {
             case 'T' -> NOTState.state();
+            case '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }
@@ -26,7 +28,7 @@ public class NOState extends NState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case ' ', '\0' -> Determiner.NO;
+            case '\0', ' ' -> Determiner.NO;
             default -> null;
         });
     }
