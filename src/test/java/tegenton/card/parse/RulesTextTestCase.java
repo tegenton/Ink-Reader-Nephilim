@@ -556,6 +556,16 @@ public class RulesTextTestCase {
                 text = "Target player activates a mana ability of each land they control. Then that player loses all unspent mana and you add the mana lost this way.";
                 tokens = List.of(TARGET, SPACE, PLAY, ER, SPACE, ACTIVATE, SPACE, A, SPACE, MANA, SPACE, ABILITY, SPACE, OF, SPACE, EACH, SPACE, LAND, SPACE, THEY, SPACE, CONTROL, PERIOD, SPACE, THEN, SPACE, THAT, SPACE, PLAY, ER, SPACE, LOSE, SPACE, ALL, SPACE, NOT, SPEND, ED, SPACE, MANA, SPACE, AND, SPACE, YOU, SPACE, ADD, SPACE, THE, SPACE, MANA, SPACE, LOSE, ED, SPACE, THIS, SPACE, WAY, PERIOD);
             }
+
+            @Test
+            @DisplayName("Feedback")
+            void feedback() {
+                text = """
+                        Enchant enchantment
+                        At the beginning of the upkeep of enchanted enchantment\u2019s controller, ~ deals 1 damage to that player.""";
+                tokens = List.of(ENCHANT, SPACE, ENCHANTMENT, NEWLINE,
+                        AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, THE, SPACE, UPKEEP, SPACE, OF, SPACE, ENCHANT, ED, SPACE, ENCHANTMENT, POSSESSIVE, SPACE, CONTROL, ER, COMMA, SPACE, TILDE, SPACE, DEAL, SPACE, new Number(1), SPACE, DAMAGE, SPACE, TO, SPACE, THAT, SPACE, PLAY, ER, PERIOD);
+            }
         }
     }
 }

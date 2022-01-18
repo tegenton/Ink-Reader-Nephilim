@@ -3,11 +3,11 @@ package tegenton.card.parse.dfa.state.e.n.c.h.a.n;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.dfa.state.e.n.ENCState;
-import tegenton.card.parse.dfa.substring.SuffixSubstring;
+import tegenton.card.parse.dfa.state.e.n.c.h.a.n.t.m.e.n.ENCHANTMENTState;
+import tegenton.card.parse.dfa.substring.InfixSubstring;
 import tegenton.card.parse.dfa.substring.morpheme.EDMorpheme;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.Keyword;
-import tegenton.card.parse.lexicon.game.type.CardType;
 
 import java.util.Optional;
 
@@ -21,7 +21,7 @@ public class ENCHANTState extends ENCState {
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'M' -> new SuffixSubstring("MENT", CardType.ENCHANTMENT);
+            case 'M' -> new InfixSubstring("MEN", 'T', ENCHANTMENTState::state);
             case 'E' -> new EDMorpheme();
             case ' ' -> SymbolState.state(c);
             default -> invalid(c);
