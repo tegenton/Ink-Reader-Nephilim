@@ -532,6 +532,23 @@ public class RulesTextTestCase {
                 text = "You may have ~ enter the battlefield as a copy of any artifact on the battlefield, except it\u2019s an enchantment in addition to its other types.";
                 tokens = List.of(YOU, SPACE, MAY, SPACE, HAVE, SPACE, TILDE, SPACE, ENTER, SPACE, THE, SPACE, BATTLEFIELD, SPACE, AS, SPACE, A, SPACE, COPY, SPACE, OF, SPACE, ANY, SPACE, ARTIFACT, SPACE, ON, SPACE, THE, SPACE, BATTLEFIELD, COMMA, SPACE, EXCEPT, SPACE, IT, IS, SPACE, AN, SPACE, ENCHANTMENT, SPACE, IN, SPACE, ADDITION, SPACE, TO, SPACE, IT, POSSESSIVE, SPACE, OTHER, SPACE, TYPE, S, PERIOD);
             }
+
+            @Test
+            @DisplayName("Counterspell")
+            void counterspell() {
+                text = "Counter target spell.";
+                tokens = List.of(COUNTER, SPACE, TARGET, SPACE, SPELL, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Creature Bond")
+            void creatureBond() {
+                text = """
+                        Enchant creature
+                        When enchanted creature dies, ~ deals damage equal to that creature\u2019s toughness to the creature\u2019s controller.""";
+                tokens = List.of(ENCHANT, SPACE, CREATURE, NEWLINE,
+                        WHEN, SPACE, ENCHANT, ED, SPACE, CREATURE, SPACE, DIE, COMMA, SPACE, TILDE, SPACE, DEAL, SPACE, DAMAGE, SPACE, EQUAL, SPACE, TO, SPACE, THAT, SPACE, CREATURE, POSSESSIVE, SPACE, TOUGHNESS, SPACE, TO, SPACE, THE, SPACE, CREATURE, POSSESSIVE, SPACE, CONTROL, ER, PERIOD);
+            }
         }
     }
 }
