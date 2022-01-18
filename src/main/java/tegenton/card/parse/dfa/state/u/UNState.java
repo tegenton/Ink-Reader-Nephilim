@@ -1,6 +1,7 @@
 package tegenton.card.parse.dfa.state.u;
 
 import tegenton.card.parse.dfa.state.BState;
+import tegenton.card.parse.dfa.state.SState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.UState;
 import tegenton.card.parse.dfa.state.u.n.UNTState;
@@ -25,6 +26,7 @@ public class UNState extends UState {
             case 'B' -> BState.state();
             case 'D' -> new SuffixSubstring("DER", Preposition.UNDER);
             case 'L' -> new SuffixSubstring("LESS", Conjunction.UNLESS);
+            case 'S' -> SState.state();
             case 'T' -> UNTState.state();
             default -> invalid(c);
         };
@@ -33,7 +35,7 @@ public class UNState extends UState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case 'B' -> Adverb.NOT;
+            case 'B', 'S' -> Adverb.NOT;
             default -> null;
         });
     }

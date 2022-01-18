@@ -2,10 +2,10 @@ package tegenton.card.parse.dfa.state.a.c.t.i;
 
 import tegenton.card.parse.dfa.state.AState;
 import tegenton.card.parse.dfa.state.State;
-import tegenton.card.parse.dfa.state.a.c.t.i.v.ACTIVATEState;
-import tegenton.card.parse.dfa.substring.SuffixSubstring;
+import tegenton.card.parse.dfa.state.a.c.t.i.v.ACTIVEState;
+import tegenton.card.parse.dfa.state.a.c.t.i.v.a.t.ACTIVATEState;
+import tegenton.card.parse.dfa.substring.InfixSubstring;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb;
 
 import java.util.Optional;
 
@@ -19,8 +19,8 @@ public class ACTIVState extends AState {
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'A' -> new SuffixSubstring("ATE", PlayerVerb.ACTIVATE);
-            case 'E' -> ACTIVATEState.state();
+            case 'A' -> new InfixSubstring("AT", 'E', ACTIVATEState::state);
+            case 'E' -> ACTIVEState.state();
             default -> invalid(c);
         };
     }

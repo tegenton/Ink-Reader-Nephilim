@@ -549,6 +549,13 @@ public class RulesTextTestCase {
                 tokens = List.of(ENCHANT, SPACE, CREATURE, NEWLINE,
                         WHEN, SPACE, ENCHANT, ED, SPACE, CREATURE, SPACE, DIE, COMMA, SPACE, TILDE, SPACE, DEAL, SPACE, DAMAGE, SPACE, EQUAL, SPACE, TO, SPACE, THAT, SPACE, CREATURE, POSSESSIVE, SPACE, TOUGHNESS, SPACE, TO, SPACE, THE, SPACE, CREATURE, POSSESSIVE, SPACE, CONTROL, ER, PERIOD);
             }
+
+            @Test
+            @DisplayName("Drain Power")
+            void drainPower() {
+                text = "Target player activates a mana ability of each land they control. Then that player loses all unspent mana and you add the mana lost this way.";
+                tokens = List.of(TARGET, SPACE, PLAY, ER, SPACE, ACTIVATE, SPACE, A, SPACE, MANA, SPACE, ABILITY, SPACE, OF, SPACE, EACH, SPACE, LAND, SPACE, THEY, SPACE, CONTROL, PERIOD, SPACE, THEN, SPACE, THAT, SPACE, PLAY, ER, SPACE, LOSE, SPACE, ALL, SPACE, NOT, SPEND, ED, SPACE, MANA, SPACE, AND, SPACE, YOU, SPACE, ADD, SPACE, THE, SPACE, MANA, SPACE, LOSE, ED, SPACE, THIS, SPACE, WAY, PERIOD);
+            }
         }
     }
 }

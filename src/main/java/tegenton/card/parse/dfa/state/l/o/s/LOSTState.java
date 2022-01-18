@@ -1,26 +1,23 @@
-package tegenton.card.parse.dfa.state.a.d;
+package tegenton.card.parse.dfa.state.l.o.s;
 
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.SymbolState;
-import tegenton.card.parse.dfa.state.a.ADState;
-import tegenton.card.parse.dfa.substring.SuffixSubstring;
-import tegenton.card.parse.lexicon.Preposition;
+import tegenton.card.parse.dfa.state.l.o.LOSState;
+import tegenton.card.parse.lexicon.Morpheme;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb;
 
 import java.util.Optional;
 
-public class ADDState extends ADState {
-    private static final ADDState INSTANCE = new ADDState();
+public class LOSTState extends LOSState {
+    private static final LOSTState INSTANCE = new LOSTState();
 
-    public static ADDState state() {
+    public static LOSTState state() {
         return INSTANCE;
     }
 
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'I' -> new SuffixSubstring("ITION", Preposition.ADDITION);
             case '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
@@ -29,7 +26,7 @@ public class ADDState extends ADState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case '\0', ' ' -> PlayerVerb.ADD;
+            case '\0', ' ' -> Morpheme.ED;
             default -> null;
         });
     }
