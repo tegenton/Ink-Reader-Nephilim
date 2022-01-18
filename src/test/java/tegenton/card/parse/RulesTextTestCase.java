@@ -741,6 +741,20 @@ public class RulesTextTestCase {
                         CREATURE, S, SPACE, THE, SPACE, ACTIVE, SPACE, PLAY, ER, SPACE, CONTROL, SPACE, ATTACK, SPACE, THIS, SPACE, TURN, SPACE, IF, SPACE, ABLE, PERIOD, NEWLINE,
                         AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, THE, SPACE, NEXT, SPACE, END, SPACE, STEP, COMMA, SPACE, DESTROY, SPACE, ALL, SPACE, NOT, MINUS, WALL, SPACE, CREATURE, S, SPACE, THAT, SPACE, PLAY, ER, SPACE, CONTROL, SPACE, THAT, SPACE, DO, NOT, SPACE, ATTACK, SPACE, THIS, SPACE, TURN, PERIOD, SPACE, IGNORE, SPACE, THIS, SPACE, EFFECT, SPACE, FOR, SPACE, EACH, SPACE, CREATURE, SPACE, THE, SPACE, PLAY, ER, SPACE, DO, NOT, SPACE, CONTROL, SPACE, CONTINUOUSLY, SPACE, SINCE, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, THE, SPACE, TURN, PERIOD);
             }
+
+            @Test
+            @DisplayName("Sleight of Mind")
+            void sleightOfMind() {
+                text = "Change the text of target spell or permanent by replacing all instances of one color word with another.";
+                tokens = List.of(CHANGE, SPACE, THE, SPACE, TEXT, SPACE, OF, SPACE, TARGET, SPACE, SPELL, SPACE, OR, SPACE, PERMANENT, SPACE, BY, SPACE, REPLACE, ING, SPACE, ALL, SPACE, INSTANCE, S, SPACE, OF, SPACE, ONE, SPACE, COLOR, SPACE, WORD, SPACE, WITH, SPACE, ANOTHER, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Spell Blast")
+            void spellBlast() {
+                text = "Counter target spell with mana value X.";
+                tokens = List.of(COUNTER, SPACE, TARGET, SPACE, SPELL, SPACE, WITH, SPACE, MANA, SPACE, VALUE, SPACE, X, PERIOD);
+            }
         }
     }
 }
