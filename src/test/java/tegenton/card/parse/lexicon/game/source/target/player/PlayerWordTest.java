@@ -33,13 +33,12 @@ public class PlayerWordTest extends WordTest {
     @Test
     void verb() {
         words = PlayerVerb.values();
-        values =
-                List.of("ACTIVATE", "ADD", "ATTACH", "BEGIN", "CAST", "CHANGE",
-                        "CHOOSE", "CONTROL", "COULD", "COUNTER", "CREATE", "DECLARE",
-                        "DESTROY", "DISCARD", "DIVIDE", "DRAW", "EXCHANGE",
-                        "FLIP", "IGNORE", "LOOK", "LOSE", "MAY", "OWN", "PAY",
-                        "PLAY", "PREVENT", "PUT", "REGENERATE", "REMOVE",
-                        "RETURN", "SACRIFICE", "SEARCH", "SHUFFLE", "SKIP",
-                        "SPEND", "TAKE");
+        values = List.of("ACTIVATE", "ADD", "ATTACH", "BEGIN", "CAST", "CHANGE",
+                "CHOOSE", "CONTROL", "COULD", "COUNTER", "CREATE", "DECLARE",
+                "DESTROY", "DISCARD", "DIVIDE", "DRAW", "EXCHANGE",
+                "FLIP", "IGNORE", "LOOK", "LOSE", "MAY", "OWN", "PAY",
+                "PLAY", "PREVENT", "PUT", "REGENERATE", "REMOVE", "REPLACE",
+                "RETURN", "SACRIFICE", "SEARCH", "SHUFFLE", "SKIP",
+                "SPEND", "TAKE");
     }
 }

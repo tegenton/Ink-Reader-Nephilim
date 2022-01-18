@@ -26,8 +26,7 @@ import static tegenton.card.parse.lexicon.game.GameNoun.*;
 import static tegenton.card.parse.lexicon.game.GameVerb.BE;
 import static tegenton.card.parse.lexicon.game.Keyword.*;
 import static tegenton.card.parse.lexicon.game.Tap.T;
-import static tegenton.card.parse.lexicon.game.TriggerWord.AT;
-import static tegenton.card.parse.lexicon.game.TriggerWord.WHEN;
+import static tegenton.card.parse.lexicon.game.TriggerWord.*;
 import static tegenton.card.parse.lexicon.game.Zone.*;
 import static tegenton.card.parse.lexicon.game.source.SourceNoun.SOURCE;
 import static tegenton.card.parse.lexicon.game.source.SourceVerb.DEAL;
@@ -43,6 +42,7 @@ import static tegenton.card.parse.lexicon.game.source.target.object.ObjectAttrib
 import static tegenton.card.parse.lexicon.game.source.target.object.ObjectNoun.*;
 import static tegenton.card.parse.lexicon.game.source.target.object.ObjectVerb.*;
 import static tegenton.card.parse.lexicon.game.source.target.player.PlayerAdjective.DEFENDING;
+import static tegenton.card.parse.lexicon.game.source.target.player.PlayerNoun.OPPONENT;
 import static tegenton.card.parse.lexicon.game.source.target.player.PlayerNoun.YOU;
 import static tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb.*;
 import static tegenton.card.parse.lexicon.game.turn.Chronology.BEFORE;
@@ -53,9 +53,11 @@ import static tegenton.card.parse.lexicon.game.turn.Phase.COMBAT;
 import static tegenton.card.parse.lexicon.game.turn.Step.END;
 import static tegenton.card.parse.lexicon.game.turn.Step.UPKEEP;
 import static tegenton.card.parse.lexicon.game.type.CardType.*;
+import static tegenton.card.parse.lexicon.game.type.CreatureType.MERFOLK;
 import static tegenton.card.parse.lexicon.game.type.CreatureType.WALL;
 import static tegenton.card.parse.lexicon.game.type.EnchantmentType.AURA;
 import static tegenton.card.parse.lexicon.game.type.LandType.*;
+import static tegenton.card.parse.lexicon.game.type.SuperType.BASIC;
 import static tegenton.card.parse.lexicon.value.EnglishNumber.ONE;
 import static tegenton.card.parse.lexicon.value.EnglishNumber.THREE;
 import static tegenton.card.parse.lexicon.value.Variable.X;
@@ -585,6 +587,34 @@ public class RulesTextTestCase {
                         Enchanted creature can\u2019t be blocked except by Walls.""";
                 tokens = List.of(ENCHANT, SPACE, CREATURE, NEWLINE,
                         ENCHANT, ED, SPACE, CREATURE, SPACE, CAN, NOT, SPACE, BE, SPACE, BLOCK, ED, SPACE, EXCEPT, SPACE, BY, SPACE, WALL, S, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Jump")
+            void jump() {
+                text = "Target creature gains flying until end of turn.";
+                tokens = List.of(TARGET, SPACE, CREATURE, SPACE, GAIN, SPACE, FLYING, SPACE, UNTIL, SPACE, END, SPACE, OF, SPACE, TURN, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Lifetap")
+            void lifetap() {
+                text = "Whenever a Forest an opponent controls becomes tapped, you gain 1 life.";
+                tokens = List.of(WHENEVER, SPACE, A, SPACE, FOREST, SPACE, AN, SPACE, OPPONENT, SPACE, CONTROL, SPACE, BECOME, SPACE, TAP, ED, COMMA, SPACE, YOU, SPACE, GAIN, SPACE, new Number(1), SPACE, LIFE, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Lord of Atlantis")
+            void lordOfAtlantis() {
+                text = "Other Merfolk get +1/+1 and have islandwalk.";
+                tokens = List.of(OTHER, SPACE, MERFOLK, SPACE, GET, SPACE, PLUS, new Number(1), SLASH, PLUS, new Number(1), SPACE, AND, SPACE, HAVE, SPACE, ISLAND, WALK, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Magical Hack")
+            void magicalHack() {
+                text = "Change the text of target spell or permanent by replacing all instances of one basic land type with another.";
+                tokens = List.of(CHANGE, SPACE, THE, SPACE, TEXT, SPACE, OF, SPACE, TARGET, SPACE, SPELL, SPACE, OR, SPACE, PERMANENT, SPACE, BY, SPACE, REPLACE, ING, SPACE, ALL, SPACE, INSTANCE, S, SPACE, OF, SPACE, ONE, SPACE, BASIC, SPACE, LAND, SPACE, TYPE, SPACE, WITH, SPACE, ANOTHER, PERIOD);
             }
         }
     }

@@ -2,9 +2,8 @@ package tegenton.card.parse.dfa.state.i.n.s.t.a;
 
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.i.n.s.t.INSTAState;
+import tegenton.card.parse.dfa.state.i.n.s.t.a.n.INSTANCState;
 import tegenton.card.parse.dfa.state.i.n.s.t.a.n.INSTANTState;
-import tegenton.card.parse.dfa.substring.SuffixSubstring;
-import tegenton.card.parse.lexicon.Noun;
 import tegenton.card.parse.lexicon.Word;
 
 import java.util.Optional;
@@ -19,7 +18,7 @@ public class INSTANState extends INSTAState {
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'C' -> new SuffixSubstring("CE", Noun.INSTANCE);
+            case 'C' -> INSTANCState.state();
             case 'T' -> INSTANTState.state();
             default -> invalid(c);
         };
