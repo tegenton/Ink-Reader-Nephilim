@@ -20,6 +20,7 @@ import static tegenton.card.parse.lexicon.Particle.UP;
 import static tegenton.card.parse.lexicon.Preposition.*;
 import static tegenton.card.parse.lexicon.SubordinateConjunction.*;
 import static tegenton.card.parse.lexicon.Symbol.*;
+import static tegenton.card.parse.lexicon.game.Color.U;
 import static tegenton.card.parse.lexicon.game.Color.W;
 import static tegenton.card.parse.lexicon.game.ColorWord.*;
 import static tegenton.card.parse.lexicon.game.GameNoun.*;
@@ -636,6 +637,28 @@ public class RulesTextTestCase {
             void merfolkOfThePearlTrident() {
                 text = "";
                 tokens = List.of();
+            }
+
+            @Test
+            @DisplayName("Phantasmal Forces")
+            void phantasmalForces() {
+                text = """
+                        Flying
+                        At the beginning of your upkeep, sacrifice ~ unless you pay {U}.""";
+                tokens = List.of(FLYING, NEWLINE,
+                        AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, YOU, POSSESSIVE, SPACE, UPKEEP, COMMA, SPACE, SACRIFICE, SPACE, TILDE, SPACE, UNLESS, SPACE, YOU, SPACE, PAY, SPACE, LBRACKET, U, RBRACKET, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Phantasmal Terrain")
+            void phantasmalTerrain() {
+                text = """
+                        Enchant land
+                        As ~ enters the battlefield, choose a basic land type.
+                        Enchanted land is the chosen type.""";
+                tokens = List.of(ENCHANT, SPACE, LAND, NEWLINE,
+                        AS, SPACE, TILDE, SPACE, ENTER, SPACE, THE, SPACE, BATTLEFIELD, COMMA, SPACE, CHOOSE, SPACE, A, SPACE, BASIC, SPACE, LAND, SPACE, TYPE, PERIOD, NEWLINE,
+                        ENCHANT, ED, SPACE, LAND, SPACE, IS, SPACE, THE, SPACE, CHOSEN, SPACE, TYPE, PERIOD);
             }
         }
     }

@@ -19,6 +19,7 @@ public class UState extends State {
         return switch (c) {
             case 'N' -> UNState.state();
             case 'P' -> UPState.state();
+            case '}' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }

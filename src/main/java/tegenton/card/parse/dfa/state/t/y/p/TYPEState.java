@@ -19,14 +19,14 @@ public class TYPEState extends TState {
     public State transition(char c) {
         return switch (c) {
             case 'S' -> SState.state();
-            case '\0', ' ' -> SymbolState.state(c);
+            case '\0', '.', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }
 
     public Optional<Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case 'S', '\0', ' ' -> GameNoun.TYPE;
+            case 'S', '\0', '.', ' ' -> GameNoun.TYPE;
             default -> null;
         });
     }
