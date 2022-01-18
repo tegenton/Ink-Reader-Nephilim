@@ -755,6 +755,16 @@ public class RulesTextTestCase {
                 text = "Counter target spell with mana value X.";
                 tokens = List.of(COUNTER, SPACE, TARGET, SPACE, SPELL, SPACE, WITH, SPACE, MANA, SPACE, VALUE, SPACE, X, PERIOD);
             }
+
+            @Test
+            @DisplayName("Stasis")
+            void stasis() {
+                text = """
+                        Players skip their untap steps.
+                        At the beginning of your upkeep, sacrifice ~ unless you pay {U}.""";
+                tokens = List.of(PLAY, ER, S, SPACE, SKIP, SPACE, THEY, POSSESSIVE, SPACE, NOT, TAP, SPACE, STEP, S, PERIOD, NEWLINE,
+                        AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, YOU, POSSESSIVE, SPACE, UPKEEP, COMMA, SPACE, SACRIFICE, SPACE, TILDE, SPACE, UNLESS, SPACE, YOU, SPACE, PAY, SPACE, LBRACKET, U, RBRACKET, PERIOD);
+            }
         }
     }
 }
