@@ -566,6 +566,26 @@ public class RulesTextTestCase {
                 tokens = List.of(ENCHANT, SPACE, ENCHANTMENT, NEWLINE,
                         AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, THE, SPACE, UPKEEP, SPACE, OF, SPACE, ENCHANT, ED, SPACE, ENCHANTMENT, POSSESSIVE, SPACE, CONTROL, ER, COMMA, SPACE, TILDE, SPACE, DEAL, SPACE, new Number(1), SPACE, DAMAGE, SPACE, TO, SPACE, THAT, SPACE, PLAY, ER, PERIOD);
             }
+
+            @Test
+            @DisplayName("Flight")
+            void flight() {
+                text = """
+                        Enchant creature
+                        Enchanted creature has flying.""";
+                tokens = List.of(ENCHANT, SPACE, CREATURE, NEWLINE,
+                        ENCHANT, ED, SPACE, CREATURE, SPACE, HAVE, SPACE, FLYING, PERIOD);
+            }
+
+            @Test
+            @DisplayName("invisibility")
+            void invisibility() {
+                text = """
+                        Enchant creature
+                        Enchanted creature can\u2019t be blocked except by Walls.""";
+                tokens = List.of(ENCHANT, SPACE, CREATURE, NEWLINE,
+                        ENCHANT, ED, SPACE, CREATURE, SPACE, CAN, NOT, SPACE, BE, SPACE, BLOCK, ED, SPACE, EXCEPT, SPACE, BY, SPACE, WALL, S, PERIOD);
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 package tegenton.card.parse.dfa.state.w.a.l;
 
+import tegenton.card.parse.dfa.state.SState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.dfa.state.w.a.WALState;
@@ -18,6 +19,7 @@ public class WALLState extends WALState {
     @Override
     public State transition(char c) {
         return switch (c) {
+            case 'S' -> SState.state();
             case '\n', '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
@@ -26,7 +28,7 @@ public class WALLState extends WALState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case '\n', '\0', ' ' -> CreatureType.WALL;
+            case 'S', '\n', '\0', ' ' -> CreatureType.WALL;
             default -> null;
         });
     }
