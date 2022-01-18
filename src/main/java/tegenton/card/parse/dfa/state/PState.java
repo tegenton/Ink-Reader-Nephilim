@@ -1,5 +1,6 @@
 package tegenton.card.parse.dfa.state;
 
+import tegenton.card.parse.dfa.state.p.PAState;
 import tegenton.card.parse.dfa.state.p.PLState;
 import tegenton.card.parse.dfa.state.p.PRState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
@@ -21,7 +22,7 @@ public class PState extends State {
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'A' -> new SuffixSubstring("AY", PlayerVerb.PAY);
+            case 'A' -> PAState.state();
             case 'E' -> new SuffixSubstring("ERMANENT", ObjectNoun.PERMANENT);
             case 'I' -> new SuffixSubstring("ILE", GameNoun.PILE);
             case 'O' -> new SuffixSubstring("OWER", ObjectAttribute.POWER);

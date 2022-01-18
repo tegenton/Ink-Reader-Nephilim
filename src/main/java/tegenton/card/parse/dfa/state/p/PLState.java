@@ -4,20 +4,21 @@ import tegenton.card.parse.dfa.state.PState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.p.l.PLAState;
 import tegenton.card.parse.lexicon.Word;
+
 import java.util.Optional;
 
 public class PLState extends PState {
-    private static final PLState instance = new PLState();
+    private static final PLState INSTANCE = new PLState();
 
     public static PLState state() {
-        return instance;
+        return INSTANCE;
     }
 
     @Override
     public State transition(char c) {
         return switch (c) {
             case 'A' -> PLAState.state();
-            default -> throw new IllegalStateException("Cannot transition from PLState on " + c);
+            default -> invalid(c);
         };
     }
 
