@@ -49,8 +49,7 @@ import static tegenton.card.parse.lexicon.game.source.target.player.PlayerAdverb
 import static tegenton.card.parse.lexicon.game.source.target.player.PlayerNoun.OPPONENT;
 import static tegenton.card.parse.lexicon.game.source.target.player.PlayerNoun.YOU;
 import static tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb.*;
-import static tegenton.card.parse.lexicon.game.turn.Chronology.BEFORE;
-import static tegenton.card.parse.lexicon.game.turn.Chronology.DURING;
+import static tegenton.card.parse.lexicon.game.turn.Chronology.*;
 import static tegenton.card.parse.lexicon.game.turn.Duration.SINCE;
 import static tegenton.card.parse.lexicon.game.turn.Duration.UNTIL;
 import static tegenton.card.parse.lexicon.game.turn.Phase.BEGINNING;
@@ -764,6 +763,30 @@ public class RulesTextTestCase {
                         At the beginning of your upkeep, sacrifice ~ unless you pay {U}.""";
                 tokens = List.of(PLAY, ER, S, SPACE, SKIP, SPACE, THEY, POSSESSIVE, SPACE, NOT, TAP, SPACE, STEP, S, PERIOD, NEWLINE,
                         AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, YOU, POSSESSIVE, SPACE, UPKEEP, COMMA, SPACE, SACRIFICE, SPACE, TILDE, SPACE, UNLESS, SPACE, YOU, SPACE, PAY, SPACE, LBRACKET, U, RBRACKET, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Steal Artifact")
+            void stealArtifact() {
+                text = """
+                        Enchant artifact
+                        You control enchanted artifact.""";
+                tokens = List.of(ENCHANT, SPACE, ARTIFACT, NEWLINE,
+                        YOU, SPACE, CONTROL, SPACE, ENCHANT, ED, SPACE, ARTIFACT, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Thoughtlace")
+            void thoughtlace() {
+                text = "Target spell or permanent becomes blue.";
+                tokens = List.of(TARGET, SPACE, SPELL, SPACE, OR, SPACE, PERMANENT, SPACE, BECOME, SPACE, BLUE, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Time Walk")
+            void timeWalk() {
+                text = "Take an extra turn after this one.";
+                tokens = List.of(TAKE, SPACE, AN, SPACE, EXTRA, SPACE, TURN, SPACE, AFTER, SPACE, THIS, SPACE, ONE, PERIOD);
             }
         }
     }
