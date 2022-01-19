@@ -62,8 +62,7 @@ import static tegenton.card.parse.lexicon.game.type.CreatureType.WALL;
 import static tegenton.card.parse.lexicon.game.type.EnchantmentType.AURA;
 import static tegenton.card.parse.lexicon.game.type.LandType.*;
 import static tegenton.card.parse.lexicon.game.type.SuperType.BASIC;
-import static tegenton.card.parse.lexicon.value.EnglishNumber.ONE;
-import static tegenton.card.parse.lexicon.value.EnglishNumber.THREE;
+import static tegenton.card.parse.lexicon.value.EnglishNumber.*;
 import static tegenton.card.parse.lexicon.value.Variable.X;
 
 public class RulesTextTestCase {
@@ -787,6 +786,13 @@ public class RulesTextTestCase {
             void timeWalk() {
                 text = "Take an extra turn after this one.";
                 tokens = List.of(TAKE, SPACE, AN, SPACE, EXTRA, SPACE, TURN, SPACE, AFTER, SPACE, THIS, SPACE, ONE, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Timetwister")
+            void timeTwister() {
+                text = "Each player shuffles their hand and graveyard into their library, then draws seven cards.";
+                tokens = List.of(EACH, SPACE, PLAY, ER, SPACE, SHUFFLE, SPACE, THEY, POSSESSIVE, SPACE, HAND, SPACE, AND, SPACE, GRAVEYARD, SPACE, IN, TO, SPACE, THEY, POSSESSIVE, SPACE, LIBRARY, COMMA, SPACE, THEN, SPACE, DRAW, SPACE, SEVEN, SPACE, CARD, S, PERIOD);
             }
         }
     }

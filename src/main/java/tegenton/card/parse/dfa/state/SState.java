@@ -1,6 +1,7 @@
 package tegenton.card.parse.dfa.state;
 
 import tegenton.card.parse.dfa.state.s.*;
+import tegenton.card.parse.dfa.state.s.h.u.f.f.l.SHUFFLEState;
 import tegenton.card.parse.dfa.state.s.w.a.m.SWAMPState;
 import tegenton.card.parse.dfa.substring.InfixSubstring;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
@@ -22,7 +23,7 @@ public class SState extends State {
         return switch (c) {
             case 'A' -> SAState.state();
             case 'E' -> SEState.state();
-            case 'H' -> new SuffixSubstring("HUFFLE", PlayerVerb.SHUFFLE);
+            case 'H' -> new InfixSubstring("HUFFL", 'E', SHUFFLEState::state);
             case 'I' -> SIState.state();
             case 'K' -> new SuffixSubstring("KIP", PlayerVerb.SKIP);
             case 'P' -> SPState.state();

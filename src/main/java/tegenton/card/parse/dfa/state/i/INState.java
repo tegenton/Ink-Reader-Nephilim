@@ -3,6 +3,7 @@ package tegenton.card.parse.dfa.state.i;
 import tegenton.card.parse.dfa.state.IState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.SymbolState;
+import tegenton.card.parse.dfa.state.TState;
 import tegenton.card.parse.dfa.state.i.n.INGState;
 import tegenton.card.parse.dfa.state.i.n.INSState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
@@ -26,7 +27,8 @@ public class INState extends IState {
                     Keyword.INDESTRUCTIBLE);
             case 'G' -> INGState.state();
             case 'S' -> INSState.state();
-            case ' ' -> SymbolState.state(c);
+            case 'T' -> TState.state();
+            case '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }
@@ -34,7 +36,7 @@ public class INState extends IState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return switch (c) {
-            case '\0', ' ' -> Optional.of(Preposition.IN);
+            case 'T', '\0', ' ' -> Optional.of(Preposition.IN);
             default -> Optional.empty();
         };
     }
