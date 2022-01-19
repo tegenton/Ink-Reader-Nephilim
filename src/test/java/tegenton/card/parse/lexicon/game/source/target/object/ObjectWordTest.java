@@ -7,6 +7,12 @@ import java.util.List;
 
 public class ObjectWordTest extends WordTest {
     @Test
+    void adjective() {
+        words = ObjectAdjective.values();
+        values = List.of("TOP");
+    }
+
+    @Test
     void attribute() {
         words = ObjectAttribute.values();
         values = List.of("FACE", "LOYALTY", "NAME", "POWER", "TOUGHNESS", "VALUE");

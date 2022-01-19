@@ -41,6 +41,7 @@ import static tegenton.card.parse.lexicon.game.source.target.TargetModifier.POSS
 import static tegenton.card.parse.lexicon.game.source.target.TargetNoun.THEY;
 import static tegenton.card.parse.lexicon.game.source.target.TargetNoun.WHO;
 import static tegenton.card.parse.lexicon.game.source.target.TargetVerb.GAIN;
+import static tegenton.card.parse.lexicon.game.source.target.object.ObjectAdjective.TOP;
 import static tegenton.card.parse.lexicon.game.source.target.object.ObjectAttribute.*;
 import static tegenton.card.parse.lexicon.game.source.target.object.ObjectNoun.*;
 import static tegenton.card.parse.lexicon.game.source.target.object.ObjectVerb.*;
@@ -716,7 +717,7 @@ public class RulesTextTestCase {
                         Enchant land
                         Whenever enchanted land becomes tapped, ~ deals 2 damage to that land\u2019s controller.""";
                 tokens = List.of(ENCHANT, SPACE, LAND, NEWLINE,
-                        WHENEVER, SPACE, ENCHANT, ED, SPACE, LAND, SPACE, BECOME, SPACE, TAP, ED, COMMA, SPACE, TILDE, SPACE, DEAL, SPACE, new Number(2), SPACE, DAMAGE, SPACE, TO, SPACE, THAT, SPACE, LAND, S, SPACE, CONTROL, ER, PERIOD);
+                        WHENEVER, SPACE, ENCHANT, ED, SPACE, LAND, SPACE, BECOME, SPACE, TAP, ED, COMMA, SPACE, TILDE, SPACE, DEAL, SPACE, new Number(2), SPACE, DAMAGE, SPACE, TO, SPACE, THAT, SPACE, LAND, POSSESSIVE, SPACE, CONTROL, ER, PERIOD);
             }
 
             @Test
@@ -862,6 +863,50 @@ public class RulesTextTestCase {
                 tokens = List.of(ENCHANT, SPACE, CREATURE, SPACE, CARD, SPACE, IN, SPACE, A, SPACE, GRAVEYARD, NEWLINE,
                         WHEN, SPACE, TILDE, SPACE, ENTER, SPACE, THE, SPACE, BATTLEFIELD, COMMA, SPACE, IF, SPACE, IT, IS, SPACE, ON, SPACE, THE, SPACE, BATTLEFIELD, COMMA, SPACE, IT, SPACE, TargetVerb.LOSE, SPACE, OPENQUOTE, ENCHANT, SPACE, CREATURE, SPACE, CARD, SPACE, IN, SPACE, A, SPACE, GRAVEYARD, CLOSEQUOTE, SPACE, AND, SPACE, GAIN, SPACE, OPENQUOTE, ENCHANT, SPACE, CREATURE, SPACE, PUT, SPACE, ON, TO, SPACE, THE, SPACE, BATTLEFIELD, SPACE, WITH, SPACE, TILDE, PERIOD, CLOSEQUOTE, SPACE, RETURN, SPACE, ENCHANT, ED, SPACE, CREATURE, SPACE, CARD, SPACE, TO, SPACE, THE, SPACE, BATTLEFIELD, SPACE, UNDER, SPACE, YOU, POSSESSIVE, SPACE, CONTROL, SPACE, AND, SPACE, ATTACH, SPACE, TILDE, SPACE, TO, SPACE, IT, PERIOD, SPACE, WHEN, SPACE, TILDE, SPACE, LEAVE, SPACE, THE, SPACE, BATTLEFIELD, COMMA, SPACE, THAT, SPACE, CREATURE, POSSESSIVE, SPACE, CONTROL, ER, SPACE, SACRIFICE, SPACE, IT, PERIOD, NEWLINE,
                         ENCHANT, ED, SPACE, CREATURE, SPACE, GET, SPACE, MINUS, new Number(1), SLASH, MINUS, new Number(0), PERIOD);
+            }
+
+            @Test
+            @DisplayName("Bad Moon")
+            void badMoon() {
+                text = "Black creatures get +1/+1.";
+                tokens = List.of(BLACK, SPACE, CREATURE, S, SPACE, GET, SPACE, PLUS, new Number(1), SLASH, PLUS, new Number(1), PERIOD);
+            }
+
+            @Test
+            @DisplayName("Black Knight")
+            void blackKnight() {
+                text = """
+                        First strike
+                        Protection from white""";
+                tokens = List.of(FIRST, SPACE, STRIKE, NEWLINE,
+                        PROTECTION, SPACE, FROM, SPACE, WHITE);
+            }
+
+            @Test
+            @DisplayName("Bog Wraith")
+            void bogWraith() {
+                text = "Swampwalk";
+                tokens = List.of(SWAMP, WALK);
+            }
+
+            @Test
+            @DisplayName("Contract from Below")
+            void contractFromBelow() {
+                text = """
+                        Remove ~ from your deck before playing if you\u2019re not playing for ante.
+                        Discard your hand, ante the top card of your library, then draw seven cards.""";
+                tokens = List.of(REMOVE, SPACE, TILDE, SPACE, FROM, SPACE, YOU, POSSESSIVE, SPACE, DECK, SPACE, BEFORE, SPACE, PLAY, ING, SPACE, IF, SPACE, YOU, IS, SPACE, NOT, SPACE, PLAY, ING, SPACE, FOR, SPACE, ANTE, PERIOD, NEWLINE,
+                        DISCARD, SPACE, YOU, POSSESSIVE, SPACE, HAND, COMMA, SPACE, ANTE, SPACE, THE, SPACE, TOP, SPACE, CARD, SPACE, OF, SPACE, YOU, POSSESSIVE, SPACE, LIBRARY, COMMA, SPACE, THEN, SPACE, DRAW, SPACE, SEVEN, SPACE, CARD, S, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Cursed Land")
+            void cursedLand() {
+                text = """
+                        Enchant land
+                        At the beginning of the upkeep of enchanted land\u2019s controller, ~ deals 1 damage to that player.""";
+                tokens = List.of(ENCHANT, SPACE, LAND, NEWLINE,
+                        AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, THE, SPACE, UPKEEP, SPACE, OF, SPACE, ENCHANT, ED, SPACE, LAND, POSSESSIVE, SPACE, CONTROL, ER, COMMA, SPACE, TILDE, SPACE, DEAL, SPACE, new Number(1), SPACE, DAMAGE, SPACE, TO, SPACE, THAT, SPACE, PLAY, ER, PERIOD);
             }
         }
     }

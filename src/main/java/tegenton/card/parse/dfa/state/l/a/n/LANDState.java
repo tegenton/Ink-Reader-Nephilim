@@ -1,5 +1,6 @@
 package tegenton.card.parse.dfa.state.l.a.n;
 
+import tegenton.card.parse.dfa.state.PossessiveState;
 import tegenton.card.parse.dfa.state.SState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.SymbolState;
@@ -20,7 +21,8 @@ public class LANDState extends LAState {
     public State transition(char c) {
         return switch (c) {
             case 'S' -> SState.state();
-            case '\u2019', '\n', '\0', '.', ' ' -> SymbolState.state(c);
+            case '\u2019' -> PossessiveState.state();
+            case '\n', '\0', '.', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }

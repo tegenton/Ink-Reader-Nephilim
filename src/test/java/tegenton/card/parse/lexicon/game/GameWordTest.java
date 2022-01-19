@@ -36,7 +36,7 @@ public class GameWordTest extends WordTest {
     @Test
     void zone() {
         words = Zone.values();
-        values = List.of("ANTE", "BATTLEFIELD", "EXILE", "GRAVEYARD", "HAND",
+        values = List.of("ANTE", "BATTLEFIELD", "DECK", "EXILE", "GRAVEYARD", "HAND",
                 "LIBRARY");
     }
 }
