@@ -22,8 +22,7 @@ import static tegenton.card.parse.lexicon.Preposition.*;
 import static tegenton.card.parse.lexicon.SubordinateConjunction.*;
 import static tegenton.card.parse.lexicon.Symbol.MINUS;
 import static tegenton.card.parse.lexicon.Symbol.*;
-import static tegenton.card.parse.lexicon.game.Color.U;
-import static tegenton.card.parse.lexicon.game.Color.W;
+import static tegenton.card.parse.lexicon.game.Color.*;
 import static tegenton.card.parse.lexicon.game.ColorWord.*;
 import static tegenton.card.parse.lexicon.game.GameNoun.*;
 import static tegenton.card.parse.lexicon.game.GameVerb.BE;
@@ -907,6 +906,30 @@ public class RulesTextTestCase {
                         At the beginning of the upkeep of enchanted land\u2019s controller, ~ deals 1 damage to that player.""";
                 tokens = List.of(ENCHANT, SPACE, LAND, NEWLINE,
                         AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, THE, SPACE, UPKEEP, SPACE, OF, SPACE, ENCHANT, ED, SPACE, LAND, POSSESSIVE, SPACE, CONTROL, ER, COMMA, SPACE, TILDE, SPACE, DEAL, SPACE, new Number(1), SPACE, DAMAGE, SPACE, TO, SPACE, THAT, SPACE, PLAY, ER, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Dark Ritual")
+            void darkRitual() {
+                text = "Add {B}{B}{B}.";
+                tokens = List.of(ADD, SPACE, LBRACKET, B, RBRACKET, LBRACKET, B, RBRACKET, LBRACKET, B, RBRACKET, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Darkpact")
+            void darkpact() {
+                text = """
+                        Remove ~ from your deck before playing if you\u2019re not playing for ante.
+                        You own target card in the ante. Exchange that card with the top card of your library.""";
+                tokens = List.of(REMOVE, SPACE, TILDE, SPACE, FROM, SPACE, YOU, POSSESSIVE, SPACE, DECK, SPACE, BEFORE, SPACE, PLAY, ING, SPACE, IF, SPACE, YOU, IS, SPACE, NOT, SPACE, PLAY, ING, SPACE, FOR, SPACE, ANTE, PERIOD, NEWLINE,
+                        YOU, SPACE, OWN, SPACE, TARGET, SPACE, CARD, SPACE, IN, SPACE, THE, SPACE, ANTE, PERIOD, SPACE, EXCHANGE, SPACE, THAT, SPACE, CARD, SPACE, WITH, SPACE, THE, SPACE, TOP, SPACE, CARD, SPACE, OF, SPACE, YOU, POSSESSIVE, SPACE, LIBRARY, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Deathgrip")
+            void deathgrip() {
+                text = "{B}{B}: Counter target green spell.";
+                tokens = List.of(LBRACKET, B, RBRACKET, LBRACKET, B, RBRACKET, COLON, SPACE, COUNTER, SPACE, TARGET, SPACE, GREEN, SPACE, SPELL, PERIOD);
             }
         }
     }

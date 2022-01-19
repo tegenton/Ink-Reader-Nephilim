@@ -26,6 +26,7 @@ public class BState extends State {
             case 'L' -> BLState.state();
             case 'U' -> new SuffixSubstring("UT", SubordinateConjunction.BUT);
             case 'Y' -> BYState.state();
+            case '}' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }
