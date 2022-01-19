@@ -4,7 +4,7 @@ import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.dfa.state.l.o.LOSState;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb;
+import tegenton.card.parse.lexicon.game.source.target.TargetVerb;
 
 import java.util.Optional;
 
@@ -27,7 +27,7 @@ public class LOSEState extends LOSState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case '\0', ' ' -> PlayerVerb.LOSE;
+            case '\0', ' ' -> TargetVerb.LOSE;
             default -> null;
         });
     }

@@ -21,7 +21,7 @@ public class TargetWordTest extends WordTest {
     @Test
     void verb() {
         words = TargetVerb.values();
-        values = List.of("ASSIGN", "GAIN");
+        values = List.of("ASSIGN", "GAIN", "LOSE");
     }
 
     @Test

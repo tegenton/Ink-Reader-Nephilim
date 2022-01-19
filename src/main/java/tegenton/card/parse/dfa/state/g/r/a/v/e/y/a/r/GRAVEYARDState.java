@@ -1,24 +1,24 @@
-package tegenton.card.parse.dfa.state.a.t.t.a.c;
+package tegenton.card.parse.dfa.state.g.r.a.v.e.y.a.r;
 
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.SymbolState;
-import tegenton.card.parse.dfa.state.a.t.t.a.ATTACState;
+import tegenton.card.parse.dfa.state.g.GRState;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb;
+import tegenton.card.parse.lexicon.game.Zone;
 
 import java.util.Optional;
 
-public class ATTACHState extends ATTACState {
-    private static final ATTACHState INSTANCE = new ATTACHState();
+public class GRAVEYARDState extends GRState {
+    private static final GRAVEYARDState INSTANCE = new GRAVEYARDState();
 
-    public static ATTACHState state() {
+    public static GRAVEYARDState state() {
         return INSTANCE;
     }
 
     @Override
     public State transition(char c) {
         return switch (c) {
-            case '\0', ' ' -> SymbolState.state(c);
+            case '\u201D', '\n', '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }
@@ -26,7 +26,7 @@ public class ATTACHState extends ATTACState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case '\0', ' ' -> PlayerVerb.ATTACH;
+            case '\u201D', '\n', '\0', ' ' -> Zone.GRAVEYARD;
             default -> null;
         });
     }

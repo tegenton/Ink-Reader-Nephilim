@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import tegenton.card.parse.lexicon.Word;
+import tegenton.card.parse.lexicon.game.source.target.TargetVerb;
 import tegenton.card.parse.lexicon.value.Number;
 
 import java.util.List;
@@ -351,7 +352,7 @@ public class RulesTextTestCase {
                         When ~ dies, its owner loses half their life, rounded up.""";
                 tokens = List.of(LBRACKET, new Number(0), RBRACKET, COLON, SPACE, THE, SPACE, NEXT, SPACE, new Number(1), SPACE, DAMAGE, SPACE, THAT, SPACE, WOULD, SPACE, BE, SPACE, DEAL, ED, SPACE, TO, SPACE, TILDE, SPACE, THIS, SPACE, TURN, SPACE, IS, SPACE, DEAL, ED, SPACE, TO, SPACE, IT, POSSESSIVE, SPACE, OWN, ER, SPACE, INSTEAD, PERIOD, SPACE,
                         ONLY, SPACE, TILDE, POSSESSIVE, SPACE, OWN, ER, SPACE, MAY, SPACE, ACTIVATE, SPACE, THIS, SPACE, ABILITY, PERIOD, NEWLINE,
-                        WHEN, SPACE, TILDE, SPACE, DIE, COMMA, SPACE, IT, POSSESSIVE, SPACE, OWN, ER, SPACE, LOSE, SPACE, HALF, SPACE, THEY, POSSESSIVE, SPACE, LIFE, COMMA, SPACE, ROUNDED, SPACE, UP, PERIOD);
+                        WHEN, SPACE, TILDE, SPACE, DIE, COMMA, SPACE, IT, POSSESSIVE, SPACE, OWN, ER, SPACE, TargetVerb.LOSE, SPACE, HALF, SPACE, THEY, POSSESSIVE, SPACE, LIFE, COMMA, SPACE, ROUNDED, SPACE, UP, PERIOD);
             }
 
             @Test
@@ -559,7 +560,7 @@ public class RulesTextTestCase {
             @DisplayName("Drain Power")
             void drainPower() {
                 text = "Target player activates a mana ability of each land they control. Then that player loses all unspent mana and you add the mana lost this way.";
-                tokens = List.of(TARGET, SPACE, PLAY, ER, SPACE, ACTIVATE, SPACE, A, SPACE, MANA, SPACE, ABILITY, SPACE, OF, SPACE, EACH, SPACE, LAND, SPACE, THEY, SPACE, CONTROL, PERIOD, SPACE, THEN, SPACE, THAT, SPACE, PLAY, ER, SPACE, LOSE, SPACE, ALL, SPACE, NOT, SPEND, ED, SPACE, MANA, SPACE, AND, SPACE, YOU, SPACE, ADD, SPACE, THE, SPACE, MANA, SPACE, LOSE, ED, SPACE, THIS, SPACE, WAY, PERIOD);
+                tokens = List.of(TARGET, SPACE, PLAY, ER, SPACE, ACTIVATE, SPACE, A, SPACE, MANA, SPACE, ABILITY, SPACE, OF, SPACE, EACH, SPACE, LAND, SPACE, THEY, SPACE, CONTROL, PERIOD, SPACE, THEN, SPACE, THAT, SPACE, PLAY, ER, SPACE, TargetVerb.LOSE, SPACE, ALL, SPACE, NOT, SPEND, ED, SPACE, MANA, SPACE, AND, SPACE, YOU, SPACE, ADD, SPACE, THE, SPACE, MANA, SPACE, TargetVerb.LOSE, ED, SPACE, THIS, SPACE, WAY, PERIOD);
             }
 
             @Test
@@ -631,7 +632,7 @@ public class RulesTextTestCase {
             @DisplayName("Mana Short")
             void manaShort() {
                 text = "Tap all lands target player controls and that player loses all unspent mana.";
-                tokens = List.of(TAP, SPACE, ALL, SPACE, LAND, S, SPACE, TARGET, SPACE, PLAY, ER, SPACE, CONTROL, SPACE, AND, SPACE, THAT, SPACE, PLAY, ER, SPACE, LOSE, SPACE, ALL, SPACE, NOT, SPEND, ED, SPACE, MANA, PERIOD);
+                tokens = List.of(TAP, SPACE, ALL, SPACE, LAND, S, SPACE, TARGET, SPACE, PLAY, ER, SPACE, CONTROL, SPACE, AND, SPACE, THAT, SPACE, PLAY, ER, SPACE, TargetVerb.LOSE, SPACE, ALL, SPACE, NOT, SPEND, ED, SPACE, MANA, PERIOD);
             }
 
             @Test
@@ -691,7 +692,7 @@ public class RulesTextTestCase {
             @DisplayName("Power Sink")
             void powerSink() {
                 text = "Counter target spell unless its controller pays {X}. If that player doesn\u2019t, they tap all lands with mana abilities they control and lose all unspent mana.";
-                tokens = List.of(COUNTER, SPACE, TARGET, SPACE, SPELL, SPACE, UNLESS, SPACE, IT, POSSESSIVE, SPACE, CONTROL, ER, SPACE, PAY, SPACE, LBRACKET, X, RBRACKET, PERIOD, SPACE, IF, SPACE, THAT, SPACE, PLAY, ER, SPACE, DO, NOT, COMMA, SPACE, THEY, SPACE, TAP, SPACE, ALL, SPACE, LAND, S, SPACE, WITH, SPACE, MANA, SPACE, ABILITY, S, SPACE, THEY, SPACE, CONTROL, SPACE, AND, SPACE, LOSE, SPACE, ALL, SPACE, NOT, SPEND, ED, SPACE, MANA, PERIOD);
+                tokens = List.of(COUNTER, SPACE, TARGET, SPACE, SPELL, SPACE, UNLESS, SPACE, IT, POSSESSIVE, SPACE, CONTROL, ER, SPACE, PAY, SPACE, LBRACKET, X, RBRACKET, PERIOD, SPACE, IF, SPACE, THAT, SPACE, PLAY, ER, SPACE, DO, NOT, COMMA, SPACE, THEY, SPACE, TAP, SPACE, ALL, SPACE, LAND, S, SPACE, WITH, SPACE, MANA, SPACE, ABILITY, S, SPACE, THEY, SPACE, CONTROL, SPACE, AND, SPACE, TargetVerb.LOSE, SPACE, ALL, SPACE, NOT, SPEND, ED, SPACE, MANA, PERIOD);
             }
 
             @Test
@@ -845,6 +846,22 @@ public class RulesTextTestCase {
             void waterElemental() {
                 text = "";
                 tokens = List.of();
+            }
+        }
+
+        @Nested
+        @DisplayName("Black Cards")
+        class BlackCardTests {
+            @Test
+            @DisplayName("Animate Dead")
+            void animateDead() {
+                text = """
+                        Enchant creature card in a graveyard
+                        When ~ enters the battlefield, if it\u2019s on the battlefield, it loses \u201Cenchant creature card in a graveyard\u201D and gains \u201Cenchant creature put onto the battlefield with ~.\u201D Return enchanted creature card to the battlefield under your control and attach ~ to it. When ~ leaves the battlefield, that creature\u2019s controller sacrifices it.
+                        Enchanted creature gets -1/-0.""";
+                tokens = List.of(ENCHANT, SPACE, CREATURE, SPACE, CARD, SPACE, IN, SPACE, A, SPACE, GRAVEYARD, NEWLINE,
+                        WHEN, SPACE, TILDE, SPACE, ENTER, SPACE, THE, SPACE, BATTLEFIELD, COMMA, SPACE, IF, SPACE, IT, IS, SPACE, ON, SPACE, THE, SPACE, BATTLEFIELD, COMMA, SPACE, IT, SPACE, TargetVerb.LOSE, SPACE, OPENQUOTE, ENCHANT, SPACE, CREATURE, SPACE, CARD, SPACE, IN, SPACE, A, SPACE, GRAVEYARD, CLOSEQUOTE, SPACE, AND, SPACE, GAIN, SPACE, OPENQUOTE, ENCHANT, SPACE, CREATURE, SPACE, PUT, SPACE, ON, TO, SPACE, THE, SPACE, BATTLEFIELD, SPACE, WITH, SPACE, TILDE, PERIOD, CLOSEQUOTE, SPACE, RETURN, SPACE, ENCHANT, ED, SPACE, CREATURE, SPACE, CARD, SPACE, TO, SPACE, THE, SPACE, BATTLEFIELD, SPACE, UNDER, SPACE, YOU, POSSESSIVE, SPACE, CONTROL, SPACE, AND, SPACE, ATTACH, SPACE, TILDE, SPACE, TO, SPACE, IT, PERIOD, SPACE, WHEN, SPACE, TILDE, SPACE, LEAVE, SPACE, THE, SPACE, BATTLEFIELD, COMMA, SPACE, THAT, SPACE, CREATURE, POSSESSIVE, SPACE, CONTROL, ER, SPACE, SACRIFICE, SPACE, IT, PERIOD, NEWLINE,
+                        ENCHANT, ED, SPACE, CREATURE, SPACE, GET, SPACE, MINUS, new Number(1), SLASH, MINUS, new Number(0), PERIOD);
             }
         }
     }
