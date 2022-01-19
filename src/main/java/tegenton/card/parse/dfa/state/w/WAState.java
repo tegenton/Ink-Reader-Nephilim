@@ -3,8 +3,10 @@ package tegenton.card.parse.dfa.state.w;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.WState;
 import tegenton.card.parse.dfa.state.w.a.WALState;
+import tegenton.card.parse.dfa.state.w.a.WASState;
 import tegenton.card.parse.dfa.state.w.a.WAYState;
 import tegenton.card.parse.lexicon.Word;
+import tegenton.card.parse.lexicon.game.source.target.object.ObjectVerb;
 
 import java.util.Optional;
 
@@ -19,6 +21,7 @@ public class WAState extends WState {
     public State transition(char c) {
         return switch (c) {
             case 'L' -> WALState.state();
+            case 'S' -> WASState.state();
             case 'Y' -> WAYState.state();
             default -> invalid(c);
         };
@@ -26,6 +29,9 @@ public class WAState extends WState {
 
     @Override
     public Optional<? extends Word> produce(char c) {
-        return Optional.empty();
+        return Optional.ofNullable(switch (c) {
+            case 'S' -> ObjectVerb.IS;
+            default -> null;
+        });
     }
 }

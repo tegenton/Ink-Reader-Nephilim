@@ -12,6 +12,7 @@ import java.util.List;
 
 import static tegenton.card.parse.lexicon.Adjective.*;
 import static tegenton.card.parse.lexicon.Adverb.*;
+import static tegenton.card.parse.lexicon.Comparative.THAN;
 import static tegenton.card.parse.lexicon.Conjunction.*;
 import static tegenton.card.parse.lexicon.Determiner.*;
 import static tegenton.card.parse.lexicon.Genitive.HALF;
@@ -47,6 +48,7 @@ import static tegenton.card.parse.lexicon.game.source.target.object.ObjectVerb.*
 import static tegenton.card.parse.lexicon.game.source.target.player.PlayerAdjective.ACTIVE;
 import static tegenton.card.parse.lexicon.game.source.target.player.PlayerAdjective.DEFENDING;
 import static tegenton.card.parse.lexicon.game.source.target.player.PlayerAdverb.CONTINUOUSLY;
+import static tegenton.card.parse.lexicon.game.source.target.player.PlayerAttribute.TOTAL;
 import static tegenton.card.parse.lexicon.game.source.target.player.PlayerNoun.OPPONENT;
 import static tegenton.card.parse.lexicon.game.source.target.player.PlayerNoun.YOU;
 import static tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb.*;
@@ -930,6 +932,67 @@ public class RulesTextTestCase {
             void deathgrip() {
                 text = "{B}{B}: Counter target green spell.";
                 tokens = List.of(LBRACKET, B, RBRACKET, LBRACKET, B, RBRACKET, COLON, SPACE, COUNTER, SPACE, TARGET, SPACE, GREEN, SPACE, SPELL, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Deathlace")
+            void deathlace() {
+                text = "Target spell or permanent becomes black.";
+                tokens = List.of(TARGET, SPACE, SPELL, SPACE, OR, SPACE, PERMANENT, SPACE, BECOME, SPACE, BLACK, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Demonic Attorney")
+            void demonicAttorney() {
+                text = """
+                        Remove ~ from your deck before playing if you\u2019re not playing for ante.
+                        Each player antes the top card of their library.""";
+                tokens = List.of(REMOVE, SPACE, TILDE, SPACE, FROM, SPACE, YOU, POSSESSIVE, SPACE, DECK, SPACE, BEFORE, SPACE, PLAY, ING, SPACE, IF, SPACE, YOU, IS, SPACE, NOT, SPACE, PLAY, ING, SPACE, FOR, SPACE, ANTE, PERIOD, NEWLINE,
+                        EACH, SPACE, PLAY, ER, SPACE, ANTE, SPACE, THE, SPACE, TOP, SPACE, CARD, SPACE, OF, SPACE, THEY, POSSESSIVE, SPACE, LIBRARY, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Demonic Hordes")
+            void demonicHordes() {
+                text = """
+                        {T}: Destroy target land.
+                        At the beginning of your upkeep, unless you pay {B}{B}{B}, tap ~ and sacrifice a land of an opponent\u2019s choice.""";
+                tokens = List.of(LBRACKET, T, RBRACKET, COLON, SPACE, DESTROY, SPACE, TARGET, SPACE, LAND, PERIOD, NEWLINE,
+                        AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, YOU, POSSESSIVE, SPACE, UPKEEP, COMMA, SPACE, UNLESS, SPACE, YOU, SPACE, PAY, SPACE, LBRACKET, B, RBRACKET, LBRACKET, B, RBRACKET, LBRACKET, B, RBRACKET, COMMA, SPACE, TAP, SPACE, TILDE, SPACE, AND, SPACE, SACRIFICE, SPACE, A, SPACE, LAND, SPACE, OF, SPACE, AN, SPACE, OPPONENT, S, SPACE, CHOICE, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Demonic Tutor")
+            void demonicTutor() {
+                text = "Search your library for a card, put that card into your hand, then shuffle.";
+                tokens = List.of(SEARCH, SPACE, YOU, POSSESSIVE, SPACE, LIBRARY, SPACE, FOR, SPACE, A, SPACE, CARD, COMMA, SPACE, PUT, SPACE, THAT, SPACE, CARD, SPACE, IN, TO, SPACE, YOU, POSSESSIVE, SPACE, HAND, COMMA, SPACE, THEN, SPACE, SHUFFLE, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Drain Life")
+            void drainLife() {
+                text = """
+                        Spend only black mana on X.
+                        ~ deals X damage to any target. You gain life equal to the damage dealt, but not more life than the player\u2019s life total before the damage was dealt, the planeswalker\u2019s loyalty before the damage was dealt, or the creature\u2019s toughness.""";
+                tokens = List.of(SPEND, SPACE, ONLY, SPACE, BLACK, SPACE, MANA, SPACE, ON, SPACE, X, PERIOD, NEWLINE,
+                        TILDE, SPACE, DEAL, SPACE, X, SPACE, DAMAGE, SPACE, TO, SPACE, ANY, SPACE, TARGET, PERIOD, SPACE, YOU, SPACE, GAIN, SPACE, LIFE, SPACE, EQUAL, SPACE, TO, SPACE, THE, SPACE, DAMAGE, SPACE, DEAL, ED, COMMA, SPACE, BUT, SPACE, NOT, SPACE, SPACE, LIFE, SPACE, THAN, SPACE, THE, SPACE, PLAY, ER, POSSESSIVE, SPACE, LIFE, SPACE, TOTAL, SPACE, BEFORE, SPACE, THE, SPACE, DAMAGE, SPACE, IS, ED, SPACE, DEAL, ED, COMMA, SPACE, THE, SPACE, POSSESSIVE, SPACE, LOYALTY, SPACE, BEFORE, SPACE, THE, SPACE, DAMAGE, SPACE, IS, ED, SPACE, DEAL, ED, COMMA, SPACE, OR, SPACE, THE, SPACE, CREATURE, POSSESSIVE, SPACE, TOUGHNESS, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Drudge Skeletons")
+            void drudgeSkeletons() {
+                text = "{B}: Regenerate ~.";
+                tokens = List.of(LBRACKET, B, RBRACKET, COLON, SPACE, REGENERATE, SPACE, TILDE, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Evil Presence")
+            void evilPresence() {
+                text = """
+                        Enchant land
+                        Enchanted land is a Swamp.""";
+                tokens = List.of(ENCHANT, SPACE, LAND, NEWLINE,
+                        ENCHANT, ED, SPACE, LAND, SPACE, IS, SPACE, A, SPACE, SWAMP, PERIOD);
             }
         }
     }

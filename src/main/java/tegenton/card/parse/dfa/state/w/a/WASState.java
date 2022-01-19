@@ -1,16 +1,17 @@
-package tegenton.card.parse.dfa.state.m.o.r;
+package tegenton.card.parse.dfa.state.w.a;
 
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.SymbolState;
-import tegenton.card.parse.dfa.state.m.o.MORState;
-import tegenton.card.parse.lexicon.Comparative;
+import tegenton.card.parse.dfa.state.w.WAState;
+import tegenton.card.parse.lexicon.Morpheme;
+import tegenton.card.parse.lexicon.Word;
 
 import java.util.Optional;
 
-public class MOREState extends MORState {
-    private static final MOREState INSTANCE = new MOREState();
+public class WASState extends WAState {
+    private static final WASState INSTANCE = new WASState();
 
-    public static MOREState state() {
+    public static WASState state() {
         return INSTANCE;
     }
 
@@ -23,9 +24,9 @@ public class MOREState extends MORState {
     }
 
     @Override
-    public Optional<Comparative> produce(char c) {
+    public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case '\0', ' ' -> Comparative.MORE;
+            case '\0', ' ' -> Morpheme.ED;
             default -> null;
         });
     }

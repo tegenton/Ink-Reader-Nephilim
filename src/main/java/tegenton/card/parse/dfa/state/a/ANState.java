@@ -4,11 +4,11 @@ import tegenton.card.parse.dfa.state.AState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.dfa.state.a.n.ANDState;
+import tegenton.card.parse.dfa.state.a.n.ANTState;
 import tegenton.card.parse.dfa.state.a.n.ANYState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Determiner;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.game.Zone;
 
 import java.util.Optional;
 
@@ -23,7 +23,7 @@ public class ANState extends AState {
     public State transition(char c) {
         return switch (c) {
             case 'D' -> ANDState.state();
-            case 'T' -> new SuffixSubstring("TE", Zone.ANTE);
+            case 'T' -> ANTState.state();
             case 'O' -> new SuffixSubstring("OTHER", Determiner.ANOTHER);
             case 'Y' -> ANYState.state();
             case '\0', ' ' -> SymbolState.state(c);
