@@ -20,7 +20,7 @@ public class LANDState extends LAState {
     public State transition(char c) {
         return switch (c) {
             case 'S' -> SState.state();
-            case '\u2019', '\n', ' ' -> SymbolState.state(c);
+            case '\u2019', '\n', '\0', '.', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }
@@ -28,7 +28,7 @@ public class LANDState extends LAState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case 'S', '\u2019', '\n', '\0', ' ' -> CardType.LAND;
+            case 'S', '\u2019', '\n', '\0', '.', ' ' -> CardType.LAND;
             default -> null;
         });
     }

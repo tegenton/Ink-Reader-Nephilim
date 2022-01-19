@@ -794,6 +794,58 @@ public class RulesTextTestCase {
                 text = "Each player shuffles their hand and graveyard into their library, then draws seven cards.";
                 tokens = List.of(EACH, SPACE, PLAY, ER, SPACE, SHUFFLE, SPACE, THEY, POSSESSIVE, SPACE, HAND, SPACE, AND, SPACE, GRAVEYARD, SPACE, IN, TO, SPACE, THEY, POSSESSIVE, SPACE, LIBRARY, COMMA, SPACE, THEN, SPACE, DRAW, SPACE, SEVEN, SPACE, CARD, S, PERIOD);
             }
+
+            @Test
+            @DisplayName("Twiddle")
+            void twiddle() {
+                text = "You may tap or untap target artifact, creature, or land.";
+                tokens = List.of(YOU, SPACE, MAY, SPACE, TAP, SPACE, OR, SPACE, NOT, TAP, SPACE, TARGET, SPACE, ARTIFACT, COMMA, SPACE, CREATURE, COMMA, SPACE, OR, SPACE, LAND, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Unsummon")
+            void unsummon() {
+                text = "Return target creature to its owner\u2019s hand.";
+                tokens = List.of(RETURN, SPACE, TARGET, SPACE, CREATURE, SPACE, TO, SPACE, IT, POSSESSIVE, SPACE, OWN, ER, POSSESSIVE, SPACE, HAND, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Vesuvan Doppleganger")
+            void vesuvanDoppleganger() {
+                text = "You may have ~ enter the battlefield as a copy of any creature on the battlefield, except it doesn\u2019t copy that creature\u2019s color and it has \u201CAt the beginning of your upkeep, you may have this creature become a copy of target creature, except it doesn\u2019t copy that creature\u2019s color and it has this ability.\u201D";
+                tokens = List.of(YOU, SPACE, MAY, SPACE, HAVE, SPACE, TILDE, SPACE, ENTER, SPACE, THE, SPACE, BATTLEFIELD, SPACE, AS, SPACE, A, SPACE, COPY, SPACE, OF, SPACE, ANY, SPACE, CREATURE, SPACE, ON, SPACE, THE, SPACE, BATTLEFIELD, COMMA, SPACE, EXCEPT, SPACE, IT, SPACE, DO, NOT, SPACE, COPY, SPACE, THAT, SPACE, CREATURE, POSSESSIVE, SPACE, COLOR, SPACE, AND, SPACE, IT, SPACE, HAVE, SPACE, OPENQUOTE, AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, YOU, POSSESSIVE, SPACE, UPKEEP, COMMA, SPACE, YOU, SPACE, MAY, SPACE, HAVE, SPACE, THIS, SPACE, CREATURE, SPACE, BECOME, SPACE, A, SPACE, COPY, SPACE, OF, SPACE, TARGET, SPACE, CREATURE, COMMA, SPACE, EXCEPT, SPACE, IT, SPACE, DO, NOT, SPACE, COPY, SPACE, THAT, SPACE, CREATURE, POSSESSIVE, SPACE, COLOR, SPACE, AND, SPACE, IT, SPACE, HAVE, SPACE, THIS, SPACE, ABILITY, PERIOD, CLOSEQUOTE);
+            }
+
+            @Test
+            @DisplayName("volcanic Eruption")
+            void volcanicEruption() {
+                text = "Destroy X target Mountains. ~ deals damage to each creature and each player equal to the number of Mountains put into a graveyard this way.";
+                tokens = List.of(DESTROY, SPACE, X, SPACE, TARGET, SPACE, MOUNTAIN, S, PERIOD, SPACE, TILDE, SPACE, DEAL, SPACE, DAMAGE, SPACE, TO, SPACE, EACH, SPACE, CREATURE, SPACE, AND, SPACE, EACH, SPACE, PLAY, ER, SPACE, EQUAL, SPACE, TO, SPACE, THE, SPACE, NUMBER, SPACE, OF, SPACE, MOUNTAIN, S, SPACE, PUT, SPACE, IN, TO, SPACE, A, SPACE, GRAVEYARD, SPACE, THIS, SPACE, WAY, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Wall of Air")
+            void wallOfAir() {
+                text = "Defender, flying";
+                tokens = List.of(DEFENDER, COMMA, SPACE, FLYING);
+            }
+
+            @Test
+            @DisplayName("Wall of Water")
+            void wallOfWater() {
+                text = """
+                        Defender
+                        {U}: ~ gets +1/+0 until end of turn.""";
+                tokens = List.of(DEFENDER, NEWLINE,
+                        LBRACKET, U, RBRACKET, COLON, SPACE, TILDE, SPACE, GET, SPACE, PLUS, new Number(1), SLASH, PLUS, new Number(0), SPACE, UNTIL, SPACE, END, SPACE, OF, SPACE, TURN, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Water Elemental")
+            void waterElemental() {
+                text = "";
+                tokens = List.of();
+            }
         }
     }
 }
