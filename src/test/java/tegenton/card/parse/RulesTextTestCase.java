@@ -12,6 +12,7 @@ import java.util.List;
 
 import static tegenton.card.parse.lexicon.Adjective.*;
 import static tegenton.card.parse.lexicon.Adverb.*;
+import static tegenton.card.parse.lexicon.Comparative.MORE;
 import static tegenton.card.parse.lexicon.Comparative.THAN;
 import static tegenton.card.parse.lexicon.Conjunction.*;
 import static tegenton.card.parse.lexicon.Determiner.*;
@@ -975,7 +976,7 @@ public class RulesTextTestCase {
                         Spend only black mana on X.
                         ~ deals X damage to any target. You gain life equal to the damage dealt, but not more life than the player\u2019s life total before the damage was dealt, the planeswalker\u2019s loyalty before the damage was dealt, or the creature\u2019s toughness.""";
                 tokens = List.of(SPEND, SPACE, ONLY, SPACE, BLACK, SPACE, MANA, SPACE, ON, SPACE, X, PERIOD, NEWLINE,
-                        TILDE, SPACE, DEAL, SPACE, X, SPACE, DAMAGE, SPACE, TO, SPACE, ANY, SPACE, TARGET, PERIOD, SPACE, YOU, SPACE, GAIN, SPACE, LIFE, SPACE, EQUAL, SPACE, TO, SPACE, THE, SPACE, DAMAGE, SPACE, DEAL, ED, COMMA, SPACE, BUT, SPACE, NOT, SPACE, SPACE, LIFE, SPACE, THAN, SPACE, THE, SPACE, PLAY, ER, POSSESSIVE, SPACE, LIFE, SPACE, TOTAL, SPACE, BEFORE, SPACE, THE, SPACE, DAMAGE, SPACE, IS, ED, SPACE, DEAL, ED, COMMA, SPACE, THE, SPACE, POSSESSIVE, SPACE, LOYALTY, SPACE, BEFORE, SPACE, THE, SPACE, DAMAGE, SPACE, IS, ED, SPACE, DEAL, ED, COMMA, SPACE, OR, SPACE, THE, SPACE, CREATURE, POSSESSIVE, SPACE, TOUGHNESS, PERIOD);
+                        TILDE, SPACE, DEAL, SPACE, X, SPACE, DAMAGE, SPACE, TO, SPACE, ANY, SPACE, TARGET, PERIOD, SPACE, YOU, SPACE, GAIN, SPACE, LIFE, SPACE, EQUAL, SPACE, TO, SPACE, THE, SPACE, DAMAGE, SPACE, DEAL, ED, COMMA, SPACE, BUT, SPACE, NOT, SPACE, MORE, SPACE, LIFE, SPACE, THAN, SPACE, THE, SPACE, PLAY, ER, POSSESSIVE, SPACE, LIFE, SPACE, TOTAL, SPACE, BEFORE, SPACE, THE, SPACE, DAMAGE, SPACE, IS, ED, SPACE, DEAL, ED, COMMA, SPACE, THE, SPACE, POSSESSIVE, SPACE, LOYALTY, SPACE, BEFORE, SPACE, THE, SPACE, DAMAGE, SPACE, IS, ED, SPACE, DEAL, ED, COMMA, SPACE, OR, SPACE, THE, SPACE, CREATURE, POSSESSIVE, SPACE, TOUGHNESS, PERIOD);
             }
 
             @Test
@@ -993,6 +994,50 @@ public class RulesTextTestCase {
                         Enchanted land is a Swamp.""";
                 tokens = List.of(ENCHANT, SPACE, LAND, NEWLINE,
                         ENCHANT, ED, SPACE, LAND, SPACE, IS, SPACE, A, SPACE, SWAMP, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Fear")
+            void fear() {
+                text = """
+                        Enchant creature
+                        Enchanted creature has fear.""";
+                tokens = List.of(ENCHANT, SPACE, CREATURE, NEWLINE,
+                        ENCHANT, ED, SPACE, CREATURE, SPACE, HAVE, SPACE, FEAR, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Frozen Shade")
+            void frozenShade() {
+                text = "{B}: ~ gets +1/+1 until end of turn.";
+                tokens = List.of(LBRACKET, B, RBRACKET, COLON, SPACE, TILDE, SPACE, GET, SPACE, PLUS, new Number(1), SLASH, PLUS, new Number(1), SPACE, UNTIL, SPACE, END, SPACE, OF, SPACE, TURN, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Gloom")
+            void gloom() {
+                text = """
+                        White spells cost {3} more to cast.
+                        Activated abilities of white enchantments cost {3} more to activate.""";
+                tokens = List.of(WHITE, SPACE, SPELL, S, SPACE, COST, SPACE, LBRACKET, new Number(3), RBRACKET, SPACE, MORE, SPACE, TO, SPACE, CAST, PERIOD, NEWLINE,
+                        ACTIVATE, ED, SPACE, ABILITY, S, SPACE, OF, SPACE, WHITE, SPACE, ENCHANTMENT, S, SPACE, COST, SPACE, LBRACKET, new Number(3), RBRACKET, SPACE, MORE, SPACE, TO, SPACE, ACTIVATE, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Howl from Beyond")
+            void howlFromBeyond() {
+                text = "Target creature gets +X/+0 until end of turn.";
+                tokens = List.of(TARGET, SPACE, CREATURE, SPACE, GET, SPACE, PLUS, X, SLASH, PLUS, new Number(0), SPACE, UNTIL, SPACE, END, SPACE, OF, SPACE, TURN, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Hypnotic Specter")
+            void hypnoticSpecter() {
+                text = """
+                        Flying
+                        Whenever ~ deals damage to an opponent, that player discards a card at random.""";
+                tokens = List.of(FLYING, NEWLINE,
+                        WHENEVER, SPACE, TILDE, SPACE, DEAL, SPACE, DAMAGE, SPACE, TO, SPACE, AN, SPACE, OPPONENT, COMMA, SPACE, THAT, SPACE, PLAY, ER, SPACE, DISCARD, SPACE, A, SPACE, CARD, SPACE, AT, SPACE, RANDOM, PERIOD);
             }
         }
     }

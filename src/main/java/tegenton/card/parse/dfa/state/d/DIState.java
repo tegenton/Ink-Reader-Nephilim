@@ -3,6 +3,8 @@ package tegenton.card.parse.dfa.state.d;
 import tegenton.card.parse.dfa.state.DState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.d.i.DIEState;
+import tegenton.card.parse.dfa.state.d.i.s.c.a.r.DISCARDState;
+import tegenton.card.parse.dfa.substring.InfixSubstring;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Adjective;
 import tegenton.card.parse.lexicon.Word;
@@ -23,7 +25,7 @@ public class DIState extends DState {
             case 'D' -> DOState.state();
             case 'E' -> DIEState.state();
             case 'F' -> new SuffixSubstring("FFERENT", Adjective.DIFFERENT);
-            case 'S' -> new SuffixSubstring("SCARD", PlayerVerb.DISCARD);
+            case 'S' -> new InfixSubstring("SCAR", 'D', DISCARDState::state);
             case 'V' -> new SuffixSubstring("VIDE", PlayerVerb.DIVIDE);
             default -> invalid(c);
         };

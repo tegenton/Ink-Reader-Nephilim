@@ -1,6 +1,7 @@
 package tegenton.card.parse.dfa.state.e.n.c.h.a.n.t.m.e.n;
 
 import tegenton.card.parse.dfa.state.PossessiveState;
+import tegenton.card.parse.dfa.state.SState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.dfa.state.e.n.ENCState;
@@ -19,6 +20,7 @@ public class ENCHANTMENTState extends ENCState {
     @Override
     public State transition(char c) {
         return switch (c) {
+            case 'S' -> SState.state();
             case '\u2019' -> PossessiveState.state();
             case '\n', '\0', '.', ' ' -> SymbolState.state(c);
             default -> invalid(c);
@@ -28,7 +30,7 @@ public class ENCHANTMENTState extends ENCState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case '\u2019', '\n', '\0', '.', ' ' -> CardType.ENCHANTMENT;
+            case 'S', '\u2019', '\n', '\0', '.', ' ' -> CardType.ENCHANTMENT;
             default -> null;
         });
     }

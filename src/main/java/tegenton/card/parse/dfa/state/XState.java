@@ -15,7 +15,7 @@ public class XState extends State {
     @Override
     public State transition(char c) {
         return switch (c) {
-            case '\0', '}', '.', ' ' -> SymbolState.state(c);
+            case '\0', '}', '.', '/', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }
@@ -23,7 +23,7 @@ public class XState extends State {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case '\0', '}', '.', ' ' -> Variable.X;
+            case '\0', '}', '.', '/', ' ' -> Variable.X;
             default -> null;
         });
     }
