@@ -1,28 +1,14 @@
 package tegenton.card.parse.lexicon;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-public class WordTest {
-    public static Word[] words;
-    public static List<String> values;
-
-    @AfterEach
-    void compare() {
-        assertEquals(words.length, values.size());
-        for (int i = 0; i < words.length; i++) {
-            assertEquals(values.get(i), words[i].getWord());
-        }
-    }
-
+public class WordTest extends WordTestTemplate {
     @Test
     void adjective() {
         words = Adjective.values();
-        values = List.of("CHOSEN", "DIFFERENT", "EQUAL", "EXTRA", "FIRST", "NEW", "NEXT", "ROUNDED", "SAME");
+        values = List.of("ADDITIONAL", "CHOSEN", "DIFFERENT", "EQUAL", "EXTRA", "FIRST", "NEW", "NEXT", "ROUNDED", "SAME");
     }
 
     @Test

@@ -1,26 +1,26 @@
-package tegenton.card.parse.dfa.state.s.a.c.r.i.f.i.c;
+package tegenton.card.parse.dfa.state.a.d.d.i.t.i.o;
 
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.SymbolState;
-import tegenton.card.parse.dfa.state.e.EDState;
-import tegenton.card.parse.dfa.state.s.SAState;
+import tegenton.card.parse.dfa.state.a.d.ADDState;
+import tegenton.card.parse.dfa.substring.SuffixSubstring;
+import tegenton.card.parse.lexicon.Adjective;
+import tegenton.card.parse.lexicon.Preposition;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb;
 
 import java.util.Optional;
 
-public class SACRIFICEState extends SAState {
-    private static final SACRIFICEState INSTANCE = new SACRIFICEState();
+public class ADDITIONState extends ADDState {
+    private static final ADDITIONState INSTANCE = new ADDITIONState();
 
-    public static SACRIFICEState state() {
+    public static ADDITIONState state() {
         return INSTANCE;
     }
 
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'D' -> EDState.state();
-            case 'S' -> this;
+            case 'A' -> new SuffixSubstring("AL", Adjective.ADDITIONAL);
             case '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
@@ -29,7 +29,7 @@ public class SACRIFICEState extends SAState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case 'D', '\0', ' ' -> PlayerVerb.SACRIFICE;
+            case '\0', ' ' -> Preposition.ADDITION;
             default -> null;
         });
     }

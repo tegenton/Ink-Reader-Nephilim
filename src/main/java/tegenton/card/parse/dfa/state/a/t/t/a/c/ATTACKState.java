@@ -22,6 +22,7 @@ public class ATTACKState extends ATTACState {
         return switch (c) {
             case 'E' -> ATTACKEState.state();
             case 'I' -> new INGMorpheme();
+            case 'S' -> this;
             case '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };

@@ -2,14 +2,14 @@ package tegenton.card.parse.lexicon.value;
 
 import org.junit.jupiter.api.Test;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.WordTest;
+import tegenton.card.parse.lexicon.WordTestTemplate;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-public class ValueWordTest extends WordTest {
+public class ValueWordTest extends WordTestTemplate {
     public static final List<String> englishWords =
             List.of("ZERO", "ONE", "TWO", "THREE", "FOUR", "FIVE", "SIX",
                     "SEVEN", "EIGHT", "NINE", "TEN", "ELEVEN", "TWELVE",

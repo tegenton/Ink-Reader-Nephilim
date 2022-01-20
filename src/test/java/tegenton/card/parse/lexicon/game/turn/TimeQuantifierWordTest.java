@@ -1,11 +1,11 @@
 package tegenton.card.parse.lexicon.game.turn;
 
 import org.junit.jupiter.api.Test;
-import tegenton.card.parse.lexicon.WordTest;
+import tegenton.card.parse.lexicon.WordTestTemplate;
 
 import java.util.List;
 
-public class TimeQuantifierWordTest extends WordTest {
+public class TimeQuantifierWordTest extends WordTestTemplate {
     @Test
     void duration() {
         words = Duration.values();

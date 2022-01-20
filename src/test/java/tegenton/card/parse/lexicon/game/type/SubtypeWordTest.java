@@ -1,18 +1,16 @@
 package tegenton.card.parse.lexicon.game.type;
 
 import org.junit.jupiter.api.Test;
-import tegenton.card.parse.lexicon.WordTest;
-import tegenton.card.parse.lexicon.game.type.CreatureType;
-import tegenton.card.parse.lexicon.game.type.EnchantmentType;
-import tegenton.card.parse.lexicon.game.type.LandType;
+import tegenton.card.parse.lexicon.WordTestTemplate;
+
 import java.util.List;
 
-public class SubtypeWordTest extends WordTest {
+public class SubtypeWordTest extends WordTestTemplate {
     @Test
     void creature() {
         words = CreatureType.values();
         values = List.of("GOBLIN", "GOLEM", "INSECT", "MERFOLK", "WALL",
-                         "ZOMBIE");
+                "ZOMBIE");
     }
 
     @Test

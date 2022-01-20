@@ -1,12 +1,11 @@
 package tegenton.card.parse.lexicon.game.type;
 
 import org.junit.jupiter.api.Test;
-import tegenton.card.parse.lexicon.WordTest;
-import tegenton.card.parse.lexicon.game.type.CardType;
-import tegenton.card.parse.lexicon.game.type.SuperType;
+import tegenton.card.parse.lexicon.WordTestTemplate;
+
 import java.util.List;
 
-class TypeWordTest extends WordTest {
+class TypeWordTest extends WordTestTemplate {
     @Test
     void superType() {
         words = SuperType.values();
@@ -17,6 +16,6 @@ class TypeWordTest extends WordTest {
     void cardType() {
         words = CardType.values();
         values = List.of("ARTIFACT", "CREATURE", "ENCHANTMENT", "INSTANT",
-                         "LAND", "PLANESWALKER", "SORCERY");
+                "LAND", "PLANESWALKER", "SORCERY");
     }
 }

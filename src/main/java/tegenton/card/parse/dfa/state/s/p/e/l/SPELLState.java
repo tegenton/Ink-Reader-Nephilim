@@ -20,7 +20,7 @@ public class SPELLState extends SPELState {
     public State transition(char c) {
         return switch (c) {
             case 'S' -> SState.state();
-            case '\0', '.', ' ' -> SymbolState.state(c);
+            case ',', '\0', '.', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }
@@ -28,7 +28,7 @@ public class SPELLState extends SPELState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case 'S', '\0', '.', ' ' -> ObjectNoun.SPELL;
+            case 'S', ',', '\0', '.', ' ' -> ObjectNoun.SPELL;
             default -> null;
         });
     }

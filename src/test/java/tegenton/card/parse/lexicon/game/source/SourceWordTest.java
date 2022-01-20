@@ -1,11 +1,11 @@
 package tegenton.card.parse.lexicon.game.source;
 
 import org.junit.jupiter.api.Test;
-import tegenton.card.parse.lexicon.WordTest;
+import tegenton.card.parse.lexicon.WordTestTemplate;
 
 import java.util.List;
 
-public class SourceWordTest extends WordTest {
+public class SourceWordTest extends WordTestTemplate {
     @Test
     void noun() {
         words = SourceNoun.values();

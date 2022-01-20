@@ -7,6 +7,7 @@ import tegenton.card.parse.dfa.state.p.la.n.e.s.w.a.l.k.e.PLANESWALKERState;
 import tegenton.card.parse.dfa.substring.InfixSubstring;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Word;
+import tegenton.card.parse.lexicon.game.source.target.object.card.Name;
 import tegenton.card.parse.lexicon.game.type.LandType;
 
 import java.util.Optional;
@@ -21,6 +22,7 @@ public class PLAState extends PLState {
     @Override
     public State transition(char c) {
         return switch (c) {
+            case 'G' -> new SuffixSubstring("GUE", Name.PLAGUE);
             case 'I' -> new SuffixSubstring("INS", LandType.PLAINS);
             case 'N' -> new InfixSubstring("NESWALKE", 'R', PLANESWALKERState::state);
             case 'Y' -> PLAYState.state();

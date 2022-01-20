@@ -45,6 +45,8 @@ import static tegenton.card.parse.lexicon.game.source.target.object.ObjectAdject
 import static tegenton.card.parse.lexicon.game.source.target.object.ObjectAttribute.*;
 import static tegenton.card.parse.lexicon.game.source.target.object.ObjectNoun.*;
 import static tegenton.card.parse.lexicon.game.source.target.object.ObjectVerb.*;
+import static tegenton.card.parse.lexicon.game.source.target.object.card.Name.PLAGUE;
+import static tegenton.card.parse.lexicon.game.source.target.object.card.Name.RATS;
 import static tegenton.card.parse.lexicon.game.source.target.player.PlayerAdjective.ACTIVE;
 import static tegenton.card.parse.lexicon.game.source.target.player.PlayerAdjective.DEFENDING;
 import static tegenton.card.parse.lexicon.game.source.target.player.PlayerAdverb.CONTINUOUSLY;
@@ -738,7 +740,7 @@ public class RulesTextTestCase {
                         Cast this spell only during an opponent\u2019s turn, before attackers are declared.
                         Creatures the active player controls attack this turn if able.
                         At the beginning of the next end step, destroy all non-Wall creatures that player controls that didn\u2019t attack this turn. Ignore this effect for each creature the player didn\u2019t control continuously since the beginning of the turn.""";
-                tokens = List.of(CAST, SPACE, THIS, SPACE, SPELL, SPACE, ONLY, SPACE, DURING, SPACE, AN, SPACE, OPPONENT, S, SPACE, TURN, COMMA, SPACE, BEFORE, SPACE, ATTACK, S, SPACE, IS, SPACE, DECLARE, ED, PERIOD, NEWLINE,
+                tokens = List.of(CAST, SPACE, THIS, SPACE, SPELL, SPACE, ONLY, SPACE, DURING, SPACE, AN, SPACE, OPPONENT, POSSESSIVE, SPACE, TURN, COMMA, SPACE, BEFORE, SPACE, ATTACK, S, SPACE, IS, SPACE, DECLARE, ED, PERIOD, NEWLINE,
                         CREATURE, S, SPACE, THE, SPACE, ACTIVE, SPACE, PLAY, ER, SPACE, CONTROL, SPACE, ATTACK, SPACE, THIS, SPACE, TURN, SPACE, IF, SPACE, ABLE, PERIOD, NEWLINE,
                         AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, THE, SPACE, NEXT, SPACE, END, SPACE, STEP, COMMA, SPACE, DESTROY, SPACE, ALL, SPACE, NOT, MINUS, WALL, SPACE, CREATURE, S, SPACE, THAT, SPACE, PLAY, ER, SPACE, CONTROL, SPACE, THAT, SPACE, DO, NOT, SPACE, ATTACK, SPACE, THIS, SPACE, TURN, PERIOD, SPACE, IGNORE, SPACE, THIS, SPACE, EFFECT, SPACE, FOR, SPACE, EACH, SPACE, CREATURE, SPACE, THE, SPACE, PLAY, ER, SPACE, DO, NOT, SPACE, CONTROL, SPACE, CONTINUOUSLY, SPACE, SINCE, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, THE, SPACE, TURN, PERIOD);
             }
@@ -958,7 +960,7 @@ public class RulesTextTestCase {
                         {T}: Destroy target land.
                         At the beginning of your upkeep, unless you pay {B}{B}{B}, tap ~ and sacrifice a land of an opponent\u2019s choice.""";
                 tokens = List.of(LBRACKET, T, RBRACKET, COLON, SPACE, DESTROY, SPACE, TARGET, SPACE, LAND, PERIOD, NEWLINE,
-                        AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, YOU, POSSESSIVE, SPACE, UPKEEP, COMMA, SPACE, UNLESS, SPACE, YOU, SPACE, PAY, SPACE, LBRACKET, B, RBRACKET, LBRACKET, B, RBRACKET, LBRACKET, B, RBRACKET, COMMA, SPACE, TAP, SPACE, TILDE, SPACE, AND, SPACE, SACRIFICE, SPACE, A, SPACE, LAND, SPACE, OF, SPACE, AN, SPACE, OPPONENT, S, SPACE, CHOICE, PERIOD);
+                        AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, YOU, POSSESSIVE, SPACE, UPKEEP, COMMA, SPACE, UNLESS, SPACE, YOU, SPACE, PAY, SPACE, LBRACKET, B, RBRACKET, LBRACKET, B, RBRACKET, LBRACKET, B, RBRACKET, COMMA, SPACE, TAP, SPACE, TILDE, SPACE, AND, SPACE, SACRIFICE, SPACE, A, SPACE, LAND, SPACE, OF, SPACE, AN, SPACE, OPPONENT, POSSESSIVE, SPACE, CHOICE, PERIOD);
             }
 
             @Test
@@ -1053,6 +1055,105 @@ public class RulesTextTestCase {
                         IF, SPACE, YOU, SPACE, WOULD, SPACE, GAIN, SPACE, LIFE, COMMA, SPACE, DRAW, SPACE, THAT, SPACE, MANY, SPACE, CARD, S, SPACE, INSTEAD, PERIOD, NEWLINE,
                         WHENEVER, SPACE, YOU, IS, SPACE, DEAL, ED, SPACE, DAMAGE, COMMA, SPACE, SACRIFICE, SPACE, THAT, SPACE, MANY, SPACE, NOT, TOKEN, SPACE, PERMANENT, S, PERIOD, SPACE, IF, SPACE, YOU, SPACE, CAN, NOT, COMMA, SPACE, YOU, SPACE, LOSE, SPACE, THE, SPACE, GAME, PERIOD, NEWLINE,
                         WHEN, SPACE, TILDE, SPACE, IS, SPACE, PUT, SPACE, IN, TO, SPACE, A, SPACE, GRAVEYARD, SPACE, FROM, SPACE, THE, SPACE, BATTLEFIELD, COMMA, SPACE, YOU, SPACE, LOSE, SPACE, THE, SPACE, GAME, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Lord of the Pit")
+            void lordOfThePit() {
+                text = """
+                        Flying, trample
+                        At the beginning of your upkeep, sacrifice a creature other than ~. If you can\u2019t, ~ deals 7 damage to you.""";
+                tokens = List.of(FLYING, COMMA, SPACE, TRAMPLE, NEWLINE,
+                        AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, YOU, POSSESSIVE, SPACE, UPKEEP, COMMA, SPACE, SACRIFICE, SPACE, A, SPACE, CREATURE, SPACE, OTHER, SPACE, THAN, SPACE, TILDE, PERIOD, SPACE, IF, SPACE, YOU, SPACE, CAN, NOT, COMMA, SPACE, TILDE, SPACE, DEAL, SPACE, new Number(7), SPACE, DAMAGE, SPACE, TO, SPACE, YOU, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Mind Twist")
+            void mindTwist() {
+                text = "Target player discards X cards at random.";
+                tokens = List.of(TARGET, SPACE, PLAY, ER, SPACE, DISCARD, SPACE, X, SPACE, CARD, S, SPACE, AT, SPACE, RANDOM, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Nether Shadow")
+            void netherShadow() {
+                text = """
+                        Haste
+                        At the beginning of your upkeep, if ~ is in your graveyard with three or more creature cards above it, you may put ~ onto the battlefield.""";
+                tokens = List.of(HASTE, NEWLINE,
+                        AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, YOU, POSSESSIVE, SPACE, UPKEEP, COMMA, SPACE, IF, SPACE, TILDE, SPACE, IS, SPACE, IN, SPACE, YOU, POSSESSIVE, SPACE, GRAVEYARD, SPACE, WITH, SPACE, THREE, SPACE, OR, SPACE, MORE, SPACE, CREATURE, SPACE, CARD, S, SPACE, ABOVE, SPACE, IT, COMMA, SPACE, YOU, SPACE, MAY, SPACE, PUT, SPACE, TILDE, SPACE, ON, TO, SPACE, THE, SPACE, BATTLEFIELD, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Nettling Imp")
+            void nettlingImp() {
+                text = "{T}: Choose target non-Wall creature the active player has controlled continuously since the beginning of the turn. That creature attacks this turn if able. Destroy it at the beginning of the next end step if it didn\u2019t attack this turn. Activate only during an opponent\u2019s turn, before attackers are declared.";
+                tokens = List.of(LBRACKET, T, RBRACKET, COLON, SPACE, CHOOSE, SPACE, TARGET, SPACE, NOT, MINUS, WALL, SPACE, CREATURE, SPACE, THE, SPACE, ACTIVE, SPACE, PLAY, ER, SPACE, HAVE, SPACE, CONTROL, ED, SPACE, CONTINUOUSLY, SPACE, SINCE, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, THE, SPACE, TURN, PERIOD, SPACE, THAT, SPACE, CREATURE, SPACE, ATTACK, SPACE, THIS, SPACE, TURN, SPACE, IF, SPACE, ABLE, PERIOD, SPACE, DESTROY, SPACE, IT, SPACE, AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, THE, SPACE, NEXT, SPACE, END, SPACE, STEP, SPACE, IF, SPACE, IT, SPACE, DO, NOT, SPACE, ATTACK, SPACE, THIS, SPACE, TURN, PERIOD, SPACE, ACTIVATE, SPACE, ONLY, SPACE, DURING, SPACE, AN, SPACE, OPPONENT, POSSESSIVE, SPACE, TURN, COMMA, SPACE, BEFORE, SPACE, ATTACK, S, SPACE, IS, SPACE, DECLARE, ED, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Nightmare")
+            void nightmare() {
+                text = """
+                        Flying
+                        ~\u2019s power and toughness are each equal to the number of Swamps you control.""";
+                tokens = List.of(FLYING, NEWLINE,
+                        TILDE, POSSESSIVE, SPACE, POWER, SPACE, AND, SPACE, TOUGHNESS, SPACE, IS, SPACE, EACH, SPACE, EQUAL, SPACE, TO, SPACE, THE, SPACE, NUMBER, SPACE, OF, SPACE, SWAMP, S, SPACE, YOU, SPACE, CONTROL, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Paralyze")
+            void paralyze() {
+                text = """
+                        Enchant creature
+                        When ~ enters the battlefield, tap enchanted creature.
+                        Enchanted creature doesn\u2019t untap during its controller\u2019s untap step.
+                        At the beginning of the upkeep of enchanted creature\u2019s controller, that player may pay {4}. If the player does, untap the creature.""";
+                tokens = List.of(ENCHANT, SPACE, CREATURE, NEWLINE,
+                        WHEN, SPACE, TILDE, SPACE, ENTER, SPACE, THE, SPACE, BATTLEFIELD, COMMA, SPACE, TAP, SPACE, ENCHANT, ED, SPACE, CREATURE, PERIOD, NEWLINE,
+                        ENCHANT, ED, SPACE, CREATURE, SPACE, DO, NOT, SPACE, NOT, TAP, SPACE, DURING, SPACE, IT, POSSESSIVE, SPACE, CONTROL, ER, POSSESSIVE, SPACE, NOT, TAP, SPACE, STEP, PERIOD, NEWLINE,
+                        AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, THE, SPACE, UPKEEP, SPACE, OF, SPACE, ENCHANT, ED, SPACE, CREATURE, POSSESSIVE, SPACE, CONTROL, ER, COMMA, SPACE, THAT, SPACE, PLAY, ER, SPACE, MAY, SPACE, PAY, SPACE, LBRACKET, new Number(4), RBRACKET, PERIOD, SPACE, IF, SPACE, THE, SPACE, PLAY, ER, SPACE, DO, COMMA, SPACE, NOT, TAP, SPACE, THE, SPACE, CREATURE, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Pestilence")
+            void pestilence() {
+                text = """
+                        At the beginning of the end step, if no creatures are on the battlefield, sacrifice ~.
+                        {B}: ~ deals 1 damage to each creature and each player.""";
+                tokens = List.of(AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, THE, SPACE, END, SPACE, STEP, COMMA, SPACE, IF, SPACE, NO, SPACE, CREATURE, S, SPACE, IS, SPACE, ON, SPACE, THE, SPACE, BATTLEFIELD, COMMA, SPACE, SACRIFICE, SPACE, TILDE, PERIOD, NEWLINE,
+                        LBRACKET, B, RBRACKET, COLON, SPACE, TILDE, SPACE, DEAL, SPACE, new Number(1), SPACE, DAMAGE, SPACE, TO, SPACE, EACH, SPACE, CREATURE, SPACE, AND, SPACE, EACH, SPACE, PLAY, ER, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Plague Rats")
+            void plagueRats() {
+                text = "~\u2019s power and toughness are each equal to the number of creatures named Plague Rats on the battlefield.";
+                tokens = List.of(TILDE, POSSESSIVE, SPACE, POWER, SPACE, AND, SPACE, TOUGHNESS, SPACE, IS, SPACE, EACH, SPACE, EQUAL, SPACE, TO, SPACE, THE, SPACE, NUMBER, SPACE, OF, SPACE, CREATURE, S, SPACE, NAME, ED, SPACE, PLAGUE, SPACE, RATS, SPACE, ON, SPACE, THE, SPACE, BATTLEFIELD, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Raise Dead")
+            void raiseDead() {
+                text = "Return target creature card from your graveyard to your hand.";
+                tokens = List.of(RETURN, SPACE, TARGET, SPACE, CREATURE, SPACE, CARD, SPACE, FROM, SPACE, YOU, POSSESSIVE, SPACE, GRAVEYARD, SPACE, TO, SPACE, YOU, POSSESSIVE, SPACE, HAND, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Royal Assassin")
+            void royalAssassin() {
+                text = "{T}: Destroy target tapped creature.";
+                tokens = List.of(LBRACKET, T, RBRACKET, COLON, SPACE, DESTROY, SPACE, TARGET, SPACE, TAP, ED, SPACE, CREATURE, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Sacrifice")
+            void sacrifice() {
+                text = """
+                        As an additional cost to cast this spell, sacrifice a creature.
+                        Add an amount of {B} equal to the sacrificed creature\u2019s mana value.""";
+                tokens = List.of(AS, SPACE, AN, SPACE, ADDITIONAL, SPACE, COST, SPACE, TO, SPACE, CAST, SPACE, THIS, SPACE, SPELL, COMMA, SPACE, SACRIFICE, SPACE, A, SPACE, CREATURE, PERIOD, NEWLINE,
+                        ADD, SPACE, AN, SPACE, AMOUNT, SPACE, OF, SPACE, LBRACKET, B, RBRACKET, SPACE, EQUAL, SPACE, TO, SPACE, THE, SPACE, SACRIFICE, ED, SPACE, CREATURE, POSSESSIVE, SPACE, MANA, SPACE, VALUE, PERIOD);
             }
         }
     }

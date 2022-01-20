@@ -3,8 +3,8 @@ package tegenton.card.parse.dfa.state.a.d;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.dfa.state.a.ADState;
-import tegenton.card.parse.dfa.substring.SuffixSubstring;
-import tegenton.card.parse.lexicon.Preposition;
+import tegenton.card.parse.dfa.state.a.d.d.i.t.i.o.ADDITIONState;
+import tegenton.card.parse.dfa.substring.InfixSubstring;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb;
 
@@ -20,7 +20,7 @@ public class ADDState extends ADState {
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'I' -> new SuffixSubstring("ITION", Preposition.ADDITION);
+            case 'I' -> new InfixSubstring("ITIO", 'N', ADDITIONState::state);
             case '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };

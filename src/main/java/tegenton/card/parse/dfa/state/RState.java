@@ -1,9 +1,9 @@
 package tegenton.card.parse.dfa.state;
 
+import tegenton.card.parse.dfa.state.r.RAState;
 import tegenton.card.parse.dfa.state.r.REState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Adjective;
-import tegenton.card.parse.lexicon.Noun;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.Color;
 
@@ -19,7 +19,7 @@ public class RState extends State {
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'A' -> new SuffixSubstring("ANDOM", Noun.RANDOM);
+            case 'A' -> RAState.state();
             case 'E' -> REState.state();
             case 'O' -> new SuffixSubstring("OUNDED", Adjective.ROUNDED);
             default -> invalid(c);

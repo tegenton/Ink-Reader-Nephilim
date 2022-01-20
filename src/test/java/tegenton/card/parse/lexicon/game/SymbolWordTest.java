@@ -1,11 +1,11 @@
 package tegenton.card.parse.lexicon.game;
 
 import org.junit.jupiter.api.Test;
-import tegenton.card.parse.lexicon.WordTest;
+import tegenton.card.parse.lexicon.WordTestTemplate;
 
 import java.util.List;
 
-public class SymbolWordTest extends WordTest {
+public class SymbolWordTest extends WordTestTemplate {
     @Test
     void colorWord() {
         words = ColorWord.values();
