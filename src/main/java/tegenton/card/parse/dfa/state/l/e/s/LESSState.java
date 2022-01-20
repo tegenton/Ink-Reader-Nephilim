@@ -1,8 +1,10 @@
 package tegenton.card.parse.dfa.state.l.e.s;
 
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.dfa.state.l.e.LESState;
 import tegenton.card.parse.lexicon.Comparative;
+
 import java.util.Optional;
 
 public class LESSState extends LESState {
@@ -14,16 +16,17 @@ public class LESSState extends LESState {
 
     @Override
     public State transition(char c) {
-        switch (c) {
-            default -> throw new IllegalStateException("Cannot transition from LESSState on " + c);
-        }
+        return switch (c) {
+            case '\0', ' ' -> SymbolState.state(c);
+            default -> invalid(c);
+        };
     }
 
     @Override
     public Optional<Comparative> produce(char c) {
-        if (c == '\0') {
-            return Optional.of(Comparative.LESS);
-        }
-        return Optional.empty();
+        return Optional.ofNullable(switch (c) {
+            case '\0', ' ' -> Comparative.LESS;
+            default -> null;
+        });
     }
 }
