@@ -1539,6 +1539,102 @@ public class RulesTextTestCase {
                         LBRACKET, R, RBRACKET, COLON, SPACE, PREVENT, SPACE, THE, SPACE, NEXT, SPACE, Number.ONE, SPACE, DAMAGE, SPACE, THAT, SPACE, WOULD, SPACE, BE, SPACE, DEAL, ED, SPACE, TO, SPACE, TILDE, SPACE, THIS, SPACE, TURN, PERIOD, NEWLINE,
                         LBRACKET, R, RBRACKET, LBRACKET, R, RBRACKET, LBRACKET, R, RBRACKET, COLON, SPACE, PUT, SPACE, A, SPACE, PLUS, Number.ONE, SLASH, PLUS, Number.ONE, SPACE, COUNTER, SPACE, ON, SPACE, TILDE, PERIOD, SPACE, ACTIVATE, SPACE, ONLY, SPACE, DURING, SPACE, YOU, POSSESSIVE, SPACE, UPKEEP, PERIOD);
             }
+
+            @Test
+            @DisplayName("Sedge Troll")
+            void sedgeTroll() {
+                text = """
+                        ~ gets +1/+1 as long as you control a Swamp.
+                        {B}: Regenerate ~.""";
+                tokens = List.of(TILDE, SPACE, GET, SPACE, PLUS, Number.ONE, SLASH, PLUS, Number.ONE, SPACE, AS, SPACE, LONG, SPACE, AS, SPACE, YOU, SPACE, CONTROL, SPACE, A, SPACE, SWAMP, PERIOD, NEWLINE,
+                        LBRACKET, B, RBRACKET, COLON, SPACE, REGENERATE, SPACE, TILDE, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Shatter")
+            void shatter() {
+                text = "Destroy target artifact.";
+                tokens = List.of(DESTROY, SPACE, TARGET, SPACE, ARTIFACT, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Shivan Dragon")
+            void shivanDragon() {
+                text = """
+                        Flying
+                        {R}: ~ gets +1/+0 until end of turn.""";
+                tokens = List.of(FLYING, NEWLINE,
+                        LBRACKET, R, RBRACKET, COLON, SPACE, TILDE, SPACE, GET, SPACE, PLUS, Number.ONE, SLASH, PLUS, new Number(0), SPACE, UNTIL, SPACE, END, SPACE, OF, SPACE, TURN, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Smoke")
+            void smoke() {
+                text = "Players can\u2019t untap more than one creature during their untap steps.";
+                tokens = List.of(PLAY, ER, S, SPACE, CAN, NOT, SPACE, NOT, TAP, SPACE, MORE, SPACE, THAN, SPACE, ONE, SPACE, CREATURE, SPACE, DURING, SPACE, THEY, POSSESSIVE, SPACE, NOT, TAP, SPACE, STEP, S, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Stone Giant")
+            void stoneGiant() {
+                text = "{T}: Target creature you control with toughness less than ~\u2019s power gains flying until end of turn. Destroy that creature at the beginning of the next end step.";
+                tokens = List.of(LBRACKET, T, RBRACKET, COLON, SPACE, TARGET, SPACE, CREATURE, SPACE, YOU, SPACE, CONTROL, SPACE, WITH, SPACE, TOUGHNESS, SPACE, LESS, SPACE, THAN, SPACE, TILDE, POSSESSIVE, SPACE, POWER, SPACE, GAIN, SPACE, FLYING, SPACE, UNTIL, SPACE, END, SPACE, OF, SPACE, TURN, PERIOD, SPACE, DESTROY, SPACE, THAT, SPACE, CREATURE, SPACE, AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, THE, SPACE, NEXT, SPACE, END, SPACE, STEP, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Stone Rain")
+            void stoneRain() {
+                text = "Destroy target land.";
+                tokens = List.of(DESTROY, SPACE, TARGET, SPACE, LAND, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Tunnel")
+            void tunnel() {
+                text = "Destroy target Wall. It can\u2019t be regenerated.";
+                tokens = List.of(DESTROY, SPACE, TARGET, SPACE, WALL, PERIOD, SPACE, IT, SPACE, CAN, NOT, SPACE, BE, SPACE, REGENERATE, ED, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Two-Headed Giant of Foriys")
+            void twoHeadedGiantOfForiys() {
+                text = """
+                        Trample
+                        ~ can block an additional creature each combat.""";
+                tokens = List.of(TRAMPLE, NEWLINE,
+                        TILDE, SPACE, CAN, SPACE, BLOCK, SPACE, AN, SPACE, ADDITIONAL, SPACE, CREATURE, SPACE, EACH, SPACE, COMBAT, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Uthden Troll")
+            void uthdenTroll() {
+                text = "{R}: Regenerate ~.";
+                tokens = List.of(LBRACKET, R, RBRACKET, COLON, SPACE, REGENERATE, SPACE, TILDE, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Wall of Fire")
+            void wallOfFire() {
+                text = """
+                        Defender
+                        {R}: ~ gets +1/+0 until end of turn.""";
+                tokens = List.of(DEFENDER, NEWLINE,
+                        LBRACKET, R, RBRACKET, COLON, SPACE, TILDE, SPACE, GET, SPACE, PLUS, Number.ONE, SLASH, PLUS, new Number(0), SPACE, UNTIL, SPACE, END, SPACE, OF, SPACE, TURN, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Wall of Stone")
+            void wallOfStone() {
+                text = "Defender";
+                tokens = List.of(DEFENDER);
+            }
+
+            @Test
+            @DisplayName("Wheel of Fortune")
+            void wheelOfFortune() {
+                text = "Each player discards their hand, then draws seven cards.";
+                tokens = List.of(EACH, SPACE, PLAY, ER, SPACE, DISCARD, SPACE, THEY, POSSESSIVE, SPACE, HAND, COMMA, SPACE, THEN, SPACE, DRAW, SPACE, SEVEN, SPACE, CARD, S, PERIOD);
+            }
         }
     }
 }
