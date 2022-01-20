@@ -70,6 +70,7 @@ import static tegenton.card.parse.lexicon.game.type.LandType.*;
 import static tegenton.card.parse.lexicon.game.type.SuperType.BASIC;
 import static tegenton.card.parse.lexicon.value.EnglishNumber.*;
 import static tegenton.card.parse.lexicon.value.Variable.X;
+import static tegenton.card.parse.lexicon.value.Variable.Y;
 
 public class RulesTextTestCase {
     public static String text;
@@ -1634,6 +1635,20 @@ public class RulesTextTestCase {
             void wheelOfFortune() {
                 text = "Each player discards their hand, then draws seven cards.";
                 tokens = List.of(EACH, SPACE, PLAY, ER, SPACE, DISCARD, SPACE, THEY, POSSESSIVE, SPACE, HAND, COMMA, SPACE, THEN, SPACE, DRAW, SPACE, SEVEN, SPACE, CARD, S, PERIOD);
+            }
+        }
+
+        @Nested
+        @DisplayName("Green Cards")
+        class GreenCardTests {
+            @Test
+            @DisplayName("Aspect of Wolf")
+            void aspectOfWolf() {
+                text = """
+                        Enchant creature
+                        Enchanted creature gets +X/+Y, where X is half the number of Forests you control, rounded down, and Y is half the number of Forests you control, rounded up.""";
+                tokens = List.of(ENCHANT, SPACE, CREATURE, NEWLINE,
+                        ENCHANT, ED, SPACE, CREATURE, SPACE, GET, SPACE, PLUS, X, SLASH, PLUS, Y, COMMA, SPACE, WHERE, SPACE, X, SPACE, IS, SPACE, HALF, SPACE, THE, SPACE, NUMBER, SPACE, OF, SPACE, FOREST, S, SPACE, YOU, SPACE, CONTROL, COMMA, SPACE, ROUNDED, SPACE, DOWN, COMMA, SPACE, AND, SPACE, Y, SPACE, IS, SPACE, HALF, SPACE, THE, SPACE, NUMBER, SPACE, OF, SPACE, FOREST, S, SPACE, YOU, SPACE, CONTROL, COMMA, SPACE, ROUNDED, SPACE, UP, PERIOD);
             }
         }
     }

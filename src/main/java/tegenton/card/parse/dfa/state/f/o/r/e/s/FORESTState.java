@@ -1,26 +1,25 @@
-package tegenton.card.parse.dfa.state.f.o;
+package tegenton.card.parse.dfa.state.f.o.r.e.s;
 
+import tegenton.card.parse.dfa.state.SState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.SymbolState;
-import tegenton.card.parse.dfa.state.f.FOState;
-import tegenton.card.parse.dfa.state.f.o.r.e.s.FORESTState;
-import tegenton.card.parse.dfa.substring.InfixSubstring;
-import tegenton.card.parse.lexicon.Preposition;
+import tegenton.card.parse.dfa.state.f.o.FORState;
 import tegenton.card.parse.lexicon.Word;
+import tegenton.card.parse.lexicon.game.type.LandType;
 
 import java.util.Optional;
 
-public class FORState extends FOState {
-    private static final FORState INSTANCE = new FORState();
+public class FORESTState extends FORState {
+    private static final FORESTState INSTANCE = new FORESTState();
 
-    public static FOState state() {
+    public static FORESTState state() {
         return INSTANCE;
     }
 
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'E' -> new InfixSubstring("ES", 'T', FORESTState::state);
+            case 'S' -> SState.state();
             case '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
@@ -29,7 +28,7 @@ public class FORState extends FOState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case '\0', ' ' -> Preposition.FOR;
+            case 'S', '\0', ' ' -> LandType.FOREST;
             default -> null;
         });
     }
