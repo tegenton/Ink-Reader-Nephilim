@@ -5,6 +5,7 @@ import tegenton.card.parse.dfa.state.o.p.p.o.n.e.n.OPPONENTState;
 import tegenton.card.parse.dfa.substring.InfixSubstring;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Adverb;
+import tegenton.card.parse.lexicon.Preposition;
 import tegenton.card.parse.lexicon.Word;
 
 import java.util.Optional;
@@ -24,8 +25,9 @@ public class OState extends State {
             case 'P' -> new InfixSubstring("PPONEN", 'T', OPPONENTState::state);
             case 'R' -> ORState.state();
             case 'T' -> OTState.state();
-            case 'W' -> OWState.state();
+            case 'U' -> new SuffixSubstring("UT", Preposition.OUT);
             case 'V' -> new SuffixSubstring("VER", Adverb.OVER);
+            case 'W' -> OWState.state();
             default -> invalid(c);
         };
     }

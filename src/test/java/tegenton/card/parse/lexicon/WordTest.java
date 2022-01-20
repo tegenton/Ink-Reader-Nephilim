@@ -67,7 +67,7 @@ public class WordTest extends WordTestTemplate {
     void preposition() {
         words = Preposition.values();
         values = List.of("ABOVE", "ADDITION", "AMONG", "BEYOND", "BY", "FOR", "FROM", "IN",
-                "MINUS", "OF", "ON", "TO", "UNDER", "WITH");
+                "MINUS", "OF", "ON", "OUT", "TO", "UNDER", "WITH");
     }
 
     @Test

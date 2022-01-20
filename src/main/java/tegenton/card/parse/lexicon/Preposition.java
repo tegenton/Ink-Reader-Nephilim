@@ -12,6 +12,7 @@ public enum Preposition implements Word {
     MINUS,
     OF,
     ON,
+    OUT,
     TO,
     UNDER,
     WITH;

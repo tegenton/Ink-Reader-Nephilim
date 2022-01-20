@@ -1322,6 +1322,40 @@ public class RulesTextTestCase {
                 text = "{T}: Target creature with power 2 or less can\u2019t be blocked this turn.";
                 tokens = List.of(LBRACKET, T, RBRACKET, COLON, SPACE, TARGET, SPACE, CREATURE, SPACE, WITH, SPACE, POWER, SPACE, Number.TWO, SPACE, OR, SPACE, LESS, SPACE, CAN, NOT, SPACE, BE, SPACE, BLOCK, ED, SPACE, THIS, SPACE, TURN, PERIOD);
             }
+
+            @Test
+            @DisplayName("Earth Elemental")
+            void earthElemental() {
+                text = "";
+                tokens = List.of();
+            }
+
+            @Test
+            @DisplayName("Earthbind")
+            void earthbind() {
+                text = """
+                        Enchant creature
+                        When ~ enters the battlefield, if enchanted creature has flying, ~ deals 2 damage to that creature and ~ gains \u201CEnchanted creature loses flying.\u201D""";
+                tokens = List.of(ENCHANT, SPACE, CREATURE, NEWLINE,
+                        WHEN, SPACE, TILDE, SPACE, ENTER, SPACE, THE, SPACE, BATTLEFIELD, COMMA, SPACE, IF, SPACE, ENCHANT, ED, SPACE, CREATURE, SPACE, HAVE, SPACE, FLYING, COMMA, SPACE, TILDE, SPACE, DEAL, SPACE, Number.TWO, SPACE, DAMAGE, SPACE, TO, SPACE, THAT, SPACE, CREATURE, SPACE, AND, SPACE, TILDE, SPACE, GAIN, SPACE, OPENQUOTE, ENCHANT, ED, SPACE, CREATURE, SPACE, LOSE, SPACE, FLYING, PERIOD, CLOSEQUOTE);
+            }
+
+            @Test
+            @DisplayName("Earthquake")
+            void earthquake() {
+                text = "~ deals X damage to each creature without flying and each player.";
+                tokens = List.of(TILDE, SPACE, DEAL, SPACE, X, SPACE, DAMAGE, SPACE, TO, SPACE, EACH, SPACE, CREATURE, SPACE, WITH, OUT, SPACE, FLYING, SPACE, AND, SPACE, EACH, SPACE, PLAY, ER, PERIOD);
+            }
+
+            @Test
+            @DisplayName("False Orders")
+            void falseOrders() {
+                text = """
+                        Cast this spell only during the declare blockers step.
+                        Remove target creature defending player controls from combat. Creatures it was blocking that had become blocked by only that creature this combat become unblocked. You may have it block an attacking creature of your choice.""";
+                tokens = List.of(CAST, SPACE, THIS, SPACE, SPELL, SPACE, ONLY, SPACE, DURING, SPACE, THE, SPACE, DECLARE, SPACE, BLOCK, ER, S, SPACE, STEP, PERIOD, NEWLINE,
+                        REMOVE, SPACE, TARGET, SPACE, CREATURE, SPACE, DEFENDING, SPACE, PLAY, ER, SPACE, CONTROL, SPACE, FROM, SPACE, COMBAT, PERIOD, SPACE, CREATURE, S, SPACE, IT, SPACE, IS, ED, SPACE, BLOCK, ING, SPACE, THAT, SPACE, HAVE, ED, SPACE, BECOME, SPACE, BLOCK, ED, SPACE, BY, SPACE, ONLY, SPACE, THAT, SPACE, CREATURE, SPACE, THIS, SPACE, COMBAT, SPACE, BECOME, SPACE, NOT, BLOCK, ED, PERIOD, SPACE, YOU, SPACE, MAY, SPACE, HAVE, SPACE, IT, SPACE, BLOCK, SPACE, AN, SPACE, ATTACK, ING, SPACE, CREATURE, SPACE, OF, SPACE, YOU, POSSESSIVE, SPACE, CHOICE, PERIOD);
+            }
         }
     }
 }

@@ -1,25 +1,25 @@
-package tegenton.card.parse.dfa.state.d.e.c.l.a.r;
+package tegenton.card.parse.dfa.state.w.i.t;
 
+import tegenton.card.parse.dfa.state.OState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.SymbolState;
-import tegenton.card.parse.dfa.state.d.DEState;
-import tegenton.card.parse.dfa.state.e.EDState;
+import tegenton.card.parse.dfa.state.WState;
+import tegenton.card.parse.lexicon.Preposition;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb;
 
 import java.util.Optional;
 
-public class DECLAREState extends DEState {
-    private static final DECLAREState INSTANCE = new DECLAREState();
+public class WITHState extends WState {
+    private static final WITHState INSTANCE = new WITHState();
 
-    public static DECLAREState state() {
+    public static WITHState state() {
         return INSTANCE;
     }
 
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'D' -> EDState.state();
+            case 'O' -> OState.state();
             case '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
@@ -28,7 +28,7 @@ public class DECLAREState extends DEState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case 'D', '\0', ' ' -> PlayerVerb.DECLARE;
+            case 'O', '\0', ' ' -> Preposition.WITH;
             default -> null;
         });
     }
