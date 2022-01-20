@@ -1499,6 +1499,46 @@ public class RulesTextTestCase {
                 text = "Attacking creatures you control get +1/+0.";
                 tokens = List.of(ATTACK, ING, SPACE, CREATURE, S, SPACE, YOU, SPACE, CONTROL, SPACE, GET, SPACE, PLUS, Number.ONE, SLASH, PLUS, new Number(0), PERIOD);
             }
+
+            @Test
+            @DisplayName("Power Surge")
+            void powerSurge() {
+                text = "At the beginning of each player\u2019s upkeep, ~ deals X damage to that player, where X is the number of untapped lands they controlled at the beginning of this turn.";
+                tokens = List.of(AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, EACH, SPACE, PLAY, ER, POSSESSIVE, SPACE, UPKEEP, COMMA, SPACE, TILDE, SPACE, DEAL, SPACE, X, SPACE, DAMAGE, SPACE, TO, SPACE, THAT, SPACE, PLAY, ER, COMMA, SPACE, WHERE, SPACE, X, SPACE, IS, SPACE, THE, SPACE, NUMBER, SPACE, OF, SPACE, NOT, TAP, ED, SPACE, LAND, S, SPACE, THEY, SPACE, CONTROL, ED, SPACE, AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, THIS, SPACE, TURN, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Red Elemental Blast")
+            void blueElementalBlast() {
+                text = """
+                        Choose one \u2014
+                        \u2022 Counter target blue spell.
+                        \u2022 Destroy target blue permanent.""";
+                tokens = List.of(CHOOSE, SPACE, ONE, SPACE, DASH, NEWLINE,
+                        BULLET, SPACE, COUNTER, SPACE, TARGET, SPACE, BLUE, SPACE, SPELL, PERIOD, NEWLINE,
+                        BULLET, SPACE, DESTROY, SPACE, TARGET, SPACE, BLUE, SPACE, PERMANENT, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Roc of Kher Ridges")
+            void rocOfKherRidges() {
+                text = "Flying";
+                tokens = List.of(FLYING);
+            }
+
+            @Test
+            @DisplayName("Rock Hydra")
+            void rockHydra() {
+                text = """
+                        ~ enters the battlefield with X +1/+1 counters on it.
+                        For each 1 damage that would be dealt to ~, if it has a +1/+1 counter on it, remove a +1/+1 counter from it and prevent that 1 damage.
+                        {R}: Prevent the next 1 damage that would be dealt to ~ this turn.
+                        {R}{R}{R}: Put a +1/+1 counter on ~. Activate only during your upkeep.""";
+                tokens = List.of(TILDE, SPACE, ENTER, SPACE, THE, SPACE, BATTLEFIELD, SPACE, WITH, SPACE, X, SPACE, PLUS, Number.ONE, SLASH, PLUS, Number.ONE, SPACE, COUNTER, SPACE, ON, SPACE, IT, PERIOD, NEWLINE,
+                        FOR, SPACE, EACH, SPACE, Number.ONE, SPACE, DAMAGE, SPACE, THAT, SPACE, WOULD, SPACE, BE, SPACE, DEAL, ED, SPACE, TO, SPACE, TILDE, COMMA, SPACE, IF, SPACE, IT, SPACE, HAVE, SPACE, A, SPACE, PLUS, Number.ONE, SLASH, PLUS, Number.ONE, SPACE, COUNTER, SPACE, ON, SPACE, IT, COMMA, SPACE, REMOVE, SPACE, A, SPACE, PLUS, Number.ONE, SLASH, PLUS, Number.ONE, SPACE, COUNTER, SPACE, FROM, SPACE, IT, SPACE, AND, SPACE, PREVENT, SPACE, THAT, SPACE, Number.ONE, SPACE, DAMAGE, PERIOD, NEWLINE,
+                        LBRACKET, R, RBRACKET, COLON, SPACE, PREVENT, SPACE, THE, SPACE, NEXT, SPACE, Number.ONE, SPACE, DAMAGE, SPACE, THAT, SPACE, WOULD, SPACE, BE, SPACE, DEAL, ED, SPACE, TO, SPACE, TILDE, SPACE, THIS, SPACE, TURN, PERIOD, NEWLINE,
+                        LBRACKET, R, RBRACKET, LBRACKET, R, RBRACKET, LBRACKET, R, RBRACKET, COLON, SPACE, PUT, SPACE, A, SPACE, PLUS, Number.ONE, SLASH, PLUS, Number.ONE, SPACE, COUNTER, SPACE, ON, SPACE, TILDE, PERIOD, SPACE, ACTIVATE, SPACE, ONLY, SPACE, DURING, SPACE, YOU, POSSESSIVE, SPACE, UPKEEP, PERIOD);
+            }
         }
     }
 }
