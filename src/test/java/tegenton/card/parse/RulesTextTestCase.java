@@ -1271,5 +1271,57 @@ public class RulesTextTestCase {
                         OTHER, SPACE, ZOMBIE, S, SPACE, HAVE, SPACE, OPENQUOTE, LBRACKET, B, RBRACKET, COLON, SPACE, REGENERATE, SPACE, THIS, SPACE, PERMANENT, PERIOD, CLOSEQUOTE);
             }
         }
+
+        @Nested
+        @DisplayName("Red Cards")
+        class RedCardTests {
+            @Test
+            @DisplayName("Burrowing")
+            void burrowing() {
+                text = """
+                        Enchant creature
+                        Enchanted creature has mountainwalk.""";
+                tokens = List.of(ENCHANT, SPACE, CREATURE, NEWLINE,
+                        ENCHANT, ED, SPACE, CREATURE, SPACE, HAVE, SPACE, MOUNTAIN, WALK, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Chaoslace")
+            void Chaoslace() {
+                text = "Target spell or permanent becomes red.";
+                tokens = List.of(TARGET, SPACE, SPELL, SPACE, OR, SPACE, PERMANENT, SPACE, BECOME, SPACE, RED, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Disintegrate")
+            void disintegrate() {
+                text = "~ deals X damage to any target. If it\u2019s a creature, it can\u2019t be regenerated this turn, and if it would die this turn, exile it instead.";
+                tokens = List.of(TILDE, SPACE, DEAL, SPACE, X, SPACE, DAMAGE, SPACE, TO, SPACE, ANY, SPACE, TARGET, PERIOD, SPACE, IF, SPACE, IT, IS, SPACE, A, SPACE, CREATURE, COMMA, SPACE, IT, SPACE, CAN, NOT, SPACE, BE, SPACE, REGENERATE, ED, SPACE, THIS, SPACE, TURN, COMMA, SPACE, AND, SPACE, IF, SPACE, IT, SPACE, WOULD, SPACE, DIE, SPACE, THIS, SPACE, TURN, COMMA, SPACE, EXILE, SPACE, IT, SPACE, INSTEAD, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Dragon Whelp")
+            void dragonWhelp() {
+                text = """
+                        Flying
+                        {R}: ~ gets +1/+0 until end of turn. If this ability has been activated four or more times this turn, sacrifice ~ at the beginning of the next end step.""";
+                tokens = List.of(FLYING, NEWLINE,
+                        LBRACKET, R, RBRACKET, COLON, SPACE, TILDE, SPACE, GET, SPACE, PLUS, Number.ONE, SLASH, PLUS, new Number(0), SPACE, UNTIL, SPACE, END, SPACE, OF, SPACE, TURN, PERIOD, SPACE, IF, SPACE, THIS, SPACE, ABILITY, SPACE, HAVE, SPACE, ED, SPACE, ACTIVATE, ED, SPACE, FOUR, SPACE, OR, SPACE, MORE, SPACE, TIME, S, SPACE, THIS, SPACE, TURN, COMMA, SPACE, SACRIFICE, SPACE, TILDE, SPACE, AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, THE, SPACE, NEXT, SPACE, END, SPACE, STEP, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Dwarven Demolition Team")
+            void dwarvenDemolitionTeam() {
+                text = "{T}: Destroy target Wall.";
+                tokens = List.of(LBRACKET, T, RBRACKET, COLON, SPACE, DESTROY, SPACE, TARGET, SPACE, WALL, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Dwarven Warriors")
+            void dwarvenWarriors() {
+                text = "{T}: Target creature with power 2 or less can\u2019t be blocked this turn.";
+                tokens = List.of(LBRACKET, T, RBRACKET, COLON, SPACE, TARGET, SPACE, CREATURE, SPACE, WITH, SPACE, POWER, SPACE, Number.TWO, SPACE, OR, SPACE, LESS, SPACE, CAN, NOT, SPACE, BE, SPACE, BLOCK, ED, SPACE, THIS, SPACE, TURN, PERIOD);
+            }
+        }
     }
 }

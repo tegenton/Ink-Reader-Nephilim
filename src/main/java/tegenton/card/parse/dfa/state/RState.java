@@ -22,6 +22,7 @@ public class RState extends State {
             case 'A' -> RAState.state();
             case 'E' -> REState.state();
             case 'O' -> new SuffixSubstring("OUNDED", Adjective.ROUNDED);
+            case '}', '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }

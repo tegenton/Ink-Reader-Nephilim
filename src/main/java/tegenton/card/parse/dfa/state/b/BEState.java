@@ -7,6 +7,7 @@ import tegenton.card.parse.dfa.state.b.e.c.o.m.BECOMEState;
 import tegenton.card.parse.dfa.state.b.e.g.i.BEGINState;
 import tegenton.card.parse.dfa.substring.InfixSubstring;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
+import tegenton.card.parse.lexicon.Morpheme;
 import tegenton.card.parse.lexicon.Preposition;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.GameVerb;
@@ -25,6 +26,7 @@ public class BEState extends BState {
     public State transition(char c) {
         return switch (c) {
             case 'C' -> new InfixSubstring("COM", 'E', BECOMEState::state);
+            case 'E' -> new SuffixSubstring("EN", Morpheme.ED);
             case 'F' -> new SuffixSubstring("FORE", Chronology.BEFORE);
             case 'G' -> new InfixSubstring("GI", 'N', BEGINState::state);
             case 'Y' -> new SuffixSubstring("YOND", Preposition.BEYOND);

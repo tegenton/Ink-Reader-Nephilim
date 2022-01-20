@@ -1,25 +1,25 @@
-package tegenton.card.parse.dfa.state.f.o.u;
+package tegenton.card.parse.dfa.state.t.i.m;
 
+import tegenton.card.parse.dfa.state.SState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.SymbolState;
-import tegenton.card.parse.dfa.state.f.o.FOUState;
-import tegenton.card.parse.dfa.substring.morpheme.TEENMorpheme;
+import tegenton.card.parse.dfa.state.TState;
+import tegenton.card.parse.lexicon.Noun;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.value.EnglishNumber;
 
 import java.util.Optional;
 
-public class FOURState extends FOUState {
-    private static final FOURState INSTANCE = new FOURState();
+public class TIMEState extends TState {
+    private static final TIMEState INSTANCE = new TIMEState();
 
-    public static FOURState state() {
+    public static TIMEState state() {
         return INSTANCE;
     }
 
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'T' -> new TEENMorpheme(EnglishNumber.FOUR);
+            case 'S' -> SState.state();
             case '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
@@ -28,7 +28,7 @@ public class FOURState extends FOUState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case '\0', ' ' -> EnglishNumber.FOUR;
+            case 'S', '\0', ' ' -> Noun.TIME;
             default -> null;
         });
     }
