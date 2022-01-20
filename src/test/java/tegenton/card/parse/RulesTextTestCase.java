@@ -17,6 +17,7 @@ import static tegenton.card.parse.lexicon.Determiner.*;
 import static tegenton.card.parse.lexicon.Genitive.HALF;
 import static tegenton.card.parse.lexicon.Morpheme.*;
 import static tegenton.card.parse.lexicon.Noun.*;
+import static tegenton.card.parse.lexicon.Particle.DOWN;
 import static tegenton.card.parse.lexicon.Particle.UP;
 import static tegenton.card.parse.lexicon.Preposition.*;
 import static tegenton.card.parse.lexicon.Pronoun.SO;
@@ -1355,6 +1356,61 @@ public class RulesTextTestCase {
                         Remove target creature defending player controls from combat. Creatures it was blocking that had become blocked by only that creature this combat become unblocked. You may have it block an attacking creature of your choice.""";
                 tokens = List.of(CAST, SPACE, THIS, SPACE, SPELL, SPACE, ONLY, SPACE, DURING, SPACE, THE, SPACE, DECLARE, SPACE, BLOCK, ER, S, SPACE, STEP, PERIOD, NEWLINE,
                         REMOVE, SPACE, TARGET, SPACE, CREATURE, SPACE, DEFENDING, SPACE, PLAY, ER, SPACE, CONTROL, SPACE, FROM, SPACE, COMBAT, PERIOD, SPACE, CREATURE, S, SPACE, IT, SPACE, IS, ED, SPACE, BLOCK, ING, SPACE, THAT, SPACE, HAVE, ED, SPACE, BECOME, SPACE, BLOCK, ED, SPACE, BY, SPACE, ONLY, SPACE, THAT, SPACE, CREATURE, SPACE, THIS, SPACE, COMBAT, SPACE, BECOME, SPACE, NOT, BLOCK, ED, PERIOD, SPACE, YOU, SPACE, MAY, SPACE, HAVE, SPACE, IT, SPACE, BLOCK, SPACE, AN, SPACE, ATTACK, ING, SPACE, CREATURE, SPACE, OF, SPACE, YOU, POSSESSIVE, SPACE, CHOICE, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Fire Elemental")
+            void fireElemental() {
+                text = "";
+                tokens = List.of();
+            }
+
+            @Test
+            @DisplayName("Fireball")
+            void fireball() {
+                text = """
+                        This spell costs {1} more to cast for each target beyond the first.
+                        ~ deals X damage divided evenly, rounded down, among any number of targets.""";
+                tokens = List.of(THIS, SPACE, SPELL, SPACE, COST, SPACE, LBRACKET, Number.ONE, RBRACKET, SPACE, MORE, SPACE, TO, SPACE, CAST, SPACE, FOR, SPACE, EACH, SPACE, TARGET, SPACE, BEYOND, SPACE, THE, SPACE, FIRST, PERIOD, NEWLINE,
+                        TILDE, SPACE, DEAL, SPACE, X, SPACE, DAMAGE, SPACE, DIVIDE, ED, SPACE, EVENLY, COMMA, SPACE, ROUNDED, SPACE, DOWN, COMMA, SPACE, AMONG, SPACE, ANY, SPACE, NUMBER, SPACE, OF, SPACE, TARGET, S, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Firebreathing")
+            void firebreathing() {
+                text = """
+                        Enchant creature
+                        {R}: Enchanted creature gets +1/+0 until end of turn.""";
+                tokens = List.of(ENCHANT, SPACE, CREATURE, NEWLINE,
+                        LBRACKET, R, RBRACKET, COLON, SPACE, ENCHANT, ED, SPACE, CREATURE, SPACE, GET, SPACE, PLUS, Number.ONE, SLASH, PLUS, new Number(0), SPACE, UNTIL, SPACE, END, SPACE, OF, SPACE, TURN, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Flashfires")
+            void flashfires() {
+                text = "Destroy all Plains.";
+                tokens = List.of(DESTROY, SPACE, ALL, SPACE, PLAINS, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Fork")
+            void fork() {
+                text = "Copy target instant or sorcery spell, except that the copy is red. You may choose new targets for the copy.";
+                tokens = List.of(COPY, SPACE, TARGET, SPACE, INSTANT, SPACE, OR, SPACE, SORCERY, SPACE, SPELL, COMMA, SPACE, EXCEPT, SPACE, THAT, SPACE, THE, SPACE, COPY, SPACE, IS, SPACE, RED, PERIOD, SPACE, YOU, SPACE, MAY, SPACE, CHOOSE, SPACE, NEW, SPACE, TARGET, S, SPACE, FOR, SPACE, THE, SPACE, COPY, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Goblin Balloon Brigade")
+            void goblinBalloonBrigade() {
+                text = "{R}: ~ gains flying until end of turn.";
+                tokens = List.of(LBRACKET, R, RBRACKET, COLON, SPACE, TILDE, SPACE, GAIN, SPACE, FLYING, SPACE, UNTIL, SPACE, END, SPACE, OF, SPACE, TURN, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Goblin King")
+            void goblinKing() {
+                text = "Other Goblins get +1/+1 and have mountainwalk.";
+                tokens = List.of(OTHER, SPACE, GOBLIN, S, SPACE, GET, SPACE, PLUS, Number.ONE, SLASH, PLUS, Number.ONE, SPACE, AND, SPACE, HAVE, SPACE, MOUNTAIN, WALK, PERIOD);
             }
         }
     }
