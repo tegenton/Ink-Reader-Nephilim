@@ -1650,6 +1650,16 @@ public class RulesTextTestCase {
                 tokens = List.of(ENCHANT, SPACE, CREATURE, NEWLINE,
                         ENCHANT, ED, SPACE, CREATURE, SPACE, GET, SPACE, PLUS, X, SLASH, PLUS, Y, COMMA, SPACE, WHERE, SPACE, X, SPACE, IS, SPACE, HALF, SPACE, THE, SPACE, NUMBER, SPACE, OF, SPACE, FOREST, S, SPACE, YOU, SPACE, CONTROL, COMMA, SPACE, ROUNDED, SPACE, DOWN, COMMA, SPACE, AND, SPACE, Y, SPACE, IS, SPACE, HALF, SPACE, THE, SPACE, NUMBER, SPACE, OF, SPACE, FOREST, S, SPACE, YOU, SPACE, CONTROL, COMMA, SPACE, ROUNDED, SPACE, UP, PERIOD);
             }
+
+            @Test
+            @DisplayName("Berserk")
+            void berserk() {
+                text = """
+                        Cast this spell only before the combat damage step.
+                        Target creature gains trample and gets +X/+0 until end of turn, where X is its power. At the beginning of the next end step, destroy that creature if it attacked this turn.""";
+                tokens = List.of(CAST, SPACE, THIS, SPACE, SPELL, SPACE, ONLY, SPACE, BEFORE, SPACE, THE, SPACE, COMBAT, SPACE, DAMAGE, SPACE, STEP, PERIOD, NEWLINE,
+                        TARGET, SPACE, CREATURE, SPACE, GAIN, SPACE, TRAMPLE, SPACE, AND, SPACE, GET, SPACE, PLUS, X, SLASH, PLUS, new Number(0), SPACE, UNTIL, SPACE, END, SPACE, OF, SPACE, TURN, COMMA, SPACE, WHERE, SPACE, X, SPACE, IS, SPACE, IT, POSSESSIVE, SPACE, POWER, PERIOD, SPACE, AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, THE, SPACE, NEXT, SPACE, END, SPACE, STEP, COMMA, SPACE, DESTROY, SPACE, THAT, SPACE, CREATURE, SPACE, IF, SPACE, IT, SPACE, ATTACK, ED, SPACE, THIS, SPACE, TURN, PERIOD);
+            }
         }
     }
 }
