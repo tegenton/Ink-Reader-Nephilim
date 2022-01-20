@@ -1412,6 +1412,93 @@ public class RulesTextTestCase {
                 text = "Other Goblins get +1/+1 and have mountainwalk.";
                 tokens = List.of(OTHER, SPACE, GOBLIN, S, SPACE, GET, SPACE, PLUS, Number.ONE, SLASH, PLUS, Number.ONE, SPACE, AND, SPACE, HAVE, SPACE, MOUNTAIN, WALK, PERIOD);
             }
+
+            @Test
+            @DisplayName("Granite Gargoyle")
+            void graniteGargoyle() {
+                text = """
+                        Flying
+                        {R}: ~ gets +0/+1 until end of turn.""";
+                tokens = List.of(FLYING, NEWLINE,
+                        LBRACKET, R, RBRACKET, COLON, SPACE, TILDE, SPACE, GET, SPACE, PLUS, new Number(0), SLASH, PLUS, Number.ONE, SPACE, UNTIL, SPACE, END, SPACE, OF, SPACE, TURN, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Gray Ogre")
+            void grayOgre() {
+                text = "";
+                tokens = List.of();
+            }
+
+            @Test
+            @DisplayName("Hill Giant")
+            void hillGiant() {
+                text = "";
+                tokens = List.of();
+            }
+
+            @Test
+            @DisplayName("Hurloon Minotaur")
+            void hurloonMinotaur() {
+                text = "";
+                tokens = List.of();
+            }
+
+            @Test
+            @DisplayName("Ironclaw Orcs")
+            void ironclawOrcs() {
+                text = "~ can\u2019t block creatures with power 2 or greater.";
+                tokens = List.of(TILDE, SPACE, CAN, NOT, SPACE, BLOCK, SPACE, CREATURE, S, SPACE, WITH, SPACE, POWER, SPACE, Number.TWO, SPACE, OR, SPACE, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Keldon Warlord")
+            void keldonWarlord() {
+                text = "~\u2019s power and toughness are each equal to the number of non-Wall creatures you control.";
+                tokens = List.of(TILDE, POSSESSIVE, SPACE, POWER, SPACE, AND, SPACE, TOUGHNESS, SPACE, IS, SPACE, EACH, SPACE, EQUAL, SPACE, TO, SPACE, THE, SPACE, NUMBER, SPACE, OF, SPACE, NOT, MINUS, WALL, SPACE, CREATURE, S, SPACE, YOU, SPACE, CONTROL, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Lightning Bolt")
+            void lightningBolt() {
+                text = "~ deals 3 damage to any target.";
+                tokens = List.of(TILDE, SPACE, DEAL, SPACE, Number.THREE, SPACE, DAMAGE, SPACE, TO, SPACE, ANY, SPACE, TARGET, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Mana Flare")
+            void manaFlare() {
+                text = "Whenever a player taps a land for mana, that player adds one mana of any type that land produced.";
+                tokens = List.of(WHENEVER, SPACE, A, SPACE, PLAY, ER, SPACE, TAP, SPACE, A, SPACE, LAND, SPACE, FOR, SPACE, MANA, COMMA, SPACE, THAT, SPACE, PLAY, ER, SPACE, ADD, SPACE, ONE, SPACE, MANA, SPACE, OF, SPACE, ANY, SPACE, TYPE, SPACE, THAT, SPACE, LAND, SPACE, PRODUCE, ED, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Manabarbs")
+            void manabarbs() {
+                text = "Whenever a player taps a land for mana, ~ deals 1 damage to that player.";
+                tokens = List.of(WHENEVER, SPACE, A, SPACE, PLAY, ER, SPACE, TAP, SPACE, A, SPACE, LAND, SPACE, FOR, SPACE, MANA, COMMA, SPACE, TILDE, SPACE, DEAL, SPACE, Number.ONE, SPACE, DAMAGE, SPACE, TO, SPACE, THAT, SPACE, PLAY, ER, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Mons's Goblin Raiders")
+            void monsGoblinRaiders() {
+                text = "";
+                tokens = List.of();
+            }
+
+            @Test
+            @DisplayName("Orcish Artillery")
+            void orcishArtillery() {
+                text = "{T}: ~ deals 2 damage to any target and 3 damage to you.";
+                tokens = List.of(LBRACKET, T, RBRACKET, COLON, SPACE, TILDE, SPACE, DEAL, SPACE, Number.TWO, SPACE, DAMAGE, SPACE, TO, SPACE, ANY, SPACE, TARGET, SPACE, AND, SPACE, Number.THREE, SPACE, DAMAGE, SPACE, TO, SPACE, YOU, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Orcish Oriflamme")
+            void orcishOriflamme() {
+                text = "Attacking creatures you control get +1/+0.";
+                tokens = List.of(ATTACK, ING, SPACE, CREATURE, S, SPACE, YOU, SPACE, CONTROL, SPACE, GET, SPACE, PLUS, Number.ONE, SLASH, PLUS, new Number(0), PERIOD);
+            }
         }
     }
 }

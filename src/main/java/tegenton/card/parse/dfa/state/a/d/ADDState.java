@@ -21,6 +21,7 @@ public class ADDState extends ADState {
     public State transition(char c) {
         return switch (c) {
             case 'I' -> new InfixSubstring("ITIO", 'N', ADDITIONState::state);
+            case 'S' -> this;
             case '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
