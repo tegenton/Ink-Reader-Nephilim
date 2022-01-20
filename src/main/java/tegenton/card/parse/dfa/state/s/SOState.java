@@ -2,6 +2,7 @@ package tegenton.card.parse.dfa.state.s;
 
 import tegenton.card.parse.dfa.state.SState;
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Determiner;
 import tegenton.card.parse.lexicon.Pronoun;
@@ -24,6 +25,7 @@ public class SOState extends SState {
             case 'M' -> new SuffixSubstring("ME", Determiner.SOME);
             case 'R' -> new SuffixSubstring("RCERY", CardType.SORCERY);
             case 'U' -> new SuffixSubstring("URCE", SourceNoun.SOURCE);
+            case ',', '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }
@@ -31,7 +33,7 @@ public class SOState extends SState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case '\0', ' ' -> Pronoun.SO;
+            case ',', '\0', ' ' -> Pronoun.SO;
             default -> null;
         });
     }

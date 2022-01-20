@@ -3,6 +3,7 @@ package tegenton.card.parse.dfa.state.d.i;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.dfa.state.d.DIState;
+import tegenton.card.parse.dfa.state.e.EDState;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.source.target.object.ObjectVerb;
 
@@ -18,6 +19,7 @@ public class DIEState extends DIState {
     @Override
     public State transition(char c) {
         return switch (c) {
+            case 'D' -> EDState.state();
             case 'S' -> this;
             case ',', '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
@@ -27,7 +29,7 @@ public class DIEState extends DIState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case ',', '\0', ' ' -> ObjectVerb.DIE;
+            case 'D', ',', '\0', ' ' -> ObjectVerb.DIE;
             default -> null;
         });
     }

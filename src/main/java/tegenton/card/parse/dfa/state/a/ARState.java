@@ -3,9 +3,9 @@ package tegenton.card.parse.dfa.state.a;
 import tegenton.card.parse.dfa.state.AState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.a.r.AREState;
-import tegenton.card.parse.dfa.substring.SuffixSubstring;
+import tegenton.card.parse.dfa.state.a.r.t.i.f.a.c.ARTIFACTState;
+import tegenton.card.parse.dfa.substring.InfixSubstring;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.game.type.CardType;
 
 import java.util.Optional;
 
@@ -20,7 +20,7 @@ public class ARState extends AState {
     public State transition(char c) {
         return switch (c) {
             case 'E' -> AREState.state();
-            case 'T' -> new SuffixSubstring("TIFACT", CardType.ARTIFACT);
+            case 'T' -> new InfixSubstring("TIFAC", 'T', ARTIFACTState::state);
             default -> invalid(c);
         };
     }

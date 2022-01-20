@@ -4,6 +4,8 @@ import tegenton.card.parse.dfa.state.FState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.f.i.FIFState;
 import tegenton.card.parse.dfa.state.f.i.FIVState;
+import tegenton.card.parse.dfa.state.f.i.n.i.s.FINISHState;
+import tegenton.card.parse.dfa.substring.InfixSubstring;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Adjective;
 import tegenton.card.parse.lexicon.Word;
@@ -21,10 +23,10 @@ public class FIState extends FState {
     public State transition(char c) {
         return switch (c) {
             case 'F' -> FIFState.state();
+            case 'N' -> new InfixSubstring("NIS", 'H', FINISHState::state);
             case 'R' -> new SuffixSubstring("RST", Adjective.FIRST);
             case 'V' -> FIVState.state();
-            default -> throw new IllegalStateException(
-                    "Cannot transition from FIState on " + c);
+            default -> invalid(c);
         };
     }
 

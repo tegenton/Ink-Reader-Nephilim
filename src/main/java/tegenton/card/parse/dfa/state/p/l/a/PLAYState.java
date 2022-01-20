@@ -2,6 +2,7 @@ package tegenton.card.parse.dfa.state.p.l.a;
 
 import tegenton.card.parse.dfa.state.EState;
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.dfa.state.p.l.PLAState;
 import tegenton.card.parse.dfa.substring.morpheme.INGMorpheme;
 import tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb;
@@ -20,6 +21,8 @@ public class PLAYState extends PLAState {
         return switch (c) {
             case 'E' -> EState.state();
             case 'I' -> new INGMorpheme();
+            case 'S' -> this;
+            case '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }

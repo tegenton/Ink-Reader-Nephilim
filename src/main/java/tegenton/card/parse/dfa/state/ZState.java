@@ -1,9 +1,10 @@
 package tegenton.card.parse.dfa.state;
 
 import tegenton.card.parse.dfa.state.z.ZEState;
-import tegenton.card.parse.dfa.substring.SuffixSubstring;
+import tegenton.card.parse.dfa.state.z.o.m.b.i.ZOMBIEState;
+import tegenton.card.parse.dfa.substring.InfixSubstring;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.game.type.CreatureType;
+
 import java.util.Optional;
 
 public class ZState extends State {
@@ -17,7 +18,7 @@ public class ZState extends State {
     public State transition(char c) {
         return switch (c) {
             case 'E' -> ZEState.state();
-            case 'O' -> new SuffixSubstring("OMBIE", CreatureType.ZOMBIE);
+            case 'O' -> new InfixSubstring("OMBI", 'E', ZOMBIEState::state);
             default -> invalid(c);
         };
     }

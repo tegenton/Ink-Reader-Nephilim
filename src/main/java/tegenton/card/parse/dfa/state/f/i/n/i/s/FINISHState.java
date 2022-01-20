@@ -1,25 +1,25 @@
-package tegenton.card.parse.dfa.state.t.h.e;
+package tegenton.card.parse.dfa.state.f.i.n.i.s;
 
-import tegenton.card.parse.dfa.state.AState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.SymbolState;
-import tegenton.card.parse.dfa.state.t.h.THEState;
+import tegenton.card.parse.dfa.state.f.FIState;
+import tegenton.card.parse.dfa.substring.InfixSubstring;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.game.source.target.TargetNoun;
+import tegenton.card.parse.lexicon.game.GameVerb;
 
 import java.util.Optional;
 
-public class THEYState extends THEState {
-    private static final THEYState INSTANCE = new THEYState();
+public class FINISHState extends FIState {
+    private static final FINISHState INSTANCE = new FINISHState();
 
-    public static THEYState state() {
+    public static FINISHState state() {
         return INSTANCE;
     }
 
     @Override
     public State transition(char c) {
         return switch (c) {
-            case '\u2019' -> AState.state();
+            case 'E' -> new InfixSubstring("E", 'S', FINISHState::state);
             case '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
@@ -28,7 +28,7 @@ public class THEYState extends THEState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case '\u2019', '\0', ' ' -> TargetNoun.THEY;
+            case '\0', ' ' -> GameVerb.FINISH;
             default -> null;
         });
     }

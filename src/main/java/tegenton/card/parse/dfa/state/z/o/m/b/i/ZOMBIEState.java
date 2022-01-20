@@ -1,25 +1,25 @@
-package tegenton.card.parse.dfa.state.t.h.e;
+package tegenton.card.parse.dfa.state.z.o.m.b.i;
 
-import tegenton.card.parse.dfa.state.AState;
+import tegenton.card.parse.dfa.state.SState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.SymbolState;
-import tegenton.card.parse.dfa.state.t.h.THEState;
+import tegenton.card.parse.dfa.state.ZState;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.game.source.target.TargetNoun;
+import tegenton.card.parse.lexicon.game.type.CreatureType;
 
 import java.util.Optional;
 
-public class THEYState extends THEState {
-    private static final THEYState INSTANCE = new THEYState();
+public class ZOMBIEState extends ZState {
+    private static final ZOMBIEState INSTANCE = new ZOMBIEState();
 
-    public static THEYState state() {
+    public static ZOMBIEState state() {
         return INSTANCE;
     }
 
     @Override
     public State transition(char c) {
         return switch (c) {
-            case '\u2019' -> AState.state();
+            case 'S' -> SState.state();
             case '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
@@ -28,7 +28,7 @@ public class THEYState extends THEState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case '\u2019', '\0', ' ' -> TargetNoun.THEY;
+            case 'S', '\0', ' ' -> CreatureType.ZOMBIE;
             default -> null;
         });
     }

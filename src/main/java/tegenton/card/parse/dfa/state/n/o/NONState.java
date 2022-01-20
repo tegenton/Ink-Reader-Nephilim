@@ -1,8 +1,6 @@
 package tegenton.card.parse.dfa.state.n.o;
 
-import tegenton.card.parse.dfa.state.State;
-import tegenton.card.parse.dfa.state.SymbolState;
-import tegenton.card.parse.dfa.state.TState;
+import tegenton.card.parse.dfa.state.*;
 import tegenton.card.parse.dfa.state.n.NOState;
 import tegenton.card.parse.lexicon.Adverb;
 import tegenton.card.parse.lexicon.Word;
@@ -19,6 +17,8 @@ public class NONState extends NOState {
     @Override
     public State transition(char c) {
         return switch (c) {
+            case 'A' -> AState.state();
+            case 'B' -> BState.state();
             case 'T' -> TState.state();
             case '-', '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
@@ -28,7 +28,7 @@ public class NONState extends NOState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case 'T', '-', '\0', ' ' -> Adverb.NOT;
+            case 'A', 'B', 'T', '-', '\0', ' ' -> Adverb.NOT;
             default -> null;
         });
     }

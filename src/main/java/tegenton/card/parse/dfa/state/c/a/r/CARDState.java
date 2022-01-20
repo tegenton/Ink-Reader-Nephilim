@@ -20,7 +20,7 @@ public final class CARDState extends CARState {
     public State transition(final char c) {
         return switch (c) {
             case 'S' -> SState.state();
-            case ',', '\0', ' ' -> SymbolState.state(c);
+            case ',', '\0', '.', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }
@@ -28,7 +28,7 @@ public final class CARDState extends CARState {
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
-            case 'S', ',', '\0', ' ' -> ObjectNoun.CARD;
+            case 'S', ',', '\0', '.', ' ' -> ObjectNoun.CARD;
             default -> null;
         });
     }
