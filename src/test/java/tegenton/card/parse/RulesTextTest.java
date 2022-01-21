@@ -40,8 +40,7 @@ import static tegenton.card.parse.lexicon.game.source.target.object.ObjectAdject
 import static tegenton.card.parse.lexicon.game.source.target.object.ObjectAttribute.*;
 import static tegenton.card.parse.lexicon.game.source.target.object.ObjectNoun.*;
 import static tegenton.card.parse.lexicon.game.source.target.object.ObjectVerb.*;
-import static tegenton.card.parse.lexicon.game.source.target.object.card.CardName.PLAGUE;
-import static tegenton.card.parse.lexicon.game.source.target.object.card.CardName.RATS;
+import static tegenton.card.parse.lexicon.game.source.target.object.card.CardName.*;
 import static tegenton.card.parse.lexicon.game.source.target.player.PlayerAdjective.ACTIVE;
 import static tegenton.card.parse.lexicon.game.source.target.player.PlayerAdjective.DEFENDING;
 import static tegenton.card.parse.lexicon.game.source.target.player.PlayerAdverb.CONTINUOUSLY;
@@ -2347,6 +2346,48 @@ public class RulesTextTest extends LexTestTemplate {
         void sunglassesOfUrza() {
             text = "You may spend white mana as though it were red mana.";
             tokens = List.of(YOU, SPACE, MAY, SPACE, SPEND, SPACE, WHITE, SPACE, MANA, SPACE, AS, SPACE, THOUGH, SPACE, IT, SPACE, BE, ED, SPACE, RED, SPACE, MANA, PERIOD);
+        }
+
+        @Test
+        @DisplayName("The Hive")
+        void theHive() {
+            text = "{5}, {T}: Create a 1/1 colorless Insect artifact creature token with flying named Wasp.";
+            tokens = List.of(LBRACKET, Number.FIVE, RBRACKET, COMMA, SPACE, LBRACKET, T, RBRACKET, COLON, SPACE, CREATE, SPACE, A, SPACE, Number.ONE, SLASH, Number.ONE, SPACE, COLOR, LESS, SPACE, INSECT, SPACE, ARTIFACT, SPACE, CREATURE, SPACE, TOKEN, SPACE, WITH, SPACE, FLYING, SPACE, NAME, ED, SPACE, IS, WASP, PERIOD);
+        }
+
+        @Test
+        @DisplayName("Throne of Bone")
+        void throneOfBone() {
+            text = "Whenever a player casts a black spell, you may pay {1}. If you do, you gain 1 life.";
+            tokens = List.of(WHENEVER, SPACE, A, SPACE, PLAY, ER, SPACE, CAST, SPACE, A, SPACE, BLACK, SPACE, SPELL, COMMA, SPACE, YOU, SPACE, MAY, SPACE, PAY, SPACE, LBRACKET, Number.ONE, RBRACKET, PERIOD, SPACE, IF, SPACE, YOU, SPACE, DO, COMMA, SPACE, YOU, SPACE, GAIN, SPACE, Number.ONE, SPACE, LIFE, PERIOD);
+        }
+
+        @Test
+        @DisplayName("Time Vault")
+        void timeVault() {
+            text = """
+                    ~ enters the battlefield tapped.
+                    ~ doesn\u2019t untap during your untap step.
+                    If you would begin your turn while ~ is tapped, you may skip that turn instead. If you do, untap ~.
+                    {T}: Take an extra turn after this one.""";
+            tokens = List.of(TILDE, SPACE, ENTER, SPACE, THE, SPACE, BATTLEFIELD, SPACE, TAP, ED, PERIOD, NEWLINE,
+                    TILDE, SPACE, DO, NOT, SPACE, NOT, TAP, SPACE, DURING, SPACE, YOU, POSSESSIVE, SPACE, NOT, TAP, SPACE, STEP, PERIOD, NEWLINE,
+                    IF, SPACE, YOU, SPACE, WOULD, SPACE, BEGIN, SPACE, YOU, POSSESSIVE, SPACE, TURN, SPACE, WHILE, SPACE, TILDE, SPACE, IS, SPACE, TAP, ED, COMMA, SPACE, YOU, SPACE, MAY, SPACE, SKIP, SPACE, THAT, SPACE, TURN, SPACE, INSTEAD, PERIOD, SPACE, IF, SPACE, YOU, SPACE, DO, COMMA, SPACE, NOT, TAP, SPACE, TILDE, PERIOD, NEWLINE,
+                    LBRACKET, T, RBRACKET, COLON, SPACE, TAKE, SPACE, AN, SPACE, EXTRA, SPACE, TURN, SPACE, AFTER, SPACE, THIS, SPACE, ONE, PERIOD);
+        }
+
+        @Test
+        @DisplayName("Winter Orb")
+        void winterOrb() {
+            text = "As long as ~ is untapped, players can\u2019t untap more than one land during their untap steps.";
+            tokens = List.of(AS, SPACE, LONG, SPACE, AS, SPACE, TILDE, SPACE, IS, SPACE, NOT, TAP, ED, COMMA, SPACE, PLAY, ER, S, SPACE, CAN, NOT, SPACE, NOT, TAP, SPACE, MORE, SPACE, THAN, SPACE, ONE, SPACE, LAND, SPACE, DURING, SPACE, THEY, POSSESSIVE, SPACE, NOT, TAP, SPACE, STEP, S, PERIOD);
+        }
+
+        @Test
+        @DisplayName("Wooden Sphere")
+        void woodenSphere() {
+            text = "Whenever a player casts a green spell, you may pay {1}. If you do, you gain 1 life.";
+            tokens = List.of(WHENEVER, SPACE, A, SPACE, PLAY, ER, SPACE, CAST, SPACE, A, SPACE, GREEN, SPACE, SPELL, COMMA, SPACE, YOU, SPACE, MAY, SPACE, PAY, SPACE, LBRACKET, Number.ONE, RBRACKET, PERIOD, SPACE, IF, SPACE, YOU, SPACE, DO, COMMA, SPACE, YOU, SPACE, GAIN, SPACE, Number.ONE, SPACE, LIFE, PERIOD);
         }
     }
 }

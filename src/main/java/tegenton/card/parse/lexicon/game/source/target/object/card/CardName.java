@@ -4,7 +4,8 @@ import tegenton.card.parse.lexicon.Word;
 
 public enum CardName implements Word {
     PLAGUE,
-    RATS;
+    RATS,
+    WASP;
 
     @Override
     public String getWord() {

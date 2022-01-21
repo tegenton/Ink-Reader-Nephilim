@@ -5,11 +5,11 @@ import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.c.o.COMState;
 import tegenton.card.parse.dfa.state.c.o.CONState;
 import tegenton.card.parse.dfa.state.c.o.COUState;
+import tegenton.card.parse.dfa.state.c.o.l.o.COLORState;
 import tegenton.card.parse.dfa.state.c.o.s.COSTState;
 import tegenton.card.parse.dfa.substring.InfixSubstring;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.game.GameNoun;
 import tegenton.card.parse.lexicon.game.source.target.object.ObjectNoun;
 import tegenton.card.parse.lexicon.game.type.CounterName;
 
@@ -25,7 +25,7 @@ public class COState extends CState {
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'L' -> new SuffixSubstring("LOR", GameNoun.COLOR);
+            case 'L' -> new InfixSubstring("LO", 'R', COLORState::state);
             case 'M' -> COMState.state();
             case 'N' -> CONState.state();
             case 'P' -> new SuffixSubstring("PY", ObjectNoun.COPY);

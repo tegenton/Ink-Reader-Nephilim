@@ -1,24 +1,24 @@
-package tegenton.card.parse.dfa.state.c.r.e.a.t;
+package tegenton.card.parse.dfa.state.w.a.s;
 
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.SymbolState;
-import tegenton.card.parse.dfa.state.c.r.e.a.CREATState;
+import tegenton.card.parse.dfa.state.w.a.WASState;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb;
+import tegenton.card.parse.lexicon.game.source.target.object.card.CardName;
 
 import java.util.Optional;
 
-public class CREATEState extends CREATState {
-    private static final CREATEState INSTANCE = new CREATEState();
+public class WASPState extends WASState {
+    private static final WASPState INSTANCE = new WASPState();
 
-    public static CREATEState state() {
+    public static WASPState state() {
         return INSTANCE;
     }
 
     @Override
     public State transition(char c) {
         return switch (c) {
-            case '\0', ' ' -> SymbolState.state(c);
+            case '\0', '.', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }
@@ -26,7 +26,7 @@ public class CREATEState extends CREATState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case '\0', ' ' -> PlayerVerb.CREATE;
+            case '\0', '.', ' ' -> CardName.WASP;
             default -> null;
         });
     }

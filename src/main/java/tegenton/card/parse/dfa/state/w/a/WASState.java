@@ -3,6 +3,7 @@ package tegenton.card.parse.dfa.state.w.a;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.dfa.state.w.WAState;
+import tegenton.card.parse.dfa.state.w.a.s.WASPState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Adverb;
 import tegenton.card.parse.lexicon.Morpheme;
@@ -21,6 +22,7 @@ public class WASState extends WAState {
     public State transition(char c) {
         return switch (c) {
             case 'N' -> new SuffixSubstring("N\u2019T", Adverb.NOT);
+            case 'P' -> WASPState.state();
             case '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
