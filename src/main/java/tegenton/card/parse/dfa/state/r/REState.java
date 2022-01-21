@@ -5,6 +5,7 @@ import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.r.e.REDState;
 import tegenton.card.parse.dfa.state.r.e.RESState;
 import tegenton.card.parse.dfa.state.r.e.g.e.n.e.r.a.t.REGENERATEState;
+import tegenton.card.parse.dfa.state.r.e.m.o.v.REMOVEState;
 import tegenton.card.parse.dfa.state.r.e.p.l.a.REPLACState;
 import tegenton.card.parse.dfa.substring.InfixSubstring;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
@@ -27,7 +28,7 @@ public class REState extends RState {
             case 'A' -> new SuffixSubstring("ACH", Keyword.REACH);
             case 'D' -> REDState.state();
             case 'G' -> new InfixSubstring("GENERAT", 'E', REGENERATEState::state);
-            case 'M' -> new SuffixSubstring("MOVE", PlayerVerb.REMOVE);
+            case 'M' -> new InfixSubstring("MOV", 'E', REMOVEState::state);
             case 'P' -> new InfixSubstring("PLA", 'C', REPLACState::state);
             case 'S' -> RESState.state();
             case 'T' -> new SuffixSubstring("TURN", PlayerVerb.RETURN);

@@ -3,10 +3,10 @@ package tegenton.card.parse.dfa.state.u;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.dfa.state.UState;
-import tegenton.card.parse.dfa.substring.SuffixSubstring;
+import tegenton.card.parse.dfa.state.u.p.k.e.e.UPKEEPState;
+import tegenton.card.parse.dfa.substring.InfixSubstring;
 import tegenton.card.parse.lexicon.Particle;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.game.turn.Step;
 
 import java.util.Optional;
 
@@ -20,7 +20,7 @@ public class UPState extends UState {
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'K' -> new SuffixSubstring("KEEP", Step.UPKEEP);
+            case 'K' -> new InfixSubstring("KEE", 'P', UPKEEPState::state);
             case '\0', '.', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };

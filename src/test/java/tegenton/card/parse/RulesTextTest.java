@@ -1,10 +1,8 @@
 package tegenton.card.parse;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.value.Number;
 
 import java.util.List;
@@ -58,8 +56,7 @@ import static tegenton.card.parse.lexicon.game.turn.Phase.COMBAT;
 import static tegenton.card.parse.lexicon.game.turn.Step.END;
 import static tegenton.card.parse.lexicon.game.turn.Step.UPKEEP;
 import static tegenton.card.parse.lexicon.game.type.CardType.*;
-import static tegenton.card.parse.lexicon.game.type.CounterName.CORPSE;
-import static tegenton.card.parse.lexicon.game.type.CounterName.VITALITY;
+import static tegenton.card.parse.lexicon.game.type.CounterName.*;
 import static tegenton.card.parse.lexicon.game.type.CreatureType.*;
 import static tegenton.card.parse.lexicon.game.type.EnchantmentType.AURA;
 import static tegenton.card.parse.lexicon.game.type.LandType.*;
@@ -68,15 +65,7 @@ import static tegenton.card.parse.lexicon.value.EnglishNumber.*;
 import static tegenton.card.parse.lexicon.value.Variable.X;
 import static tegenton.card.parse.lexicon.value.Variable.Y;
 
-public class RulesTextTestCase {
-    public static String text;
-    public static List<Word> tokens;
-
-    @BeforeEach
-    void setup() {
-        text = null;
-        tokens = null;
-    }
+public class RulesTextTest extends LexTestTemplate {
 
     @Nested
     @DisplayName("White cards")
@@ -2077,6 +2066,49 @@ public class RulesTextTestCase {
         void chaosOrb() {
             text = "{1}, {T}: If ~ is on the battlefield, flip ~ onto the battlefield from a height of at least one foot. If ~ turns over completely at least once during the flip, destroy all nontoken permanents it touches. Then destroy ~.";
             tokens = List.of(LBRACKET, Number.ONE, RBRACKET, COMMA, SPACE, LBRACKET, T, RBRACKET, COLON, SPACE, IF, SPACE, TILDE, SPACE, IS, SPACE, ON, SPACE, THE, SPACE, BATTLEFIELD, COMMA, SPACE, FLIP, SPACE, TILDE, SPACE, ON, TO, SPACE, THE, SPACE, BATTLEFIELD, SPACE, FROM, SPACE, A, SPACE, HEIGHT, SPACE, OF, SPACE, AT, SPACE, LEAST, SPACE, ONE, SPACE, FOOT, PERIOD, SPACE, IF, SPACE, TILDE, SPACE, TURN, S, SPACE, OVER, SPACE, COMPLETELY, SPACE, AT, SPACE, LEAST, SPACE, ONCE, SPACE, DURING, SPACE, THE, SPACE, FLIP, COMMA, SPACE, DESTROY, SPACE, ALL, SPACE, NOT, TOKEN, SPACE, PERMANENT, S, SPACE, IT, SPACE, TOUCH, PERIOD, SPACE, THEN, SPACE, DESTROY, SPACE, TILDE, PERIOD);
+        }
+
+        @Test
+        @DisplayName("Clockwork Beast")
+        void clockworkBeast() {
+            text = """
+                    ~ enters the battlefield with seven +1/+0 counters on it.
+                    At end of combat, if ~ attacked or blocked this combat, remove a +1/+0 counter from it.
+                    {X}, {T}: Put up to X +1/+0 counters on ~. This ability can\u2019t cause the total number of +1/+0 counters on ~ to be greater than seven. Activate only during your upkeep.""";
+            tokens = List.of(TILDE, SPACE, ENTER, SPACE, THE, SPACE, BATTLEFIELD, SPACE, WITH, SPACE, SEVEN, SPACE, PLUS, Number.ONE, SLASH, PLUS, Number.ZERO, SPACE, COUNTER, SPACE, ON, SPACE, IT, PERIOD, NEWLINE,
+                    AT, SPACE, END, SPACE, OF, SPACE, COMBAT, COMMA, SPACE, IF, SPACE, TILDE, SPACE, ATTACK, ED, SPACE, OR, SPACE, BLOCK, ED, SPACE, THIS, SPACE, COMBAT, COMMA, SPACE, REMOVE, SPACE, A, SPACE, PLUS, Number.ONE, SLASH, PLUS, Number.ZERO, SPACE, COUNTER, SPACE, FROM, SPACE, IT, PERIOD, NEWLINE,
+                    LBRACKET, X, RBRACKET, COMMA, SPACE, LBRACKET, T, RBRACKET, COLON, SPACE, PUT, SPACE, UP, SPACE, TO, SPACE, X, SPACE, PLUS, Number.ONE, SLASH, PLUS, Number.ZERO, SPACE, COUNTER, SPACE, ON, SPACE, TILDE, PERIOD, SPACE, THIS, SPACE, ABILITY, SPACE, CAN, NOT, SPACE, CAUSE, SPACE, THE, SPACE, TOTAL, SPACE, NUMBER, SPACE, OF, SPACE, PLUS, Number.ONE, SLASH, PLUS, Number.ZERO, SPACE, COUNTER, SPACE, ON, SPACE, TILDE, SPACE, TO, SPACE, BE, SPACE, GREATER, SPACE, THAN, SPACE, SEVEN, PERIOD, SPACE, ACTIVATE, SPACE, ONLY, SPACE, DURING, SPACE, YOU, POSSESSIVE, SPACE, UPKEEP, PERIOD);
+        }
+
+        @Test
+        @DisplayName("Conservator")
+        void conservator() {
+            text = "{3}, {T}: Prevent the next 2 damage that would be dealt to you this turn.";
+            tokens = List.of(LBRACKET, Number.THREE, RBRACKET, COMMA, SPACE, LBRACKET, T, RBRACKET, COLON, SPACE, PREVENT, SPACE, THE, SPACE, NEXT, SPACE, Number.TWO, SPACE, DAMAGE, SPACE, THAT, SPACE, WOULD, SPACE, BE, SPACE, DEAL, ED, SPACE, TO, SPACE, YOU, SPACE, THIS, SPACE, TURN, PERIOD);
+        }
+
+        @Test
+        @DisplayName("Copper Tablet")
+        void copperTablet() {
+            text = "At the beginning of each player\u2019s upkeep, ~ deals 1 damage to that player.";
+            tokens = List.of(AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, EACH, SPACE, PLAY, ER, POSSESSIVE, SPACE, UPKEEP, COMMA, SPACE, TILDE, SPACE, DEAL, SPACE, Number.ONE, SPACE, DAMAGE, SPACE, TO, SPACE, THAT, SPACE, PLAY, ER, PERIOD);
+        }
+
+        @Test
+        @DisplayName("Crystal Rod")
+        void crystalRod() {
+            text = "Whenever a player casts a blue spell, you may pay {1}. If you do, you gain 1 life.";
+            tokens = List.of(WHENEVER, SPACE, A, SPACE, PLAY, ER, SPACE, CAST, SPACE, A, SPACE, BLUE, SPACE, SPELL, COMMA, SPACE, YOU, SPACE, MAY, SPACE, PAY, SPACE, LBRACKET, Number.ONE, RBRACKET, PERIOD, SPACE, IF, SPACE, YOU, SPACE, DO, COMMA, SPACE, YOU, SPACE, GAIN, SPACE, Number.ONE, SPACE, LIFE, PERIOD);
+        }
+
+        @Test
+        @DisplayName("Cyclopean Tomb")
+        void cyclopeanTomb() {
+            text = """
+                    {2}, {T}: Put a mire counter on target non-Swamp land. That land is a Swamp for as long as it has a mire counter on it. Activate only during your upkeep.
+                    When ~ is put into a graveyard from the battlefield, at the beginning of each of your upkeeps for the rest of the game, remove all mire counters from a land that a mire counter was put onto with ~ but that a mire counter has not been removed from with ~""";
+            tokens = List.of(LBRACKET, Number.TWO, RBRACKET, COMMA, SPACE, LBRACKET, T, RBRACKET, COLON, SPACE, PUT, SPACE, A, SPACE, MIRE, SPACE, COUNTER, SPACE, ON, SPACE, TARGET, SPACE, NOT, HYPHEN, SWAMP, SPACE, LAND, PERIOD, SPACE, THAT, SPACE, LAND, SPACE, IS, SPACE, A, SPACE, SWAMP, SPACE, FOR, SPACE, AS, SPACE, LONG, SPACE, AS, SPACE, IT, SPACE, HAVE, SPACE, A, SPACE, MIRE, SPACE, COUNTER, SPACE, ON, SPACE, IT, PERIOD, SPACE, ACTIVATE, SPACE, ONLY, SPACE, DURING, SPACE, YOU, POSSESSIVE, SPACE, UPKEEP, PERIOD, NEWLINE,
+                    WHEN, SPACE, TILDE, SPACE, IS, SPACE, PUT, SPACE, IN, TO, SPACE, A, SPACE, GRAVEYARD, SPACE, FROM, SPACE, THE, SPACE, BATTLEFIELD, COMMA, SPACE, AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, EACH, SPACE, OF, SPACE, YOU, POSSESSIVE, SPACE, UPKEEP, S, SPACE, FOR, SPACE, THE, SPACE, REST, SPACE, OF, SPACE, THE, SPACE, GAME, COMMA, SPACE, REMOVE, SPACE, ALL, SPACE, MIRE, SPACE, COUNTER, SPACE, FROM, SPACE, A, SPACE, LAND, SPACE, THAT, SPACE, A, SPACE, MIRE, SPACE, COUNTER, SPACE, IS, ED, SPACE, PUT, SPACE, ON, TO, SPACE, WITH, SPACE, TILDE, SPACE, BUT, SPACE, THAT, SPACE, A, SPACE, MIRE, SPACE, COUNTER, SPACE, HAVE, SPACE, NOT, SPACE, ED, SPACE, REMOVE, ED, SPACE, FROM, SPACE, WITH, SPACE, TILDE);
         }
     }
 }
