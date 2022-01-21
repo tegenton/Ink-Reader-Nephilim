@@ -1216,7 +1216,7 @@ public class RulesTextTestCase {
 
             @Test
             @DisplayName("Wall of Bone")
-            void wallOfWater() {
+            void wallOfBone() {
                 text = """
                         Defender
                         {B}: Regenerate ~.""";
@@ -1960,6 +1960,67 @@ public class RulesTextTestCase {
             void verduranEnchantress() {
                 text = "Whenever you cast an enchantment spell, you may draw a card.";
                 tokens = List.of(WHENEVER, SPACE, YOU, SPACE, CAST, SPACE, AN, SPACE, ENCHANTMENT, SPACE, SPELL, COMMA, SPACE, YOU, SPACE, MAY, SPACE, DRAW, SPACE, A, SPACE, CARD, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Wall of Brambles")
+            void wallOfBrambles() {
+                text = """
+                        Defender
+                        {G}: Regenerate ~.""";
+                tokens = List.of(DEFENDER, NEWLINE,
+                        LBRACKET, G, RBRACKET, COLON, SPACE, REGENERATE, SPACE, TILDE, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Wall of Ice")
+            void wallOfIce() {
+                text = "Defender";
+                tokens = List.of(DEFENDER);
+            }
+
+            @Test
+            @DisplayName("Wall of Wood")
+            void wallOfWood() {
+                text = "Defender";
+                tokens = List.of(DEFENDER);
+            }
+
+            @Test
+            @DisplayName("Wanderlust")
+            void wanderlust() {
+                text = """
+                        Enchant creature
+                        At the beginning of the upkeep of enchanted creature\u2019s controller, ~ deals 1 damage to that player.""";
+                tokens = List.of(ENCHANT, SPACE, CREATURE, NEWLINE,
+                        AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, THE, SPACE, UPKEEP, SPACE, OF, SPACE, ENCHANT, ED, SPACE, CREATURE, POSSESSIVE, SPACE, CONTROL, ER, COMMA, SPACE, TILDE, SPACE, DEAL, SPACE, Number.ONE, SPACE, DAMAGE, SPACE, TO, SPACE, THAT, SPACE, PLAY, ER, PERIOD);
+            }
+
+            @Test
+            @DisplayName("War Mammoth")
+            void warMammoth() {
+                text = "Trample";
+                tokens = List.of(TRAMPLE);
+            }
+
+            @Test
+            @DisplayName("Web")
+            void web() {
+                text = """
+                        Enchant creature
+                        Enchanted creature gets +0/+2 and has reach.""";
+                tokens = List.of(ENCHANT, SPACE, CREATURE, NEWLINE,
+                        ENCHANT, ED, SPACE, CREATURE, SPACE, GET, SPACE, PLUS, Number.ZERO, SLASH, PLUS, Number.TWO, SPACE, AND, SPACE, HAVE, SPACE, REACH, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Wild Growth")
+            void wildGrowth() {
+                text = """
+                        Enchant land
+                        Whenever enchanted land is tapped for mana, its controller adds an additional {G}.""";
+                tokens = List.of(ENCHANT, SPACE, LAND, NEWLINE,
+                        WHENEVER, SPACE, ENCHANT, ED, SPACE, LAND, SPACE, IS, SPACE, TAP, ED, SPACE, FOR, SPACE, MANA, COMMA, SPACE, IT, POSSESSIVE, SPACE, CONTROL, ER, SPACE, ADD, SPACE, AN, SPACE, ADDITIONAL, SPACE, LBRACKET, G, RBRACKET, PERIOD);
             }
         }
     }
