@@ -2110,5 +2110,70 @@ public class RulesTextTest extends LexTestTemplate {
             tokens = List.of(LBRACKET, Number.TWO, RBRACKET, COMMA, SPACE, LBRACKET, T, RBRACKET, COLON, SPACE, PUT, SPACE, A, SPACE, MIRE, SPACE, COUNTER, SPACE, ON, SPACE, TARGET, SPACE, NOT, HYPHEN, SWAMP, SPACE, LAND, PERIOD, SPACE, THAT, SPACE, LAND, SPACE, IS, SPACE, A, SPACE, SWAMP, SPACE, FOR, SPACE, AS, SPACE, LONG, SPACE, AS, SPACE, IT, SPACE, HAVE, SPACE, A, SPACE, MIRE, SPACE, COUNTER, SPACE, ON, SPACE, IT, PERIOD, SPACE, ACTIVATE, SPACE, ONLY, SPACE, DURING, SPACE, YOU, POSSESSIVE, SPACE, UPKEEP, PERIOD, NEWLINE,
                     WHEN, SPACE, TILDE, SPACE, IS, SPACE, PUT, SPACE, IN, TO, SPACE, A, SPACE, GRAVEYARD, SPACE, FROM, SPACE, THE, SPACE, BATTLEFIELD, COMMA, SPACE, AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, EACH, SPACE, OF, SPACE, YOU, POSSESSIVE, SPACE, UPKEEP, S, SPACE, FOR, SPACE, THE, SPACE, REST, SPACE, OF, SPACE, THE, SPACE, GAME, COMMA, SPACE, REMOVE, SPACE, ALL, SPACE, MIRE, SPACE, COUNTER, SPACE, FROM, SPACE, A, SPACE, LAND, SPACE, THAT, SPACE, A, SPACE, MIRE, SPACE, COUNTER, SPACE, IS, ED, SPACE, PUT, SPACE, ON, TO, SPACE, WITH, SPACE, TILDE, SPACE, BUT, SPACE, THAT, SPACE, A, SPACE, MIRE, SPACE, COUNTER, SPACE, HAVE, SPACE, NOT, SPACE, ED, SPACE, REMOVE, ED, SPACE, FROM, SPACE, WITH, SPACE, TILDE);
         }
+
+        @Test
+        @DisplayName("Dingus Egg")
+        void dingusEgg() {
+            text = "Whenever a land is put into a graveyard from the battlefield, ~ deals 2 damage to that land\u2019s controller.";
+            tokens = List.of(WHENEVER, SPACE, A, SPACE, LAND, SPACE, IS, SPACE, PUT, SPACE, IN, TO, SPACE, A, SPACE, GRAVEYARD, SPACE, FROM, SPACE, THE, SPACE, BATTLEFIELD, COMMA, SPACE, TILDE, SPACE, DEAL, SPACE, Number.TWO, SPACE, DAMAGE, SPACE, TO, SPACE, THAT, SPACE, LAND, POSSESSIVE, SPACE, CONTROL, ER, PERIOD);
+        }
+
+        @Test
+        @DisplayName("Disrupting Scepter")
+        void disruptingScepter() {
+            text = "{3}, {T}: Target player discards a card. Activate only during your turn.";
+            tokens = List.of(LBRACKET, Number.THREE, RBRACKET, COMMA, SPACE, LBRACKET, T, RBRACKET, COLON, SPACE, TARGET, SPACE, PLAY, ER, SPACE, DISCARD, SPACE, A, SPACE, CARD, PERIOD, SPACE, ACTIVATE, SPACE, ONLY, SPACE, DURING, SPACE, YOU, POSSESSIVE, SPACE, TURN, PERIOD);
+        }
+
+        @Test
+        @DisplayName("Forcefield")
+        void forcefield() {
+            text = "{1}: The next time an unblocked creature of your choice would deal combat damage to you this turn, prevent all but 1 of that damage.";
+            tokens = List.of(LBRACKET, Number.ONE, RBRACKET, COLON, SPACE, THE, SPACE, NEXT, SPACE, TIME, SPACE, AN, SPACE, NOT, BLOCK, ED, SPACE, CREATURE, SPACE, OF, SPACE, YOU, POSSESSIVE, SPACE, CHOICE, SPACE, WOULD, SPACE, DEAL, SPACE, COMBAT, SPACE, DAMAGE, SPACE, TO, SPACE, YOU, SPACE, THIS, SPACE, TURN, COMMA, SPACE, PREVENT, SPACE, ALL, SPACE, BUT, SPACE, Number.ONE, SPACE, OF, SPACE, THAT, SPACE, DAMAGE, PERIOD);
+        }
+
+        @Test
+        @DisplayName("Gauntlet of Might")
+        void gauntletOfMight() {
+            text = """
+                    Red creatures get +1/+1.
+                    Whenever a Mountain is tapped for mana, its controller adds an additional {R}.""";
+            tokens = List.of(RED, SPACE, CREATURE, S, SPACE, GET, SPACE, PLUS, Number.ONE, SLASH, PLUS, Number.ONE, PERIOD, NEWLINE,
+                    WHENEVER, SPACE, A, SPACE, MOUNTAIN, SPACE, IS, SPACE, TAP, ED, SPACE, FOR, SPACE, MANA, COMMA, SPACE, IT, POSSESSIVE, SPACE, CONTROL, ER, SPACE, ADD, SPACE, AN, SPACE, ADDITIONAL, SPACE, LBRACKET, R, RBRACKET, PERIOD);
+        }
+
+        @Test
+        @DisplayName("Glasses of Urza")
+        void glassesOfUrza() {
+            text = "{T}: Look at target player\u2019s hand.";
+            tokens = List.of(LBRACKET, T, RBRACKET, COLON, SPACE, LOOK, SPACE, AT, SPACE, TARGET, SPACE, PLAY, ER, POSSESSIVE, SPACE, HAND, PERIOD);
+        }
+
+        @Test
+        @DisplayName("Helm of Chatzuk")
+        void helmOfChatzuk() {
+            text = "{1}, {T}: Target creature gains banding until end of turn.";
+            tokens = List.of(LBRACKET, Number.ONE, RBRACKET, COMMA, SPACE, LBRACKET, T, RBRACKET, COLON, SPACE, TARGET, SPACE, CREATURE, SPACE, GAIN, SPACE, BANDING, SPACE, UNTIL, SPACE, END, SPACE, OF, SPACE, TURN, PERIOD);
+        }
+
+        @Test
+        @DisplayName("Howling Mine")
+        void howlingMine() {
+            text = "At the beginning of each player\u2019s draw step, if ~ is untapped, that player draws an additional card.";
+        }
+
+        @Test
+        @DisplayName("Icy Manipulator")
+        void icyManipulator() {
+            text = "{1}, {T}: Tap target artifact, creature, or land.";
+            tokens = List.of(LBRACKET, Number.ONE, RBRACKET, COMMA, SPACE, LBRACKET, T, RBRACKET, COLON, SPACE, TAP, SPACE, TARGET, SPACE, ARTIFACT, COMMA, SPACE, CREATURE, COMMA, SPACE, OR, SPACE, LAND, PERIOD);
+        }
+
+        @Test
+        @DisplayName("Illusionary Mask")
+        void illusionaryMask() {
+            text = "{X}: You may choose a creature card in your hand whose mana cost could be paid by some amount of, or all of, the mana you spent on {X}. If you do, you may cast that card face down as a 2/2 creature spell without paying its mana cost. If the creature that spell becomes as it resolves has not been turned face up and would assign or deal damage, be dealt damage, or become tapped, instead it\u2019s turned face up and assigns or deals damage, is dealt damage, or becomes tapped. Activate only as a sorcery.";
+            tokens = List.of(LBRACKET, X, RBRACKET, COLON, SPACE, YOU, SPACE, MAY, SPACE, CHOOSE, SPACE, A, SPACE, CREATURE, SPACE, CARD, SPACE, IN, SPACE, YOU, POSSESSIVE, SPACE, HAND, SPACE, WHO, POSSESSIVE, SPACE, MANA, SPACE, COST, SPACE, COULD, SPACE, BE, SPACE, PAY, ED, SPACE, BY, SPACE, SOME, SPACE, AMOUNT, SPACE, OF, COMMA, SPACE, OR, SPACE, ALL, SPACE, OF, COMMA, SPACE, THE, SPACE, MANA, SPACE, YOU, SPACE, SPEND, ED, SPACE, ON, SPACE, LBRACKET, X, RBRACKET, PERIOD, SPACE, IF, SPACE, YOU, SPACE, DO, COMMA, SPACE, YOU, SPACE, MAY, SPACE, CAST, SPACE, THAT, SPACE, CARD, SPACE, FACE, SPACE, DOWN, SPACE, AS, SPACE, A, SPACE, Number.TWO, SLASH, Number.TWO, SPACE, CREATURE, SPACE, SPELL, SPACE, WITH, OUT, SPACE, ING, SPACE, IT, POSSESSIVE, SPACE, MANA, SPACE, COST, PERIOD, SPACE, IF, SPACE, THE, SPACE, CREATURE, SPACE, THAT, SPACE, SPELL, SPACE, BECOME, SPACE, AS, SPACE, IT, SPACE, RESOLVE, SPACE, HAVE, SPACE, NOT, SPACE, ED, SPACE, TURN, ED, SPACE, FACE, SPACE, UP, SPACE, AND, SPACE, WOULD, SPACE, ASSIGN, SPACE, OR, SPACE, DEAL, SPACE, DAMAGE, COMMA, SPACE, BE, SPACE, DEAL, ED, SPACE, DAMAGE, COMMA, SPACE, OR, SPACE, BECOME, SPACE, TAP, ED, COMMA, SPACE, INSTEAD, SPACE, IT, IS, SPACE, TURN, ED, SPACE, FACE, SPACE, UP, SPACE, AND, SPACE, ASSIGN, SPACE, OR, SPACE, DEAL, SPACE, DAMAGE, COMMA, SPACE, IS, SPACE, DEAL, ED, SPACE, DAMAGE, COMMA, SPACE, OR, SPACE, BECOME, SPACE, TAP, ED, PERIOD, SPACE, ACTIVATE, SPACE, ONLY, SPACE, AS, SPACE, A, SPACE, SORCERY, PERIOD);
+        }
     }
 }

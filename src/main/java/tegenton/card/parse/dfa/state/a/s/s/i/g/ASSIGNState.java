@@ -20,6 +20,7 @@ public class ASSIGNState extends ASState {
     public State transition(char c) {
         return switch (c) {
             case 'E' -> new EDMorpheme();
+            case 'S' -> this;
             case '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
