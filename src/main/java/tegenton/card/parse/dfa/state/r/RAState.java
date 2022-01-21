@@ -17,7 +17,7 @@ public class RAState extends RState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'N' -> new SuffixSubstring("NDOM", Noun.RANDOM);
             case 'T' -> new SuffixSubstring("TS", CardName.RATS);
@@ -26,7 +26,7 @@ public class RAState extends RState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

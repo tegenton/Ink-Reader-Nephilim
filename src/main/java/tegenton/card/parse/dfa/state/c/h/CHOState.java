@@ -19,7 +19,7 @@ public class CHOState extends CHState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'I' -> new SuffixSubstring("ICE", Noun.CHOICE);
             case 'O' -> new InfixSubstring("OS", 'E', CHOOSEState::state);
@@ -29,7 +29,7 @@ public class CHOState extends CHState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

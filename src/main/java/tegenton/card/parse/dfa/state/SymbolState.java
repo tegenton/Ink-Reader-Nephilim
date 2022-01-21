@@ -8,21 +8,21 @@ import java.util.Optional;
 public class SymbolState extends State {
     private final char symbol;
 
-    private SymbolState(char symbol) {
+    private SymbolState(final char symbol) {
         this.symbol = symbol;
     }
 
-    public static SymbolState state(char c) {
+    public static SymbolState state(final char c) {
         return new SymbolState(c);
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return EmptyState.state().transition(c);
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (symbol) {
             case '\u2022' -> Symbol.BULLET;
             case '\u201D' -> Symbol.CLOSEQUOTE;

@@ -18,7 +18,7 @@ public class PROState extends PRState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'D' -> new InfixSubstring("DUC", 'E', PRODUCEState::state);
             case 'T' -> new SuffixSubstring("TECTION", Keyword.PROTECTION);
@@ -27,7 +27,7 @@ public class PROState extends PRState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

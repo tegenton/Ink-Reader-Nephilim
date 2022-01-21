@@ -14,7 +14,7 @@ public abstract class State {
 
     public abstract Optional<? extends Word> produce(char c);
 
-    protected State invalid(char c) {
+    protected State invalid(final char c) {
         throw new IllegalStateException("Cannot transition from "
                 + this.getClass().getSimpleName() + " on "
                 + c);

@@ -20,7 +20,7 @@ public class ONState extends OState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'C' -> new SuffixSubstring("CE", Adverb.ONCE);
             case 'E' -> ONEState.state();
@@ -32,7 +32,7 @@ public class ONState extends OState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'T', '\0', ' ' -> Preposition.ON;
             default -> null;

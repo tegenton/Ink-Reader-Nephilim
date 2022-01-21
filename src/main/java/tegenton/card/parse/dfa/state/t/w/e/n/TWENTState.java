@@ -4,6 +4,7 @@ import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.t.w.e.TWENState;
 import tegenton.card.parse.dfa.state.t.w.e.n.t.TWENTYState;
 import tegenton.card.parse.lexicon.Word;
+
 import java.util.Optional;
 
 public class TWENTState extends TWENState {
@@ -14,7 +15,7 @@ public class TWENTState extends TWENState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'Y' -> TWENTYState.state();
             default -> throw new IllegalStateException("Cannot transition from TWENTState on " + c);
@@ -22,7 +23,7 @@ public class TWENTState extends TWENState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

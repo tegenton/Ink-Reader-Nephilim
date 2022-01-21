@@ -16,7 +16,7 @@ public class THAState extends THState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'T' -> THATState.state();
             case 'N' -> THANState.state();
@@ -25,7 +25,7 @@ public class THAState extends THState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

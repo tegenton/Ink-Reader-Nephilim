@@ -2,16 +2,17 @@ package tegenton.card.parse.dfa.substring.morpheme;
 
 import tegenton.card.parse.lexicon.value.EnglishNumber;
 import tegenton.card.parse.lexicon.Word;
+
 import java.util.Optional;
 
 public class TEENMorpheme extends Morpheme {
 
-    public TEENMorpheme(EnglishNumber number) {
+    public TEENMorpheme(final EnglishNumber number) {
         super("TEEN".toCharArray(), number);
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         if (!this.completed()) {
             return Optional.empty();
         }

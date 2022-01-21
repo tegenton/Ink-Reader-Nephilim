@@ -12,7 +12,7 @@ public class EDMorpheme extends Morpheme {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         if (this.completed()) {
             return Optional.of(ED);
         }

@@ -19,7 +19,7 @@ public class DState extends State {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'A' -> new SuffixSubstring("AMAGE", GameNoun.DAMAGE);
             case 'E' -> DEState.state();
@@ -32,7 +32,7 @@ public class DState extends State {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

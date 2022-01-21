@@ -17,7 +17,7 @@ public class FLState extends FState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'I' -> new SuffixSubstring("IP", PlayerVerb.FLIP);
             case 'Y' -> FLYState.state();
@@ -26,7 +26,7 @@ public class FLState extends FState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

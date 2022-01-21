@@ -18,7 +18,7 @@ public class FOState extends FState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'O' -> new SuffixSubstring("OT", Noun.FOOT);
             case 'R' -> FORState.state();
@@ -28,7 +28,7 @@ public class FOState extends FState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

@@ -17,7 +17,7 @@ public class TEState extends TState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'N' -> TENState.state();
             case 'X' -> new SuffixSubstring("XT", Noun.TEXT);
@@ -26,7 +26,7 @@ public class TEState extends TState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

@@ -18,7 +18,7 @@ public class ATTACKState extends ATTACState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'E' -> ATTACKEState.state();
             case 'I' -> new INGMorpheme();
@@ -29,7 +29,7 @@ public class ATTACKState extends ATTACState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'E', 'I', ',', '\0', ' ' -> ObjectVerb.ATTACK;
             default -> null;

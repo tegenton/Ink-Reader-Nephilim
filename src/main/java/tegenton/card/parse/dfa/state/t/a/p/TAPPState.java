@@ -16,7 +16,7 @@ public class TAPPState extends TAPState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'E' -> new EDMorpheme();
             default -> invalid(c);
@@ -24,7 +24,7 @@ public class TAPPState extends TAPState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'E' -> ObjectVerb.TAP;
             default -> null;

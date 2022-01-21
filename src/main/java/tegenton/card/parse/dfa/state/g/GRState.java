@@ -17,7 +17,7 @@ public class GRState extends GState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'A' -> new InfixSubstring("AVEYAR", 'D', GRAVEYARDState::state);
             case 'E' -> GREState.state();
@@ -26,7 +26,7 @@ public class GRState extends GState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

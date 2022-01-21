@@ -18,7 +18,7 @@ public class BLState extends BState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'A' -> new SuffixSubstring("ACK", ColorWord.BLACK);
             case 'O' -> new InfixSubstring("OC", 'K', BLOCKState::state);
@@ -28,7 +28,7 @@ public class BLState extends BState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

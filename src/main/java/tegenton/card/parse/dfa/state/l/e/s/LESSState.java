@@ -15,7 +15,7 @@ public class LESSState extends LESState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
@@ -23,7 +23,7 @@ public class LESSState extends LESState {
     }
 
     @Override
-    public Optional<Comparative> produce(char c) {
+    public Optional<Comparative> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case '\0', ' ' -> Comparative.LESS;
             default -> null;

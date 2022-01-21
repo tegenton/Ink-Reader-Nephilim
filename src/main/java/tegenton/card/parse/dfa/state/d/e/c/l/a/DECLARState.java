@@ -17,7 +17,7 @@ public class DECLARState extends DEState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'E' -> DECLAREState.state();
             case 'I' -> new INGMorpheme();
@@ -26,7 +26,7 @@ public class DECLARState extends DEState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'D', '\0', ' ' -> PlayerVerb.DECLARE;
             default -> null;

@@ -17,7 +17,7 @@ public class WITHState extends WState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'O' -> OState.state();
             case '\0', ' ' -> SymbolState.state(c);
@@ -26,7 +26,7 @@ public class WITHState extends WState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'O', '\0', ' ' -> Preposition.WITH;
             default -> null;

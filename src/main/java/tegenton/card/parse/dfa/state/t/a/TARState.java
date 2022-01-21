@@ -4,6 +4,7 @@ import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.t.TAState;
 import tegenton.card.parse.dfa.state.t.a.r.TARGState;
 import tegenton.card.parse.lexicon.Word;
+
 import java.util.Optional;
 
 public class TARState extends TAState {
@@ -14,7 +15,7 @@ public class TARState extends TAState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'G' -> TARGState.state();
             default -> throw new IllegalStateException("Cannot transition from EmptyState on " + c);
@@ -22,7 +23,7 @@ public class TARState extends TAState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

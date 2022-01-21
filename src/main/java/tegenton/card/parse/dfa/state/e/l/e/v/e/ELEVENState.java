@@ -14,7 +14,7 @@ public class ELEVENState extends ELEVEState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         switch (c) {
             default -> throw new IllegalStateException(
                     "Cannot transition from ELEVENState on " + c);
@@ -22,7 +22,7 @@ public class ELEVENState extends ELEVEState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return switch (c) {
             case '\0', '0' -> Optional.of(EnglishNumber.ELEVEN);
             default -> Optional.empty();

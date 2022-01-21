@@ -19,7 +19,7 @@ public class LOState extends LState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'N' -> new SuffixSubstring("NG", SubordinateConjunction.LONG);
             case 'O' -> new SuffixSubstring("OK", PlayerVerb.LOOK);
@@ -30,7 +30,7 @@ public class LOState extends LState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

@@ -17,7 +17,7 @@ public class TAPState extends TAState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'P' -> TAPPState.state();
             case 'S' -> this;
@@ -27,7 +27,7 @@ public class TAPState extends TAState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return switch (c) {
             case '\0', ' ' -> Optional.of(ObjectVerb.TAP);
             default -> Optional.empty();

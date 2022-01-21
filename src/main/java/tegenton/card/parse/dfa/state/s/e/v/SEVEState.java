@@ -14,7 +14,7 @@ public class SEVEState extends SEVState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'N' -> SEVENState.state();
             default -> throw new IllegalStateException("Cannot transition from SEVEState on " + c);
@@ -22,7 +22,7 @@ public class SEVEState extends SEVState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

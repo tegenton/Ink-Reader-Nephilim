@@ -4,6 +4,7 @@ import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.t.THState;
 import tegenton.card.parse.dfa.state.t.h.r.THREState;
 import tegenton.card.parse.lexicon.Word;
+
 import java.util.Optional;
 
 public class THRState extends THState {
@@ -14,7 +15,7 @@ public class THRState extends THState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'E' -> THREState.state();
             default -> throw new IllegalStateException("Cannot transition from THRState on " + c);
@@ -22,7 +23,7 @@ public class THRState extends THState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

@@ -19,7 +19,7 @@ public class BAState extends BState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'C' -> new SuffixSubstring("CK", Adverb.BACK);
             case 'N' -> BANState.state();
@@ -30,7 +30,7 @@ public class BAState extends BState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

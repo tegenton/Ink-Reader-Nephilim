@@ -14,7 +14,7 @@ public class OTState extends OState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'H' -> OTHState.state();
             default -> throw new IllegalStateException("Cannot transition from OTState on " + c);
@@ -22,7 +22,7 @@ public class OTState extends OState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

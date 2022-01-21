@@ -14,7 +14,7 @@ public class CARState extends CAState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'D' -> CARDState.state();
             default -> throw new IllegalStateException("Cannot transition from CARState on " + c);
@@ -22,7 +22,7 @@ public class CARState extends CAState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

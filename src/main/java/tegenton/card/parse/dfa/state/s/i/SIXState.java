@@ -15,7 +15,7 @@ public class SIXState extends SIState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'T' -> new TEENMorpheme(EnglishNumber.SIX);
             default -> throw new IllegalStateException(
@@ -24,7 +24,7 @@ public class SIXState extends SIState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return switch (c) {
             case '\0', ' ', '.' -> Optional.of(EnglishNumber.SIX);
             default -> Optional.empty();

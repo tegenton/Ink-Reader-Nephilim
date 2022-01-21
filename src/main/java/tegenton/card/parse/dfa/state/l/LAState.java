@@ -18,7 +18,7 @@ public class LAState extends LState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'B' -> new SuffixSubstring("BEL", Noun.LABEL);
             case 'N' -> new InfixSubstring("N", 'D', LANDState::state);
@@ -27,7 +27,7 @@ public class LAState extends LState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

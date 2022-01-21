@@ -21,7 +21,7 @@ public class DOState extends DState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'E' -> new InfixSubstring("E", 'S', DOState::state);
             case 'I' -> new INGMorpheme();
@@ -33,7 +33,7 @@ public class DOState extends DState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'I', 'N', ',', '\0', ' ' -> SourceVerb.DO;
             default -> null;

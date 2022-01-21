@@ -15,7 +15,7 @@ public class FIFState extends FIState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'T' -> new TEENMorpheme(EnglishNumber.FIVE);
             default -> throw new IllegalStateException(
@@ -24,7 +24,7 @@ public class FIFState extends FIState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

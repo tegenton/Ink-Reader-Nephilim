@@ -19,7 +19,7 @@ public class MAState extends MState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'I' -> new SuffixSubstring("IN", Phase.MAIN);
             case 'N' -> MANState.state();
@@ -30,7 +30,7 @@ public class MAState extends MState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

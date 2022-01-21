@@ -17,7 +17,7 @@ public class THEYState extends THEState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case '\u2019' -> AState.state();
             case '\0', ' ' -> SymbolState.state(c);
@@ -26,7 +26,7 @@ public class THEYState extends THEState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case '\u2019', '\0', ' ' -> TargetNoun.THEY;
             default -> null;

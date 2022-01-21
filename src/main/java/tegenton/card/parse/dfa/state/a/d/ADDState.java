@@ -18,7 +18,7 @@ public class ADDState extends ADState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'I' -> new InfixSubstring("ITIO", 'N', ADDITIONState::state);
             case 'S' -> this;
@@ -28,7 +28,7 @@ public class ADDState extends ADState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case '\0', ' ' -> PlayerVerb.ADD;
             default -> null;

@@ -4,6 +4,7 @@ import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.t.h.THOState;
 import tegenton.card.parse.dfa.state.t.h.o.s.THOSEState;
 import tegenton.card.parse.lexicon.Word;
+
 import java.util.Optional;
 
 public class THOSState extends THOState {
@@ -14,7 +15,7 @@ public class THOSState extends THOState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'E' -> THOSEState.state();
             default -> throw new IllegalStateException("Cannot transition from THOSState on " + c);
@@ -22,7 +23,7 @@ public class THOSState extends THOState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

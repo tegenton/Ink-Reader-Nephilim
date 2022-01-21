@@ -19,7 +19,7 @@ public class SState extends State {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'A' -> SAState.state();
             case 'E' -> SEState.state();
@@ -37,7 +37,7 @@ public class SState extends State {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case '\u2019', ',', '\0', ' ', '.' -> Morpheme.S;
             default -> null;

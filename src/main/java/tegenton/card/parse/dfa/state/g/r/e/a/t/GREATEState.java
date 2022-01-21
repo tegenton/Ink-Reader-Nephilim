@@ -14,7 +14,7 @@ public class GREATEState extends GREATState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'R' -> GREATERState.state();
             default -> throw new IllegalStateException("Cannot transition from GREATEState on " + c);
@@ -22,7 +22,7 @@ public class GREATEState extends GREATState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

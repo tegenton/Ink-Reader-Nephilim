@@ -16,7 +16,7 @@ public class OTHERState extends OTHEState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
@@ -24,7 +24,7 @@ public class OTHERState extends OTHEState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case '\0', ' ' -> Determiner.OTHER;
             default -> null;

@@ -14,7 +14,7 @@ public class ANYState extends ANState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case ' ' -> SymbolState.state(c);
             default -> throw new IllegalStateException("Cannot transition from ANYState on " + c);
@@ -22,7 +22,7 @@ public class ANYState extends ANState {
     }
 
     @Override
-    public Optional<Determiner> produce(char c) {
+    public Optional<Determiner> produce(final char c) {
         return switch (c) {
             case '\0', ' ' -> Optional.of(Determiner.ANY);
             default -> Optional.empty();

@@ -15,7 +15,7 @@ public class VState extends State {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'A' -> new SuffixSubstring("ALUE", ObjectAttribute.VALUE);
             case 'I' -> VIState.state();
@@ -24,7 +24,7 @@ public class VState extends State {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

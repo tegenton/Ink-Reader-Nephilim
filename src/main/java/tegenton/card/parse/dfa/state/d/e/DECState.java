@@ -17,7 +17,7 @@ public class DECState extends DEState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'K' -> DECKState.state();
             case 'L' -> new InfixSubstring("LA", 'R', DECLARState::state);
@@ -26,7 +26,7 @@ public class DECState extends DEState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

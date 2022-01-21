@@ -6,7 +6,7 @@ import tegenton.card.parse.lexicon.Word;
 public abstract class Morpheme extends Substring {
     protected final Word word;
 
-    protected Morpheme(char[] text, Word word) {
+    protected Morpheme(final char[] text, final Word word) {
         super(text);
         this.word = word;
     }

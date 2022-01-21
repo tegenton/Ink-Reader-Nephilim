@@ -16,7 +16,7 @@ public class BLOCKEState extends BLState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'D' -> EDState.state();
             case 'R' -> ERState.state();
@@ -25,7 +25,7 @@ public class BLOCKEState extends BLState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

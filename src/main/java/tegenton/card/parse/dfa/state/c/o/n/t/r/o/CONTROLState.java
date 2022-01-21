@@ -17,7 +17,7 @@ public class CONTROLState extends CONTROState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'L' -> CONTROLLState.state();
             case 'S' -> this;
@@ -27,7 +27,7 @@ public class CONTROLState extends CONTROState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'L', ',', '\0', '.', ' ' -> PlayerVerb.CONTROL;
             default -> null;

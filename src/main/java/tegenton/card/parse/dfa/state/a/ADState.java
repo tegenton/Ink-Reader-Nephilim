@@ -15,7 +15,7 @@ public class ADState extends AState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'D' -> ADDState.state();
             default -> invalid(c);
@@ -23,7 +23,7 @@ public class ADState extends AState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

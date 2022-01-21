@@ -17,7 +17,7 @@ public class EXCState extends EXState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'E' -> new SuffixSubstring("EPT", SubordinateConjunction.EXCEPT);
             case 'H' -> new SuffixSubstring("HANGE", PlayerVerb.EXCHANGE);
@@ -26,7 +26,7 @@ public class EXCState extends EXState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

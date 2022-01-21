@@ -15,10 +15,10 @@ public class EIGHTState extends EIGHState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'E' -> {
-                TEENMorpheme teen = new TEENMorpheme(EnglishNumber.EIGHT);
+                final TEENMorpheme teen = new TEENMorpheme(EnglishNumber.EIGHT);
                 teen.transition('E');
                 yield teen;
             }
@@ -28,7 +28,7 @@ public class EIGHTState extends EIGHState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return switch (c) {
             case '\0', ' ' -> Optional.of(EnglishNumber.EIGHT);
             default -> Optional.empty();

@@ -17,7 +17,7 @@ public class SPENState extends SPEState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'D' -> SPENDState.state();
             case 'T' -> SPENTState.state();
@@ -26,7 +26,7 @@ public class SPENState extends SPEState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'T' -> PlayerVerb.SPEND;
             default -> null;

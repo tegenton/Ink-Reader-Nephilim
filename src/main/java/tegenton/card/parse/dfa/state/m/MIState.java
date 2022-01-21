@@ -17,7 +17,7 @@ public class MIState extends MState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'N' -> new SuffixSubstring("NUS", Preposition.MINUS);
             case 'R' -> new SuffixSubstring("RE", CounterName.MIRE);
@@ -26,7 +26,7 @@ public class MIState extends MState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

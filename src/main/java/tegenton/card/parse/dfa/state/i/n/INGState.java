@@ -14,7 +14,7 @@ public class INGState extends INState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case ' ' -> SymbolState.state(c);
             default -> invalid(c);
@@ -22,7 +22,7 @@ public class INGState extends INState {
     }
 
     @Override
-    public Optional<Morpheme> produce(char c) {
+    public Optional<Morpheme> produce(final char c) {
         return switch (c) {
             case '\0', ' ' -> Optional.of(Morpheme.ING);
             default -> Optional.empty();

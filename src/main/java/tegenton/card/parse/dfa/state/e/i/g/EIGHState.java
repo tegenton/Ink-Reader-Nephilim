@@ -14,7 +14,7 @@ public class EIGHState extends EIGState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'T' -> EIGHTState.state();
             default -> throw new IllegalStateException("Cannot transition from EIGHState on " + c);
@@ -22,7 +22,7 @@ public class EIGHState extends EIGState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

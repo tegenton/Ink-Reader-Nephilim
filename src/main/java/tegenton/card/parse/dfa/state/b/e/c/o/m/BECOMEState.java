@@ -16,7 +16,7 @@ public class BECOMEState extends BEState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'S' -> this;
             case '\0', ' ' -> SymbolState.state(c);
@@ -25,7 +25,7 @@ public class BECOMEState extends BEState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case '\0', ' ' -> ObjectVerb.BECOME;
             default -> null;

@@ -17,7 +17,7 @@ public class INSTState extends INSState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'A' -> INSTAState.state();
             case 'E' -> new SuffixSubstring("EAD", Adverb.INSTEAD);
@@ -26,7 +26,7 @@ public class INSTState extends INSState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

@@ -17,7 +17,7 @@ public class DEALState extends DEState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'S' -> this;
             case 'T' -> DEALTState.state();
@@ -27,7 +27,7 @@ public class DEALState extends DEState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'T', '\0', ' ' -> SourceVerb.DEAL;
             default -> null;

@@ -18,7 +18,7 @@ public class ASState extends AState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'S' -> new InfixSubstring("SIG", 'N', ASSIGNState::state);
             case '\0', ' ' -> SymbolState.state(c);
@@ -27,7 +27,7 @@ public class ASState extends AState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case '\0', ' ' -> SubordinateConjunction.AS;
             default -> null;

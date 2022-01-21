@@ -17,7 +17,7 @@ public class MState extends State {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'A' -> MAState.state();
             case 'E' -> new SuffixSubstring("ERFOLK", CreatureType.MERFOLK);
@@ -28,7 +28,7 @@ public class MState extends State {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

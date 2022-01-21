@@ -18,7 +18,7 @@ public class DEFENDState extends DEState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'E' -> new ERMorpheme(Keyword.DEFENDER);
             case 'I' -> new INGMorpheme(PlayerAdjective.DEFENDING);
@@ -27,7 +27,7 @@ public class DEFENDState extends DEState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

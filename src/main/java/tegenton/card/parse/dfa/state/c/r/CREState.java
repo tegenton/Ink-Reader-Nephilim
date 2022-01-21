@@ -14,7 +14,7 @@ public class CREState extends CRState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'A' -> CREAState.state();
             default -> invalid(c);
@@ -22,7 +22,7 @@ public class CREState extends CRState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

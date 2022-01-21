@@ -18,7 +18,7 @@ public class NOState extends NState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'N' -> NONState.state();
             case 'T' -> NOTState.state();
@@ -28,7 +28,7 @@ public class NOState extends NState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case '\0', ' ' -> Determiner.NO;
             default -> null;

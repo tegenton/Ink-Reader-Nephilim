@@ -18,7 +18,7 @@ public class UPState extends UState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'K' -> new InfixSubstring("KEE", 'P', UPKEEPState::state);
             case '\0', '.', ' ' -> SymbolState.state(c);
@@ -27,7 +27,7 @@ public class UPState extends UState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case '\0', '.', ' ' -> Particle.UP;
             default -> null;

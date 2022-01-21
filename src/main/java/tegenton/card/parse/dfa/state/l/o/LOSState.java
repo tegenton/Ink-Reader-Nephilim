@@ -17,7 +17,7 @@ public class LOSState extends LOState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'E' -> LOSEState.state();
             case 'T' -> LOSTState.state();
@@ -26,7 +26,7 @@ public class LOSState extends LOState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'T' -> TargetVerb.LOSE;
             default -> null;

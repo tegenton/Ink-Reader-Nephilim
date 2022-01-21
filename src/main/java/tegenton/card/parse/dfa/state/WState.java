@@ -21,7 +21,7 @@ public class WState extends State {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'A' -> WAState.state();
             case 'E' -> new SuffixSubstring("ERE", Morpheme.ED);
@@ -34,7 +34,7 @@ public class WState extends State {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'E' -> GameVerb.BE;
             case '}', '\0', ' ' -> Color.W;

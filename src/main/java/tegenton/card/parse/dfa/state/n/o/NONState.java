@@ -15,7 +15,7 @@ public class NONState extends NOState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'A' -> AState.state();
             case 'B' -> BState.state();
@@ -26,7 +26,7 @@ public class NONState extends NOState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'A', 'B', 'T', '-', '\0', ' ' -> Adverb.NOT;
             default -> null;

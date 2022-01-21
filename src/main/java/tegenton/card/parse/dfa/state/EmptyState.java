@@ -12,7 +12,7 @@ class EmptyState extends State {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'A' -> AState.state();
             case 'B' -> BState.state();
@@ -48,7 +48,7 @@ class EmptyState extends State {
     }
 
     @Override
-    public Optional<Word> produce(char c) {
+    public Optional<Word> produce(final char c) {
         return Optional.empty();
     }
 }

@@ -21,7 +21,7 @@ public class TOState extends TState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'K' -> new SuffixSubstring("KEN", ObjectNoun.TOKEN);
             case 'P' -> TOPState.state();
@@ -33,7 +33,7 @@ public class TOState extends TState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case '\0', ' ' -> Preposition.TO;
             default -> null;

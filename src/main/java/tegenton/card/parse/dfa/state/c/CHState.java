@@ -17,7 +17,7 @@ public class CHState extends CState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'A' -> new SuffixSubstring("ANGE", PlayerVerb.CHANGE);
             case 'O' -> CHOState.state();
@@ -26,7 +26,7 @@ public class CHState extends CState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return super.produce(c);
     }
 }

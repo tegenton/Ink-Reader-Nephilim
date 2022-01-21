@@ -16,7 +16,7 @@ public class SPEState extends SPState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'L' -> SPELState.state();
             case 'N' -> SPENState.state();
@@ -25,7 +25,7 @@ public class SPEState extends SPState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

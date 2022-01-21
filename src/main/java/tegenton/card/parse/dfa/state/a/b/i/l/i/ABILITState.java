@@ -18,7 +18,7 @@ public class ABILITState extends ABState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'I' -> new SuffixSubstring("IES", Morpheme.S);
             case 'Y' -> ABILITYState.state();
@@ -27,7 +27,7 @@ public class ABILITState extends ABState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'I' -> GameNoun.ABILITY;
             default -> null;

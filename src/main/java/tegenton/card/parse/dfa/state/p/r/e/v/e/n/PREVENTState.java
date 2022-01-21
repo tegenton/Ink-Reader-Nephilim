@@ -18,7 +18,7 @@ public class PREVENTState extends PRState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'E' -> new EDMorpheme();
             case '\0', ' ' -> SymbolState.state(c);
@@ -27,7 +27,7 @@ public class PREVENTState extends PRState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'E', '\0', ' ' -> PlayerVerb.PREVENT;
             default -> null;

@@ -19,7 +19,7 @@ public class ENCHANTState extends ENCState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'M' -> new InfixSubstring("MEN", 'T', ENCHANTMENTState::state);
             case 'E' -> new EDMorpheme();
@@ -29,7 +29,7 @@ public class ENCHANTState extends ENCState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'E', '\0', ' ' -> Keyword.ENCHANT;
             default -> null;

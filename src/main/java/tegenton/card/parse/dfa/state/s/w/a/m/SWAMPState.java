@@ -17,7 +17,7 @@ public class SWAMPState extends SState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'S' -> SState.state();
             case 'W' -> WState.state();
@@ -27,7 +27,7 @@ public class SWAMPState extends SState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'S', 'W', '\0', '.', ' ' -> LandType.SWAMP;
             default -> null;

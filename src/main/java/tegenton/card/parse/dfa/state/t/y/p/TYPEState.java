@@ -16,7 +16,7 @@ public class TYPEState extends TState {
         return INSTANCE;
     }
 
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'S' -> SState.state();
             case '\0', '.', ' ' -> SymbolState.state(c);
@@ -24,7 +24,7 @@ public class TYPEState extends TState {
         };
     }
 
-    public Optional<Word> produce(char c) {
+    public Optional<Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'S', '\0', '.', ' ' -> GameNoun.TYPE;
             default -> null;

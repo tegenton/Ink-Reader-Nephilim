@@ -16,7 +16,7 @@ public class PAIState extends PAState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'D' -> PAIDState.state();
             default -> invalid(c);
@@ -24,7 +24,7 @@ public class PAIState extends PAState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'D' -> PlayerVerb.PAY;
             default -> null;

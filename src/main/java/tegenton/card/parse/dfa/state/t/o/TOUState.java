@@ -18,7 +18,7 @@ public class TOUState extends TOState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'C' -> new InfixSubstring("C", 'H', TOUCHState::state);
             case 'G' -> new SuffixSubstring("GHNESS", ObjectAttribute.TOUGHNESS);
@@ -27,7 +27,7 @@ public class TOUState extends TOState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

@@ -14,7 +14,7 @@ public class FIVEState extends FIVState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         switch (c) {
             default -> throw new IllegalStateException(
                     "Cannot transition from FIVEState on " + c);
@@ -22,7 +22,7 @@ public class FIVEState extends FIVState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return switch (c) {
             case '\0', ' ' -> Optional.of(EnglishNumber.FIVE);
             default -> Optional.empty();

@@ -17,7 +17,7 @@ public class MOState extends MState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'R' -> MORState.state();
             case 'U' -> new InfixSubstring("UNTAI", 'N', MOUNTAINState::state);
@@ -26,7 +26,7 @@ public class MOState extends MState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

@@ -20,7 +20,7 @@ public class PLAState extends PLState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'G' -> new SuffixSubstring("GUE", CardName.PLAGUE);
             case 'I' -> new SuffixSubstring("INS", LandType.PLAINS);
@@ -31,7 +31,7 @@ public class PLAState extends PLState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

@@ -16,7 +16,7 @@ public class MANState extends MAState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'A' -> MANAState.state();
             case 'Y' -> MANYState.state();
@@ -25,7 +25,7 @@ public class MANState extends MAState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

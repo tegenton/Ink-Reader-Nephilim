@@ -4,6 +4,7 @@ import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.ZState;
 import tegenton.card.parse.dfa.state.z.e.ZERState;
 import tegenton.card.parse.lexicon.Word;
+
 import java.util.Optional;
 
 public class ZEState extends ZState {
@@ -14,7 +15,7 @@ public class ZEState extends ZState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'R' -> ZERState.state();
             default -> throw new IllegalStateException("Cannot transition from ZEState on " + c);
@@ -22,7 +23,7 @@ public class ZEState extends ZState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

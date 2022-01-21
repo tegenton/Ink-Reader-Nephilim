@@ -5,6 +5,7 @@ import tegenton.card.parse.dfa.state.t.THState;
 import tegenton.card.parse.dfa.state.t.h.i.THIRState;
 import tegenton.card.parse.dfa.state.t.h.i.s.THISState;
 import tegenton.card.parse.lexicon.Word;
+
 import java.util.Optional;
 
 public class THIState extends THState {
@@ -15,7 +16,7 @@ public class THIState extends THState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'R' -> THIRState.state();
             case 'S' -> THISState.state();
@@ -24,7 +25,7 @@ public class THIState extends THState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

@@ -9,11 +9,11 @@ public abstract class Substring extends State {
     private final char[] text;
     private int index = 1;
 
-    protected Substring(char[] text) {
+    protected Substring(final char[] text) {
         this.text = text;
     }
 
-    public State transition(char c) {
+    public State transition(final char c) {
         if (index < text.length && c == text[index]) {
             index++;
             return this;

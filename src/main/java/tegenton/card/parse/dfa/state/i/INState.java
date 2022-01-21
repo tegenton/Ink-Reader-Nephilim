@@ -21,7 +21,7 @@ public class INState extends IState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'D' -> new SuffixSubstring("DESTRUCTIBLE",
                     Keyword.INDESTRUCTIBLE);
@@ -34,7 +34,7 @@ public class INState extends IState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return switch (c) {
             case 'T', '\0', ' ' -> Optional.of(Preposition.IN);
             default -> Optional.empty();

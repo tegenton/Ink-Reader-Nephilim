@@ -17,7 +17,7 @@ public class FINISHState extends FIState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'E' -> new InfixSubstring("E", 'S', FINISHState::state);
             case '\0', ' ' -> SymbolState.state(c);
@@ -26,7 +26,7 @@ public class FINISHState extends FIState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case '\0', ' ' -> GameVerb.FINISH;
             default -> null;

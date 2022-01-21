@@ -5,6 +5,7 @@ import tegenton.card.parse.dfa.state.w.WAState;
 import tegenton.card.parse.dfa.state.w.a.l.WALKState;
 import tegenton.card.parse.dfa.state.w.a.l.WALLState;
 import tegenton.card.parse.lexicon.Word;
+
 import java.util.Optional;
 
 public class WALState extends WAState {
@@ -15,7 +16,7 @@ public class WALState extends WAState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'K' -> WALKState.state();
             case 'L' -> WALLState.state();
@@ -24,7 +25,7 @@ public class WALState extends WAState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

@@ -23,7 +23,7 @@ public class BEState extends BState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'C' -> new InfixSubstring("COM", 'E', BECOMEState::state);
             case 'E' -> new SuffixSubstring("EN", Morpheme.ED);
@@ -36,7 +36,7 @@ public class BEState extends BState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case '\0', ' ' -> GameVerb.BE;
             default -> null;

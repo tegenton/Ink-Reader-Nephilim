@@ -14,7 +14,7 @@ public class ELEState extends ELState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'V' -> ELEVState.state();
             default -> throw new IllegalStateException("Cannot transition from ELEState on " + c);
@@ -22,7 +22,7 @@ public class ELEState extends ELState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

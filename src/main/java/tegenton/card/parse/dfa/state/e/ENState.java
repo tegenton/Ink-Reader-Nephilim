@@ -17,7 +17,7 @@ public class ENState extends EState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'C' -> ENCState.state();
             case 'D' -> ENDState.state();
@@ -27,7 +27,7 @@ public class ENState extends EState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

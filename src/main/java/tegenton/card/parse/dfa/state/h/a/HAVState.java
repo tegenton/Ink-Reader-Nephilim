@@ -17,7 +17,7 @@ public class HAVState extends HAState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'E' -> HAVEState.state();
             case 'I' -> new INGMorpheme();
@@ -26,7 +26,7 @@ public class HAVState extends HAState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'I' -> ObjectVerb.HAVE;
             default -> null;

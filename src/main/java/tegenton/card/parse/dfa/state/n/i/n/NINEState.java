@@ -15,7 +15,7 @@ public class NINEState extends NINState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'T' -> new TEENMorpheme(EnglishNumber.NINE);
             default -> throw new IllegalStateException(
@@ -24,7 +24,7 @@ public class NINEState extends NINState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         if (c == '\0' || c == ' ') {
             return Optional.of(EnglishNumber.NINE);
         }

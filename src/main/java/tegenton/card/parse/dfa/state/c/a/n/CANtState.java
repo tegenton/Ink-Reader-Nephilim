@@ -15,7 +15,7 @@ public class CANtState extends CANState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'T' -> CANTState.state();
             default -> invalid(c);
@@ -23,7 +23,7 @@ public class CANtState extends CANState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

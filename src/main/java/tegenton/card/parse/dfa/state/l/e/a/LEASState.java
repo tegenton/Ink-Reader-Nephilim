@@ -15,7 +15,7 @@ public class LEASState extends LEAState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'T' -> LEASTState.state();
             default -> invalid(c);
@@ -23,7 +23,7 @@ public class LEASState extends LEAState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return super.produce(c);
     }
 }

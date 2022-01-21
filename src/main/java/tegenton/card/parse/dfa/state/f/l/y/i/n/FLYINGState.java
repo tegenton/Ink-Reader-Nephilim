@@ -16,7 +16,7 @@ public class FLYINGState extends FLYState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case ',', '\n', '\0', '.', ';', ' ' -> SymbolState.state(c);
             default -> invalid(c);
@@ -24,7 +24,7 @@ public class FLYINGState extends FLYState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case ',', '\n', '\0', '.', ';', ' ' -> Keyword.FLYING;
             default -> null;

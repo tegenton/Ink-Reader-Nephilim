@@ -18,7 +18,7 @@ public class COUState extends COState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'L' -> new SuffixSubstring("LD", PlayerVerb.COULD);
             case 'N' -> new InfixSubstring("NTE", 'R', COUNTERState::state);
@@ -27,7 +27,7 @@ public class COUState extends COState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

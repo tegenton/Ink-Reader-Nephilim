@@ -15,7 +15,7 @@ public class INSTAState extends INSTState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'N' -> INSTANState.state();
             default -> invalid(c);
@@ -23,7 +23,7 @@ public class INSTAState extends INSTState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

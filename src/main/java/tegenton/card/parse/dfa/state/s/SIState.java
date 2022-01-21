@@ -18,7 +18,7 @@ public class SIState extends SState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'N' -> new SuffixSubstring("NCE", Duration.SINCE);
             case 'X' -> SIXState.state();
@@ -28,7 +28,7 @@ public class SIState extends SState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

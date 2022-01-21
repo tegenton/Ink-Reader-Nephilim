@@ -21,7 +21,7 @@ public class PState extends State {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'A' -> PAState.state();
             case 'E' -> new InfixSubstring("ERMANEN", 'T', PERMANENTState::state);
@@ -35,7 +35,7 @@ public class PState extends State {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

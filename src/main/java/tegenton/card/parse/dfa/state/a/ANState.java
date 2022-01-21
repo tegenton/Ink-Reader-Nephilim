@@ -20,7 +20,7 @@ public class ANState extends AState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'D' -> ANDState.state();
             case 'T' -> ANTState.state();
@@ -32,7 +32,7 @@ public class ANState extends AState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case '\0', ' ' -> Determiner.AN;
             default -> null;

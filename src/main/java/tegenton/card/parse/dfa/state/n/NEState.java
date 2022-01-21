@@ -17,7 +17,7 @@ public class NEState extends NState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'W' -> NEWState.state();
             case 'X' -> new SuffixSubstring("XT", Adjective.NEXT);
@@ -26,7 +26,7 @@ public class NEState extends NState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

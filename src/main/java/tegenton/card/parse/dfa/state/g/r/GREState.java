@@ -17,7 +17,7 @@ public class GREState extends GRState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'A' -> GREAState.state();
             case 'E' -> new SuffixSubstring("EN", ColorWord.GREEN);
@@ -26,7 +26,7 @@ public class GREState extends GRState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

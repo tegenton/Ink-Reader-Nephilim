@@ -9,12 +9,12 @@ public class INGMorpheme extends Morpheme {
         super("ING".toCharArray(), tegenton.card.parse.lexicon.Morpheme.ING);
     }
 
-    public INGMorpheme(Word word) {
+    public INGMorpheme(final Word word) {
         super("ING".toCharArray(), word);
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         if (this.completed()) {
             return Optional.of(word);
         }

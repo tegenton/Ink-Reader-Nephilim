@@ -17,7 +17,7 @@ public class ACTIVState extends AState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'A' -> new InfixSubstring("AT", 'E', ACTIVATEState::state);
             case 'E' -> ACTIVEState.state();
@@ -26,7 +26,7 @@ public class ACTIVState extends AState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

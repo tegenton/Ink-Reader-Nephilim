@@ -21,7 +21,7 @@ public class UNState extends UState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'B' -> BState.state();
             case 'D' -> new SuffixSubstring("DER", Preposition.UNDER);
@@ -33,7 +33,7 @@ public class UNState extends UState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'B', 'S' -> Adverb.NOT;
             default -> null;

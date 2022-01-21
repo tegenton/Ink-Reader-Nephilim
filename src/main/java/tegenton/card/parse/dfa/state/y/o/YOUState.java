@@ -14,7 +14,7 @@ public class YOUState extends YState {
     }
 
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'R' -> PossessiveState.state();
             case '\u2019' -> AState.state();
@@ -24,7 +24,7 @@ public class YOUState extends YState {
     }
 
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'R', '\u2019', '\0', '.', ' ' -> PlayerNoun.YOU;
             default -> null;
