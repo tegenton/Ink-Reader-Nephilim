@@ -1,24 +1,23 @@
-package tegenton.card.parse.dfa.state.l.e.a.v;
+package tegenton.card.parse.dfa.state.l.e.a.s;
 
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.SymbolState;
-import tegenton.card.parse.dfa.state.l.e.a.LEAVState;
+import tegenton.card.parse.dfa.state.l.e.a.LEASState;
+import tegenton.card.parse.lexicon.Determiner;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.game.source.target.object.ObjectVerb;
 
 import java.util.Optional;
 
-public class LEAVEState extends LEAVState {
-    private static final LEAVEState INSTANCE = new LEAVEState();
+public class LEASTState extends LEASState {
+    private static final LEASTState INSTANCE = new LEASTState();
 
-    public static LEAVEState state() {
+    public static LEASTState state() {
         return INSTANCE;
     }
 
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'S' -> this;
             case '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
@@ -27,7 +26,7 @@ public class LEAVEState extends LEAVState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case '\0', ' ' -> ObjectVerb.LEAVE;
+            case '\0', ' ' -> Determiner.LEAST;
             default -> null;
         });
     }

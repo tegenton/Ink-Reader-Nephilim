@@ -18,7 +18,7 @@ public class OPPONENTState extends OState {
         return switch (c) {
             case 'S' -> SState.state();
             case '\u2019' -> PossessiveState.state();
-            case ',', '\0', ' ' -> SymbolState.state(c);
+            case ',', '\0', '.', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }
@@ -26,7 +26,7 @@ public class OPPONENTState extends OState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case '\u2019', ',', '\0', ' ' -> PlayerNoun.OPPONENT;
+            case '\u2019', ',', '\0', '.', ' ' -> PlayerNoun.OPPONENT;
             default -> null;
         });
     }

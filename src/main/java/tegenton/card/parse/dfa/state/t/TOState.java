@@ -4,10 +4,10 @@ import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.dfa.state.TState;
 import tegenton.card.parse.dfa.state.t.o.TOPState;
+import tegenton.card.parse.dfa.state.t.o.TOUState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Preposition;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.game.source.target.object.ObjectAttribute;
 import tegenton.card.parse.lexicon.game.source.target.object.ObjectNoun;
 import tegenton.card.parse.lexicon.game.source.target.player.PlayerAttribute;
 
@@ -26,7 +26,7 @@ public class TOState extends TState {
             case 'K' -> new SuffixSubstring("KEN", ObjectNoun.TOKEN);
             case 'P' -> TOPState.state();
             case 'T' -> new SuffixSubstring("TAL", PlayerAttribute.TOTAL);
-            case 'U' -> new SuffixSubstring("UGHNESS", ObjectAttribute.TOUGHNESS);
+            case 'U' -> TOUState.state();
             case '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };

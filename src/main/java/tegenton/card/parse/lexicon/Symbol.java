@@ -7,7 +7,7 @@ public enum Symbol implements Word {
     COLON(":"),
     DASH("\u2014"),
     LBRACKET("{"),
-    MINUS("-"),
+    HYPHEN("-"),
     NEWLINE("\n"),
     OPENQUOTE("\u201C"),
     PERIOD("."),

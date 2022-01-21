@@ -30,7 +30,7 @@ public class GameWordTest extends WordTestTemplate {
     @Test
     void verb() {
         words = GameVerb.values();
-        values = List.of("BE", "CAUSE", "FINISH");
+        values = List.of("BE", "CAUSE", "FINISH", "TOUCH");
     }
 
     @Test

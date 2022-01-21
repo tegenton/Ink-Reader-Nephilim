@@ -16,7 +16,7 @@ public enum Determiner implements Word {
     // Alternative-additive
     ANOTHER,
     // Degree
-    MANY,
+    LEAST, MANY,
     // Universal
     ALL,
     // Distributive

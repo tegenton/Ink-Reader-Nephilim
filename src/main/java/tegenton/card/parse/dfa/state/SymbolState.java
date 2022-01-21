@@ -30,7 +30,7 @@ public class SymbolState extends State {
             case ',' -> Symbol.COMMA;
             case '\u2014' -> Symbol.DASH;
             case '{' -> Symbol.LBRACKET;
-            case '-' -> Symbol.MINUS;
+            case '-' -> Symbol.HYPHEN;
             case '\n' -> Symbol.NEWLINE;
             case '\u201C' -> Symbol.OPENQUOTE;
             case '.' -> Symbol.PERIOD;

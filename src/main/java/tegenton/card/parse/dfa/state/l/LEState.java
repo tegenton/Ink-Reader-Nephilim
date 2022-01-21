@@ -2,9 +2,8 @@ package tegenton.card.parse.dfa.state.l;
 
 import tegenton.card.parse.dfa.state.LState;
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.l.e.LEAState;
 import tegenton.card.parse.dfa.state.l.e.LESState;
-import tegenton.card.parse.dfa.state.l.e.a.v.LEAVEState;
-import tegenton.card.parse.dfa.substring.InfixSubstring;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Particle;
 import tegenton.card.parse.lexicon.Word;
@@ -21,7 +20,7 @@ public class LEState extends LState {
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'A' -> new InfixSubstring("AV", 'E', LEAVEState::state);
+            case 'A' -> LEAState.state();
             case 'F' -> new SuffixSubstring("FT", Particle.LEFT);
             case 'S' -> LESState.state();
             default -> invalid(c);

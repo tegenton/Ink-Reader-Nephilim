@@ -21,13 +21,11 @@ import static tegenton.card.parse.lexicon.Particle.*;
 import static tegenton.card.parse.lexicon.Preposition.*;
 import static tegenton.card.parse.lexicon.Pronoun.SO;
 import static tegenton.card.parse.lexicon.SubordinateConjunction.*;
-import static tegenton.card.parse.lexicon.Symbol.MINUS;
 import static tegenton.card.parse.lexicon.Symbol.*;
 import static tegenton.card.parse.lexicon.game.Color.*;
 import static tegenton.card.parse.lexicon.game.ColorWord.*;
 import static tegenton.card.parse.lexicon.game.GameNoun.*;
-import static tegenton.card.parse.lexicon.game.GameVerb.BE;
-import static tegenton.card.parse.lexicon.game.GameVerb.FINISH;
+import static tegenton.card.parse.lexicon.game.GameVerb.*;
 import static tegenton.card.parse.lexicon.game.Keyword.*;
 import static tegenton.card.parse.lexicon.game.Tap.T;
 import static tegenton.card.parse.lexicon.game.TriggerWord.*;
@@ -746,7 +744,7 @@ public class RulesTextTestCase {
                     At the beginning of the next end step, destroy all non-Wall creatures that player controls that didn\u2019t attack this turn. Ignore this effect for each creature the player didn\u2019t control continuously since the beginning of the turn.""";
             tokens = List.of(CAST, SPACE, THIS, SPACE, SPELL, SPACE, ONLY, SPACE, DURING, SPACE, AN, SPACE, OPPONENT, POSSESSIVE, SPACE, TURN, COMMA, SPACE, BEFORE, SPACE, ATTACK, S, SPACE, IS, SPACE, DECLARE, ED, PERIOD, NEWLINE,
                     CREATURE, S, SPACE, THE, SPACE, ACTIVE, SPACE, PLAY, ER, SPACE, CONTROL, SPACE, ATTACK, SPACE, THIS, SPACE, TURN, SPACE, IF, SPACE, ABLE, PERIOD, NEWLINE,
-                    AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, THE, SPACE, NEXT, SPACE, END, SPACE, STEP, COMMA, SPACE, DESTROY, SPACE, ALL, SPACE, NOT, MINUS, WALL, SPACE, CREATURE, S, SPACE, THAT, SPACE, PLAY, ER, SPACE, CONTROL, SPACE, THAT, SPACE, DO, NOT, SPACE, ATTACK, SPACE, THIS, SPACE, TURN, PERIOD, SPACE, IGNORE, SPACE, THIS, SPACE, EFFECT, SPACE, FOR, SPACE, EACH, SPACE, CREATURE, SPACE, THE, SPACE, PLAY, ER, SPACE, DO, NOT, SPACE, CONTROL, SPACE, CONTINUOUSLY, SPACE, SINCE, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, THE, SPACE, TURN, PERIOD);
+                    AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, THE, SPACE, NEXT, SPACE, END, SPACE, STEP, COMMA, SPACE, DESTROY, SPACE, ALL, SPACE, NOT, HYPHEN, WALL, SPACE, CREATURE, S, SPACE, THAT, SPACE, PLAY, ER, SPACE, CONTROL, SPACE, THAT, SPACE, DO, NOT, SPACE, ATTACK, SPACE, THIS, SPACE, TURN, PERIOD, SPACE, IGNORE, SPACE, THIS, SPACE, EFFECT, SPACE, FOR, SPACE, EACH, SPACE, CREATURE, SPACE, THE, SPACE, PLAY, ER, SPACE, DO, NOT, SPACE, CONTROL, SPACE, CONTINUOUSLY, SPACE, SINCE, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, THE, SPACE, TURN, PERIOD);
         }
 
         @Test
@@ -869,7 +867,7 @@ public class RulesTextTestCase {
                     Enchanted creature gets -1/-0.""";
             tokens = List.of(ENCHANT, SPACE, CREATURE, SPACE, CARD, SPACE, IN, SPACE, A, SPACE, GRAVEYARD, NEWLINE,
                     WHEN, SPACE, TILDE, SPACE, ENTER, SPACE, THE, SPACE, BATTLEFIELD, COMMA, SPACE, IF, SPACE, IT, IS, SPACE, ON, SPACE, THE, SPACE, BATTLEFIELD, COMMA, SPACE, IT, SPACE, LOSE, SPACE, OPENQUOTE, ENCHANT, SPACE, CREATURE, SPACE, CARD, SPACE, IN, SPACE, A, SPACE, GRAVEYARD, CLOSEQUOTE, SPACE, AND, SPACE, GAIN, SPACE, OPENQUOTE, ENCHANT, SPACE, CREATURE, SPACE, PUT, SPACE, ON, TO, SPACE, THE, SPACE, BATTLEFIELD, SPACE, WITH, SPACE, TILDE, PERIOD, CLOSEQUOTE, SPACE, RETURN, SPACE, ENCHANT, ED, SPACE, CREATURE, SPACE, CARD, SPACE, TO, SPACE, THE, SPACE, BATTLEFIELD, SPACE, UNDER, SPACE, YOU, POSSESSIVE, SPACE, CONTROL, SPACE, AND, SPACE, ATTACH, SPACE, TILDE, SPACE, TO, SPACE, IT, PERIOD, SPACE, WHEN, SPACE, TILDE, SPACE, LEAVE, SPACE, THE, SPACE, BATTLEFIELD, COMMA, SPACE, THAT, SPACE, CREATURE, POSSESSIVE, SPACE, CONTROL, ER, SPACE, SACRIFICE, SPACE, IT, PERIOD, NEWLINE,
-                    ENCHANT, ED, SPACE, CREATURE, SPACE, GET, SPACE, MINUS, Number.ONE, SLASH, MINUS, Number.ZERO, PERIOD);
+                    ENCHANT, ED, SPACE, CREATURE, SPACE, GET, SPACE, HYPHEN, Number.ONE, SLASH, HYPHEN, Number.ZERO, PERIOD);
         }
 
         @Test
@@ -1092,7 +1090,7 @@ public class RulesTextTestCase {
         @DisplayName("Nettling Imp")
         void nettlingImp() {
             text = "{T}: Choose target non-Wall creature the active player has controlled continuously since the beginning of the turn. That creature attacks this turn if able. Destroy it at the beginning of the next end step if it didn\u2019t attack this turn. Activate only during an opponent\u2019s turn, before attackers are declared.";
-            tokens = List.of(LBRACKET, T, RBRACKET, COLON, SPACE, CHOOSE, SPACE, TARGET, SPACE, NOT, MINUS, WALL, SPACE, CREATURE, SPACE, THE, SPACE, ACTIVE, SPACE, PLAY, ER, SPACE, HAVE, SPACE, CONTROL, ED, SPACE, CONTINUOUSLY, SPACE, SINCE, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, THE, SPACE, TURN, PERIOD, SPACE, THAT, SPACE, CREATURE, SPACE, ATTACK, SPACE, THIS, SPACE, TURN, SPACE, IF, SPACE, ABLE, PERIOD, SPACE, DESTROY, SPACE, IT, SPACE, AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, THE, SPACE, NEXT, SPACE, END, SPACE, STEP, SPACE, IF, SPACE, IT, SPACE, DO, NOT, SPACE, ATTACK, SPACE, THIS, SPACE, TURN, PERIOD, SPACE, ACTIVATE, SPACE, ONLY, SPACE, DURING, SPACE, AN, SPACE, OPPONENT, POSSESSIVE, SPACE, TURN, COMMA, SPACE, BEFORE, SPACE, ATTACK, S, SPACE, IS, SPACE, DECLARE, ED, PERIOD);
+            tokens = List.of(LBRACKET, T, RBRACKET, COLON, SPACE, CHOOSE, SPACE, TARGET, SPACE, NOT, HYPHEN, WALL, SPACE, CREATURE, SPACE, THE, SPACE, ACTIVE, SPACE, PLAY, ER, SPACE, HAVE, SPACE, CONTROL, ED, SPACE, CONTINUOUSLY, SPACE, SINCE, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, THE, SPACE, TURN, PERIOD, SPACE, THAT, SPACE, CREATURE, SPACE, ATTACK, SPACE, THIS, SPACE, TURN, SPACE, IF, SPACE, ABLE, PERIOD, SPACE, DESTROY, SPACE, IT, SPACE, AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, THE, SPACE, NEXT, SPACE, END, SPACE, STEP, SPACE, IF, SPACE, IT, SPACE, DO, NOT, SPACE, ATTACK, SPACE, THIS, SPACE, TURN, PERIOD, SPACE, ACTIVATE, SPACE, ONLY, SPACE, DURING, SPACE, AN, SPACE, OPPONENT, POSSESSIVE, SPACE, TURN, COMMA, SPACE, BEFORE, SPACE, ATTACK, S, SPACE, IS, SPACE, DECLARE, ED, PERIOD);
         }
 
         @Test
@@ -1245,7 +1243,7 @@ public class RulesTextTestCase {
                     Enchant creature
                     Enchanted creature gets -2/-1.""";
             tokens = List.of(ENCHANT, SPACE, CREATURE, NEWLINE,
-                    ENCHANT, ED, SPACE, CREATURE, SPACE, GET, SPACE, MINUS, Number.TWO, SLASH, MINUS, Number.ONE, PERIOD);
+                    ENCHANT, ED, SPACE, CREATURE, SPACE, GET, SPACE, HYPHEN, Number.TWO, SLASH, HYPHEN, Number.ONE, PERIOD);
         }
 
         @Test
@@ -1458,7 +1456,7 @@ public class RulesTextTestCase {
         @DisplayName("Keldon Warlord")
         void keldonWarlord() {
             text = "~\u2019s power and toughness are each equal to the number of non-Wall creatures you control.";
-            tokens = List.of(TILDE, POSSESSIVE, SPACE, POWER, SPACE, AND, SPACE, TOUGHNESS, SPACE, IS, SPACE, EACH, SPACE, EQUAL, SPACE, TO, SPACE, THE, SPACE, NUMBER, SPACE, OF, SPACE, NOT, MINUS, WALL, SPACE, CREATURE, S, SPACE, YOU, SPACE, CONTROL, PERIOD);
+            tokens = List.of(TILDE, POSSESSIVE, SPACE, POWER, SPACE, AND, SPACE, TOUGHNESS, SPACE, IS, SPACE, EACH, SPACE, EQUAL, SPACE, TO, SPACE, THE, SPACE, NUMBER, SPACE, OF, SPACE, NOT, HYPHEN, WALL, SPACE, CREATURE, S, SPACE, YOU, SPACE, CONTROL, PERIOD);
         }
 
         @Test
@@ -1704,7 +1702,7 @@ public class RulesTextTestCase {
                     Flying
                     Whenever ~ blocks or becomes blocked by a non-Wall creature, destroy that creature at end of combat.""";
             tokens = List.of(FLYING, NEWLINE,
-                    WHENEVER, SPACE, TILDE, SPACE, BLOCK, SPACE, OR, SPACE, BECOME, SPACE, BLOCK, ED, SPACE, BY, SPACE, A, SPACE, NOT, MINUS, WALL, SPACE, CREATURE, COMMA, SPACE, DESTROY, SPACE, THAT, SPACE, CREATURE, SPACE, AT, SPACE, END, SPACE, OF, SPACE, COMBAT, PERIOD);
+                    WHENEVER, SPACE, TILDE, SPACE, BLOCK, SPACE, OR, SPACE, BECOME, SPACE, BLOCK, ED, SPACE, BY, SPACE, A, SPACE, NOT, HYPHEN, WALL, SPACE, CREATURE, COMMA, SPACE, DESTROY, SPACE, THAT, SPACE, CREATURE, SPACE, AT, SPACE, END, SPACE, OF, SPACE, COMBAT, PERIOD);
         }
 
         @Test
@@ -1935,7 +1933,7 @@ public class RulesTextTestCase {
         @DisplayName("Thicket Basilisk")
         void thicketBasilisk() {
             text = "Whenever ~ blocks or becomes blocked by a non-Wall creature, destroy that creature at end of combat.";
-            tokens = List.of(WHENEVER, SPACE, TILDE, SPACE, BLOCK, SPACE, OR, SPACE, BECOME, SPACE, BLOCK, ED, SPACE, BY, SPACE, A, SPACE, NOT, MINUS, WALL, SPACE, CREATURE, COMMA, SPACE, DESTROY, SPACE, THAT, SPACE, CREATURE, SPACE, AT, SPACE, END, SPACE, OF, SPACE, COMBAT, PERIOD);
+            tokens = List.of(WHENEVER, SPACE, TILDE, SPACE, BLOCK, SPACE, OR, SPACE, BECOME, SPACE, BLOCK, ED, SPACE, BY, SPACE, A, SPACE, NOT, HYPHEN, WALL, SPACE, CREATURE, COMMA, SPACE, DESTROY, SPACE, THAT, SPACE, CREATURE, SPACE, AT, SPACE, END, SPACE, OF, SPACE, COMBAT, PERIOD);
         }
 
         @Test
@@ -2055,6 +2053,30 @@ public class RulesTextTestCase {
         void blackLotus() {
             text = "{T}, Sacrifice ~: Add three mana of any one color.";
             tokens = List.of(LBRACKET, T, RBRACKET, COMMA, SPACE, SACRIFICE, SPACE, TILDE, COLON, SPACE, ADD, SPACE, THREE, SPACE, MANA, SPACE, OF, SPACE, ANY, SPACE, ONE, SPACE, COLOR, PERIOD);
+        }
+
+        @Test
+        @DisplayName("Black Vise")
+        void blackVise() {
+            text = """
+                    As ~ enters the battlefield, choose an opponent.
+                    At the beginning of the chosen player\u2019s upkeep, ~ deals X damage to that player, where X is the number of cards in their hand minus 4.""";
+            tokens = List.of(AS, SPACE, TILDE, SPACE, ENTER, SPACE, THE, SPACE, BATTLEFIELD, COMMA, SPACE, CHOOSE, SPACE, AN, SPACE, OPPONENT, PERIOD, NEWLINE,
+                    AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, THE, SPACE, CHOSEN, SPACE, PLAY, ER, POSSESSIVE, SPACE, UPKEEP, COMMA, SPACE, TILDE, SPACE, DEAL, SPACE, X, SPACE, DAMAGE, SPACE, TO, SPACE, THAT, SPACE, PLAY, ER, COMMA, SPACE, WHERE, SPACE, X, SPACE, IS, SPACE, THE, SPACE, NUMBER, SPACE, OF, SPACE, CARD, S, SPACE, IN, SPACE, THEY, POSSESSIVE, SPACE, HAND, SPACE, MINUS, SPACE, Number.FOUR, PERIOD);
+        }
+
+        @Test
+        @DisplayName("Celestial Prism")
+        void celestialPrism() {
+            text = "{2}, {T}: Add one mana of any color.";
+            tokens = List.of(LBRACKET, Number.TWO, RBRACKET, COMMA, SPACE, LBRACKET, T, RBRACKET, COLON, SPACE, ADD, SPACE, ONE, SPACE, MANA, SPACE, OF, SPACE, ANY, SPACE, COLOR, PERIOD);
+        }
+
+        @Test
+        @DisplayName("Chaos Orb")
+        void chaosOrb() {
+            text = "{1}, {T}: If ~ is on the battlefield, flip ~ onto the battlefield from a height of at least one foot. If ~ turns over completely at least once during the flip, destroy all nontoken permanents it touches. Then destroy ~.";
+            tokens = List.of(LBRACKET, Number.ONE, RBRACKET, COMMA, SPACE, LBRACKET, T, RBRACKET, COLON, SPACE, IF, SPACE, TILDE, SPACE, IS, SPACE, ON, SPACE, THE, SPACE, BATTLEFIELD, COMMA, SPACE, FLIP, SPACE, TILDE, SPACE, ON, TO, SPACE, THE, SPACE, BATTLEFIELD, SPACE, FROM, SPACE, A, SPACE, HEIGHT, SPACE, OF, SPACE, AT, SPACE, LEAST, SPACE, ONE, SPACE, FOOT, PERIOD, SPACE, IF, SPACE, TILDE, SPACE, TURN, S, SPACE, OVER, SPACE, COMPLETELY, SPACE, AT, SPACE, LEAST, SPACE, ONCE, SPACE, DURING, SPACE, THE, SPACE, FLIP, COMMA, SPACE, DESTROY, SPACE, ALL, SPACE, NOT, TOKEN, SPACE, PERMANENT, S, SPACE, IT, SPACE, TOUCH, PERIOD, SPACE, THEN, SPACE, DESTROY, SPACE, TILDE, PERIOD);
         }
     }
 }
