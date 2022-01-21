@@ -1,9 +1,10 @@
 package tegenton.card.parse.dfa.state;
 
+import tegenton.card.parse.dfa.state.v.VIState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
-import tegenton.card.parse.lexicon.game.Keyword;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.source.target.object.ObjectAttribute;
+
 import java.util.Optional;
 
 public class VState extends State {
@@ -17,7 +18,7 @@ public class VState extends State {
     public State transition(char c) {
         return switch (c) {
             case 'A' -> new SuffixSubstring("ALUE", ObjectAttribute.VALUE);
-            case 'I' -> new SuffixSubstring("IGILANCE", Keyword.VIGILANCE);
+            case 'I' -> VIState.state();
             default -> invalid(c);
         };
     }

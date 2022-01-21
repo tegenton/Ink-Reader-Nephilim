@@ -60,7 +60,7 @@ public class WordTest extends WordTestTemplate {
     @Test
     void particle() {
         words = Particle.values();
-        values = List.of("DOWN", "UP");
+        values = List.of("DOWN", "LEFT", "RIGHT", "UP");
     }
 
     @Test

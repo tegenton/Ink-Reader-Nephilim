@@ -1,7 +1,7 @@
 package tegenton.card.parse.lexicon;
 
 public enum Particle implements Word {
-    DOWN, UP;
+    DOWN, LEFT, RIGHT, UP;
 
     @Override
     public String getWord() {

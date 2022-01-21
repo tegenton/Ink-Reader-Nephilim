@@ -4,6 +4,7 @@ import tegenton.card.parse.dfa.state.r.RAState;
 import tegenton.card.parse.dfa.state.r.REState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Adjective;
+import tegenton.card.parse.lexicon.Particle;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.Color;
 
@@ -21,6 +22,7 @@ public class RState extends State {
         return switch (c) {
             case 'A' -> RAState.state();
             case 'E' -> REState.state();
+            case 'I' -> new SuffixSubstring("IGHT", Particle.RIGHT);
             case 'O' -> new SuffixSubstring("OUNDED", Adjective.ROUNDED);
             case '}', '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);

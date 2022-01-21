@@ -17,8 +17,7 @@ import static tegenton.card.parse.lexicon.Determiner.*;
 import static tegenton.card.parse.lexicon.Genitive.HALF;
 import static tegenton.card.parse.lexicon.Morpheme.*;
 import static tegenton.card.parse.lexicon.Noun.*;
-import static tegenton.card.parse.lexicon.Particle.DOWN;
-import static tegenton.card.parse.lexicon.Particle.UP;
+import static tegenton.card.parse.lexicon.Particle.*;
 import static tegenton.card.parse.lexicon.Preposition.*;
 import static tegenton.card.parse.lexicon.Pronoun.SO;
 import static tegenton.card.parse.lexicon.SubordinateConjunction.*;
@@ -62,6 +61,7 @@ import static tegenton.card.parse.lexicon.game.turn.Step.END;
 import static tegenton.card.parse.lexicon.game.turn.Step.UPKEEP;
 import static tegenton.card.parse.lexicon.game.type.CardType.*;
 import static tegenton.card.parse.lexicon.game.type.CounterName.CORPSE;
+import static tegenton.card.parse.lexicon.game.type.CounterName.VITALITY;
 import static tegenton.card.parse.lexicon.game.type.CreatureType.*;
 import static tegenton.card.parse.lexicon.game.type.EnchantmentType.AURA;
 import static tegenton.card.parse.lexicon.game.type.LandType.*;
@@ -165,7 +165,7 @@ public class RulesTextTestCase {
             @DisplayName("Castle")
             void castle() {
                 text = "Untapped creatures you control get +0/+2.";
-                tokens = List.of(NOT, TAP, ED, SPACE, CREATURE, S, SPACE, YOU, SPACE, CONTROL, SPACE, GET, SPACE, PLUS, new Number(0), SLASH, PLUS, Number.TWO, PERIOD);
+                tokens = List.of(NOT, TAP, ED, SPACE, CREATURE, S, SPACE, YOU, SPACE, CONTROL, SPACE, GET, SPACE, PLUS, Number.ZERO, SLASH, PLUS, Number.TWO, PERIOD);
             }
 
             @Test
@@ -288,8 +288,8 @@ public class RulesTextTestCase {
                         Enchanted creature gets +0/+2.
                         {W}: Enchanted creature gets +0/+1 until end of turn.""";
                 tokens = List.of(ENCHANT, SPACE, CREATURE, NEWLINE,
-                        ENCHANT, ED, SPACE, CREATURE, SPACE, GET, SPACE, PLUS, new Number(0), SLASH, PLUS, Number.TWO, PERIOD, NEWLINE,
-                        LBRACKET, W, RBRACKET, COLON, SPACE, ENCHANT, ED, SPACE, CREATURE, SPACE, GET, SPACE, PLUS, new Number(0), SLASH, PLUS, Number.ONE, SPACE, UNTIL, SPACE, END, SPACE, OF, SPACE, TURN, PERIOD);
+                        ENCHANT, ED, SPACE, CREATURE, SPACE, GET, SPACE, PLUS, Number.ZERO, SLASH, PLUS, Number.TWO, PERIOD, NEWLINE,
+                        LBRACKET, W, RBRACKET, COLON, SPACE, ENCHANT, ED, SPACE, CREATURE, SPACE, GET, SPACE, PLUS, Number.ZERO, SLASH, PLUS, Number.ONE, SPACE, UNTIL, SPACE, END, SPACE, OF, SPACE, TURN, PERIOD);
             }
 
             @Test
@@ -354,7 +354,7 @@ public class RulesTextTestCase {
                 text = """
                         {0}: The next 1 damage that would be dealt to ~ this turn is dealt to its owner instead. Only ~\u2019s owner may activate this ability.
                         When ~ dies, its owner loses half their life, rounded up.""";
-                tokens = List.of(LBRACKET, new Number(0), RBRACKET, COLON, SPACE, THE, SPACE, NEXT, SPACE, Number.ONE, SPACE, DAMAGE, SPACE, THAT, SPACE, WOULD, SPACE, BE, SPACE, DEAL, ED, SPACE, TO, SPACE, TILDE, SPACE, THIS, SPACE, TURN, SPACE, IS, SPACE, DEAL, ED, SPACE, TO, SPACE, IT, POSSESSIVE, SPACE, OWN, ER, SPACE, INSTEAD, PERIOD, SPACE,
+                tokens = List.of(LBRACKET, Number.ZERO, RBRACKET, COLON, SPACE, THE, SPACE, NEXT, SPACE, Number.ONE, SPACE, DAMAGE, SPACE, THAT, SPACE, WOULD, SPACE, BE, SPACE, DEAL, ED, SPACE, TO, SPACE, TILDE, SPACE, THIS, SPACE, TURN, SPACE, IS, SPACE, DEAL, ED, SPACE, TO, SPACE, IT, POSSESSIVE, SPACE, OWN, ER, SPACE, INSTEAD, PERIOD, SPACE,
                         ONLY, SPACE, TILDE, POSSESSIVE, SPACE, OWN, ER, SPACE, MAY, SPACE, ACTIVATE, SPACE, THIS, SPACE, ABILITY, PERIOD, NEWLINE,
                         WHEN, SPACE, TILDE, SPACE, DIE, COMMA, SPACE, IT, POSSESSIVE, SPACE, OWN, ER, SPACE, LOSE, SPACE, HALF, SPACE, THEY, POSSESSIVE, SPACE, LIFE, COMMA, SPACE, ROUNDED, SPACE, UP, PERIOD);
             }
@@ -842,7 +842,7 @@ public class RulesTextTestCase {
                         Defender
                         {U}: ~ gets +1/+0 until end of turn.""";
                 tokens = List.of(DEFENDER, NEWLINE,
-                        LBRACKET, U, RBRACKET, COLON, SPACE, TILDE, SPACE, GET, SPACE, PLUS, Number.ONE, SLASH, PLUS, new Number(0), SPACE, UNTIL, SPACE, END, SPACE, OF, SPACE, TURN, PERIOD);
+                        LBRACKET, U, RBRACKET, COLON, SPACE, TILDE, SPACE, GET, SPACE, PLUS, Number.ONE, SLASH, PLUS, Number.ZERO, SPACE, UNTIL, SPACE, END, SPACE, OF, SPACE, TURN, PERIOD);
             }
 
             @Test
@@ -865,7 +865,7 @@ public class RulesTextTestCase {
                         Enchanted creature gets -1/-0.""";
                 tokens = List.of(ENCHANT, SPACE, CREATURE, SPACE, CARD, SPACE, IN, SPACE, A, SPACE, GRAVEYARD, NEWLINE,
                         WHEN, SPACE, TILDE, SPACE, ENTER, SPACE, THE, SPACE, BATTLEFIELD, COMMA, SPACE, IF, SPACE, IT, IS, SPACE, ON, SPACE, THE, SPACE, BATTLEFIELD, COMMA, SPACE, IT, SPACE, LOSE, SPACE, OPENQUOTE, ENCHANT, SPACE, CREATURE, SPACE, CARD, SPACE, IN, SPACE, A, SPACE, GRAVEYARD, CLOSEQUOTE, SPACE, AND, SPACE, GAIN, SPACE, OPENQUOTE, ENCHANT, SPACE, CREATURE, SPACE, PUT, SPACE, ON, TO, SPACE, THE, SPACE, BATTLEFIELD, SPACE, WITH, SPACE, TILDE, PERIOD, CLOSEQUOTE, SPACE, RETURN, SPACE, ENCHANT, ED, SPACE, CREATURE, SPACE, CARD, SPACE, TO, SPACE, THE, SPACE, BATTLEFIELD, SPACE, UNDER, SPACE, YOU, POSSESSIVE, SPACE, CONTROL, SPACE, AND, SPACE, ATTACH, SPACE, TILDE, SPACE, TO, SPACE, IT, PERIOD, SPACE, WHEN, SPACE, TILDE, SPACE, LEAVE, SPACE, THE, SPACE, BATTLEFIELD, COMMA, SPACE, THAT, SPACE, CREATURE, POSSESSIVE, SPACE, CONTROL, ER, SPACE, SACRIFICE, SPACE, IT, PERIOD, NEWLINE,
-                        ENCHANT, ED, SPACE, CREATURE, SPACE, GET, SPACE, MINUS, Number.ONE, SLASH, MINUS, new Number(0), PERIOD);
+                        ENCHANT, ED, SPACE, CREATURE, SPACE, GET, SPACE, MINUS, Number.ONE, SLASH, MINUS, Number.ZERO, PERIOD);
             }
 
             @Test
@@ -1028,7 +1028,7 @@ public class RulesTextTestCase {
             @DisplayName("Howl from Beyond")
             void howlFromBeyond() {
                 text = "Target creature gets +X/+0 until end of turn.";
-                tokens = List.of(TARGET, SPACE, CREATURE, SPACE, GET, SPACE, PLUS, X, SLASH, PLUS, new Number(0), SPACE, UNTIL, SPACE, END, SPACE, OF, SPACE, TURN, PERIOD);
+                tokens = List.of(TARGET, SPACE, CREATURE, SPACE, GET, SPACE, PLUS, X, SLASH, PLUS, Number.ZERO, SPACE, UNTIL, SPACE, END, SPACE, OF, SPACE, TURN, PERIOD);
             }
 
             @Test
@@ -1051,7 +1051,7 @@ public class RulesTextTestCase {
                         Whenever you\u2019re dealt damage, sacrifice that many nontoken permanents. If you can\u2019t, you lose the game.
                         When ~ is put into a graveyard from the battlefield, you lose the game.""";
                 tokens = List.of(AS, SPACE, TILDE, SPACE, ENTER, SPACE, THE, SPACE, BATTLEFIELD, COMMA, SPACE, YOU, SPACE, LOSE, SPACE, LIFE, SPACE, EQUAL, SPACE, TO, SPACE, YOU, POSSESSIVE, SPACE, LIFE, SPACE, TOTAL, PERIOD, NEWLINE,
-                        YOU, SPACE, DO, NOT, SPACE, LOSE, SPACE, THE, SPACE, GAME, SPACE, FOR, SPACE, HAVE, ING, SPACE, new Number(0), SPACE, OR, SPACE, LESS, SPACE, LIFE, PERIOD, NEWLINE,
+                        YOU, SPACE, DO, NOT, SPACE, LOSE, SPACE, THE, SPACE, GAME, SPACE, FOR, SPACE, HAVE, ING, SPACE, Number.ZERO, SPACE, OR, SPACE, LESS, SPACE, LIFE, PERIOD, NEWLINE,
                         IF, SPACE, YOU, SPACE, WOULD, SPACE, GAIN, SPACE, LIFE, COMMA, SPACE, DRAW, SPACE, THAT, SPACE, MANY, SPACE, CARD, S, SPACE, INSTEAD, PERIOD, NEWLINE,
                         WHENEVER, SPACE, YOU, IS, SPACE, DEAL, ED, SPACE, DAMAGE, COMMA, SPACE, SACRIFICE, SPACE, THAT, SPACE, MANY, SPACE, NOT, TOKEN, SPACE, PERMANENT, S, PERIOD, SPACE, IF, SPACE, YOU, SPACE, CAN, NOT, COMMA, SPACE, YOU, SPACE, LOSE, SPACE, THE, SPACE, GAME, PERIOD, NEWLINE,
                         WHEN, SPACE, TILDE, SPACE, IS, SPACE, PUT, SPACE, IN, TO, SPACE, A, SPACE, GRAVEYARD, SPACE, FROM, SPACE, THE, SPACE, BATTLEFIELD, COMMA, SPACE, YOU, SPACE, LOSE, SPACE, THE, SPACE, GAME, PERIOD);
@@ -1306,7 +1306,7 @@ public class RulesTextTestCase {
                         Flying
                         {R}: ~ gets +1/+0 until end of turn. If this ability has been activated four or more times this turn, sacrifice ~ at the beginning of the next end step.""";
                 tokens = List.of(FLYING, NEWLINE,
-                        LBRACKET, R, RBRACKET, COLON, SPACE, TILDE, SPACE, GET, SPACE, PLUS, Number.ONE, SLASH, PLUS, new Number(0), SPACE, UNTIL, SPACE, END, SPACE, OF, SPACE, TURN, PERIOD, SPACE, IF, SPACE, THIS, SPACE, ABILITY, SPACE, HAVE, SPACE, ED, SPACE, ACTIVATE, ED, SPACE, FOUR, SPACE, OR, SPACE, MORE, SPACE, TIME, S, SPACE, THIS, SPACE, TURN, COMMA, SPACE, SACRIFICE, SPACE, TILDE, SPACE, AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, THE, SPACE, NEXT, SPACE, END, SPACE, STEP, PERIOD);
+                        LBRACKET, R, RBRACKET, COLON, SPACE, TILDE, SPACE, GET, SPACE, PLUS, Number.ONE, SLASH, PLUS, Number.ZERO, SPACE, UNTIL, SPACE, END, SPACE, OF, SPACE, TURN, PERIOD, SPACE, IF, SPACE, THIS, SPACE, ABILITY, SPACE, HAVE, SPACE, ED, SPACE, ACTIVATE, ED, SPACE, FOUR, SPACE, OR, SPACE, MORE, SPACE, TIME, S, SPACE, THIS, SPACE, TURN, COMMA, SPACE, SACRIFICE, SPACE, TILDE, SPACE, AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, THE, SPACE, NEXT, SPACE, END, SPACE, STEP, PERIOD);
             }
 
             @Test
@@ -1381,7 +1381,7 @@ public class RulesTextTestCase {
                         Enchant creature
                         {R}: Enchanted creature gets +1/+0 until end of turn.""";
                 tokens = List.of(ENCHANT, SPACE, CREATURE, NEWLINE,
-                        LBRACKET, R, RBRACKET, COLON, SPACE, ENCHANT, ED, SPACE, CREATURE, SPACE, GET, SPACE, PLUS, Number.ONE, SLASH, PLUS, new Number(0), SPACE, UNTIL, SPACE, END, SPACE, OF, SPACE, TURN, PERIOD);
+                        LBRACKET, R, RBRACKET, COLON, SPACE, ENCHANT, ED, SPACE, CREATURE, SPACE, GET, SPACE, PLUS, Number.ONE, SLASH, PLUS, Number.ZERO, SPACE, UNTIL, SPACE, END, SPACE, OF, SPACE, TURN, PERIOD);
             }
 
             @Test
@@ -1419,7 +1419,7 @@ public class RulesTextTestCase {
                         Flying
                         {R}: ~ gets +0/+1 until end of turn.""";
                 tokens = List.of(FLYING, NEWLINE,
-                        LBRACKET, R, RBRACKET, COLON, SPACE, TILDE, SPACE, GET, SPACE, PLUS, new Number(0), SLASH, PLUS, Number.ONE, SPACE, UNTIL, SPACE, END, SPACE, OF, SPACE, TURN, PERIOD);
+                        LBRACKET, R, RBRACKET, COLON, SPACE, TILDE, SPACE, GET, SPACE, PLUS, Number.ZERO, SLASH, PLUS, Number.ONE, SPACE, UNTIL, SPACE, END, SPACE, OF, SPACE, TURN, PERIOD);
             }
 
             @Test
@@ -1496,7 +1496,7 @@ public class RulesTextTestCase {
             @DisplayName("Orcish Oriflamme")
             void orcishOriflamme() {
                 text = "Attacking creatures you control get +1/+0.";
-                tokens = List.of(ATTACK, ING, SPACE, CREATURE, S, SPACE, YOU, SPACE, CONTROL, SPACE, GET, SPACE, PLUS, Number.ONE, SLASH, PLUS, new Number(0), PERIOD);
+                tokens = List.of(ATTACK, ING, SPACE, CREATURE, S, SPACE, YOU, SPACE, CONTROL, SPACE, GET, SPACE, PLUS, Number.ONE, SLASH, PLUS, Number.ZERO, PERIOD);
             }
 
             @Test
@@ -1504,6 +1504,13 @@ public class RulesTextTestCase {
             void powerSurge() {
                 text = "At the beginning of each player\u2019s upkeep, ~ deals X damage to that player, where X is the number of untapped lands they controlled at the beginning of this turn.";
                 tokens = List.of(AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, EACH, SPACE, PLAY, ER, POSSESSIVE, SPACE, UPKEEP, COMMA, SPACE, TILDE, SPACE, DEAL, SPACE, X, SPACE, DAMAGE, SPACE, TO, SPACE, THAT, SPACE, PLAY, ER, COMMA, SPACE, WHERE, SPACE, X, SPACE, IS, SPACE, THE, SPACE, NUMBER, SPACE, OF, SPACE, NOT, TAP, ED, SPACE, LAND, S, SPACE, THEY, SPACE, CONTROL, ED, SPACE, AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, THIS, SPACE, TURN, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Raging River")
+            void ragingRiver() {
+                text = "Whenever one or more creatures you control attack, each defending player divides all creatures without flying they control into a \u201Cleft\u201D pile and a \u201Cright\u201D pile. Then, for each attacking creature you control, choose \u201Cleft\u201D or \u201Cright.\u201D That creature can\u2019t be blocked this combat except by creatures with flying and creatures in a pile with the chosen label.";
+                tokens = List.of(WHENEVER, SPACE, ONE, SPACE, OR, SPACE, MORE, SPACE, CREATURE, S, SPACE, YOU, SPACE, CONTROL, SPACE, ATTACK, COMMA, SPACE, EACH, SPACE, DEFENDING, SPACE, PLAY, ER, SPACE, DIVIDE, SPACE, ALL, SPACE, CREATURE, S, SPACE, WITH, OUT, SPACE, FLYING, SPACE, THEY, SPACE, CONTROL, SPACE, IN, TO, SPACE, A, SPACE, OPENQUOTE, LEFT, CLOSEQUOTE, SPACE, PILE, SPACE, AND, SPACE, A, SPACE, OPENQUOTE, RIGHT, CLOSEQUOTE, SPACE, PILE, PERIOD, SPACE, THEN, COMMA, SPACE, FOR, SPACE, EACH, SPACE, ATTACK, ING, SPACE, CREATURE, SPACE, YOU, SPACE, CONTROL, COMMA, SPACE, CHOOSE, SPACE, OPENQUOTE, LEFT, CLOSEQUOTE, SPACE, OR, SPACE, OPENQUOTE, RIGHT, PERIOD, CLOSEQUOTE, SPACE, THAT, SPACE, CREATURE, SPACE, CAN, NOT, SPACE, BE, SPACE, BLOCK, ED, SPACE, THIS, SPACE, COMBAT, SPACE, EXCEPT, SPACE, BY, SPACE, CREATURE, S, SPACE, WITH, SPACE, FLYING, SPACE, AND, SPACE, CREATURE, S, SPACE, IN, SPACE, A, SPACE, PILE, SPACE, WITH, SPACE, THE, SPACE, CHOSEN, SPACE, LABEL, PERIOD);
             }
 
             @Test
@@ -1563,7 +1570,7 @@ public class RulesTextTestCase {
                         Flying
                         {R}: ~ gets +1/+0 until end of turn.""";
                 tokens = List.of(FLYING, NEWLINE,
-                        LBRACKET, R, RBRACKET, COLON, SPACE, TILDE, SPACE, GET, SPACE, PLUS, Number.ONE, SLASH, PLUS, new Number(0), SPACE, UNTIL, SPACE, END, SPACE, OF, SPACE, TURN, PERIOD);
+                        LBRACKET, R, RBRACKET, COLON, SPACE, TILDE, SPACE, GET, SPACE, PLUS, Number.ONE, SLASH, PLUS, Number.ZERO, SPACE, UNTIL, SPACE, END, SPACE, OF, SPACE, TURN, PERIOD);
             }
 
             @Test
@@ -1618,7 +1625,7 @@ public class RulesTextTestCase {
                         Defender
                         {R}: ~ gets +1/+0 until end of turn.""";
                 tokens = List.of(DEFENDER, NEWLINE,
-                        LBRACKET, R, RBRACKET, COLON, SPACE, TILDE, SPACE, GET, SPACE, PLUS, Number.ONE, SLASH, PLUS, new Number(0), SPACE, UNTIL, SPACE, END, SPACE, OF, SPACE, TURN, PERIOD);
+                        LBRACKET, R, RBRACKET, COLON, SPACE, TILDE, SPACE, GET, SPACE, PLUS, Number.ONE, SLASH, PLUS, Number.ZERO, SPACE, UNTIL, SPACE, END, SPACE, OF, SPACE, TURN, PERIOD);
             }
 
             @Test
@@ -1656,7 +1663,7 @@ public class RulesTextTestCase {
                         Cast this spell only before the combat damage step.
                         Target creature gains trample and gets +X/+0 until end of turn, where X is its power. At the beginning of the next end step, destroy that creature if it attacked this turn.""";
                 tokens = List.of(CAST, SPACE, THIS, SPACE, SPELL, SPACE, ONLY, SPACE, BEFORE, SPACE, THE, SPACE, COMBAT, SPACE, DAMAGE, SPACE, STEP, PERIOD, NEWLINE,
-                        TARGET, SPACE, CREATURE, SPACE, GAIN, SPACE, TRAMPLE, SPACE, AND, SPACE, GET, SPACE, PLUS, X, SLASH, PLUS, new Number(0), SPACE, UNTIL, SPACE, END, SPACE, OF, SPACE, TURN, COMMA, SPACE, WHERE, SPACE, X, SPACE, IS, SPACE, IT, POSSESSIVE, SPACE, POWER, PERIOD, SPACE, AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, THE, SPACE, NEXT, SPACE, END, SPACE, STEP, COMMA, SPACE, DESTROY, SPACE, THAT, SPACE, CREATURE, SPACE, IF, SPACE, IT, SPACE, ATTACK, ED, SPACE, THIS, SPACE, TURN, PERIOD);
+                        TARGET, SPACE, CREATURE, SPACE, GAIN, SPACE, TRAMPLE, SPACE, AND, SPACE, GET, SPACE, PLUS, X, SLASH, PLUS, Number.ZERO, SPACE, UNTIL, SPACE, END, SPACE, OF, SPACE, TURN, COMMA, SPACE, WHERE, SPACE, X, SPACE, IS, SPACE, IT, POSSESSIVE, SPACE, POWER, PERIOD, SPACE, AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, THE, SPACE, NEXT, SPACE, END, SPACE, STEP, COMMA, SPACE, DESTROY, SPACE, THAT, SPACE, CREATURE, SPACE, IF, SPACE, IT, SPACE, ATTACK, ED, SPACE, THIS, SPACE, TURN, PERIOD);
             }
 
             @Test
@@ -1725,6 +1732,144 @@ public class RulesTextTestCase {
             void fog() {
                 text = "Prevent all combat damage that would be dealt this turn.";
                 tokens = List.of(PREVENT, SPACE, ALL, SPACE, COMBAT, SPACE, DAMAGE, SPACE, THAT, SPACE, WOULD, SPACE, BE, SPACE, DEAL, ED, SPACE, THIS, SPACE, TURN, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Force of Nature")
+            void forceOfNature() {
+                text = """
+                        Trample
+                        At the beginning of your upkeep, ~ deals 8 damage to you unless you pay {G}{G}{G}{G}.""";
+                tokens = List.of(TRAMPLE, NEWLINE,
+                        AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, YOU, POSSESSIVE, SPACE, UPKEEP, COMMA, SPACE, TILDE, SPACE, DEAL, SPACE, new Number(8), SPACE, DAMAGE, SPACE, TO, SPACE, YOU, SPACE, UNLESS, SPACE, YOU, SPACE, PAY, SPACE, LBRACKET, G, RBRACKET, LBRACKET, G, RBRACKET, LBRACKET, G, RBRACKET, LBRACKET, G, RBRACKET, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Fungusaur")
+            void fungusaur() {
+                text = "Whenever ~ is dealt damage, put a +1/+1 counter on it.";
+                tokens = List.of(WHENEVER, SPACE, TILDE, SPACE, IS, SPACE, DEAL, ED, SPACE, DAMAGE, COMMA, SPACE, PUT, SPACE, A, SPACE, PLUS, Number.ONE, SLASH, PLUS, Number.ONE, SPACE, COUNTER, SPACE, ON, SPACE, IT, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Gaea\u2019s Liege")
+            void gaeasLiege() {
+                text = """
+                        As long as ~ isn\u2019t attacking, its power and toughness are each equal to the number of Forests you control. As long as ~ is attacking, its power and toughness are each equal to the number of Forests defending player controls.
+                        {T}: Target land becomes a Forest until ~ leaves the battlefield.""";
+                tokens = List.of(AS, SPACE, LONG, SPACE, AS, SPACE, TILDE, SPACE, IS, NOT, SPACE, ATTACK, ING, COMMA, SPACE, IT, POSSESSIVE, SPACE, POWER, SPACE, AND, SPACE, TOUGHNESS, SPACE, IS, SPACE, EACH, SPACE, EQUAL, SPACE, TO, SPACE, THE, SPACE, NUMBER, SPACE, OF, SPACE, FOREST, S, SPACE, YOU, SPACE, CONTROL, PERIOD, SPACE, AS, SPACE, LONG, SPACE, AS, SPACE, TILDE, SPACE, IS, SPACE, ATTACK, ING, COMMA, SPACE, IT, POSSESSIVE, SPACE, POWER, SPACE, AND, SPACE, TOUGHNESS, SPACE, IS, SPACE, EACH, SPACE, EQUAL, SPACE, TO, SPACE, THE, SPACE, NUMBER, SPACE, OF, SPACE, FOREST, S, SPACE, DEFENDING, SPACE, PLAY, ER, SPACE, CONTROL, PERIOD, NEWLINE,
+                        LBRACKET, T, RBRACKET, COLON, SPACE, TARGET, SPACE, LAND, SPACE, BECOME, SPACE, A, SPACE, FOREST, SPACE, UNTIL, SPACE, TILDE, SPACE, LEAVE, SPACE, THE, SPACE, BATTLEFIELD, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Giant Growth")
+            void giantGrowth() {
+                text = "Target creature gets +3/+3 until end of turn.";
+                tokens = List.of(TARGET, SPACE, CREATURE, SPACE, GET, SPACE, PLUS, Number.THREE, SLASH, PLUS, Number.THREE, SPACE, UNTIL, SPACE, END, SPACE, OF, SPACE, TURN, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Giant Spider")
+            void giantSpider() {
+                text = "Reach";
+                tokens = List.of(REACH);
+            }
+
+            @Test
+            @DisplayName("Grizzly Bears")
+            void grizzlyBears() {
+                text = "";
+                tokens = List.of();
+            }
+
+            @Test
+            @DisplayName("Hurricane")
+            void hurricane() {
+                text = "~ deals X damage to each creature with flying and each player.";
+                tokens = List.of(TILDE, SPACE, DEAL, SPACE, X, SPACE, DAMAGE, SPACE, TO, SPACE, EACH, SPACE, CREATURE, SPACE, WITH, SPACE, FLYING, SPACE, AND, SPACE, EACH, SPACE, PLAY, ER, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Ice Storm")
+            void iceStorm() {
+                text = "Destroy target land.";
+                tokens = List.of(DESTROY, SPACE, TARGET, SPACE, LAND, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Instill Energy")
+            void instillEnergy() {
+                text = """
+                        Enchant creature
+                        Enchanted creature can attack as though it had haste.
+                        {0}: Untap enchanted creature. Activate only during your turn and only once each turn.""";
+                tokens = List.of(ENCHANT, SPACE, CREATURE, NEWLINE,
+                        ENCHANT, ED, SPACE, CREATURE, SPACE, CAN, SPACE, ATTACK, SPACE, AS, SPACE, THOUGH, SPACE, IT, SPACE, HAVE, ED, SPACE, HASTE, PERIOD, NEWLINE,
+                        LBRACKET, Number.ZERO, RBRACKET, COLON, SPACE, NOT, TAP, SPACE, ENCHANT, ED, SPACE, CREATURE, PERIOD, SPACE, ACTIVATE, SPACE, ONLY, SPACE, DURING, SPACE, YOU, POSSESSIVE, SPACE, TURN, SPACE, AND, SPACE, ONLY, SPACE, ONCE, SPACE, EACH, SPACE, TURN, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Ironroot Treefolk")
+            void ironrootTreefolk() {
+                text = "";
+                tokens = List.of();
+            }
+
+            @Test
+            @DisplayName("Kudzu")
+            void kudzu() {
+                text = """
+                        Enchant land
+                        When enchanted land becomes tapped, destroy it. That land\u2019s controller may attach ~ to a land of their choice.""";
+                tokens = List.of(ENCHANT, SPACE, LAND, NEWLINE,
+                        WHEN, SPACE, ENCHANT, ED, SPACE, LAND, SPACE, BECOME, SPACE, TAP, ED, COMMA, SPACE, DESTROY, SPACE, IT, PERIOD, SPACE, THAT, SPACE, LAND, POSSESSIVE, SPACE, CONTROL, ER, SPACE, MAY, SPACE, ATTACH, SPACE, TILDE, SPACE, TO, SPACE, A, SPACE, LAND, SPACE, OF, SPACE, THEY, POSSESSIVE, SPACE, CHOICE, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Ley Druid")
+            void leyDruid() {
+                text = "{T}: Untap target land.";
+                tokens = List.of(LBRACKET, T, RBRACKET, COLON, SPACE, NOT, TAP, SPACE, TARGET, SPACE, LAND, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Lifeforce")
+            void lifeforce() {
+                text = "{G}{G}: Counter target black spell.";
+                tokens = List.of(LBRACKET, G, RBRACKET, LBRACKET, G, RBRACKET, COLON, SPACE, COUNTER, SPACE, TARGET, SPACE, BLACK, SPACE, SPELL, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Lifelace")
+            void lifelace() {
+                text = "Target spell or permanent becomes green.";
+                tokens = List.of(TARGET, SPACE, SPELL, SPACE, OR, SPACE, PERMANENT, SPACE, BECOME, SPACE, GREEN, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Living Artifact")
+            void livingArtifact() {
+                text = """
+                        Enchant artifact
+                        Whenever you\u2019re dealt damage, put that many vitality counters on ~.
+                        At the beginning of your upkeep, you may remove a vitality counter from ~. If you do, you gain 1 life.""";
+                tokens = List.of(ENCHANT, SPACE, ARTIFACT, NEWLINE,
+                        WHENEVER, SPACE, YOU, IS, SPACE, DEAL, ED, SPACE, DAMAGE, COMMA, SPACE, PUT, SPACE, THAT, SPACE, MANY, SPACE, VITALITY, SPACE, COUNTER, SPACE, ON, SPACE, TILDE, PERIOD, NEWLINE,
+                        AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, YOU, POSSESSIVE, SPACE, UPKEEP, COMMA, SPACE, YOU, SPACE, MAY, SPACE, REMOVE, SPACE, A, SPACE, VITALITY, SPACE, COUNTER, SPACE, FROM, SPACE, TILDE, PERIOD, SPACE, IF, SPACE, YOU, SPACE, DO, COMMA, SPACE, YOU, SPACE, GAIN, SPACE, Number.ONE, SPACE, LIFE, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Living Lands")
+            void livingLands() {
+                text = "All Forests are 1/1 creatures that are still lands.";
+                tokens = List.of(ALL, SPACE, FOREST, S, SPACE, IS, SPACE, Number.ONE, SLASH, Number.ONE, SPACE, CREATURE, S, SPACE, THAT, SPACE, IS, SPACE, STILL, SPACE, LAND, S, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Llanowar Elves")
+            void llanowarElves() {
+                text = "{T}: Add {G}.";
+                tokens = List.of(LBRACKET, T, RBRACKET, COLON, SPACE, ADD, SPACE, LBRACKET, G, RBRACKET, PERIOD);
             }
         }
     }

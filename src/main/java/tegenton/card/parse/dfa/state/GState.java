@@ -24,6 +24,7 @@ public class GState extends State {
             case 'E' -> new InfixSubstring("E", 'T', GETState::state);
             case 'O' -> GOState.state();
             case 'R' -> GRState.state();
+            case '}', '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }
