@@ -10,10 +10,11 @@ public class DFA {
     private final List<Word> products = new ArrayList<>();
     private State state = State.state();
 
-    public void consume(final int i) {
-        consume((char) i);
-    }
-
+    /**
+     * Feed the DFA a character.
+     *
+     * @param c The next character
+     */
     public void consume(final char c) {
         state.produce(c).ifPresent(products::add);
         state = state.transition(c);

@@ -4,23 +4,33 @@ import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.m.MOState;
 import tegenton.card.parse.dfa.state.m.o.r.MOREState;
 import tegenton.card.parse.lexicon.Word;
+
 import java.util.Optional;
 
 public class MORState extends MOState {
-    private static final MORState instance = new MORState();
+    private static final MORState INSTANCE = new MORState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static MORState state() {
-        return instance;
+        return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
             case 'E' -> MOREState.state();
-            default -> throw new IllegalStateException("Cannot transition from MORState on " + c);
+            default -> invalid(c);
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.empty();

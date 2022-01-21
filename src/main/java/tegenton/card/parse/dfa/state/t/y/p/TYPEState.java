@@ -16,6 +16,10 @@ public class TYPEState extends TState {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public State transition(final char c) {
         return switch (c) {
             case 'S' -> SState.state();
@@ -24,6 +28,9 @@ public class TYPEState extends TState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public Optional<Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'S', '\0', '.', ' ' -> GameNoun.TYPE;

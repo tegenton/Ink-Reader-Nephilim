@@ -8,20 +8,29 @@ import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
 public class THOSState extends THOState {
-    private static final THOSState instance = new THOSState();
+    private static final THOSState INSTANCE = new THOSState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static THOSState state() {
-        return instance;
+        return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
             case 'E' -> THOSEState.state();
-            default -> throw new IllegalStateException("Cannot transition from THOSState on " + c);
+            default -> invalid(c);
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.empty();

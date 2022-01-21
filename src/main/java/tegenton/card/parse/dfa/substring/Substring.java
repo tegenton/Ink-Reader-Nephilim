@@ -13,6 +13,12 @@ public abstract class Substring extends State {
         this.text = text;
     }
 
+    /**
+     * Continue through the substring path.
+     *
+     * @param c Character to transition on.
+     * @return This.
+     */
     public State transition(final char c) {
         if (index < text.length && c == text[index]) {
             index++;

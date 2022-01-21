@@ -8,12 +8,18 @@ import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
 public class THState extends TState {
-    private static final THState instance = new THState();
+    private static final THState INSTANCE = new THState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static THState state() {
-        return instance;
+        return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -22,10 +28,13 @@ public class THState extends TState {
             case 'I' -> THIState.state();
             case 'O' -> THOState.state();
             case 'R' -> THRState.state();
-            default -> throw new IllegalStateException("Cannot transition from THState on " + c);
+            default -> invalid(c);
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.empty();

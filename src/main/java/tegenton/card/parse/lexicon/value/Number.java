@@ -14,11 +14,11 @@ public final class Number implements ValueWord {
         this.value = val;
     }
 
-    public static Number valueOf(String s) {
+    public static Number valueOf(final String s) {
         return new Number(Integer.parseInt(s));
     }
 
-    public static Number valueOf(int i) {
+    public static Number valueOf(final int i) {
         return new Number(i);
     }
 
@@ -36,7 +36,7 @@ public final class Number implements ValueWord {
         return value;
     }
 
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (o instanceof Number n) {
             return n.getVal() == this.getVal();
         }
