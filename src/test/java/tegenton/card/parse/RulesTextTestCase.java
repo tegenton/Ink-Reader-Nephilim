@@ -39,10 +39,8 @@ import static tegenton.card.parse.lexicon.game.source.target.TargetAdjective.ABL
 import static tegenton.card.parse.lexicon.game.source.target.TargetAuxiliaryVerb.CAN;
 import static tegenton.card.parse.lexicon.game.source.target.TargetAuxiliaryVerb.WOULD;
 import static tegenton.card.parse.lexicon.game.source.target.TargetModifier.POSSESSIVE;
-import static tegenton.card.parse.lexicon.game.source.target.TargetNoun.THEY;
-import static tegenton.card.parse.lexicon.game.source.target.TargetNoun.WHO;
-import static tegenton.card.parse.lexicon.game.source.target.TargetVerb.GAIN;
-import static tegenton.card.parse.lexicon.game.source.target.TargetVerb.LOSE;
+import static tegenton.card.parse.lexicon.game.source.target.TargetNoun.*;
+import static tegenton.card.parse.lexicon.game.source.target.TargetVerb.*;
 import static tegenton.card.parse.lexicon.game.source.target.object.ObjectAdjective.TOP;
 import static tegenton.card.parse.lexicon.game.source.target.object.ObjectAttribute.*;
 import static tegenton.card.parse.lexicon.game.source.target.object.ObjectNoun.*;
@@ -1659,6 +1657,74 @@ public class RulesTextTestCase {
                         Target creature gains trample and gets +X/+0 until end of turn, where X is its power. At the beginning of the next end step, destroy that creature if it attacked this turn.""";
                 tokens = List.of(CAST, SPACE, THIS, SPACE, SPELL, SPACE, ONLY, SPACE, BEFORE, SPACE, THE, SPACE, COMBAT, SPACE, DAMAGE, SPACE, STEP, PERIOD, NEWLINE,
                         TARGET, SPACE, CREATURE, SPACE, GAIN, SPACE, TRAMPLE, SPACE, AND, SPACE, GET, SPACE, PLUS, X, SLASH, PLUS, new Number(0), SPACE, UNTIL, SPACE, END, SPACE, OF, SPACE, TURN, COMMA, SPACE, WHERE, SPACE, X, SPACE, IS, SPACE, IT, POSSESSIVE, SPACE, POWER, PERIOD, SPACE, AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, THE, SPACE, NEXT, SPACE, END, SPACE, STEP, COMMA, SPACE, DESTROY, SPACE, THAT, SPACE, CREATURE, SPACE, IF, SPACE, IT, SPACE, ATTACK, ED, SPACE, THIS, SPACE, TURN, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Birds of Paradise")
+            void birdsOfParadise() {
+                text = """
+                        Flying
+                        {T}: Add one mana of any color.""";
+                tokens = List.of(FLYING, NEWLINE,
+                        LBRACKET, T, RBRACKET, COLON, SPACE, ADD, SPACE, ONE, SPACE, MANA, SPACE, OF, SPACE, ANY, SPACE, COLOR, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Camouflage")
+            void camouflage() {
+                text = """
+                        Cast this spell only during your declare attackers step.
+                        This turn, instead of declaring blockers, each defending player chooses any number of creatures they control and divides them into a number of piles equal to the number of attacking creatures for whom that player is the defending player. Creatures those players control that can block additional creatures may likewise be put into additional piles. Assign each pile to a different one of those attacking creatures at random. Each creature in a pile that can block the creature that pile is assigned to does so.""";
+                tokens = List.of(CAST, SPACE, THIS, SPACE, SPELL, SPACE, ONLY, SPACE, DURING, SPACE, YOU, POSSESSIVE, SPACE, DECLARE, SPACE, ATTACK, S, SPACE, STEP, PERIOD, NEWLINE,
+                        THIS, SPACE, TURN, COMMA, SPACE, INSTEAD, SPACE, OF, SPACE, ING, SPACE, BLOCK, ER, S, COMMA, SPACE, EACH, SPACE, DEFENDING, SPACE, PLAY, ER, SPACE, CHOOSE, SPACE, ANY, SPACE, NUMBER, SPACE, OF, SPACE, CREATURE, S, SPACE, THEY, SPACE, CONTROL, SPACE, AND, SPACE, DIVIDE, SPACE, THEM, SPACE, IN, TO, SPACE, A, SPACE, NUMBER, SPACE, OF, SPACE, PILE, S, SPACE, EQUAL, SPACE, TO, SPACE, THE, SPACE, NUMBER, SPACE, OF, SPACE, ATTACK, ING, SPACE, CREATURE, S, SPACE, FOR, SPACE, WHO, SPACE, THAT, SPACE, PLAY, ER, SPACE, IS, SPACE, THE, SPACE, DEFENDING, SPACE, PLAY, ER, PERIOD, SPACE, CREATURE, S, SPACE, THOSE, SPACE, PLAY, ER, S, SPACE, CONTROL, SPACE, THAT, SPACE, CAN, SPACE, BLOCK, SPACE, ADDITIONAL, SPACE, CREATURE, S, SPACE, MAY, SPACE, LIKEWISE, SPACE, BE, SPACE, PUT, SPACE, IN, TO, SPACE, ADDITIONAL, SPACE, PILE, S, PERIOD, SPACE, ASSIGN, SPACE, EACH, SPACE, PILE, SPACE, TO, SPACE, A, SPACE, DIFFERENT, SPACE, ONE, SPACE, OF, SPACE, THOSE, SPACE, ATTACK, ING, SPACE, CREATURE, S, SPACE, AT, SPACE, RANDOM, PERIOD, SPACE, EACH, SPACE, CREATURE, SPACE, IN, SPACE, A, SPACE, PILE, SPACE, THAT, SPACE, CAN, SPACE, BLOCK, SPACE, THE, SPACE, CREATURE, SPACE, THAT, SPACE, PILE, SPACE, IS, SPACE, ASSIGN, ED, SPACE, TO, SPACE, DO, SPACE, SO, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Channel")
+            void channel() {
+                text = "Until end of turn, any time you could activate a mana ability, you may pay 1 life. If you do, add {C}.";
+                tokens = List.of(UNTIL, SPACE, END, SPACE, OF, SPACE, TURN, COMMA, SPACE, ANY, SPACE, TIME, SPACE, YOU, SPACE, COULD, SPACE, ACTIVATE, SPACE, A, SPACE, MANA, SPACE, ABILITY, COMMA, SPACE, YOU, SPACE, MAY, SPACE, PAY, SPACE, Number.ONE, SPACE, LIFE, PERIOD, SPACE, IF, SPACE, YOU, SPACE, DO, COMMA, SPACE, ADD, SPACE, LBRACKET, C, RBRACKET, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Cockatrice")
+            void cockatrice() {
+                text = """
+                        Flying
+                        Whenever ~ blocks or becomes blocked by a non-Wall creature, destroy that creature at end of combat.""";
+                tokens = List.of(FLYING, NEWLINE,
+                        WHENEVER, SPACE, TILDE, SPACE, BLOCK, SPACE, OR, SPACE, BECOME, SPACE, BLOCK, ED, SPACE, BY, SPACE, A, SPACE, NOT, MINUS, WALL, SPACE, CREATURE, COMMA, SPACE, DESTROY, SPACE, THAT, SPACE, CREATURE, SPACE, AT, SPACE, END, SPACE, OF, SPACE, COMBAT, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Craw Wurm")
+            void crawWurm() {
+                text = "";
+                tokens = List.of();
+            }
+
+            @Test
+            @DisplayName("Elvish Archers")
+            void elvishArchers() {
+                text = "First strike";
+                tokens = List.of(FIRST, SPACE, STRIKE);
+            }
+
+            @Test
+            @DisplayName("Fastbond")
+            void fastbond() {
+                text = """
+                        You may play any number of lands on each of your turns.
+                        Whenever you play a land, if it wasn\u2019t the first land you played this turn, ~ deals 1 damage to you.""";
+                tokens = List.of(YOU, SPACE, MAY, SPACE, PLAY, SPACE, ANY, SPACE, NUMBER, SPACE, OF, SPACE, LAND, S, SPACE, ON, SPACE, EACH, SPACE, OF, SPACE, YOU, POSSESSIVE, SPACE, TURN, S, PERIOD, NEWLINE,
+                        WHENEVER, SPACE, YOU, SPACE, PLAY, SPACE, A, SPACE, LAND, COMMA, SPACE, IF, SPACE, IT, SPACE, IS, ED, NOT, SPACE, THE, SPACE, FIRST, SPACE, LAND, SPACE, YOU, SPACE, PLAY, ED, SPACE, THIS, SPACE, TURN, COMMA, SPACE, TILDE, SPACE, DEAL, SPACE, Number.ONE, SPACE, DAMAGE, SPACE, TO, SPACE, YOU, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Fog")
+            void fog() {
+                text = "Prevent all combat damage that would be dealt this turn.";
+                tokens = List.of(PREVENT, SPACE, ALL, SPACE, COMBAT, SPACE, DAMAGE, SPACE, THAT, SPACE, WOULD, SPACE, BE, SPACE, DEAL, ED, SPACE, THIS, SPACE, TURN, PERIOD);
             }
         }
     }

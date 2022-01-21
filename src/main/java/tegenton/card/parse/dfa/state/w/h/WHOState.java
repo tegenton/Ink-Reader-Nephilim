@@ -18,6 +18,7 @@ public class WHOState extends WHState {
     @Override
     public State transition(char c) {
         return switch (c) {
+            case 'M' -> this;
             case '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };

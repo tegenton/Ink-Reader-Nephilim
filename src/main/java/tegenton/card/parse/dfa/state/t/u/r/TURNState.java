@@ -1,19 +1,18 @@
-package tegenton.card.parse.dfa.state.l.a.n;
+package tegenton.card.parse.dfa.state.t.u.r;
 
-import tegenton.card.parse.dfa.state.PossessiveState;
 import tegenton.card.parse.dfa.state.SState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.SymbolState;
-import tegenton.card.parse.dfa.state.l.LAState;
+import tegenton.card.parse.dfa.state.TState;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.game.type.CardType;
+import tegenton.card.parse.lexicon.game.GameNoun;
 
 import java.util.Optional;
 
-public class LANDState extends LAState {
-    private static final LANDState INSTANCE = new LANDState();
+public class TURNState extends TState {
+    private static final TURNState INSTANCE = new TURNState();
 
-    public static LANDState state() {
+    public static TURNState state() {
         return INSTANCE;
     }
 
@@ -21,8 +20,7 @@ public class LANDState extends LAState {
     public State transition(char c) {
         return switch (c) {
             case 'S' -> SState.state();
-            case '\u2019' -> PossessiveState.state();
-            case ',', '\n', '\0', '.', ' ' -> SymbolState.state(c);
+            case ',', '\0', '.', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }
@@ -30,7 +28,7 @@ public class LANDState extends LAState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case 'S', '\u2019', ',', '\n', '\0', '.', ' ' -> CardType.LAND;
+            case 'S', ',', '\0', '.', ' ' -> GameNoun.TURN;
             default -> null;
         });
     }

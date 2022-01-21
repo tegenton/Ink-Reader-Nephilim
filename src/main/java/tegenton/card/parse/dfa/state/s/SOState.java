@@ -25,7 +25,7 @@ public class SOState extends SState {
             case 'M' -> new SuffixSubstring("ME", Determiner.SOME);
             case 'R' -> new SuffixSubstring("RCERY", CardType.SORCERY);
             case 'U' -> new SuffixSubstring("URCE", SourceNoun.SOURCE);
-            case ',', '\0', ' ' -> SymbolState.state(c);
+            case ',', '\0', '.', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }
@@ -33,7 +33,7 @@ public class SOState extends SState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case ',', '\0', ' ' -> Pronoun.SO;
+            case ',', '\0', '.', ' ' -> Pronoun.SO;
             default -> null;
         });
     }

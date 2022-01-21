@@ -20,6 +20,7 @@ public class EState extends State {
     public State transition(char c) {
         return switch (c) {
             case 'A' -> EAState.state();
+            case 'D' -> EDState.state();
             case 'F' -> new SuffixSubstring("FFECT", GameNoun.EFFECT);
             case 'I' -> EIState.state();
             case 'L' -> ELState.state();

@@ -23,6 +23,7 @@ public class CState extends State {
             case 'H' -> CHState.state();
             case 'O' -> COState.state();
             case 'R' -> CRState.state();
+            case '}', '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }

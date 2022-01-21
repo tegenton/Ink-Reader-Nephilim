@@ -3,10 +3,10 @@ package tegenton.card.parse.dfa.state.a;
 import tegenton.card.parse.dfa.state.AState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.SymbolState;
-import tegenton.card.parse.dfa.substring.SuffixSubstring;
+import tegenton.card.parse.dfa.state.a.s.s.i.g.ASSIGNState;
+import tegenton.card.parse.dfa.substring.InfixSubstring;
 import tegenton.card.parse.lexicon.SubordinateConjunction;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.game.source.target.TargetVerb;
 
 import java.util.Optional;
 
@@ -20,7 +20,7 @@ public class ASState extends AState {
     @Override
     public State transition(char c) {
         return switch (c) {
-            case 'S' -> new SuffixSubstring("SIGN", TargetVerb.ASSIGN);
+            case 'S' -> new InfixSubstring("SIG", 'N', ASSIGNState::state);
             case '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };

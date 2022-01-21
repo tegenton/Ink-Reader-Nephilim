@@ -1,6 +1,7 @@
 package tegenton.card.parse.dfa.state.t.h.e;
 
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.dfa.state.t.h.THEState;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.source.target.TargetNoun;
@@ -17,15 +18,16 @@ public class THEMState extends THEState {
     @Override
     public State transition(char c) {
         return switch (c) {
+            case '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }
 
     @Override
     public Optional<? extends Word> produce(char c) {
-        return switch (c) {
-            case '\0', ' ' -> Optional.of(TargetNoun.THEM);
-            default -> Optional.empty();
-        };
+        return Optional.ofNullable(switch (c) {
+            case '\0', ' ' -> TargetNoun.THEM;
+            default -> null;
+        });
     }
 }

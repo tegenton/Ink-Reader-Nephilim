@@ -27,7 +27,7 @@ public class DOState extends DState {
             case 'I' -> new INGMorpheme();
             case 'N' -> DONState.state();
             case 'W' -> new SuffixSubstring("WN", Particle.DOWN);
-            case ',' -> SymbolState.state(c);
+            case ',', '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }

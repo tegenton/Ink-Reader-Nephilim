@@ -3,7 +3,7 @@ package tegenton.card.parse.dfa.state.d.e;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.d.DEState;
 import tegenton.card.parse.dfa.state.d.e.c.DECKState;
-import tegenton.card.parse.dfa.state.d.e.c.l.a.r.DECLAREState;
+import tegenton.card.parse.dfa.state.d.e.c.l.a.DECLARState;
 import tegenton.card.parse.dfa.substring.InfixSubstring;
 import tegenton.card.parse.lexicon.Word;
 
@@ -20,7 +20,7 @@ public class DECState extends DEState {
     public State transition(char c) {
         return switch (c) {
             case 'K' -> DECKState.state();
-            case 'L' -> new InfixSubstring("LAR", 'E', DECLAREState::state);
+            case 'L' -> new InfixSubstring("LA", 'R', DECLARState::state);
             default -> invalid(c);
         };
     }

@@ -4,10 +4,10 @@ import tegenton.card.parse.dfa.state.p.PAState;
 import tegenton.card.parse.dfa.state.p.PLState;
 import tegenton.card.parse.dfa.state.p.PRState;
 import tegenton.card.parse.dfa.state.p.e.r.m.a.n.e.n.PERMANENTState;
+import tegenton.card.parse.dfa.state.p.i.l.PILEState;
 import tegenton.card.parse.dfa.substring.InfixSubstring;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.game.GameNoun;
 import tegenton.card.parse.lexicon.game.source.target.object.ObjectAttribute;
 import tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb;
 
@@ -25,7 +25,7 @@ public class PState extends State {
         return switch (c) {
             case 'A' -> PAState.state();
             case 'E' -> new InfixSubstring("ERMANEN", 'T', PERMANENTState::state);
-            case 'I' -> new SuffixSubstring("ILE", GameNoun.PILE);
+            case 'I' -> new InfixSubstring("IL", 'E', PILEState::state);
             case 'O' -> new SuffixSubstring("OWER", ObjectAttribute.POWER);
             case 'L' -> PLState.state();
             case 'R' -> PRState.state();
