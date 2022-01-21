@@ -1871,6 +1871,96 @@ public class RulesTextTestCase {
                 text = "{T}: Add {G}.";
                 tokens = List.of(LBRACKET, T, RBRACKET, COLON, SPACE, ADD, SPACE, LBRACKET, G, RBRACKET, PERIOD);
             }
+
+            @Test
+            @DisplayName("Lure")
+            void lure() {
+                text = """
+                        Enchant creature
+                        All creatures able to block enchanted creature do so.""";
+                tokens = List.of(ENCHANT, SPACE, CREATURE, NEWLINE,
+                        ALL, SPACE, CREATURE, S, SPACE, ABLE, SPACE, TO, SPACE, BLOCK, SPACE, ENCHANT, ED, SPACE, CREATURE, SPACE, DO, SPACE, SO, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Natural Selection")
+            void naturalSelection() {
+                text = "Look at the top three cards of target player\u2019s library, then put them back in any order. You may have that player shuffle.";
+                tokens = List.of(LOOK, SPACE, AT, SPACE, THE, SPACE, TOP, SPACE, THREE, SPACE, CARD, S, SPACE, OF, SPACE, TARGET, SPACE, PLAY, ER, POSSESSIVE, SPACE, LIBRARY, COMMA, SPACE, THEN, SPACE, PUT, SPACE, THEM, SPACE, BACK, SPACE, IN, SPACE, ANY, SPACE, ORDER, PERIOD, SPACE, YOU, SPACE, MAY, SPACE, HAVE, SPACE, THAT, SPACE, PLAY, ER, SPACE, SHUFFLE, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Regeneration")
+            void regeneration() {
+                text = """
+                        Enchant creature
+                        {G}: Regenerate enchanted creature.""";
+                tokens = List.of(ENCHANT, SPACE, CREATURE, NEWLINE,
+                        LBRACKET, G, RBRACKET, COLON, SPACE, REGENERATE, SPACE, ENCHANT, ED, SPACE, CREATURE, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Regrowth")
+            void regrowth() {
+                text = "Return target card from your graveyard to your hand.";
+                tokens = List.of(RETURN, SPACE, TARGET, SPACE, CARD, SPACE, FROM, SPACE, YOU, POSSESSIVE, SPACE, GRAVEYARD, SPACE, TO, SPACE, YOU, POSSESSIVE, SPACE, HAND, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Scryb Sprites")
+            void scrybSprites() {
+                text = "Flying";
+                tokens = List.of(FLYING);
+            }
+
+            @Test
+            @DisplayName("Shanodin Dryads")
+            void shanodinDryads() {
+                text = "Forestwalk";
+                tokens = List.of(FOREST, WALK);
+            }
+
+            @Test
+            @DisplayName("Stream of Life")
+            void streamOfLife() {
+                text = "Target player gains X life.";
+                tokens = List.of(TARGET, SPACE, PLAY, ER, SPACE, GAIN, SPACE, X, SPACE, LIFE, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Thicket Basilisk")
+            void thicketBasilisk() {
+                text = "Whenever ~ blocks or becomes blocked by a non-Wall creature, destroy that creature at end of combat.";
+                tokens = List.of(WHENEVER, SPACE, TILDE, SPACE, BLOCK, SPACE, OR, SPACE, BECOME, SPACE, BLOCK, ED, SPACE, BY, SPACE, A, SPACE, NOT, MINUS, WALL, SPACE, CREATURE, COMMA, SPACE, DESTROY, SPACE, THAT, SPACE, CREATURE, SPACE, AT, SPACE, END, SPACE, OF, SPACE, COMBAT, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Timber Wolves")
+            void timberWolves() {
+                text = "Banding";
+                tokens = List.of(BANDING);
+            }
+
+            @Test
+            @DisplayName("Tranquility")
+            void tranquility() {
+                text = "Destroy all enchantments.";
+                tokens = List.of(DESTROY, SPACE, ALL, SPACE, ENCHANTMENT, S, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Tsunami")
+            void tsunami() {
+                text = "Destroy all Islands.";
+                tokens = List.of(DESTROY, SPACE, ALL, SPACE, ISLAND, S, PERIOD);
+            }
+
+            @Test
+            @DisplayName("Verduran Enchantress")
+            void verduranEnchantress() {
+                text = "Whenever you cast an enchantment spell, you may draw a card.";
+                tokens = List.of(WHENEVER, SPACE, YOU, SPACE, CAST, SPACE, AN, SPACE, ENCHANTMENT, SPACE, SPELL, COMMA, SPACE, YOU, SPACE, MAY, SPACE, DRAW, SPACE, A, SPACE, CARD, PERIOD);
+            }
         }
     }
 }
