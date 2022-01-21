@@ -30,6 +30,7 @@ public class SState extends State {
             case 'O' -> SOState.state();
             case 'T' -> STState.state();
             case 'W' -> new InfixSubstring("WAM", 'P', SWAMPState::state);
+            case '\u2019' -> PossessiveState.state();
             case ',', '\0', ' ', '.' -> SymbolState.state(c);
             default -> invalid(c);
         };
@@ -38,7 +39,7 @@ public class SState extends State {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case ',', '\0', ' ', '.' -> Morpheme.S;
+            case '\u2019', ',', '\0', ' ', '.' -> Morpheme.S;
             default -> null;
         });
     }

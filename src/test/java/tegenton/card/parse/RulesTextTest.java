@@ -45,7 +45,7 @@ import static tegenton.card.parse.lexicon.game.source.target.object.card.CardNam
 import static tegenton.card.parse.lexicon.game.source.target.player.PlayerAdjective.ACTIVE;
 import static tegenton.card.parse.lexicon.game.source.target.player.PlayerAdjective.DEFENDING;
 import static tegenton.card.parse.lexicon.game.source.target.player.PlayerAdverb.CONTINUOUSLY;
-import static tegenton.card.parse.lexicon.game.source.target.player.PlayerAttribute.TOTAL;
+import static tegenton.card.parse.lexicon.game.source.target.player.PlayerAttribute.*;
 import static tegenton.card.parse.lexicon.game.source.target.player.PlayerNoun.OPPONENT;
 import static tegenton.card.parse.lexicon.game.source.target.player.PlayerNoun.YOU;
 import static tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb.*;
@@ -2174,6 +2174,179 @@ public class RulesTextTest extends LexTestTemplate {
         void illusionaryMask() {
             text = "{X}: You may choose a creature card in your hand whose mana cost could be paid by some amount of, or all of, the mana you spent on {X}. If you do, you may cast that card face down as a 2/2 creature spell without paying its mana cost. If the creature that spell becomes as it resolves has not been turned face up and would assign or deal damage, be dealt damage, or become tapped, instead it\u2019s turned face up and assigns or deals damage, is dealt damage, or becomes tapped. Activate only as a sorcery.";
             tokens = List.of(LBRACKET, X, RBRACKET, COLON, SPACE, YOU, SPACE, MAY, SPACE, CHOOSE, SPACE, A, SPACE, CREATURE, SPACE, CARD, SPACE, IN, SPACE, YOU, POSSESSIVE, SPACE, HAND, SPACE, WHO, POSSESSIVE, SPACE, MANA, SPACE, COST, SPACE, COULD, SPACE, BE, SPACE, PAY, ED, SPACE, BY, SPACE, SOME, SPACE, AMOUNT, SPACE, OF, COMMA, SPACE, OR, SPACE, ALL, SPACE, OF, COMMA, SPACE, THE, SPACE, MANA, SPACE, YOU, SPACE, SPEND, ED, SPACE, ON, SPACE, LBRACKET, X, RBRACKET, PERIOD, SPACE, IF, SPACE, YOU, SPACE, DO, COMMA, SPACE, YOU, SPACE, MAY, SPACE, CAST, SPACE, THAT, SPACE, CARD, SPACE, FACE, SPACE, DOWN, SPACE, AS, SPACE, A, SPACE, Number.TWO, SLASH, Number.TWO, SPACE, CREATURE, SPACE, SPELL, SPACE, WITH, OUT, SPACE, ING, SPACE, IT, POSSESSIVE, SPACE, MANA, SPACE, COST, PERIOD, SPACE, IF, SPACE, THE, SPACE, CREATURE, SPACE, THAT, SPACE, SPELL, SPACE, BECOME, SPACE, AS, SPACE, IT, SPACE, RESOLVE, SPACE, HAVE, SPACE, NOT, SPACE, ED, SPACE, TURN, ED, SPACE, FACE, SPACE, UP, SPACE, AND, SPACE, WOULD, SPACE, ASSIGN, SPACE, OR, SPACE, DEAL, SPACE, DAMAGE, COMMA, SPACE, BE, SPACE, DEAL, ED, SPACE, DAMAGE, COMMA, SPACE, OR, SPACE, BECOME, SPACE, TAP, ED, COMMA, SPACE, INSTEAD, SPACE, IT, IS, SPACE, TURN, ED, SPACE, FACE, SPACE, UP, SPACE, AND, SPACE, ASSIGN, SPACE, OR, SPACE, DEAL, SPACE, DAMAGE, COMMA, SPACE, IS, SPACE, DEAL, ED, SPACE, DAMAGE, COMMA, SPACE, OR, SPACE, BECOME, SPACE, TAP, ED, PERIOD, SPACE, ACTIVATE, SPACE, ONLY, SPACE, AS, SPACE, A, SPACE, SORCERY, PERIOD);
+        }
+
+        @Test
+        @DisplayName("Iron Star")
+        void ironStar() {
+            text = "Whenever a player casts a red spell, you may pay {1}. If you do, you gain 1 life.";
+            tokens = List.of(WHENEVER, SPACE, A, SPACE, PLAY, ER, SPACE, CAST, SPACE, A, SPACE, RED, SPACE, SPELL, COMMA, SPACE, YOU, SPACE, MAY, SPACE, PAY, SPACE, LBRACKET, Number.ONE, RBRACKET, PERIOD, SPACE, IF, SPACE, YOU, SPACE, DO, COMMA, SPACE, YOU, SPACE, GAIN, SPACE, Number.ONE, SPACE, LIFE, PERIOD);
+        }
+
+        @Test
+        @DisplayName("Ivory Cup")
+        void ivoryCup() {
+            text = "Whenever a player casts a white spell, you may pay {1}. If you do, you gain 1 life.";
+            tokens = List.of(WHENEVER, SPACE, A, SPACE, PLAY, ER, SPACE, CAST, SPACE, A, SPACE, WHITE, SPACE, SPELL, COMMA, SPACE, YOU, SPACE, MAY, SPACE, PAY, SPACE, LBRACKET, Number.ONE, RBRACKET, PERIOD, SPACE, IF, SPACE, YOU, SPACE, DO, COMMA, SPACE, YOU, SPACE, GAIN, SPACE, Number.ONE, SPACE, LIFE, PERIOD);
+        }
+
+        @Test
+        @DisplayName("Jade Monolith")
+        void jadeMonolith() {
+            text = "{1}: The next time a source of your choice would deal damage to target creature this turn, that source deals that damage to you instead.";
+            tokens = List.of(LBRACKET, Number.ONE, RBRACKET, COLON, SPACE, THE, SPACE, NEXT, SPACE, TIME, SPACE, A, SPACE, SOURCE, SPACE, OF, SPACE, YOU, POSSESSIVE, SPACE, CHOICE, SPACE, WOULD, SPACE, DEAL, SPACE, DAMAGE, SPACE, TO, SPACE, TARGET, SPACE, CREATURE, SPACE, THIS, SPACE, TURN, COMMA, SPACE, THAT, SPACE, SOURCE, SPACE, DEAL, SPACE, THAT, SPACE, DAMAGE, SPACE, TO, SPACE, YOU, SPACE, INSTEAD, PERIOD);
+        }
+
+        @Test
+        @DisplayName("Jade Statue")
+        void jadeStatue() {
+            text = "{2}: ~ becomes a 3/6 Golem artifact creature until end of combat. Activate only during combat.";
+            tokens = List.of(LBRACKET, Number.TWO, RBRACKET, COLON, SPACE, TILDE, SPACE, BECOME, SPACE, A, SPACE, Number.THREE, SLASH, new Number(6), SPACE, GOLEM, SPACE, ARTIFACT, SPACE, CREATURE, SPACE, UNTIL, SPACE, END, SPACE, OF, SPACE, COMBAT, PERIOD, SPACE, ACTIVATE, SPACE, ONLY, SPACE, DURING, SPACE, COMBAT, PERIOD);
+        }
+
+        @Test
+        @DisplayName("Jayemdae Tome")
+        void jayemdaeTome() {
+            text = "{4}: Draw a card.";
+            tokens = List.of(LBRACKET, Number.FOUR, RBRACKET, COLON, SPACE, DRAW, SPACE, A, SPACE, CARD, PERIOD);
+        }
+
+        @Test
+        @DisplayName("Juggernaut")
+        void juggernaut() {
+            text = """
+                    ~ attacks each combat if able.
+                    ~ can\u2019t be blocked by Walls.""";
+            tokens = List.of(TILDE, SPACE, ATTACK, SPACE, EACH, SPACE, COMBAT, SPACE, IF, SPACE, ABLE, PERIOD, NEWLINE,
+                    TILDE, SPACE, CAN, NOT, SPACE, BE, SPACE, BLOCK, ED, SPACE, BY, SPACE, WALL, S, PERIOD);
+        }
+
+        @Test
+        @DisplayName("Kormus Bell")
+        void kormusBell() {
+            text = "All Swamps are 1/1 creatures that are still lands.";
+            tokens = List.of(ALL, SPACE, SWAMP, S, SPACE, IS, SPACE, Number.ONE, SLASH, Number.ONE, SPACE, CREATURE, S, SPACE, THAT, SPACE, IS, SPACE, STILL, SPACE, LAND, S, PERIOD);
+        }
+
+        @Test
+        @DisplayName("Library of Leng")
+        void libraryOfLeng() {
+            text = """
+                    You have no maximum hand size.
+                    If an effect causes you to discard a card, discard it, but you may put it on top of your library instead of into your graveyard.""";
+            tokens = List.of(YOU, SPACE, HAVE, SPACE, NO, SPACE, MAXIMUM, SPACE, HAND, SPACE, SIZE, PERIOD, NEWLINE,
+                    IF, SPACE, AN, SPACE, EFFECT, SPACE, CAUSE, SPACE, YOU, SPACE, TO, SPACE, DISCARD, SPACE, A, SPACE, CARD, COMMA, SPACE, DISCARD, SPACE, IT, COMMA, SPACE, BUT, SPACE, YOU, SPACE, MAY, SPACE, PUT, SPACE, IT, SPACE, ON, SPACE, TOP, SPACE, OF, SPACE, YOU, POSSESSIVE, SPACE, LIBRARY, SPACE, INSTEAD, SPACE, OF, SPACE, IN, TO, SPACE, YOU, POSSESSIVE, SPACE, GRAVEYARD, PERIOD);
+        }
+
+        @Test
+        @DisplayName("Living Wall")
+        void livingWall() {
+            text = """
+                    Defender
+                    {1}: Regenerate ~.""";
+            tokens = List.of(DEFENDER, NEWLINE,
+                    LBRACKET, Number.ONE, RBRACKET, COLON, SPACE, REGENERATE, SPACE, TILDE, PERIOD);
+        }
+
+        @Test
+        @DisplayName("Mana Vault")
+        void manaVault() {
+            text = """
+                    ~ doesn\u2019t untap during your untap step.
+                    At the beginning of your upkeep, you may pay {4}. If you do, untap ~.
+                    At the beginning of your draw step, if ~ is tapped, it deals 1 damage to you.
+                    {T}: Add {C}{C}{C}.""";
+            tokens = List.of(TILDE, SPACE, DO, NOT, SPACE, NOT, TAP, SPACE, DURING, SPACE, YOU, POSSESSIVE, SPACE, NOT, TAP, SPACE, STEP, PERIOD, NEWLINE,
+                    AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, YOU, POSSESSIVE, SPACE, UPKEEP, COMMA, SPACE, YOU, SPACE, MAY, SPACE, PAY, SPACE, LBRACKET, Number.FOUR, RBRACKET, PERIOD, SPACE, IF, SPACE, YOU, SPACE, DO, COMMA, SPACE, NOT, TAP, SPACE, TILDE, PERIOD, NEWLINE,
+                    AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, YOU, POSSESSIVE, SPACE, DRAW, SPACE, STEP, COMMA, SPACE, IF, SPACE, TILDE, SPACE, IS, SPACE, TAP, ED, COMMA, SPACE, IT, SPACE, DEAL, SPACE, Number.ONE, SPACE, DAMAGE, SPACE, TO, SPACE, YOU, PERIOD, NEWLINE,
+                    LBRACKET, T, RBRACKET, COLON, SPACE, ADD, SPACE, LBRACKET, C, RBRACKET, LBRACKET, C, RBRACKET, LBRACKET, C, RBRACKET, PERIOD);
+        }
+
+        @Test
+        @DisplayName("Meekstone")
+        void meekstone() {
+            text = "Creatures with power 3 or greater don\u2019t untap during their controllers\u2019 untap steps.";
+            tokens = List.of(CREATURE, S, SPACE, WITH, SPACE, POWER, SPACE, Number.THREE, SPACE, OR, SPACE, GREATER, SPACE, DO, NOT, SPACE, NOT, TAP, SPACE, DURING, SPACE, THEY, POSSESSIVE, SPACE, CONTROL, ER, S, POSSESSIVE, SPACE, NOT, TAP, SPACE, STEP, S, PERIOD);
+        }
+
+        @Test
+        @DisplayName("Mox Emerald")
+        void moxEmerald() {
+            text = "{T}: Add {G}.";
+            tokens = List.of(LBRACKET, T, RBRACKET, COLON, SPACE, ADD, SPACE, LBRACKET, G, RBRACKET, PERIOD);
+        }
+
+        @Test
+        @DisplayName("Mox Jet")
+        void moxJet() {
+            text = "{T}: Add {B}.";
+            tokens = List.of(LBRACKET, T, RBRACKET, COLON, SPACE, ADD, SPACE, LBRACKET, B, RBRACKET, PERIOD);
+        }
+
+        @Test
+        @DisplayName("Mox Pearl")
+        void moxPearl() {
+            text = "{T}: Add {W}.";
+            tokens = List.of(LBRACKET, T, RBRACKET, COLON, SPACE, ADD, SPACE, LBRACKET, W, RBRACKET, PERIOD);
+        }
+
+        @Test
+        @DisplayName("Mox Ruby")
+        void moxRuby() {
+            text = "{T}: Add {R}.";
+            tokens = List.of(LBRACKET, T, RBRACKET, COLON, SPACE, ADD, SPACE, LBRACKET, R, RBRACKET, PERIOD);
+        }
+
+        @Test
+        @DisplayName("Mox Sapphire")
+        void moxSapphire() {
+            text = "{T}: Add {U}.";
+            tokens = List.of(LBRACKET, T, RBRACKET, COLON, SPACE, ADD, SPACE, LBRACKET, U, RBRACKET, PERIOD);
+        }
+
+        @Test
+        @DisplayName("Nevinyrral\u2019s Disk")
+        void nevinyrralsDisk() {
+            text = """
+                    ~ enters the battlefield tapped.
+                    {1}, {T}: Destroy all artifacts, creatures, and enchantments.""";
+            tokens = List.of(TILDE, SPACE, ENTER, SPACE, THE, SPACE, BATTLEFIELD, SPACE, TAP, ED, PERIOD, NEWLINE,
+                    LBRACKET, Number.ONE, RBRACKET, COMMA, SPACE, LBRACKET, T, RBRACKET, COLON, SPACE, DESTROY, SPACE, ALL, SPACE, ARTIFACT, S, COMMA, SPACE, CREATURE, S, COMMA, SPACE, AND, SPACE, ENCHANTMENT, S, PERIOD);
+        }
+
+        @Test
+        @DisplayName("Obsianus Golem")
+        void obsianusGolem() {
+            text = "";
+            tokens = List.of();
+        }
+
+        @Test
+        @DisplayName("Rod of Ruin")
+        void rodOfRuin() {
+            text = "{3}, {T}: ~ deals 1 damage to any target.";
+            tokens = List.of(LBRACKET, Number.THREE, RBRACKET, COMMA, SPACE, LBRACKET, T, RBRACKET, COLON, SPACE, TILDE, SPACE, DEAL, SPACE, Number.ONE, SPACE, DAMAGE, SPACE, TO, SPACE, ANY, SPACE, TARGET, PERIOD);
+        }
+
+        @Test
+        @DisplayName("Sol Ring")
+        void solRing() {
+            text = "{T}: Add {C}{C}.";
+            tokens = List.of(LBRACKET, T, RBRACKET, COLON, SPACE, ADD, SPACE, LBRACKET, C, RBRACKET, LBRACKET, C, RBRACKET, PERIOD);
+        }
+
+        @Test
+        @DisplayName("Soul Net")
+        void soulNet() {
+            text = "Whenever a creature dies, you may pay {1}. If you do, you gain 1 life.";
+            tokens = List.of(WHENEVER, SPACE, A, SPACE, CREATURE, SPACE, DIE, COMMA, SPACE, YOU, SPACE, MAY, SPACE, PAY, SPACE, LBRACKET, Number.ONE, RBRACKET, PERIOD, SPACE, IF, SPACE, YOU, SPACE, DO, COMMA, SPACE, YOU, SPACE, GAIN, SPACE, Number.ONE, SPACE, LIFE, PERIOD);
+        }
+
+        @Test
+        @DisplayName("Sunglasses of Urza")
+        void sunglassesOfUrza() {
+            text = "You may spend white mana as though it were red mana.";
+            tokens = List.of(YOU, SPACE, MAY, SPACE, SPEND, SPACE, WHITE, SPACE, MANA, SPACE, AS, SPACE, THOUGH, SPACE, IT, SPACE, BE, ED, SPACE, RED, SPACE, MANA, PERIOD);
         }
     }
 }

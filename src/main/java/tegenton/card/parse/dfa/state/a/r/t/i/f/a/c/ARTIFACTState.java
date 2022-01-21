@@ -1,6 +1,7 @@
 package tegenton.card.parse.dfa.state.a.r.t.i.f.a.c;
 
 import tegenton.card.parse.dfa.state.PossessiveState;
+import tegenton.card.parse.dfa.state.SState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.dfa.state.a.ARState;
@@ -19,6 +20,7 @@ public class ARTIFACTState extends ARState {
     @Override
     public State transition(char c) {
         return switch (c) {
+            case 'S' -> SState.state();
             case '\u2019' -> PossessiveState.state();
             case ',', '\n', '\0', '.', ' ' -> SymbolState.state(c);
             default -> invalid(c);
@@ -28,7 +30,7 @@ public class ARTIFACTState extends ARState {
     @Override
     public Optional<? extends Word> produce(char c) {
         return Optional.ofNullable(switch (c) {
-            case '\u2019', ',', '\n', '\0', '.', ' ' -> CardType.ARTIFACT;
+            case 'S', '\u2019', ',', '\n', '\0', '.', ' ' -> CardType.ARTIFACT;
             default -> null;
         });
     }
