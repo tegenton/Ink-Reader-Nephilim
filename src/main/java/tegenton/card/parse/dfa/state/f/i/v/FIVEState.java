@@ -2,30 +2,30 @@ package tegenton.card.parse.dfa.state.f.i.v;
 
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.f.i.FIVState;
-import tegenton.card.parse.lexicon.value.EnglishNumber;
 import tegenton.card.parse.lexicon.Word;
+import tegenton.card.parse.lexicon.value.EnglishNumber;
+
 import java.util.Optional;
 
 public class FIVEState extends FIVState {
-    private static final FIVEState instance = new FIVEState();
+    private static final FIVEState INSTANCE = new FIVEState();
 
     public static FIVEState state() {
-        return instance;
+        return INSTANCE;
     }
 
     @Override
     public State transition(final char c) {
-        switch (c) {
-            default -> throw new IllegalStateException(
-                    "Cannot transition from FIVEState on " + c);
-        }
+        return switch (c) {
+            default -> invalid(c);
+        };
     }
 
     @Override
     public Optional<? extends Word> produce(final char c) {
-        return switch (c) {
-            case '\0', ' ' -> Optional.of(EnglishNumber.FIVE);
-            default -> Optional.empty();
-        };
+        return Optional.ofNullable(switch (c) {
+            case '\0', ' ' -> EnglishNumber.FIVE;
+            default -> null;
+        });
     }
 }

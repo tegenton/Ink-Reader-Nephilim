@@ -4,20 +4,21 @@ import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.c.CAState;
 import tegenton.card.parse.dfa.state.c.a.r.CARDState;
 import tegenton.card.parse.lexicon.Word;
+
 import java.util.Optional;
 
 public class CARState extends CAState {
-    private static final CARState instance = new CARState();
+    private static final CARState INSTANCE = new CARState();
 
     public static CARState state() {
-        return instance;
+        return INSTANCE;
     }
 
     @Override
     public State transition(final char c) {
         return switch (c) {
             case 'D' -> CARDState.state();
-            default -> throw new IllegalStateException("Cannot transition from CARState on " + c);
+            default -> invalid(c);
         };
     }
 

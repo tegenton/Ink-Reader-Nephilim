@@ -8,10 +8,10 @@ import tegenton.card.parse.lexicon.Comparative;
 import java.util.Optional;
 
 public class GREATERState extends GREATEState {
-    private static final GREATERState instance = new GREATERState();
+    private static final GREATERState INSTANCE = new GREATERState();
 
     public static GREATERState state() {
-        return instance;
+        return INSTANCE;
     }
 
     @Override

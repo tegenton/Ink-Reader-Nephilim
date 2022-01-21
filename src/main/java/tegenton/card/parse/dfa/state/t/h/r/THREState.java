@@ -8,17 +8,17 @@ import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
 public class THREState extends THRState {
-    private static final THREState instance = new THREState();
+    private static final THREState INSTANCE = new THREState();
 
     public static THREState state() {
-        return instance;
+        return INSTANCE;
     }
 
     @Override
     public State transition(final char c) {
         return switch (c) {
             case 'E' -> THREEState.state();
-            default -> throw new IllegalStateException("Cannot transition from THREState on " + c);
+            default -> invalid(c);
         };
     }
 

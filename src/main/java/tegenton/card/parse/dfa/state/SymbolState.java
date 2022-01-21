@@ -5,11 +5,11 @@ import tegenton.card.parse.lexicon.Word;
 
 import java.util.Optional;
 
-public class SymbolState extends State {
+public final class SymbolState extends State {
     private final char symbol;
 
-    private SymbolState(final char symbol) {
-        this.symbol = symbol;
+    private SymbolState(final char c) {
+        this.symbol = c;
     }
 
     public static SymbolState state(final char c) {

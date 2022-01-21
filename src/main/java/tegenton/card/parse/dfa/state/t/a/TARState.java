@@ -8,17 +8,17 @@ import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
 public class TARState extends TAState {
-    private static final TARState instance = new TARState();
+    private static final TARState INSTANCE = new TARState();
 
     public static TARState state() {
-        return instance;
+        return INSTANCE;
     }
 
     @Override
     public State transition(final char c) {
         return switch (c) {
             case 'G' -> TARGState.state();
-            default -> throw new IllegalStateException("Cannot transition from EmptyState on " + c);
+            default -> invalid(c);
         };
     }
 

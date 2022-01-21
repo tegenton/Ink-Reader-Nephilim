@@ -6,10 +6,13 @@ import tegenton.card.parse.lexicon.Word;
 import java.util.List;
 
 public final class Lexicon {
-    static List<Word> lookup(String s) {
-        s = s.toUpperCase();
+    private Lexicon() {
+
+    }
+
+    static List<Word> lookup(final String s) {
         final DFA dfa = new DFA();
-        s.chars().mapToObj((x) -> (char) x).forEach(dfa::consume);
+        s.toUpperCase().chars().mapToObj((x) -> (char) x).forEach(dfa::consume);
         return dfa.products();
     }
 }
