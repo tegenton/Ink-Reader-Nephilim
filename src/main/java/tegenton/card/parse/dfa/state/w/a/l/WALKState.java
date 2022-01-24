@@ -11,10 +11,16 @@ import java.util.Optional;
 public class WALKState extends WALState {
     private static final WALKState INSTANCE = new WALKState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static WALKState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -23,6 +29,9 @@ public class WALKState extends WALState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {

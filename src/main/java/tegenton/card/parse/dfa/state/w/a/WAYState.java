@@ -11,10 +11,16 @@ import java.util.Optional;
 public class WAYState extends WAState {
     private static final WAYState INSTANCE = new WAYState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static WAYState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -23,6 +29,9 @@ public class WAYState extends WAState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {

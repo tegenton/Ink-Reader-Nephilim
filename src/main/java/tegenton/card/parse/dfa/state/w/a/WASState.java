@@ -14,10 +14,16 @@ import java.util.Optional;
 public class WASState extends WAState {
     private static final WASState INSTANCE = new WASState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static WASState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -28,6 +34,9 @@ public class WASState extends WAState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
