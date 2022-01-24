@@ -26,3 +26,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VALIDATE_GOOGLE_JAVA_FORMAT: false
           FILTER_REGEX_INCLUDE: .*src/.*
+          FILTER_REGEX_EXCLUDE: .*test/.*
