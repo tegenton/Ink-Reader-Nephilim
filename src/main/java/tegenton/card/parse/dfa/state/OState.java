@@ -1,6 +1,10 @@
 package tegenton.card.parse.dfa.state;
 
-import tegenton.card.parse.dfa.state.o.*;
+import tegenton.card.parse.dfa.state.o.OFState;
+import tegenton.card.parse.dfa.state.o.ONState;
+import tegenton.card.parse.dfa.state.o.ORState;
+import tegenton.card.parse.dfa.state.o.OTState;
+import tegenton.card.parse.dfa.state.o.OWState;
 import tegenton.card.parse.dfa.state.o.p.p.o.n.e.n.OPPONENTState;
 import tegenton.card.parse.dfa.substring.InfixSubstring;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;

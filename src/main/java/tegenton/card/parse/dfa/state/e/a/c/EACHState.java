@@ -9,10 +9,10 @@ import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
 public class EACHState extends EACState {
-    private static final EACHState instance = new EACHState();
+    private static final EACHState INSTANCE = new EACHState();
 
     public static EACHState state() {
-        return instance;
+        return INSTANCE;
     }
 
     @Override

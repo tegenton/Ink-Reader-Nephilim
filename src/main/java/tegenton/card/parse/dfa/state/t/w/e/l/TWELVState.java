@@ -18,7 +18,7 @@ public class TWELVState extends TWELState {
     public State transition(final char c) {
         return switch (c) {
             case 'E' -> TWELVEState.state();
-            default -> throw new IllegalStateException("Cannot transition from TWELVState on " + c);
+            default -> invalid(c);
         };
     }
 

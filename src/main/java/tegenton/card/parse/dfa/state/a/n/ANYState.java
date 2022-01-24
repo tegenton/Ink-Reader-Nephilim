@@ -4,6 +4,7 @@ import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.dfa.state.a.ANState;
 import tegenton.card.parse.lexicon.Determiner;
+
 import java.util.Optional;
 
 public class ANYState extends ANState {
@@ -16,8 +17,8 @@ public class ANYState extends ANState {
     @Override
     public State transition(final char c) {
         return switch (c) {
-            case ' ' -> SymbolState.state(c);
-            default -> throw new IllegalStateException("Cannot transition from ANYState on " + c);
+            case '\0', ' ' -> SymbolState.state(c);
+            default -> invalid(c);
         };
     }
 

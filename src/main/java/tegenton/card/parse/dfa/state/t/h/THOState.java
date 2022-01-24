@@ -20,7 +20,8 @@ public class THOState extends THState {
     public State transition(final char c) {
         return switch (c) {
             case 'S' -> THOSState.state();
-            case 'U' -> new SuffixSubstring("UGH", SubordinateConjunction.THOUGH);
+            case 'U' -> new SuffixSubstring("UGH",
+                    SubordinateConjunction.THOUGH);
             default -> invalid(c);
         };
     }

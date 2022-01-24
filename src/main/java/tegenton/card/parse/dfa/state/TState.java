@@ -1,6 +1,10 @@
 package tegenton.card.parse.dfa.state;
 
-import tegenton.card.parse.dfa.state.t.*;
+import tegenton.card.parse.dfa.state.t.TAState;
+import tegenton.card.parse.dfa.state.t.TEState;
+import tegenton.card.parse.dfa.state.t.THState;
+import tegenton.card.parse.dfa.state.t.TOState;
+import tegenton.card.parse.dfa.state.t.TWState;
 import tegenton.card.parse.dfa.state.t.i.m.TIMEState;
 import tegenton.card.parse.dfa.state.t.u.r.TURNState;
 import tegenton.card.parse.dfa.state.t.y.p.TYPEState;

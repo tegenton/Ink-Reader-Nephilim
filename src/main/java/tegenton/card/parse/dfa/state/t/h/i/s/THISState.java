@@ -19,7 +19,7 @@ public class THISState extends THIState {
     public State transition(final char c) {
         return switch (c) {
             case ' ' -> SymbolState.state(c);
-            default -> throw new IllegalStateException("Cannot transition from THISState on " + c);
+            default -> invalid(c);
         };
     }
 

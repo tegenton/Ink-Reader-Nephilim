@@ -1,9 +1,10 @@
 package tegenton.card.parse.dfa.state.t.w.e.l.v;
 
 import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.dfa.state.t.w.e.l.TWELVState;
-import tegenton.card.parse.lexicon.value.EnglishNumber;
 import tegenton.card.parse.lexicon.Word;
+import tegenton.card.parse.lexicon.value.EnglishNumber;
 
 import java.util.Optional;
 
@@ -16,10 +17,10 @@ public class TWELVEState extends TWELVState {
 
     @Override
     public State transition(final char c) {
-        switch (c) {
-            default -> throw new IllegalStateException(
-                    "Cannot transition from TWELVEState on " + c);
-        }
+        return switch (c) {
+            case '\0', ' ' -> SymbolState.state(c);
+            default -> invalid(c);
+        };
     }
 
     @Override

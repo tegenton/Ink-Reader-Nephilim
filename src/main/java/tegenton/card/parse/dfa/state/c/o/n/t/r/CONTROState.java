@@ -4,6 +4,7 @@ import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.c.o.n.t.CONTRState;
 import tegenton.card.parse.dfa.state.c.o.n.t.r.o.CONTROLState;
 import tegenton.card.parse.lexicon.Word;
+
 import java.util.Optional;
 
 public class CONTROState extends CONTRState {
@@ -17,7 +18,7 @@ public class CONTROState extends CONTRState {
     public State transition(final char c) {
         return switch (c) {
             case 'L' -> CONTROLState.state();
-            default -> throw new IllegalStateException("Cannot transition from CONTROState on " + c);
+            default -> invalid(c);
         };
     }
 

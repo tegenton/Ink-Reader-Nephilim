@@ -1,6 +1,10 @@
 package tegenton.card.parse.dfa.state.n.o;
 
-import tegenton.card.parse.dfa.state.*;
+import tegenton.card.parse.dfa.state.AState;
+import tegenton.card.parse.dfa.state.BState;
+import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.SymbolState;
+import tegenton.card.parse.dfa.state.TState;
 import tegenton.card.parse.dfa.state.n.NOState;
 import tegenton.card.parse.lexicon.Adverb;
 import tegenton.card.parse.lexicon.Word;

@@ -1,6 +1,11 @@
 package tegenton.card.parse.dfa.state;
 
-import tegenton.card.parse.dfa.state.s.*;
+import tegenton.card.parse.dfa.state.s.SAState;
+import tegenton.card.parse.dfa.state.s.SEState;
+import tegenton.card.parse.dfa.state.s.SIState;
+import tegenton.card.parse.dfa.state.s.SOState;
+import tegenton.card.parse.dfa.state.s.SPState;
+import tegenton.card.parse.dfa.state.s.STState;
 import tegenton.card.parse.dfa.state.s.h.u.f.f.l.SHUFFLEState;
 import tegenton.card.parse.dfa.state.s.w.a.m.SWAMPState;
 import tegenton.card.parse.dfa.substring.InfixSubstring;

@@ -30,9 +30,9 @@ public class ITState extends IState {
 
     @Override
     public Optional<? extends Word> produce(final char c) {
-        return switch (c) {
-            case 'S', '\u2019', ',', '\0', '.', ' ' -> Optional.of(ObjectNoun.IT);
-            default -> Optional.empty();
-        };
+        return Optional.ofNullable(switch (c) {
+            case 'S', '\u2019', ',', '\0', '.', ' ' -> ObjectNoun.IT;
+            default -> null;
+        });
     }
 }

@@ -24,7 +24,9 @@ public class PLAState extends PLState {
         return switch (c) {
             case 'G' -> new SuffixSubstring("GUE", CardName.PLAGUE);
             case 'I' -> new SuffixSubstring("INS", LandType.PLAINS);
-            case 'N' -> new InfixSubstring("NESWALKE", 'R', PLANESWALKERState::state);
+            case 'N' -> new InfixSubstring("NESWALKE",
+                    'R',
+                    PLANESWALKERState::state);
             case 'Y' -> PLAYState.state();
             default -> invalid(c);
         };

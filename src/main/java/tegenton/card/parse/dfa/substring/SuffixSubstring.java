@@ -10,13 +10,13 @@ public class SuffixSubstring extends Substring {
     /**
      * A substring that can only result in a word.
      *
-     * @param text    Series of characters to transition on.
-     * @param product Word that the series of states described by text should
-     *                produce.
+     * @param text Series of characters to transition on.
+     * @param word Word that the series of states described by text should
+     *             produce.
      */
-    public SuffixSubstring(final String text, final Word product) {
+    public SuffixSubstring(final String text, final Word word) {
         super(text.toCharArray());
-        this.product = product;
+        this.product = word;
     }
 
     /**

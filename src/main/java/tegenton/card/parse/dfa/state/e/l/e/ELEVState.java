@@ -4,6 +4,7 @@ import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.e.l.ELEState;
 import tegenton.card.parse.dfa.state.e.l.e.v.ELEVEState;
 import tegenton.card.parse.lexicon.Word;
+
 import java.util.Optional;
 
 public class ELEVState extends ELEState {
@@ -17,7 +18,7 @@ public class ELEVState extends ELEState {
     public State transition(final char c) {
         return switch (c) {
             case 'E' -> ELEVEState.state();
-            default -> throw new IllegalStateException("Cannot transition from ELEVState on " + c);
+            default -> invalid(c);
         };
     }
 

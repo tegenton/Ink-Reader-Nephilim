@@ -8,10 +8,10 @@ import tegenton.card.parse.lexicon.Comparative;
 import java.util.Optional;
 
 public class LESSState extends LESState {
-    private static final LESSState instance = new LESSState();
+    private static final LESSState INSTANCE = new LESSState();
 
     public static LESSState state() {
-        return instance;
+        return INSTANCE;
     }
 
     @Override

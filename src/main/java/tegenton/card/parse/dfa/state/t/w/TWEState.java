@@ -20,7 +20,7 @@ public class TWEState extends TWState {
         return switch (c) {
             case 'L' -> TWELState.state();
             case 'N' -> TWENState.state();
-            default -> throw new IllegalStateException("Cannot transition from TWEState on " + c);
+            default -> invalid(c);
         };
     }
 

@@ -27,7 +27,9 @@ public class REState extends RState {
         return switch (c) {
             case 'A' -> new SuffixSubstring("ACH", Keyword.REACH);
             case 'D' -> REDState.state();
-            case 'G' -> new InfixSubstring("GENERAT", 'E', REGENERATEState::state);
+            case 'G' -> new InfixSubstring("GENERAT",
+                    'E',
+                    REGENERATEState::state);
             case 'M' -> new InfixSubstring("MOV", 'E', REMOVEState::state);
             case 'P' -> new InfixSubstring("PLA", 'C', REPLACState::state);
             case 'S' -> RESState.state();

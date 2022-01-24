@@ -1,6 +1,10 @@
 package tegenton.card.parse.dfa.state.o.p.p.o.n.e.n;
 
-import tegenton.card.parse.dfa.state.*;
+import tegenton.card.parse.dfa.state.OState;
+import tegenton.card.parse.dfa.state.PossessiveState;
+import tegenton.card.parse.dfa.state.SState;
+import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.SymbolState;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.source.target.player.PlayerNoun;
 

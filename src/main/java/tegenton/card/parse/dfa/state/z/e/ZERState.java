@@ -18,7 +18,7 @@ public class ZERState extends ZEState {
     public State transition(final char c) {
         return switch (c) {
             case 'O' -> ZEROState.state();
-            default -> throw new IllegalStateException("Cannot transition from ZERState on " + c);
+            default -> invalid(c);
         };
     }
 

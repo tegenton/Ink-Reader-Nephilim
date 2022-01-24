@@ -1,4 +1,4 @@
 /**
- * Sequences starting with D
+ * Sequences starting with D.
  */
 package tegenton.card.parse.dfa.state.d;

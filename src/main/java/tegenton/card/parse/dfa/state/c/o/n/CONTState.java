@@ -19,7 +19,8 @@ public class CONTState extends CONState {
     @Override
     public State transition(final char c) {
         return switch (c) {
-            case 'I' -> new SuffixSubstring("INUOUSLY", PlayerAdverb.CONTINUOUSLY);
+            case 'I' -> new SuffixSubstring("INUOUSLY",
+                    PlayerAdverb.CONTINUOUSLY);
             case 'R' -> CONTRState.state();
             default -> invalid(c);
         };

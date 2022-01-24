@@ -20,7 +20,7 @@ public class THIState extends THState {
         return switch (c) {
             case 'R' -> THIRState.state();
             case 'S' -> THISState.state();
-            default -> throw new IllegalStateException("Cannot transition from THIState on " + c);
+            default -> invalid(c);
         };
     }
 

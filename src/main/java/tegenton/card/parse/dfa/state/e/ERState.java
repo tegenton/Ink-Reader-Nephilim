@@ -1,13 +1,12 @@
 package tegenton.card.parse.dfa.state.e;
 
 import tegenton.card.parse.dfa.state.EState;
+import tegenton.card.parse.dfa.state.PossessiveState;
 import tegenton.card.parse.dfa.state.SState;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.SymbolState;
-import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Morpheme;
 import tegenton.card.parse.lexicon.Word;
-import tegenton.card.parse.lexicon.game.source.target.TargetModifier;
 
 import java.util.Optional;
 
@@ -22,7 +21,7 @@ public class ERState extends EState {
     public State transition(final char c) {
         return switch (c) {
             case 'S' -> SState.state();
-            case '\u2019' -> new SuffixSubstring("\u2019S", TargetModifier.POSSESSIVE);
+            case '\u2019' -> PossessiveState.state();
             case ',', '\0', '.', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };

@@ -1,4 +1,4 @@
 /**
- * Sequences starting with GRE
+ * Sequences starting with GRE.
  */
 package tegenton.card.parse.dfa.state.g.r.e;

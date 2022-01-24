@@ -6,21 +6,21 @@ import tegenton.card.parse.lexicon.Word;
 import java.util.Optional;
 
 public abstract class Morpheme extends Substring {
-    private final Word word;
+    private final Word product;
 
     protected Morpheme(final char[] text, final Word word) {
         super(text);
-        this.word = word;
+        this.product = word;
     }
 
-    protected Word getWord() {
-        return word;
+    protected Word getProduct() {
+        return product;
     }
 
     @Override
     public Optional<? extends Word> produce(final char c) {
         if (this.completed()) {
-            return Optional.of(word);
+            return Optional.of(product);
         }
         return Optional.empty();
     }

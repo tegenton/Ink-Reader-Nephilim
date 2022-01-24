@@ -20,7 +20,9 @@ public class SAState extends SState {
     @Override
     public State transition(final char c) {
         return switch (c) {
-            case 'C' -> new InfixSubstring("CRIFIC", 'E', SACRIFICEState::state);
+            case 'C' -> new InfixSubstring("CRIFIC",
+                    'E',
+                    SACRIFICEState::state);
             case 'M' -> new SuffixSubstring("ME", Adjective.SAME);
             default -> invalid(c);
         };

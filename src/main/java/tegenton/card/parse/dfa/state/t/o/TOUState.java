@@ -20,8 +20,11 @@ public class TOUState extends TOState {
     @Override
     public State transition(final char c) {
         return switch (c) {
-            case 'C' -> new InfixSubstring("C", 'H', TOUCHState::state);
-            case 'G' -> new SuffixSubstring("GHNESS", ObjectAttribute.TOUGHNESS);
+            case 'C' -> new InfixSubstring("C",
+                    'H',
+                    TOUCHState::state);
+            case 'G' -> new SuffixSubstring("GHNESS",
+                    ObjectAttribute.TOUGHNESS);
             default -> invalid(c);
         };
     }

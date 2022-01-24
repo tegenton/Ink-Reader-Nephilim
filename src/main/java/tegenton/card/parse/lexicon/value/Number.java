@@ -1,5 +1,7 @@
 package tegenton.card.parse.lexicon.value;
 
+import java.util.Objects;
+
 public final class Number implements ValueWord {
     public static final Number ZERO = new Number(0);
     public static final Number ONE = new Number(1);
@@ -10,8 +12,8 @@ public final class Number implements ValueWord {
 
     private final int value;
 
-    public Number(final int val) {
-        this.value = val;
+    public Number(final int i) {
+        this.value = i;
     }
 
     public static Number valueOf(final String s) {
@@ -41,5 +43,10 @@ public final class Number implements ValueWord {
             return n.getVal() == this.getVal();
         }
         return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
     }
 }

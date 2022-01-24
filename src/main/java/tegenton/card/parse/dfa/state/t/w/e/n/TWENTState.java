@@ -18,7 +18,7 @@ public class TWENTState extends TWENState {
     public State transition(final char c) {
         return switch (c) {
             case 'Y' -> TWENTYState.state();
-            default -> throw new IllegalStateException("Cannot transition from TWENTState on " + c);
+            default -> invalid(c);
         };
     }
 

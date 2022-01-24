@@ -4,6 +4,7 @@ import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.b.BAState;
 import tegenton.card.parse.dfa.state.b.a.n.BANDState;
 import tegenton.card.parse.lexicon.Word;
+
 import java.util.Optional;
 
 public class BANState extends BAState {
@@ -17,7 +18,7 @@ public class BANState extends BAState {
     public State transition(final char c) {
         return switch (c) {
             case 'D' -> BANDState.state();
-            default -> throw new IllegalStateException("Cannot transition from BANState on " + c);
+            default -> invalid(c);
         };
     }
 

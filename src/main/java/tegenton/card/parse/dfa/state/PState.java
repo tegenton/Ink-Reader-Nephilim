@@ -24,7 +24,9 @@ public class PState extends State {
     public State transition(final char c) {
         return switch (c) {
             case 'A' -> PAState.state();
-            case 'E' -> new InfixSubstring("ERMANEN", 'T', PERMANENTState::state);
+            case 'E' -> new InfixSubstring("ERMANEN",
+                    'T',
+                    PERMANENTState::state);
             case 'I' -> new InfixSubstring("IL", 'E', PILEState::state);
             case 'O' -> new SuffixSubstring("OWER", ObjectAttribute.POWER);
             case 'L' -> PLState.state();
