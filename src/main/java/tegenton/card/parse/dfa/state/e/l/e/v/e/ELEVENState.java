@@ -4,15 +4,22 @@ import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.e.l.e.v.ELEVEState;
 import tegenton.card.parse.lexicon.value.EnglishNumber;
 import tegenton.card.parse.lexicon.Word;
+
 import java.util.Optional;
 
 public class ELEVENState extends ELEVEState {
     private static final ELEVENState INSTANCE = new ELEVENState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static ELEVENState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         switch (c) {
@@ -21,6 +28,9 @@ public class ELEVENState extends ELEVEState {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return switch (c) {

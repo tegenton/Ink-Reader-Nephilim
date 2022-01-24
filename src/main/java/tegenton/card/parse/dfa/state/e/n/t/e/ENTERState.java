@@ -11,10 +11,16 @@ import java.util.Optional;
 public class ENTERState extends ENTEState {
     private static final ENTERState INSTANCE = new ENTERState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static ENTERState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -24,6 +30,9 @@ public class ENTERState extends ENTEState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {

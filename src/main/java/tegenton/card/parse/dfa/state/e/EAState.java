@@ -10,6 +10,9 @@ import java.util.Optional;
 public class EAState extends EState {
     private static final EAState INSTANCE = new EAState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static EAState state() {
         return INSTANCE;
     }

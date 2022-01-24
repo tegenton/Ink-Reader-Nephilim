@@ -13,10 +13,16 @@ import java.util.Optional;
 public class ENCHANTMENTState extends ENCState {
     private static final ENCHANTMENTState INSTANCE = new ENCHANTMENTState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static ENCHANTMENTState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -27,6 +33,9 @@ public class ENCHANTMENTState extends ENCState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {

@@ -10,10 +10,16 @@ import java.util.Optional;
 public class EIState extends EState {
     private static final EIState INSTANCE = new EIState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static EIState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -22,6 +28,9 @@ public class EIState extends EState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.empty();

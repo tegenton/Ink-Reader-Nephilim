@@ -10,6 +10,9 @@ import java.util.Optional;
 public class EACState extends EAState {
     private static final EACState INSTANCE = new EACState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static EACState state() {
         return INSTANCE;
     }

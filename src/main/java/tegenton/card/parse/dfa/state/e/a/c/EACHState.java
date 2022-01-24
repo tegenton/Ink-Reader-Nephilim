@@ -11,10 +11,16 @@ import java.util.Optional;
 public class EACHState extends EACState {
     private static final EACHState INSTANCE = new EACHState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static EACHState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -23,6 +29,9 @@ public class EACHState extends EACState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
