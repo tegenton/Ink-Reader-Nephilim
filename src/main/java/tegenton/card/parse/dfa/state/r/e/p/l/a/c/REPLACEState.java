@@ -11,10 +11,16 @@ import java.util.Optional;
 public class REPLACEState extends REPLACState {
     private static final REPLACEState INSTANCE = new REPLACEState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static REPLACEState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -23,6 +29,9 @@ public class REPLACEState extends REPLACState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {

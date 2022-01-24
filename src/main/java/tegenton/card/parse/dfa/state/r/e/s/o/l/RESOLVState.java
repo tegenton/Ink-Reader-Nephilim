@@ -12,10 +12,16 @@ import java.util.Optional;
 public class RESOLVState extends RESState {
     private static final RESOLVState INSTANCE = new RESOLVState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static RESOLVState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -25,6 +31,9 @@ public class RESOLVState extends RESState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
