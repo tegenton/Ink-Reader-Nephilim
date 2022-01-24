@@ -16,10 +16,16 @@ import java.util.Optional;
 public class UNState extends UState {
     private static final UNState INSTANCE = new UNState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static UNState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -32,6 +38,9 @@ public class UNState extends UState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {

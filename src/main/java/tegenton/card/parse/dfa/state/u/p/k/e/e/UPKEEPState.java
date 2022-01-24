@@ -12,10 +12,16 @@ import java.util.Optional;
 public class UPKEEPState extends UPState {
     private static final UPKEEPState INSTANCE = new UPKEEPState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static UPKEEPState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -25,6 +31,9 @@ public class UPKEEPState extends UPState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
