@@ -11,10 +11,16 @@ import java.util.Optional;
 public class PAIDState extends PAIState {
     private static final PAIDState INSTANCE = new PAIDState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static PAIDState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -23,6 +29,9 @@ public class PAIDState extends PAIState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {

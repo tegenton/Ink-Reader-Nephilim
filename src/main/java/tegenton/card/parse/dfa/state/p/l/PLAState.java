@@ -3,7 +3,7 @@ package tegenton.card.parse.dfa.state.p.l;
 import tegenton.card.parse.dfa.state.State;
 import tegenton.card.parse.dfa.state.p.PLState;
 import tegenton.card.parse.dfa.state.p.l.a.PLAYState;
-import tegenton.card.parse.dfa.state.p.la.n.e.s.w.a.l.k.e.PLANESWALKERState;
+import tegenton.card.parse.dfa.state.p.l.a.n.e.s.w.a.l.k.e.PLANESWALKERState;
 import tegenton.card.parse.dfa.substring.InfixSubstring;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Word;

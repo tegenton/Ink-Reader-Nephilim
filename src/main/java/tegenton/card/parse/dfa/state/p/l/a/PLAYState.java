@@ -12,10 +12,16 @@ import java.util.Optional;
 public class PLAYState extends PLAState {
     private static final PLAYState INSTANCE = new PLAYState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static PLAYState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -27,6 +33,9 @@ public class PLAYState extends PLAState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<PlayerVerb> produce(final char c) {
         return Optional.ofNullable(switch (c) {

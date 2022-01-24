@@ -1,4 +1,4 @@
-package tegenton.card.parse.dfa.state.p.la.n.e.s.w.a.l.k.e;
+package tegenton.card.parse.dfa.state.p.l.a.n.e.s.w.a.l.k.e;
 
 import tegenton.card.parse.dfa.state.PossessiveState;
 import tegenton.card.parse.dfa.state.State;
@@ -12,10 +12,16 @@ import java.util.Optional;
 public class PLANESWALKERState extends PLAState {
     private static final PLANESWALKERState INSTANCE = new PLANESWALKERState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static PLANESWALKERState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -25,6 +31,9 @@ public class PLANESWALKERState extends PLAState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {

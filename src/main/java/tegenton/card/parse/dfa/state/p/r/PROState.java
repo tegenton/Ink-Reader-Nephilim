@@ -13,10 +13,16 @@ import java.util.Optional;
 public class PROState extends PRState {
     private static final PROState INSTANCE = new PROState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static PROState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -26,6 +32,9 @@ public class PROState extends PRState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.empty();

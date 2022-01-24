@@ -12,10 +12,16 @@ import java.util.Optional;
 public class PILEState extends PState {
     private static final PILEState INSTANCE = new PILEState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static PILEState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -25,6 +31,9 @@ public class PILEState extends PState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {

@@ -16,10 +16,16 @@ import java.util.Optional;
 public class PState extends State {
     private static final PState INSTANCE = new PState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static PState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -36,6 +42,9 @@ public class PState extends State {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
