@@ -13,10 +13,16 @@ import java.util.Optional;
 public class ISLANDState extends ISState {
     private static final ISLANDState INSTANCE = new ISLANDState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static ISLANDState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -27,6 +33,9 @@ public class ISLANDState extends ISState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {

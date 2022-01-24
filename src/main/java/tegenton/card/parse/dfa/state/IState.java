@@ -13,11 +13,16 @@ import java.util.Optional;
 public class IState extends State {
     private static final IState INSTANCE = new IState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static IState state() {
         return INSTANCE;
     }
 
-    @Override
+    /**
+     * {@inheritDoc}
+     */
     public State transition(final char c) {
         return switch (c) {
             case 'F' -> IFState.state();
@@ -29,6 +34,9 @@ public class IState extends State {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
