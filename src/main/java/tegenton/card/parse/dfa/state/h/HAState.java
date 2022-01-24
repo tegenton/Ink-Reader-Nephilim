@@ -16,10 +16,16 @@ import java.util.Optional;
 public class HAState extends HState {
     private static final HAState INSTANCE = new HAState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static HAState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -32,6 +38,9 @@ public class HAState extends HState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
