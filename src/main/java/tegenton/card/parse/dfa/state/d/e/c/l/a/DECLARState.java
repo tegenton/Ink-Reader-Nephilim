@@ -1,0 +1,44 @@
+package tegenton.card.parse.dfa.state.d.e.c.l.a;
+
+import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.d.DEState;
+import tegenton.card.parse.dfa.state.d.e.c.l.a.r.DECLAREState;
+import tegenton.card.parse.dfa.substring.morpheme.INGMorpheme;
+import tegenton.card.parse.lexicon.Word;
+import tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb;
+
+import java.util.Optional;
+
+public class DECLARState extends DEState {
+    private static final DECLARState INSTANCE = new DECLARState();
+
+    /**
+     * @return Singleton instance.
+     */
+    public static DECLARState state() {
+        return INSTANCE;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public State transition(final char c) {
+        return switch (c) {
+            case 'E' -> DECLAREState.state();
+            case 'I' -> new INGMorpheme();
+            default -> invalid(c);
+        };
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Optional<? extends Word> produce(final char c) {
+        return Optional.ofNullable(switch (c) {
+            case 'D', '\0', ' ' -> PlayerVerb.DECLARE;
+            default -> null;
+        });
+    }
+}
