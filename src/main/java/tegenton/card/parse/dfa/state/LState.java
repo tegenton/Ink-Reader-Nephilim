@@ -11,10 +11,16 @@ import java.util.Optional;
 public class LState extends State {
     private static final LState INSTANCE = new LState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static LState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -26,6 +32,9 @@ public class LState extends State {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.empty();

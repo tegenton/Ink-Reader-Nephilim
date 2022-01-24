@@ -10,10 +10,16 @@ import java.util.Optional;
 public class LESSState extends LESState {
     private static final LESSState INSTANCE = new LESSState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static LESSState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -22,6 +28,9 @@ public class LESSState extends LESState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<Comparative> produce(final char c) {
         return Optional.ofNullable(switch (c) {

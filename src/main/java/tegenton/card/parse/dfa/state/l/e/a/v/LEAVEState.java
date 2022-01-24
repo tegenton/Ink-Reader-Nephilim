@@ -11,10 +11,16 @@ import java.util.Optional;
 public class LEAVEState extends LEAVState {
     private static final LEAVEState INSTANCE = new LEAVEState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static LEAVEState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -24,6 +30,9 @@ public class LEAVEState extends LEAVState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {

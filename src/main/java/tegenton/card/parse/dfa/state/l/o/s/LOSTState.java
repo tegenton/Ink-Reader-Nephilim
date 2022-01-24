@@ -11,10 +11,16 @@ import java.util.Optional;
 public class LOSTState extends LOSState {
     private static final LOSTState INSTANCE = new LOSTState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static LOSTState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -23,6 +29,9 @@ public class LOSTState extends LOSState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {

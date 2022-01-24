@@ -10,10 +10,16 @@ import java.util.Optional;
 public class LEASState extends LEAState {
     private static final LEASState INSTANCE = new LEASState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static LEASState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -22,6 +28,9 @@ public class LEASState extends LEAState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return super.produce(c);
