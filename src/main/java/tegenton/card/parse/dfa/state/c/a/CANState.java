@@ -12,10 +12,16 @@ import java.util.Optional;
 public class CANState extends CAState {
     private static final CANState INSTANCE = new CANState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static CANState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -25,6 +31,9 @@ public class CANState extends CAState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {

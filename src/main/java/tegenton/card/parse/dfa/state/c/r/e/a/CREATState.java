@@ -13,10 +13,16 @@ public class CREATState extends CREAState {
 
     private static final CREATState INSTANCE = new CREATState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static CREATState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -26,6 +32,9 @@ public class CREATState extends CREAState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.empty();

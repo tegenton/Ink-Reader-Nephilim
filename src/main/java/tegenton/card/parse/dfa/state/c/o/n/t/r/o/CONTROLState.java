@@ -12,10 +12,16 @@ import java.util.Optional;
 public class CONTROLState extends CONTROState {
     private static final CONTROLState INSTANCE = new CONTROLState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static CONTROLState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -26,6 +32,9 @@ public class CONTROLState extends CONTROState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {

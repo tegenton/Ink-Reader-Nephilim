@@ -12,10 +12,16 @@ import java.util.Optional;
 public class COMState extends COState {
     private static final COMState INSTANCE = new COMState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static COMState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -25,6 +31,9 @@ public class COMState extends COState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.empty();

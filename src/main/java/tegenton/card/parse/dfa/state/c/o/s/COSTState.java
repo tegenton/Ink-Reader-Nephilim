@@ -11,10 +11,16 @@ import java.util.Optional;
 public class COSTState extends COState {
     private static final COSTState INSTANCE = new COSTState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static COSTState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -24,6 +30,9 @@ public class COSTState extends COState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {

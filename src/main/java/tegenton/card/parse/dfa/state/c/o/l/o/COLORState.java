@@ -13,10 +13,16 @@ import java.util.Optional;
 public class COLORState extends COState {
     private static final COLORState INSTANCE = new COLORState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static COLORState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -26,6 +32,9 @@ public class COLORState extends COState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {

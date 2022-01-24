@@ -13,10 +13,16 @@ import java.util.Optional;
 public class CREATUREState extends CREATState {
     private static final CREATUREState INSTANCE = new CREATUREState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static CREATUREState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -27,6 +33,9 @@ public class CREATUREState extends CREATState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {

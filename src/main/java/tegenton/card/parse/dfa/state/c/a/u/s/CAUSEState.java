@@ -11,10 +11,16 @@ import java.util.Optional;
 public class CAUSEState extends CAState {
     private static final CAUSEState INSTANCE = new CAUSEState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static CAUSEState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -24,6 +30,9 @@ public class CAUSEState extends CAState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
