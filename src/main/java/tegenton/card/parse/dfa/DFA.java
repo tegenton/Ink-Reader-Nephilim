@@ -20,6 +20,11 @@ public class DFA {
         state = state.transition(c);
     }
 
+    /**
+     * When transitioning, the DFA may be given Words.
+     *
+     * @return List of products received on transitions.
+     */
     public List<Word> products() {
         state.produce('\0').ifPresent(products::add);
         return products;

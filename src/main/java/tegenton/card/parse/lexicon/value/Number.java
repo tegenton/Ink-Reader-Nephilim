@@ -12,18 +12,30 @@ public final class Number implements ValueWord {
 
     private final int value;
 
+    /**
+     * @param i Starting value.
+     */
     public Number(final int i) {
         this.value = i;
     }
 
-    public static Number valueOf(final String s) {
+    static Number valueOf(final String s) {
         return new Number(Integer.parseInt(s));
     }
 
+    /**
+     * Create a new Number instance with a given value.
+     *
+     * @param i Integer value.
+     * @return Instance of Number holding the given value.
+     */
     public static Number valueOf(final int i) {
         return new Number(i);
     }
 
+    /**
+     * @return Integer value as a string.
+     */
     @Override
     public String getWord() {
         return Integer.toString(value);
@@ -38,6 +50,12 @@ public final class Number implements ValueWord {
         return value;
     }
 
+    /**
+     * Compare this to another object.
+     *
+     * @param o Object
+     * @return True if o is a Number with equal value, otherwise false.
+     */
     public boolean equals(final Object o) {
         if (o instanceof Number n) {
             return n.getVal() == this.getVal();
@@ -45,6 +63,9 @@ public final class Number implements ValueWord {
         return false;
     }
 
+    /**
+     * @return Hash of this object's value.
+     */
     @Override
     public int hashCode() {
         return Objects.hash(value);

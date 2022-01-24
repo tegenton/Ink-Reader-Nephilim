@@ -20,9 +20,6 @@ public class DRAState extends DRState {
     /**
      * {@inheritDoc}
      */
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -31,9 +28,6 @@ public class DRAState extends DRState {
         };
     }
 
-    /**
-     * {@inheritDoc}
-     */
     /**
      * {@inheritDoc}
      */

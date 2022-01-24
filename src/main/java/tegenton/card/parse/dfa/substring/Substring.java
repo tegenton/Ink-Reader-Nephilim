@@ -40,6 +40,9 @@ public abstract class Substring extends State {
         }
     }
 
+    /**
+     * @return Has the substring been traversed?
+     */
     protected boolean completed() {
         return index == text.length;
     }

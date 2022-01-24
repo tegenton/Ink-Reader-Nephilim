@@ -6,6 +6,9 @@ import java.util.Optional;
 
 public abstract class State {
 
+    /**
+     * @return Empty instance.
+     */
     public static State state() {
         return EmptyState.state();
     }
@@ -26,6 +29,10 @@ public abstract class State {
      */
     public abstract Optional<? extends Word> produce(char c);
 
+    /**
+     * @param c Invalid character.
+     * @return Exception saying that the character was invalid.
+     */
     protected State invalid(final char c) {
         throw new IllegalStateException("Cannot transition from "
                 + this.getClass().getSimpleName() + " on "

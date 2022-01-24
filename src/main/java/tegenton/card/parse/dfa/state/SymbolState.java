@@ -12,15 +12,25 @@ public final class SymbolState extends State {
         this.symbol = c;
     }
 
+    /**
+     * @param c Character used to transition into this state.
+     * @return Instance of symbol state with given symbol.
+     */
     public static SymbolState state(final char c) {
         return new SymbolState(c);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return EmptyState.state().transition(c);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (symbol) {

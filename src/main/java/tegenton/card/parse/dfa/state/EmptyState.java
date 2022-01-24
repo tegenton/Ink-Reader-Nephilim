@@ -7,10 +7,16 @@ import java.util.Optional;
 class EmptyState extends State {
     private static final EmptyState INSTANCE = new EmptyState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static State state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -49,6 +55,9 @@ class EmptyState extends State {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<Word> produce(final char c) {
         return Optional.empty();

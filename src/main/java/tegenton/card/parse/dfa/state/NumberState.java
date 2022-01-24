@@ -9,14 +9,26 @@ public final class NumberState extends State {
     private static final int LEFT_SHIFT = 10;
     private int number;
 
+    /**
+     * Enter NumberState with a given value.
+     *
+     * @param i Integer value
+     */
     public NumberState(final int i) {
         number = i;
     }
 
+    /**
+     * @param c Character used to transition into this state.
+     * @return Instance of number state with given value.
+     */
     public static NumberState state(final char c) {
         return new NumberState(c - '0');
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -30,6 +42,9 @@ public final class NumberState extends State {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<ValueWord> produce(final char c) {
         return Optional.ofNullable(switch (c) {

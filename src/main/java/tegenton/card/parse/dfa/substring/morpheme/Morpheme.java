@@ -13,10 +13,16 @@ public abstract class Morpheme extends Substring {
         this.product = word;
     }
 
+    /**
+     * @return Word to return on successful traversal.
+     */
     protected Word getProduct() {
         return product;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         if (this.completed()) {

@@ -7,10 +7,16 @@ import java.util.Optional;
 
 public class TEENMorpheme extends Morpheme {
 
+    /**
+     * @param number Preceding number, will be incremented by 10.
+     */
     public TEENMorpheme(final EnglishNumber number) {
         super("TEEN".toCharArray(), number);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         if (!this.completed()) {

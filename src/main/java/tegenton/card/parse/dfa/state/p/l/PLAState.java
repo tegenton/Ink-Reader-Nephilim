@@ -15,10 +15,16 @@ import java.util.Optional;
 public class PLAState extends PLState {
     private static final PLAState INSTANCE = new PLAState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static PLAState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -32,6 +38,9 @@ public class PLAState extends PLState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
