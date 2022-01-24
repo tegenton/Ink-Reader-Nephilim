@@ -12,10 +12,16 @@ import java.util.Optional;
 public class STEPState extends STEState {
     private static final STEPState INSTANCE = new STEPState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static STEPState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -25,6 +31,9 @@ public class STEPState extends STEState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {

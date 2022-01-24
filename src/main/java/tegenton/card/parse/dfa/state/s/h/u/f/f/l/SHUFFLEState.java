@@ -11,10 +11,16 @@ import java.util.Optional;
 public class SHUFFLEState extends SState {
     private static final SHUFFLEState INSTANCE = new SHUFFLEState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static SHUFFLEState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -24,6 +30,9 @@ public class SHUFFLEState extends SState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {

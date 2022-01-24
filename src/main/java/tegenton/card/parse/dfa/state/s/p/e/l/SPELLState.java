@@ -12,10 +12,16 @@ import java.util.Optional;
 public class SPELLState extends SPELState {
     private static final SPELLState INSTANCE = new SPELLState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static SPELLState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -25,6 +31,9 @@ public class SPELLState extends SPELState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {

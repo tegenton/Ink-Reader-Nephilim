@@ -12,10 +12,16 @@ import java.util.Optional;
 public class SWAMPState extends SState {
     private static final SWAMPState INSTANCE = new SWAMPState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static SWAMPState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -26,6 +32,9 @@ public class SWAMPState extends SState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {

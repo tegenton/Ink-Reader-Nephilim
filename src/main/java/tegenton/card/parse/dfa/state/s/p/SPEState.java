@@ -11,10 +11,16 @@ import java.util.Optional;
 public class SPEState extends SPState {
     private static final SPEState INSTANCE = new SPEState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static SPEState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -24,6 +30,9 @@ public class SPEState extends SPState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.empty();

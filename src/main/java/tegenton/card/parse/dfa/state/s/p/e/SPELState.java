@@ -10,10 +10,16 @@ import java.util.Optional;
 public class SPELState extends SPEState {
     private static final SPELState INSTANCE = new SPELState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static SPELState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -22,6 +28,9 @@ public class SPELState extends SPEState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.empty();

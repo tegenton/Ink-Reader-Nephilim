@@ -12,10 +12,16 @@ import java.util.Optional;
 public class SEVENState extends SEVEState {
     private static final SEVENState INSTANCE = new SEVENState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static SEVENState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -25,6 +31,9 @@ public class SEVENState extends SEVEState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {

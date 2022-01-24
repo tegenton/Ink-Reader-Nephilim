@@ -10,10 +10,16 @@ import java.util.Optional;
 public class SEVEState extends SEVState {
     private static final SEVEState INSTANCE = new SEVEState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static SEVEState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -22,6 +28,9 @@ public class SEVEState extends SEVState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.empty();

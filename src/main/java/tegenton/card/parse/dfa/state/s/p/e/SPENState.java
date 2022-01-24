@@ -12,10 +12,16 @@ import java.util.Optional;
 public class SPENState extends SPEState {
     private static final SPENState INSTANCE = new SPENState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static SPENState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -25,6 +31,9 @@ public class SPENState extends SPEState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
