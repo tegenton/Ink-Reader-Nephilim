@@ -10,10 +10,16 @@ import java.util.Optional;
 public class DONState extends DOState {
     private static final DONState INSTANCE = new DONState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static DONState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -22,6 +28,9 @@ public class DONState extends DOState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.empty();

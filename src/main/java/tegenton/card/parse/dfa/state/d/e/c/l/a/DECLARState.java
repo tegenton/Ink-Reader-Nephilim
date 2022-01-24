@@ -12,10 +12,16 @@ import java.util.Optional;
 public class DECLARState extends DEState {
     private static final DECLARState INSTANCE = new DECLARState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static DECLARState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -25,6 +31,9 @@ public class DECLARState extends DEState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {

@@ -12,10 +12,16 @@ import java.util.Optional;
 public class DIVIDEState extends DIState {
     private static final DIVIDEState INSTANCE = new DIVIDEState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static DIVIDEState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -26,6 +32,9 @@ public class DIVIDEState extends DIState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {

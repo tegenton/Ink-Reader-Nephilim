@@ -10,10 +10,16 @@ import java.util.Optional;
 public final class DRAWState extends DRAState {
     private static final DRAWState INSTANCE = new DRAWState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static DRAWState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -23,6 +29,9 @@ public final class DRAWState extends DRAState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<PlayerVerb> produce(final char c) {
         return Optional.ofNullable(switch (c) {

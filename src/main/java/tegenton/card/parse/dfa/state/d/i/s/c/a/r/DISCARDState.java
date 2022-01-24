@@ -11,10 +11,16 @@ import java.util.Optional;
 public class DISCARDState extends DIState {
     private static final DISCARDState INSTANCE = new DISCARDState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static DISCARDState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -24,6 +30,9 @@ public class DISCARDState extends DIState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {

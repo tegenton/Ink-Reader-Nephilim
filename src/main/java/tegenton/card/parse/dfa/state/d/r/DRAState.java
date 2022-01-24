@@ -10,10 +10,16 @@ import java.util.Optional;
 public class DRAState extends DRState {
     private static final DRAState INSTANCE = new DRAState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static DRAState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     /**
      * {@inheritDoc}
      */
@@ -25,6 +31,9 @@ public class DRAState extends DRState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     /**
      * {@inheritDoc}
      */
