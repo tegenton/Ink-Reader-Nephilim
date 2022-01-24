@@ -14,12 +14,18 @@ import java.util.Optional;
 public class DState extends State {
     private static final DState INSTANCE = new DState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static DState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'A' -> new SuffixSubstring("AMAGE", GameNoun.DAMAGE);
             case 'E' -> DEState.state();
@@ -31,8 +37,11 @@ public class DState extends State {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

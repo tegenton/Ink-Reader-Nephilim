@@ -15,12 +15,18 @@ import java.util.Optional;
 public class SOState extends SState {
     private static final SOState INSTANCE = new SOState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static SOState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'M' -> new SuffixSubstring("ME", Determiner.SOME);
             case 'R' -> new SuffixSubstring("RCERY", CardType.SORCERY);
@@ -30,8 +36,11 @@ public class SOState extends SState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case ',', '\0', '.', ' ' -> Pronoun.SO;
             default -> null;

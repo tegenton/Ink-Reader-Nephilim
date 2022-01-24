@@ -1,6 +1,10 @@
 package tegenton.card.parse.dfa.state;
 
-import tegenton.card.parse.dfa.state.t.*;
+import tegenton.card.parse.dfa.state.t.TAState;
+import tegenton.card.parse.dfa.state.t.TEState;
+import tegenton.card.parse.dfa.state.t.THState;
+import tegenton.card.parse.dfa.state.t.TOState;
+import tegenton.card.parse.dfa.state.t.TWState;
 import tegenton.card.parse.dfa.state.t.i.m.TIMEState;
 import tegenton.card.parse.dfa.state.t.u.r.TURNState;
 import tegenton.card.parse.dfa.state.t.y.p.TYPEState;
@@ -15,12 +19,18 @@ import java.util.Optional;
 public class TState extends State {
     private static final TState INSTANCE = new TState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static TState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'A' -> TAState.state();
             case 'E' -> TEState.state();
@@ -36,8 +46,11 @@ public class TState extends State {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case '}' -> Tap.T;
             default -> null;

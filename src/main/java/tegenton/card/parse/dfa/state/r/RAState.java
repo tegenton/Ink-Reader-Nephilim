@@ -12,12 +12,18 @@ import java.util.Optional;
 public class RAState extends RState {
     private static final RAState INSTANCE = new RAState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static RAState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'N' -> new SuffixSubstring("NDOM", Noun.RANDOM);
             case 'T' -> new SuffixSubstring("TS", CardName.RATS);
@@ -25,8 +31,11 @@ public class RAState extends RState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

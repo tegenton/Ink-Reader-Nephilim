@@ -14,12 +14,18 @@ import java.util.Optional;
 public class ENCHANTState extends ENCState {
     private static final ENCHANTState INSTANCE = new ENCHANTState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static ENCHANTState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'M' -> new InfixSubstring("MEN", 'T', ENCHANTMENTState::state);
             case 'E' -> new EDMorpheme();
@@ -28,8 +34,11 @@ public class ENCHANTState extends ENCState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'E', '\0', ' ' -> Keyword.ENCHANT;
             default -> null;

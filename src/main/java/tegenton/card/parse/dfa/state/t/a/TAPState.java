@@ -12,12 +12,18 @@ import java.util.Optional;
 public class TAPState extends TAState {
     private static final TAPState INSTANCE = new TAPState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static TAPState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'P' -> TAPPState.state();
             case 'S' -> this;
@@ -26,8 +32,11 @@ public class TAPState extends TAState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return switch (c) {
             case '\0', ' ' -> Optional.of(ObjectVerb.TAP);
             default -> Optional.empty();

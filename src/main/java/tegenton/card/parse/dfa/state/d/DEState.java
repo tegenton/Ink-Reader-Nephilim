@@ -15,12 +15,18 @@ import java.util.Optional;
 public class DEState extends DState {
     private static final DEState INSTANCE = new DEState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static DEState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'A' -> new InfixSubstring("A", 'L', DEALState::state);
             case 'C' -> DECState.state();
@@ -30,8 +36,11 @@ public class DEState extends DState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

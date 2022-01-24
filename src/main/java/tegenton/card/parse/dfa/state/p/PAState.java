@@ -11,12 +11,18 @@ import java.util.Optional;
 public class PAState extends PState {
     private static final PAState INSTANCE = new PAState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static PAState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'I' -> PAIState.state();
             case 'Y' -> PAYState.state();
@@ -24,8 +30,11 @@ public class PAState extends PState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

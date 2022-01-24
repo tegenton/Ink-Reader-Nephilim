@@ -13,12 +13,18 @@ import java.util.Optional;
 public class GOState extends GState {
     private static final GOState INSTANCE = new GOState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static GOState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'B' -> new InfixSubstring("BLI", 'N', GOBLINState::state);
             case 'L' -> new SuffixSubstring("LEM", CreatureType.GOLEM);
@@ -26,8 +32,11 @@ public class GOState extends GState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

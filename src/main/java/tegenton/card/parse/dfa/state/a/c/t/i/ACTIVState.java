@@ -12,12 +12,18 @@ import java.util.Optional;
 public class ACTIVState extends AState {
     private static final ACTIVState INSTANCE = new ACTIVState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static ACTIVState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'A' -> new InfixSubstring("AT", 'E', ACTIVATEState::state);
             case 'E' -> ACTIVEState.state();
@@ -25,8 +31,11 @@ public class ACTIVState extends AState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

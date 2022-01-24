@@ -7,8 +7,8 @@ public enum TargetModifier implements Word {
 
     private final String name;
 
-    TargetModifier(String name) {
-        this.name = name;
+    TargetModifier(final String s) {
+        this.name = s;
     }
 
     @Override

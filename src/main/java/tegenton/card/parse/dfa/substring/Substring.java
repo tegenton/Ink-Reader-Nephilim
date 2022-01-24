@@ -9,24 +9,40 @@ public abstract class Substring extends State {
     private final char[] text;
     private int index = 1;
 
-    protected Substring(char[] text) {
-        this.text = text;
+    protected Substring(final char[] sequence) {
+        this.text = sequence;
     }
 
-    public State transition(char c) {
+    /**
+     * Continue through the substring path.
+     *
+     * @param c Character to transition on.
+     * @return This.
+     */
+    public State transition(final char c) {
         if (index < text.length && c == text[index]) {
             index++;
             return this;
         } else if (index < text.length) {
-            throw new IllegalStateException("Substring " + Arrays.toString(text) + " does not contain " + c + " at index " + index);
+            throw new IllegalStateException("Substring "
+                    + Arrays.toString(text)
+                    + " does not contain "
+                    + c
+                    + " at index "
+                    + index);
         } else {
             return switch (c) {
                 case ',', '\n', '.', '\u201D', ' ' -> SymbolState.state(c);
-                default -> throw new IllegalStateException("Cannot transition from substring " + Arrays.toString(text) + " on " + c);
+                default -> throw new
+                        IllegalStateException("Can't transition from substring "
+                        + Arrays.toString(text) + " on " + c);
             };
         }
     }
 
+    /**
+     * @return Has the substring been traversed?
+     */
     protected boolean completed() {
         return index == text.length;
     }

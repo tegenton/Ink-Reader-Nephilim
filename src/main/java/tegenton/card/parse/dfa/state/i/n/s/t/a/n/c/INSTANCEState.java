@@ -12,12 +12,18 @@ import java.util.Optional;
 public class INSTANCEState extends INSTANCState {
     private static final INSTANCEState INSTANCE = new INSTANCEState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static INSTANCEState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'S' -> SState.state();
             case '\0', ' ' -> SymbolState.state(c);
@@ -25,8 +31,11 @@ public class INSTANCEState extends INSTANCState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'S', '\0', ' ' -> Noun.INSTANCE;
             default -> null;

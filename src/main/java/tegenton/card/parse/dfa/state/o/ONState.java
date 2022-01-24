@@ -15,12 +15,18 @@ import java.util.Optional;
 public class ONState extends OState {
     private static final ONState INSTANCE = new ONState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static ONState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'C' -> new SuffixSubstring("CE", Adverb.ONCE);
             case 'E' -> ONEState.state();
@@ -31,8 +37,11 @@ public class ONState extends OState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'T', '\0', ' ' -> Preposition.ON;
             default -> null;

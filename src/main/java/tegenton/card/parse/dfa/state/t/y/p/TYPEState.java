@@ -12,11 +12,18 @@ import java.util.Optional;
 public class TYPEState extends TState {
     private static final TYPEState INSTANCE = new TYPEState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static TYPEState state() {
         return INSTANCE;
     }
 
-    public State transition(char c) {
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public State transition(final char c) {
         return switch (c) {
             case 'S' -> SState.state();
             case '\0', '.', ' ' -> SymbolState.state(c);
@@ -24,7 +31,10 @@ public class TYPEState extends TState {
         };
     }
 
-    public Optional<Word> produce(char c) {
+    /**
+     * {@inheritDoc}
+     */
+    public Optional<Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'S', '\0', '.', ' ' -> GameNoun.TYPE;
             default -> null;

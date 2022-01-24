@@ -1,6 +1,7 @@
 package tegenton.card.parse;
 
 import tegenton.card.parse.lexicon.Word;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
@@ -41,8 +42,15 @@ public final class Lexer
         return Set.of();
     }
 
+    /**
+     * Split string on spaces, lex each individual section, then return each
+     * word encountered.
+     *
+     * @param s String to lex.
+     * @return List of Words that the string contains.
+     */
     public List<Word> lex(final String s) {
-        String[] text = s.split(" ");
+        final String[] text = s.split(" ");
         for (int i = 0; i < text.length - 1; i++) {
             text[i] += ' ';
         }

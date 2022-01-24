@@ -13,12 +13,18 @@ import java.util.Optional;
 public class LIState extends LState {
     private static final LIState INSTANCE = new LIState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static LIState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'B' -> new SuffixSubstring("BRARY", Zone.LIBRARY);
             case 'F' -> new SuffixSubstring("FE", GameNoun.LIFE);
@@ -27,8 +33,11 @@ public class LIState extends LState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

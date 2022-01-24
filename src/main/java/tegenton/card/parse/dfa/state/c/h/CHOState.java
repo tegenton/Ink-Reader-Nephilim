@@ -14,12 +14,18 @@ import java.util.Optional;
 public class CHOState extends CHState {
     private static final CHOState INSTANCE = new CHOState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static CHOState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'I' -> new SuffixSubstring("ICE", Noun.CHOICE);
             case 'O' -> new InfixSubstring("OS", 'E', CHOOSEState::state);
@@ -28,8 +34,11 @@ public class CHOState extends CHState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

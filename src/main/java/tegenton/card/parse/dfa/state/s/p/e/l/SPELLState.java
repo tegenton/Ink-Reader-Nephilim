@@ -12,12 +12,18 @@ import java.util.Optional;
 public class SPELLState extends SPELState {
     private static final SPELLState INSTANCE = new SPELLState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static SPELLState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'S' -> SState.state();
             case ',', '\0', '.', ' ' -> SymbolState.state(c);
@@ -25,8 +31,11 @@ public class SPELLState extends SPELState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'S', ',', '\0', '.', ' ' -> ObjectNoun.SPELL;
             default -> null;

@@ -12,12 +12,18 @@ import java.util.Optional;
 public class PRState extends PState {
     private static final PRState INSTANCE = new PRState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static PRState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'E' -> new InfixSubstring("EVEN", 'T', PREVENTState::state);
             case 'O' -> PROState.state();
@@ -25,8 +31,11 @@ public class PRState extends PState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

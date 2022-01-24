@@ -11,10 +11,16 @@ import java.util.Optional;
 public class FLYState extends FLState {
     private static final FLYState INSTANCE = new FLYState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static FLYState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -23,6 +29,9 @@ public class FLYState extends FLState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.empty();

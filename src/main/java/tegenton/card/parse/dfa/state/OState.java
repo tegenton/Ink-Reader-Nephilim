@@ -1,6 +1,10 @@
 package tegenton.card.parse.dfa.state;
 
-import tegenton.card.parse.dfa.state.o.*;
+import tegenton.card.parse.dfa.state.o.OFState;
+import tegenton.card.parse.dfa.state.o.ONState;
+import tegenton.card.parse.dfa.state.o.ORState;
+import tegenton.card.parse.dfa.state.o.OTState;
+import tegenton.card.parse.dfa.state.o.OWState;
 import tegenton.card.parse.dfa.state.o.p.p.o.n.e.n.OPPONENTState;
 import tegenton.card.parse.dfa.substring.InfixSubstring;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
@@ -13,12 +17,18 @@ import java.util.Optional;
 public class OState extends State {
     private static final OState INSTANCE = new OState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static OState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'F' -> OFState.state();
             case 'N' -> ONState.state();
@@ -32,8 +42,11 @@ public class OState extends State {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

@@ -8,22 +8,31 @@ import tegenton.card.parse.lexicon.Comparative;
 import java.util.Optional;
 
 public class GREATERState extends GREATEState {
-    private static final GREATERState instance = new GREATERState();
+    private static final GREATERState INSTANCE = new GREATERState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static GREATERState state() {
-        return instance;
+        return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case '\0', '.', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<Comparative> produce(char c) {
+    public Optional<Comparative> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case '\0', ',', ' ' -> Comparative.GREATER;
             default -> null;

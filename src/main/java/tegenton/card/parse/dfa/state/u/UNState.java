@@ -16,12 +16,18 @@ import java.util.Optional;
 public class UNState extends UState {
     private static final UNState INSTANCE = new UNState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static UNState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'B' -> BState.state();
             case 'D' -> new SuffixSubstring("DER", Preposition.UNDER);
@@ -32,8 +38,11 @@ public class UNState extends UState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'B', 'S' -> Adverb.NOT;
             default -> null;

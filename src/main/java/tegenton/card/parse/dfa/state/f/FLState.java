@@ -12,12 +12,18 @@ import java.util.Optional;
 public class FLState extends FState {
     private static final FLState INSTANCE = new FLState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static FLState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'I' -> new SuffixSubstring("IP", PlayerVerb.FLIP);
             case 'Y' -> FLYState.state();
@@ -25,8 +31,11 @@ public class FLState extends FState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

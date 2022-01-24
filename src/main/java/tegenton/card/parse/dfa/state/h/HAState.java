@@ -16,12 +16,18 @@ import java.util.Optional;
 public class HAState extends HState {
     private static final HAState INSTANCE = new HAState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static HAState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'D' -> HADState.state();
             case 'L' -> new SuffixSubstring("LF", Genitive.HALF);
@@ -32,8 +38,11 @@ public class HAState extends HState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'D' -> ObjectVerb.HAVE;
             default -> null;

@@ -12,12 +12,18 @@ import java.util.Optional;
 public class DIVIDEState extends DIState {
     private static final DIVIDEState INSTANCE = new DIVIDEState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static DIVIDEState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'D' -> EDState.state();
             case 'S' -> this;
@@ -26,8 +32,11 @@ public class DIVIDEState extends DIState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'D', '\0', ' ' -> PlayerVerb.DIVIDE;
             default -> null;

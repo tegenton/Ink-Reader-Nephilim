@@ -12,12 +12,18 @@ import java.util.Optional;
 public class PLAYState extends PLAState {
     private static final PLAYState INSTANCE = new PLAYState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static PLAYState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'E' -> EState.state();
             case 'I' -> new INGMorpheme();
@@ -27,8 +33,11 @@ public class PLAYState extends PLAState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<PlayerVerb> produce(char c) {
+    public Optional<PlayerVerb> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'E', 'I', '\0', ' ' -> PlayerVerb.PLAY;
             default -> null;

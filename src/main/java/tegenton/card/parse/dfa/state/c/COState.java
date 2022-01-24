@@ -18,12 +18,18 @@ import java.util.Optional;
 public class COState extends CState {
     private static final COState INSTANCE = new COState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static COState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'L' -> new InfixSubstring("LO", 'R', COLORState::state);
             case 'M' -> COMState.state();
@@ -36,8 +42,11 @@ public class COState extends CState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

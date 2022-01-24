@@ -1,6 +1,12 @@
 package tegenton.card.parse.dfa.state;
 
-import tegenton.card.parse.dfa.state.e.*;
+import tegenton.card.parse.dfa.state.e.EAState;
+import tegenton.card.parse.dfa.state.e.EDState;
+import tegenton.card.parse.dfa.state.e.EIState;
+import tegenton.card.parse.dfa.state.e.ELState;
+import tegenton.card.parse.dfa.state.e.ENState;
+import tegenton.card.parse.dfa.state.e.ERState;
+import tegenton.card.parse.dfa.state.e.EXState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Adjective;
 import tegenton.card.parse.lexicon.Adverb;
@@ -12,12 +18,18 @@ import java.util.Optional;
 public class EState extends State {
     private static final EState INSTANCE = new EState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static EState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'A' -> EAState.state();
             case 'D' -> EDState.state();
@@ -33,8 +45,11 @@ public class EState extends State {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

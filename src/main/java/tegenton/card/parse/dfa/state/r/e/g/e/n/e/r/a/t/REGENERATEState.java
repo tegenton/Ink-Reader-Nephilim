@@ -12,12 +12,18 @@ import java.util.Optional;
 public class REGENERATEState extends REState {
     private static final REGENERATEState INSTANCE = new REGENERATEState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static REGENERATEState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'D' -> EDState.state();
             case '\0', ' ' -> SymbolState.state(c);
@@ -25,8 +31,11 @@ public class REGENERATEState extends REState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'D', '\0', ' ' -> PlayerVerb.REGENERATE;
             default -> null;

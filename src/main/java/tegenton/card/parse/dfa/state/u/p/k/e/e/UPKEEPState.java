@@ -12,12 +12,18 @@ import java.util.Optional;
 public class UPKEEPState extends UPState {
     private static final UPKEEPState INSTANCE = new UPKEEPState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static UPKEEPState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'S' -> SState.state();
             case ',', '\0', '.', ' ' -> SymbolState.state(c);
@@ -25,8 +31,11 @@ public class UPKEEPState extends UPState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'S', ',', '\0', '.', ' ' -> Step.UPKEEP;
             default -> null;

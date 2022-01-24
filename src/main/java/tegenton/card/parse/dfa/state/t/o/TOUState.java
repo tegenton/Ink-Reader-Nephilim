@@ -13,21 +13,33 @@ import java.util.Optional;
 public class TOUState extends TOState {
     private static final TOUState INSTANCE = new TOUState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static TOUState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
-            case 'C' -> new InfixSubstring("C", 'H', TOUCHState::state);
-            case 'G' -> new SuffixSubstring("GHNESS", ObjectAttribute.TOUGHNESS);
+            case 'C' -> new InfixSubstring("C",
+                    'H',
+                    TOUCHState::state);
+            case 'G' -> new SuffixSubstring("GHNESS",
+                    ObjectAttribute.TOUGHNESS);
             default -> invalid(c);
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

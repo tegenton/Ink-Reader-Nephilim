@@ -12,12 +12,18 @@ import java.util.Optional;
 public class MIState extends MState {
     private static final MIState INSTANCE = new MIState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static MIState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'N' -> new SuffixSubstring("NUS", Preposition.MINUS);
             case 'R' -> new SuffixSubstring("RE", CounterName.MIRE);
@@ -25,8 +31,11 @@ public class MIState extends MState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

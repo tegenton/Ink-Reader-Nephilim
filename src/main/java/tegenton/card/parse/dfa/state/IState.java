@@ -13,12 +13,17 @@ import java.util.Optional;
 public class IState extends State {
     private static final IState INSTANCE = new IState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static IState state() {
         return INSTANCE;
     }
 
-    @Override
-    public State transition(char c) {
+    /**
+     * {@inheritDoc}
+     */
+    public State transition(final char c) {
         return switch (c) {
             case 'F' -> IFState.state();
             case 'G' -> new SuffixSubstring("GNORE", PlayerVerb.IGNORE);
@@ -29,8 +34,11 @@ public class IState extends State {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

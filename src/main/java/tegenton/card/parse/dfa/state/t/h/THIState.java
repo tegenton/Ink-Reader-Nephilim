@@ -5,26 +5,36 @@ import tegenton.card.parse.dfa.state.t.THState;
 import tegenton.card.parse.dfa.state.t.h.i.THIRState;
 import tegenton.card.parse.dfa.state.t.h.i.s.THISState;
 import tegenton.card.parse.lexicon.Word;
+
 import java.util.Optional;
 
 public class THIState extends THState {
     private static final THIState INSTANCE = new THIState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static THIState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'R' -> THIRState.state();
             case 'S' -> THISState.state();
-            default -> throw new IllegalStateException("Cannot transition from THIState on " + c);
+            default -> invalid(c);
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

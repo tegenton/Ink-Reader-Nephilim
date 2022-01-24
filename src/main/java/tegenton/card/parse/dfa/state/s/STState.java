@@ -13,12 +13,18 @@ import java.util.Optional;
 public class STState extends SState {
     private static final STState INSTANCE = new STState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static STState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'E' -> STEState.state();
             case 'I' -> new SuffixSubstring("ILL", Adverb.STILL);
@@ -27,8 +33,11 @@ public class STState extends SState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

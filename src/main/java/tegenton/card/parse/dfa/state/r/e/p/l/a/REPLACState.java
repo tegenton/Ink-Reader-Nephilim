@@ -12,12 +12,18 @@ import java.util.Optional;
 public class REPLACState extends REState {
     private static final REPLACState INSTANCE = new REPLACState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static REPLACState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'E' -> REPLACEState.state();
             case 'I' -> new INGMorpheme();
@@ -25,8 +31,11 @@ public class REPLACState extends REState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'I' -> PlayerVerb.REPLACE;
             default -> null;

@@ -11,20 +11,29 @@ import java.util.Optional;
 public class PAIState extends PAState {
     private static final PAIState INSTANCE = new PAIState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static PAIState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'D' -> PAIDState.state();
             default -> invalid(c);
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'D' -> PlayerVerb.PAY;
             default -> null;

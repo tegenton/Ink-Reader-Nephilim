@@ -12,12 +12,18 @@ import java.util.Optional;
 public class DEALState extends DEState {
     private static final DEALState INSTANCE = new DEALState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static DEALState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'S' -> this;
             case 'T' -> DEALTState.state();
@@ -26,8 +32,11 @@ public class DEALState extends DEState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'T', '\0', ' ' -> SourceVerb.DEAL;
             default -> null;

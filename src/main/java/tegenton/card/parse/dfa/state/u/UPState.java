@@ -13,12 +13,18 @@ import java.util.Optional;
 public class UPState extends UState {
     private static final UPState INSTANCE = new UPState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static UPState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'K' -> new InfixSubstring("KEE", 'P', UPKEEPState::state);
             case '\0', '.', ' ' -> SymbolState.state(c);
@@ -26,8 +32,11 @@ public class UPState extends UState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case '\0', '.', ' ' -> Particle.UP;
             default -> null;

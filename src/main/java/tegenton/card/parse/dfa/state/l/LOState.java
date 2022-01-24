@@ -14,12 +14,18 @@ import java.util.Optional;
 public class LOState extends LState {
     private static final LOState INSTANCE = new LOState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static LOState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'N' -> new SuffixSubstring("NG", SubordinateConjunction.LONG);
             case 'O' -> new SuffixSubstring("OK", PlayerVerb.LOOK);
@@ -29,8 +35,11 @@ public class LOState extends LState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

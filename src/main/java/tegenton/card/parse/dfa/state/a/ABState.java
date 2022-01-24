@@ -14,12 +14,18 @@ import java.util.Optional;
 public class ABState extends AState {
     private static final ABState INSTANCE = new ABState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static ABState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'I' -> new InfixSubstring("ILI", 'T', ABILITState::state);
             case 'L' -> new SuffixSubstring("LE", TargetAdjective.ABLE);
@@ -28,8 +34,11 @@ public class ABState extends AState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

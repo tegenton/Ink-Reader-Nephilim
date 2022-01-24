@@ -14,12 +14,18 @@ import java.util.Optional;
 public class WASState extends WAState {
     private static final WASState INSTANCE = new WASState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static WASState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'N' -> new SuffixSubstring("N\u2019T", Adverb.NOT);
             case 'P' -> WASPState.state();
@@ -28,8 +34,11 @@ public class WASState extends WAState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'N', '\0', ' ' -> Morpheme.ED;
             default -> null;

@@ -11,20 +11,29 @@ import java.util.Optional;
 public class CANTState extends CANtState {
     private static final CANTState INSTANCE = new CANTState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static CANTState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case ',', '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case ',', '\0', ' ' -> Adverb.NOT;
             default -> null;

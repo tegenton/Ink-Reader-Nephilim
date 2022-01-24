@@ -13,12 +13,18 @@ import java.util.Optional;
 public class COLORState extends COState {
     private static final COLORState INSTANCE = new COLORState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static COLORState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'L' -> new SuffixSubstring("LESS", Comparative.LESS);
             case '\0', '.', ' ' -> SymbolState.state(c);
@@ -26,8 +32,11 @@ public class COLORState extends COState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'L', '\0', '.', ' ' -> GameNoun.COLOR;
             default -> null;

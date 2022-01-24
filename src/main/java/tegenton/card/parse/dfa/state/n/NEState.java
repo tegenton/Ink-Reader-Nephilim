@@ -12,12 +12,18 @@ import java.util.Optional;
 public class NEState extends NState {
     private static final NEState INSTANCE = new NEState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static NEState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'W' -> NEWState.state();
             case 'X' -> new SuffixSubstring("XT", Adjective.NEXT);
@@ -25,8 +31,11 @@ public class NEState extends NState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

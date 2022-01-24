@@ -13,12 +13,18 @@ public class CREATState extends CREAState {
 
     private static final CREATState INSTANCE = new CREATState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static CREATState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'E' -> CREATEState.state();
             case 'U' -> new InfixSubstring("UR", 'E', CREATUREState::state);
@@ -26,8 +32,11 @@ public class CREATState extends CREAState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

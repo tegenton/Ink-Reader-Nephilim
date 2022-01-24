@@ -13,12 +13,18 @@ import java.util.Optional;
 public class EXState extends EState {
     private static final EXState INSTANCE = new EXState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static EXState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'C' -> EXCState.state();
             case 'I' -> new SuffixSubstring("ILE", Zone.EXILE);
@@ -27,8 +33,11 @@ public class EXState extends EState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

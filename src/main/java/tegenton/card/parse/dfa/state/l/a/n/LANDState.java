@@ -13,12 +13,18 @@ import java.util.Optional;
 public class LANDState extends LAState {
     private static final LANDState INSTANCE = new LANDState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static LANDState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'S' -> SState.state();
             case '\u2019' -> PossessiveState.state();
@@ -27,8 +33,11 @@ public class LANDState extends LAState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'S', '\u2019', ',', '\n', '\0', '.', ' ' -> CardType.LAND;
             default -> null;

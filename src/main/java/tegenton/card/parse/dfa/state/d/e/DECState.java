@@ -12,12 +12,18 @@ import java.util.Optional;
 public class DECState extends DEState {
     private static final DECState INSTANCE = new DECState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static DECState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'K' -> DECKState.state();
             case 'L' -> new InfixSubstring("LA", 'R', DECLARState::state);
@@ -25,8 +31,11 @@ public class DECState extends DEState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

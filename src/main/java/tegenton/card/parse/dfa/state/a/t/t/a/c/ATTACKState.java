@@ -13,12 +13,18 @@ import java.util.Optional;
 public class ATTACKState extends ATTACState {
     private static final ATTACKState INSTANCE = new ATTACKState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static ATTACKState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'E' -> ATTACKEState.state();
             case 'I' -> new INGMorpheme();
@@ -28,8 +34,11 @@ public class ATTACKState extends ATTACState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'E', 'I', ',', '\0', ' ' -> ObjectVerb.ATTACK;
             default -> null;

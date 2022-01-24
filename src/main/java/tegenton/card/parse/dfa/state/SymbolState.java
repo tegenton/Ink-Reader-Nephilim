@@ -5,24 +5,34 @@ import tegenton.card.parse.lexicon.Word;
 
 import java.util.Optional;
 
-public class SymbolState extends State {
+public final class SymbolState extends State {
     private final char symbol;
 
-    private SymbolState(char symbol) {
-        this.symbol = symbol;
+    private SymbolState(final char c) {
+        this.symbol = c;
     }
 
-    public static SymbolState state(char c) {
+    /**
+     * @param c Character used to transition into this state.
+     * @return Instance of symbol state with given symbol.
+     */
+    public static SymbolState state(final char c) {
         return new SymbolState(c);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return EmptyState.state().transition(c);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (symbol) {
             case '\u2022' -> Symbol.BULLET;
             case '\u201D' -> Symbol.CLOSEQUOTE;

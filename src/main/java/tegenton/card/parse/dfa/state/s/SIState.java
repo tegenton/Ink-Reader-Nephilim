@@ -13,12 +13,18 @@ import java.util.Optional;
 public class SIState extends SState {
     private static final SIState INSTANCE = new SIState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static SIState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'N' -> new SuffixSubstring("NCE", Duration.SINCE);
             case 'X' -> SIXState.state();
@@ -27,8 +33,11 @@ public class SIState extends SState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

@@ -10,12 +10,18 @@ import java.util.Optional;
 public class YState extends State {
     private static final YState INSTANCE = new YState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static YState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'O' -> new InfixSubstring("O", 'U', YOUState::state);
             case ',', '\0', ' ' -> SymbolState.state(c);
@@ -23,8 +29,11 @@ public class YState extends State {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case ',', '\0', ' ' -> Variable.Y;
             default -> null;

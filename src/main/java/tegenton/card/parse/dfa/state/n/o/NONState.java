@@ -1,6 +1,10 @@
 package tegenton.card.parse.dfa.state.n.o;
 
-import tegenton.card.parse.dfa.state.*;
+import tegenton.card.parse.dfa.state.AState;
+import tegenton.card.parse.dfa.state.BState;
+import tegenton.card.parse.dfa.state.State;
+import tegenton.card.parse.dfa.state.SymbolState;
+import tegenton.card.parse.dfa.state.TState;
 import tegenton.card.parse.dfa.state.n.NOState;
 import tegenton.card.parse.lexicon.Adverb;
 import tegenton.card.parse.lexicon.Word;
@@ -10,12 +14,18 @@ import java.util.Optional;
 public class NONState extends NOState {
     private static final NONState INSTANCE = new NONState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static NONState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'A' -> AState.state();
             case 'B' -> BState.state();
@@ -25,8 +35,11 @@ public class NONState extends NOState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'A', 'B', 'T', '-', '\0', ' ' -> Adverb.NOT;
             default -> null;

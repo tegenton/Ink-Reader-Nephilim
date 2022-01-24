@@ -12,12 +12,18 @@ import java.util.Optional;
 public class WALLState extends WALState {
     private static final WALLState INSTANCE = new WALLState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static WALLState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'S' -> SState.state();
             case '\n', '\0', '.', ' ' -> SymbolState.state(c);
@@ -25,8 +31,11 @@ public class WALLState extends WALState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'S', '\n', '\0', '.', ' ' -> CreatureType.WALL;
             default -> null;

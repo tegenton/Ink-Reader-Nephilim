@@ -14,12 +14,18 @@ import java.util.Optional;
 public class ITState extends IState {
     private static final ITState INSTANCE = new ITState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static ITState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'S' -> PossessiveState.state();
             case '\u2019' -> new SuffixSubstring("\u2019S", ObjectVerb.IS);
@@ -28,11 +34,14 @@ public class ITState extends IState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
-        return switch (c) {
-            case 'S', '\u2019', ',', '\0', '.', ' ' -> Optional.of(ObjectNoun.IT);
-            default -> Optional.empty();
-        };
+    public Optional<? extends Word> produce(final char c) {
+        return Optional.ofNullable(switch (c) {
+            case 'S', '\u2019', ',', '\0', '.', ' ' -> ObjectNoun.IT;
+            default -> null;
+        });
     }
 }

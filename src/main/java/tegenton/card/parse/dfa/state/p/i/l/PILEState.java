@@ -12,12 +12,18 @@ import java.util.Optional;
 public class PILEState extends PState {
     private static final PILEState INSTANCE = new PILEState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static PILEState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'S' -> SState.state();
             case '\0', '.', ' ' -> SymbolState.state(c);
@@ -25,8 +31,11 @@ public class PILEState extends PState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'S', '\0', '.', ' ' -> GameNoun.PILE;
             default -> null;

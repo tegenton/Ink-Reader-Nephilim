@@ -13,12 +13,18 @@ import java.util.Optional;
 public class BLOCKState extends BLState {
     private static final BLOCKState INSTANCE = new BLOCKState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static BLOCKState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'E' -> BLOCKEState.state();
             case 'I' -> new INGMorpheme();
@@ -28,8 +34,11 @@ public class BLOCKState extends BLState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'E', 'I', '\0', ' ' -> ObjectVerb.BLOCK;
             default -> null;

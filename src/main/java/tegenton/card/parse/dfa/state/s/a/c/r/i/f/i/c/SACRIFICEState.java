@@ -12,12 +12,18 @@ import java.util.Optional;
 public class SACRIFICEState extends SAState {
     private static final SACRIFICEState INSTANCE = new SACRIFICEState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static SACRIFICEState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'D' -> EDState.state();
             case 'S' -> this;
@@ -26,8 +32,11 @@ public class SACRIFICEState extends SAState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'D', '\0', ' ' -> PlayerVerb.SACRIFICE;
             default -> null;

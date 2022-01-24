@@ -15,12 +15,18 @@ import java.util.Optional;
 public class ISState extends IState {
     private static final ISState INSTANCE = new ISState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static ISState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'L' -> new InfixSubstring("LAN", 'D', ISLANDState::state);
             case 'N' -> new SuffixSubstring("N\u2019T", Adverb.NOT);
@@ -29,8 +35,11 @@ public class ISState extends IState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'N', '\0', ' ' -> ObjectVerb.IS;
             default -> null;

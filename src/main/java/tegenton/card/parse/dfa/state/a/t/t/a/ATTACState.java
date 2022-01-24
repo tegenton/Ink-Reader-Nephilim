@@ -5,17 +5,24 @@ import tegenton.card.parse.dfa.state.a.t.t.ATTAState;
 import tegenton.card.parse.dfa.state.a.t.t.a.c.ATTACHState;
 import tegenton.card.parse.dfa.state.a.t.t.a.c.ATTACKState;
 import tegenton.card.parse.lexicon.Word;
+
 import java.util.Optional;
 
 public class ATTACState extends ATTAState {
     private static final ATTACState INSTANCE = new ATTACState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static ATTACState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'H' -> ATTACHState.state();
             case 'K' -> ATTACKState.state();
@@ -23,8 +30,11 @@ public class ATTACState extends ATTAState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

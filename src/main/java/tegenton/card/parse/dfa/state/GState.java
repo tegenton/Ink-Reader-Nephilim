@@ -13,12 +13,18 @@ import java.util.Optional;
 public class GState extends State {
     private static final GState INSTANCE = new GState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static GState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'A' -> GAState.state();
             case 'E' -> new InfixSubstring("E", 'T', GETState::state);
@@ -29,8 +35,11 @@ public class GState extends State {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case '}', '\0', ' ' -> Color.G;
             default -> null;

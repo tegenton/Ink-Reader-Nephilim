@@ -12,12 +12,18 @@ import java.util.Optional;
 public class COMState extends COState {
     private static final COMState INSTANCE = new COMState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static COMState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'B' -> new SuffixSubstring("BAT", Phase.COMBAT);
             case 'P' -> new SuffixSubstring("PLETELY", Adverb.COMPLETELY);
@@ -25,8 +31,11 @@ public class COMState extends COState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

@@ -1,6 +1,11 @@
 package tegenton.card.parse.dfa.state;
 
-import tegenton.card.parse.dfa.state.s.*;
+import tegenton.card.parse.dfa.state.s.SAState;
+import tegenton.card.parse.dfa.state.s.SEState;
+import tegenton.card.parse.dfa.state.s.SIState;
+import tegenton.card.parse.dfa.state.s.SOState;
+import tegenton.card.parse.dfa.state.s.SPState;
+import tegenton.card.parse.dfa.state.s.STState;
 import tegenton.card.parse.dfa.state.s.h.u.f.f.l.SHUFFLEState;
 import tegenton.card.parse.dfa.state.s.w.a.m.SWAMPState;
 import tegenton.card.parse.dfa.substring.InfixSubstring;
@@ -14,12 +19,18 @@ import java.util.Optional;
 public class SState extends State {
     private static final SState INSTANCE = new SState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static SState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'A' -> SAState.state();
             case 'E' -> SEState.state();
@@ -36,8 +47,11 @@ public class SState extends State {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case '\u2019', ',', '\0', ' ', '.' -> Morpheme.S;
             default -> null;

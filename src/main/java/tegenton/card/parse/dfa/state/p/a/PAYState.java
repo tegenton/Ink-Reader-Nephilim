@@ -12,12 +12,18 @@ import java.util.Optional;
 public class PAYState extends PAState {
     private static final PAYState INSTANCE = new PAYState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static PAYState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'I' -> new INGMorpheme();
             case 'S' -> this;
@@ -26,8 +32,11 @@ public class PAYState extends PAState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case '\0', ' ' -> PlayerVerb.PAY;
             default -> null;

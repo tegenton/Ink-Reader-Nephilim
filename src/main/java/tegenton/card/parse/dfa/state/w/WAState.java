@@ -13,12 +13,18 @@ import java.util.Optional;
 public class WAState extends WState {
     private static final WAState INSTANCE = new WAState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static WAState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'L' -> WALState.state();
             case 'S' -> WASState.state();
@@ -27,8 +33,11 @@ public class WAState extends WState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'S' -> ObjectVerb.IS;
             default -> null;

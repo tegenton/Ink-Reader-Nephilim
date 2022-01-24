@@ -13,12 +13,18 @@ import java.util.Optional;
 public class TURNState extends TState {
     private static final TURNState INSTANCE = new TURNState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static TURNState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'E' -> new EDMorpheme();
             case 'S' -> SState.state();
@@ -27,8 +33,11 @@ public class TURNState extends TState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'E', 'S', ',', '\0', '.', ' ' -> GameNoun.TURN;
             default -> null;

@@ -14,12 +14,18 @@ import java.util.Optional;
 public class BState extends State {
     private static final BState INSTANCE = new BState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static BState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'A' -> BAState.state();
             case 'E' -> BEState.state();
@@ -31,8 +37,11 @@ public class BState extends State {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case '}', '\0', ' ' -> Color.B;
             default -> null;

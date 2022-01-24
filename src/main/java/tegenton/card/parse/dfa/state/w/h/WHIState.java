@@ -12,12 +12,18 @@ import java.util.Optional;
 public class WHIState extends WHState {
     private static final WHIState INSTANCE = new WHIState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static WHIState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'L' -> new SuffixSubstring("LE", Duration.WHILE);
             case 'T' -> new SuffixSubstring("TE", ColorWord.WHITE);
@@ -25,8 +31,11 @@ public class WHIState extends WHState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

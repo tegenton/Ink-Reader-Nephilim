@@ -12,12 +12,18 @@ import java.util.Optional;
 public class INSTState extends INSState {
     private static final INSTState INSTANCE = new INSTState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static INSTState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'A' -> INSTAState.state();
             case 'E' -> new SuffixSubstring("EAD", Adverb.INSTEAD);
@@ -25,8 +31,11 @@ public class INSTState extends INSState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

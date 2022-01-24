@@ -7,17 +7,24 @@ import tegenton.card.parse.dfa.state.t.a.TARState;
 import tegenton.card.parse.dfa.substring.SuffixSubstring;
 import tegenton.card.parse.lexicon.Word;
 import tegenton.card.parse.lexicon.game.source.target.player.PlayerVerb;
+
 import java.util.Optional;
 
 public class TAState extends TState {
     private static final TAState INSTANCE = new TAState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static TAState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'K' -> new SuffixSubstring("KE", PlayerVerb.TAKE);
             case 'P' -> TAPState.state();
@@ -26,8 +33,11 @@ public class TAState extends TState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

@@ -12,12 +12,18 @@ import java.util.Optional;
 public class TIMEState extends TState {
     private static final TIMEState INSTANCE = new TIMEState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static TIMEState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'S' -> SState.state();
             case '\0', ' ' -> SymbolState.state(c);
@@ -25,8 +31,11 @@ public class TIMEState extends TState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'S', '\0', ' ' -> Noun.TIME;
             default -> null;

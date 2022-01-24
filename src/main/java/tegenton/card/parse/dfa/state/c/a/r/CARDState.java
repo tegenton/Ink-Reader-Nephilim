@@ -12,10 +12,16 @@ import java.util.Optional;
 public final class CARDState extends CARState {
     private static final CARDState INSTANCE = new CARDState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static CARDState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -25,6 +31,9 @@ public final class CARDState extends CARState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {

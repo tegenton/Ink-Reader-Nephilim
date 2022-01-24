@@ -13,21 +13,32 @@ import java.util.Optional;
 public class SAState extends SState {
     private static final SAState INSTANCE = new SAState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static SAState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
-            case 'C' -> new InfixSubstring("CRIFIC", 'E', SACRIFICEState::state);
+            case 'C' -> new InfixSubstring("CRIFIC",
+                    'E',
+                    SACRIFICEState::state);
             case 'M' -> new SuffixSubstring("ME", Adjective.SAME);
             default -> invalid(c);
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

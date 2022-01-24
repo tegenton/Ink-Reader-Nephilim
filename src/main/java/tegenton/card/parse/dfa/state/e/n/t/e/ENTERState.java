@@ -11,12 +11,18 @@ import java.util.Optional;
 public class ENTERState extends ENTEState {
     private static final ENTERState INSTANCE = new ENTERState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static ENTERState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'S' -> this;
             case '\0', ' ' -> SymbolState.state(c);
@@ -24,8 +30,11 @@ public class ENTERState extends ENTEState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case '\0', ' ' -> ObjectVerb.ENTER;
             default -> null;

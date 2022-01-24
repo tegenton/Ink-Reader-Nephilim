@@ -11,20 +11,29 @@ import java.util.Optional;
 public class THEIState extends THEState {
     private static final THEIState INSTANCE = new THEIState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static THEIState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'R' -> PossessiveState.state();
             default -> invalid(c);
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return switch (c) {
             case 'R' -> Optional.of(TargetNoun.THEY);
             default -> Optional.empty();

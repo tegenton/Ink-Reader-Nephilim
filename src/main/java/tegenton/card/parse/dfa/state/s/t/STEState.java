@@ -10,20 +10,29 @@ import java.util.Optional;
 public class STEState extends STState {
     private static final STEState INSTANCE = new STEState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static STEState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'P' -> STEPState.state();
             default -> invalid(c);
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

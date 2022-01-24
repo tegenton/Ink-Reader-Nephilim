@@ -12,12 +12,18 @@ import java.util.Optional;
 public class SEVENState extends SEVEState {
     private static final SEVENState INSTANCE = new SEVENState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static SEVENState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'T' -> new TEENMorpheme(EnglishNumber.SEVEN);
             case '\0', '.', ' ' -> SymbolState.state(c);
@@ -25,8 +31,11 @@ public class SEVENState extends SEVEState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case '\0', '.', ' ' -> EnglishNumber.SEVEN;
             default -> null;

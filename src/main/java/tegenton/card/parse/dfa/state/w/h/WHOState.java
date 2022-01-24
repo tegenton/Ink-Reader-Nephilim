@@ -13,12 +13,18 @@ import java.util.Optional;
 public class WHOState extends WHState {
     private static final WHOState INSTANCE = new WHOState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static WHOState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'M' -> this;
             case 'S' -> new SuffixSubstring("SE", TargetModifier.POSSESSIVE);
@@ -27,8 +33,11 @@ public class WHOState extends WHState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'S', '\0', ' ' -> TargetNoun.WHO;
             default -> null;

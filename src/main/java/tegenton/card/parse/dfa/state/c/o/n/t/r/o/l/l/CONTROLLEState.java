@@ -11,12 +11,18 @@ import java.util.Optional;
 public class CONTROLLEState extends CONTROLLState {
     private static final CONTROLLEState INSTANCE = new CONTROLLEState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static CONTROLLEState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'D' -> EDState.state();
             case 'R' -> ERState.state();
@@ -24,8 +30,11 @@ public class CONTROLLEState extends CONTROLLState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

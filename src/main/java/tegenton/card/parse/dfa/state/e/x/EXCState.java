@@ -12,21 +12,31 @@ import java.util.Optional;
 public class EXCState extends EXState {
     private static final EXCState INSTANCE = new EXCState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static EXCState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
-            case 'E' -> new SuffixSubstring("EPT", SubordinateConjunction.EXCEPT);
+            case 'E' -> new SuffixSubstring("EPT",
+                    SubordinateConjunction.EXCEPT);
             case 'H' -> new SuffixSubstring("HANGE", PlayerVerb.EXCHANGE);
             default -> invalid(c);
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

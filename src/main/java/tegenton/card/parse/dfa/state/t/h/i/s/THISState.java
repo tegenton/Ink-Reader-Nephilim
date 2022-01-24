@@ -11,20 +11,29 @@ import java.util.Optional;
 public class THISState extends THIState {
     private static final THISState INSTANCE = new THISState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static THISState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case ' ' -> SymbolState.state(c);
-            default -> throw new IllegalStateException("Cannot transition from THISState on " + c);
+            default -> invalid(c);
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case '\0', ' ' -> Determiner.THIS;
             default -> null;

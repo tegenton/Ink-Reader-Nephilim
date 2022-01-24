@@ -13,12 +13,18 @@ import java.util.Optional;
 public class BEGINState extends BEState {
     private static final BEGINState INSTANCE = new BEGINState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static BEGINState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'N' -> new SuffixSubstring("NING", Phase.BEGINNING);
             case '\0', ' ' -> SymbolState.state(c);
@@ -26,8 +32,11 @@ public class BEGINState extends BEState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case '\0', ' ' -> PlayerVerb.BEGIN;
             default -> null;

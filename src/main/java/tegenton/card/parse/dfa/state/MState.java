@@ -12,12 +12,18 @@ import java.util.Optional;
 public class MState extends State {
     private static final MState INSTANCE = new MState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static MState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'A' -> MAState.state();
             case 'E' -> new SuffixSubstring("ERFOLK", CreatureType.MERFOLK);
@@ -27,8 +33,11 @@ public class MState extends State {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

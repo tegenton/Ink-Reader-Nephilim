@@ -12,12 +12,18 @@ import java.util.Optional;
 public class GREState extends GRState {
     private static final GREState INSTANCE = new GREState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static GREState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'A' -> GREAState.state();
             case 'E' -> new SuffixSubstring("EN", ColorWord.GREEN);
@@ -25,8 +31,11 @@ public class GREState extends GRState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

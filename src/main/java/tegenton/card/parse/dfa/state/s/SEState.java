@@ -12,12 +12,18 @@ import java.util.Optional;
 public class SEState extends SState {
     private static final SEState INSTANCE = new SEState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static SEState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'A' -> new SuffixSubstring("ARCH", PlayerVerb.SEARCH);
             case 'V' -> SEVState.state();
@@ -25,8 +31,11 @@ public class SEState extends SState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
 }

@@ -12,12 +12,18 @@ import java.util.Optional;
 public class HAVState extends HAState {
     private static final HAVState INSTANCE = new HAVState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static HAVState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'E' -> HAVEState.state();
             case 'I' -> new INGMorpheme();
@@ -25,8 +31,11 @@ public class HAVState extends HAState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'I' -> ObjectVerb.HAVE;
             default -> null;

@@ -11,20 +11,29 @@ import java.util.Optional;
 public class TAPPState extends TAPState {
     private static final TAPPState INSTANCE = new TAPPState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static TAPPState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public State transition(char c) {
+    public State transition(final char c) {
         return switch (c) {
             case 'E' -> new EDMorpheme();
             default -> invalid(c);
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Optional<? extends Word> produce(char c) {
+    public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
             case 'E' -> ObjectVerb.TAP;
             default -> null;

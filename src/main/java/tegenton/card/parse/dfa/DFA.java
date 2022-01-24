@@ -10,15 +10,21 @@ public class DFA {
     private final List<Word> products = new ArrayList<>();
     private State state = State.state();
 
-    public void consume(int i) {
-        consume((char) i);
-    }
-
-    public void consume(char c) {
+    /**
+     * Feed the DFA a character.
+     *
+     * @param c The next character
+     */
+    public void consume(final char c) {
         state.produce(c).ifPresent(products::add);
         state = state.transition(c);
     }
 
+    /**
+     * When transitioning, the DFA may be given Words.
+     *
+     * @return List of products received on transitions.
+     */
     public List<Word> products() {
         state.produce('\0').ifPresent(products::add);
         return products;
