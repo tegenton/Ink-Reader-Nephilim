@@ -12,10 +12,16 @@ import java.util.Optional;
 public class NAMEState extends NState {
     private static final NAMEState INSTANCE = new NAMEState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static NAMEState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -25,6 +31,9 @@ public class NAMEState extends NState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {

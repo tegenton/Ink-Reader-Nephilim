@@ -11,10 +11,16 @@ import java.util.Optional;
 public class NOTState extends NOState {
     private static final NOTState INSTANCE = new NOTState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static NOTState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -23,6 +29,9 @@ public class NOTState extends NOState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {

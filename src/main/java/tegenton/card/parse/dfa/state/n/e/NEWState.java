@@ -11,10 +11,16 @@ import java.util.Optional;
 public class NEWState extends NEState {
     private static final NEWState INSTANCE = new NEWState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static NEWState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -23,6 +29,9 @@ public class NEWState extends NEState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {

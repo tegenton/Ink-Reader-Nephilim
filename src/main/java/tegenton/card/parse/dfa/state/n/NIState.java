@@ -10,10 +10,16 @@ import java.util.Optional;
 public class NIState extends NState {
     private static final NIState INSTANCE = new NIState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static NIState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -22,6 +28,9 @@ public class NIState extends NState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
