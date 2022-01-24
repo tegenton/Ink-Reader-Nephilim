@@ -11,10 +11,16 @@ import java.util.Optional;
 public final class TARGETState extends TARGEState {
     private static final TARGETState INSTANCE = new TARGETState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static TARGETState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -24,6 +30,9 @@ public final class TARGETState extends TARGEState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<Determiner> produce(final char c) {
         return Optional.ofNullable(switch (c) {

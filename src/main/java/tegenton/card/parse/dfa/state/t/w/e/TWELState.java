@@ -10,10 +10,16 @@ import java.util.Optional;
 public class TWELState extends TWEState {
     private static final TWELState INSTANCE = new TWELState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static TWELState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -22,6 +28,9 @@ public class TWELState extends TWEState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.empty();

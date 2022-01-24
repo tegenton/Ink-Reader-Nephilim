@@ -12,6 +12,9 @@ import java.util.Optional;
 public class TYPEState extends TState {
     private static final TYPEState INSTANCE = new TYPEState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static TYPEState state() {
         return INSTANCE;
     }

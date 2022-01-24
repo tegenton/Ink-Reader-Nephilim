@@ -12,10 +12,16 @@ import java.util.Optional;
 public class TOUCHState extends TOUState {
     private static final TOUCHState INSTANCE = new TOUCHState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static TOUCHState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -25,6 +31,9 @@ public class TOUCHState extends TOUState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {

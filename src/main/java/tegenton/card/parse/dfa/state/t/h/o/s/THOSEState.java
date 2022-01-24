@@ -11,10 +11,16 @@ import java.util.Optional;
 public class THOSEState extends THOSState {
     private static final THOSEState INSTANCE = new THOSEState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static THOSEState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -23,6 +29,9 @@ public class THOSEState extends THOSState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {

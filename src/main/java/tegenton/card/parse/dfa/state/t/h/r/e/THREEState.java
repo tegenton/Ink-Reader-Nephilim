@@ -10,10 +10,16 @@ import java.util.Optional;
 public class THREEState extends THREState {
     private static final THREEState INSTANCE = new THREEState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static THREEState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -23,6 +29,9 @@ public class THREEState extends THREState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<EnglishNumber> produce(final char c) {
         return switch (c) {

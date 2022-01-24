@@ -11,10 +11,16 @@ import java.util.Optional;
 public class THEMState extends THEState {
     private static final THEMState INSTANCE = new THEMState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static THEMState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -23,6 +29,9 @@ public class THEMState extends THEState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {

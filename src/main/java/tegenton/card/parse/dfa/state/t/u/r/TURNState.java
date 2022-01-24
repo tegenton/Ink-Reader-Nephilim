@@ -13,10 +13,16 @@ import java.util.Optional;
 public class TURNState extends TState {
     private static final TURNState INSTANCE = new TURNState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static TURNState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -27,6 +33,9 @@ public class TURNState extends TState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {

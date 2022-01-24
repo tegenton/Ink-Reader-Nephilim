@@ -12,10 +12,16 @@ import java.util.Optional;
 public class TAPState extends TAState {
     private static final TAPState INSTANCE = new TAPState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static TAPState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -26,6 +32,9 @@ public class TAPState extends TAState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return switch (c) {
