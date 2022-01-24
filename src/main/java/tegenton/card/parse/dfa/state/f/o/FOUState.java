@@ -10,10 +10,16 @@ import java.util.Optional;
 public class FOUState extends FOState {
     private static final FOUState INSTANCE = new FOUState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static FOUState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -22,6 +28,9 @@ public class FOUState extends FOState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.empty();

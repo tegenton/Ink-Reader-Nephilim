@@ -13,10 +13,16 @@ import java.util.Optional;
 public class FORESTState extends FORState {
     private static final FORESTState INSTANCE = new FORESTState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static FORESTState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -27,6 +33,9 @@ public class FORESTState extends FORState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {

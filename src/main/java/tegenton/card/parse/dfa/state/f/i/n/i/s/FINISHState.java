@@ -12,10 +12,16 @@ import java.util.Optional;
 public class FINISHState extends FIState {
     private static final FINISHState INSTANCE = new FINISHState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static FINISHState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -25,6 +31,9 @@ public class FINISHState extends FIState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {

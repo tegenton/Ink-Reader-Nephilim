@@ -12,10 +12,16 @@ import java.util.Optional;
 public class FEState extends FState {
     private static final FEState INSTANCE = new FEState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static FEState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -25,6 +31,9 @@ public class FEState extends FState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.empty();

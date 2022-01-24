@@ -14,11 +14,16 @@ import java.util.Optional;
 public class FState extends State {
     private static final FState INSTANCE = new FState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static FState state() {
         return INSTANCE;
     }
 
-    @Override
+    /**
+     * {@inheritDoc}
+     */
     public State transition(final char c) {
         return switch (c) {
             case 'A' -> new SuffixSubstring("ACE", ObjectAttribute.FACE);
@@ -31,7 +36,9 @@ public class FState extends State {
         };
     }
 
-    @Override
+    /**
+     * {@inheritDoc}
+     */
     public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
     }
