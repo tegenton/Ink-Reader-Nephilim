@@ -12,10 +12,16 @@ import java.util.Optional;
 public class MOState extends MState {
     private static final MOState INSTANCE = new MOState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static MOState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -25,6 +31,9 @@ public class MOState extends MState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.empty();

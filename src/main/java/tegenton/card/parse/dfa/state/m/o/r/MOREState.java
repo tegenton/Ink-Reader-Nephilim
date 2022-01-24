@@ -10,10 +10,16 @@ import java.util.Optional;
 public class MOREState extends MORState {
     private static final MOREState INSTANCE = new MOREState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static MOREState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -22,6 +28,9 @@ public class MOREState extends MORState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<Comparative> produce(final char c) {
         return Optional.ofNullable(switch (c) {
