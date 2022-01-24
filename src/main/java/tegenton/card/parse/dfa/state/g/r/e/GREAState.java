@@ -10,6 +10,9 @@ import java.util.Optional;
 public class GREAState extends GREState {
     private static final GREAState INSTANCE = new GREAState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static GREAState state() {
         return INSTANCE;
     }

@@ -10,10 +10,16 @@ import java.util.Optional;
 public class GREATERState extends GREATEState {
     private static final GREATERState INSTANCE = new GREATERState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static GREATERState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -22,6 +28,9 @@ public class GREATERState extends GREATEState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<Comparative> produce(final char c) {
         return Optional.ofNullable(switch (c) {

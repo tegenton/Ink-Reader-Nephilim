@@ -12,10 +12,16 @@ import java.util.Optional;
 public class GOBLINState extends GOState {
     private static final GOBLINState INSTANCE = new GOBLINState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static GOBLINState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -25,6 +31,9 @@ public class GOBLINState extends GOState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {

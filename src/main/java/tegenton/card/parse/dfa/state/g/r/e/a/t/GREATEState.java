@@ -10,10 +10,16 @@ import java.util.Optional;
 public class GREATEState extends GREATState {
     private static final GREATEState INSTANCE = new GREATEState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static GREATEState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -22,6 +28,9 @@ public class GREATEState extends GREATState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.empty();

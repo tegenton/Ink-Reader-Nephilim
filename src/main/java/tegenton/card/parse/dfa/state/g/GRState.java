@@ -12,10 +12,16 @@ import java.util.Optional;
 public class GRState extends GState {
     private static final GRState INSTANCE = new GRState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static GRState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -27,6 +33,9 @@ public class GRState extends GState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.empty();

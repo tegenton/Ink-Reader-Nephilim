@@ -13,10 +13,16 @@ import java.util.Optional;
 public class GAState extends GState {
     private static final GAState INSTANCE = new GAState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static GAState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -26,6 +32,9 @@ public class GAState extends GState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.empty();

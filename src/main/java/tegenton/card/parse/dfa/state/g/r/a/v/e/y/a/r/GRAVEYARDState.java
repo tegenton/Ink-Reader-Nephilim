@@ -11,10 +11,16 @@ import java.util.Optional;
 public class GRAVEYARDState extends GRState {
     private static final GRAVEYARDState INSTANCE = new GRAVEYARDState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static GRAVEYARDState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -23,6 +29,9 @@ public class GRAVEYARDState extends GRState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
