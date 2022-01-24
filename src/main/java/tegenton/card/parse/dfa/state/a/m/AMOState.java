@@ -12,10 +12,16 @@ import java.util.Optional;
 public class AMOState extends AMState {
     private static final AMOState INSTANCE = new AMOState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static AMOState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -25,6 +31,9 @@ public class AMOState extends AMState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.empty();

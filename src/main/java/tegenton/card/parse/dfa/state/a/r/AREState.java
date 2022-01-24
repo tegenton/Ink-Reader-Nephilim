@@ -11,10 +11,16 @@ import java.util.Optional;
 public class AREState extends ARState {
     private static final AREState INSTANCE = new AREState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static AREState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -23,6 +29,9 @@ public class AREState extends ARState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {

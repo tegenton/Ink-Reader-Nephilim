@@ -13,10 +13,16 @@ import java.util.Optional;
 public class ADDITIONState extends ADDState {
     private static final ADDITIONState INSTANCE = new ADDITIONState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static ADDITIONState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -26,6 +32,9 @@ public class ADDITIONState extends ADDState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {

@@ -10,10 +10,16 @@ import java.util.Optional;
 public class BANState extends BAState {
     private static final BANState INSTANCE = new BANState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static BANState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -22,6 +28,9 @@ public class BANState extends BAState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.empty();

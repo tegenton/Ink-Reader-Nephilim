@@ -12,10 +12,16 @@ import java.util.Optional;
 public class ASSIGNState extends ASState {
     private static final ASSIGNState INSTANCE = new ASSIGNState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static ASSIGNState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -26,6 +32,9 @@ public class ASSIGNState extends ASState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {

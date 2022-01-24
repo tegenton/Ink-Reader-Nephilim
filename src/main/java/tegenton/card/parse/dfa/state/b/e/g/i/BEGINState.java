@@ -13,10 +13,16 @@ import java.util.Optional;
 public class BEGINState extends BEState {
     private static final BEGINState INSTANCE = new BEGINState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static BEGINState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -26,6 +32,9 @@ public class BEGINState extends BEState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {

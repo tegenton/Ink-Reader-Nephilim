@@ -10,10 +10,16 @@ import java.util.Optional;
 public class ANYState extends ANState {
     private static final ANYState INSTANCE = new ANYState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static ANYState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -22,11 +28,14 @@ public class ANYState extends ANState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<Determiner> produce(final char c) {
-        return switch (c) {
-            case '\0', ' ' -> Optional.of(Determiner.ANY);
-            default -> Optional.empty();
-        };
+        return Optional.ofNullable(switch (c) {
+            case '\0', ' ' -> Determiner.ANY;
+            default -> null;
+        });
     }
 }

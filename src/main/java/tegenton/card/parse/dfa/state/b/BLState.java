@@ -13,10 +13,16 @@ import java.util.Optional;
 public class BLState extends BState {
     private static final BLState INSTANCE = new BLState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static BLState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -27,6 +33,9 @@ public class BLState extends BState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.empty();

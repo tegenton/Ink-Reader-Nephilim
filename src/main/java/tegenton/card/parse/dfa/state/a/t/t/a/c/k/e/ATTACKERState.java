@@ -12,10 +12,16 @@ import java.util.Optional;
 public class ATTACKERState extends ATTACKEState {
     private static final ATTACKERState INSTANCE = new ATTACKERState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static ATTACKERState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -25,6 +31,9 @@ public class ATTACKERState extends ATTACKEState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {

@@ -11,18 +11,27 @@ import java.util.Optional;
 public class ALLState extends ALState {
     private static final ALLState INSTANCE = new ALLState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static ALLState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
-            case ' ' -> SymbolState.state(c);
+            case '\0', ' ' -> SymbolState.state(c);
             default -> invalid(c);
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
