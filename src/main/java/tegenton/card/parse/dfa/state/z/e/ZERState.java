@@ -10,10 +10,16 @@ import java.util.Optional;
 public class ZERState extends ZEState {
     private static final ZERState INSTANCE = new ZERState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static ZERState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -22,6 +28,9 @@ public class ZERState extends ZEState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.empty();

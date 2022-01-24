@@ -10,10 +10,16 @@ import java.util.Optional;
 public class ZState extends State {
     private static final ZState INSTANCE = new ZState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static ZState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -23,6 +29,9 @@ public class ZState extends State {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.empty();

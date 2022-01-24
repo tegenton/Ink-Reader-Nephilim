@@ -12,10 +12,16 @@ import java.util.Optional;
 public class ZOMBIEState extends ZState {
     private static final ZOMBIEState INSTANCE = new ZOMBIEState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static ZOMBIEState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -25,6 +31,9 @@ public class ZOMBIEState extends ZState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {

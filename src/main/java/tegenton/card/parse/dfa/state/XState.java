@@ -8,10 +8,16 @@ import java.util.Optional;
 public class XState extends State {
     private static final XState INSTANCE = new XState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static XState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -20,6 +26,9 @@ public class XState extends State {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {
