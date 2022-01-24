@@ -12,10 +12,16 @@ import java.util.Optional;
 public class OWNState extends OWState {
     private static final OWNState INSTANCE = new OWNState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static OWNState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -25,6 +31,9 @@ public class OWNState extends OWState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.ofNullable(switch (c) {

@@ -10,10 +10,16 @@ import java.util.Optional;
 public class OTHEState extends OTHState {
     private static final OTHEState INSTANCE = new OTHEState();
 
+    /**
+     * @return Singleton instance.
+     */
     public static OTHEState state() {
         return INSTANCE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public State transition(final char c) {
         return switch (c) {
@@ -22,6 +28,9 @@ public class OTHEState extends OTHState {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<? extends Word> produce(final char c) {
         return Optional.empty();
