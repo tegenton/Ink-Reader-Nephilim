@@ -1,0 +1,10 @@
+package tegenton.card.lexicon;
+
+public enum Genitive implements Word {
+    HALF;
+
+    @Override
+    public String getWord() {
+        return this.name();
+    }
+}
