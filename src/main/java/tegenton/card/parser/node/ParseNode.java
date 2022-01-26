@@ -5,11 +5,10 @@ import tegenton.card.lexicon.Word;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Stack;
 
 public abstract class ParseNode {
     private final List<ParseNode> children = new ArrayList<>();
-    private final Stack<Word> tokens = new Stack<>();
+    private List<Word> tokens;
     private Word value;
 
     public ParseNode(Word value) {
@@ -17,7 +16,7 @@ public abstract class ParseNode {
     }
 
     public ParseNode(List<Word> tokens) {
-        this.tokens.addAll(tokens);
+        this.tokens = tokens;
     }
 
     public ParseNode(ParseNode[] children) {
@@ -46,11 +45,11 @@ public abstract class ParseNode {
     }
 
     protected Word peek() {
-        return tokens.peek();
+        return peek(0);
     }
 
     protected Word peek(int i) {
-        if (tokens.size() >= i) {
+        if (tokens.size() > i) {
             return tokens.get(i);
         } else {
             throw new IllegalStateException("Missing token");
@@ -58,7 +57,7 @@ public abstract class ParseNode {
     }
 
     protected Word pop() {
-        return tokens.pop();
+        return tokens.remove(0);
     }
 
     protected Word expect(Word word) {
@@ -69,7 +68,7 @@ public abstract class ParseNode {
         }
     }
 
-    protected Stack<Word> getTokens() {
+    protected List<Word> getTokens() {
         return tokens;
     }
 }

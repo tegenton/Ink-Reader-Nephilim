@@ -17,7 +17,7 @@ public class CharacteristicsNode extends ParseNode {
         if (peek() == Symbol.SPACE && peek(1) instanceof Conjunction) {
             pop();
             addChild(new ConjunctionNode(getTokens()));
-            pop();
+            expect(Symbol.SPACE);
             addChild(new CharacteristicNode(getTokens()));
         }
     }
