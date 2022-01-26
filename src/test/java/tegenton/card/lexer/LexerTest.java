@@ -53,7 +53,7 @@ public class LexerTest {
     }
 
     @Test
-    void ancestrallRecall() {
+    void ancestralRecall() {
         List<Word> expected =
                 List.of(Determiner.TARGET, Symbol.SPACE, PlayerVerb.PLAY,
                         Morpheme.ER, Symbol.SPACE, PlayerVerb.DRAW,

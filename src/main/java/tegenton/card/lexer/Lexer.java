@@ -3,7 +3,6 @@ package tegenton.card.lexer;
 import tegenton.card.lexicon.Lexicon;
 import tegenton.card.lexicon.Word;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import java.util.function.BiConsumer;
@@ -51,10 +50,19 @@ public final class Lexer
      * @return List of Words that the string contains.
      */
     public List<Word> lex(final String s) {
-        final String[] text = s.split(" ");
-        for (int i = 0; i < text.length - 1; i++) {
-            text[i] += ' ';
+        return split(s).parallel().collect(this).toList();
+    }
+
+    private Stream<String> split(String s) {
+        Stream.Builder<String> stream = Stream.builder();
+        int i = 0;
+        for (int next = s.indexOf(' '); next != -1; ) {
+            next++;
+            stream.add(s.substring(i, next));
+            i = next;
+            next = s.indexOf(' ', next);
         }
-        return Arrays.stream(text).parallel().collect(this).toList();
+        stream.add(s.substring(i));
+        return stream.build();
     }
 }
