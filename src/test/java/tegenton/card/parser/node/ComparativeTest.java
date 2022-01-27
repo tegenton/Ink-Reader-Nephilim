@@ -33,4 +33,16 @@ public class ComparativeTest {
         Collections.addAll(tokens, Comparative.LESS);
         expected = new ComparativeNode(Comparative.LESS);
     }
+
+    @Test
+    void more() {
+        Collections.addAll(tokens, Comparative.MORE);
+        expected = new ComparativeNode(Comparative.MORE);
+    }
+
+    @Test
+    void greater() {
+        Collections.addAll(tokens, Comparative.GREATER);
+        expected = new ComparativeNode(Comparative.GREATER);
+    }
 }
