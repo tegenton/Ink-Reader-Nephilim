@@ -15,7 +15,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ColorTest {
+public class ColorNodeTest {
     public static List<Word> tokens;
     public static ColorNode expected;
 

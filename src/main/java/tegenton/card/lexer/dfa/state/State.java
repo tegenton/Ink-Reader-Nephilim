@@ -10,7 +10,7 @@ public abstract class State {
      * @return Empty instance.
      */
     public static State state() {
-        return tegenton.card.lexer.dfa.state.EmptyState.state();
+        return EmptyState.state();
     }
 
     /**

@@ -36,8 +36,8 @@ public abstract class ParseNode {
         return Objects.hash(value);
     }
 
-    protected void setValue(Word remove) {
-        this.value = remove;
+    protected void setValue(Word word) {
+        this.value = word;
     }
 
     protected void addChild(ParseNode child) {
@@ -66,6 +66,13 @@ public abstract class ParseNode {
         } else {
             throw new IllegalStateException("Token '" + tokens.get(0) + "' does not match expected '" + word + "'");
         }
+    }
+
+    @Override
+    public String toString() {
+        return "(" + this.getClass().getSimpleName() +
+                "[" + value + "]" +
+                '{' + children + "})";
     }
 
     protected List<Word> getTokens() {

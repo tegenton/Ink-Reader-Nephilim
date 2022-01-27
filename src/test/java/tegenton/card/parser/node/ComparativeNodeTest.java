@@ -12,7 +12,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ComparativeTest {
+public class ComparativeNodeTest {
     public static List<Word> tokens;
     public static ComparativeNode expected;
 

@@ -14,7 +14,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class CharacteristicTest {
+public class CharacteristicNodeTest {
     public static List<Word> tokens;
     public static CharacteristicNode expected;
 
