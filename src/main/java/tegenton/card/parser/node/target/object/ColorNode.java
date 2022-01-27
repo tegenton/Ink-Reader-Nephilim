@@ -1,4 +1,4 @@
-package tegenton.card.parser.node.object;
+package tegenton.card.parser.node.target.object;
 
 import tegenton.card.lexicon.Adverb;
 import tegenton.card.lexicon.Comparative;

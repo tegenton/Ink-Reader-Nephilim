@@ -6,12 +6,24 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import tegenton.card.lexer.Lexer;
+import tegenton.card.lexicon.Determiner;
 import tegenton.card.lexicon.Word;
+import tegenton.card.lexicon.game.source.target.object.ObjectNoun;
+import tegenton.card.lexicon.game.source.target.player.PlayerVerb;
+import tegenton.card.lexicon.value.EnglishNumber;
 import tegenton.card.lexicon.value.Number;
 import tegenton.card.parser.Parser;
+import tegenton.card.parser.node.CardNode;
+import tegenton.card.parser.node.DeterminerNode;
 import tegenton.card.parser.node.ParseNode;
+import tegenton.card.parser.node.PlayerPhraseNode;
+import tegenton.card.parser.node.PlayerVerbPhraseNode;
+import tegenton.card.parser.node.ValueNode;
+import tegenton.card.parser.node.target.object.ObjectNode;
+import tegenton.card.parser.node.target.player.PlayerNode;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -81,24 +93,27 @@ public class RulesTextTest {
     @BeforeEach
     void setup() {
         text = null;
-        tokens = null;
+        tokens = new ArrayList<>();
         tree = null;
     }
 
     @AfterEach
     void lex() {
-        Lexer lex = new Lexer();
-        List<Word> words = lex.lex(text);
-        if (tokens != null)
+        if (tokens != null) {
+            Lexer lex = new Lexer();
+            List<Word> words = lex.lex(text);
             assertIterableEquals(tokens, words);
+        }
     }
 
     @AfterEach
     void parse() {
-        Parser parse = new Parser();
-        ParseNode node = parse.parse(new ArrayList<>(tokens));
-        if (tree != null)
+        if (tree != null) {
+            Parser parse = new Parser();
+            ParseNode node = parse.parse(tokens);
             assertEquals(tree, node);
+            assertEquals(0, tokens.size());
+        }
     }
 
     @Nested
@@ -505,7 +520,8 @@ public class RulesTextTest {
         @DisplayName("Ancestral Recall")
         void ancestralRecall() {
             text = "Target player draws three cards.";
-            tokens = List.of(TARGET, SPACE, PLAY, ER, SPACE, DRAW, SPACE, THREE, SPACE, CARD, S, PERIOD);
+            Collections.addAll(tokens, TARGET, SPACE, PLAY, ER, SPACE, DRAW, SPACE, THREE, SPACE, CARD, S, PERIOD);
+            tree = new CardNode(new PlayerPhraseNode(new PlayerNode(PlayerVerb.PLAY, new DeterminerNode(Determiner.TARGET)), new PlayerVerbPhraseNode(PlayerVerb.DRAW, new ObjectNode(ObjectNoun.CARD, new ValueNode(EnglishNumber.THREE)))));
         }
 
         @Test

@@ -7,7 +7,7 @@ import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.Keyword;
 import tegenton.card.lexicon.game.type.Type;
 import tegenton.card.parser.node.ParseNode;
-import tegenton.card.parser.node.object.ColorNode;
+import tegenton.card.parser.node.target.object.ColorNode;
 import tegenton.card.parser.node.type.TypeNode;
 
 import java.util.List;

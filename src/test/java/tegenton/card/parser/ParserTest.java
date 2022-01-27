@@ -11,7 +11,13 @@ import tegenton.card.lexicon.game.source.target.object.ObjectNoun;
 import tegenton.card.lexicon.game.source.target.player.PlayerVerb;
 import tegenton.card.lexicon.value.EnglishNumber;
 import tegenton.card.parser.node.CardNode;
+import tegenton.card.parser.node.DeterminerNode;
 import tegenton.card.parser.node.ParseNode;
+import tegenton.card.parser.node.PlayerPhraseNode;
+import tegenton.card.parser.node.PlayerVerbPhraseNode;
+import tegenton.card.parser.node.ValueNode;
+import tegenton.card.parser.node.target.object.ObjectNode;
+import tegenton.card.parser.node.target.player.PlayerNode;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -37,7 +43,7 @@ public class ParserTest {
 
     @Test
     void ancestralRecall() {
-        expected = new CardNode(null);
+        expected = new CardNode(new PlayerPhraseNode(new PlayerNode(PlayerVerb.PLAY, new DeterminerNode(Determiner.TARGET)), new PlayerVerbPhraseNode(PlayerVerb.DRAW, new ObjectNode(ObjectNoun.CARD, new ValueNode(EnglishNumber.THREE)))));
         Collections.addAll(input, Determiner.TARGET, Symbol.SPACE, PlayerVerb.PLAY, Morpheme.ER, Symbol.SPACE, PlayerVerb.DRAW, Symbol.SPACE, EnglishNumber.THREE, Symbol.SPACE, ObjectNoun.CARD, Morpheme.S, Symbol.PERIOD);
     }
 }
