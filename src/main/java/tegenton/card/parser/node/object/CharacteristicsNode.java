@@ -1,12 +1,15 @@
-package tegenton.card.parser.node;
+package tegenton.card.parser.node.object;
 
 import tegenton.card.lexicon.Conjunction;
 import tegenton.card.lexicon.Symbol;
 import tegenton.card.lexicon.Word;
+import tegenton.card.parser.node.ConjunctionNode;
+import tegenton.card.parser.node.ParentNode;
+import tegenton.card.parser.node.ParseNode;
 
 import java.util.List;
 
-public class CharacteristicsNode extends ParseNode {
+public class CharacteristicsNode extends ParentNode {
     public CharacteristicsNode(ParseNode... children) {
         super(children);
     }
@@ -16,7 +19,7 @@ public class CharacteristicsNode extends ParseNode {
         addChild(new CharacteristicNode(getTokens()));
         if (peek() == Symbol.SPACE && peek(1) instanceof Conjunction) {
             pop();
-            addChild(new ConjunctionNode(getTokens()));
+            setConjunction(new ConjunctionNode(getTokens()));
             expect(Symbol.SPACE);
             addChild(new CharacteristicNode(getTokens()));
         }

@@ -1,4 +1,4 @@
-package tegenton.card.parser.node;
+package tegenton.card.parser.node.object;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -7,6 +7,7 @@ import tegenton.card.lexicon.Conjunction;
 import tegenton.card.lexicon.Symbol;
 import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.source.target.object.ObjectAttribute;
+import tegenton.card.parser.node.ConjunctionNode;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -33,6 +34,6 @@ public class CharacteristicsNodeTest {
     @Test
     void powerAndToughness() {
         Collections.addAll(tokens, ObjectAttribute.POWER, Symbol.SPACE, Conjunction.AND, Symbol.SPACE, ObjectAttribute.TOUGHNESS);
-        expected = new CharacteristicsNode(new CharacteristicNode(ObjectAttribute.POWER), new ConjunctionNode(Conjunction.AND), new CharacteristicNode(ObjectAttribute.TOUGHNESS));
+        expected = new CharacteristicsNode(new ConjunctionNode(Conjunction.AND), new CharacteristicNode(ObjectAttribute.POWER), new CharacteristicNode(ObjectAttribute.TOUGHNESS));
     }
 }

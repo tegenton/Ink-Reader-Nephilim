@@ -1,4 +1,4 @@
-package tegenton.card.parser.node;
+package tegenton.card.parser.node.type;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -7,6 +7,7 @@ import tegenton.card.lexicon.Conjunction;
 import tegenton.card.lexicon.Symbol;
 import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.type.CardType;
+import tegenton.card.parser.node.ConjunctionNode;
 
 import java.util.ArrayList;
 import java.util.Collections;

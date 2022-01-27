@@ -1,8 +1,6 @@
 package tegenton.card.lexicon.game.type;
 
-import tegenton.card.lexicon.Word;
-
-public enum LandType implements Word {
+public enum LandType implements Type {
     PLAINS, ISLAND, SWAMP, MOUNTAIN, FOREST;
 
     @Override

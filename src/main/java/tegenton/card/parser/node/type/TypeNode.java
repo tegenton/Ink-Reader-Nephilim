@@ -1,10 +1,11 @@
-package tegenton.card.parser.node;
+package tegenton.card.parser.node.type;
 
 import tegenton.card.lexicon.Adjective;
 import tegenton.card.lexicon.Symbol;
 import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.GameNoun;
 import tegenton.card.lexicon.game.type.Type;
+import tegenton.card.parser.node.ParseNode;
 
 import java.util.List;
 
