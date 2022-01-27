@@ -105,7 +105,7 @@ public class KeywordNodeTest {
     @Test
     void enchant() {
         Collections.addAll(tokens, Keyword.ENCHANT, Symbol.SPACE, CardType.CREATURE);
-        // TODO: expected = new KeywordNode(Keyword.PROTECTION, new ColorNode(ColorWord.BLACK));
+        expected = new KeywordNode(Keyword.ENCHANT, new TypeNode(CardType.CREATURE));
     }
 
     @Test

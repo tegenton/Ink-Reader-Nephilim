@@ -26,6 +26,9 @@ public class KeywordNode extends ParseNode {
                 expect(Preposition.FROM);
                 expect(Symbol.SPACE);
                 addChild(new ColorNode(getTokens()));
+            } else if (keyword == Keyword.ENCHANT) {
+                expect(Symbol.SPACE);
+                addChild(new TypeNode(getTokens()));
             }
         } else if (peek() == Adjective.FIRST) {
             setValue(pop());

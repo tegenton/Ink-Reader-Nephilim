@@ -3,6 +3,7 @@ package tegenton.card.parser.node;
 import tegenton.card.lexicon.Word;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -20,7 +21,7 @@ public abstract class ParseNode {
     }
 
     public ParseNode(ParseNode[] children) {
-        this.children.addAll(List.of(children));
+        Arrays.stream(children).forEach(this::addChild);
     }
 
     @Override

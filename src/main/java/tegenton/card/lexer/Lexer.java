@@ -10,6 +10,7 @@ import java.util.function.BinaryOperator;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collector;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public final class Lexer
@@ -50,7 +51,7 @@ public final class Lexer
      * @return List of Words that the string contains.
      */
     public List<Word> lex(final String s) {
-        return split(s).parallel().collect(this).toList();
+        return split(s).parallel().collect(this).collect(Collectors.toList());
     }
 
     private Stream<String> split(String s) {

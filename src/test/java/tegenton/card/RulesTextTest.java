@@ -1,15 +1,20 @@
-package tegenton.card.lexer;
+package tegenton.card;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import tegenton.card.lexer.Lexer;
 import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.value.Number;
+import tegenton.card.parser.Parser;
+import tegenton.card.parser.node.ParseNode;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 import static tegenton.card.lexicon.Adjective.*;
 import static tegenton.card.lexicon.Adverb.*;
@@ -71,19 +76,29 @@ import static tegenton.card.lexicon.value.Variable.Y;
 public class RulesTextTest {
     public static String text;
     public static List<Word> tokens;
+    public static ParseNode tree;
 
     @BeforeEach
     void setup() {
         text = null;
         tokens = null;
+        tree = null;
     }
 
     @AfterEach
     void lex() {
-        tegenton.card.lexer.Lexer lex = new Lexer();
+        Lexer lex = new Lexer();
         List<Word> words = lex.lex(text);
         if (tokens != null)
             assertIterableEquals(tokens, words);
+    }
+
+    @AfterEach
+    void parse() {
+        Parser parse = new Parser();
+        ParseNode node = parse.parse(new ArrayList<>(tokens));
+        if (tree != null)
+            assertEquals(tree, node);
     }
 
     @Nested
@@ -2179,6 +2194,7 @@ public class RulesTextTest {
         @DisplayName("Howling Mine")
         void howlingMine() {
             text = "At the beginning of each player\u2019s draw step, if ~ is untapped, that player draws an additional card.";
+            tokens = List.of(AT, SPACE, THE, SPACE, BEGINNING, SPACE, OF, SPACE, EACH, SPACE, PLAY, ER, POSSESSIVE, SPACE, DRAW, SPACE, STEP, COMMA, SPACE, IF, SPACE, TILDE, SPACE, IS, SPACE, NOT, TAP, ED, COMMA, SPACE, THAT, SPACE, PLAY, ER, SPACE, DRAW, SPACE, AN, SPACE, ADDITIONAL, SPACE, CARD, PERIOD);
         }
 
         @Test
