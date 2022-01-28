@@ -29,7 +29,8 @@ public abstract class ParseNode {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ParseNode parseNode = (ParseNode) o;
-        return Objects.equals(value, parseNode.value) && Objects.deepEquals(children, parseNode.children);
+        boolean result = Objects.equals(value, parseNode.value) && Objects.deepEquals(children, parseNode.children);
+        return result;
     }
 
     @Override

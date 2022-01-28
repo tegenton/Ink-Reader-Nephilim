@@ -15,7 +15,7 @@ import tegenton.card.parser.Parser;
 import tegenton.card.parser.node.CardNode;
 import tegenton.card.parser.node.ParseNode;
 import tegenton.card.parser.node.ValueNode;
-import tegenton.card.parser.node.ability.target.TargetedAbilityNode;
+import tegenton.card.parser.node.ability.SubjectNode;
 import tegenton.card.parser.node.ability.target.object.ObjectNode;
 import tegenton.card.parser.node.ability.target.player.PlayerNode;
 import tegenton.card.parser.node.ability.target.player.PlayerVerbPhraseNode;
@@ -519,7 +519,7 @@ public class RulesTextTest {
         void ancestralRecall() {
             text = "Target player draws three cards.";
             Collections.addAll(tokens, TARGET, SPACE, PLAY, ER, SPACE, DRAW, SPACE, THREE, SPACE, CARD, S, PERIOD);
-            tree = new CardNode(new TargetedAbilityNode(new PlayerNode(PlayerVerb.PLAY), new PlayerVerbPhraseNode(PlayerVerb.DRAW, new ObjectNode(ObjectNoun.CARD, new ValueNode(EnglishNumber.THREE)))));
+            tree = new CardNode(new SubjectNode(TARGET, new PlayerNode(PlayerVerb.PLAY)), new PlayerVerbPhraseNode(PlayerVerb.DRAW, new ObjectNode(ObjectNoun.CARD, new ValueNode(EnglishNumber.THREE))));
         }
 
         @Test

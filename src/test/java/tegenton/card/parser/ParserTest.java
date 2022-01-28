@@ -12,11 +12,14 @@ import tegenton.card.lexicon.game.source.target.player.PlayerVerb;
 import tegenton.card.lexicon.value.EnglishNumber;
 import tegenton.card.parser.node.AdjectiveNode;
 import tegenton.card.parser.node.CardNode;
+import tegenton.card.parser.node.ConditionNode;
 import tegenton.card.parser.node.ParseNode;
-import tegenton.card.parser.node.StaticAbilityNode;
+import tegenton.card.parser.node.SubordinateClauseNode;
 import tegenton.card.parser.node.ValueNode;
 import tegenton.card.parser.node.ability.KeywordNode;
-import tegenton.card.parser.node.ability.target.TargetedAbilityNode;
+import tegenton.card.parser.node.ability.StaticAbilityNode;
+import tegenton.card.parser.node.ability.SubjectNode;
+import tegenton.card.parser.node.ability.target.object.ObjectAuxiliaryNode;
 import tegenton.card.parser.node.ability.target.object.ObjectNode;
 import tegenton.card.parser.node.ability.target.player.PlayerNode;
 import tegenton.card.parser.node.ability.target.player.PlayerVerbPhraseNode;
@@ -61,13 +64,13 @@ public class ParserTest {
     @Test
     void ancestralRecall() {
         Collections.addAll(input, Determiner.TARGET, Symbol.SPACE, PlayerVerb.PLAY, Morpheme.ER, Symbol.SPACE, PlayerVerb.DRAW, Symbol.SPACE, EnglishNumber.THREE, Symbol.SPACE, ObjectNoun.CARD, Morpheme.S, Symbol.PERIOD);
-        expected = new CardNode(new TargetedAbilityNode(new PlayerNode(PlayerVerb.PLAY), new PlayerVerbPhraseNode(PlayerVerb.DRAW, new ObjectNode(ObjectNoun.CARD, new ValueNode(EnglishNumber.THREE)))));
+        expected = new CardNode(new SubjectNode(Determiner.TARGET, new PlayerNode(PlayerVerb.PLAY)), new PlayerVerbPhraseNode(PlayerVerb.DRAW, new ObjectNode(ObjectNoun.CARD, new ValueNode(EnglishNumber.THREE))));
     }
 
     @Test
     void animateWall() {
         Collections.addAll(input, ENCHANT, SPACE, WALL, NEWLINE,
                 ENCHANT, ED, SPACE, WALL, SPACE, CAN, SPACE, ATTACK, SPACE, AS, SPACE, THOUGH, SPACE, IT, SPACE, DO, NOT, SPACE, HAVE, SPACE, DEFENDER, PERIOD);
-        expected = new CardNode(new KeywordNode(ENCHANT, new TypeNode(WALL)), new StaticAbilityNode(new ObjectNode(WALL, new AdjectiveNode(ENCHANT))));
+        expected = new CardNode(new KeywordNode(ENCHANT, new TypeNode(WALL)), new StaticAbilityNode(CAN, new ObjectNode(WALL, new AdjectiveNode(ENCHANT)), new ObjectAuxiliaryNode(ATTACK, new SubordinateClauseNode(THOUGH, new ConditionNode(NOT, new ObjectNode(IT), new KeywordNode(DEFENDER))))));
     }
 }

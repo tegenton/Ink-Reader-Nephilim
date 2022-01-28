@@ -2,6 +2,7 @@ package tegenton.card.parser.node.ability.target.player;
 
 import tegenton.card.lexicon.Symbol;
 import tegenton.card.lexicon.Word;
+import tegenton.card.lexicon.game.source.target.TargetWord;
 import tegenton.card.lexicon.game.source.target.player.PlayerVerb;
 import tegenton.card.parser.node.ParseNode;
 import tegenton.card.parser.node.ability.target.object.ObjectNode;
@@ -9,8 +10,8 @@ import tegenton.card.parser.node.ability.target.object.ObjectNode;
 import java.util.List;
 
 public class PlayerVerbPhraseNode extends ParseNode {
-    public PlayerVerbPhraseNode(PlayerVerb draw, ObjectNode objectNode) {
-        super(draw);
+    public PlayerVerbPhraseNode(PlayerVerb verb, ParseNode objectNode) {
+        super(verb);
         addChild(objectNode);
     }
 
@@ -19,7 +20,11 @@ public class PlayerVerbPhraseNode extends ParseNode {
         if (peek() instanceof PlayerVerb) {
             setValue(pop());
             expect(Symbol.SPACE);
-            addChild(new ObjectNode(getTokens()));
+            if (peek() instanceof TargetWord) {
+                addChild(new ZoneNode(getTokens()));
+            } else {
+                addChild(new ObjectNode(getTokens()));
+            }
         }
     }
 }

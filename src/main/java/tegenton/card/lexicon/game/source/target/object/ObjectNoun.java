@@ -1,11 +1,11 @@
 package tegenton.card.lexicon.game.source.target.object;
 
-import tegenton.card.lexicon.Word;
+import tegenton.card.lexicon.game.source.target.TargetWord;
 
 /**
  * The (grammatical) object of a sentence.
  */
-public enum ObjectNoun implements Word {
+public enum ObjectNoun implements TargetWord {
     CARD, COPY, IT, PERMANENT, SPELL, TOKEN;
 
     @Override
