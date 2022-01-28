@@ -1,4 +1,4 @@
-package tegenton.card.parser.node;
+package tegenton.card.parser.node.ability.target.player;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -8,7 +8,8 @@ import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.source.target.object.ObjectNoun;
 import tegenton.card.lexicon.game.source.target.player.PlayerVerb;
 import tegenton.card.lexicon.value.EnglishNumber;
-import tegenton.card.parser.node.target.object.ObjectNode;
+import tegenton.card.parser.node.ValueNode;
+import tegenton.card.parser.node.ability.target.object.ObjectNode;
 
 import java.util.ArrayList;
 import java.util.Collections;

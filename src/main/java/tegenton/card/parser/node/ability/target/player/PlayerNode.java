@@ -1,4 +1,4 @@
-package tegenton.card.parser.node.target.player;
+package tegenton.card.parser.node.ability.target.player;
 
 import tegenton.card.lexicon.Determiner;
 import tegenton.card.lexicon.Morpheme;

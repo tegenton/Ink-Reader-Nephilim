@@ -11,7 +11,7 @@ import tegenton.card.lexicon.game.ColorWord;
 import tegenton.card.lexicon.game.Keyword;
 import tegenton.card.lexicon.game.type.CardType;
 import tegenton.card.lexicon.game.type.LandType;
-import tegenton.card.parser.node.target.object.ColorNode;
+import tegenton.card.parser.node.ability.target.object.ColorNode;
 import tegenton.card.parser.node.type.TypeNode;
 
 import java.util.ArrayList;

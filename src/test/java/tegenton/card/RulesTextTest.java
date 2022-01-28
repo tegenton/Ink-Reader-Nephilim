@@ -6,7 +6,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import tegenton.card.lexer.Lexer;
-import tegenton.card.lexicon.Determiner;
 import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.source.target.object.ObjectNoun;
 import tegenton.card.lexicon.game.source.target.player.PlayerVerb;
@@ -14,13 +13,12 @@ import tegenton.card.lexicon.value.EnglishNumber;
 import tegenton.card.lexicon.value.Number;
 import tegenton.card.parser.Parser;
 import tegenton.card.parser.node.CardNode;
-import tegenton.card.parser.node.DeterminerNode;
 import tegenton.card.parser.node.ParseNode;
-import tegenton.card.parser.node.PlayerPhraseNode;
-import tegenton.card.parser.node.PlayerVerbPhraseNode;
 import tegenton.card.parser.node.ValueNode;
-import tegenton.card.parser.node.target.object.ObjectNode;
-import tegenton.card.parser.node.target.player.PlayerNode;
+import tegenton.card.parser.node.ability.target.TargetedAbilityNode;
+import tegenton.card.parser.node.ability.target.object.ObjectNode;
+import tegenton.card.parser.node.ability.target.player.PlayerNode;
+import tegenton.card.parser.node.ability.target.player.PlayerVerbPhraseNode;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -521,7 +519,7 @@ public class RulesTextTest {
         void ancestralRecall() {
             text = "Target player draws three cards.";
             Collections.addAll(tokens, TARGET, SPACE, PLAY, ER, SPACE, DRAW, SPACE, THREE, SPACE, CARD, S, PERIOD);
-            tree = new CardNode(new PlayerPhraseNode(new PlayerNode(PlayerVerb.PLAY, new DeterminerNode(Determiner.TARGET)), new PlayerVerbPhraseNode(PlayerVerb.DRAW, new ObjectNode(ObjectNoun.CARD, new ValueNode(EnglishNumber.THREE)))));
+            tree = new CardNode(new TargetedAbilityNode(new PlayerNode(PlayerVerb.PLAY), new PlayerVerbPhraseNode(PlayerVerb.DRAW, new ObjectNode(ObjectNoun.CARD, new ValueNode(EnglishNumber.THREE)))));
         }
 
         @Test

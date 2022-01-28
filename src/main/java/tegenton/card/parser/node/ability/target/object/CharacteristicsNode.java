@@ -1,4 +1,4 @@
-package tegenton.card.parser.node.target.object;
+package tegenton.card.parser.node.ability.target.object;
 
 import tegenton.card.lexicon.Conjunction;
 import tegenton.card.lexicon.Symbol;
