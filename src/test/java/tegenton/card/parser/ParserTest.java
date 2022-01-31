@@ -13,6 +13,7 @@ import tegenton.card.lexicon.value.EnglishNumber;
 import tegenton.card.parser.node.AdjectiveNode;
 import tegenton.card.parser.node.CardNode;
 import tegenton.card.parser.node.ConditionNode;
+import tegenton.card.parser.node.KeywordsNode;
 import tegenton.card.parser.node.ParseNode;
 import tegenton.card.parser.node.SubordinateClauseNode;
 import tegenton.card.parser.node.ValueNode;
@@ -71,6 +72,6 @@ public class ParserTest {
     void animateWall() {
         Collections.addAll(input, ENCHANT, SPACE, WALL, NEWLINE,
                 ENCHANT, ED, SPACE, WALL, SPACE, CAN, SPACE, ATTACK, SPACE, AS, SPACE, THOUGH, SPACE, IT, SPACE, DO, NOT, SPACE, HAVE, SPACE, DEFENDER, PERIOD);
-        expected = new CardNode(new KeywordNode(ENCHANT, new TypeNode(WALL)), new StaticAbilityNode(CAN, new ObjectNode(WALL, new AdjectiveNode(ENCHANT)), new ObjectAuxiliaryNode(ATTACK, new SubordinateClauseNode(THOUGH, new ConditionNode(NOT, new ObjectNode(IT), new KeywordNode(DEFENDER))))));
+        expected = new CardNode(new KeywordsNode(new KeywordNode(ENCHANT, new TypeNode(WALL))), new StaticAbilityNode(CAN, new ObjectNode(WALL, new AdjectiveNode(ENCHANT)), new ObjectAuxiliaryNode(ATTACK, new SubordinateClauseNode(THOUGH, new ConditionNode(NOT, new ObjectNode(IT), new KeywordNode(DEFENDER))))));
     }
 }

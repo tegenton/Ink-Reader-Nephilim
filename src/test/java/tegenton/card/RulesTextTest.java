@@ -12,13 +12,23 @@ import tegenton.card.lexicon.game.source.target.player.PlayerVerb;
 import tegenton.card.lexicon.value.EnglishNumber;
 import tegenton.card.lexicon.value.Number;
 import tegenton.card.parser.Parser;
+import tegenton.card.parser.node.AdjectiveNode;
 import tegenton.card.parser.node.CardNode;
+import tegenton.card.parser.node.ConditionNode;
+import tegenton.card.parser.node.DeterminerNode;
+import tegenton.card.parser.node.KeywordsNode;
 import tegenton.card.parser.node.ParseNode;
+import tegenton.card.parser.node.SubordinateClauseNode;
 import tegenton.card.parser.node.ValueNode;
+import tegenton.card.parser.node.ability.KeywordNode;
+import tegenton.card.parser.node.ability.OneShotAbilityNode;
+import tegenton.card.parser.node.ability.StaticAbilityNode;
 import tegenton.card.parser.node.ability.SubjectNode;
+import tegenton.card.parser.node.ability.target.object.ObjectAuxiliaryNode;
 import tegenton.card.parser.node.ability.target.object.ObjectNode;
 import tegenton.card.parser.node.ability.target.player.PlayerNode;
 import tegenton.card.parser.node.ability.target.player.PlayerVerbPhraseNode;
+import tegenton.card.parser.node.type.TypeNode;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -123,15 +133,17 @@ public class RulesTextTest {
             text = """
                     Enchant Wall
                     Enchanted Wall can attack as though it didn\u2019t have defender.""";
-            tokens = List.of(ENCHANT, SPACE, WALL, NEWLINE,
+            Collections.addAll(tokens, ENCHANT, SPACE, WALL, NEWLINE,
                     ENCHANT, ED, SPACE, WALL, SPACE, CAN, SPACE, ATTACK, SPACE, AS, SPACE, THOUGH, SPACE, IT, SPACE, DO, NOT, SPACE, HAVE, SPACE, DEFENDER, PERIOD);
+            tree = new CardNode(new KeywordsNode(new KeywordNode(ENCHANT, new TypeNode(WALL))), new StaticAbilityNode(CAN, new ObjectNode(WALL, new AdjectiveNode(ENCHANT)), new ObjectAuxiliaryNode(ATTACK, new SubordinateClauseNode(THOUGH, new ConditionNode(NOT, new ObjectNode(IT), new KeywordNode(DEFENDER))))));
         }
 
         @Test
         @DisplayName("Armageddon")
         void armageddon() {
             text = "Destroy all lands.";
-            tokens = List.of(DESTROY, SPACE, ALL, SPACE, LAND, S, PERIOD);
+            Collections.addAll(tokens, DESTROY, SPACE, ALL, SPACE, LAND, S, PERIOD);
+            tree = new CardNode(new OneShotAbilityNode(new PlayerVerbPhraseNode(DESTROY, new ObjectNode(LAND, new DeterminerNode(ALL)))));
         }
 
         @Test
@@ -146,7 +158,8 @@ public class RulesTextTest {
         @DisplayName("Benalish Hero")
         void benalishHero() {
             text = "Banding";
-            tokens = List.of(BANDING);
+            Collections.addAll(tokens, BANDING);
+            tree = new CardNode(new KeywordsNode(new KeywordNode(BANDING)));
         }
 
         @Test
@@ -258,7 +271,8 @@ public class RulesTextTest {
         @DisplayName("Death Ward")
         void deathWard() {
             text = "Regenerate target creature.";
-            tokens = List.of(REGENERATE, SPACE, TARGET, SPACE, CREATURE, PERIOD);
+            Collections.addAll(tokens, REGENERATE, SPACE, TARGET, SPACE, CREATURE, PERIOD);
+            tree = new CardNode(new OneShotAbilityNode(new PlayerVerbPhraseNode(REGENERATE, new ObjectNode(CREATURE, new DeterminerNode(TARGET)))));
         }
 
         @Test
@@ -362,7 +376,8 @@ public class RulesTextTest {
         @DisplayName("Mesa Pegasus")
         void mesaPegasus() {
             text = "Flying; banding";
-            tokens = List.of(FLYING, SEMICOLON, SPACE, BANDING);
+            Collections.addAll(tokens, FLYING, SEMICOLON, SPACE, BANDING);
+            tree = new CardNode(new KeywordsNode(new KeywordNode(FLYING), new KeywordNode(BANDING)));
         }
 
         @Test
@@ -376,7 +391,8 @@ public class RulesTextTest {
         @DisplayName("Pearled Unicorn")
         void pearledUnicorn() {
             text = "";
-            tokens = List.of();
+            // no tokens
+            tree = new CardNode();
         }
 
         @Test
@@ -441,7 +457,8 @@ public class RulesTextTest {
         @DisplayName("Savannah Lions")
         void savannahLions() {
             text = "";
-            tokens = List.of();
+            // no tokens
+            tree = new CardNode();
         }
 
         @Test
@@ -1671,7 +1688,8 @@ public class RulesTextTest {
         @DisplayName("Wall of Stone")
         void wallOfStone() {
             text = "Defender";
-            tokens = List.of(DEFENDER);
+            Collections.addAll(tokens, DEFENDER);
+            tree = new CardNode(new KeywordsNode(new KeywordNode(DEFENDER)));
         }
 
         @Test

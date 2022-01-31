@@ -29,8 +29,7 @@ public abstract class ParseNode {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ParseNode parseNode = (ParseNode) o;
-        boolean result = Objects.equals(value, parseNode.value) && Objects.deepEquals(children, parseNode.children);
-        return result;
+        return Objects.equals(value, parseNode.value) && Objects.deepEquals(children, parseNode.children);
     }
 
     @Override
@@ -72,9 +71,9 @@ public abstract class ParseNode {
 
     @Override
     public String toString() {
-        return "(" + this.getClass().getSimpleName() +
-                "[" + value + "]" +
-                '{' + children + "})";
+        return this.getClass().getSimpleName() +
+                '(' + value + ')' +
+                '\n' + children + '\n';
     }
 
     protected List<Word> getTokens() {
