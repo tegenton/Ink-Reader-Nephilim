@@ -11,12 +11,17 @@ public final class DigitNumber implements ValueWord {
     }
 
     public static DigitNumber[] values() {
-        return IntStream.range(0, 20).mapToObj(DigitNumber::new)
+        return IntStream.range(0, 21).mapToObj(DigitNumber::new)
                 .toArray(DigitNumber[]::new);
     }
 
     @Override
     public int getValue() {
         return val;
+    }
+
+    @Override
+    public String toString() {
+        return Integer.toString(val);
     }
 }
