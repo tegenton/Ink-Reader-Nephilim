@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class WordTest {
     public static Word[] words;
@@ -15,7 +15,7 @@ class WordTest {
     void compare() {
         assertEquals(words.length, values.size());
         for (int i = 0; i < words.length; i++) {
-            assertEquals(values.get(i), words[i].getWord());
+            assertEquals(values.get(i), words[i].toString());
         }
     }
 
@@ -23,5 +23,11 @@ class WordTest {
     void adjectives() {
         words = Adjective.values();
         values = List.of("ADDITIONAL", "CHOSEN", "DIFFERENT", "EQUAL", "EXTRA", "FIRST", "NEW", "NEXT", "ROUNDED", "SAME");
+    }
+
+    @Test
+    void adverb() {
+        words = Adverb.values();
+        values = List.of("BACK", "COMPLETELY", "EVENLY", "INSTEAD", "LIKEWISE", "NOT", "ONCE", "ONLY", "OVER", "STILL");
     }
 }

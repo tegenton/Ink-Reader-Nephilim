@@ -1,5 +1,8 @@
 package tegenton.card.lexicon;
 
+/**
+ * Adjectives are a type of premodifier.
+ */
 public enum Adjective implements Word {
     ADDITIONAL,
     CHOSEN,
@@ -13,7 +16,7 @@ public enum Adjective implements Word {
     SAME;
 
     @Override
-    public String getWord() {
+    public String toString() {
         return this.name();
     }
 }
