@@ -11,12 +11,14 @@ on:
     branches: [ master, main ]
 
 jobs:
-  test:
+  testLexicon:
 
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
+      - name: Checkout Lexicon
+        run: cd Lexicon
       - name: Set up JDK 11
         uses: actions/setup-java@v2
         with:
