@@ -86,4 +86,24 @@ class WordTest {
                 "FROM", "IN", "MINUS", "OF", "ON", "OUT", "TO", "UNDER",
                 "WITH");
     }
+
+    @Test
+    void pronoun() {
+        words = Pronoun.values();
+        values = List.of("SO");
+    }
+
+    @Test
+    void subordinateConjunction() {
+        words = SubordinateConjunction.values();
+        values = List.of("AS", "BUT", "EXCEPT", "IF", "LONG", "THOUGH",
+                "WHERE");
+    }
+
+    @Test
+    void symbol() {
+        words = Symbol.values();
+        values = List.of("AS", "BUT", "EXCEPT", "IF", "LONG", "THOUGH",
+                "WHERE");
+    }
 }
