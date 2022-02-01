@@ -14,7 +14,7 @@ public class ObjectWordTest {
 
     @AfterEach
     void compare() {
-        assertEquals(words.length, values.size());
+        assertEquals(values.size(), words.length);
         for (int i = 0; i < words.length; i++) {
             assertEquals(values.get(i), words[i].toString());
         }

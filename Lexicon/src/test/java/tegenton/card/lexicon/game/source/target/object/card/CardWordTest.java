@@ -1,4 +1,4 @@
-package tegenton.card.lexicon.game;
+package tegenton.card.lexicon.game.source.target.object.card;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
@@ -8,7 +8,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SymbolWordTest {
+public class CardWordTest {
     public static Word[] words;
     public static List<String> values;
 
@@ -21,14 +21,8 @@ public class SymbolWordTest {
     }
 
     @Test
-    void manaSymbol() {
-        words = ManaSymbol.values();
-        values = List.of("W", "U", "B", "R", "G", "C");
-    }
-
-    @Test
-    void tap() {
-        words = Tap.values();
-        values = List.of("T");
+    void names() {
+        words = CardName.values();
+        values = List.of("PLAGUE", "RATS", "WASP");
     }
 }
