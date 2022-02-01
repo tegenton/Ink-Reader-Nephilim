@@ -103,7 +103,7 @@ class WordTest {
     @Test
     void symbol() {
         words = Symbol.values();
-        values = List.of("AS", "BUT", "EXCEPT", "IF", "LONG", "THOUGH",
-                "WHERE");
+        values = List.of("\u2022", "\u201D", ":", ",", "\u2014", "-", "{", "\n",
+                "\u201C", ".", "+", "}", ";", "/", " ", "~");
     }
 }
