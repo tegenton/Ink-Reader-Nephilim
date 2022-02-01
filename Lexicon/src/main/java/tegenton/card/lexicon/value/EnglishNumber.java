@@ -28,7 +28,7 @@ public enum EnglishNumber implements ValueWord {
 
     private final int val;
 
-    EnglishNumber(int i) {
+    EnglishNumber(final int i) {
         this.val = i;
     }
 
@@ -37,6 +37,7 @@ public enum EnglishNumber implements ValueWord {
         return name();
     }
 
+    @Override
     public int getValue() {
         return val;
     }

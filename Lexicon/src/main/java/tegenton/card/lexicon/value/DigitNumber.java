@@ -5,16 +5,22 @@ import java.util.stream.IntStream;
 /**
  * A number represented as digits, such as "1" or "2".
  */
-public class DigitNumber implements ValueWord {
+public final class DigitNumber implements ValueWord {
 
     private final int val;
 
-    public DigitNumber(int i) {
+    private DigitNumber(final int i) {
         this.val = i;
     }
 
-    public static DigitNumber[] values() {
-        return IntStream.range(0, 21).mapToObj(DigitNumber::new)
+    /**
+     * Generate an array of DigitNumbers.
+     *
+     * @param i Max value (inclusive).
+     * @return Array of DigitNumbers from 0 to i.
+     */
+    public static DigitNumber[] values(final int i) {
+        return IntStream.range(0, i + 1).mapToObj(DigitNumber::new)
                 .toArray(DigitNumber[]::new);
     }
 

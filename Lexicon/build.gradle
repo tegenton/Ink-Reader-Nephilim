@@ -1,4 +1,5 @@
 plugins {
+    id 'checkstyle'
     id 'java'
 }
 
@@ -16,4 +17,14 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+checkstyle {
+    configFile = file("../.github/linters/sun_checks.xml")
+    toolVersion = '9.0'
+}
+checkstyleMain {
+    source = 'src/main/java'
+}
+checkstyleTest {
+    source = 'src/test/java'
 }
