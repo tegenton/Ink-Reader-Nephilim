@@ -2,7 +2,10 @@ package tegenton.card.lexicon.value;
 
 import java.util.stream.IntStream;
 
-public final class DigitNumber implements ValueWord {
+/**
+ * A number represented as digits, such as "1" or "2".
+ */
+public class DigitNumber implements ValueWord {
 
     private final int val;
 
