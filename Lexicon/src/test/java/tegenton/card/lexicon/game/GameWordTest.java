@@ -21,6 +21,12 @@ public class GameWordTest {
     }
 
     @Test
+    void colorWord() {
+        words = ColorWord.values();
+        values = List.of("WHITE", "BLUE", "BLACK", "RED", "GREEN");
+    }
+
+    @Test
     void keyword() {
         words = Keyword.values();
         values = List.of("BANDING", "DEFENDER", "ENCHANT", "FEAR", "FLYING",
@@ -43,13 +49,14 @@ public class GameWordTest {
 
     @Test
     void verb() {
-        //words = GameVerb.values();
-        //values = List.of("BE", "CAUSE", "FINISH", "TOUCH");
+        words = GameVerb.values();
+        values = List.of("BE", "CAUSE", "FINISH", "TOUCH");
     }
 
     @Test
     void zone() {
-        //words = Zone.values();
-        //values = List.of("ANTE", "BATTLEFIELD", "DECK", "EXILE", "GRAVEYARD",        "HAND", "LIBRARY")
+        words = Zone.values();
+        values = List.of("ANTE", "BATTLEFIELD", "DECK", "EXILE", "GRAVEYARD",
+                "HAND", "LIBRARY");
     }
 }
