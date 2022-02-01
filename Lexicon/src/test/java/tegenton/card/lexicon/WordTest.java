@@ -64,4 +64,26 @@ class WordTest {
         words = Morpheme.values();
         values = List.of("ED", "ER", "ING", "S");
     }
+
+    @Test
+    void noun() {
+        words = Noun.values();
+        values = List.of("AMOUNT", "CHOICE", "FEWEST", "FOOT", "HEIGHT",
+                "INSTANCE", "LABEL", "NUMBER", "ORDER", "RANDOM", "REST",
+                "TEXT", "TIME", "WAY", "WORD");
+    }
+
+    @Test
+    void particle() {
+        words = Particle.values();
+        values = List.of("DOWN", "LEFT", "RIGHT", "UP");
+    }
+
+    @Test
+    void preposition() {
+        words = Preposition.values();
+        values = List.of("ABOVE", "ADDITION", "AMONG", "BEYOND", "BY", "FOR",
+                "FROM", "IN", "MINUS", "OF", "ON", "OUT", "TO", "UNDER",
+                "WITH");
+    }
 }
