@@ -22,13 +22,15 @@ class WordTest {
     @Test
     void adjectives() {
         words = Adjective.values();
-        values = List.of("ADDITIONAL", "CHOSEN", "DIFFERENT", "EQUAL", "EXTRA", "FIRST", "NEW", "NEXT", "ROUNDED", "SAME");
+        values = List.of("ADDITIONAL", "CHOSEN", "DIFFERENT", "EQUAL", "EXTRA",
+                "FIRST", "NEW", "NEXT", "ROUNDED", "SAME");
     }
 
     @Test
     void adverb() {
         words = Adverb.values();
-        values = List.of("BACK", "COMPLETELY", "EVENLY", "INSTEAD", "LIKEWISE", "NOT", "ONCE", "ONLY", "OVER", "STILL");
+        values = List.of("BACK", "COMPLETELY", "EVENLY", "INSTEAD", "LIKEWISE",
+                "NOT", "ONCE", "ONLY", "OVER", "STILL");
     }
 
     @Test
@@ -41,5 +43,25 @@ class WordTest {
     void comparative() {
         words = Comparative.values();
         values = List.of("GREATER", "LESS", "MORE", "THAN");
+    }
+
+    @Test
+    void determiner() {
+        words = Determiner.values();
+        values = List.of("A", "AN", "THE", "TARGET", "THIS", "THESE", "THAT",
+                "THOSE", "NO", "OTHER", "ANOTHER", "LEAST", "MANY", "ALL",
+                "EACH", "ANY", "SOME");
+    }
+
+    @Test
+    void genitive() {
+        words = Genitive.values();
+        values = List.of("HALF");
+    }
+
+    @Test
+    void morpheme() {
+        words = Morpheme.values();
+        values = List.of("ED", "ER", "ING", "S");
     }
 }
