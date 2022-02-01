@@ -30,4 +30,16 @@ class WordTest {
         words = Adverb.values();
         values = List.of("BACK", "COMPLETELY", "EVENLY", "INSTEAD", "LIKEWISE", "NOT", "ONCE", "ONLY", "OVER", "STILL");
     }
+
+    @Test
+    void conjunction() {
+        words = Conjunction.values();
+        values = List.of("AND", "OR", "THEN", "UNLESS");
+    }
+
+    @Test
+    void comparative() {
+        words = Comparative.values();
+        values = List.of("GREATER", "LESS", "MORE", "THAN");
+    }
 }
