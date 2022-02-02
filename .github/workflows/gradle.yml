@@ -24,12 +24,14 @@ jobs:
           distribution: 'adopt'
           cache: gradle
       - name: Grant execute permission for gradlew
-        run: cd Lexicon && chmod +x gradlew
+        run: chmod +x gradlew
+        working-directory: ./Lexicon
       - name: Build with Gradle
         run: ./gradlew test
+        working-directory: ./Lexicon
         continue-on-error: true
       - name: Upload results
         uses: actions/upload-artifact@v2
         with:
           name: test-results-html
-          path: build/reports/tests/test/index.html
+          path: Lexicon/build/reports/tests/test/index.html
