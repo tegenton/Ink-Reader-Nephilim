@@ -3,4 +3,5 @@ module Ink.Treader.Nephilim.Lexicon.main {
     exports tegenton.card.lexicon.game.target.object;
     exports tegenton.card.lexicon.game.target.player;
     exports tegenton.card.lexicon.value;
+    exports tegenton.card.lexicon.game;
 }

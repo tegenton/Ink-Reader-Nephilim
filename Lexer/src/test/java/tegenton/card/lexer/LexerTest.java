@@ -15,6 +15,20 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class LexerTest {
     @Test
+    void empty() {
+        String text = "";
+        List<Word> tokens = List.of();
+        assertEquals(tokens, Lexer.lex(text));
+    }
+
+    @Test
+    void singleWord() {
+        String text = "Target";
+        List<Word> tokens = List.of(Determiner.TARGET);
+        assertEquals(tokens, Lexer.lex(text));
+    }
+
+    @Test
     void ancestralRecall() {
         String text = "Target player draws three cards.";
         List<Word> tokens = List.of(Determiner.TARGET, Symbol.SPACE,
