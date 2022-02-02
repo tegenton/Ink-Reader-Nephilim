@@ -25,10 +25,8 @@ jobs:
           cache: gradle
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
-        working-directory: ./Lexicon
       - name: Build with Gradle
         run: ./gradlew test
-        working-directory: ./Lexicon
         continue-on-error: true
       - name: Upload results
         uses: actions/upload-artifact@v2

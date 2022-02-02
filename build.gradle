@@ -1,0 +1,9 @@
+allprojects {
+    group = "tegenton.card"
+    version = "0.1-ALPHA"
+}
+subprojects {
+    repositories {
+        mavenCentral()
+    }
+}
