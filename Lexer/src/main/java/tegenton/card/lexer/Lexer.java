@@ -29,7 +29,8 @@ public class Lexer implements Collector<String, Stream.Builder<Word>, Stream<Wor
 
     @Override
     public BiConsumer<Stream.Builder<Word>, String> accumulator() {
-        return (stream, string) -> stream.add(Tokenizer.tokenize(string));
+        return (stream, string) -> new Tokenizer().tokenize(string)
+                .forEach(stream::add);
     }
 
     @Override

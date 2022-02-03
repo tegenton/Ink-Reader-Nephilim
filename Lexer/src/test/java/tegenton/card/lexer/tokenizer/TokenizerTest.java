@@ -6,26 +6,29 @@ import tegenton.card.lexicon.Determiner;
 import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.GameVerb;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TokenizerTest {
     public static String input;
-    public static Word expected;
+    public static List<Word> expected;
 
     @AfterEach
     void compare() {
-        assertEquals(expected, Tokenizer.tokenize(input));
+        Tokenizer tokenizer = new Tokenizer();
+        assertEquals(expected, tokenizer.tokenize(input));
     }
 
     @Test
     void a() {
         input = "A";
-        expected = Determiner.A;
+        expected = List.of(Determiner.A);
     }
 
     @Test
     void BE() {
         input = "BE";
-        expected = GameVerb.BE;
+        expected = List.of(GameVerb.BE);
     }
 }

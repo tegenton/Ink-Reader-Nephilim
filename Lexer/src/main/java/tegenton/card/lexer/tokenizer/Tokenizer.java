@@ -1,20 +1,21 @@
 package tegenton.card.lexer.tokenizer;
 
-import tegenton.card.lexicon.Determiner;
+import tegenton.card.lexer.tokenizer.state.State;
 import tegenton.card.lexicon.Word;
-import tegenton.card.lexicon.game.GameVerb;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Tokenizer {
-    private Tokenizer() {
+    private final List<Word> tokens = new ArrayList<>();
+    private final State state = State.empty();
 
+    public List<Word> tokenize(String input) {
+        input.chars().forEach((c) -> state.accept(this, (char) c));
+        return tokens;
     }
 
-    public static Word tokenize(String input) {
-        return switch (input.charAt(0)) {
-            case 'A' -> Determiner.A;
-            case 'B' -> GameVerb.BE;
-            default -> throw new IllegalStateException(
-                    "Unexpected value: " + input.charAt(0));
-        };
+    public void addToken(Word token) {
+        tokens.add(token);
     }
 }
