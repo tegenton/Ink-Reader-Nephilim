@@ -1,5 +1,6 @@
 package tegenton.card.lexer.tokenizer.state;
 
+import tegenton.card.lexer.tokenizer.transition.Transition;
 import tegenton.card.lexicon.Determiner;
 
 import java.util.List;

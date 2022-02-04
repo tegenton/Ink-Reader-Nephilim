@@ -1,6 +1,7 @@
 package tegenton.card.lexer.tokenizer.state;
 
 import tegenton.card.lexer.tokenizer.Tokenizer;
+import tegenton.card.lexer.tokenizer.transition.Transition;
 
 import java.util.List;
 import java.util.Map;
@@ -24,8 +25,7 @@ public abstract class State {
             }
         }
         throw new IllegalStateException(
-                "Could not transition from state '" + name + "' on '" + c
-                + "'.");
+                "Could not transition from state '" + name + "' on '" + c + "'.");
     }
 
     protected abstract Map<String, List<Transition>> transitions();

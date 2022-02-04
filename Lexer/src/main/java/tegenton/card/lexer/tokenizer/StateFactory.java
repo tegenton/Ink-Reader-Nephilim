@@ -1,4 +1,6 @@
-package tegenton.card.lexer.tokenizer.state;
+package tegenton.card.lexer.tokenizer;
+
+import tegenton.card.lexer.tokenizer.state.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,6 +15,7 @@ public class StateFactory {
             } else {
                 states.put(k, switch (k.charAt(0)) {
                     case 'B' -> new BState(k);
+                    case 'D' -> new DState(k);
                     case 'E' -> new EState(k);
                     case 'P' -> new PState(k);
                     case 'T' -> new TState(k);

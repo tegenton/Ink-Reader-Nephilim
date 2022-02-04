@@ -35,6 +35,12 @@ public class TokenizerTest {
     }
 
     @Test
+    void draw() {
+        input = "DRAW";
+        expected = List.of(PlayerVerb.DRAW);
+    }
+
+    @Test
     void er() {
         input = "ER";
         expected = List.of(Morpheme.ER);

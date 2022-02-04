@@ -1,7 +1,10 @@
-package tegenton.card.lexer.tokenizer.state;
+package tegenton.card.lexer.tokenizer.transition;
 
 import tegenton.card.lexer.tokenizer.Tokenizer;
 import tegenton.card.lexicon.Word;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Transition {
     private final char label;
@@ -21,6 +24,14 @@ public class Transition {
         label = a;
         product = word;
         output = state;
+    }
+
+    public static List<Transition> listOf(char... labels) {
+        List<Transition> transitions = new ArrayList<>();
+        for (char c : labels) {
+            transitions.add(new Transition(c));
+        }
+        return transitions;
     }
 
     public String accept(Tokenizer tokenizer, String name) {

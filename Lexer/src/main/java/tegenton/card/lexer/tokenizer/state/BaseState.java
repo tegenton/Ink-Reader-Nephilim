@@ -1,5 +1,6 @@
 package tegenton.card.lexer.tokenizer.state;
 
+import tegenton.card.lexer.tokenizer.transition.Transition;
 import tegenton.card.lexicon.Determiner;
 
 import java.util.List;
@@ -11,11 +12,11 @@ public class BaseState extends State {
     }
 
     protected Map<String, List<Transition>> transitions() {
-        return Map.of("", List.of(new Transition('A'), new Transition('B'),
-                        new Transition('E'), new Transition('P'), new Transition('T')),
-                "A", List.of(new Transition('\0', Determiner.A, "")), "B",
-                List.of(new Transition('E')), "E", List.of(new Transition('R')),
-                "P", List.of(new Transition('L')), "T",
+        return Map.of("", Transition.listOf('A', 'B', 'D', 'E', 'P', 'T'), "A",
+                List.of(new Transition('\0', Determiner.A, "")), "B",
+                List.of(new Transition('E')), "D", List.of(new Transition('R')),
+                "E", List.of(new Transition('R')), "P",
+                List.of(new Transition('L')), "T",
                 List.of(new Transition('A')));
     }
 }

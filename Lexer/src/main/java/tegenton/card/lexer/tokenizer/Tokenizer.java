@@ -1,7 +1,6 @@
 package tegenton.card.lexer.tokenizer;
 
 import tegenton.card.lexer.tokenizer.state.State;
-import tegenton.card.lexer.tokenizer.state.StateFactory;
 import tegenton.card.lexicon.Word;
 
 import java.util.ArrayList;
