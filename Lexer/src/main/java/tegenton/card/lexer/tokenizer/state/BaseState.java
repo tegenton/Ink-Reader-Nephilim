@@ -32,7 +32,8 @@ public class BaseState extends State {
             MAP.put("P", TransitionFactory.listOf('L'));
             MAP.put("S", List.of(new Transition('.', Morpheme.S, ".")));
             MAP.put("T",
-                    TransitionFactory.listOf(Tap.T, 'A', 'E', 'H', 'I', 'O'));
+                    TransitionFactory.listOf(Tap.T, 'A', 'E', 'H', 'I', 'O',
+                            'R', 'W', 'U', 'Y'));
             MAP.put(".", TransitionFactory.toWord(Symbol.PERIOD));
             MAP.put(" ", List.of(new Transition('\0', Symbol.SPACE, "")));
         }

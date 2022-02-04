@@ -3,7 +3,9 @@ package tegenton.card.lexer.tokenizer.state;
 import tegenton.card.lexer.tokenizer.transition.Transition;
 import tegenton.card.lexer.tokenizer.transition.TransitionFactory;
 import tegenton.card.lexicon.*;
+import tegenton.card.lexicon.game.GameNoun;
 import tegenton.card.lexicon.game.GameVerb;
+import tegenton.card.lexicon.game.Keyword;
 import tegenton.card.lexicon.game.target.TargetModifier;
 import tegenton.card.lexicon.game.target.TargetNoun;
 import tegenton.card.lexicon.game.target.object.ObjectAdjective;
@@ -83,6 +85,19 @@ public class TState extends State {
             TransitionFactory.sequence(MAP, "TOUG", "HNESS");
             MAP.put("TOUGHNESS",
                     TransitionFactory.toWord(ObjectAttribute.TOUGHNESS));
+            TransitionFactory.sequence(MAP, "TR", "AMPLE");
+            MAP.put("TRAMPLE", TransitionFactory.toWord(Keyword.TRAMPLE));
+            MAP.put("TW", TransitionFactory.listOf('E', 'O'));
+            MAP.put("TWE", TransitionFactory.listOf('L', 'N'));
+            TransitionFactory.sequence(MAP, "TWEL", "VE");
+            MAP.put("TWELVE", TransitionFactory.toWord(EnglishNumber.TWELVE));
+            TransitionFactory.sequence(MAP, "TWEN", "TY");
+            MAP.put("TWENTY", TransitionFactory.toWord(EnglishNumber.TWENTY));
+            MAP.put("TWO", TransitionFactory.toWord(EnglishNumber.TWO));
+            TransitionFactory.sequence(MAP, "TU", "RN");
+            MAP.put("TURN", TransitionFactory.toWord(GameNoun.TURN));
+            TransitionFactory.sequence(MAP, "TY", "PE");
+            MAP.put("TYPE", TransitionFactory.toWord(GameNoun.TYPE));
         }
         return MAP;
     }

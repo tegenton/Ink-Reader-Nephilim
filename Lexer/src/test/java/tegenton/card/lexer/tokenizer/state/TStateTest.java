@@ -5,7 +5,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import tegenton.card.lexer.tokenizer.Tokenizer;
 import tegenton.card.lexicon.*;
+import tegenton.card.lexicon.game.GameNoun;
 import tegenton.card.lexicon.game.GameVerb;
+import tegenton.card.lexicon.game.Keyword;
 import tegenton.card.lexicon.game.Tap;
 import tegenton.card.lexicon.game.target.TargetNoun;
 import tegenton.card.lexicon.game.target.object.ObjectAdjective;
@@ -187,5 +189,41 @@ public class TStateTest {
     void toughness() {
         input = "TOUGHNESS";
         expected = ObjectAttribute.TOUGHNESS;
+    }
+
+    @Test
+    void trample() {
+        input = "TRAMPLE";
+        expected = Keyword.TRAMPLE;
+    }
+
+    @Test
+    void turn() {
+        input = "TURN";
+        expected = GameNoun.TURN;
+    }
+
+    @Test
+    void twelve() {
+        input = "TWELVE";
+        expected = EnglishNumber.TWELVE;
+    }
+
+    @Test
+    void twenty() {
+        input = "TWENTY";
+        expected = EnglishNumber.TWENTY;
+    }
+
+    @Test
+    void two() {
+        input = "TWO";
+        expected = EnglishNumber.TWO;
+    }
+
+    @Test
+    void type() {
+        input = "TYPE";
+        expected = GameNoun.TYPE;
     }
 }
