@@ -23,7 +23,9 @@ public class BaseState extends State {
             MAP.put("",
                     TransitionFactory.listOf('A', 'B', 'C', 'D', 'E', 'F', 'P',
                             'T'));
-            MAP.put("A", List.of(new Transition('\0', Determiner.A, "")));
+            MAP.put("A",
+                    TransitionFactory.listOf(Determiner.A, 'B', 'C', 'D', 'F',
+                            'L', 'M', 'N', 'R', 'S', 'T', 'U'));
             MAP.put("B", TransitionFactory.listOf('E'));
             MAP.put("C", TransitionFactory.listOf('A'));
             MAP.put("D", TransitionFactory.listOf('R'));

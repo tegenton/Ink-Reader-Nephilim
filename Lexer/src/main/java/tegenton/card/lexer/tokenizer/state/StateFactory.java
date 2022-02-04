@@ -12,6 +12,7 @@ public class StateFactory {
                 states.put(k, new BaseState(k));
             } else {
                 states.put(k, switch (k.charAt(0)) {
+                    case 'A' -> new AState(k);
                     case 'B' -> new BState(k);
                     case 'C' -> new CState(k);
                     case 'D' -> new DState(k);
