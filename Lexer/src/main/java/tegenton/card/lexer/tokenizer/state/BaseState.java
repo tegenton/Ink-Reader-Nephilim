@@ -17,6 +17,6 @@ public class BaseState extends State {
                 List.of(new Transition('E')), "C", List.of(new Transition('A')),
                 "D", List.of(new Transition('R')), "E",
                 List.of(new Transition('R')), "P", List.of(new Transition('L')),
-                "T", List.of(new Transition('A')));
+                "T", List.of(new Transition('A'), new Transition('H')));
     }
 }
