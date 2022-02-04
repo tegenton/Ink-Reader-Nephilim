@@ -21,7 +21,7 @@ public class BaseState extends State {
                 Map.entry("C", Transition.listOf('A')),
                 Map.entry("D", Transition.listOf('R')),
                 Map.entry("E", Transition.listOf('R')),
-                Map.entry("P", Transition.listOf('R')),
+                Map.entry("P", Transition.listOf('L')),
                 Map.entry("S", List.of(new Transition('.', Morpheme.S, "."))),
                 Map.entry("T", Transition.listOf('A', 'H')), Map.entry(".",
                         List.of(new Transition('\0', Symbol.PERIOD, ""))),
