@@ -31,10 +31,9 @@ public class BaseState extends State {
             MAP.put("F", TransitionFactory.listOf('O'));
             MAP.put("P", TransitionFactory.listOf('L'));
             MAP.put("S", List.of(new Transition('.', Morpheme.S, ".")));
-            MAP.put("T", List.of(new Transition('A'), new Transition('E'),
-                    new Transition('H'), new Transition('I'),
-                    new Transition('\0', Tap.T, "")));
-            MAP.put(".", List.of(new Transition('\0', Symbol.PERIOD, "")));
+            MAP.put("T",
+                    TransitionFactory.listOf(Tap.T, 'A', 'E', 'H', 'I', 'O'));
+            MAP.put(".", TransitionFactory.toWord(Symbol.PERIOD));
             MAP.put(" ", List.of(new Transition('\0', Symbol.SPACE, "")));
         }
         return MAP;

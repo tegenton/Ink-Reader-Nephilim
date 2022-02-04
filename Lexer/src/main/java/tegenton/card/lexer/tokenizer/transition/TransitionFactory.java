@@ -17,6 +17,12 @@ public class TransitionFactory {
         return basic.get(c);
     }
 
+    public static List<Transition> listOf(Word word, char... labels) {
+        List<Transition> transitions = listOf(labels);
+        transitions.addAll(toWord(word));
+        return transitions;
+    }
+
     public static List<Transition> listOf(char... labels) {
         List<Transition> transitions = new ArrayList<>();
         for (char c : labels) {
