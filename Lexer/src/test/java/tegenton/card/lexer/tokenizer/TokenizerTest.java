@@ -6,6 +6,7 @@ import tegenton.card.lexicon.Determiner;
 import tegenton.card.lexicon.Morpheme;
 import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.GameVerb;
+import tegenton.card.lexicon.game.target.object.ObjectNoun;
 import tegenton.card.lexicon.game.target.player.PlayerVerb;
 
 import java.util.List;
@@ -32,6 +33,12 @@ public class TokenizerTest {
     void be() {
         input = "BE";
         expected = List.of(GameVerb.BE);
+    }
+
+    @Test
+    void card() {
+        input = "CARD";
+        expected = List.of(ObjectNoun.CARD);
     }
 
     @Test
