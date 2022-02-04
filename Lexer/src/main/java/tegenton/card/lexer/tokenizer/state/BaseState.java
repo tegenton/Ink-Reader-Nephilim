@@ -1,6 +1,7 @@
 package tegenton.card.lexer.tokenizer.state;
 
 import tegenton.card.lexer.tokenizer.transition.Transition;
+import tegenton.card.lexer.tokenizer.transition.TransitionFactory;
 import tegenton.card.lexicon.Determiner;
 import tegenton.card.lexicon.Morpheme;
 import tegenton.card.lexicon.Symbol;
@@ -16,14 +17,15 @@ public class BaseState extends State {
 
     protected Map<String, List<Transition>> transitions() {
         return Map.ofEntries(Map.entry("",
-                        Transition.listOf('A', 'B', 'C', 'D', 'E', 'F', 'P', 'T')),
+                        TransitionFactory.listOf('A', 'B', 'C', 'D', 'E', 'F', 'P',
+                                'T')),
                 Map.entry("A", List.of(new Transition('\0', Determiner.A, ""))),
-                Map.entry("B", Transition.listOf('E')),
-                Map.entry("C", Transition.listOf('A')),
-                Map.entry("D", Transition.listOf('R')),
-                Map.entry("E", Transition.listOf('R')),
-                Map.entry("F", Transition.listOf('O')),
-                Map.entry("P", Transition.listOf('L')),
+                Map.entry("B", TransitionFactory.listOf('E')),
+                Map.entry("C", TransitionFactory.listOf('A')),
+                Map.entry("D", TransitionFactory.listOf('R')),
+                Map.entry("E", TransitionFactory.listOf('R')),
+                Map.entry("F", TransitionFactory.listOf('O')),
+                Map.entry("P", TransitionFactory.listOf('L')),
                 Map.entry("S", List.of(new Transition('.', Morpheme.S, "."))),
                 Map.entry("T", List.of(new Transition('A'), new Transition('E'),
                         new Transition('H'), new Transition('\0', Tap.T, ""))),

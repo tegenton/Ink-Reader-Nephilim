@@ -1,6 +1,7 @@
 package tegenton.card.lexer.tokenizer.state;
 
 import tegenton.card.lexer.tokenizer.transition.Transition;
+import tegenton.card.lexer.tokenizer.transition.TransitionFactory;
 import tegenton.card.lexicon.Preposition;
 
 import java.util.List;
@@ -12,7 +13,7 @@ public class FState extends State {
     }
 
     protected Map<String, List<Transition>> transitions() {
-        return Map.ofEntries(Map.entry("FO", Transition.listOf('R')),
+        return Map.ofEntries(Map.entry("FO", TransitionFactory.listOf('R')),
                 Map.entry("FOR",
                         List.of(new Transition('\0', Preposition.FOR, ""))));
     }
