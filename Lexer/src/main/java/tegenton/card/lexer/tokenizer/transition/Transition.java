@@ -8,27 +8,27 @@ public class Transition {
     private String output;
     private Word product;
 
-    public Transition(char a) {
+    public Transition(final char a) {
         label = a;
     }
 
-    public Transition(char a, Word word) {
+    public Transition(final char a, final Word word) {
         label = a;
         product = word;
     }
 
-    public Transition(char a, String state) {
+    public Transition(final char a, final String state) {
         label = a;
         output = state;
     }
 
-    public Transition(char a, Word word, String state) {
+    public Transition(final char a, final Word word, final String state) {
         label = a;
         product = word;
         output = state;
     }
 
-    public String accept(Tokenizer tokenizer, String name) {
+    public String accept(final Tokenizer tokenizer, final String name) {
         if (product != null) {
             tokenizer.addToken(product);
         }
@@ -38,7 +38,7 @@ public class Transition {
         return name + label;
     }
 
-    public boolean contains(char c) {
+    public boolean contains(final char c) {
         return label == c;
     }
 }

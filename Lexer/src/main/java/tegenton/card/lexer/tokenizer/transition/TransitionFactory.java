@@ -8,22 +8,22 @@ import java.util.List;
 import java.util.Map;
 
 public class TransitionFactory {
-    private static final Map<Character, Transition> basic = new HashMap<>();
+    private static final Map<Character, Transition> BASIC = new HashMap<>();
 
-    public static Transition getTransition(char c) {
-        if (!basic.containsKey(c)) {
-            basic.put(c, new Transition(c));
+    public static Transition getTransition(final char c) {
+        if (!BASIC.containsKey(c)) {
+            BASIC.put(c, new Transition(c));
         }
-        return basic.get(c);
+        return BASIC.get(c);
     }
 
-    public static List<Transition> listOf(Word word, char... labels) {
+    public static List<Transition> listOf(final Word word, final char... labels) {
         List<Transition> transitions = listOf(labels);
         transitions.addAll(toWord(word));
         return transitions;
     }
 
-    public static List<Transition> listOf(char... labels) {
+    public static List<Transition> listOf(final char... labels) {
         List<Transition> transitions = new ArrayList<>();
         for (char c : labels) {
             transitions.add(getTransition(c));
@@ -31,7 +31,7 @@ public class TransitionFactory {
         return transitions;
     }
 
-    public static void sequence(Map<String, List<Transition>> map, String start, String end) {
+    public static void sequence(final Map<String, List<Transition>> map, final String start, final String end) {
         StringBuilder builder = new StringBuilder(start);
         for (char c : end.toCharArray()) {
             map.put(builder.toString(), listOf(c));
@@ -39,7 +39,7 @@ public class TransitionFactory {
         }
     }
 
-    public static List<Transition> toWord(Word word) {
+    public static List<Transition> toWord(final Word word) {
         return List.of(new Transition('\0', word, ""),
                 new Transition(' ', word, " "));
     }
