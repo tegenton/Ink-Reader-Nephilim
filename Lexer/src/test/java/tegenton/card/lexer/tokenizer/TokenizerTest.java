@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import tegenton.card.lexicon.Determiner;
 import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.GameVerb;
+import tegenton.card.lexicon.game.target.player.PlayerVerb;
 
 import java.util.List;
 
@@ -27,8 +28,14 @@ public class TokenizerTest {
     }
 
     @Test
-    void BE() {
+    void be() {
         input = "BE";
         expected = List.of(GameVerb.BE);
+    }
+
+    @Test
+    void play() {
+        input = "PLAY";
+        expected = List.of(PlayerVerb.PLAY);
     }
 }
