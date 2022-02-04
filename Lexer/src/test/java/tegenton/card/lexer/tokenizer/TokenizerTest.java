@@ -3,6 +3,7 @@ package tegenton.card.lexer.tokenizer;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import tegenton.card.lexicon.Determiner;
+import tegenton.card.lexicon.Morpheme;
 import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.GameVerb;
 import tegenton.card.lexicon.game.target.player.PlayerVerb;
@@ -31,6 +32,12 @@ public class TokenizerTest {
     void be() {
         input = "BE";
         expected = List.of(GameVerb.BE);
+    }
+
+    @Test
+    void er() {
+        input = "ER";
+        expected = List.of(Morpheme.ER);
     }
 
     @Test
