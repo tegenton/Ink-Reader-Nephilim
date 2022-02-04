@@ -17,10 +17,12 @@ public class TState extends State {
                 List.of(new Transition('G')), "TARG",
                 List.of(new Transition('E')), "TARGE",
                 List.of(new Transition('T')), "TARGET",
-                List.of(new Transition('\0', Determiner.TARGET, "")), "TH",
+                List.of(new Transition('\0', Determiner.TARGET, ""),
+                        new Transition(' ', Determiner.TARGET, " ")), "TH",
                 List.of(new Transition('R')), "THR",
                 List.of(new Transition('E')), "THRE",
                 List.of(new Transition('E')), "THREE",
-                List.of(new Transition('\0', EnglishNumber.THREE, "")));
+                List.of(new Transition('\0', EnglishNumber.THREE, ""),
+                        new Transition(' ', EnglishNumber.THREE, " ")));
     }
 }

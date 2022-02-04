@@ -15,9 +15,9 @@ public class Transition {
         label = a;
     }
 
-    public Transition(char a, Word word) {
+    public Transition(char a, String state) {
         label = a;
-        product = word;
+        output = state;
     }
 
     public Transition(char a, Word word, String state) {
@@ -29,7 +29,7 @@ public class Transition {
     public static List<Transition> listOf(char... labels) {
         List<Transition> transitions = new ArrayList<>();
         for (char c : labels) {
-            transitions.add(new Transition(c));
+            transitions.add(TransitionFactory.getTransition(c));
         }
         return transitions;
     }

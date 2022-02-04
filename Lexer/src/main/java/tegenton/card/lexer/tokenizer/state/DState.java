@@ -14,6 +14,8 @@ public class DState extends State {
     protected Map<String, List<Transition>> transitions() {
         return Map.of("DR", List.of(new Transition('A')), "DRA",
                 List.of(new Transition('W')), "DRAW",
-                List.of(new Transition('\0', PlayerVerb.DRAW, "")));
+                List.of(new Transition('S', "DRAW"),
+                        new Transition('\0', PlayerVerb.DRAW, ""),
+                        new Transition(' ', PlayerVerb.DRAW, " ")));
     }
 }

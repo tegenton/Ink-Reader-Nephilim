@@ -12,6 +12,7 @@ public class EState extends State {
     }
 
     protected Map<String, List<Transition>> transitions() {
-        return Map.of("ER", List.of(new Transition('\0', Morpheme.ER, "")));
+        return Map.of("ER", List.of(new Transition('\0', Morpheme.ER, ""),
+                new Transition(' ', Morpheme.ER, " ")));
     }
 }

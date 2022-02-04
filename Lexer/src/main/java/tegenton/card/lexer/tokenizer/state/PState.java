@@ -14,6 +14,7 @@ public class PState extends State {
     protected Map<String, List<Transition>> transitions() {
         return Map.of("PL", List.of(new Transition('A')), "PLA",
                 List.of(new Transition('Y')), "PLAY",
-                List.of(new Transition('\0', PlayerVerb.PLAY, "")));
+                List.of(new Transition('\0', PlayerVerb.PLAY, ""),
+                        new Transition('E', PlayerVerb.PLAY, "E")));
     }
 }

@@ -1,6 +1,4 @@
-package tegenton.card.lexer.tokenizer;
-
-import tegenton.card.lexer.tokenizer.state.*;
+package tegenton.card.lexer.tokenizer.state;
 
 import java.util.HashMap;
 import java.util.Map;
