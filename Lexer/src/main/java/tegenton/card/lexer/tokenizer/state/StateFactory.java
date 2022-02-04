@@ -13,6 +13,7 @@ public class StateFactory {
             } else {
                 states.put(k, switch (k.charAt(0)) {
                     case 'B' -> new BState(k);
+                    case 'T' -> new TState(k);
                     default -> throw new IllegalStateException(
                             "No state '" + k + "'.");
                 });

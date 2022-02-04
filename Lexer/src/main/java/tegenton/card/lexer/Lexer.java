@@ -14,7 +14,8 @@ import java.util.stream.Stream;
 
 public class Lexer implements Collector<String, Stream.Builder<Word>, Stream<Word>> {
     public static List<Word> lex(String text) {
-        StringStreamBuilder builder = new StringStreamBuilder(text);
+        StringStreamBuilder builder = new StringStreamBuilder(
+                text.toUpperCase());
         return builder.build().collect(Lexer.toWordStream()).toList();
     }
 
