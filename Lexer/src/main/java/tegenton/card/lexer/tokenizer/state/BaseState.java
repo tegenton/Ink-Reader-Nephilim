@@ -15,12 +15,13 @@ public class BaseState extends State {
 
     protected Map<String, List<Transition>> transitions() {
         return Map.ofEntries(Map.entry("",
-                        Transition.listOf('A', 'B', 'C', 'D', 'E', 'P', 'T')),
+                        Transition.listOf('A', 'B', 'C', 'D', 'E', 'F', 'P', 'T')),
                 Map.entry("A", List.of(new Transition('\0', Determiner.A, ""))),
                 Map.entry("B", Transition.listOf('E')),
                 Map.entry("C", Transition.listOf('A')),
                 Map.entry("D", Transition.listOf('R')),
                 Map.entry("E", Transition.listOf('R')),
+                Map.entry("F", Transition.listOf('O')),
                 Map.entry("P", Transition.listOf('L')),
                 Map.entry("S", List.of(new Transition('.', Morpheme.S, "."))),
                 Map.entry("T", Transition.listOf('A', 'H')), Map.entry(".",

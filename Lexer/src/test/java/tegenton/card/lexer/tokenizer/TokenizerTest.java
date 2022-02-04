@@ -4,6 +4,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import tegenton.card.lexicon.Determiner;
 import tegenton.card.lexicon.Morpheme;
+import tegenton.card.lexicon.Preposition;
 import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.GameVerb;
 import tegenton.card.lexicon.game.target.object.ObjectNoun;
@@ -30,31 +31,37 @@ public class TokenizerTest {
     }
 
     @Test
-    void be() {
+    void b() {
         input = "BE";
         expected = List.of(GameVerb.BE);
     }
 
     @Test
-    void card() {
+    void c() {
         input = "CARD";
         expected = List.of(ObjectNoun.CARD);
     }
 
     @Test
-    void draw() {
+    void d() {
         input = "DRAW";
         expected = List.of(PlayerVerb.DRAW);
     }
 
     @Test
-    void er() {
+    void e() {
         input = "ER";
         expected = List.of(Morpheme.ER);
     }
 
     @Test
-    void play() {
+    void f() {
+        input = "FOR";
+        expected = List.of(Preposition.FOR);
+    }
+
+    @Test
+    void p() {
         input = "PLAY";
         expected = List.of(PlayerVerb.PLAY);
     }

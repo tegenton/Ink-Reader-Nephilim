@@ -16,6 +16,7 @@ public class StateFactory {
                     case 'C' -> new CState(k);
                     case 'D' -> new DState(k);
                     case 'E' -> new EState(k);
+                    case 'F' -> new FState(k);
                     case 'P' -> new PState(k);
                     case 'T' -> new TState(k);
                     default -> throw new IllegalStateException(
