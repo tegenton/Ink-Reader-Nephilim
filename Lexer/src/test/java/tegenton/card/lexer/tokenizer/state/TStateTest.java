@@ -4,10 +4,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import tegenton.card.lexer.tokenizer.Tokenizer;
-import tegenton.card.lexicon.Comparative;
-import tegenton.card.lexicon.Determiner;
-import tegenton.card.lexicon.Noun;
-import tegenton.card.lexicon.Word;
+import tegenton.card.lexicon.*;
 import tegenton.card.lexicon.game.Tap;
 import tegenton.card.lexicon.game.target.TargetNoun;
 import tegenton.card.lexicon.game.target.object.ObjectVerb;
@@ -95,6 +92,54 @@ public class TStateTest {
     void them() {
         input = "THEM";
         expected = TargetNoun.THEM;
+    }
+
+    @Test
+    void then() {
+        input = "THEN";
+        expected = Conjunction.THEN;
+    }
+
+    @Test
+    void these() {
+        input = "THESE";
+        expected = Determiner.THESE;
+    }
+
+    @Test
+    void they() {
+        input = "THEY";
+        expected = TargetNoun.THEY;
+    }
+
+    @Test
+    void thirteen() {
+        input = "THIRTEEN";
+        expected = EnglishNumber.THIRTEEN;
+    }
+
+    @Test
+    void this_() {
+        input = "THIS";
+        expected = Determiner.THIS;
+    }
+
+    @Test
+    void those() {
+        input = "THOSE";
+        expected = Determiner.THOSE;
+    }
+
+    @Test
+    void though() {
+        input = "THOUGH";
+        expected = SubordinateConjunction.THOUGH;
+    }
+
+    @Test
+    void time() {
+        input = "TIME";
+        expected = Noun.TIME;
     }
 
     @Test
