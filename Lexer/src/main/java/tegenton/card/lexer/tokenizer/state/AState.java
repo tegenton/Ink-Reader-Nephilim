@@ -21,10 +21,16 @@ import java.util.Map;
 public class AState extends State {
     private static final Map<String, List<Transition>> MAP = new HashMap<>();
 
-    public AState(String name) {
+    AState(final String name) {
         super(name);
     }
 
+    /**
+     * Lazily load singleton map of A states.
+     *
+     * @return Map of A state transitions.
+     */
+    @Override
     protected Map<String, List<Transition>> transitions() {
         if (MAP.isEmpty()) {
             MAP.put("AB", TransitionFactory.listOf('I', 'L', 'O'));

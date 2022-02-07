@@ -3,29 +3,38 @@ package tegenton.card.lexer.tokenizer.state;
 import java.util.HashMap;
 import java.util.Map;
 
-public class StateFactory {
-    private static final Map<String, State> states = new HashMap<>();
+public final class StateFactory {
+    private static final Map<String, State> STATES = new HashMap<>();
 
-    public static State getState(String k) {
-        if (!states.containsKey(k)) {
-            if (k.length() < 2) {
-                states.put(k, new BaseState(k));
+    private StateFactory() {
+    }
+
+    /**
+     * Retrieve a state by name.
+     *
+     * @param name Name of state to retrieve
+     * @return Instance of named state.
+     */
+    public static State getState(final String name) {
+        if (!STATES.containsKey(name)) {
+            if (name.length() < 2) {
+                STATES.put(name, new BaseState(name));
             } else {
-                states.put(k, switch (k.charAt(0)) {
-                    case 'A' -> new AState(k);
-                    case 'B' -> new BState(k);
-                    case 'C' -> new CState(k);
-                    case 'D' -> new DState(k);
-                    case 'E' -> new EState(k);
-                    case 'F' -> new FState(k);
-                    case 'P' -> new PState(k);
-                    case 'T' -> new TState(k);
+                STATES.put(name, switch (name.charAt(0)) {
+                    case 'A' -> new AState(name);
+                    case 'B' -> new BState(name);
+                    case 'C' -> new CState(name);
+                    case 'D' -> new DState(name);
+                    case 'E' -> new EState(name);
+                    case 'F' -> new FState(name);
+                    case 'P' -> new PState(name);
+                    case 'T' -> new TState(name);
                     default -> throw new IllegalStateException(
-                            "No state '" + k + "'.");
+                            "No state '" + name + "'.");
                 });
 
             }
         }
-        return states.get(k);
+        return STATES.get(name);
     }
 }

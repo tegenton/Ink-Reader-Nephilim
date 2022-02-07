@@ -25,10 +25,16 @@ import static tegenton.card.lexicon.Determiner.TARGET;
 public class TState extends State {
     private static final Map<String, List<Transition>> MAP = new HashMap<>();
 
-    public TState(String name) {
+    TState(final String name) {
         super(name);
     }
 
+    /**
+     * Lazily load singleton map of T states.
+     *
+     * @return Map of T state transitions.
+     */
+    @Override
     protected Map<String, List<Transition>> transitions() {
         if (MAP.isEmpty()) {
             MAP.put("TA", TransitionFactory.listOf('K', 'P', 'R'));
