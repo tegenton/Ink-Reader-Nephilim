@@ -20,6 +20,12 @@ public class TypeWordTest {
     }
 
     @Test
+    void superType() {
+        words = SuperType.values();
+        values = List.of("BASIC");
+    }
+
+    @Test
     void card() {
         words = CardType.values();
         values = List.of("ARTIFACT", "CREATURE", "ENCHANTMENT", "INSTANT",

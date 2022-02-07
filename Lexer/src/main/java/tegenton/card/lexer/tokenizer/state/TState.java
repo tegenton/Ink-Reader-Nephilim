@@ -2,7 +2,12 @@ package tegenton.card.lexer.tokenizer.state;
 
 import tegenton.card.lexer.tokenizer.transition.Transition;
 import tegenton.card.lexer.tokenizer.transition.TransitionFactory;
-import tegenton.card.lexicon.*;
+import tegenton.card.lexicon.Comparative;
+import tegenton.card.lexicon.Conjunction;
+import tegenton.card.lexicon.Determiner;
+import tegenton.card.lexicon.Noun;
+import tegenton.card.lexicon.Preposition;
+import tegenton.card.lexicon.SubordinateConjunction;
 import tegenton.card.lexicon.game.GameNoun;
 import tegenton.card.lexicon.game.GameVerb;
 import tegenton.card.lexicon.game.Keyword;

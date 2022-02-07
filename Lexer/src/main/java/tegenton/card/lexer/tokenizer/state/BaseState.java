@@ -5,6 +5,7 @@ import tegenton.card.lexer.tokenizer.transition.TransitionFactory;
 import tegenton.card.lexicon.Determiner;
 import tegenton.card.lexicon.Morpheme;
 import tegenton.card.lexicon.Symbol;
+import tegenton.card.lexicon.game.ManaSymbol;
 import tegenton.card.lexicon.game.Tap;
 
 import java.util.HashMap;
@@ -14,10 +15,16 @@ import java.util.Map;
 public class BaseState extends State {
     private static final Map<String, List<Transition>> MAP = new HashMap<>();
 
-    public BaseState(String s) {
+    BaseState(final String s) {
         super(s);
     }
 
+    /**
+     * Lazily load singleton map of base states, which begin from an empty
+     * string.
+     *
+     * @return Map of base state transitions.
+     */
     protected Map<String, List<Transition>> transitions() {
         if (MAP.isEmpty()) {
             MAP.put("",
@@ -26,7 +33,7 @@ public class BaseState extends State {
             MAP.put("A",
                     TransitionFactory.listOf(Determiner.A, 'B', 'C', 'D', 'F',
                             'L', 'M', 'N', 'R', 'S', 'T', 'U'));
-            MAP.put("B", TransitionFactory.listOf('E'));
+            MAP.put("B", TransitionFactory.listOf(ManaSymbol.B, 'A', 'E'));
             MAP.put("C", TransitionFactory.listOf('A'));
             MAP.put("D", TransitionFactory.listOf('R'));
             MAP.put("E", TransitionFactory.listOf('R'));
