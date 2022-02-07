@@ -5,6 +5,8 @@ import tegenton.card.lexer.tokenizer.transition.TransitionFactory;
 import tegenton.card.lexicon.Adverb;
 import tegenton.card.lexicon.Morpheme;
 import tegenton.card.lexicon.Preposition;
+import tegenton.card.lexicon.SubordinateConjunction;
+import tegenton.card.lexicon.game.ColorWord;
 import tegenton.card.lexicon.game.GameVerb;
 import tegenton.card.lexicon.game.Keyword;
 import tegenton.card.lexicon.game.Zone;
@@ -56,6 +58,17 @@ public class BState extends State {
             MAP.put("BEGINNING", TransitionFactory.toWord(Phase.BEGINNING));
             TransitionFactory.sequence(MAP, "BEY", "OND");
             MAP.put("BEYOND", TransitionFactory.toWord(Preposition.BEYOND));
+            MAP.put("BL", TransitionFactory.listOf('A', 'O', 'U'));
+            TransitionFactory.sequence(MAP, "BLA", "CK");
+            MAP.put("BLACK", TransitionFactory.toWord(ColorWord.BLACK));
+            TransitionFactory.sequence(MAP, "BLO", "CK");
+            MAP.put("BLOCK", TransitionFactory.toWord(ObjectVerb.BLOCK));
+            MAP.put("BLU", TransitionFactory.listOf('E'));
+            MAP.put("BLUE", TransitionFactory.toWord(ColorWord.BLUE));
+            MAP.put("BU", TransitionFactory.listOf('T'));
+            MAP.put("BUT",
+                    TransitionFactory.toWord(SubordinateConjunction.BUT));
+            MAP.put("BY", TransitionFactory.toWord(Preposition.BY));
         }
         return MAP;
     }

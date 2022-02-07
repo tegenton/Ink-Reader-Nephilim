@@ -6,7 +6,9 @@ import org.junit.jupiter.api.Test;
 import tegenton.card.lexer.tokenizer.Tokenizer;
 import tegenton.card.lexicon.Adverb;
 import tegenton.card.lexicon.Preposition;
+import tegenton.card.lexicon.SubordinateConjunction;
 import tegenton.card.lexicon.Word;
+import tegenton.card.lexicon.game.ColorWord;
 import tegenton.card.lexicon.game.GameVerb;
 import tegenton.card.lexicon.game.Keyword;
 import tegenton.card.lexicon.game.ManaSymbol;
@@ -98,5 +100,35 @@ public class BStateTest {
     void beyond() {
         input = "BEYOND";
         expected = Preposition.BEYOND;
+    }
+
+    @Test
+    void black() {
+        input = "BLACK";
+        expected = ColorWord.BLACK;
+    }
+
+    @Test
+    void block() {
+        input = "BLOCK";
+        expected = ObjectVerb.BLOCK;
+    }
+
+    @Test
+    void blue() {
+        input = "BLUE";
+        expected = ColorWord.BLUE;
+    }
+
+    @Test
+    void but() {
+        input = "BUT";
+        expected = SubordinateConjunction.BUT;
+    }
+
+    @Test
+    void by() {
+        input = "BY";
+        expected = Preposition.BY;
     }
 }
