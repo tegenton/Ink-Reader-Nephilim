@@ -8,7 +8,12 @@ import java.io.InputStream;
 public class SetJson {
     private final JSONObject object;
 
-    public SetJson(String setCode) {
+    /**
+     * Load a set from json resource files.
+     *
+     * @param setCode Set to load, such as "LEA".
+     */
+    public SetJson(final String setCode) {
         InputStream resourceStream = JSONObject.class.getClassLoader()
                 .getResourceAsStream(setCode + ".json");
         if (resourceStream == null) {
@@ -17,6 +22,11 @@ public class SetJson {
         object = new JSONObject(new JSONTokener(resourceStream));
     }
 
+    /**
+     * Get the number of cards in the set.
+     *
+     * @return Number of cards in selected set.
+     */
     public int cardCount() {
         return object.getJSONObject("data").getJSONArray("cards").length();
     }
