@@ -8,8 +8,13 @@ import java.io.InputStream;
 public class SetJson {
     private final JSONObject object;
 
-    public SetJson(InputStream resourceAsStream) {
-        object = new JSONObject(new JSONTokener(resourceAsStream));
+    public SetJson(String setCode) {
+        InputStream resourceStream = JSONObject.class.getClassLoader()
+                .getResourceAsStream(setCode + ".json");
+        if (resourceStream == null) {
+            throw new RuntimeException("Could not find set: " + setCode);
+        }
+        object = new JSONObject(new JSONTokener(resourceStream));
     }
 
     public int cardCount() {

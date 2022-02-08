@@ -3,13 +3,19 @@ package tegenton.card.json;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class SetJsonTest {
-    public static final SetJson lea = new SetJson(
-            SetJsonTest.class.getClassLoader().getResourceAsStream("LEA.json"));
+    public static SetJson lea;
 
     @Test
-    void cardCount() {
+    void cardCountByCode() {
+        lea = new SetJson("LEA");
         assertEquals(295, lea.cardCount());
+    }
+
+    @Test
+    void fakeSet() {
+        assertThrows(RuntimeException.class, () -> lea = new SetJson("fake"));
     }
 }
