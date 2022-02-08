@@ -10,6 +10,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/Json" />
             <option value="$PROJECT_DIR$/Lexer" />
             <option value="$PROJECT_DIR$/Lexicon" />
             <option value="$PROJECT_DIR$/Parser" />

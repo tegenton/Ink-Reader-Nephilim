@@ -1,0 +1,28 @@
+plugins {
+    id 'checkstyle'
+    id 'java'
+}
+
+group 'tegenton.card'
+version '0.1-ALPHA'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.json:json:20211205'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
+}
+
+test {
+    useJUnitPlatform()
+}
+checkstyle {
+    configFile = file("../.github/linters/sun_checks.xml")
+    toolVersion = '9.0'
+}
+checkstyleMain {
+    source = 'src/main/java'
+}

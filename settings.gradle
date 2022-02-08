@@ -3,3 +3,5 @@ rootProject.name = 'Ink-Treader Nephilim'
 include("Lexicon")
 include("Lexer")
 include("Parser")
+include("Json")
+
