@@ -1,33 +1,18 @@
 package tegenton.card.json;
 
-import org.json.JSONObject;
-import org.json.JSONTokener;
 
-import java.io.InputStream;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SetJson {
-    private final JSONObject object;
+    private int baseSetSize;
+    private String block;
 
-    /**
-     * Load a set from json resource files.
-     *
-     * @param setCode Set to load, such as "LEA".
-     */
-    public SetJson(final String setCode) {
-        InputStream resourceStream = JSONObject.class.getClassLoader()
-                .getResourceAsStream(setCode + ".json");
-        if (resourceStream == null) {
-            throw new RuntimeException("Could not find set: " + setCode);
-        }
-        object = new JSONObject(new JSONTokener(resourceStream));
+    public int getBaseSetSize() {
+        return baseSetSize;
     }
 
-    /**
-     * Get the number of cards in the set.
-     *
-     * @return Number of cards in selected set.
-     */
-    public int cardCount() {
-        return object.getJSONObject("data").getJSONArray("cards").length();
+    public String getBlock() {
+        return block;
     }
 }
