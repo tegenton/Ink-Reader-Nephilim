@@ -10,6 +10,8 @@ import java.util.UUID;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SealedProductJson {
     @JsonProperty(required = true)
+    private IdentifiersJson identifiers;
+    @JsonProperty(required = true)
     private String name;
     @JsonProperty(required = true)
     private Date releaseDate;
@@ -51,5 +53,9 @@ public class SealedProductJson {
     @Override
     public String toString() {
         return name;
+    }
+
+    public IdentifiersJson getIdentifiers() {
+        return identifiers;
     }
 }

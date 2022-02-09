@@ -23,7 +23,11 @@ public class SealedProductJsonTest {
 
     @Test
     void getIdentifiers() {
-        fail("TODO: identifiers");
+        List<IdentifiersJson> expected = List.of(new IdentifiersJson("27262"),
+                new IdentifiersJson("27324"), new IdentifiersJson("139147"));
+        List<IdentifiersJson> actual = sealed.stream()
+                .map(SealedProductJson::getIdentifiers).toList();
+        assertIterableEquals(expected, actual);
     }
 
     @Test
