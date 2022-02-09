@@ -1,8 +1,8 @@
-package tegenton.card.json;
+package tegenton.card.json.model;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import tegenton.card.json.JsonLoader;
 
 import java.io.IOException;
 import java.util.List;
@@ -16,8 +16,7 @@ public class SealedProductJsonTest {
 
     @BeforeAll
     static void loadJson() throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        JsonLoader loader = new JsonLoader(mapper);
+        JsonLoader loader = new JsonLoader();
         SetJson set = loader.loadSet("LEA");
         sealed = set.getSealedProduct();
     }

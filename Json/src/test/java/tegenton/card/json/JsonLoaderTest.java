@@ -1,8 +1,8 @@
 package tegenton.card.json;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import tegenton.card.json.model.SetJson;
 
 import java.io.IOException;
 
@@ -14,8 +14,7 @@ public class JsonLoaderTest {
 
     @BeforeEach
     void setup() {
-        ObjectMapper mapper = new ObjectMapper();
-        loader = new JsonLoader(mapper);
+        loader = new JsonLoader();
     }
 
     @Test
