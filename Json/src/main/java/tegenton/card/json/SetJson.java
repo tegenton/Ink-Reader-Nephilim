@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Date;
+import java.util.List;
 
 enum SetType {
     core
@@ -39,9 +40,11 @@ public class SetJson {
     @JsonProperty(required = true)
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date releaseDate;
+    private List<SealedProductJson> sealedProduct;
     private int tcgplayerGroupId;
     @JsonProperty(required = true)
     private int totalSetSize;
+    @JsonProperty(required = true)
     private TranslationJson translations;
     @JsonProperty(required = true)
     private SetType type;
@@ -118,6 +121,10 @@ public class SetJson {
         return releaseDate;
     }
 
+    public List<SealedProductJson> getSealedProduct() {
+        return sealedProduct;
+    }
+
     public int getTcgplayerGroupId() {
         return tcgplayerGroupId;
     }
@@ -126,11 +133,11 @@ public class SetJson {
         return totalSetSize;
     }
 
-    public SetType getType() {
-        return type;
-    }
-
     public TranslationJson getTranslations() {
         return translations;
+    }
+
+    public SetType getType() {
+        return type;
     }
 }

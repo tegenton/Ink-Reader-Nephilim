@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -121,7 +122,8 @@ class SetJsonTest {
 
     @Test
     void getSealedProduct() {
-        fail("TODO: sealed product");
+        assertEquals(List.of(new SealedProductJson(), new SealedProductJson(),
+                new SealedProductJson()), lea.getSealedProduct());
     }
 
     @Test
