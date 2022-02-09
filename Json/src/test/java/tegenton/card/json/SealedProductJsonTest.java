@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -48,6 +49,12 @@ public class SealedProductJsonTest {
 
     @Test
     void getUuid() {
-        fail("TODO: uuid");
+        List<UUID> expected = List.of(
+                UUID.fromString("22bb173e-dfe7-5589-8616-c820fce5ebb4"),
+                UUID.fromString("1dbdd2d3-1455-5a0d-b775-f33fc1fcd7e2"),
+                UUID.fromString("621c6612-daf6-57a6-b2d7-acc126583b4e"));
+        List<UUID> actual = sealed.stream().map(SealedProductJson::getUuid)
+                .toList();
+        assertIterableEquals(expected, actual);
     }
 }

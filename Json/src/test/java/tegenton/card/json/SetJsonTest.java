@@ -122,8 +122,11 @@ class SetJsonTest {
 
     @Test
     void getSealedProduct() {
-        assertEquals(List.of(new SealedProductJson(), new SealedProductJson(),
-                new SealedProductJson()), lea.getSealedProduct());
+        List<SealedProductJson> expected = List.of(
+                new SealedProductJson("22bb173e-dfe7-5589-8616-c820fce5ebb4"),
+                new SealedProductJson("1dbdd2d3-1455-5a0d-b775-f33fc1fcd7e2"),
+                new SealedProductJson("621c6612-daf6-57a6-b2d7-acc126583b4e"));
+        assertEquals(expected, lea.getSealedProduct());
     }
 
     @Test
