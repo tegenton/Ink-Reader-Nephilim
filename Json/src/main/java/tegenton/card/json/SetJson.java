@@ -7,6 +7,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Date;
 
+enum SetType {
+    core
+}
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SetJson {
     @JsonProperty(required = true)
@@ -36,7 +40,10 @@ public class SetJson {
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date releaseDate;
     private int tcgplayerGroupId;
+    @JsonProperty(required = true)
     private int totalSetSize;
+    @JsonProperty(required = true)
+    private SetType type;
 
     public int getBaseSetSize() {
         return baseSetSize;
@@ -116,5 +123,9 @@ public class SetJson {
 
     public int getTotalSetSize() {
         return totalSetSize;
+    }
+
+    public SetType getType() {
+        return type;
     }
 }

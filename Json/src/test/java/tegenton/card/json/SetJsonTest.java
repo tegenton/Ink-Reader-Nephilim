@@ -146,6 +146,6 @@ class SetJsonTest {
 
     @Test
     void getType() {
-        fail("TODO: type");
+        assertEquals(SetType.core, lea.getType());
     }
 }
