@@ -51,32 +51,32 @@ class SetJsonTest {
 
     @Test
     void isForeignOnly() {
-        assertFalse(lea.isForeignOnly());
+        assertFalse(lea.getIsForeignOnly());
     }
 
     @Test
     void isFoilOnly() {
-        assertFalse(lea.isFoilOnly());
+        assertFalse(lea.getIsFoilOnly());
     }
 
     @Test
     void isNonFoilOnly() {
-        assertTrue(lea.isNonFoilOnly());
+        assertTrue(lea.getIsNonFoilOnly());
     }
 
     @Test
     void isOnlineOnly() {
-        assertFalse(lea.isOnlineOnly());
+        assertFalse(lea.getIsOnlineOnly());
     }
 
     @Test
     void isPaperOnly() {
-        assertFalse(lea.isPaperOnly());
+        assertFalse(lea.getIsPaperOnly());
     }
 
     @Test
     void isPartialPreview() {
-        assertFalse(lea.isPartialPreview());
+        assertFalse(lea.getIsPartialPreview());
     }
 
     @Test

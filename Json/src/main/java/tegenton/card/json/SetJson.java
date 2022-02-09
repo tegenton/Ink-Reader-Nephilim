@@ -54,27 +54,27 @@ public class SetJson {
         return codeV3;
     }
 
-    public boolean isForeignOnly() {
+    public boolean getIsForeignOnly() {
         return isForeignOnly;
     }
 
-    public boolean isFoilOnly() {
+    public boolean getIsFoilOnly() {
         return isFoilOnly;
     }
 
-    public boolean isNonFoilOnly() {
+    public boolean getIsNonFoilOnly() {
         return isNonFoilOnly;
     }
 
-    public boolean isOnlineOnly() {
+    public boolean getIsOnlineOnly() {
         return isOnlineOnly;
     }
 
-    public boolean isPaperOnly() {
+    public boolean getIsPaperOnly() {
         return isPaperOnly;
     }
 
-    public boolean isPartialPreview() {
+    public boolean getIsPartialPreview() {
         return isPartialPreview;
     }
 
