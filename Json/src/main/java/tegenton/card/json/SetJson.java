@@ -42,6 +42,7 @@ public class SetJson {
     private int tcgplayerGroupId;
     @JsonProperty(required = true)
     private int totalSetSize;
+    private TranslationJson translations;
     @JsonProperty(required = true)
     private SetType type;
 
@@ -127,5 +128,9 @@ public class SetJson {
 
     public SetType getType() {
         return type;
+    }
+
+    public TranslationJson getTranslations() {
+        return translations;
     }
 }

@@ -141,7 +141,7 @@ class SetJsonTest {
 
     @Test
     void getTranslations() {
-        fail("TODO: translations");
+        assertEquals(new TranslationJson(), lea.getTranslations());
     }
 
     @Test
