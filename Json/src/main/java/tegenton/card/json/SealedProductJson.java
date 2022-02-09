@@ -14,6 +14,8 @@ public class SealedProductJson {
     @JsonProperty(required = true)
     private String name;
     @JsonProperty(required = true)
+    private PurchaseUrlsJson purchaseUrls;
+    @JsonProperty(required = true)
     private Date releaseDate;
     @JsonProperty(required = true)
     private UUID uuid;
@@ -27,6 +29,10 @@ public class SealedProductJson {
 
     public String getName() {
         return name;
+    }
+
+    public PurchaseUrlsJson getPurchaseUrls() {
+        return purchaseUrls;
     }
 
     public Date getReleaseDate() {

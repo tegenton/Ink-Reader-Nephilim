@@ -8,7 +8,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertIterableEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class SealedProductJsonTest {
     public static List<SealedProductJson> sealed;
@@ -41,7 +42,15 @@ public class SealedProductJsonTest {
 
     @Test
     void getPurchaseUrls() {
-        fail("TODO: purchase urls");
+        List<PurchaseUrlsJson> expected = List.of(new PurchaseUrlsJson(
+                        "https://mtgjson.com/links/7bcc9476dbbc3611"),
+                new PurchaseUrlsJson(
+                        "https://mtgjson.com/links/a5a160aafd3ff5f9"),
+                new PurchaseUrlsJson(
+                        "https://mtgjson.com/links/487b629730e4d3dc"));
+        List<PurchaseUrlsJson> actual = sealed.stream()
+                .map(SealedProductJson::getPurchaseUrls).toList();
+        assertIterableEquals(expected, actual);
     }
 
     @Test
