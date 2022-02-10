@@ -63,7 +63,8 @@ public class PurchaseUrlsJson {
             return false;
         }
         PurchaseUrlsJson that = (PurchaseUrlsJson) o;
-        return Objects.equals(tcgplayer, that.tcgplayer);
+        return Objects.equals(cardKingdom, that.cardKingdom) && Objects.equals(
+                tcgplayer, that.tcgplayer);
     }
 
     /**
