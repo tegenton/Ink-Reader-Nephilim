@@ -37,10 +37,11 @@ public abstract class State {
                 setState.accept(transitions.get(c).accept(addToken, name));
                 return;
             }
+            throw new IllegalStateException(
+                    "Could not transition from state '%s' on '%s'.".formatted(
+                            name, c));
         }
-        throw new IllegalStateException(
-                "Could not transition from state '%s' on '%s'.".formatted(name,
-                        c));
+        throw new IllegalStateException("State '" + name + "' not found.");
     }
 
     /**

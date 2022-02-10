@@ -37,7 +37,7 @@ public class BaseState extends State {
                             'Y'));
             MAP.put("C",
                     TransitionFactory.mapOf(ManaSymbol.C, 'A', 'H', 'O', 'R'));
-            MAP.put("D", TransitionFactory.mapOf('R'));
+            MAP.put("D", TransitionFactory.mapOf('A', 'E', 'R'));
             MAP.put("E", TransitionFactory.mapOf('R'));
             MAP.put("F", TransitionFactory.mapOf('O'));
             MAP.put("P", TransitionFactory.mapOf('L'));
