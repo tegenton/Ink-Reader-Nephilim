@@ -18,6 +18,8 @@ public class SetJson {
     private int baseSetSize;
     private String block;
     @JsonProperty(required = true)
+    private List<SetCardJson> cards;
+    @JsonProperty(required = true)
     private String code;
     private String codeV3;
     private boolean isForeignOnly;
@@ -70,7 +72,15 @@ public class SetJson {
     }
 
     // TODO: booster
-    // TODO: cards
+
+    /**
+     * The list of cards in the set. See the Card (Set) Data Model.
+     *
+     * @return The list of cards in the set.
+     */
+    public List<SetCardJson> getCards() {
+        return cards;
+    }
 
     /**
      * The set code for the set.
