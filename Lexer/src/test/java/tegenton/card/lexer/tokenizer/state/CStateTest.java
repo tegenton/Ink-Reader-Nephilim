@@ -4,6 +4,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import tegenton.card.lexer.tokenizer.Tokenizer;
+import tegenton.card.lexicon.Adjective;
+import tegenton.card.lexicon.Noun;
 import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.GameVerb;
 import tegenton.card.lexicon.game.ManaSymbol;
@@ -56,5 +58,29 @@ public class CStateTest {
     void cause() {
         input = "CAUSE";
         expected = GameVerb.CAUSE;
+    }
+
+    @Test
+    void change() {
+        input = "CHANGE";
+        expected = PlayerVerb.CHANGE;
+    }
+
+    @Test
+    void choice() {
+        input = "CHOICE";
+        expected = Noun.CHOICE;
+    }
+
+    @Test
+    void choose() {
+        input = "CHOOSE";
+        expected = PlayerVerb.CHOOSE;
+    }
+
+    @Test
+    void chosen() {
+        input = "CHOSEN";
+        expected = Adjective.CHOSEN;
     }
 }

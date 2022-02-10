@@ -2,6 +2,8 @@ package tegenton.card.lexer.tokenizer.state;
 
 import tegenton.card.lexer.tokenizer.transition.Transition;
 import tegenton.card.lexer.tokenizer.transition.TransitionFactory;
+import tegenton.card.lexicon.Adjective;
+import tegenton.card.lexicon.Noun;
 import tegenton.card.lexicon.game.GameVerb;
 import tegenton.card.lexicon.game.target.TargetAuxiliaryVerb;
 import tegenton.card.lexicon.game.target.object.ObjectNoun;
@@ -34,6 +36,16 @@ public class CState extends State {
             MAP.put("CAST", TransitionFactory.toWord(PlayerVerb.CAST));
             TransitionFactory.sequence(MAP, "CAU", "SE");
             MAP.put("CAUSE", TransitionFactory.toWord(GameVerb.CAUSE));
+            MAP.put("CH", TransitionFactory.listOf('A', 'O'));
+            TransitionFactory.sequence(MAP, "CHA", "NGE");
+            MAP.put("CHANGE", TransitionFactory.toWord(PlayerVerb.CHANGE));
+            MAP.put("CHO", TransitionFactory.listOf('I', 'O', 'S'));
+            TransitionFactory.sequence(MAP, "CHOI", "CE");
+            MAP.put("CHOICE", TransitionFactory.toWord(Noun.CHOICE));
+            TransitionFactory.sequence(MAP, "CHOO", "SE");
+            MAP.put("CHOOSE", TransitionFactory.toWord(PlayerVerb.CHOOSE));
+            TransitionFactory.sequence(MAP, "CHOS", "EN");
+            MAP.put("CHOSEN", TransitionFactory.toWord(Adjective.CHOSEN));
         }
         return MAP;
     }
