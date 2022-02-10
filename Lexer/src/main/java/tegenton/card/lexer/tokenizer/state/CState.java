@@ -13,6 +13,7 @@ import tegenton.card.lexicon.game.target.object.ObjectVerb;
 import tegenton.card.lexicon.game.target.player.PlayerAdverb;
 import tegenton.card.lexicon.game.target.player.PlayerVerb;
 import tegenton.card.lexicon.game.turn.Phase;
+import tegenton.card.lexicon.game.type.CardType;
 import tegenton.card.lexicon.game.type.CounterType;
 
 import java.util.HashMap;
@@ -79,6 +80,11 @@ public class CState extends State {
             MAP.put("COULD", TransitionFactory.toWord(PlayerVerb.COULD));
             TransitionFactory.sequence(MAP, "COUN", "TER");
             MAP.put("COUNTER", TransitionFactory.toWord(PlayerVerb.COUNTER));
+            TransitionFactory.sequence(MAP, "CR", "EAT");
+            MAP.put("CREAT", TransitionFactory.listOf('E', 'U'));
+            MAP.put("CREATE", TransitionFactory.toWord(PlayerVerb.CREATE));
+            TransitionFactory.sequence(MAP, "CREATU", "RE");
+            MAP.put("CREATURE", TransitionFactory.toWord(CardType.CREATURE));
         }
         return MAP;
     }

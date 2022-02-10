@@ -17,6 +17,7 @@ import tegenton.card.lexicon.game.target.object.ObjectVerb;
 import tegenton.card.lexicon.game.target.player.PlayerAdverb;
 import tegenton.card.lexicon.game.target.player.PlayerVerb;
 import tegenton.card.lexicon.game.turn.Phase;
+import tegenton.card.lexicon.game.type.CardType;
 import tegenton.card.lexicon.game.type.CounterType;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -148,5 +149,11 @@ public class CStateTest {
     void counter() {
         input = "COUNTER";
         expected = PlayerVerb.COUNTER;
+    }
+
+    @Test
+    void creature() {
+        input = "CREATURE";
+        expected = CardType.CREATURE;
     }
 }
