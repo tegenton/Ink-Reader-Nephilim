@@ -91,6 +91,7 @@ public class SetCardJson {
     @JsonProperty(required = true)
     private List<UUID> otherFaceIds;
     private List<UUID> rebalancedPrintings;
+    private String signature;
     private String text;
     @JsonProperty(required = true)
     private UUID uuid;
@@ -301,7 +302,9 @@ public class SetCardJson {
     // TODO: security stamp
     // TODO: set code
     // TODO: side
-    // TODO: signature
+    public String getSignature() {
+        return signature;
+    }
     // TODO: subtypes
     // TODO: supertypes
 
@@ -320,4 +323,5 @@ public class SetCardJson {
     public List<UUID> getVariations() {
         return variations;
     }
+
 }

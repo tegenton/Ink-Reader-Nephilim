@@ -331,7 +331,7 @@ class SetCardJsonTest {
 
     @Test
     void getSignature() {
-        fail("todo: signature");
+        assertNull(animateWall.getSignature());
     }
 
     @Test
