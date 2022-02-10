@@ -296,7 +296,10 @@ class SetCardJsonTest {
 
     @Test
     void getPurchaseUrls() {
-        fail("todo: purchase urls");
+        PurchaseUrlsJson expected = new PurchaseUrlsJson(
+                "https://mtgjson.com/links/5bab9be709288464",
+                "https://mtgjson.com/links/54e4d282a7e51259");
+        assertEquals(expected, animateWall.getPurchaseUrls());
     }
 
     @Test

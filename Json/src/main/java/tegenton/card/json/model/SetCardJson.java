@@ -90,6 +90,8 @@ public class SetCardJson {
     private String originalText;
     @JsonProperty(required = true)
     private List<UUID> otherFaceIds;
+    @JsonProperty(required = true)
+    private PurchaseUrlsJson purchaseUrls;
     private List<UUID> rebalancedPrintings;
     private String signature;
     private String text;
@@ -291,7 +293,9 @@ public class SetCardJson {
     // TODO: power
     // TODO: printings
     // TODO: promo types
-    // TODO: purchase urls
+    public PurchaseUrlsJson getPurchaseUrls() {
+        return purchaseUrls;
+    }
     // TODO: rarity
 
     public List<UUID> getRebalancedPrintings() {

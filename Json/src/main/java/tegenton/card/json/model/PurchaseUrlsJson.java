@@ -11,6 +11,7 @@ import java.util.Objects;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PurchaseUrlsJson {
 
+    private String cardKingdom;
     private String tcgplayer;
 
     /**
@@ -22,6 +23,21 @@ public class PurchaseUrlsJson {
     PurchaseUrlsJson(final String tcg) {
         tcgplayer = tcg;
     }
+
+    PurchaseUrlsJson(final String ck, final String tcg) {
+        cardKingdom = ck;
+        tcgplayer = tcg;
+    }
+
+    /**
+     * The URL to purchase a product on Card Kingdom.
+     *
+     * @return The URL to purchase a product on Card Kingdom.
+     */
+    public String getCardKingdom() {
+        return cardKingdom;
+    }
+
 
     /**
      * The URL to purchase a product on TCGplayer.
