@@ -5,11 +5,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import tegenton.card.lexer.tokenizer.Tokenizer;
+import tegenton.card.lexicon.Adjective;
 import tegenton.card.lexicon.Particle;
 import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.GameNoun;
 import tegenton.card.lexicon.game.Keyword;
 import tegenton.card.lexicon.game.Zone;
+import tegenton.card.lexicon.game.target.object.ObjectVerb;
 import tegenton.card.lexicon.game.target.object.source.SourceVerb;
 import tegenton.card.lexicon.game.target.player.PlayerAdjective;
 import tegenton.card.lexicon.game.target.player.PlayerVerb;
@@ -71,6 +73,30 @@ public class DStateTest {
     void destroy() {
         input = "DESTROY";
         expected = PlayerVerb.DESTROY;
+    }
+
+    @Test
+    void die() {
+        input = "DIE";
+        expected = ObjectVerb.DIE;
+    }
+
+    @Test
+    void different() {
+        input = "DIFFERENT";
+        expected = Adjective.DIFFERENT;
+    }
+
+    @Test
+    void discard() {
+        input = "DISCARD";
+        expected = PlayerVerb.DISCARD;
+    }
+
+    @Test
+    void divide() {
+        input = "DIVIDE";
+        expected = PlayerVerb.DIVIDE;
     }
 
     @Test

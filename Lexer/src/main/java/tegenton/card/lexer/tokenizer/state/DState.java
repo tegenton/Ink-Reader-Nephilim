@@ -2,10 +2,12 @@ package tegenton.card.lexer.tokenizer.state;
 
 import tegenton.card.lexer.tokenizer.transition.Transition;
 import tegenton.card.lexer.tokenizer.transition.TransitionFactory;
+import tegenton.card.lexicon.Adjective;
 import tegenton.card.lexicon.Particle;
 import tegenton.card.lexicon.game.GameNoun;
 import tegenton.card.lexicon.game.Keyword;
 import tegenton.card.lexicon.game.Zone;
+import tegenton.card.lexicon.game.target.object.ObjectVerb;
 import tegenton.card.lexicon.game.target.object.source.SourceVerb;
 import tegenton.card.lexicon.game.target.player.PlayerAdjective;
 import tegenton.card.lexicon.game.target.player.PlayerVerb;
@@ -41,6 +43,14 @@ public class DState extends State {
                     TransitionFactory.toWord(PlayerAdjective.DEFENDING));
             TransitionFactory.sequence(MAP, "DES", "TROY");
             MAP.put("DESTROY", TransitionFactory.toWord(PlayerVerb.DESTROY));
+            MAP.put("DI", TransitionFactory.mapOf('E', 'F', 'S', 'V'));
+            MAP.put("DIE", TransitionFactory.toWord(ObjectVerb.DIE));
+            TransitionFactory.sequence(MAP, "DIF", "FERENT");
+            MAP.put("DIFFERENT", TransitionFactory.toWord(Adjective.DIFFERENT));
+            TransitionFactory.sequence(MAP, "DIS", "CARD");
+            MAP.put("DISCARD", TransitionFactory.toWord(PlayerVerb.DISCARD));
+            TransitionFactory.sequence(MAP, "DIV", "IDE");
+            MAP.put("DIVIDE", TransitionFactory.toWord(PlayerVerb.DIVIDE));
             MAP.put("DO", TransitionFactory.mapOf(SourceVerb.DO, 'W'));
             MAP.put("DOW", TransitionFactory.mapOf('N'));
             MAP.put("DOWN", TransitionFactory.toWord(Particle.DOWN));
