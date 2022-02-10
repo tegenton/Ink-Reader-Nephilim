@@ -2,8 +2,10 @@ package tegenton.card.lexer.tokenizer.state;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import tegenton.card.lexer.tokenizer.Tokenizer;
+import tegenton.card.lexicon.Particle;
 import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.GameNoun;
 import tegenton.card.lexicon.game.Keyword;
@@ -69,5 +71,18 @@ public class DStateTest {
     void destroy() {
         input = "DESTROY";
         expected = PlayerVerb.DESTROY;
+    }
+
+    @Test
+    @DisplayName("do")
+    void wordDo() {
+        input = "DO";
+        expected = SourceVerb.DO;
+    }
+
+    @Test
+    void down() {
+        input = "DOWN";
+        expected = Particle.DOWN;
     }
 }

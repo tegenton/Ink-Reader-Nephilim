@@ -2,6 +2,7 @@ package tegenton.card.lexer.tokenizer.state;
 
 import tegenton.card.lexer.tokenizer.transition.Transition;
 import tegenton.card.lexer.tokenizer.transition.TransitionFactory;
+import tegenton.card.lexicon.Particle;
 import tegenton.card.lexicon.game.GameNoun;
 import tegenton.card.lexicon.game.Keyword;
 import tegenton.card.lexicon.game.Zone;
@@ -40,6 +41,9 @@ public class DState extends State {
                     TransitionFactory.toWord(PlayerAdjective.DEFENDING));
             TransitionFactory.sequence(MAP, "DES", "TROY");
             MAP.put("DESTROY", TransitionFactory.toWord(PlayerVerb.DESTROY));
+            MAP.put("DO", TransitionFactory.mapOf(SourceVerb.DO, 'W'));
+            MAP.put("DOW", TransitionFactory.mapOf('N'));
+            MAP.put("DOWN", TransitionFactory.toWord(Particle.DOWN));
             MAP.put("DRAW", Map.of('S', new Transition('S', "DRAW"), '\0',
                     new Transition('\0', PlayerVerb.DRAW), ' ',
                     new Transition(' ', PlayerVerb.DRAW, " ")));
