@@ -2,7 +2,6 @@ package tegenton.card.json.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import tegenton.card.lexicon.game.ManaSymbol;
 
 import java.util.Date;
 import java.util.EnumSet;
@@ -30,6 +29,14 @@ enum Layout {
     normal
 }
 
+enum Color {
+    W,
+    U,
+    B,
+    R,
+    G
+}
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SetCardJson {
     private String artist;
@@ -40,10 +47,10 @@ public class SetCardJson {
     private BorderColor borderColor;
     private List<String> cardParts;
     @JsonProperty(required = true)
-    private EnumSet<ManaSymbol> colorIdentity;
-    private EnumSet<ManaSymbol> colorIndicator;
+    private EnumSet<Color> colorIdentity;
+    private EnumSet<Color> colorIndicator;
     @JsonProperty(required = true)
-    private EnumSet<ManaSymbol> colors;
+    private EnumSet<Color> colors;
     private Integer edhrecRank;
     private String faceFlavorName;
     private Integer faceManaValue;
@@ -120,15 +127,15 @@ public class SetCardJson {
         return cardParts;
     }
 
-    public EnumSet<ManaSymbol> getColorIdentity() {
+    public EnumSet<Color> getColorIdentity() {
         return colorIdentity;
     }
 
-    public EnumSet<ManaSymbol> getColorIndicator() {
+    public EnumSet<Color> getColorIndicator() {
         return colorIndicator;
     }
 
-    public EnumSet<ManaSymbol> getColors() {
+    public EnumSet<Color> getColors() {
         return colors;
     }
 

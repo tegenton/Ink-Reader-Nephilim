@@ -3,7 +3,6 @@ package tegenton.card.json.model;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import tegenton.card.json.JsonLoader;
-import tegenton.card.lexicon.game.ManaSymbol;
 
 import java.io.IOException;
 import java.util.EnumSet;
@@ -50,7 +49,7 @@ class SetCardJsonTest {
 
     @Test
     void getColorIdentity() {
-        EnumSet<ManaSymbol> expected = EnumSet.of(ManaSymbol.W);
+        EnumSet<Color> expected = EnumSet.of(Color.W);
         assertEquals(expected, animateWall.getColorIdentity());
     }
 
@@ -61,7 +60,7 @@ class SetCardJsonTest {
 
     @Test
     void getColors() {
-        EnumSet<ManaSymbol> expected = EnumSet.of(ManaSymbol.W);
+        EnumSet<Color> expected = EnumSet.of(Color.W);
         assertEquals(expected, animateWall.getColors());
     }
 
