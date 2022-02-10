@@ -1,7 +1,6 @@
 package tegenton.card.json.model;
 
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -40,7 +39,6 @@ public class SetJson {
     private String name;
     private String parentCode;
     @JsonProperty(required = true)
-    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date releaseDate;
     private List<SealedProductJson> sealedProduct;
     private int tcgplayerGroupId;

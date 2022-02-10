@@ -4,8 +4,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import tegenton.card.lexicon.game.ManaSymbol;
 
+import java.util.Date;
 import java.util.EnumSet;
 import java.util.List;
+import java.util.UUID;
 
 enum Printing {
     mtgo,
@@ -73,7 +75,27 @@ public class SetCardJson {
     private Boolean isTextless;
     private Boolean isTimeshifted;
     private List<String> keywords;
+    @JsonProperty(required = true)
     private Layout layout;
+    private Integer life;
+    private Integer loyalty;
+    @JsonProperty(required = true)
+    private Integer manaValue;
+    @JsonProperty(required = true)
+    private String name;
+    @JsonProperty(required = true)
+    private Integer number;
+    private List<UUID> originalPrintings;
+    private Date originalReleaseDate;
+    private String originalText;
+    @JsonProperty(required = true)
+    private List<UUID> otherFaceIds;
+    private List<UUID> rebalancedPrintings;
+    private String text;
+    @JsonProperty(required = true)
+    private UUID uuid;
+    @JsonProperty(required = true)
+    private List<UUID> variations;
 
     public String getArtist() {
         return artist;
@@ -222,4 +244,80 @@ public class SetCardJson {
     }
 
     // TODO: leadership skills
+
+    // TODO: legalities
+
+    public Integer getLife() {
+        return life;
+    }
+
+    public Integer getLoyalty() {
+        return loyalty;
+    }
+
+    // TODO: mana cost
+
+    public Integer getManaValue() {
+        return manaValue;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Integer getNumber() {
+        return number;
+    }
+
+    public List<UUID> getOriginalPrintings() {
+        return originalPrintings;
+    }
+
+    public Date getOriginalReleaseDate() {
+        return originalReleaseDate;
+    }
+
+    public String getOriginalText() {
+        return originalText;
+    }
+
+    // TODO: original type
+
+    public List<UUID> getOtherFaceIds() {
+        return otherFaceIds;
+    }
+
+    // TODO: power
+    // TODO: printings
+    // TODO: promo types
+    // TODO: purchase urls
+    // TODO: rarity
+
+    public List<UUID> getRebalancedPrintings() {
+        return rebalancedPrintings;
+    }
+
+    // TODO: rulings
+    // TODO: security stamp
+    // TODO: set code
+    // TODO: side
+    // TODO: signature
+    // TODO: subtypes
+    // TODO: supertypes
+
+    public String getText() {
+        return text;
+    }
+
+    // TODO: toughness
+    // TODO: type
+    // TODO: types
+
+    public UUID getUuid() {
+        return uuid;
+    }
+
+    public List<UUID> getVariations() {
+        return variations;
+    }
 }

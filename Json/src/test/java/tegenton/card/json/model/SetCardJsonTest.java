@@ -8,6 +8,7 @@ import tegenton.card.lexicon.game.ManaSymbol;
 import java.io.IOException;
 import java.util.EnumSet;
 import java.util.List;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -219,5 +220,166 @@ class SetCardJsonTest {
     @Test
     void getLegalities() {
         fail("todo: legalities");
+    }
+
+    @Test
+    void getLife() {
+        assertNull(animateWall.getLife());
+    }
+
+    @Test
+    void getLoyalty() {
+        assertNull(animateWall.getLoyalty());
+    }
+
+    @Test
+    void getManaCost() {
+        fail("todo: mana cost");
+    }
+
+    @Test
+    void getManaValue() {
+        assertEquals(1, animateWall.getManaValue());
+    }
+
+    @Test
+    void getName() {
+        assertEquals("Animate Wall", animateWall.getName());
+    }
+
+    @Test
+    void getNumber() {
+        assertEquals(1, animateWall.getNumber());
+    }
+
+    @Test
+    void getOriginalPrintings() {
+        assertNull(animateWall.getOriginalPrintings());
+    }
+
+    @Test
+    void getOriginalReleaseDate() {
+        assertNull(animateWall.getOriginalReleaseDate());
+    }
+
+    @Test
+    void getOriginalText() {
+        assertEquals(
+                "Target wall can now attack. Target wall's power and toughness are unchanged, even if its power is 0.",
+                animateWall.getOriginalText());
+    }
+
+    @Test
+    void getOriginalType() {
+        fail("todo: original type");
+    }
+
+    @Test
+    void getOtherFaceIds() {
+        assertNull(animateWall.getOtherFaceIds());
+    }
+
+    @Test
+    void getPower() {
+        fail("todo: power");
+    }
+
+    @Test
+    void getPrintings() {
+        fail("todo: printings");
+    }
+
+    @Test
+    void getPromoTypes() {
+        fail("todo: promo types");
+    }
+
+    @Test
+    void getPurchaseUrls() {
+        fail("todo: purchase urls");
+    }
+
+    @Test
+    void getRarity() {
+        fail("todo: rarity");
+    }
+
+    @Test
+    void getRebalancedPrintings() {
+        assertNull(animateWall.getRebalancedPrintings());
+    }
+
+    @Test
+    void getRulings() {
+        fail("todo: rulings");
+    }
+
+    @Test
+    void getSecurityStamp() {
+        fail("todo: security stamp");
+    }
+
+    @Test
+    void getSetcode() {
+        fail("todo: set code");
+    }
+
+    @Test
+    void getSide() {
+        fail("todo: side");
+    }
+
+    @Test
+    void getSignature() {
+        fail("todo: signature");
+    }
+
+    @Test
+    void getSubtypes() {
+        fail("todo: subtypes");
+    }
+
+    @Test
+    void getSupertypes() {
+        fail("todo: supertypes");
+    }
+
+    @Test
+    void getText() {
+        assertEquals("""
+                        Enchant Wall
+                        Enchanted Wall can attack as though it didn't have defender.""",
+                animateWall.getText());
+    }
+
+    @Test
+    void getToughness() {
+        fail("todo: toughness");
+    }
+
+    @Test
+    void getType() {
+        fail("todo: type");
+    }
+
+    @Test
+    void getTypes() {
+        fail("todo: types");
+    }
+
+    @Test
+    void getUuid() {
+        assertEquals(UUID.fromString("2b304dc1-8d7d-50a7-a310-2d0e5427935f"),
+                animateWall.getUuid());
+    }
+
+    @Test
+    void getVariations() {
+        assertNull(animateWall.getVariations());
+    }
+
+    @Test
+    void getWatermark() {
+        fail("todo: watermark");
     }
 }
