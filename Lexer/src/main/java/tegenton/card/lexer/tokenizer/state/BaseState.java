@@ -36,7 +36,7 @@ public class BaseState extends State {
             MAP.put("B",
                     TransitionFactory.listOf(ManaSymbol.B, 'A', 'E', 'L', 'U',
                             'Y'));
-            MAP.put("C", TransitionFactory.listOf(ManaSymbol.C, 'A', 'H'));
+            MAP.put("C", TransitionFactory.listOf(ManaSymbol.C, 'A', 'H', 'O'));
             MAP.put("D", TransitionFactory.listOf('R'));
             MAP.put("E", TransitionFactory.listOf('R'));
             MAP.put("F", TransitionFactory.listOf('O'));

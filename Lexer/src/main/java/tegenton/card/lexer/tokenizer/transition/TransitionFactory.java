@@ -66,7 +66,9 @@ public final class TransitionFactory {
                                 final String start, final String end) {
         StringBuilder builder = new StringBuilder(start);
         for (char c : end.toCharArray()) {
-            map.put(builder.toString(), listOf(c));
+            if (map.put(builder.toString(), listOf(c)) != null) {
+                throw new UnsupportedOperationException(builder.toString());
+            }
             builder.append(c);
         }
     }
