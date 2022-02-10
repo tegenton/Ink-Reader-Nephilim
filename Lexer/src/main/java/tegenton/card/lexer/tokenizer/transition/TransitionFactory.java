@@ -2,9 +2,7 @@ package tegenton.card.lexer.tokenizer.transition;
 
 import tegenton.card.lexicon.Word;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public final class TransitionFactory {
@@ -34,10 +32,10 @@ public final class TransitionFactory {
      * @param labels Transitions from this state on other characters.
      * @return List of transitions for this state.
      */
-    public static List<Transition> listOf(final Word word,
-                                          final char... labels) {
-        List<Transition> transitions = listOf(labels);
-        transitions.addAll(toWord(word));
+    public static Map<Character, Transition> mapOf(final Word word,
+                                                   final char... labels) {
+        Map<Character, Transition> transitions = mapOf(labels);
+        transitions.putAll(toWord(word));
         return transitions;
     }
 
@@ -47,10 +45,10 @@ public final class TransitionFactory {
      * @param labels Transitions from this state on other characters.
      * @return List of transitions for this state.
      */
-    public static List<Transition> listOf(final char... labels) {
-        List<Transition> transitions = new ArrayList<>();
+    public static Map<Character, Transition> mapOf(final char... labels) {
+        Map<Character, Transition> transitions = new HashMap<>();
         for (char c : labels) {
-            transitions.add(getTransition(c));
+            transitions.put(c, getTransition(c));
         }
         return transitions;
     }
@@ -62,11 +60,12 @@ public final class TransitionFactory {
      * @param start Beginning state.
      * @param end   Ending state.
      */
-    public static void sequence(final Map<String, List<Transition>> map,
-                                final String start, final String end) {
+    public static void sequence(
+            final Map<String, Map<Character, Transition>> map,
+            final String start, final String end) {
         StringBuilder builder = new StringBuilder(start);
         for (char c : end.toCharArray()) {
-            if (map.put(builder.toString(), listOf(c)) != null) {
+            if (map.put(builder.toString(), mapOf(c)) != null) {
                 throw new UnsupportedOperationException(builder.toString());
             }
             builder.append(c);
@@ -79,8 +78,8 @@ public final class TransitionFactory {
      * @param word Product.
      * @return Transitions on space or a null terminator producing that word.
      */
-    public static List<Transition> toWord(final Word word) {
-        return List.of(new Transition('\0', word, ""),
+    public static Map<Character, Transition> toWord(final Word word) {
+        return Map.of('\0', new Transition('\0', word, ""), ' ',
                 new Transition(' ', word, " "));
     }
 }

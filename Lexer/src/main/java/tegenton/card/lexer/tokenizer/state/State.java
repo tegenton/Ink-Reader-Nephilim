@@ -3,7 +3,6 @@ package tegenton.card.lexer.tokenizer.state;
 import tegenton.card.lexer.tokenizer.transition.Transition;
 import tegenton.card.lexicon.Word;
 
-import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 
@@ -31,9 +30,11 @@ public abstract class State {
      */
     public void accept(final Consumer<String> setState,
                        final Consumer<Word> addToken, final char c) {
-        for (Transition transition : transitions().get(name)) {
-            if (transition.contains(c)) {
-                setState.accept(transition.accept(addToken, name));
+        Map<String, Map<Character, Transition>> state = transitions();
+        if (state.containsKey(name)) {
+            Map<Character, Transition> transitions = state.get(name);
+            if (transitions.containsKey(c)) {
+                setState.accept(transitions.get(c).accept(addToken, name));
                 return;
             }
         }
@@ -49,5 +50,5 @@ public abstract class State {
      *
      * @return Map of states and transitions.
      */
-    protected abstract Map<String, List<Transition>> transitions();
+    protected abstract Map<String, Map<Character, Transition>> transitions();
 }
