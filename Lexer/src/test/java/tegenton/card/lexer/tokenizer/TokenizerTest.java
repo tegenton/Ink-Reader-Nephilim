@@ -10,6 +10,7 @@ import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.GameNoun;
 import tegenton.card.lexicon.game.GameVerb;
 import tegenton.card.lexicon.game.ManaSymbol;
+import tegenton.card.lexicon.game.Tap;
 import tegenton.card.lexicon.game.target.object.ObjectAttribute;
 import tegenton.card.lexicon.game.target.object.ObjectNoun;
 import tegenton.card.lexicon.game.target.object.ObjectVerb;
@@ -118,5 +119,17 @@ public class TokenizerTest {
     void s() {
         input = "S";
         expected = List.of(Morpheme.S);
+    }
+
+    @Test
+    void t() {
+        input = "T";
+        expected = List.of(Tap.T);
+    }
+
+    @Test
+    void u() {
+        input = "U";
+        expected = List.of(ManaSymbol.U);
     }
 }
