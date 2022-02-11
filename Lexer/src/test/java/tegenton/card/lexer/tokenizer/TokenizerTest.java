@@ -11,6 +11,7 @@ import tegenton.card.lexicon.game.GameVerb;
 import tegenton.card.lexicon.game.target.object.ObjectNoun;
 import tegenton.card.lexicon.game.target.object.ObjectVerb;
 import tegenton.card.lexicon.game.target.player.PlayerVerb;
+import tegenton.card.lexicon.game.turn.Phase;
 
 import java.util.List;
 
@@ -78,6 +79,12 @@ public class TokenizerTest {
     void l() {
         input = "LIFE";
         expected = List.of(GameNoun.LIFE);
+    }
+
+    @Test
+    void m() {
+        input = "MAIN";
+        expected = List.of(Phase.MAIN);
     }
 
     @Test

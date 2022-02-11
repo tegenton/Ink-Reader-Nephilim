@@ -28,7 +28,6 @@ public class LState extends State {
 
     protected Map<String, Map<Character, Transition>> transitions() {
         if (MAP.isEmpty()) {
-
             MAP.put("LA", TransitionFactory.mapOf('B', 'N'));
             MAP.put("LAB", TransitionFactory.mapOf('E'));
             MAP.put("LABE", TransitionFactory.mapOf('L'));
@@ -73,7 +72,6 @@ public class LState extends State {
             MAP.put("LOYALT", TransitionFactory.mapOf('Y'));
             MAP.put("LOYALTY",
                     TransitionFactory.mapOf(ObjectAttribute.LOYALTY));
-
         }
         return MAP;
     }
