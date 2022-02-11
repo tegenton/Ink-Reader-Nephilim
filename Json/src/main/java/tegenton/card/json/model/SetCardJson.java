@@ -95,6 +95,8 @@ public class SetCardJson {
     @JsonProperty(required = true)
     private Layout layout;
     private LeadershipSkillsJson leadershipSkills;
+    @JsonProperty(required = true)
+    private LegalitiesJson legalities;
     private Integer life;
     private Integer loyalty;
     @JsonProperty(required = true)
@@ -272,7 +274,9 @@ public class SetCardJson {
         return leadershipSkills;
     }
 
-    // TODO: legalities
+    public LegalitiesJson getLegalities() {
+        return legalities;
+    }
 
     public Integer getLife() {
         return life;

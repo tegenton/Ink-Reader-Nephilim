@@ -218,7 +218,8 @@ class SetCardJsonTest {
 
     @Test
     void getLegalities() {
-        fail("todo: legalities");
+        LegalitiesJson expected = new LegalitiesJson();
+        assertEquals(expected, animateWall.getLegalities());
     }
 
     @Test
