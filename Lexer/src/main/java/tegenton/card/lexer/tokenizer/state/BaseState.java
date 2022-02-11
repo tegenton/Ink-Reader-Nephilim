@@ -7,6 +7,7 @@ import tegenton.card.lexicon.Morpheme;
 import tegenton.card.lexicon.Symbol;
 import tegenton.card.lexicon.game.ManaSymbol;
 import tegenton.card.lexicon.game.Tap;
+import tegenton.card.lexicon.value.Variable;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,7 +30,7 @@ public class BaseState extends State {
             MAP.put("",
                     TransitionFactory.mapOf('A', 'B', 'C', 'D', 'E', 'F', 'G',
                             'H', 'I', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T',
-                            'U', 'V', 'W'));
+                            'U', 'V', 'W', 'X'));
             MAP.put("A",
                     TransitionFactory.mapOf(Determiner.A, 'B', 'C', 'D', 'F',
                             'L', 'M', 'N', 'R', 'S', 'T', 'U'));
@@ -68,6 +69,7 @@ public class BaseState extends State {
             MAP.put("W",
                     TransitionFactory.mapOf(ManaSymbol.W, 'A', 'o', 'H', 'I',
                             'O'));
+            MAP.put("X", TransitionFactory.mapOf(Variable.X));
             MAP.put(".", TransitionFactory.toWord(Symbol.PERIOD));
             MAP.put(" ", Map.of('\0', new Transition('\0', Symbol.SPACE, "")));
         }

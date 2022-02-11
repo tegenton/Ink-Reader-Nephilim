@@ -16,6 +16,7 @@ import tegenton.card.lexicon.game.target.object.ObjectNoun;
 import tegenton.card.lexicon.game.target.object.ObjectVerb;
 import tegenton.card.lexicon.game.target.player.PlayerVerb;
 import tegenton.card.lexicon.game.turn.Phase;
+import tegenton.card.lexicon.value.Variable;
 
 import java.util.List;
 
@@ -137,5 +138,17 @@ public class TokenizerTest {
     void v() {
         input = "VALUE";
         expected = List.of(ObjectAttribute.VALUE);
+    }
+
+    @Test
+    void w() {
+        input = "W";
+        expected = List.of(ManaSymbol.W);
+    }
+
+    @Test
+    void x() {
+        input = "X";
+        expected = List.of(Variable.X);
     }
 }
