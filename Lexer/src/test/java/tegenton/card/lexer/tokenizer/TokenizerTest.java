@@ -8,6 +8,7 @@ import tegenton.card.lexicon.Preposition;
 import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.GameNoun;
 import tegenton.card.lexicon.game.GameVerb;
+import tegenton.card.lexicon.game.ManaSymbol;
 import tegenton.card.lexicon.game.target.object.ObjectAttribute;
 import tegenton.card.lexicon.game.target.object.ObjectNoun;
 import tegenton.card.lexicon.game.target.object.ObjectVerb;
@@ -104,5 +105,11 @@ public class TokenizerTest {
     void p() {
         input = "PLAY";
         expected = List.of(PlayerVerb.PLAY);
+    }
+
+    @Test
+    void r() {
+        input = "R";
+        expected = List.of(ManaSymbol.R);
     }
 }
