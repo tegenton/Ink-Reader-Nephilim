@@ -28,7 +28,7 @@ public class BaseState extends State {
         if (MAP.isEmpty()) {
             MAP.put("",
                     TransitionFactory.mapOf('A', 'B', 'C', 'D', 'E', 'F', 'G',
-                            'H', 'P', 'T'));
+                            'H', 'I', 'P', 'T'));
             MAP.put("A",
                     TransitionFactory.mapOf(Determiner.A, 'B', 'C', 'D', 'F',
                             'L', 'M', 'N', 'R', 'S', 'T', 'U'));
@@ -45,6 +45,7 @@ public class BaseState extends State {
             MAP.put("G",
                     TransitionFactory.mapOf(ManaSymbol.G, 'A', 'E', 'O', 'R'));
             MAP.put("H", TransitionFactory.mapOf('A', 'E'));
+            MAP.put("I", TransitionFactory.mapOf('F', 'G', 'N', 'S', 'T'));
             MAP.put("P", TransitionFactory.mapOf('L'));
             MAP.put("S", Map.of('.', new Transition('.', Morpheme.S, ".")));
             MAP.put("T",
