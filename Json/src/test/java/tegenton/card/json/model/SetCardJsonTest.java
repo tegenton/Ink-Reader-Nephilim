@@ -270,7 +270,7 @@ class SetCardJsonTest {
 
     @Test
     void getOriginalType() {
-        fail("todo: original type");
+        assertEquals("Enchant Wall", animateWall.getOriginalType());
     }
 
     @Test
@@ -303,7 +303,7 @@ class SetCardJsonTest {
 
     @Test
     void getRarity() {
-        fail("todo: rarity");
+        assertEquals(Rarity.rare, animateWall.getRarity());
     }
 
     @Test

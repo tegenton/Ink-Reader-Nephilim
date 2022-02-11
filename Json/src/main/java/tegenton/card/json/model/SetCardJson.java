@@ -30,7 +30,13 @@ enum Layout {
 }
 
 enum PromoType {
-    
+
+}
+
+enum Rarity {
+    common,
+    uncommon,
+    rare
 }
 
 enum Color {
@@ -99,11 +105,14 @@ public class SetCardJson {
     private List<UUID> originalPrintings;
     private Date originalReleaseDate;
     private String originalText;
+    private String originalType;
     @JsonProperty(required = true)
     private List<UUID> otherFaceIds;
     private EnumSet<PromoType> promoTypes;
     @JsonProperty(required = true)
     private PurchaseUrlsJson purchaseUrls;
+    @JsonProperty(required = true)
+    private Rarity rarity;
     private List<UUID> rebalancedPrintings;
     private String signature;
     private String text;
@@ -296,7 +305,10 @@ public class SetCardJson {
         return originalText;
     }
 
-    // TODO: original type
+    public String getOriginalType() {
+        return originalType;
+    }
+
 
     public List<UUID> getOtherFaceIds() {
         return otherFaceIds;
@@ -311,7 +323,10 @@ public class SetCardJson {
     public PurchaseUrlsJson getPurchaseUrls() {
         return purchaseUrls;
     }
-    // TODO: rarity
+
+    public Rarity getRarity() {
+        return rarity;
+    }
 
     public List<UUID> getRebalancedPrintings() {
         return rebalancedPrintings;
