@@ -213,7 +213,7 @@ class SetCardJsonTest {
 
     @Test
     void getLeadershipSkills() {
-        fail("todo: leadership skills");
+        assertNull(animateWall.getLeadershipSkills());
     }
 
     @Test

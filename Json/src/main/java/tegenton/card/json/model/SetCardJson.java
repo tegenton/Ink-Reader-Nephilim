@@ -94,6 +94,7 @@ public class SetCardJson {
     private List<String> keywords;
     @JsonProperty(required = true)
     private Layout layout;
+    private LeadershipSkillsJson leadershipSkills;
     private Integer life;
     private Integer loyalty;
     @JsonProperty(required = true)
@@ -267,7 +268,9 @@ public class SetCardJson {
         return layout;
     }
 
-    // TODO: leadership skills
+    public LeadershipSkillsJson getLeadershipSkills() {
+        return leadershipSkills;
+    }
 
     // TODO: legalities
 
