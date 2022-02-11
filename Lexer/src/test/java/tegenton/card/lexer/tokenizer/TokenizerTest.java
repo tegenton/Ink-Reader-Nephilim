@@ -132,4 +132,10 @@ public class TokenizerTest {
         input = "U";
         expected = List.of(ManaSymbol.U);
     }
+
+    @Test
+    void v() {
+        input = "VALUE";
+        expected = List.of(ObjectAttribute.VALUE);
+    }
 }

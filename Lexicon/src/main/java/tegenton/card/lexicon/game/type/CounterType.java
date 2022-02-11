@@ -4,7 +4,8 @@ import tegenton.card.lexicon.Word;
 
 public enum CounterType implements Word {
     CORPSE,
-    MIRE;
+    MIRE,
+    VITALITY;
 
     @Override
     public String toString() {
