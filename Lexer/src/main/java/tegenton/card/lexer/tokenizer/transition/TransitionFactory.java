@@ -79,7 +79,8 @@ public final class TransitionFactory {
      * @return Transitions on space or a null terminator producing that word.
      */
     public static Map<Character, Transition> toWord(final Word word) {
-        return Map.of('\0', new Transition('\0', word, ""), ' ',
+        return Map.of('\0', new Transition('\0', word, ""), '.',
+                new Transition('.', word, "."), ' ',
                 new Transition(' ', word, " "));
     }
 }

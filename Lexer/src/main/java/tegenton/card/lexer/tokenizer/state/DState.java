@@ -55,7 +55,9 @@ public class DState extends State {
             MAP.put("DOW", TransitionFactory.mapOf('N'));
             MAP.put("DOWN", TransitionFactory.toWord(Particle.DOWN));
             TransitionFactory.sequence(MAP, "DR", "AW");
-            MAP.put("DRAW", TransitionFactory.toWord(PlayerVerb.DRAW));
+            MAP.put("DRAW", Map.of('S', new Transition('S', "DRAW"), '\0',
+                    new Transition('\0', PlayerVerb.DRAW, ""), ' ',
+                    new Transition(' ', PlayerVerb.DRAW, " ")));
             TransitionFactory.sequence(MAP, "DU", "RING");
             MAP.put("DURING", TransitionFactory.toWord(Chronology.DURING));
         }
