@@ -17,9 +17,9 @@ public class VState extends State {
     }
 
     /**
-     * Lazily load singleton map of U states.
+     * Lazily load singleton map of V states.
      *
-     * @return Map of U state transitions.
+     * @return Map of V state transitions.
      */
     @Override
     protected Map<String, Map<Character, Transition>> transitions() {

@@ -151,4 +151,10 @@ public class TokenizerTest {
         input = "X";
         expected = List.of(Variable.X);
     }
+
+    @Test
+    void y() {
+        input = "Y";
+        expected = List.of(Variable.Y);
+    }
 }
