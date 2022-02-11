@@ -15,6 +15,7 @@ import tegenton.card.lexicon.game.target.object.ObjectVerb;
 import tegenton.card.lexicon.game.target.object.source.SourceVerb;
 import tegenton.card.lexicon.game.target.player.PlayerAdjective;
 import tegenton.card.lexicon.game.target.player.PlayerVerb;
+import tegenton.card.lexicon.game.turn.Chronology;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -110,5 +111,17 @@ public class DStateTest {
     void down() {
         input = "DOWN";
         expected = Particle.DOWN;
+    }
+
+    @Test
+    void draw() {
+        input = "DRAW";
+        expected = PlayerVerb.DRAW;
+    }
+
+    @Test
+    void during() {
+        input = "DURING";
+        expected = Chronology.DURING;
     }
 }

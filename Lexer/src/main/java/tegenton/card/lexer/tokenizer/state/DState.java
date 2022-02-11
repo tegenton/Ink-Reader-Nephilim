@@ -11,6 +11,7 @@ import tegenton.card.lexicon.game.target.object.ObjectVerb;
 import tegenton.card.lexicon.game.target.object.source.SourceVerb;
 import tegenton.card.lexicon.game.target.player.PlayerAdjective;
 import tegenton.card.lexicon.game.target.player.PlayerVerb;
+import tegenton.card.lexicon.game.turn.Chronology;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,7 +27,6 @@ public class DState extends State {
         if (MAP.isEmpty()) {
             TransitionFactory.sequence(MAP, "DA", "MAGE");
             MAP.put("DAMAGE", TransitionFactory.toWord(GameNoun.DAMAGE));
-            TransitionFactory.sequence(MAP, "DR", "AW");
             MAP.put("DE", TransitionFactory.mapOf('A', 'C', 'F', 'S'));
             MAP.put("DEA", TransitionFactory.mapOf('L'));
             MAP.put("DEAL", TransitionFactory.toWord(SourceVerb.DEAL));
@@ -54,9 +54,10 @@ public class DState extends State {
             MAP.put("DO", TransitionFactory.mapOf(SourceVerb.DO, 'W'));
             MAP.put("DOW", TransitionFactory.mapOf('N'));
             MAP.put("DOWN", TransitionFactory.toWord(Particle.DOWN));
-            MAP.put("DRAW", Map.of('S', new Transition('S', "DRAW"), '\0',
-                    new Transition('\0', PlayerVerb.DRAW), ' ',
-                    new Transition(' ', PlayerVerb.DRAW, " ")));
+            TransitionFactory.sequence(MAP, "DR", "AW");
+            MAP.put("DRAW", TransitionFactory.toWord(PlayerVerb.DRAW));
+            TransitionFactory.sequence(MAP, "DU", "RING");
+            MAP.put("DURING", TransitionFactory.toWord(Chronology.DURING));
         }
         return MAP;
     }
