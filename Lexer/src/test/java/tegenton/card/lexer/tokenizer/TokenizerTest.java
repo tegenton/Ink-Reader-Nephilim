@@ -4,6 +4,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import tegenton.card.lexicon.Determiner;
 import tegenton.card.lexicon.Genitive;
+import tegenton.card.lexicon.Morpheme;
 import tegenton.card.lexicon.Preposition;
 import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.GameNoun;
@@ -111,5 +112,11 @@ public class TokenizerTest {
     void r() {
         input = "R";
         expected = List.of(ManaSymbol.R);
+    }
+
+    @Test
+    void s() {
+        input = "S";
+        expected = List.of(Morpheme.S);
     }
 }
