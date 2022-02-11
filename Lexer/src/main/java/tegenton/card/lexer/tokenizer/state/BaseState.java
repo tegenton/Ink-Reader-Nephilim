@@ -38,7 +38,9 @@ public class BaseState extends State {
             MAP.put("C",
                     TransitionFactory.mapOf(ManaSymbol.C, 'A', 'H', 'O', 'R'));
             MAP.put("D", TransitionFactory.mapOf('A', 'E', 'I', 'O', 'R', 'U'));
-            MAP.put("E", TransitionFactory.mapOf('R'));
+            MAP.put("E",
+                    TransitionFactory.mapOf('A', 'D', 'F', 'I', 'L', 'N', 'Q',
+                            'R', 'V', 'X'));
             MAP.put("F", TransitionFactory.mapOf('O'));
             MAP.put("P", TransitionFactory.mapOf('L'));
             MAP.put("S", Map.of('.', new Transition('.', Morpheme.S, ".")));
