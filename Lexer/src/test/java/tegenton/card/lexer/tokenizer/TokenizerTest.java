@@ -7,6 +7,7 @@ import tegenton.card.lexicon.Preposition;
 import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.GameVerb;
 import tegenton.card.lexicon.game.target.object.ObjectNoun;
+import tegenton.card.lexicon.game.target.object.ObjectVerb;
 import tegenton.card.lexicon.game.target.player.PlayerVerb;
 
 import java.util.List;
@@ -57,6 +58,12 @@ public class TokenizerTest {
     void f() {
         input = "FOR";
         expected = List.of(Preposition.FOR);
+    }
+
+    @Test
+    void g() {
+        input = "GET";
+        expected = List.of(ObjectVerb.GET);
     }
 
     @Test
