@@ -89,9 +89,15 @@ public class TokenizerTest {
     }
 
     @Test
-    void name() {
+    void n() {
         input = "NAME";
         expected = List.of(ObjectAttribute.NAME);
+    }
+
+    @Test
+    void o() {
+        input = "OF";
+        expected = List.of(Preposition.OF);
     }
 
     @Test

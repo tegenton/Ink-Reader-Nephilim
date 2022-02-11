@@ -28,7 +28,7 @@ public class BaseState extends State {
         if (MAP.isEmpty()) {
             MAP.put("",
                     TransitionFactory.mapOf('A', 'B', 'C', 'D', 'E', 'F', 'G',
-                            'H', 'I', 'L', 'M', 'N', 'P', 'T'));
+                            'H', 'I', 'L', 'M', 'N', 'O', 'P', 'T'));
             MAP.put("A",
                     TransitionFactory.mapOf(Determiner.A, 'B', 'C', 'D', 'F',
                             'L', 'M', 'N', 'R', 'S', 'T', 'U'));
@@ -49,6 +49,9 @@ public class BaseState extends State {
             MAP.put("L", TransitionFactory.mapOf('A', 'E', 'I', 'O'));
             MAP.put("M", TransitionFactory.mapOf('A', 'E', 'I', 'O'));
             MAP.put("N", TransitionFactory.mapOf('A', 'E', 'I', 'O', 'U'));
+            MAP.put("O",
+                    TransitionFactory.mapOf('F', 'N', 'P', 'R', 'T', 'U', 'V',
+                            'W'));
             MAP.put("P", TransitionFactory.mapOf('L'));
             MAP.put("S", Map.of('.', new Transition('.', Morpheme.S, ".")));
             MAP.put("T",
