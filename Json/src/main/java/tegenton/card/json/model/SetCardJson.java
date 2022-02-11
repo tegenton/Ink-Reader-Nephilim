@@ -29,6 +29,10 @@ enum Layout {
     normal
 }
 
+enum PromoType {
+    
+}
+
 enum Color {
     W,
     U,
@@ -97,6 +101,7 @@ public class SetCardJson {
     private String originalText;
     @JsonProperty(required = true)
     private List<UUID> otherFaceIds;
+    private EnumSet<PromoType> promoTypes;
     @JsonProperty(required = true)
     private PurchaseUrlsJson purchaseUrls;
     private List<UUID> rebalancedPrintings;
@@ -299,7 +304,10 @@ public class SetCardJson {
 
     // TODO: power
     // TODO: printings
-    // TODO: promo types
+    public EnumSet<PromoType> getPromoTypes() {
+        return promoTypes;
+    }
+
     public PurchaseUrlsJson getPurchaseUrls() {
         return purchaseUrls;
     }

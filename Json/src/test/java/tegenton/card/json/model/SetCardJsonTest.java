@@ -290,7 +290,7 @@ class SetCardJsonTest {
 
     @Test
     void getPromoTypes() {
-        fail("todo: promo types");
+        assertNull(animateWall.getPromoTypes());
     }
 
     @Test
