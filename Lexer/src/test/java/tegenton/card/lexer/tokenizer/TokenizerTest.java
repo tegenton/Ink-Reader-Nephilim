@@ -8,6 +8,7 @@ import tegenton.card.lexicon.Preposition;
 import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.GameNoun;
 import tegenton.card.lexicon.game.GameVerb;
+import tegenton.card.lexicon.game.target.object.ObjectAttribute;
 import tegenton.card.lexicon.game.target.object.ObjectNoun;
 import tegenton.card.lexicon.game.target.object.ObjectVerb;
 import tegenton.card.lexicon.game.target.player.PlayerVerb;
@@ -85,6 +86,12 @@ public class TokenizerTest {
     void m() {
         input = "MAIN";
         expected = List.of(Phase.MAIN);
+    }
+
+    @Test
+    void name() {
+        input = "NAME";
+        expected = List.of(ObjectAttribute.NAME);
     }
 
     @Test
