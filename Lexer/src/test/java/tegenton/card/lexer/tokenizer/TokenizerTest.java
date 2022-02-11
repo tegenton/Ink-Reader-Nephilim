@@ -16,6 +16,7 @@ import tegenton.card.lexicon.game.target.object.ObjectNoun;
 import tegenton.card.lexicon.game.target.object.ObjectVerb;
 import tegenton.card.lexicon.game.target.player.PlayerVerb;
 import tegenton.card.lexicon.game.turn.Phase;
+import tegenton.card.lexicon.value.EnglishNumber;
 import tegenton.card.lexicon.value.Variable;
 
 import java.util.List;
@@ -156,5 +157,11 @@ public class TokenizerTest {
     void y() {
         input = "Y";
         expected = List.of(Variable.Y);
+    }
+
+    @Test
+    void z() {
+        input = "ZERO";
+        expected = List.of(EnglishNumber.ZERO);
     }
 }

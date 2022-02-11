@@ -42,6 +42,7 @@ public final class StateFactory {
                     case 'V' -> new VState(name);
                     case 'W' -> new WState(name);
                     case 'Y' -> new YState(name);
+                    case 'Z' -> new ZState(name);
                     default -> throw new IllegalStateException(
                             "No state '" + name + "'.");
                 });
