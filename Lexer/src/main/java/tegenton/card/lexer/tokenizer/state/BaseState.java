@@ -52,7 +52,8 @@ public class BaseState extends State {
             MAP.put("O",
                     TransitionFactory.mapOf('F', 'N', 'P', 'R', 'T', 'U', 'V',
                             'W'));
-            MAP.put("P", TransitionFactory.mapOf('L'));
+            MAP.put("P",
+                    TransitionFactory.mapOf('A', 'E', 'I', 'O', 'L', 'R', 'U'));
             MAP.put("S", Map.of('.', new Transition('.', Morpheme.S, ".")));
             MAP.put("T",
                     TransitionFactory.mapOf(Tap.T, 'A', 'E', 'H', 'I', 'O', 'R',

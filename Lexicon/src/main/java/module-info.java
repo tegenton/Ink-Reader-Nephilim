@@ -8,4 +8,5 @@ module Ink.Treader.Nephilim.Lexicon.main {
     exports tegenton.card.lexicon.game.turn;
     exports tegenton.card.lexicon.game.type;
     exports tegenton.card.lexicon.game.target.object.source;
+    exports tegenton.card.lexicon.game.target.object.card;
 }
