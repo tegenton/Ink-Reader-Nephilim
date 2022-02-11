@@ -3,8 +3,10 @@ package tegenton.card.lexer.tokenizer;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import tegenton.card.lexicon.Determiner;
+import tegenton.card.lexicon.Genitive;
 import tegenton.card.lexicon.Preposition;
 import tegenton.card.lexicon.Word;
+import tegenton.card.lexicon.game.GameNoun;
 import tegenton.card.lexicon.game.GameVerb;
 import tegenton.card.lexicon.game.target.object.ObjectNoun;
 import tegenton.card.lexicon.game.target.object.ObjectVerb;
@@ -64,6 +66,18 @@ public class TokenizerTest {
     void g() {
         input = "GET";
         expected = List.of(ObjectVerb.GET);
+    }
+
+    @Test
+    void h() {
+        input = "HALF";
+        expected = List.of(Genitive.HALF);
+    }
+
+    @Test
+    void l() {
+        input = "LIFE";
+        expected = List.of(GameNoun.LIFE);
     }
 
     @Test
