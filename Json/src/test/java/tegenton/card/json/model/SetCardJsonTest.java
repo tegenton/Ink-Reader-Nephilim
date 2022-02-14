@@ -10,7 +10,8 @@ import java.util.EnumSet;
 import java.util.List;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 class SetCardJsonTest {
     public static SetCardJson animateWall;
@@ -239,7 +240,7 @@ class SetCardJsonTest {
 
     @Test
     void getManaCost() {
-        fail("todo: mana cost");
+        assertEquals("{W}", animateWall.getManaCost());
     }
 
     @Test
@@ -286,7 +287,7 @@ class SetCardJsonTest {
 
     @Test
     void getPower() {
-        fail("todo: power");
+        assertNull(animateWall.getPower());
     }
 
     @Test
@@ -346,12 +347,12 @@ class SetCardJsonTest {
 
     @Test
     void getSubtypes() {
-        fail("todo: subtypes");
+        assertEquals(List.of("Aura"), animateWall.getSubtypes());
     }
 
     @Test
     void getSupertypes() {
-        fail("todo: supertypes");
+        assertEquals(List.of(), animateWall.getSupertypes());
     }
 
     @Test
@@ -364,7 +365,7 @@ class SetCardJsonTest {
 
     @Test
     void getToughness() {
-        fail("todo: toughness");
+        assertNull(animateWall.getToughness());
     }
 
     @Test
@@ -374,7 +375,7 @@ class SetCardJsonTest {
 
     @Test
     void getTypes() {
-        fail("todo: types");
+        assertEquals(List.of("Enchantment"), animateWall.getTypes());
     }
 
     @Test

@@ -108,6 +108,7 @@ public class SetCardJson {
     private LegalitiesJson legalities;
     private Integer life;
     private Integer loyalty;
+    private String manaCost;
     @JsonProperty(required = true)
     private Integer manaValue;
     @JsonProperty(required = true)
@@ -120,6 +121,7 @@ public class SetCardJson {
     private String originalType;
     @JsonProperty(required = true)
     private List<UUID> otherFaceIds;
+    private String power;
     private List<String> printings;
     private EnumSet<PromoType> promoTypes;
     @JsonProperty(required = true)
@@ -133,9 +135,14 @@ public class SetCardJson {
     private String setCode;
     private Side side;
     private String signature;
+    private List<String> subtypes;
+    private List<String> supertypes;
     private String text;
+    private String toughness;
     @JsonProperty(required = true)
     private String type;
+    @JsonProperty(required = true)
+    private List<String> types;
     @JsonProperty(required = true)
     private UUID uuid;
     @JsonProperty(required = true)
@@ -306,7 +313,9 @@ public class SetCardJson {
         return loyalty;
     }
 
-    // TODO: mana cost
+    public String getManaCost() {
+        return manaCost;
+    }
 
     public Integer getManaValue() {
         return manaValue;
@@ -341,7 +350,10 @@ public class SetCardJson {
         return otherFaceIds;
     }
 
-    // TODO: power
+    public String getPower() {
+        return power;
+    }
+
     public List<String> getPrintings() {
         return printings;
     }
@@ -381,18 +393,30 @@ public class SetCardJson {
     public String getSignature() {
         return signature;
     }
-    // TODO: subtypes
-    // TODO: supertypes
+
+    public List<String> getSubtypes() {
+        return subtypes;
+    }
+
+    public List<String> getSupertypes() {
+        return supertypes;
+    }
 
     public String getText() {
         return text;
     }
 
-    // TODO: toughness
-    String getType() {
+    public String getToughness() {
+        return toughness;
+    }
+
+    public String getType() {
         return type;
     }
-    // TODO: types
+
+    public List<String> getTypes() {
+        return types;
+    }
 
     public UUID getUuid() {
         return uuid;
