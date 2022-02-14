@@ -331,7 +331,7 @@ class SetCardJsonTest {
 
     @Test
     void getSetcode() {
-        fail("todo: set code");
+        assertEquals("LEA", animateWall.getSetCode());
     }
 
     @Test

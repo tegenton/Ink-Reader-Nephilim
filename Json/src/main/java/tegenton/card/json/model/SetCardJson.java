@@ -128,6 +128,8 @@ public class SetCardJson {
     private List<UUID> rebalancedPrintings;
     private List<Ruling> rulings;
     private SecurityStamp securityStamp;
+    @JsonProperty(required = true)
+    private String setCode;
     private Side side;
     private String signature;
     private String text;
@@ -364,7 +366,10 @@ public class SetCardJson {
         return securityStamp;
     }
 
-    // TODO: set code
+    public String getSetCode() {
+        return setCode;
+    }
+
     public Side getSide() {
         return side;
     }
