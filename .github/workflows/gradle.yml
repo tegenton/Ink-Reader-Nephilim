@@ -32,4 +32,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: test-results-html
-          path: build/reports/tests/test/index.html
+          path: Lexicon/build/reports/tests/test/index.html
