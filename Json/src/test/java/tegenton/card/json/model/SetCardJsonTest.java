@@ -291,7 +291,7 @@ class SetCardJsonTest {
 
     @Test
     void getPrintings() {
-        fail("todo: printings");
+        assertEquals(13, animateWall.getPrintings().size());
     }
 
     @Test

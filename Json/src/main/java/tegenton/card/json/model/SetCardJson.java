@@ -120,6 +120,7 @@ public class SetCardJson {
     private String originalType;
     @JsonProperty(required = true)
     private List<UUID> otherFaceIds;
+    private List<String> printings;
     private EnumSet<PromoType> promoTypes;
     @JsonProperty(required = true)
     private PurchaseUrlsJson purchaseUrls;
@@ -341,7 +342,10 @@ public class SetCardJson {
     }
 
     // TODO: power
-    // TODO: printings
+    public List<String> getPrintings() {
+        return printings;
+    }
+
     public EnumSet<PromoType> getPromoTypes() {
         return promoTypes;
     }
