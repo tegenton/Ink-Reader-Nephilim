@@ -218,7 +218,11 @@ class SetCardJsonTest {
 
     @Test
     void getLegalities() {
-        LegalitiesJson expected = new LegalitiesJson();
+        LegalitiesJson expected = new LegalitiesJson().setCommander(
+                        Legality.Legal).setDuel(Legality.Legal)
+                .setLegacy(Legality.Legal).setOldschool(Legality.Legal)
+                .setPenny(Legality.Legal).setPremodern(Legality.Legal)
+                .setVintage(Legality.Legal);
         assertEquals(expected, animateWall.getLegalities());
     }
 

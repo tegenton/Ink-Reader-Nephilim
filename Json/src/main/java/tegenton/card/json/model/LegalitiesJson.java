@@ -40,8 +40,18 @@ public class LegalitiesJson {
         return commander;
     }
 
+    public LegalitiesJson setCommander(Legality legality) {
+        commander = legality;
+        return this;
+    }
+
     public Legality getDuel() {
         return duel;
+    }
+
+    public LegalitiesJson setDuel(Legality duel) {
+        this.duel = duel;
+        return this;
     }
 
     public Legality getFuture() {
@@ -64,12 +74,22 @@ public class LegalitiesJson {
         return legacy;
     }
 
+    public LegalitiesJson setLegacy(Legality legacy) {
+        this.legacy = legacy;
+        return this;
+    }
+
     public Legality getModern() {
         return modern;
     }
 
     public Legality getOldschool() {
         return oldschool;
+    }
+
+    public LegalitiesJson setOldschool(Legality oldschool) {
+        this.oldschool = oldschool;
+        return this;
     }
 
     public Legality getPauper() {
@@ -84,6 +104,11 @@ public class LegalitiesJson {
         return penny;
     }
 
+    public LegalitiesJson setPenny(Legality penny) {
+        this.penny = penny;
+        return this;
+    }
+
     public Legality getPioneer() {
         return pioneer;
     }
@@ -92,12 +117,22 @@ public class LegalitiesJson {
         return premodern;
     }
 
+    public LegalitiesJson setPremodern(Legality premodern) {
+        this.premodern = premodern;
+        return this;
+    }
+
     public Legality getStandard() {
         return standard;
     }
 
     public Legality getVintage() {
         return vintage;
+    }
+
+    public LegalitiesJson setVintage(Legality vintage) {
+        this.vintage = vintage;
+        return this;
     }
 
     @Override
