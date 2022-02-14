@@ -30,13 +30,16 @@ class Sheet {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Sheet sheet = (Sheet) o;
-        return Objects.equals(balanceColors,
-                sheet.balanceColors) && Objects.equals(cards,
-                sheet.cards) && Objects.equals(foil,
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        final Sheet sheet = (Sheet) o;
+        return Objects.equals(balanceColors, sheet.balanceColors)
+                && Objects.equals(cards, sheet.cards) && Objects.equals(foil,
                 sheet.foil) && Objects.equals(totalWeight, sheet.totalWeight);
     }
 
@@ -47,7 +50,8 @@ class Sheet {
 
     @Override
     public String toString() {
-        return "Sheet{" + "balanceColors=" + balanceColors + ", cards=" + cards + ", foil=" + foil + ", totalWeight=" + totalWeight + '}';
+        return "Sheet{" + "balanceColors=" + balanceColors + ", cards=" + cards
+                + ", foil=" + foil + ", totalWeight=" + totalWeight + '}';
     }
 }
 
@@ -55,12 +59,12 @@ class BoosterConfig {
     private Map<String, Integer> contents;
     private int weight;
 
-    public BoosterConfig() {
+    BoosterConfig() {
     }
 
-    public BoosterConfig(Map<String, Integer> contents, int weight) {
-        this.contents = contents;
-        this.weight = weight;
+    BoosterConfig(final Map<String, Integer> map, final int i) {
+        this.contents = map;
+        this.weight = i;
     }
 
     public Map<String, Integer> getContents() {
@@ -72,10 +76,14 @@ class BoosterConfig {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        BoosterConfig that = (BoosterConfig) o;
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        final BoosterConfig that = (BoosterConfig) o;
         return weight == that.weight && Objects.equals(contents, that.contents);
     }
 
@@ -86,7 +94,8 @@ class BoosterConfig {
 
     @Override
     public String toString() {
-        return "BoosterConfig{" + "contents=" + contents + ", weight=" + weight + '}';
+        return "BoosterConfig{" + "contents=" + contents + ", weight=" + weight
+                + '}';
     }
 }
 
@@ -108,14 +117,17 @@ class BoosterTypeConfig {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        BoosterTypeConfig that = (BoosterTypeConfig) o;
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        final BoosterTypeConfig that = (BoosterTypeConfig) o;
         return Objects.equals(boosters, that.boosters) && Objects.equals(
-                boostersTotalWeight,
-                that.boostersTotalWeight) && Objects.equals(sheets,
-                that.sheets);
+                boostersTotalWeight, that.boostersTotalWeight)
+                && Objects.equals(sheets, that.sheets);
     }
 
     @Override
@@ -128,18 +140,38 @@ public class BoosterJson {
     @JsonProperty("default")
     private BoosterTypeConfig draft;
 
+    /**
+     * Possible configurations in a traditional booster pack.
+     *
+     * @return Possible configurations in a traditional booster pack.
+     */
     public BoosterTypeConfig getDefault() {
         return draft;
     }
 
+    /**
+     * Compare two instance of BoosterJson.
+     *
+     * @param o Object to compare.
+     * @return Are the two instances identical?
+     */
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        BoosterJson that = (BoosterJson) o;
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        final BoosterJson that = (BoosterJson) o;
         return Objects.equals(draft, that.draft);
     }
 
+    /**
+     * Hash of boosters.
+     *
+     * @return Hash of boosters.
+     */
     @Override
     public int hashCode() {
         return Objects.hash(draft);

@@ -72,6 +72,13 @@ public class SetJson {
         return block;
     }
 
+    /**
+     * A breakdown of possibilities and weights of cards in a booster pack. See
+     * the Booster abstract model.
+     *
+     * @return A breakdown of possibilities and weights of cards in a booster
+     * pack.
+     */
     public BoosterJson getBooster() {
         return booster;
     }

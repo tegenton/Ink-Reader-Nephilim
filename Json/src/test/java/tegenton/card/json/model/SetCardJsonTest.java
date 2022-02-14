@@ -18,8 +18,8 @@ class SetCardJsonTest {
 
     @BeforeAll
     static void loadJson() throws IOException {
-        JsonLoader loader = new JsonLoader();
-        SetJson lea = loader.loadSet("LEA");
+        final JsonLoader loader = new JsonLoader();
+        final SetJson lea = loader.loadSet("LEA");
         animateWall = lea.getCards().get(0);
     }
 
@@ -35,7 +35,7 @@ class SetCardJsonTest {
 
     @Test
     void getAvailability() {
-        EnumSet<Printing> expected = EnumSet.of(Printing.paper);
+        final EnumSet<Printing> expected = EnumSet.of(Printing.paper);
         assertEquals(expected, animateWall.getAvailability());
     }
 
@@ -51,7 +51,7 @@ class SetCardJsonTest {
 
     @Test
     void getColorIdentity() {
-        EnumSet<Color> expected = EnumSet.of(Color.W);
+        final EnumSet<Color> expected = EnumSet.of(Color.W);
         assertEquals(expected, animateWall.getColorIdentity());
     }
 
@@ -62,7 +62,7 @@ class SetCardJsonTest {
 
     @Test
     void getColors() {
-        EnumSet<Color> expected = EnumSet.of(Color.W);
+        final EnumSet<Color> expected = EnumSet.of(Color.W);
         assertEquals(expected, animateWall.getColors());
     }
 
@@ -88,7 +88,7 @@ class SetCardJsonTest {
 
     @Test
     void getFinishes() {
-        EnumSet<Finish> expected = EnumSet.of(Finish.nonfoil);
+        final EnumSet<Finish> expected = EnumSet.of(Finish.nonfoil);
         assertEquals(expected, animateWall.getFinishes());
     }
 
@@ -134,11 +134,11 @@ class SetCardJsonTest {
 
     @Test
     void getIdentifiers() {
-        IdentifiersJson expected = new IdentifiersJson("64004", "5418",
-                "5b4a162f-c574-5f7e-a883-375aa3ba6642", "232",
+        final IdentifiersJson expected = new IdentifiersJson("1029").setIdentifiers(
+                "64004", "5418", "5b4a162f-c574-5f7e-a883-375aa3ba6642", "232",
                 "d5c83259-9b90-47c2-b48e-c7d78519e792",
                 "6757e04d-7bfc-4bdc-9dcb-02059a2d4e60",
-                "c7a6a165-b709-46e0-ae42-6f69a17c0621", "1029");
+                "c7a6a165-b709-46e0-ae42-6f69a17c0621");
         assertEquals(expected, animateWall.getIdentifiers());
     }
 
@@ -224,7 +224,7 @@ class SetCardJsonTest {
 
     @Test
     void getLegalities() {
-        LegalitiesJson expected = new LegalitiesJson().setCommander(
+        final LegalitiesJson expected = new LegalitiesJson().setCommander(
                         Legality.Legal).setDuel(Legality.Legal)
                 .setLegacy(Legality.Legal).setOldschool(Legality.Legal)
                 .setPenny(Legality.Legal).setPremodern(Legality.Legal)
@@ -306,7 +306,7 @@ class SetCardJsonTest {
 
     @Test
     void getPurchaseUrls() {
-        PurchaseUrlsJson expected = new PurchaseUrlsJson(
+        final PurchaseUrlsJson expected = new PurchaseUrlsJson(
                 "https://mtgjson.com/links/5bab9be709288464",
                 "https://mtgjson.com/links/54e4d282a7e51259");
         assertEquals(expected, animateWall.getPurchaseUrls());
@@ -324,7 +324,7 @@ class SetCardJsonTest {
 
     @Test
     void getRulings() {
-        List<Ruling> expected = List.of(new Ruling(new Date(1189900800000L),
+        final List<Ruling> expected = List.of(new Ruling(new Date(1189900800000L),
                 "This is a change from the most recent wording. As was the case in the past, Animate Wall can now enchant only a Wall."));
         assertEquals(expected, animateWall.getRulings());
     }
