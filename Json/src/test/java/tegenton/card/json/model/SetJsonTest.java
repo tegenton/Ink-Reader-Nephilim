@@ -135,7 +135,7 @@ class SetJsonTest {
 
     @Test
     void getTokens() {
-        fail("TODO: tokens");
+        assertEquals(List.of(), lea.getTokens());
     }
 
     @Test

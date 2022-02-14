@@ -43,6 +43,8 @@ public class SetJson {
     private List<SealedProductJson> sealedProduct;
     private int tcgplayerGroupId;
     @JsonProperty(required = true)
+    private List<TokenCardJson> tokens;
+    @JsonProperty(required = true)
     private int totalSetSize;
     @JsonProperty(required = true)
     private TranslationJson translations;
@@ -251,7 +253,14 @@ public class SetJson {
         return tcgplayerGroupId;
     }
 
-    // TODO: tokens
+    /**
+     * The tokens available to the set. See the Card (Token) Data Model.
+     *
+     * @return The tokens available to the set.
+     */
+    public List<TokenCardJson> getTokens() {
+        return tokens;
+    }
 
     /**
      * The total number of cards in the set, including promos and related
