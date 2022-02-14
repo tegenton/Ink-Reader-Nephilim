@@ -31,7 +31,7 @@ class SetJsonTest {
 
     @Test
     void getBooster() {
-        fail("TODO: booster");
+        assertEquals(1, lea.getBooster().getDefault().getBoostersTotalWeight());
     }
 
     @Test

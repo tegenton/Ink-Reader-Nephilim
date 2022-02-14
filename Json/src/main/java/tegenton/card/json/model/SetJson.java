@@ -16,6 +16,7 @@ public class SetJson {
     @JsonProperty(required = true)
     private int baseSetSize;
     private String block;
+    private BoosterJson booster;
     @JsonProperty(required = true)
     private List<SetCardJson> cards;
     @JsonProperty(required = true)
@@ -71,7 +72,9 @@ public class SetJson {
         return block;
     }
 
-    // TODO: booster
+    public BoosterJson getBooster() {
+        return booster;
+    }
 
     /**
      * The list of cards in the set. See the Card (Set) Data Model.
