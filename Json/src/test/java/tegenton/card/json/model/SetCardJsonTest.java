@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import tegenton.card.json.JsonLoader;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.UUID;
@@ -318,12 +319,14 @@ class SetCardJsonTest {
 
     @Test
     void getRulings() {
-        fail("todo: rulings");
+        List<Ruling> expected = List.of(new Ruling(new Date(1189900800000L),
+                "This is a change from the most recent wording. As was the case in the past, Animate Wall can now enchant only a Wall."));
+        assertEquals(expected, animateWall.getRulings());
     }
 
     @Test
     void getSecurityStamp() {
-        fail("todo: security stamp");
+        assertNull(animateWall.getSecurityStamp());
     }
 
     @Test

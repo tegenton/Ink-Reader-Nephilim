@@ -47,6 +47,8 @@ enum Color {
     G
 }
 
+enum SecurityStamp {}
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SetCardJson {
     private String artist;
@@ -117,6 +119,8 @@ public class SetCardJson {
     @JsonProperty(required = true)
     private Rarity rarity;
     private List<UUID> rebalancedPrintings;
+    private List<Ruling> rulings;
+    private SecurityStamp securityStamp;
     private String signature;
     private String text;
     @JsonProperty(required = true)
@@ -339,8 +343,14 @@ public class SetCardJson {
         return rebalancedPrintings;
     }
 
-    // TODO: rulings
-    // TODO: security stamp
+    public List<Ruling> getRulings() {
+        return rulings;
+    }
+
+    public SecurityStamp getSecurityStamp() {
+        return securityStamp;
+    }
+
     // TODO: set code
     // TODO: side
     public String getSignature() {
@@ -364,5 +374,4 @@ public class SetCardJson {
     public List<UUID> getVariations() {
         return variations;
     }
-
 }
