@@ -336,7 +336,7 @@ class SetCardJsonTest {
 
     @Test
     void getSide() {
-        fail("todo: side");
+        assertNull(animateWall.getSide());
     }
 
     @Test

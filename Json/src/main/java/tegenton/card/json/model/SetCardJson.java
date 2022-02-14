@@ -49,6 +49,11 @@ enum Color {
 
 enum SecurityStamp {}
 
+enum Side {}
+
+class ForeignDataJson {
+}
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SetCardJson {
     private String artist;
@@ -123,6 +128,7 @@ public class SetCardJson {
     private List<UUID> rebalancedPrintings;
     private List<Ruling> rulings;
     private SecurityStamp securityStamp;
+    private Side side;
     private String signature;
     private String text;
     @JsonProperty(required = true)
@@ -359,7 +365,10 @@ public class SetCardJson {
     }
 
     // TODO: set code
-    // TODO: side
+    public Side getSide() {
+        return side;
+    }
+
     public String getSignature() {
         return signature;
     }
