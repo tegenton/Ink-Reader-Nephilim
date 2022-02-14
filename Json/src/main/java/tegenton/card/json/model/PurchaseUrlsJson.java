@@ -1,14 +1,11 @@
 package tegenton.card.json.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import java.util.Objects;
 
 /**
  * The Purchase Urls Data Model describes url paths to purchase a product from a
  * marketplace.
  */
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class PurchaseUrlsJson {
 
     private String cardKingdom;
@@ -62,7 +59,7 @@ public class PurchaseUrlsJson {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        PurchaseUrlsJson that = (PurchaseUrlsJson) o;
+        final PurchaseUrlsJson that = (PurchaseUrlsJson) o;
         return Objects.equals(cardKingdom, that.cardKingdom) && Objects.equals(
                 tcgplayer, that.tcgplayer);
     }

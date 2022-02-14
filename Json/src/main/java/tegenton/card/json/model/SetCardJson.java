@@ -56,7 +56,7 @@ enum Side {
 class ForeignDataJson {
 }
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonIgnoreProperties({"convertedManaCost", "hasFoil", "hasNonFoil"})
 public class SetCardJson {
     private String artist;
     private String asciiName;
@@ -86,6 +86,7 @@ public class SetCardJson {
     private String frameVersion;
     private Integer hand;
     private Boolean hasAlternativeDeckLimit;
+    @JsonProperty("hasContentWarning")
     private Boolean hasContentWarning;
     @JsonProperty(required = true)
     private IdentifiersJson identifiers;
@@ -97,6 +98,7 @@ public class SetCardJson {
     private Boolean isPromo;
     private Boolean isRebalanced;
     private Boolean isReprint;
+    @JsonProperty("isReserved")
     private Boolean isReserved;
     private Boolean isStarter;
     private Boolean isStorySpotlight;

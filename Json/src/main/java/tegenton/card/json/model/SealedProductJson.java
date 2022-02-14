@@ -1,6 +1,5 @@
 package tegenton.card.json.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Date;
@@ -11,7 +10,6 @@ import java.util.UUID;
  * The Sealed Product Data Model describes a list of properties for a
  * purchase-able product of a Set.
  */
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class SealedProductJson {
     @JsonProperty(required = true)
     private IdentifiersJson identifiers;
@@ -97,7 +95,7 @@ public class SealedProductJson {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        SealedProductJson that = (SealedProductJson) o;
+        final SealedProductJson that = (SealedProductJson) o;
         return Objects.equals(uuid, that.uuid);
     }
 
