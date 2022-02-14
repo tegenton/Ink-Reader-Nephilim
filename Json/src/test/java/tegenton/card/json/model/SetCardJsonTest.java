@@ -134,7 +134,11 @@ class SetCardJsonTest {
 
     @Test
     void getIdentifiers() {
-        IdentifiersJson expected = new IdentifiersJson("1029");
+        IdentifiersJson expected = new IdentifiersJson("64004", "5418",
+                "5b4a162f-c574-5f7e-a883-375aa3ba6642", "232",
+                "d5c83259-9b90-47c2-b48e-c7d78519e792",
+                "6757e04d-7bfc-4bdc-9dcb-02059a2d4e60",
+                "c7a6a165-b709-46e0-ae42-6f69a17c0621", "1029");
         assertEquals(expected, animateWall.getIdentifiers());
     }
 
