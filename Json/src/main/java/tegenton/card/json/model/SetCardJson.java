@@ -127,6 +127,7 @@ public class SetCardJson {
     private UUID uuid;
     @JsonProperty(required = true)
     private List<UUID> variations;
+    private String watermark;
 
     public String getArtist() {
         return artist;
@@ -373,5 +374,9 @@ public class SetCardJson {
 
     public List<UUID> getVariations() {
         return variations;
+    }
+
+    public String getWatermark() {
+        return watermark;
     }
 }

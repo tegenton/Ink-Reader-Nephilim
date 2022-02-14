@@ -390,6 +390,6 @@ class SetCardJsonTest {
 
     @Test
     void getWatermark() {
-        fail("todo: watermark");
+        assertNull(animateWall.getWatermark());
     }
 }
