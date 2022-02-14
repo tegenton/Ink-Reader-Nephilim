@@ -34,7 +34,7 @@ public final class TransitionFactory {
      */
     public static Map<Character, Transition> mapOf(final Word word,
                                                    final char... labels) {
-        Map<Character, Transition> transitions = mapOf(labels);
+        final Map<Character, Transition> transitions = mapOf(labels);
         transitions.putAll(toWord(word));
         return transitions;
     }
@@ -46,8 +46,8 @@ public final class TransitionFactory {
      * @return List of transitions for this state.
      */
     public static Map<Character, Transition> mapOf(final char... labels) {
-        Map<Character, Transition> transitions = new HashMap<>();
-        for (char c : labels) {
+        final Map<Character, Transition> transitions = new HashMap<>();
+        for (final char c : labels) {
             transitions.put(c, getTransition(c));
         }
         return transitions;
@@ -63,8 +63,8 @@ public final class TransitionFactory {
     public static void sequence(
             final Map<String, Map<Character, Transition>> map,
             final String start, final String end) {
-        StringBuilder builder = new StringBuilder(start);
-        for (char c : end.toCharArray()) {
+        final StringBuilder builder = new StringBuilder(start);
+        for (final char c : end.toCharArray()) {
             if (map.put(builder.toString(), mapOf(c)) != null) {
                 throw new UnsupportedOperationException(builder.toString());
             }
@@ -79,7 +79,8 @@ public final class TransitionFactory {
      * @return Transitions on space or a null terminator producing that word.
      */
     public static Map<Character, Transition> toWord(final Word word) {
-        return Map.of('\0', new Transition('\0', word, ""), '.',
+        return Map.of('\0', new Transition('\0', word, ""), '\n',
+                new Transition('\n', word, ""), '.',
                 new Transition('.', word, "."), ' ',
                 new Transition(' ', word, " "));
     }
