@@ -103,7 +103,7 @@ class SetCardJsonTest {
 
     @Test
     void getForeignData() {
-        fail("todo: foreign data");
+        assertEquals(List.of(), animateWall.getForeignData());
     }
 
     @Test
@@ -369,7 +369,7 @@ class SetCardJsonTest {
 
     @Test
     void getType() {
-        fail("todo: type");
+        assertEquals("Enchantment \u2014 Aura", animateWall.getType());
     }
 
     @Test

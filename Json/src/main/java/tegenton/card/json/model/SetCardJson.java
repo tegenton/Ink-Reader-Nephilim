@@ -72,6 +72,8 @@ public class SetCardJson {
     private String flavorName;
     private String flavorText;
     @JsonProperty(required = true)
+    private List<ForeignDataJson> foreignData;
+    @JsonProperty(required = true)
     private EnumSet<FrameEffect> frameEffects;
     @JsonProperty(required = true)
     private String frameVersion;
@@ -123,6 +125,8 @@ public class SetCardJson {
     private SecurityStamp securityStamp;
     private String signature;
     private String text;
+    @JsonProperty(required = true)
+    private String type;
     @JsonProperty(required = true)
     private UUID uuid;
     @JsonProperty(required = true)
@@ -189,7 +193,9 @@ public class SetCardJson {
         return flavorText;
     }
 
-    // TODO: foreign data
+    public List<ForeignDataJson> getForeignData() {
+        return foreignData;
+    }
 
     public EnumSet<FrameEffect> getFrameEffects() {
         return frameEffects;
@@ -365,7 +371,9 @@ public class SetCardJson {
     }
 
     // TODO: toughness
-    // TODO: type
+    String getType() {
+        return type;
+    }
     // TODO: types
 
     public UUID getUuid() {
