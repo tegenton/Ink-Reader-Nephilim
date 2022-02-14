@@ -36,7 +36,7 @@ class SetJsonTest {
 
     @Test
     void getCards() {
-        fail("TODO: cards");
+        assertEquals(295, lea.getCards().size());
     }
 
     @Test
