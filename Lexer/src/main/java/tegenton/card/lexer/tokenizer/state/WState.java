@@ -18,7 +18,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class WState extends State {
-    private static final Map<String, Map<Character, Transition>> MAP = new HashMap<>();
+    private static final Map<String, Map<Character, Transition>> MAP =
+            new HashMap<>();
 
     WState(final String name) {
         super(name);

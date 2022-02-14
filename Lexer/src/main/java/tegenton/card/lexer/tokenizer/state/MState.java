@@ -17,12 +17,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MState extends State {
-    private static final Map<String, Map<Character, Transition>> MAP = new HashMap<>();
+    private static final Map<String, Map<Character, Transition>> MAP =
+            new HashMap<>();
 
-    public MState(String name) {
+    MState(final String name) {
         super(name);
     }
 
+    /**
+     * Lazily load singleton map of M states.
+     *
+     * @return Map of M state transitions.
+     */
     protected Map<String, Map<Character, Transition>> transitions() {
         if (MAP.isEmpty()) {
             MAP.put("MA", TransitionFactory.mapOf('I', 'N', 'X', 'Y'));

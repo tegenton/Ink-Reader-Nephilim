@@ -16,12 +16,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PState extends State {
-    private static final Map<String, Map<Character, Transition>> MAP = new HashMap<>();
+    private static final Map<String, Map<Character, Transition>> MAP =
+            new HashMap<>();
 
-    public PState(String name) {
+    PState(final String name) {
         super(name);
     }
 
+    /**
+     * Lazily load singleton map of P states.
+     *
+     * @return Map of P state transitions.
+     */
     protected Map<String, Map<Character, Transition>> transitions() {
         if (MAP.isEmpty()) {
             MAP.put("PA", TransitionFactory.mapOf('Y'));

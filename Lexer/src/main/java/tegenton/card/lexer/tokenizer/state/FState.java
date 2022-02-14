@@ -16,12 +16,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FState extends State {
-    private static final Map<String, Map<Character, Transition>> MAP = new HashMap<>();
+    private static final Map<String, Map<Character, Transition>> MAP =
+            new HashMap<>();
 
-    public FState(String name) {
+    FState(final String name) {
         super(name);
     }
 
+    /**
+     * Lazily load singleton map of F states.
+     *
+     * @return Map of F state transitions.
+     */
     protected Map<String, Map<Character, Transition>> transitions() {
         if (MAP.isEmpty()) {
             MAP.put("FA", TransitionFactory.mapOf('C'));

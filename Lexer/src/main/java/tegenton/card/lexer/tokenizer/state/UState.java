@@ -12,7 +12,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class UState extends State {
-    private static final Map<String, Map<Character, Transition>> MAP = new HashMap<>();
+    private static final Map<String, Map<Character, Transition>> MAP =
+            new HashMap<>();
 
     UState(final String name) {
         super(name);

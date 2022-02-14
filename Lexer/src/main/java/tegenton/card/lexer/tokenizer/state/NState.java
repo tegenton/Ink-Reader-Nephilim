@@ -13,12 +13,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class NState extends State {
-    private static final Map<String, Map<Character, Transition>> MAP = new HashMap<>();
+    private static final Map<String, Map<Character, Transition>> MAP =
+            new HashMap<>();
 
-    public NState(String name) {
+    NState(final String name) {
         super(name);
     }
 
+    /**
+     * Lazily load singleton map of N states.
+     *
+     * @return Map of N state transitions.
+     */
     protected Map<String, Map<Character, Transition>> transitions() {
         if (MAP.isEmpty()) {
             MAP.put("NA", TransitionFactory.mapOf('M'));

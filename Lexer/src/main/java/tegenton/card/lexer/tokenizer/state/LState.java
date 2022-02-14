@@ -20,12 +20,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LState extends State {
-    private static final Map<String, Map<Character, Transition>> MAP = new HashMap<>();
+    private static final Map<String, Map<Character, Transition>> MAP =
+            new HashMap<>();
 
-    public LState(String name) {
+    LState(final String name) {
         super(name);
     }
 
+    /**
+     * Lazily load singleton map of L states.
+     *
+     * @return Map of L state transitions.
+     */
     protected Map<String, Map<Character, Transition>> transitions() {
         if (MAP.isEmpty()) {
             MAP.put("LA", TransitionFactory.mapOf('B', 'N'));

@@ -13,11 +13,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class BaseState extends State {
-    private static final Map<String, Map<Character, Transition>> MAP = new HashMap<>();
+    private static final Map<String, Map<Character, Transition>> MAP =
+            new HashMap<>();
 
     BaseState(final String s) {
         super(s);
     }
+
 
     /**
      * Lazily load singleton map of base states, which begin from an empty

@@ -17,12 +17,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DState extends State {
-    private static final Map<String, Map<Character, Transition>> MAP = new HashMap<>();
+    private static final Map<String, Map<Character, Transition>> MAP =
+            new HashMap<>();
 
-    DState(String name) {
+    DState(final String name) {
         super(name);
     }
 
+    /**
+     * Lazily load singleton map of D states.
+     *
+     * @return Map of D state transitions.
+     */
     protected Map<String, Map<Character, Transition>> transitions() {
         if (MAP.isEmpty()) {
             TransitionFactory.sequence(MAP, "DA", "MAGE");

@@ -20,7 +20,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CState extends State {
-    private static final Map<String, Map<Character, Transition>> MAP = new HashMap<>();
+    private static final Map<String, Map<Character, Transition>> MAP =
+            new HashMap<>();
 
     CState(final String name) {
         super(name);

@@ -14,12 +14,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class GState extends State {
-    private static final Map<String, Map<Character, Transition>> MAP = new HashMap<>();
+    private static final Map<String, Map<Character, Transition>> MAP =
+            new HashMap<>();
 
-    public GState(String name) {
+    GState(final String name) {
         super(name);
     }
 
+    /**
+     * Lazily load singleton map of G states.
+     *
+     * @return Map of G state transitions.
+     */
     protected Map<String, Map<Character, Transition>> transitions() {
         if (MAP.isEmpty()) {
             MAP.put("GA", TransitionFactory.mapOf('I', 'M'));

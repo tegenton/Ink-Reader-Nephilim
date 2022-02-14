@@ -8,7 +8,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class YState extends State {
-    private static final Map<String, Map<Character, Transition>> MAP = new HashMap<>();
+    private static final Map<String, Map<Character, Transition>> MAP =
+            new HashMap<>();
 
     YState(final String name) {
         super(name);

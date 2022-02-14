@@ -9,7 +9,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ZState extends State {
-    private static final Map<String, Map<Character, Transition>> MAP = new HashMap<>();
+    private static final Map<String, Map<Character, Transition>> MAP =
+            new HashMap<>();
 
     ZState(final String name) {
         super(name);

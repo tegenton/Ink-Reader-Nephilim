@@ -27,7 +27,8 @@ import java.util.Map;
 import static tegenton.card.lexicon.Determiner.TARGET;
 
 public class TState extends State {
-    private static final Map<String, Map<Character, Transition>> MAP = new HashMap<>();
+    private static final Map<String, Map<Character, Transition>> MAP =
+            new HashMap<>();
 
     TState(final String name) {
         super(name);

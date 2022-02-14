@@ -23,7 +23,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AState extends State {
-    private static final Map<String, Map<Character, Transition>> MAP = new HashMap<>();
+    private static final Map<String, Map<Character, Transition>> MAP =
+            new HashMap<>();
 
     AState(final String name) {
         super(name);

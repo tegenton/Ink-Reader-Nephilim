@@ -19,12 +19,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class IState extends State {
-    private static final Map<String, Map<Character, Transition>> MAP = new HashMap<>();
+    private static final Map<String, Map<Character, Transition>> MAP =
+            new HashMap<>();
 
-    public IState(String name) {
+    IState(final String name) {
         super(name);
     }
 
+    /**
+     * Lazily load singleton map of I states.
+     *
+     * @return Map of I state transitions.
+     */
     protected Map<String, Map<Character, Transition>> transitions() {
         if (MAP.isEmpty()) {
             MAP.put("IF", TransitionFactory.mapOf(SubordinateConjunction.IF));

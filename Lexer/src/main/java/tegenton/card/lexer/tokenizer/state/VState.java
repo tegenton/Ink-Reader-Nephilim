@@ -10,7 +10,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class VState extends State {
-    private static final Map<String, Map<Character, Transition>> MAP = new HashMap<>();
+    private static final Map<String, Map<Character, Transition>> MAP =
+            new HashMap<>();
 
     VState(final String name) {
         super(name);

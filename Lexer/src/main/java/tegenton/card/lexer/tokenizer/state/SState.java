@@ -20,12 +20,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SState extends State {
-    private static final Map<String, Map<Character, Transition>> MAP = new HashMap<>();
+    private static final Map<String, Map<Character, Transition>> MAP =
+            new HashMap<>();
 
-    public SState(String name) {
+    SState(final String name) {
         super(name);
     }
 
+    /**
+     * Lazily load singleton map of S states.
+     *
+     * @return Map of S state transitions.
+     */
     protected Map<String, Map<Character, Transition>> transitions() {
         if (MAP.isEmpty()) {
             MAP.put("SA", TransitionFactory.mapOf('C', 'M'));

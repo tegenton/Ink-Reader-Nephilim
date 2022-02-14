@@ -12,12 +12,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class HState extends State {
-    private static final Map<String, Map<Character, Transition>> MAP = new HashMap<>();
+    private static final Map<String, Map<Character, Transition>> MAP =
+            new HashMap<>();
 
-    public HState(String name) {
+    HState(final String name) {
         super(name);
     }
 
+    /**
+     * Lazily load singleton map of H states.
+     *
+     * @return Map of H state transitions.
+     */
     protected Map<String, Map<Character, Transition>> transitions() {
         if (MAP.isEmpty()) {
             MAP.put("HA", TransitionFactory.mapOf('L', 'N', 'S', 'V'));
