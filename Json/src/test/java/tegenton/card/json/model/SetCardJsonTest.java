@@ -129,7 +129,7 @@ class SetCardJsonTest {
 
     @Test
     void getHasContentWarning() {
-        assertNull(animateWall.getHasContentWarning());
+        assertNull(animateWall.hasContentWarning());
     }
 
     @Test
@@ -144,67 +144,67 @@ class SetCardJsonTest {
 
     @Test
     void getIsAlternative() {
-        assertNull(animateWall.getIsAlternative());
+        assertNull(animateWall.isAlternative());
     }
 
     @Test
     void getIsFullArt() {
-        assertNull(animateWall.getIsFullArt());
+        assertNull(animateWall.isFullArt());
     }
 
     @Test
     void getIsFunny() {
-        assertNull(animateWall.getIsFunny());
+        assertNull(animateWall.isFunny());
     }
 
     @Test
     void getIsOnlineOnly() {
-        assertNull(animateWall.getIsOnlineOnly());
+        assertNull(animateWall.isOnlineOnly());
     }
 
     @Test
     void getIsOversized() {
-        assertNull(animateWall.getIsOversized());
+        assertNull(animateWall.isOversized());
     }
 
     @Test
     void getIsPromo() {
-        assertNull(animateWall.getIsPromo());
+        assertNull(animateWall.isPromo());
     }
 
     @Test
     void getIsRebalanced() {
-        assertNull(animateWall.getIsRebalanced());
+        assertNull(animateWall.isRebalanced());
     }
 
     @Test
     void getIsReprint() {
-        assertNull(animateWall.getIsReprint());
+        assertNull(animateWall.isReprint());
     }
 
     @Test
     void getIsReserved() {
-        assertNull(animateWall.getIsReserved());
+        assertNull(animateWall.isReserved());
     }
 
     @Test
     void getIsStarter() {
-        assertNull(animateWall.getIsStarter());
+        assertNull(animateWall.isStarter());
     }
 
     @Test
     void getIsStorySpotlight() {
-        assertNull(animateWall.getIsStorySpotlight());
+        assertNull(animateWall.isStorySpotlight());
     }
 
     @Test
     void getIsTextless() {
-        assertNull(animateWall.getIsTextless());
+        assertNull(animateWall.isTextless());
     }
 
     @Test
     void getIsTimeshifted() {
-        assertNull(animateWall.getIsTimeshifted());
+        assertNull(animateWall.isTimeshifted());
     }
 
     @Test
