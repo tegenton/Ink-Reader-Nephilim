@@ -33,6 +33,7 @@ public class OState extends State {
             MAP.put("OF", TransitionFactory.mapOf(Preposition.OF));
             MAP.put("ON",
                     TransitionFactory.mapOf(Preposition.ON, 'C', 'E', 'L'));
+            MAP.get("ON").put('T', new Transition('T', Preposition.ON, "T"));
             MAP.put("ONC", TransitionFactory.mapOf('E'));
             MAP.put("ONCE", TransitionFactory.mapOf(Adverb.ONCE));
             MAP.put("ONE", TransitionFactory.mapOf(EnglishNumber.ONE));

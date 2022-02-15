@@ -33,7 +33,7 @@ public class BaseState extends State {
                     TransitionFactory.mapOf('A', 'B', 'C', 'D', 'E', 'F', 'G',
                             'H', 'I', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T',
                             'U', 'V', 'W', 'X', 'Y', 'Z', '1', '2', '3', '4',
-                            '\u2022', '\u2014', '{', '\n', '\0', '+', '"',
+                            '\u2022', '\u2014', '{', '\n', '\0', '-', '+', '"',
                             '~'));
             MAP.put("A",
                     TransitionFactory.mapOf(Determiner.A, 'B', 'C', 'D', 'F',
@@ -81,6 +81,7 @@ public class BaseState extends State {
             MAP.put(":", TransitionFactory.toWord(Symbol.COLON));
             MAP.put(",", TransitionFactory.toWord(Symbol.COMMA));
             MAP.put("\u2014", TransitionFactory.toSymbol(Symbol.DASH, '\n'));
+            MAP.put("-", TransitionFactory.toSymbol(Symbol.HYPHEN, '0', '1'));
             MAP.put("{",
                     TransitionFactory.toSymbol(Symbol.LBRACKET, 'T', 'U', 'W',
                             'X', '0', '1'));
@@ -90,13 +91,15 @@ public class BaseState extends State {
                     TransitionFactory.toSymbol(Symbol.PERIOD, '\n', '"', ' '));
             MAP.put("+", TransitionFactory.toSymbol(Symbol.PLUS, '0', '1', '2',
                     '7'));
-            MAP.put("\"", TransitionFactory.toSymbol(Symbol.QUOTE, 'A'));
+            MAP.put("\"",
+                    TransitionFactory.toSymbol(Symbol.QUOTE, 'A', 'E', ' '));
             MAP.put("}",
                     TransitionFactory.toSymbol(Symbol.RBRACKET, ':', ',', '{',
                             '.', ' '));
             MAP.put(";", TransitionFactory.toSymbol(Symbol.SEMICOLON, ' '));
             MAP.put(" ", TransitionFactory.toSymbol(Symbol.SPACE));
-            MAP.put("/", TransitionFactory.toSymbol(Symbol.SLASH, 'O', '+'));
+            MAP.put("/",
+                    TransitionFactory.toSymbol(Symbol.SLASH, 'O', '-', '+'));
             MAP.put("~",
                     TransitionFactory.toSymbol(Symbol.TILDE, '\'', ' ', '.'));
         }

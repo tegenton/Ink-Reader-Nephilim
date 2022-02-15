@@ -111,6 +111,7 @@ public final class TransitionFactory {
         map.put('\0', new Transition('\0', word, ""));
         map.put('\n', new Transition('\n', word, "\n"));
         map.put('.', new Transition('.', word, "."));
+        map.put('"', new Transition('"', word, "\""));
         map.put(';', new Transition(';', word, ";"));
         map.put(' ', new Transition(' ', word, " "));
         return map;
