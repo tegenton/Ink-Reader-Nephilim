@@ -45,7 +45,9 @@ public class TState extends State {
             MAP.put("TA", TransitionFactory.mapOf('K', 'P', 'R'));
             MAP.put("TAK", TransitionFactory.mapOf('E'));
             MAP.put("TAKE", TransitionFactory.toWord(PlayerVerb.TAKE));
-            MAP.put("TAP", TransitionFactory.toWord(ObjectVerb.TAP));
+            MAP.put("TAP", TransitionFactory.mapOf(ObjectVerb.TAP, 'P'));
+            MAP.put("TAPP",
+                    Map.of('E', new Transition('E', ObjectVerb.TAP, "E")));
             TransitionFactory.sequence(MAP, "TAR", "GET");
             MAP.put("TARGET", TransitionFactory.toWord(TARGET));
             MAP.put("TE", TransitionFactory.mapOf('N', 'X'));

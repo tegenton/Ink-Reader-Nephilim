@@ -2,6 +2,7 @@ package tegenton.card.lexer.tokenizer.state;
 
 import tegenton.card.lexer.tokenizer.transition.Transition;
 import tegenton.card.lexer.tokenizer.transition.TransitionFactory;
+import tegenton.card.lexicon.game.target.TargetModifier;
 import tegenton.card.lexicon.game.target.player.PlayerNoun;
 
 import java.util.HashMap;
@@ -25,6 +26,9 @@ public class YState extends State {
         if (MAP.isEmpty()) {
             MAP.put("YO", TransitionFactory.mapOf('U'));
             MAP.put("YOU", TransitionFactory.mapOf(PlayerNoun.YOU));
+            MAP.get("YOU").put('R', new Transition('R', PlayerNoun.YOU));
+            MAP.put("YOUR",
+                    TransitionFactory.toWord(TargetModifier.POSSESSIVE));
         }
         return MAP;
     }

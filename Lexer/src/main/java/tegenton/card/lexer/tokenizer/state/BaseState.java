@@ -76,11 +76,12 @@ public class BaseState extends State {
             MAP.put("Z", TransitionFactory.mapOf('E', 'O'));
             MAP.put(":", TransitionFactory.toWord(Symbol.COLON));
             MAP.put(",", TransitionFactory.toWord(Symbol.COMMA));
-            MAP.put("{", TransitionFactory.toSymbol(Symbol.LBRACKET, 'W'));
+            MAP.put("{", TransitionFactory.toSymbol(Symbol.LBRACKET, 'W', '1'));
             MAP.put("\n",
                     Map.of('\0', new Transition('\0', Symbol.NEWLINE, "")));
             MAP.put(".", TransitionFactory.toWord(Symbol.PERIOD));
-            MAP.put("+", TransitionFactory.toSymbol(Symbol.PLUS, '1'));
+            MAP.put("+",
+                    TransitionFactory.toSymbol(Symbol.PLUS, '0', '1', '2'));
             MAP.put("}", TransitionFactory.toSymbol(Symbol.RBRACKET, ':'));
             MAP.put(" ", Map.of('\0', new Transition('\0', Symbol.SPACE, "")));
             MAP.put("/", TransitionFactory.toSymbol(Symbol.SLASH, '+'));
