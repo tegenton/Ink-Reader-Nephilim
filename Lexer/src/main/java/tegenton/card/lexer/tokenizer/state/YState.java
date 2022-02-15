@@ -26,6 +26,7 @@ public class YState extends State {
             MAP.put("YO", TransitionFactory.mapOf('U'));
             MAP.put("YOU", TransitionFactory.mapOf(PlayerNoun.YOU));
             MAP.get("YOU").put('R', new Transition('R', PlayerNoun.YOU, "'S"));
+            MAP.get("YOU").put('\'', new Transition('\'', PlayerNoun.YOU, "A"));
         }
         return MAP;
     }

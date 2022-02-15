@@ -66,9 +66,7 @@ public class PState extends State {
             MAP.put("PLANESWALKE", TransitionFactory.mapOf('R'));
             MAP.put("PLANESWALKER",
                     TransitionFactory.mapOf(CardType.PLANESWALKER));
-            MAP.put("PLAY",
-                    Map.of('E', new Transition('E', PlayerVerb.PLAY, "E"), '\0',
-                            new Transition('\0', PlayerVerb.PLAY, "")));
+            MAP.put("PLAY", TransitionFactory.mapOf(PlayerVerb.PLAY));
             MAP.put("PR", TransitionFactory.mapOf('E', 'O'));
             MAP.put("PRE", TransitionFactory.mapOf('V'));
             MAP.put("PREV", TransitionFactory.mapOf('E'));

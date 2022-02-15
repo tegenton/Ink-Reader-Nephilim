@@ -2,6 +2,7 @@ package tegenton.card.lexer.tokenizer.state;
 
 import tegenton.card.lexer.tokenizer.transition.Transition;
 import tegenton.card.lexer.tokenizer.transition.TransitionFactory;
+import tegenton.card.lexicon.Morpheme;
 import tegenton.card.lexicon.Noun;
 import tegenton.card.lexicon.Preposition;
 import tegenton.card.lexicon.SubordinateConjunction;
@@ -10,6 +11,7 @@ import tegenton.card.lexicon.game.Keyword;
 import tegenton.card.lexicon.game.TriggerWord;
 import tegenton.card.lexicon.game.target.TargetAuxiliaryVerb;
 import tegenton.card.lexicon.game.target.TargetNoun;
+import tegenton.card.lexicon.game.target.object.ObjectVerb;
 import tegenton.card.lexicon.game.target.object.card.CardName;
 import tegenton.card.lexicon.game.turn.Duration;
 import tegenton.card.lexicon.game.type.CreatureType;
@@ -38,7 +40,9 @@ public class WState extends State {
             MAP.put("WALK", TransitionFactory.mapOf(Keyword.WALK));
             MAP.put("WALL", TransitionFactory.mapOf(CreatureType.WALL));
             MAP.put("WAS", TransitionFactory.mapOf('P'));
+            MAP.get("WAS").put(' ', new Transition(' ', ObjectVerb.IS));
             MAP.put("WASP", TransitionFactory.mapOf(CardName.WASP));
+            MAP.put("WAS ", Map.of('\0', new Transition('\0', Morpheme.ED)));
             MAP.put("WAY", TransitionFactory.mapOf(Noun.WAY));
             MAP.put("WH", TransitionFactory.mapOf('E', 'I', 'O'));
             MAP.put("WHE", TransitionFactory.mapOf('N', 'R'));

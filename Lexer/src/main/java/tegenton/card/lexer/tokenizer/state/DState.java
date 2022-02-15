@@ -64,7 +64,7 @@ public class DState extends State {
             TransitionFactory.sequence(MAP, "DIF", "FERENT");
             MAP.put("DIFFERENT", TransitionFactory.toWord(Adjective.DIFFERENT));
             TransitionFactory.sequence(MAP, "DIS", "CARD");
-            MAP.put("DISCARD", TransitionFactory.toWord(PlayerVerb.DISCARD));
+            MAP.put("DISCARD", TransitionFactory.mapOf(PlayerVerb.DISCARD));
             TransitionFactory.sequence(MAP, "DIV", "IDE");
             MAP.put("DIVIDE", TransitionFactory.toWord(PlayerVerb.DIVIDE));
             MAP.put("DO", TransitionFactory.mapOf(SourceVerb.DO, 'E', 'W'));

@@ -15,7 +15,7 @@ public final class TransitionFactory {
     private TransitionFactory() {
     }
 
-    private static Transition getTransition() {
+    public static Transition getTransition() {
         if (!BASIC.containsKey(null)) {
             BASIC.put(null, new Transition());
         }

@@ -112,6 +112,7 @@ public class SState extends State {
             MAP.put("SWA", TransitionFactory.mapOf('M'));
             MAP.put("SWAM", TransitionFactory.mapOf('P'));
             MAP.put("SWAMP", TransitionFactory.mapOf(LandType.SWAMP));
+            MAP.get("SWAMP").put('W', new Transition('W', LandType.SWAMP, "W"));
         }
         return MAP;
     }

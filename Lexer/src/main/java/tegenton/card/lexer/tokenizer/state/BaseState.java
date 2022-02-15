@@ -74,6 +74,7 @@ public class BaseState extends State {
             MAP.put("W",
                     TransitionFactory.mapOf(ManaSymbol.W, 'A', 'H', 'I', 'O'));
             MAP.put("X", TransitionFactory.mapOf(Variable.X));
+            MAP.get("X").put('/', new Transition('/', Variable.X, "/"));
             MAP.put("Y", TransitionFactory.mapOf(Variable.Y, 'O'));
             MAP.put("Z", TransitionFactory.mapOf('E', 'O'));
             MAP.put("'", TransitionFactory.mapOf('S'));
@@ -83,14 +84,15 @@ public class BaseState extends State {
             MAP.put("\u2014", TransitionFactory.toSymbol(Symbol.DASH, '\n'));
             MAP.put("-", TransitionFactory.toSymbol(Symbol.HYPHEN, '0', '1'));
             MAP.put("{",
-                    TransitionFactory.toSymbol(Symbol.LBRACKET, 'T', 'U', 'W',
-                            'X', '0', '1'));
+                    TransitionFactory.toSymbol(Symbol.LBRACKET, 'B', 'T', 'U',
+                            'W', 'X', '0', '1', '3'));
             MAP.put("\n",
                     Map.of('\0', new Transition('\0', Symbol.NEWLINE, "")));
             MAP.put(".",
                     TransitionFactory.toSymbol(Symbol.PERIOD, '\n', '"', ' '));
-            MAP.put("+", TransitionFactory.toSymbol(Symbol.PLUS, '0', '1', '2',
-                    '7'));
+            MAP.put("+",
+                    TransitionFactory.toSymbol(Symbol.PLUS, 'X', '0', '1', '2',
+                            '7'));
             MAP.put("\"",
                     TransitionFactory.toSymbol(Symbol.QUOTE, 'A', 'E', ' '));
             MAP.put("}",

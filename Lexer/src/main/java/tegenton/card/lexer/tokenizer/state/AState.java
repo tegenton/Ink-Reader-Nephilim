@@ -53,6 +53,8 @@ public class AState extends State {
             MAP.put("ACTIV", TransitionFactory.mapOf('A', 'E'));
             TransitionFactory.sequence(MAP, "ACTIVA", "TE");
             MAP.put("ACTIVATE", TransitionFactory.mapOf(PlayerVerb.ACTIVATE));
+            MAP.get("ACTIVATE")
+                    .put('D', new Transition('D', PlayerVerb.ACTIVATE, "ED"));
             MAP.put("ACTIVE", TransitionFactory.mapOf(PlayerAdjective.ACTIVE));
             MAP.put("AD", TransitionFactory.mapOf('D'));
             MAP.put("ADD", TransitionFactory.mapOf(PlayerVerb.ADD, 'I'));
@@ -80,6 +82,7 @@ public class AState extends State {
             MAP.put("ANOTHER", TransitionFactory.toWord(Determiner.ANOTHER));
             MAP.put("ANT", TransitionFactory.mapOf('E'));
             MAP.put("ANTE", TransitionFactory.toWord(Zone.ANTE));
+            MAP.get("ANTE").put('S', TransitionFactory.getTransition());
             MAP.put("ANY", TransitionFactory.toWord(Determiner.ANY));
             MAP.put("AR", TransitionFactory.mapOf('E', 'T'));
             MAP.put("ARE", TransitionFactory.toWord(ObjectVerb.IS));
