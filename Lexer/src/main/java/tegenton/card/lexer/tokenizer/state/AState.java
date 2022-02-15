@@ -83,7 +83,7 @@ public class AState extends State {
             TransitionFactory.sequence(MAP, "ATT", "AC");
             MAP.put("ATTAC", TransitionFactory.mapOf('H', 'K'));
             MAP.put("ATTACH", TransitionFactory.toWord(PlayerVerb.ATTACH));
-            MAP.put("ATTACK", TransitionFactory.toVerb(ObjectVerb.ATTACK));
+            MAP.put("ATTACK", TransitionFactory.mapOf(ObjectVerb.ATTACK));
             TransitionFactory.sequence(MAP, "AU", "RA");
             MAP.put("AURA", TransitionFactory.toNoun(EnchantmentType.AURA));
         }

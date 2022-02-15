@@ -10,7 +10,6 @@ import tegenton.card.lexicon.SubordinateConjunction;
 import tegenton.card.lexicon.game.GameNoun;
 import tegenton.card.lexicon.game.Keyword;
 import tegenton.card.lexicon.game.Zone;
-import tegenton.card.lexicon.game.target.TargetModifier;
 import tegenton.card.lexicon.game.target.object.ObjectVerb;
 import tegenton.card.lexicon.game.target.player.PlayerVerb;
 import tegenton.card.lexicon.game.turn.Step;
@@ -76,10 +75,7 @@ public class EState extends State {
             MAP.put("EQUA", TransitionFactory.mapOf('L'));
             MAP.put("EQUAL", TransitionFactory.mapOf(Adjective.EQUAL));
             MAP.put("ER", TransitionFactory.toNoun(Morpheme.ER));
-            MAP.get("ER").put('\'', new Transition('\'', Morpheme.ER));
-            MAP.put("ER'", TransitionFactory.mapOf('S'));
-            MAP.put("ER'S",
-                    TransitionFactory.toWord(TargetModifier.POSSESSIVE));
+            MAP.get("ER").put('\'', new Transition('\'', Morpheme.ER, "'"));
             MAP.put("EV", TransitionFactory.mapOf('E'));
             MAP.put("EVE", TransitionFactory.mapOf('N'));
             MAP.put("EVEN", TransitionFactory.mapOf('L'));

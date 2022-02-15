@@ -1,11 +1,11 @@
 package tegenton.card.lexicon.game.target.player;
 
-import tegenton.card.lexicon.Word;
+import tegenton.card.lexicon.Verb;
 
 /**
  * Actions players can take.
  */
-public enum PlayerVerb implements Word {
+public enum PlayerVerb implements Verb {
     ACTIVATE,
     ADD,
     ATTACH,

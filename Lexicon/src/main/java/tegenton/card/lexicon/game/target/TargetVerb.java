@@ -1,11 +1,11 @@
 package tegenton.card.lexicon.game.target;
 
-import tegenton.card.lexicon.Word;
+import tegenton.card.lexicon.Verb;
 
 /**
  * Words representing actions of objects.
  */
-public enum TargetVerb implements Word {
+public enum TargetVerb implements Verb {
     ASSIGN,
     GAIN,
     LOSE;

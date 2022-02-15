@@ -36,7 +36,7 @@ public class DState extends State {
             MAP.put("DAMAGE", TransitionFactory.toWord(GameNoun.DAMAGE));
             MAP.put("DE", TransitionFactory.mapOf('A', 'C', 'F', 'S'));
             MAP.put("DEA", TransitionFactory.mapOf('L'));
-            MAP.put("DEAL", TransitionFactory.toVerb(SourceVerb.DEAL));
+            MAP.put("DEAL", TransitionFactory.mapOf(SourceVerb.DEAL));
             MAP.get("DEAL")
                     .put('T', new Transition('T', SourceVerb.DEAL, "ED"));
             MAP.put("DEC", TransitionFactory.mapOf('K', 'L'));
@@ -60,7 +60,7 @@ public class DState extends State {
                     TransitionFactory.getTransition('S'), 'V',
                     TransitionFactory.getTransition('V')));
             MAP.put("DID", Map.of('N', new Transition('N', Morpheme.ED, "N")));
-            MAP.put("DIE", TransitionFactory.toWord(ObjectVerb.DIE));
+            MAP.put("DIE", TransitionFactory.mapOf(ObjectVerb.DIE));
             TransitionFactory.sequence(MAP, "DIF", "FERENT");
             MAP.put("DIFFERENT", TransitionFactory.toWord(Adjective.DIFFERENT));
             TransitionFactory.sequence(MAP, "DIS", "CARD");
@@ -74,7 +74,7 @@ public class DState extends State {
             MAP.put("DOW", TransitionFactory.mapOf('N'));
             MAP.put("DOWN", TransitionFactory.toWord(Particle.DOWN));
             TransitionFactory.sequence(MAP, "DR", "AW");
-            MAP.put("DRAW", TransitionFactory.toVerb(PlayerVerb.DRAW));
+            MAP.put("DRAW", TransitionFactory.mapOf(PlayerVerb.DRAW));
             TransitionFactory.sequence(MAP, "DU", "RING");
             MAP.put("DURING", TransitionFactory.toWord(Chronology.DURING));
         }

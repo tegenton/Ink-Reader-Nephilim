@@ -47,7 +47,7 @@ public class BState extends State {
                     TransitionFactory.mapOf(GameVerb.BE, 'C', 'E', 'F', 'G',
                             'Y'));
             TransitionFactory.sequence(MAP, "BEC", "OME");
-            MAP.put("BECOME", TransitionFactory.toWord(ObjectVerb.BECOME));
+            MAP.put("BECOME", TransitionFactory.mapOf(ObjectVerb.BECOME));
             MAP.put("BEE", Map.of('N', new Transition('N', GameVerb.BE)));
             MAP.put("BEEN", TransitionFactory.toWord(Morpheme.ED));
             TransitionFactory.sequence(MAP, "BEF", "ORE");
@@ -62,8 +62,7 @@ public class BState extends State {
             TransitionFactory.sequence(MAP, "BLA", "CK");
             MAP.put("BLACK", TransitionFactory.toWord(ColorWord.BLACK));
             TransitionFactory.sequence(MAP, "BLO", "CK");
-            MAP.put("BLOCK", TransitionFactory.mapOf(ObjectVerb.BLOCK, 'E'));
-            MAP.get("BLOCK").put('S', new Transition());
+            MAP.put("BLOCK", TransitionFactory.mapOf(ObjectVerb.BLOCK));
             MAP.put("BLOCKE",
                     Map.of('R', new Transition('R', ObjectVerb.BLOCK, "ER")));
             MAP.put("BLU", TransitionFactory.mapOf('E'));

@@ -46,6 +46,7 @@ public final class StateFactory {
                     case 'W' -> new WState(name);
                     case 'Y' -> new YState(name);
                     case 'Z' -> new ZState(name);
+                    case '\'' -> new ApostropheState(name);
                     default -> throw new IllegalStateException(
                             "No state '" + name + "'.");
                 });

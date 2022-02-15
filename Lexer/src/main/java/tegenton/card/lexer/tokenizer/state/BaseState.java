@@ -75,12 +75,14 @@ public class BaseState extends State {
             MAP.put("X", TransitionFactory.mapOf(Variable.X));
             MAP.put("Y", TransitionFactory.mapOf(Variable.Y, 'O'));
             MAP.put("Z", TransitionFactory.mapOf('E', 'O'));
+            MAP.put("'", TransitionFactory.mapOf('S'));
             MAP.put("\u2022", TransitionFactory.toSymbol(Symbol.BULLET, ' '));
             MAP.put(":", TransitionFactory.toWord(Symbol.COLON));
             MAP.put(",", TransitionFactory.toWord(Symbol.COMMA));
             MAP.put("\u2014", TransitionFactory.toSymbol(Symbol.DASH, '\n'));
             MAP.put("{",
-                    TransitionFactory.toSymbol(Symbol.LBRACKET, 'T', 'W', '1'));
+                    TransitionFactory.toSymbol(Symbol.LBRACKET, 'T', 'W', '0',
+                            '1'));
             MAP.put("\n",
                     Map.of('\0', new Transition('\0', Symbol.NEWLINE, "")));
             MAP.put(".",
@@ -94,7 +96,8 @@ public class BaseState extends State {
             MAP.put(";", TransitionFactory.toSymbol(Symbol.SEMICOLON, ' '));
             MAP.put(" ", TransitionFactory.toSymbol(Symbol.SPACE));
             MAP.put("/", TransitionFactory.toSymbol(Symbol.SLASH, 'O', '+'));
-            MAP.put("~", TransitionFactory.toWord(Symbol.TILDE));
+            MAP.put("~",
+                    TransitionFactory.toSymbol(Symbol.TILDE, '\'', ' ', '.'));
         }
         return MAP;
     }
