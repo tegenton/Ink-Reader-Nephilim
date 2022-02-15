@@ -74,6 +74,8 @@ public class BaseState extends State {
             MAP.put("X", TransitionFactory.mapOf(Variable.X));
             MAP.put("Y", TransitionFactory.mapOf(Variable.Y, 'O'));
             MAP.put("Z", TransitionFactory.mapOf('E', 'O'));
+            MAP.put("\n",
+                    Map.of('\0', new Transition('\0', Symbol.NEWLINE, "")));
             MAP.put(".", TransitionFactory.toWord(Symbol.PERIOD));
             MAP.put(" ", Map.of('\0', new Transition('\0', Symbol.SPACE, "")));
         }

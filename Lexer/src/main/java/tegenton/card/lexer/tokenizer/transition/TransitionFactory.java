@@ -80,7 +80,7 @@ public final class TransitionFactory {
      */
     public static Map<Character, Transition> toWord(final Word word) {
         return Map.of('\0', new Transition('\0', word, ""), '\n',
-                new Transition('\n', word, ""), '.',
+                new Transition('\n', word, "\n"), '.',
                 new Transition('.', word, "."), ' ',
                 new Transition(' ', word, " "));
     }
