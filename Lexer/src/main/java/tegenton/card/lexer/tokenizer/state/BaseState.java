@@ -52,7 +52,8 @@ public class BaseState extends State {
             MAP.put("I", TransitionFactory.mapOf('F', 'G', 'N', 'S', 'T'));
             MAP.put("L", TransitionFactory.mapOf('A', 'E', 'I', 'O'));
             MAP.put("M", TransitionFactory.mapOf('A', 'E', 'I', 'O'));
-            MAP.put("N", TransitionFactory.mapOf('A', 'E', 'I', 'O', 'U'));
+            MAP.put("N",
+                    TransitionFactory.mapOf('A', 'E', 'I', 'O', 'U', '\''));
             MAP.put("O",
                     TransitionFactory.mapOf('F', 'N', 'P', 'R', 'T', 'U', 'V',
                             'W'));

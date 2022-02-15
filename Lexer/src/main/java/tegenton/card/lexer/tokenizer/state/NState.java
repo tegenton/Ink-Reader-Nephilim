@@ -49,6 +49,8 @@ public class NState extends State {
             MAP.put("NUMB", TransitionFactory.mapOf('E'));
             MAP.put("NUMBE", TransitionFactory.mapOf('R'));
             MAP.put("NUMBER", TransitionFactory.mapOf(Noun.NUMBER));
+            MAP.put("N'", TransitionFactory.mapOf('T'));
+            MAP.put("N'T", TransitionFactory.toWord(Adverb.NOT));
         }
         return MAP;
     }

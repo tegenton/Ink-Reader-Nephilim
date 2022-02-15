@@ -57,7 +57,10 @@ public class EState extends State {
             MAP.put("ENCH", TransitionFactory.mapOf('A'));
             MAP.put("ENCHA", TransitionFactory.mapOf('N'));
             MAP.put("ENCHAN", TransitionFactory.mapOf('T'));
-            MAP.put("ENCHANT", TransitionFactory.mapOf(Keyword.ENCHANT, 'M'));
+            MAP.put("ENCHANT",
+                    TransitionFactory.mapOf(Keyword.ENCHANT, 'E', 'M'));
+            MAP.put("ENCHANTE",
+                    Map.of('D', new Transition('D', Keyword.ENCHANT, "ED")));
             MAP.put("ENCHANTM", TransitionFactory.mapOf('E'));
             MAP.put("ENCHANTME", TransitionFactory.mapOf('N'));
             MAP.put("ENCHANTMEN", TransitionFactory.mapOf('T'));

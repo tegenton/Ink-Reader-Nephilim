@@ -11,6 +11,13 @@ public final class TransitionFactory {
     private TransitionFactory() {
     }
 
+    private static Transition getTransition() {
+        if (!BASIC.containsKey(null)) {
+            BASIC.put(null, new Transition());
+        }
+        return BASIC.get(null);
+    }
+
     /**
      * Retrieve one of the basic transitions. These are singleton, and lazily
      * loaded.
@@ -80,6 +87,22 @@ public final class TransitionFactory {
      */
     public static Map<Character, Transition> toWord(final Word word) {
         return Map.of('\0', new Transition('\0', word, ""), '\n',
+                new Transition('\n', word, "\n"), '.',
+                new Transition('.', word, "."), ' ',
+                new Transition(' ', word, " "));
+    }
+
+    public static Map<Character, Transition> toNoun(final Word word) {
+        return Map.of('S', new Transition('S', word, "S"), '\0',
+                new Transition('\0', word, ""), '\n',
+                new Transition('\n', word, "\n"), '.',
+                new Transition('.', word, "."), ' ',
+                new Transition(' ', word, " "));
+    }
+
+    public static Map<Character, Transition> toVerb(final Word word) {
+        return Map.of('S', TransitionFactory.getTransition(), '\0',
+                new Transition('\0', word, ""), '\n',
                 new Transition('\n', word, "\n"), '.',
                 new Transition('.', word, "."), ' ',
                 new Transition(' ', word, " "));

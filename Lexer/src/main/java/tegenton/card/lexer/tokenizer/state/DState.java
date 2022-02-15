@@ -3,6 +3,7 @@ package tegenton.card.lexer.tokenizer.state;
 import tegenton.card.lexer.tokenizer.transition.Transition;
 import tegenton.card.lexer.tokenizer.transition.TransitionFactory;
 import tegenton.card.lexicon.Adjective;
+import tegenton.card.lexicon.Morpheme;
 import tegenton.card.lexicon.Particle;
 import tegenton.card.lexicon.game.GameNoun;
 import tegenton.card.lexicon.game.Keyword;
@@ -49,7 +50,12 @@ public class DState extends State {
                     TransitionFactory.toWord(PlayerAdjective.DEFENDING));
             TransitionFactory.sequence(MAP, "DES", "TROY");
             MAP.put("DESTROY", TransitionFactory.toWord(PlayerVerb.DESTROY));
-            MAP.put("DI", TransitionFactory.mapOf('E', 'F', 'S', 'V'));
+            MAP.put("DI", Map.of('D', new Transition('D', SourceVerb.DO), 'E',
+                    TransitionFactory.getTransition('E'), 'F',
+                    TransitionFactory.getTransition('F'), 'S',
+                    TransitionFactory.getTransition('S'), 'V',
+                    TransitionFactory.getTransition('V')));
+            MAP.put("DID", Map.of('N', new Transition('N', Morpheme.ED, "N")));
             MAP.put("DIE", TransitionFactory.toWord(ObjectVerb.DIE));
             TransitionFactory.sequence(MAP, "DIF", "FERENT");
             MAP.put("DIFFERENT", TransitionFactory.toWord(Adjective.DIFFERENT));

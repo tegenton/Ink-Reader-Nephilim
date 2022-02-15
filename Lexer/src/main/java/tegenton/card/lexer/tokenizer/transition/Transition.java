@@ -5,7 +5,7 @@ import tegenton.card.lexicon.Word;
 import java.util.function.Consumer;
 
 public class Transition {
-    private final char label;
+    private final Character label;
     private String output;
     private Word product;
 
@@ -53,6 +53,10 @@ public class Transition {
         output = state;
     }
 
+    public Transition() {
+        label = null;
+    }
+
     /**
      * Utilize transition.
      *
@@ -67,16 +71,10 @@ public class Transition {
         if (output != null) {
             return output;
         }
-        return name + label;
+        if (label != null) {
+            return name + label;
+        }
+        return name;
     }
 
-    /**
-     * Check whether this transition accepts a particular character.
-     *
-     * @param c Character to check.
-     * @return Is this transition on that character?
-     */
-    public boolean contains(final char c) {
-        return label == c;
-    }
 }

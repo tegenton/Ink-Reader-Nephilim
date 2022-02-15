@@ -51,7 +51,7 @@ public class CState extends State {
             TransitionFactory.sequence(MAP, "CHOI", "CE");
             MAP.put("CHOICE", TransitionFactory.toWord(Noun.CHOICE));
             TransitionFactory.sequence(MAP, "CHOO", "SE");
-            MAP.put("CHOOSE", TransitionFactory.toWord(PlayerVerb.CHOOSE));
+            MAP.put("CHOOSE", TransitionFactory.toVerb(PlayerVerb.CHOOSE));
             TransitionFactory.sequence(MAP, "CHOS", "EN");
             MAP.put("CHOSEN", TransitionFactory.toWord(Adjective.CHOSEN));
             MAP.put("CO",
