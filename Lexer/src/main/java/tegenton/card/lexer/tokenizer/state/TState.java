@@ -109,7 +109,7 @@ public class TState extends State {
             TransitionFactory.sequence(MAP, "TU", "RN");
             MAP.put("TURN", TransitionFactory.toWord(GameNoun.TURN));
             TransitionFactory.sequence(MAP, "TY", "PE");
-            MAP.put("TYPE", TransitionFactory.toWord(GameNoun.TYPE));
+            MAP.put("TYPE", TransitionFactory.mapOf(GameNoun.TYPE));
         }
         return MAP;
     }

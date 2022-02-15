@@ -33,7 +33,7 @@ public class BaseState extends State {
                     TransitionFactory.mapOf('A', 'B', 'C', 'D', 'E', 'F', 'G',
                             'H', 'I', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T',
                             'U', 'V', 'W', 'X', 'Y', 'Z', '1', '3', '\u2022',
-                            '\u2014', '{', '\0', '+', '"', '~'));
+                            '\u2014', '{', '\n', '\0', '+', '"', '~'));
             MAP.put("A",
                     TransitionFactory.mapOf(Determiner.A, 'B', 'C', 'D', 'F',
                             'L', 'M', 'N', 'R', 'S', 'T', 'U'));
@@ -87,8 +87,8 @@ public class BaseState extends State {
                     Map.of('\0', new Transition('\0', Symbol.NEWLINE, "")));
             MAP.put(".",
                     TransitionFactory.toSymbol(Symbol.PERIOD, '\n', '"', ' '));
-            MAP.put("+",
-                    TransitionFactory.toSymbol(Symbol.PLUS, '0', '1', '2'));
+            MAP.put("+", TransitionFactory.toSymbol(Symbol.PLUS, '0', '1', '2',
+                    '7'));
             MAP.put("\"", TransitionFactory.toSymbol(Symbol.QUOTE, 'A'));
             MAP.put("}",
                     TransitionFactory.toSymbol(Symbol.RBRACKET, ':', ',', '{',

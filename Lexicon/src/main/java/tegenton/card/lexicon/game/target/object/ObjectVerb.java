@@ -1,11 +1,11 @@
 package tegenton.card.lexicon.game.target.object;
 
-import tegenton.card.lexicon.Verb;
+import tegenton.card.lexicon.VerbWord;
 
 /**
  * Words describing the actions of objects.
  */
-public enum ObjectVerb implements Verb {
+public enum ObjectVerb implements VerbWord {
     ATTACK,
     BECOME,
     BLOCK,

@@ -1,11 +1,11 @@
 package tegenton.card.lexicon.game.target.object.source;
 
-import tegenton.card.lexicon.Verb;
+import tegenton.card.lexicon.VerbWord;
 
 /**
  * Words representing actions of a source.
  */
-public enum SourceVerb implements Verb {
+public enum SourceVerb implements VerbWord {
     DEAL,
     DO,
     PRODUCE,

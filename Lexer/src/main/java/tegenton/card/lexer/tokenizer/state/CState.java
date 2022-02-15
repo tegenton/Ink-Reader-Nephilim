@@ -39,7 +39,7 @@ public class CState extends State {
             MAP.get("CAN").put('\'',
                     new Transition('\'', TargetAuxiliaryVerb.CAN, "NO"));
             MAP.put("CAR", TransitionFactory.mapOf('D'));
-            MAP.put("CARD", TransitionFactory.toNoun(ObjectNoun.CARD));
+            MAP.put("CARD", TransitionFactory.mapOf(ObjectNoun.CARD));
             MAP.put("CAS", TransitionFactory.mapOf('T'));
             MAP.put("CAST", TransitionFactory.toWord(PlayerVerb.CAST));
             TransitionFactory.sequence(MAP, "CAU", "SE");
@@ -89,7 +89,7 @@ public class CState extends State {
             MAP.put("CREAT", TransitionFactory.mapOf('E', 'U'));
             MAP.put("CREATE", TransitionFactory.toWord(PlayerVerb.CREATE));
             TransitionFactory.sequence(MAP, "CREATU", "RE");
-            MAP.put("CREATURE", TransitionFactory.toNoun(CardType.CREATURE));
+            MAP.put("CREATURE", TransitionFactory.mapOf(CardType.CREATURE));
         }
         return MAP;
     }

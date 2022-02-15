@@ -29,6 +29,8 @@ public class UState extends State {
     protected Map<String, Map<Character, Transition>> transitions() {
         if (MAP.isEmpty()) {
             MAP.put("UN", TransitionFactory.mapOf('D', 'L', 'T'));
+            MAP.get("UN").put('B', new Transition('B', Adverb.NOT, "B"));
+            MAP.get("UN").put('S', new Transition('S', Adverb.NOT, "S"));
             MAP.put("UND", TransitionFactory.mapOf('E'));
             MAP.put("UNDE", TransitionFactory.mapOf('R'));
             MAP.put("UNDER", TransitionFactory.mapOf(Preposition.UNDER));

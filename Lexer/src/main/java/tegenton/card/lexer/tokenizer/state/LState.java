@@ -39,7 +39,7 @@ public class LState extends State {
             MAP.put("LABE", TransitionFactory.mapOf('L'));
             MAP.put("LABEL", TransitionFactory.mapOf(Noun.LABEL));
             MAP.put("LAN", TransitionFactory.mapOf('D'));
-            MAP.put("LAND", TransitionFactory.toNoun(CardType.LAND));
+            MAP.put("LAND", TransitionFactory.mapOf(CardType.LAND));
             MAP.put("LE", TransitionFactory.mapOf('A', 'F', 'S'));
             MAP.put("LEA", TransitionFactory.mapOf('S', 'V'));
             MAP.put("LEAS", TransitionFactory.mapOf('T'));
@@ -71,6 +71,7 @@ public class LState extends State {
             MAP.put("LOO", TransitionFactory.mapOf('K'));
             MAP.put("LOOK", TransitionFactory.mapOf(PlayerVerb.LOOK));
             MAP.put("LOS", TransitionFactory.mapOf('E'));
+            MAP.get("LOS").put('T', new Transition('T', TargetVerb.LOSE, "ED"));
             MAP.put("LOSE", TransitionFactory.mapOf(TargetVerb.LOSE));
             MAP.put("LOY", TransitionFactory.mapOf('A'));
             MAP.put("LOYA", TransitionFactory.mapOf('L'));

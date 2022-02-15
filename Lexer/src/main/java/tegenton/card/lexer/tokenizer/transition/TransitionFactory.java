@@ -1,7 +1,8 @@
 package tegenton.card.lexer.tokenizer.transition;
 
+import tegenton.card.lexicon.NounWord;
 import tegenton.card.lexicon.Symbol;
-import tegenton.card.lexicon.Verb;
+import tegenton.card.lexicon.VerbWord;
 import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.ManaSymbol;
 import tegenton.card.lexicon.game.Tap;
@@ -99,7 +100,7 @@ public final class TransitionFactory {
         }
     }
 
-    public static Map<Character, Transition> mapOf(final Verb verb) {
+    public static Map<Character, Transition> mapOf(final VerbWord verb) {
         final Map<Character, Transition> map = toWord(verb);
         map.put('E', new Transition('E', verb, "E"));
         map.put('I', new Transition('I', verb, "I"));
@@ -124,10 +125,11 @@ public final class TransitionFactory {
         return map;
     }
 
-    public static Map<Character, Transition> toNoun(final Word word) {
-        final Map<Character, Transition> map = toWord(word);
-        map.put('E', new Transition('E', word, "E"));
-        map.put('S', new Transition('S', word, "S"));
+    public static Map<Character, Transition> mapOf(final NounWord noun) {
+        final Map<Character, Transition> map = toWord(noun);
+        map.put('E', new Transition('E', noun, "E"));
+        map.put('S', new Transition('S', noun, "S"));
+        map.put('\'', new Transition('\'', noun, "'"));
         return map;
     }
 

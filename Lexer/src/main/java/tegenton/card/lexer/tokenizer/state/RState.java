@@ -51,6 +51,8 @@ public class RState extends State {
             MAP.put("REGENERAT", TransitionFactory.mapOf('E'));
             MAP.put("REGENERATE",
                     TransitionFactory.mapOf(PlayerVerb.REGENERATE));
+            MAP.get("REGENERATE")
+                    .put('D', new Transition('D', PlayerVerb.REGENERATE, "ED"));
             MAP.put("REM", TransitionFactory.mapOf('O'));
             MAP.put("REMO", TransitionFactory.mapOf('V'));
             MAP.put("REMOV", TransitionFactory.mapOf('E'));

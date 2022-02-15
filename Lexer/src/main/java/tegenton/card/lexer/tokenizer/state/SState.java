@@ -83,6 +83,8 @@ public class SState extends State {
             MAP.put("SPEL", TransitionFactory.mapOf('L'));
             MAP.put("SPELL", TransitionFactory.mapOf(ObjectNoun.SPELL));
             MAP.put("SPEN", TransitionFactory.mapOf('D'));
+            MAP.get("SPEN")
+                    .put('T', new Transition('T', PlayerVerb.SPEND, "ED"));
             MAP.put("SPEND", TransitionFactory.mapOf(PlayerVerb.SPEND));
             MAP.put("SO", TransitionFactory.mapOf(Pronoun.SO, 'M', 'R', 'U'));
             MAP.put("SOM", TransitionFactory.mapOf('E'));
@@ -109,7 +111,7 @@ public class SState extends State {
             MAP.put("SW", TransitionFactory.mapOf('A'));
             MAP.put("SWA", TransitionFactory.mapOf('M'));
             MAP.put("SWAM", TransitionFactory.mapOf('P'));
-            MAP.put("SWAMP", TransitionFactory.toNoun(LandType.SWAMP));
+            MAP.put("SWAMP", TransitionFactory.mapOf(LandType.SWAMP));
         }
         return MAP;
     }

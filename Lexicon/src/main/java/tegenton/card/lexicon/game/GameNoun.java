@@ -1,11 +1,11 @@
 package tegenton.card.lexicon.game;
 
-import tegenton.card.lexicon.Word;
+import tegenton.card.lexicon.NounWord;
 
 /**
  * Nouns representing game concepts.
  */
-public enum GameNoun implements Word {
+public enum GameNoun implements NounWord {
     ABILITY,
     COLOR,
     DAMAGE,

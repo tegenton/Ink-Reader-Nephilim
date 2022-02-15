@@ -46,10 +46,13 @@ public class AState extends State {
             TransitionFactory.sequence(MAP, "ABO", "VE");
             MAP.put("ABOVE", TransitionFactory.toWord(Preposition.ABOVE));
             TransitionFactory.sequence(MAP, "AC", "TIVATE");
-            MAP.put("ACTIVATE", TransitionFactory.toWord(PlayerVerb.ACTIVATE));
+            MAP.put("ACTIVATE", TransitionFactory.mapOf(PlayerVerb.ACTIVATE));
             MAP.put("AD", TransitionFactory.mapOf('D'));
             MAP.put("ADD", TransitionFactory.mapOf(PlayerVerb.ADD, 'I'));
-            TransitionFactory.sequence(MAP, "ADDI", "TIONAL");
+            TransitionFactory.sequence(MAP, "ADDI", "TION");
+            MAP.put("ADDITION",
+                    TransitionFactory.mapOf(Preposition.ADDITION, 'A'));
+            MAP.put("ADDITIONA", TransitionFactory.mapOf('L'));
             MAP.put("ADDITIONAL",
                     TransitionFactory.toWord(Adjective.ADDITIONAL));
             TransitionFactory.sequence(MAP, "AF", "TER");
@@ -85,7 +88,7 @@ public class AState extends State {
             MAP.put("ATTACH", TransitionFactory.toWord(PlayerVerb.ATTACH));
             MAP.put("ATTACK", TransitionFactory.mapOf(ObjectVerb.ATTACK));
             TransitionFactory.sequence(MAP, "AU", "RA");
-            MAP.put("AURA", TransitionFactory.toNoun(EnchantmentType.AURA));
+            MAP.put("AURA", TransitionFactory.mapOf(EnchantmentType.AURA));
         }
         return MAP;
     }

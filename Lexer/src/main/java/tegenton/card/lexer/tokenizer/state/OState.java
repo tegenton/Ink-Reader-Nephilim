@@ -59,7 +59,7 @@ public class OState extends State {
             MAP.put("OVE", TransitionFactory.mapOf('R'));
             MAP.put("OVER", TransitionFactory.mapOf(Adverb.OVER));
             MAP.put("OW", TransitionFactory.mapOf('N'));
-            MAP.put("OWN", TransitionFactory.toNoun(PlayerVerb.OWN));
+            MAP.put("OWN", TransitionFactory.mapOf(PlayerVerb.OWN));
 
         }
         return MAP;
