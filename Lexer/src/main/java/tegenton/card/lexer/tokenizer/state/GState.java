@@ -30,7 +30,7 @@ public class GState extends State {
         if (MAP.isEmpty()) {
             MAP.put("GA", TransitionFactory.mapOf('I', 'M'));
             MAP.put("GAI", TransitionFactory.mapOf('N'));
-            MAP.put("GAIN", TransitionFactory.mapOf(TargetVerb.GAIN));
+            MAP.put("GAIN", TransitionFactory.toVerb(TargetVerb.GAIN));
             MAP.put("GAM", TransitionFactory.mapOf('E'));
             MAP.put("GAME", TransitionFactory.mapOf(GameNoun.GAME));
             MAP.put("GE", TransitionFactory.mapOf('T'));

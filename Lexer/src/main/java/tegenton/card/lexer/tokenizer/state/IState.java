@@ -73,6 +73,8 @@ public class IState extends State {
             MAP.put("ISLA", TransitionFactory.mapOf('N'));
             MAP.put("ISLAN", TransitionFactory.mapOf('D'));
             MAP.put("ISLAND", TransitionFactory.mapOf(LandType.ISLAND));
+            MAP.get("ISLAND")
+                    .put('W', new Transition('W', LandType.ISLAND, "W"));
             MAP.put("IT", TransitionFactory.mapOf(ObjectNoun.IT));
         }
         return MAP;

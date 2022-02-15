@@ -5,16 +5,15 @@ package tegenton.card.lexicon;
  */
 public enum Symbol implements Word {
     BULLET("\u2022"),
-    CLOSEQUOTE("\u201D"),
     COLON(":"),
     COMMA(","),
     DASH("\u2014"),
     HYPHEN("-"),
     LBRACKET("{"),
     NEWLINE("\n"),
-    OPENQUOTE("\u201C"),
     PERIOD("."),
     PLUS("+"),
+    QUOTE("\""),
     RBRACKET("}"),
     SEMICOLON(";"),
     SLASH("/"),

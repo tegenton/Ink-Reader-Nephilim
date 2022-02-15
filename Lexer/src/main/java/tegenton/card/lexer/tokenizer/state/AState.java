@@ -65,6 +65,7 @@ public class AState extends State {
             MAP.put("AN",
                     TransitionFactory.mapOf(Determiner.AN, 'D', 'O', 'T', 'Y'));
             MAP.put("AND", TransitionFactory.toWord(Conjunction.AND));
+            MAP.get("AND").put('/', new Transition('/', Conjunction.AND, "/"));
             TransitionFactory.sequence(MAP, "ANO", "THER");
             MAP.put("ANOTHER", TransitionFactory.toWord(Determiner.ANOTHER));
             MAP.put("ANT", TransitionFactory.mapOf('E'));
@@ -84,7 +85,7 @@ public class AState extends State {
             MAP.put("ATTACH", TransitionFactory.toWord(PlayerVerb.ATTACH));
             MAP.put("ATTACK", TransitionFactory.toVerb(ObjectVerb.ATTACK));
             TransitionFactory.sequence(MAP, "AU", "RA");
-            MAP.put("AURA", TransitionFactory.toWord(EnchantmentType.AURA));
+            MAP.put("AURA", TransitionFactory.toNoun(EnchantmentType.AURA));
         }
         return MAP;
     }

@@ -830,7 +830,7 @@ public class SetCardJson {
     }
 
     public String getProcessedText() {
-        return getText().replaceAll(getName(), "~")
-                .replaceAll("\\([^)]*\\)", "");
+        return text != null ? getText().replaceAll(getName(), "~")
+                .replaceAll("\\([^)]*\\)", "") : "";
     }
 }

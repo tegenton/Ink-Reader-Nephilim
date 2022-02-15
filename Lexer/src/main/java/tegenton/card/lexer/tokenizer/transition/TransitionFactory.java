@@ -3,6 +3,7 @@ package tegenton.card.lexer.tokenizer.transition;
 import tegenton.card.lexicon.Symbol;
 import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.ManaSymbol;
+import tegenton.card.lexicon.game.Tap;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -45,6 +46,14 @@ public final class TransitionFactory {
                                                    final char... labels) {
         final Map<Character, Transition> transitions = mapOf(labels);
         transitions.putAll(toWord(word));
+        return transitions;
+    }
+
+    public static Map<Character, Transition> mapOf(final Tap word,
+                                                   final char... labels) {
+        final Map<Character, Transition> transitions = mapOf(labels);
+        transitions.putAll(toWord(word));
+        transitions.put('}', new Transition('}', word, "}"));
         return transitions;
     }
 
@@ -101,25 +110,23 @@ public final class TransitionFactory {
         map.put('\0', new Transition('\0', word, ""));
         map.put('\n', new Transition('\n', word, "\n"));
         map.put('.', new Transition('.', word, "."));
+        map.put(';', new Transition(';', word, ";"));
         map.put(' ', new Transition(' ', word, " "));
         return map;
     }
 
     public static Map<Character, Transition> toNoun(final Word word) {
-        return Map.of('S', new Transition('S', word, "S"), '\0',
-                new Transition('\0', word, ""), '\n',
-                new Transition('\n', word, "\n"), '.',
-                new Transition('.', word, "."), ' ',
-                new Transition(' ', word, " "));
+        final Map<Character, Transition> map = toWord(word);
+        map.put('S', new Transition('S', word, "S"));
+        return map;
     }
 
     public static Map<Character, Transition> toVerb(final Word word) {
-        return Map.of('I', new Transition('I', word, "I"), 'S',
-                TransitionFactory.getTransition(), '\0',
-                new Transition('\0', word, ""), '\n',
-                new Transition('\n', word, "\n"), '.',
-                new Transition('.', word, "."), ' ',
-                new Transition(' ', word, " "));
+        final Map<Character, Transition> map = toWord(word);
+        map.put('E', new Transition('E', word, "E"));
+        map.put('I', new Transition('I', word, "I"));
+        map.put('S', TransitionFactory.getTransition());
+        return map;
     }
 
     public static Map<Character, Transition> toSymbol(final Symbol symbol,
@@ -129,6 +136,7 @@ public final class TransitionFactory {
             transitions.put(c,
                     new Transition(c, symbol, Character.toString(c)));
         }
+        transitions.put('\0', new Transition('\0', symbol, ""));
         return transitions;
     }
 }

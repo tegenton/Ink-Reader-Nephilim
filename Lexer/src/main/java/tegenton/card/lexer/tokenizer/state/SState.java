@@ -6,6 +6,7 @@ import tegenton.card.lexicon.Adjective;
 import tegenton.card.lexicon.Adverb;
 import tegenton.card.lexicon.Determiner;
 import tegenton.card.lexicon.Pronoun;
+import tegenton.card.lexicon.game.GameNoun;
 import tegenton.card.lexicon.game.Keyword;
 import tegenton.card.lexicon.game.target.object.ObjectNoun;
 import tegenton.card.lexicon.game.target.object.source.SourceNoun;
@@ -96,7 +97,9 @@ public class SState extends State {
             MAP.put("SOUR", TransitionFactory.mapOf('C'));
             MAP.put("SOURC", TransitionFactory.mapOf('E'));
             MAP.put("SOURCE", TransitionFactory.mapOf(SourceNoun.SOURCE));
-            MAP.put("ST", TransitionFactory.mapOf('I', 'R'));
+            MAP.put("ST", TransitionFactory.mapOf('E', 'I', 'R'));
+            MAP.put("STE", TransitionFactory.mapOf('P'));
+            MAP.put("STEP", TransitionFactory.mapOf(GameNoun.STEP));
             MAP.put("STI", TransitionFactory.mapOf('L'));
             MAP.put("STIL", TransitionFactory.mapOf('L'));
             MAP.put("STILL", TransitionFactory.mapOf(Adverb.STILL));
@@ -107,7 +110,7 @@ public class SState extends State {
             MAP.put("SW", TransitionFactory.mapOf('A'));
             MAP.put("SWA", TransitionFactory.mapOf('M'));
             MAP.put("SWAM", TransitionFactory.mapOf('P'));
-            MAP.put("SWAMP", TransitionFactory.mapOf(LandType.SWAMP));
+            MAP.put("SWAMP", TransitionFactory.toNoun(LandType.SWAMP));
         }
         return MAP;
     }

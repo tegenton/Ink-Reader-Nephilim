@@ -36,7 +36,9 @@ public class DState extends State {
             MAP.put("DAMAGE", TransitionFactory.toWord(GameNoun.DAMAGE));
             MAP.put("DE", TransitionFactory.mapOf('A', 'C', 'F', 'S'));
             MAP.put("DEA", TransitionFactory.mapOf('L'));
-            MAP.put("DEAL", TransitionFactory.toWord(SourceVerb.DEAL));
+            MAP.put("DEAL", TransitionFactory.toVerb(SourceVerb.DEAL));
+            MAP.get("DEAL")
+                    .put('T', new Transition('T', SourceVerb.DEAL, "ED"));
             MAP.put("DEC", TransitionFactory.mapOf('K', 'L'));
             MAP.put("DECK", TransitionFactory.toWord(Zone.DECK));
             TransitionFactory.sequence(MAP, "DECL", "ARE");
@@ -72,9 +74,7 @@ public class DState extends State {
             MAP.put("DOW", TransitionFactory.mapOf('N'));
             MAP.put("DOWN", TransitionFactory.toWord(Particle.DOWN));
             TransitionFactory.sequence(MAP, "DR", "AW");
-            MAP.put("DRAW", Map.of('S', new Transition('S', "DRAW"), '\0',
-                    new Transition('\0', PlayerVerb.DRAW, ""), ' ',
-                    new Transition(' ', PlayerVerb.DRAW, " ")));
+            MAP.put("DRAW", TransitionFactory.toVerb(PlayerVerb.DRAW));
             TransitionFactory.sequence(MAP, "DU", "RING");
             MAP.put("DURING", TransitionFactory.toWord(Chronology.DURING));
         }

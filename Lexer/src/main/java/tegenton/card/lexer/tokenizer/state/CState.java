@@ -36,10 +36,10 @@ public class CState extends State {
         if (MAP.isEmpty()) {
             MAP.put("CA", TransitionFactory.mapOf('N', 'R', 'S', 'U'));
             MAP.put("CAN", TransitionFactory.toWord(TargetAuxiliaryVerb.CAN));
+            MAP.get("CAN").put('\'',
+                    new Transition('\'', TargetAuxiliaryVerb.CAN, "NO"));
             MAP.put("CAR", TransitionFactory.mapOf('D'));
-            MAP.put("CARD",
-                    Map.of('S', new Transition('S', ObjectNoun.CARD, "S"), '\0',
-                            new Transition('\0', ObjectNoun.CARD, "")));
+            MAP.put("CARD", TransitionFactory.toNoun(ObjectNoun.CARD));
             MAP.put("CAS", TransitionFactory.mapOf('T'));
             MAP.put("CAST", TransitionFactory.toWord(PlayerVerb.CAST));
             TransitionFactory.sequence(MAP, "CAU", "SE");
