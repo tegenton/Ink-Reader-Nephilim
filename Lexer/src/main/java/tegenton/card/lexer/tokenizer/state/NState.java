@@ -43,7 +43,9 @@ public class NState extends State {
             MAP.put("NINETEEN",
                     TransitionFactory.mapOf(EnglishNumber.NINETEEN));
             MAP.put("NO", TransitionFactory.mapOf(Determiner.NO, 'T'));
+            MAP.get("NO").put('N', TransitionFactory.getTransition('T'));
             MAP.put("NOT", TransitionFactory.mapOf(Adverb.NOT));
+            MAP.get("NOT").put('-', new Transition('-', Adverb.NOT, ""));
             MAP.put("NU", TransitionFactory.mapOf('M'));
             MAP.put("NUM", TransitionFactory.mapOf('B'));
             MAP.put("NUMB", TransitionFactory.mapOf('E'));

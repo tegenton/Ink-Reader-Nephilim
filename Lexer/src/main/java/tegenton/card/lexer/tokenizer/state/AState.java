@@ -14,6 +14,7 @@ import tegenton.card.lexicon.game.Zone;
 import tegenton.card.lexicon.game.target.TargetAdjective;
 import tegenton.card.lexicon.game.target.TargetVerb;
 import tegenton.card.lexicon.game.target.object.ObjectVerb;
+import tegenton.card.lexicon.game.target.player.PlayerAdjective;
 import tegenton.card.lexicon.game.target.player.PlayerVerb;
 import tegenton.card.lexicon.game.turn.Chronology;
 import tegenton.card.lexicon.game.type.CardType;
@@ -39,14 +40,20 @@ public class AState extends State {
     protected Map<String, Map<Character, Transition>> transitions() {
         if (MAP.isEmpty()) {
             MAP.put("AB", TransitionFactory.mapOf('I', 'L', 'O'));
-            TransitionFactory.sequence(MAP, "ABI", "LITY");
+            TransitionFactory.sequence(MAP, "ABI", "LIT");
+            MAP.put("ABILIT", TransitionFactory.mapOf('I', 'Y'));
+            MAP.put("ABILITI", TransitionFactory.mapOf('E'));
+            MAP.put("ABILITIE", TransitionFactory.mapOf(GameNoun.ABILITY));
             MAP.put("ABILITY", TransitionFactory.toWord(GameNoun.ABILITY));
             MAP.put("ABL", TransitionFactory.mapOf('E'));
             MAP.put("ABLE", TransitionFactory.toWord(TargetAdjective.ABLE));
             TransitionFactory.sequence(MAP, "ABO", "VE");
             MAP.put("ABOVE", TransitionFactory.toWord(Preposition.ABOVE));
-            TransitionFactory.sequence(MAP, "AC", "TIVATE");
+            TransitionFactory.sequence(MAP, "AC", "TIV");
+            MAP.put("ACTIV", TransitionFactory.mapOf('A', 'E'));
+            TransitionFactory.sequence(MAP, "ACTIVA", "TE");
             MAP.put("ACTIVATE", TransitionFactory.mapOf(PlayerVerb.ACTIVATE));
+            MAP.put("ACTIVE", TransitionFactory.mapOf(PlayerAdjective.ACTIVE));
             MAP.put("AD", TransitionFactory.mapOf('D'));
             MAP.put("ADD", TransitionFactory.mapOf(PlayerVerb.ADD, 'I'));
             TransitionFactory.sequence(MAP, "ADDI", "TION");

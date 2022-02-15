@@ -41,6 +41,7 @@ public class IState extends State {
             MAP.put("IGNORE", TransitionFactory.mapOf(PlayerVerb.IGNORE));
             MAP.put("IN",
                     TransitionFactory.mapOf(Preposition.IN, 'D', 'G', 'S'));
+            MAP.get("IN").put('T', new Transition('T', Preposition.IN, "T"));
             MAP.put("IND", TransitionFactory.mapOf('E'));
             MAP.put("INDE", TransitionFactory.mapOf('S'));
             MAP.put("INDES", TransitionFactory.mapOf('T'));

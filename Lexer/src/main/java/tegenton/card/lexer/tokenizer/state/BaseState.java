@@ -32,7 +32,7 @@ public class BaseState extends State {
             MAP.put("",
                     TransitionFactory.mapOf('A', 'B', 'C', 'D', 'E', 'F', 'G',
                             'H', 'I', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T',
-                            'U', 'V', 'W', 'X', 'Y', 'Z', '1', '2', '3',
+                            'U', 'V', 'W', 'X', 'Y', 'Z', '1', '2', '3', '4',
                             '\u2022', '\u2014', '{', '\n', '\0', '+', '"',
                             '~'));
             MAP.put("A",
