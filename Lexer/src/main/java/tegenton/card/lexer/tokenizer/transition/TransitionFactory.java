@@ -4,8 +4,7 @@ import tegenton.card.lexicon.NounWord;
 import tegenton.card.lexicon.Symbol;
 import tegenton.card.lexicon.VerbWord;
 import tegenton.card.lexicon.Word;
-import tegenton.card.lexicon.game.ManaSymbol;
-import tegenton.card.lexicon.game.Tap;
+import tegenton.card.lexicon.game.CostSymbol;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -51,15 +50,7 @@ public final class TransitionFactory {
         return transitions;
     }
 
-    public static Map<Character, Transition> mapOf(final Tap word,
-                                                   final char... labels) {
-        final Map<Character, Transition> transitions = mapOf(labels);
-        transitions.putAll(toWord(word));
-        transitions.put('}', new Transition('}', word, "}"));
-        return transitions;
-    }
-
-    public static Map<Character, Transition> mapOf(final ManaSymbol word,
+    public static Map<Character, Transition> mapOf(final CostSymbol word,
                                                    final char... labels) {
         final Map<Character, Transition> transitions = mapOf(labels);
         transitions.putAll(toWord(word));

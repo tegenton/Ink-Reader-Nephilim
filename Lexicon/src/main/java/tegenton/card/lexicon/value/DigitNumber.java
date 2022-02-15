@@ -1,5 +1,6 @@
 package tegenton.card.lexicon.value;
 
+
 import java.util.stream.IntStream;
 
 /**

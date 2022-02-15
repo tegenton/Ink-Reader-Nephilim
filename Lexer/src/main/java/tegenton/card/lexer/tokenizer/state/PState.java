@@ -31,6 +31,7 @@ public class PState extends State {
     protected Map<String, Map<Character, Transition>> transitions() {
         if (MAP.isEmpty()) {
             MAP.put("PA", TransitionFactory.mapOf('Y'));
+            MAP.get("PA").put('I', new Transition('I', PlayerVerb.PAY, "E"));
             MAP.put("PAY", TransitionFactory.mapOf(PlayerVerb.PAY));
             MAP.put("PE", TransitionFactory.mapOf('R'));
             MAP.put("PER", TransitionFactory.mapOf('M'));

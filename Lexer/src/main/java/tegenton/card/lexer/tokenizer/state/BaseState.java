@@ -32,8 +32,9 @@ public class BaseState extends State {
             MAP.put("",
                     TransitionFactory.mapOf('A', 'B', 'C', 'D', 'E', 'F', 'G',
                             'H', 'I', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T',
-                            'U', 'V', 'W', 'X', 'Y', 'Z', '1', '3', '\u2022',
-                            '\u2014', '{', '\n', '\0', '+', '"', '~'));
+                            'U', 'V', 'W', 'X', 'Y', 'Z', '1', '2', '3',
+                            '\u2022', '\u2014', '{', '\n', '\0', '+', '"',
+                            '~'));
             MAP.put("A",
                     TransitionFactory.mapOf(Determiner.A, 'B', 'C', 'D', 'F',
                             'L', 'M', 'N', 'R', 'S', 'T', 'U'));
@@ -81,8 +82,8 @@ public class BaseState extends State {
             MAP.put(",", TransitionFactory.toWord(Symbol.COMMA));
             MAP.put("\u2014", TransitionFactory.toSymbol(Symbol.DASH, '\n'));
             MAP.put("{",
-                    TransitionFactory.toSymbol(Symbol.LBRACKET, 'T', 'W', '0',
-                            '1'));
+                    TransitionFactory.toSymbol(Symbol.LBRACKET, 'T', 'U', 'W',
+                            'X', '0', '1'));
             MAP.put("\n",
                     Map.of('\0', new Transition('\0', Symbol.NEWLINE, "")));
             MAP.put(".",
