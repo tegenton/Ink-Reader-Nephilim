@@ -2,6 +2,7 @@ package tegenton.card.lexer.tokenizer.transition;
 
 import tegenton.card.lexicon.Symbol;
 import tegenton.card.lexicon.Word;
+import tegenton.card.lexicon.game.ManaSymbol;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -44,6 +45,14 @@ public final class TransitionFactory {
                                                    final char... labels) {
         final Map<Character, Transition> transitions = mapOf(labels);
         transitions.putAll(toWord(word));
+        return transitions;
+    }
+
+    public static Map<Character, Transition> mapOf(final ManaSymbol word,
+                                                   final char... labels) {
+        final Map<Character, Transition> transitions = mapOf(labels);
+        transitions.putAll(toWord(word));
+        transitions.put('}', new Transition('}', word, "}"));
         return transitions;
     }
 

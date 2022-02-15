@@ -9,7 +9,7 @@ public final class DigitNumber implements ValueWord {
 
     private final int val;
 
-    private DigitNumber(final int i) {
+    public DigitNumber(final int i) {
         this.val = i;
     }
 

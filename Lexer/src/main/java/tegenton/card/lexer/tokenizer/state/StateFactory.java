@@ -16,6 +16,9 @@ public final class StateFactory {
      * @return Instance of named state.
      */
     public static State getState(final String name) {
+        if (name.length() > 0 && Character.isDigit(name.charAt(0))) {
+            return new NumberState();
+        }
         if (!STATES.containsKey(name)) {
             if (name.length() < 2) {
                 STATES.put(name, new BaseState(name));

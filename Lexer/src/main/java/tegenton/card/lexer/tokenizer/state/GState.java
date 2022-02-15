@@ -34,7 +34,7 @@ public class GState extends State {
             MAP.put("GAM", TransitionFactory.mapOf('E'));
             MAP.put("GAME", TransitionFactory.mapOf(GameNoun.GAME));
             MAP.put("GE", TransitionFactory.mapOf('T'));
-            MAP.put("GET", TransitionFactory.mapOf(ObjectVerb.GET));
+            MAP.put("GET", TransitionFactory.toVerb(ObjectVerb.GET));
             MAP.put("GO", TransitionFactory.mapOf('B', 'L'));
             MAP.put("GOB", TransitionFactory.mapOf('L'));
             MAP.put("GOBL", TransitionFactory.mapOf('I'));
