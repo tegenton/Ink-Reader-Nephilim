@@ -69,7 +69,11 @@ public class CState extends State {
             MAP.put("CONTINUOUSLY",
                     TransitionFactory.toWord(PlayerAdverb.CONTINUOUSLY));
             TransitionFactory.sequence(MAP, "CONTR", "OL");
-            MAP.put("CONTROL", TransitionFactory.toWord(PlayerVerb.CONTROL));
+            MAP.put("CONTROL",
+                    TransitionFactory.mapOf(PlayerVerb.CONTROL, 'L', 'S'));
+            MAP.put("CONTROLL",
+                    Map.of('E', new Transition('E', PlayerVerb.CONTROL, "E")));
+            MAP.put("CONTROLS", TransitionFactory.toWord(PlayerVerb.CONTROL));
             MAP.put("COP", TransitionFactory.mapOf('Y'));
             MAP.put("COPY", TransitionFactory.toWord(ObjectNoun.COPY));
             TransitionFactory.sequence(MAP, "COR", "PSE");
@@ -85,7 +89,7 @@ public class CState extends State {
             MAP.put("CREAT", TransitionFactory.mapOf('E', 'U'));
             MAP.put("CREATE", TransitionFactory.toWord(PlayerVerb.CREATE));
             TransitionFactory.sequence(MAP, "CREATU", "RE");
-            MAP.put("CREATURE", TransitionFactory.toWord(CardType.CREATURE));
+            MAP.put("CREATURE", TransitionFactory.toNoun(CardType.CREATURE));
         }
         return MAP;
     }

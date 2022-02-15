@@ -1,5 +1,6 @@
 package tegenton.card.lexer.tokenizer.transition;
 
+import tegenton.card.lexicon.Symbol;
 import tegenton.card.lexicon.Word;
 
 import java.util.HashMap;
@@ -86,10 +87,13 @@ public final class TransitionFactory {
      * @return Transitions on space or a null terminator producing that word.
      */
     public static Map<Character, Transition> toWord(final Word word) {
-        return Map.of('\0', new Transition('\0', word, ""), '\n',
-                new Transition('\n', word, "\n"), '.',
-                new Transition('.', word, "."), ' ',
-                new Transition(' ', word, " "));
+        final Map<Character, Transition> map = new HashMap<>();
+        map.put(',', new Transition(',', word, ","));
+        map.put('\0', new Transition('\0', word, ""));
+        map.put('\n', new Transition('\n', word, "\n"));
+        map.put('.', new Transition('.', word, "."));
+        map.put(' ', new Transition(' ', word, " "));
+        return map;
     }
 
     public static Map<Character, Transition> toNoun(final Word word) {
@@ -101,10 +105,21 @@ public final class TransitionFactory {
     }
 
     public static Map<Character, Transition> toVerb(final Word word) {
-        return Map.of('S', TransitionFactory.getTransition(), '\0',
+        return Map.of('I', new Transition('I', word, "I"), 'S',
+                TransitionFactory.getTransition(), '\0',
                 new Transition('\0', word, ""), '\n',
                 new Transition('\n', word, "\n"), '.',
                 new Transition('.', word, "."), ' ',
                 new Transition(' ', word, " "));
+    }
+
+    public static Map<Character, Transition> toSymbol(final Symbol symbol,
+                                                      final char... labels) {
+        final Map<Character, Transition> transitions = new HashMap<>();
+        for (final char c : labels) {
+            transitions.put(c,
+                    new Transition(c, symbol, Character.toString(c)));
+        }
+        return transitions;
     }
 }

@@ -41,6 +41,8 @@ public class DState extends State {
             MAP.put("DECK", TransitionFactory.toWord(Zone.DECK));
             TransitionFactory.sequence(MAP, "DECL", "ARE");
             MAP.put("DECLARE", TransitionFactory.toWord(PlayerVerb.DECLARE));
+            MAP.get("DECLARE")
+                    .put('D', new Transition('D', PlayerVerb.DECLARE, "ED"));
             TransitionFactory.sequence(MAP, "DEF", "END");
             MAP.put("DEFEND", TransitionFactory.mapOf('E', 'I'));
             MAP.put("DEFENDE", TransitionFactory.mapOf('R'));
@@ -63,7 +65,10 @@ public class DState extends State {
             MAP.put("DISCARD", TransitionFactory.toWord(PlayerVerb.DISCARD));
             TransitionFactory.sequence(MAP, "DIV", "IDE");
             MAP.put("DIVIDE", TransitionFactory.toWord(PlayerVerb.DIVIDE));
-            MAP.put("DO", TransitionFactory.mapOf(SourceVerb.DO, 'W'));
+            MAP.put("DO", TransitionFactory.mapOf(SourceVerb.DO, 'E', 'W'));
+            MAP.put("DOE", TransitionFactory.mapOf('S'));
+            MAP.put("DOES",
+                    Map.of('N', new Transition('N', SourceVerb.DO, "N")));
             MAP.put("DOW", TransitionFactory.mapOf('N'));
             MAP.put("DOWN", TransitionFactory.toWord(Particle.DOWN));
             TransitionFactory.sequence(MAP, "DR", "AW");

@@ -62,7 +62,10 @@ public class BState extends State {
             TransitionFactory.sequence(MAP, "BLA", "CK");
             MAP.put("BLACK", TransitionFactory.toWord(ColorWord.BLACK));
             TransitionFactory.sequence(MAP, "BLO", "CK");
-            MAP.put("BLOCK", TransitionFactory.toWord(ObjectVerb.BLOCK));
+            MAP.put("BLOCK", TransitionFactory.mapOf(ObjectVerb.BLOCK, 'E'));
+            MAP.get("BLOCK").put('S', new Transition());
+            MAP.put("BLOCKE",
+                    Map.of('R', new Transition('R', ObjectVerb.BLOCK, "ER")));
             MAP.put("BLU", TransitionFactory.mapOf('E'));
             MAP.put("BLUE", TransitionFactory.toWord(ColorWord.BLUE));
             MAP.put("BU", TransitionFactory.mapOf('T'));

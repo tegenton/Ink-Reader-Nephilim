@@ -32,7 +32,7 @@ public class BaseState extends State {
             MAP.put("",
                     TransitionFactory.mapOf('A', 'B', 'C', 'D', 'E', 'F', 'G',
                             'H', 'I', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T',
-                            'U', 'V', 'W', 'X', 'Y', 'Z'));
+                            'U', 'V', 'W', 'X', 'Y', 'Z', '{', '\0', '~'));
             MAP.put("A",
                     TransitionFactory.mapOf(Determiner.A, 'B', 'C', 'D', 'F',
                             'L', 'M', 'N', 'R', 'S', 'T', 'U'));
@@ -75,10 +75,13 @@ public class BaseState extends State {
             MAP.put("X", TransitionFactory.mapOf(Variable.X));
             MAP.put("Y", TransitionFactory.mapOf(Variable.Y, 'O'));
             MAP.put("Z", TransitionFactory.mapOf('E', 'O'));
+            MAP.put(",", TransitionFactory.toWord(Symbol.COMMA));
+            MAP.put("{", TransitionFactory.toSymbol(Symbol.LBRACKET, '3'));
             MAP.put("\n",
                     Map.of('\0', new Transition('\0', Symbol.NEWLINE, "")));
             MAP.put(".", TransitionFactory.toWord(Symbol.PERIOD));
             MAP.put(" ", Map.of('\0', new Transition('\0', Symbol.SPACE, "")));
+            MAP.put("~", TransitionFactory.toWord(Symbol.TILDE));
         }
         return MAP;
     }

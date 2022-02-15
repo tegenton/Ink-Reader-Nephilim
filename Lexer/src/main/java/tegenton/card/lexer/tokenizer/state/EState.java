@@ -74,7 +74,7 @@ public class EState extends State {
             MAP.put("EQU", TransitionFactory.mapOf('A'));
             MAP.put("EQUA", TransitionFactory.mapOf('L'));
             MAP.put("EQUAL", TransitionFactory.mapOf(Adjective.EQUAL));
-            MAP.put("ER", TransitionFactory.mapOf(Morpheme.ER));
+            MAP.put("ER", TransitionFactory.toNoun(Morpheme.ER));
             MAP.put("EV", TransitionFactory.mapOf('E'));
             MAP.put("EVE", TransitionFactory.mapOf('N'));
             MAP.put("EVEN", TransitionFactory.mapOf('L'));

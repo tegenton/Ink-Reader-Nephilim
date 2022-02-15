@@ -31,7 +31,7 @@ public class HState extends State {
             MAP.put("HALF", TransitionFactory.mapOf(Genitive.HALF));
             MAP.put("HAN", TransitionFactory.mapOf('D'));
             MAP.put("HAND", TransitionFactory.mapOf(Zone.HAND));
-            MAP.put("HAS", TransitionFactory.mapOf('T'));
+            MAP.put("HAS", TransitionFactory.mapOf(ObjectVerb.HAVE, 'T'));
             MAP.put("HAST", TransitionFactory.mapOf('E'));
             MAP.put("HASTE", TransitionFactory.mapOf(Keyword.HASTE));
             MAP.put("HAV", TransitionFactory.mapOf('E'));

@@ -828,4 +828,9 @@ public class SetCardJson {
     public String getWatermark() {
         return watermark;
     }
+
+    public String getProcessedText() {
+        return getText().replaceAll(getName(), "~")
+                .replaceAll("\\([^)]*\\)", "");
+    }
 }
