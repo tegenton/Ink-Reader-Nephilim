@@ -64,7 +64,9 @@ public class DState extends State {
             TransitionFactory.sequence(MAP, "DIS", "CARD");
             MAP.put("DISCARD", TransitionFactory.mapOf(PlayerVerb.DISCARD));
             TransitionFactory.sequence(MAP, "DIV", "IDE");
-            MAP.put("DIVIDE", TransitionFactory.toWord(PlayerVerb.DIVIDE));
+            MAP.put("DIVIDE", TransitionFactory.mapOf(PlayerVerb.DIVIDE));
+            MAP.get("DIVIDE")
+                    .put('D', new Transition('D', PlayerVerb.DIVIDE, "ED"));
             MAP.put("DO", TransitionFactory.mapOf(SourceVerb.DO, 'E', 'W'));
             MAP.get("DO").put('I', new Transition('I', SourceVerb.DO, "I"));
             MAP.get("DO").put('N', new Transition('N', SourceVerb.DO, "N"));

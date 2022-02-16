@@ -63,6 +63,8 @@ public class WState extends State {
             MAP.put("WI", TransitionFactory.mapOf('T'));
             MAP.put("WIT", TransitionFactory.mapOf('H'));
             MAP.put("WITH", TransitionFactory.mapOf(Preposition.WITH));
+            MAP.get("WITH")
+                    .put('O', new Transition('O', Preposition.WITH, "O"));
             MAP.put("WO", TransitionFactory.mapOf('R', 'U'));
             MAP.put("WOR", TransitionFactory.mapOf('D'));
             MAP.put("WORD", TransitionFactory.mapOf(Noun.WORD));

@@ -24,8 +24,6 @@ import tegenton.card.lexicon.value.EnglishNumber;
 import java.util.HashMap;
 import java.util.Map;
 
-import static tegenton.card.lexicon.Determiner.TARGET;
-
 public class TState extends State {
     private static final Map<String, Map<Character, Transition>> MAP =
             new HashMap<>();
@@ -49,7 +47,9 @@ public class TState extends State {
             MAP.put("TAPP",
                     Map.of('E', new Transition('E', ObjectVerb.TAP, "E")));
             TransitionFactory.sequence(MAP, "TAR", "GET");
-            MAP.put("TARGET", TransitionFactory.toWord(TARGET));
+            MAP.put("TARGET", TransitionFactory.mapOf(Determiner.TARGET));
+            MAP.get("TARGET")
+                    .put('S', new Transition('S', Determiner.TARGET, "S"));
             MAP.put("TE", TransitionFactory.mapOf('N', 'X'));
             MAP.put("TEN", TransitionFactory.toWord(EnglishNumber.TEN));
             MAP.put("TEX", TransitionFactory.mapOf('T'));
@@ -85,7 +85,7 @@ public class TState extends State {
             TransitionFactory.sequence(MAP, "THR", "EE");
             MAP.put("THREE", TransitionFactory.toWord(EnglishNumber.THREE));
             TransitionFactory.sequence(MAP, "TI", "ME");
-            MAP.put("TIME", TransitionFactory.toWord(Noun.TIME));
+            MAP.put("TIME", TransitionFactory.mapOf(Noun.TIME));
             MAP.put("TO", TransitionFactory.mapOf(Preposition.TO, 'K', 'P', 'T',
                     'U'));
             TransitionFactory.sequence(MAP, "TOK", "EN");

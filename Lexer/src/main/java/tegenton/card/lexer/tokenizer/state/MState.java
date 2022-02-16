@@ -65,6 +65,8 @@ public class MState extends State {
             MAP.put("MOUNTA", TransitionFactory.mapOf('I'));
             MAP.put("MOUNTAI", TransitionFactory.mapOf('N'));
             MAP.put("MOUNTAIN", TransitionFactory.mapOf(LandType.MOUNTAIN));
+            MAP.get("MOUNTAIN")
+                    .put('W', new Transition('W', LandType.MOUNTAIN, "W"));
         }
         return MAP;
     }

@@ -79,7 +79,7 @@ public class CState extends State {
             TransitionFactory.sequence(MAP, "COR", "PSE");
             MAP.put("CORPSE", TransitionFactory.toWord(CounterType.CORPSE));
             MAP.put("COS", TransitionFactory.mapOf('T'));
-            MAP.put("COST", TransitionFactory.toWord(ObjectVerb.COST));
+            MAP.put("COST", TransitionFactory.mapOf(ObjectVerb.COST));
             MAP.put("COU", TransitionFactory.mapOf('L', 'N'));
             MAP.put("COUL", TransitionFactory.mapOf('D'));
             MAP.put("COULD", TransitionFactory.toWord(PlayerVerb.COULD));

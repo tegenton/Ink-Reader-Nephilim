@@ -85,8 +85,8 @@ public class BaseState extends State {
             MAP.put("-",
                     TransitionFactory.toSymbol(Symbol.HYPHEN, '0', '1', '2'));
             MAP.put("{",
-                    TransitionFactory.toSymbol(Symbol.LBRACKET, 'B', 'T', 'U',
-                            'W', 'X', '0', '1', '3', '4'));
+                    TransitionFactory.toSymbol(Symbol.LBRACKET, 'B', 'R', 'T',
+                            'U', 'W', 'X', '0', '1', '3', '4'));
             MAP.put("\n",
                     Map.of('\0', new Transition('\0', Symbol.NEWLINE, "")));
             MAP.put(".",
