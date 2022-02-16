@@ -92,11 +92,11 @@ public class BaseState extends State {
             MAP.put(".",
                     TransitionFactory.toSymbol(Symbol.PERIOD, '\n', '"', ' '));
             MAP.put("+",
-                    TransitionFactory.toSymbol(Symbol.PLUS, 'X', '0', '1', '2',
-                            '7'));
+                    TransitionFactory.toSymbol(Symbol.PLUS, 'X', 'Y', '0', '1',
+                            '2', '7'));
             MAP.put("\"",
-                    TransitionFactory.toSymbol(Symbol.QUOTE, 'A', 'E', ' ',
-                            '{'));
+                    TransitionFactory.toSymbol(Symbol.QUOTE, 'A', 'E', 'L', 'R',
+                            ' ', '{'));
             MAP.put("}",
                     TransitionFactory.toSymbol(Symbol.RBRACKET, ':', ',', '{',
                             '.', ' '));
@@ -105,8 +105,8 @@ public class BaseState extends State {
             MAP.put("/",
                     TransitionFactory.toSymbol(Symbol.SLASH, 'O', '-', '+'));
             MAP.put("~",
-                    TransitionFactory.toSymbol(Symbol.TILDE, '\'', ':', ' ',
-                            '.'));
+                    TransitionFactory.toSymbol(Symbol.TILDE, '\'', ':', ',',
+                            ' ', '.'));
         }
         return MAP;
     }

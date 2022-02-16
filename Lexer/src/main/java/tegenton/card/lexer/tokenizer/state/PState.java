@@ -78,6 +78,8 @@ public class PState extends State {
             MAP.put("PRODU", TransitionFactory.mapOf('C'));
             MAP.put("PRODUC", TransitionFactory.mapOf('E'));
             MAP.put("PRODUCE", TransitionFactory.mapOf(SourceVerb.PRODUCE));
+            MAP.get("PRODUCE")
+                    .put('D', new Transition('D', SourceVerb.PRODUCE, "ED"));
             MAP.put("PROT", TransitionFactory.mapOf('E'));
             MAP.put("PROTE", TransitionFactory.mapOf('C'));
             MAP.put("PROTEC", TransitionFactory.mapOf('T'));
