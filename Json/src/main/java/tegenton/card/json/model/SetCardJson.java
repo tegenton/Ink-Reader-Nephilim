@@ -829,6 +829,12 @@ public class SetCardJson {
         return watermark;
     }
 
+    /**
+     * The text of the card with the card name replaced with ~, and reminder
+     * text removed.
+     *
+     * @return Text for parsing.
+     */
     public String getProcessedText() {
         return text != null ? getText().replaceAll(getName(), "~")
                 .replaceAll("\\([^)]*\\)", "") : "";

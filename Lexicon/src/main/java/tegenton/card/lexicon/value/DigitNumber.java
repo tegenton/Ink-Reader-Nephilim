@@ -10,6 +10,11 @@ public final class DigitNumber implements ValueWord {
 
     private final int val;
 
+    /**
+     * Create a new DigitNumber with the given value.
+     *
+     * @param i Integer value
+     */
     public DigitNumber(final int i) {
         this.val = i;
     }

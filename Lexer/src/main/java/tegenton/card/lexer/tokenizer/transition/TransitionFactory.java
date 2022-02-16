@@ -15,6 +15,11 @@ public final class TransitionFactory {
     private TransitionFactory() {
     }
 
+    /**
+     * Get a transition that returns the current state.
+     *
+     * @return Empty transition.
+     */
     public static Transition getTransition() {
         if (!BASIC.containsKey(null)) {
             BASIC.put(null, new Transition());
@@ -130,6 +135,14 @@ public final class TransitionFactory {
         return map;
     }
 
+    /**
+     * Generate a map of transitions from a symbol, each of which produces the
+     * symbol.
+     *
+     * @param symbol Symbol to produce.
+     * @param labels Valid output characters.
+     * @return Map of transitions producing this symbol.
+     */
     public static Map<Character, Transition> toSymbol(final Symbol symbol,
                                                       final char... labels) {
         final Map<Character, Transition> transitions = new HashMap<>();

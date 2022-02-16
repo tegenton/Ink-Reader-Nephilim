@@ -14,6 +14,7 @@ public final class NumberState extends State {
         super("Number");
     }
 
+    @Override
     public void accept(final Consumer<String> setState,
                        final Consumer<Word> addToken, final char c) {
         if (Character.isDigit(c)) {

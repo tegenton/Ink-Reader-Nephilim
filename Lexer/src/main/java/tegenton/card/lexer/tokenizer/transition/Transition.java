@@ -53,6 +53,9 @@ public class Transition {
         output = state;
     }
 
+    /**
+     * Empty transition.
+     */
     public Transition() {
         label = null;
     }
