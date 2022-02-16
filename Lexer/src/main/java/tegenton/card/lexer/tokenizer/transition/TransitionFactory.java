@@ -45,16 +45,8 @@ public final class TransitionFactory {
      */
     public static Map<Character, Transition> mapOf(final Word word,
                                                    final char... labels) {
-        final Map<Character, Transition> transitions = mapOf(labels);
-        transitions.putAll(toWord(word));
-        return transitions;
-    }
-
-    public static Map<Character, Transition> mapOf(final CostSymbol word,
-                                                   final char... labels) {
-        final Map<Character, Transition> transitions = mapOf(labels);
-        transitions.putAll(toWord(word));
-        transitions.put('}', new Transition('}', word, "}"));
+        final Map<Character, Transition> transitions = toWord(word);
+        transitions.putAll(mapOf(labels));
         return transitions;
     }
 
@@ -91,21 +83,13 @@ public final class TransitionFactory {
         }
     }
 
-    public static Map<Character, Transition> mapOf(final VerbWord verb) {
-        final Map<Character, Transition> map = toWord(verb);
-        map.put('E', new Transition('E', verb, "E"));
-        map.put('I', new Transition('I', verb, "I"));
-        map.put('S', TransitionFactory.getTransition());
-        return map;
-    }
-
     /**
      * Generate transitions for the end of a word.
      *
      * @param word Product.
      * @return Transitions on space or a null terminator producing that word.
      */
-    public static Map<Character, Transition> toWord(final Word word) {
+    private static Map<Character, Transition> toWord(final Word word) {
         final Map<Character, Transition> map = new HashMap<>();
         map.put(',', new Transition(',', word, ","));
         map.put('\0', new Transition('\0', word, ""));
@@ -114,14 +98,35 @@ public final class TransitionFactory {
         map.put('"', new Transition('"', word, "\""));
         map.put(';', new Transition(';', word, ";"));
         map.put(' ', new Transition(' ', word, " "));
+        if (word instanceof VerbWord verb) {
+            map.putAll(toWord(verb));
+        } else if (word instanceof NounWord noun) {
+            map.putAll(toWord(noun));
+        } else if (word instanceof CostSymbol symbol) {
+            map.putAll(toWord(symbol));
+        }
         return map;
     }
 
-    public static Map<Character, Transition> mapOf(final NounWord noun) {
-        final Map<Character, Transition> map = toWord(noun);
+    private static Map<Character, Transition> toWord(final VerbWord verb) {
+        final Map<Character, Transition> map = new HashMap<>();
+        map.put('E', new Transition('E', verb, "E"));
+        map.put('I', new Transition('I', verb, "I"));
+        map.put('S', TransitionFactory.getTransition());
+        return map;
+    }
+
+    private static Map<Character, Transition> toWord(final NounWord noun) {
+        final Map<Character, Transition> map = new HashMap<>();
         map.put('E', new Transition('E', noun, "E"));
         map.put('S', new Transition('S', noun, "S"));
         map.put('\'', new Transition('\'', noun, "'"));
+        return map;
+    }
+
+    private static Map<Character, Transition> toWord(final CostSymbol symbol) {
+        final Map<Character, Transition> map = new HashMap<>();
+        map.put('}', new Transition('}', symbol, "}"));
         return map;
     }
 

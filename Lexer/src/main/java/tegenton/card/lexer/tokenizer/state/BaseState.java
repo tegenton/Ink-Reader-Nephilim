@@ -79,8 +79,8 @@ public class BaseState extends State {
             MAP.put("Z", TransitionFactory.mapOf('E', 'O'));
             MAP.put("'", TransitionFactory.mapOf('S'));
             MAP.put("\u2022", TransitionFactory.toSymbol(Symbol.BULLET, ' '));
-            MAP.put(":", TransitionFactory.toWord(Symbol.COLON));
-            MAP.put(",", TransitionFactory.toWord(Symbol.COMMA));
+            MAP.put(":", TransitionFactory.mapOf(Symbol.COLON));
+            MAP.put(",", TransitionFactory.mapOf(Symbol.COMMA));
             MAP.put("\u2014", TransitionFactory.toSymbol(Symbol.DASH, '\n'));
             MAP.put("-",
                     TransitionFactory.toSymbol(Symbol.HYPHEN, '0', '1', '2'));

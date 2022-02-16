@@ -23,7 +23,7 @@ public class ApostropheState extends State {
     @Override
     protected Map<String, Map<Character, Transition>> transitions() {
         if (MAP.isEmpty()) {
-            MAP.put("'S", TransitionFactory.toWord(TargetModifier.POSSESSIVE));
+            MAP.put("'S", TransitionFactory.mapOf(TargetModifier.POSSESSIVE));
         }
         return MAP;
     }
