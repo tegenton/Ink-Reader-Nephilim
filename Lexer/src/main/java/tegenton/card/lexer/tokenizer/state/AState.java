@@ -87,7 +87,7 @@ public class AState extends State {
             MAP.put("AR", TransitionFactory.mapOf('E', 'T'));
             MAP.put("ARE", TransitionFactory.toWord(ObjectVerb.IS));
             TransitionFactory.sequence(MAP, "ART", "IFACT");
-            MAP.put("ARTIFACT", TransitionFactory.toWord(CardType.ARTIFACT));
+            MAP.put("ARTIFACT", TransitionFactory.mapOf(CardType.ARTIFACT));
             MAP.put("AS",
                     TransitionFactory.mapOf(SubordinateConjunction.AS, 'S'));
             TransitionFactory.sequence(MAP, "ASS", "IGN");

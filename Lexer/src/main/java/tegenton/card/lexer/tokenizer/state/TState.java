@@ -68,7 +68,9 @@ public class TState extends State {
             MAP.put("THEN", TransitionFactory.toWord(Conjunction.THEN));
             MAP.put("THES", TransitionFactory.mapOf('E'));
             MAP.put("THESE", TransitionFactory.toWord(Determiner.THESE));
-            MAP.put("THEY", TransitionFactory.toWord(TargetNoun.THEY));
+            MAP.put("THEY", TransitionFactory.mapOf(TargetNoun.THEY));
+            MAP.get("THEY")
+                    .put('\'', new Transition('\'', TargetNoun.THEY, "A"));
             MAP.put("THI", TransitionFactory.mapOf('R', 'S'));
             TransitionFactory.sequence(MAP, "THIR", "TEEN");
             MAP.put("THIRTEEN",

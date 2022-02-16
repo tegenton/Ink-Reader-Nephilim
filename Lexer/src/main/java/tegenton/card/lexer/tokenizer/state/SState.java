@@ -43,6 +43,8 @@ public class SState extends State {
             MAP.put("SACRIFI", TransitionFactory.mapOf('C'));
             MAP.put("SACRIFIC", TransitionFactory.mapOf('E'));
             MAP.put("SACRIFICE", TransitionFactory.mapOf(PlayerVerb.SACRIFICE));
+            MAP.get("SACRIFICE")
+                    .put('D', new Transition('D', PlayerVerb.SACRIFICE, "ED"));
             MAP.put("SAM", TransitionFactory.mapOf('E'));
             MAP.put("SAME", TransitionFactory.mapOf(Adjective.SAME));
             MAP.put("SE", TransitionFactory.mapOf('A', 'V'));

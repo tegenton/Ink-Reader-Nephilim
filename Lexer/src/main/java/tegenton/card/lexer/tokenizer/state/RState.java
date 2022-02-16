@@ -68,6 +68,8 @@ public class RState extends State {
             MAP.put("RESO", TransitionFactory.mapOf('L'));
             MAP.put("RESOL", TransitionFactory.mapOf('V'));
             MAP.put("RESOLV", TransitionFactory.mapOf('E'));
+            MAP.get("RESOLV")
+                    .put('I', new Transition('I', SourceVerb.RESOLVE, "I"));
             MAP.put("RESOLVE", TransitionFactory.mapOf(SourceVerb.RESOLVE));
             MAP.put("REST", TransitionFactory.mapOf(Noun.REST));
             MAP.put("RET", TransitionFactory.mapOf('U'));

@@ -35,6 +35,7 @@ public class HState extends State {
             MAP.put("HAST", TransitionFactory.mapOf('E'));
             MAP.put("HASTE", TransitionFactory.mapOf(Keyword.HASTE));
             MAP.put("HAV", TransitionFactory.mapOf('E'));
+            MAP.get("HAV").put('I', new Transition('I', ObjectVerb.HAVE, "I"));
             MAP.put("HAVE", TransitionFactory.mapOf(ObjectVerb.HAVE));
             MAP.put("HE", TransitionFactory.mapOf('I'));
             MAP.put("HEI", TransitionFactory.mapOf('G'));

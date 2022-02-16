@@ -54,13 +54,11 @@ public class DState extends State {
                     TransitionFactory.toWord(PlayerAdjective.DEFENDING));
             TransitionFactory.sequence(MAP, "DES", "TROY");
             MAP.put("DESTROY", TransitionFactory.toWord(PlayerVerb.DESTROY));
-            MAP.put("DI", Map.of('D', new Transition('D', SourceVerb.DO), 'E',
-                    TransitionFactory.getTransition('E'), 'F',
-                    TransitionFactory.getTransition('F'), 'S',
-                    TransitionFactory.getTransition('S'), 'V',
-                    TransitionFactory.getTransition('V')));
+            MAP.put("DI", TransitionFactory.mapOf('E', 'F', 'S', 'V'));
+            MAP.get("DI").put('D', new Transition('D', SourceVerb.DO));
             MAP.put("DID", Map.of('N', new Transition('N', Morpheme.ED, "N")));
             MAP.put("DIE", TransitionFactory.mapOf(ObjectVerb.DIE));
+            MAP.get("DIE").put('D', new Transition('D', ObjectVerb.DIE, "ED"));
             TransitionFactory.sequence(MAP, "DIF", "FERENT");
             MAP.put("DIFFERENT", TransitionFactory.toWord(Adjective.DIFFERENT));
             TransitionFactory.sequence(MAP, "DIS", "CARD");
@@ -68,9 +66,12 @@ public class DState extends State {
             TransitionFactory.sequence(MAP, "DIV", "IDE");
             MAP.put("DIVIDE", TransitionFactory.toWord(PlayerVerb.DIVIDE));
             MAP.put("DO", TransitionFactory.mapOf(SourceVerb.DO, 'E', 'W'));
+            MAP.get("DO").put('I', new Transition('I', SourceVerb.DO, "I"));
+            MAP.get("DO").put('N', new Transition('N', SourceVerb.DO, "N"));
             MAP.put("DOE", TransitionFactory.mapOf('S'));
             MAP.put("DOES",
-                    Map.of('N', new Transition('N', SourceVerb.DO, "N")));
+                    Map.of('N', new Transition('N', SourceVerb.DO, "N"), ',',
+                            new Transition(',', SourceVerb.DO, ",")));
             MAP.put("DOW", TransitionFactory.mapOf('N'));
             MAP.put("DOWN", TransitionFactory.toWord(Particle.DOWN));
             TransitionFactory.sequence(MAP, "DR", "AW");
