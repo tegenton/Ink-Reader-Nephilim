@@ -95,7 +95,9 @@ public class TState extends State {
             MAP.put("TOTAL", TransitionFactory.mapOf(PlayerAttribute.TOTAL));
             MAP.put("TOU", TransitionFactory.mapOf('C', 'G'));
             MAP.put("TOUC", TransitionFactory.mapOf('H'));
-            MAP.put("TOUCH", TransitionFactory.mapOf(GameVerb.TOUCH));
+            MAP.put("TOUCH", TransitionFactory.mapOf(GameVerb.TOUCH, 'E'));
+            MAP.put("TOUCHE", TransitionFactory.mapOf('S'));
+            MAP.put("TOUCHES", TransitionFactory.mapOf(GameVerb.TOUCH));
             TransitionFactory.sequence(MAP, "TOUG", "HNESS");
             MAP.put("TOUGHNESS",
                     TransitionFactory.mapOf(ObjectAttribute.TOUGHNESS));

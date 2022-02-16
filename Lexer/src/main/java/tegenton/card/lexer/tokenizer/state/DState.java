@@ -41,10 +41,13 @@ public class DState extends State {
                     .put('T', new Transition('T', SourceVerb.DEAL, "ED"));
             MAP.put("DEC", TransitionFactory.mapOf('K', 'L'));
             MAP.put("DECK", TransitionFactory.mapOf(Zone.DECK));
-            TransitionFactory.sequence(MAP, "DECL", "ARE");
+            TransitionFactory.sequence(MAP, "DECL", "AR");
+            MAP.put("DECLAR", TransitionFactory.mapOf('E', 'I'));
             MAP.put("DECLARE", TransitionFactory.mapOf(PlayerVerb.DECLARE));
             MAP.get("DECLARE")
                     .put('D', new Transition('D', PlayerVerb.DECLARE, "ED"));
+            MAP.put("DECLARI",
+                    Map.of('N', new Transition('N', PlayerVerb.DECLARE, "IN")));
             TransitionFactory.sequence(MAP, "DEF", "END");
             MAP.put("DEFEND", TransitionFactory.mapOf('E', 'I'));
             MAP.put("DEFENDE", TransitionFactory.mapOf('R'));
@@ -71,9 +74,8 @@ public class DState extends State {
             MAP.get("DO").put('I', new Transition('I', SourceVerb.DO, "I"));
             MAP.get("DO").put('N', new Transition('N', SourceVerb.DO, "N"));
             MAP.put("DOE", TransitionFactory.mapOf('S'));
-            MAP.put("DOES",
-                    Map.of('N', new Transition('N', SourceVerb.DO, "N"), ',',
-                            new Transition(',', SourceVerb.DO, ",")));
+            MAP.put("DOES", TransitionFactory.mapOf(SourceVerb.DO));
+            MAP.get("DOES").put('N', new Transition('N', SourceVerb.DO, "N"));
             MAP.put("DOW", TransitionFactory.mapOf('N'));
             MAP.put("DOWN", TransitionFactory.mapOf(Particle.DOWN));
             TransitionFactory.sequence(MAP, "DR", "AW");

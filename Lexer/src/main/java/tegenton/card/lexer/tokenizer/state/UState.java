@@ -48,6 +48,7 @@ public class UState extends State {
             MAP.put("UPKE", TransitionFactory.mapOf('E'));
             MAP.put("UPKEE", TransitionFactory.mapOf('P'));
             MAP.put("UPKEEP", TransitionFactory.mapOf(Step.UPKEEP));
+            MAP.get("UPKEEP").put('S', new Transition('S', Step.UPKEEP, "S"));
         }
         return MAP;
     }

@@ -33,8 +33,8 @@ public class BaseState extends State {
                     TransitionFactory.mapOf('A', 'B', 'C', 'D', 'E', 'F', 'G',
                             'H', 'I', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T',
                             'U', 'V', 'W', 'X', 'Y', 'Z', '0', '1', '2', '3',
-                            '4', '7', '\u2022', '\u2014', '{', '\n', '\0', '-',
-                            '+', '"', '~'));
+                            '4', '7', '8', '\u2022', '\u2014', '{', '\n', '\0',
+                            '-', '+', '"', '~'));
             MAP.put("A",
                     TransitionFactory.mapOf(Determiner.A, 'B', 'C', 'D', 'F',
                             'L', 'M', 'N', 'R', 'S', 'T', 'U'));
@@ -66,13 +66,15 @@ public class BaseState extends State {
             MAP.put("S",
                     TransitionFactory.mapOf(Morpheme.S, 'A', 'E', 'H', 'I', 'K',
                             'P', 'O', 'T', 'W'));
+            MAP.get("S").put('\'', new Transition('\'', Morpheme.S, "'S"));
             MAP.put("T",
                     TransitionFactory.mapOf(Tap.T, 'A', 'E', 'H', 'I', 'O', 'R',
                             'W', 'U', 'Y'));
             MAP.put("U", TransitionFactory.mapOf(ManaSymbol.U, 'N', 'P'));
             MAP.put("V", TransitionFactory.mapOf('A', 'I'));
             MAP.put("W",
-                    TransitionFactory.mapOf(ManaSymbol.W, 'A', 'H', 'I', 'O'));
+                    TransitionFactory.mapOf(ManaSymbol.W, 'A', 'E', 'H', 'I',
+                            'O'));
             MAP.put("X", TransitionFactory.mapOf(Variable.X));
             MAP.get("X").put('/', new Transition('/', Variable.X, "/"));
             MAP.put("Y", TransitionFactory.mapOf(Variable.Y, 'O'));
@@ -85,15 +87,16 @@ public class BaseState extends State {
             MAP.put("-",
                     TransitionFactory.toSymbol(Symbol.HYPHEN, '0', '1', '2'));
             MAP.put("{",
-                    TransitionFactory.toSymbol(Symbol.LBRACKET, 'B', 'R', 'T',
-                            'U', 'W', 'X', '0', '1', '3', '4'));
+                    TransitionFactory.toSymbol(Symbol.LBRACKET, 'B', 'C', 'G',
+                            'R', 'T', 'U', 'W', 'X', '0', '1', '2', '3', '4',
+                            '5'));
             MAP.put("\n",
                     Map.of('\0', new Transition('\0', Symbol.NEWLINE, "")));
             MAP.put(".",
                     TransitionFactory.toSymbol(Symbol.PERIOD, '\n', '"', ' '));
             MAP.put("+",
                     TransitionFactory.toSymbol(Symbol.PLUS, 'X', 'Y', '0', '1',
-                            '2', '7'));
+                            '2', '3', '7'));
             MAP.put("\"",
                     TransitionFactory.toSymbol(Symbol.QUOTE, 'A', 'E', 'L', 'R',
                             ' ', '{'));
@@ -103,7 +106,8 @@ public class BaseState extends State {
             MAP.put(";", TransitionFactory.toSymbol(Symbol.SEMICOLON, ' '));
             MAP.put(" ", TransitionFactory.toSymbol(Symbol.SPACE));
             MAP.put("/",
-                    TransitionFactory.toSymbol(Symbol.SLASH, 'O', '-', '+'));
+                    TransitionFactory.toSymbol(Symbol.SLASH, 'O', '1', '2', '6',
+                            '-', '+'));
             MAP.put("~",
                     TransitionFactory.toSymbol(Symbol.TILDE, '\'', ':', ',',
                             ' ', '.'));

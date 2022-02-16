@@ -58,6 +58,7 @@ public class CState extends State {
                     TransitionFactory.mapOf('L', 'M', 'N', 'P', 'R', 'S', 'U'));
             TransitionFactory.sequence(MAP, "COL", "OR");
             MAP.put("COLOR", TransitionFactory.mapOf(GameNoun.COLOR));
+            MAP.get("COLOR").put('L', new Transition('L', GameNoun.COLOR, "L"));
             MAP.put("COM", TransitionFactory.mapOf('B', 'P'));
             TransitionFactory.sequence(MAP, "COMB", "AT");
             MAP.put("COMBAT", TransitionFactory.mapOf(Phase.COMBAT));

@@ -1,11 +1,11 @@
 package tegenton.card.lexicon.game;
 
-import tegenton.card.lexicon.Word;
+import tegenton.card.lexicon.VerbWord;
 
 /**
  * Verbs representing actions not necessarily performed by a player or object.
  */
-public enum GameVerb implements Word {
+public enum GameVerb implements VerbWord {
     BE,
     CAUSE,
     FINISH,
