@@ -57,7 +57,10 @@ public class EState extends State {
             MAP.put("ENCH", TransitionFactory.mapOf('A'));
             MAP.put("ENCHA", TransitionFactory.mapOf('N'));
             MAP.put("ENCHAN", TransitionFactory.mapOf('T'));
-            MAP.put("ENCHANT", TransitionFactory.mapOf(Keyword.ENCHANT, 'M'));
+            MAP.put("ENCHANT",
+                    TransitionFactory.mapOf(Keyword.ENCHANT, 'E', 'M'));
+            MAP.put("ENCHANTE",
+                    Map.of('D', new Transition('D', Keyword.ENCHANT, "ED")));
             MAP.put("ENCHANTM", TransitionFactory.mapOf('E'));
             MAP.put("ENCHANTME", TransitionFactory.mapOf('N'));
             MAP.put("ENCHANTMEN", TransitionFactory.mapOf('T'));
@@ -72,6 +75,8 @@ public class EState extends State {
             MAP.put("EQUA", TransitionFactory.mapOf('L'));
             MAP.put("EQUAL", TransitionFactory.mapOf(Adjective.EQUAL));
             MAP.put("ER", TransitionFactory.mapOf(Morpheme.ER));
+            MAP.get("ER").put('S', new Transition('S', Morpheme.ER, "S"));
+            MAP.get("ER").put('\'', new Transition('\'', Morpheme.ER, "'"));
             MAP.put("EV", TransitionFactory.mapOf('E'));
             MAP.put("EVE", TransitionFactory.mapOf('N'));
             MAP.put("EVEN", TransitionFactory.mapOf('L'));

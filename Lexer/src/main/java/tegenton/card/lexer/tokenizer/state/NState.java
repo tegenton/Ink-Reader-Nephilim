@@ -30,6 +30,8 @@ public class NState extends State {
             MAP.put("NA", TransitionFactory.mapOf('M'));
             MAP.put("NAM", TransitionFactory.mapOf('E'));
             MAP.put("NAME", TransitionFactory.mapOf(ObjectAttribute.NAME));
+            MAP.get("NAME")
+                    .put('D', new Transition('D', ObjectAttribute.NAME, "ED"));
             MAP.put("NE", TransitionFactory.mapOf('W', 'X'));
             MAP.put("NEW", TransitionFactory.mapOf(Adjective.NEW));
             MAP.put("NEX", TransitionFactory.mapOf('T'));
@@ -43,12 +45,19 @@ public class NState extends State {
             MAP.put("NINETEEN",
                     TransitionFactory.mapOf(EnglishNumber.NINETEEN));
             MAP.put("NO", TransitionFactory.mapOf(Determiner.NO, 'T'));
+            MAP.get("NO").put('N', TransitionFactory.getTransition('T'));
             MAP.put("NOT", TransitionFactory.mapOf(Adverb.NOT));
+            MAP.get("NOT").put('A', new Transition('A', Adverb.NOT, "A"));
+            MAP.get("NOT").put('B', new Transition('B', Adverb.NOT, "B"));
+            MAP.get("NOT").put('T', new Transition('T', Adverb.NOT, "T"));
+            MAP.get("NOT").put('-', new Transition('-', Adverb.NOT, ""));
             MAP.put("NU", TransitionFactory.mapOf('M'));
             MAP.put("NUM", TransitionFactory.mapOf('B'));
             MAP.put("NUMB", TransitionFactory.mapOf('E'));
             MAP.put("NUMBE", TransitionFactory.mapOf('R'));
             MAP.put("NUMBER", TransitionFactory.mapOf(Noun.NUMBER));
+            MAP.put("N'", TransitionFactory.mapOf('T'));
+            MAP.put("N'T", TransitionFactory.mapOf(Adverb.NOT));
         }
         return MAP;
     }

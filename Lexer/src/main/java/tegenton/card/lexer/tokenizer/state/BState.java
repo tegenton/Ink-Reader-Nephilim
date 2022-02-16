@@ -36,39 +36,40 @@ public class BState extends State {
         if (MAP.isEmpty()) {
             MAP.put("BA", TransitionFactory.mapOf('C', 'N', 'S', 'T'));
             MAP.put("BAC", TransitionFactory.mapOf('K'));
-            MAP.put("BACK", TransitionFactory.toWord(Adverb.BACK));
+            MAP.put("BACK", TransitionFactory.mapOf(Adverb.BACK));
             TransitionFactory.sequence(MAP, "BAN", "DING");
-            MAP.put("BANDING", TransitionFactory.toWord(Keyword.BANDING));
+            MAP.put("BANDING", TransitionFactory.mapOf(Keyword.BANDING));
             TransitionFactory.sequence(MAP, "BAS", "IC");
-            MAP.put("BASIC", TransitionFactory.toWord(SuperType.BASIC));
+            MAP.put("BASIC", TransitionFactory.mapOf(SuperType.BASIC));
             TransitionFactory.sequence(MAP, "BAT", "TLEFIELD");
-            MAP.put("BATTLEFIELD", TransitionFactory.toWord(Zone.BATTLEFIELD));
+            MAP.put("BATTLEFIELD", TransitionFactory.mapOf(Zone.BATTLEFIELD));
             MAP.put("BE",
                     TransitionFactory.mapOf(GameVerb.BE, 'C', 'E', 'F', 'G',
                             'Y'));
             TransitionFactory.sequence(MAP, "BEC", "OME");
-            MAP.put("BECOME", TransitionFactory.toWord(ObjectVerb.BECOME));
+            MAP.put("BECOME", TransitionFactory.mapOf(ObjectVerb.BECOME));
             MAP.put("BEE", Map.of('N', new Transition('N', GameVerb.BE)));
-            MAP.put("BEEN", TransitionFactory.toWord(Morpheme.ED));
+            MAP.put("BEEN", TransitionFactory.mapOf(Morpheme.ED));
             TransitionFactory.sequence(MAP, "BEF", "ORE");
-            MAP.put("BEFORE", TransitionFactory.toWord(Chronology.BEFORE));
+            MAP.put("BEFORE", TransitionFactory.mapOf(Chronology.BEFORE));
             TransitionFactory.sequence(MAP, "BEG", "IN");
             MAP.put("BEGIN", TransitionFactory.mapOf(PlayerVerb.BEGIN, 'N'));
             TransitionFactory.sequence(MAP, "BEGINN", "ING");
-            MAP.put("BEGINNING", TransitionFactory.toWord(Phase.BEGINNING));
+            MAP.put("BEGINNING", TransitionFactory.mapOf(Phase.BEGINNING));
             TransitionFactory.sequence(MAP, "BEY", "OND");
-            MAP.put("BEYOND", TransitionFactory.toWord(Preposition.BEYOND));
+            MAP.put("BEYOND", TransitionFactory.mapOf(Preposition.BEYOND));
             MAP.put("BL", TransitionFactory.mapOf('A', 'O', 'U'));
             TransitionFactory.sequence(MAP, "BLA", "CK");
-            MAP.put("BLACK", TransitionFactory.toWord(ColorWord.BLACK));
+            MAP.put("BLACK", TransitionFactory.mapOf(ColorWord.BLACK));
             TransitionFactory.sequence(MAP, "BLO", "CK");
-            MAP.put("BLOCK", TransitionFactory.toWord(ObjectVerb.BLOCK));
+            MAP.put("BLOCK", TransitionFactory.mapOf(ObjectVerb.BLOCK));
+            MAP.put("BLOCKE",
+                    Map.of('R', new Transition('R', ObjectVerb.BLOCK, "ER")));
             MAP.put("BLU", TransitionFactory.mapOf('E'));
-            MAP.put("BLUE", TransitionFactory.toWord(ColorWord.BLUE));
+            MAP.put("BLUE", TransitionFactory.mapOf(ColorWord.BLUE));
             MAP.put("BU", TransitionFactory.mapOf('T'));
-            MAP.put("BUT",
-                    TransitionFactory.toWord(SubordinateConjunction.BUT));
-            MAP.put("BY", TransitionFactory.toWord(Preposition.BY));
+            MAP.put("BUT", TransitionFactory.mapOf(SubordinateConjunction.BUT));
+            MAP.put("BY", TransitionFactory.mapOf(Preposition.BY));
         }
         return MAP;
     }

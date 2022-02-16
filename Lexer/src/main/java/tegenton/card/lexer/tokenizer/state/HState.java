@@ -27,14 +27,16 @@ public class HState extends State {
     protected Map<String, Map<Character, Transition>> transitions() {
         if (MAP.isEmpty()) {
             MAP.put("HA", TransitionFactory.mapOf('L', 'N', 'S', 'V'));
+            MAP.get("HA").put('D', new Transition('D', ObjectVerb.HAVE, "ED"));
             MAP.put("HAL", TransitionFactory.mapOf('F'));
             MAP.put("HALF", TransitionFactory.mapOf(Genitive.HALF));
             MAP.put("HAN", TransitionFactory.mapOf('D'));
             MAP.put("HAND", TransitionFactory.mapOf(Zone.HAND));
-            MAP.put("HAS", TransitionFactory.mapOf('T'));
+            MAP.put("HAS", TransitionFactory.mapOf(ObjectVerb.HAVE, 'T'));
             MAP.put("HAST", TransitionFactory.mapOf('E'));
             MAP.put("HASTE", TransitionFactory.mapOf(Keyword.HASTE));
             MAP.put("HAV", TransitionFactory.mapOf('E'));
+            MAP.get("HAV").put('I', new Transition('I', ObjectVerb.HAVE, "I"));
             MAP.put("HAVE", TransitionFactory.mapOf(ObjectVerb.HAVE));
             MAP.put("HE", TransitionFactory.mapOf('I'));
             MAP.put("HEI", TransitionFactory.mapOf('G'));

@@ -1,5 +1,6 @@
 package tegenton.card.lexicon.value;
 
+
 import java.util.stream.IntStream;
 
 /**
@@ -9,7 +10,12 @@ public final class DigitNumber implements ValueWord {
 
     private final int val;
 
-    private DigitNumber(final int i) {
+    /**
+     * Create a new DigitNumber with the given value.
+     *
+     * @param i Integer value
+     */
+    public DigitNumber(final int i) {
         this.val = i;
     }
 

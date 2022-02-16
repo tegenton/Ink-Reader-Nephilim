@@ -14,6 +14,7 @@ import tegenton.card.lexicon.game.Zone;
 import tegenton.card.lexicon.game.target.TargetAdjective;
 import tegenton.card.lexicon.game.target.TargetVerb;
 import tegenton.card.lexicon.game.target.object.ObjectVerb;
+import tegenton.card.lexicon.game.target.player.PlayerAdjective;
 import tegenton.card.lexicon.game.target.player.PlayerVerb;
 import tegenton.card.lexicon.game.turn.Chronology;
 import tegenton.card.lexicon.game.type.CardType;
@@ -39,52 +40,65 @@ public class AState extends State {
     protected Map<String, Map<Character, Transition>> transitions() {
         if (MAP.isEmpty()) {
             MAP.put("AB", TransitionFactory.mapOf('I', 'L', 'O'));
-            TransitionFactory.sequence(MAP, "ABI", "LITY");
-            MAP.put("ABILITY", TransitionFactory.toWord(GameNoun.ABILITY));
+            TransitionFactory.sequence(MAP, "ABI", "LIT");
+            MAP.put("ABILIT", TransitionFactory.mapOf('I', 'Y'));
+            MAP.put("ABILITI", TransitionFactory.mapOf('E'));
+            MAP.put("ABILITIE", TransitionFactory.mapOf(GameNoun.ABILITY));
+            MAP.put("ABILITY", TransitionFactory.mapOf(GameNoun.ABILITY));
             MAP.put("ABL", TransitionFactory.mapOf('E'));
-            MAP.put("ABLE", TransitionFactory.toWord(TargetAdjective.ABLE));
+            MAP.put("ABLE", TransitionFactory.mapOf(TargetAdjective.ABLE));
             TransitionFactory.sequence(MAP, "ABO", "VE");
-            MAP.put("ABOVE", TransitionFactory.toWord(Preposition.ABOVE));
-            TransitionFactory.sequence(MAP, "AC", "TIVATE");
-            MAP.put("ACTIVATE", TransitionFactory.toWord(PlayerVerb.ACTIVATE));
+            MAP.put("ABOVE", TransitionFactory.mapOf(Preposition.ABOVE));
+            TransitionFactory.sequence(MAP, "AC", "TIV");
+            MAP.put("ACTIV", TransitionFactory.mapOf('A', 'E'));
+            TransitionFactory.sequence(MAP, "ACTIVA", "TE");
+            MAP.put("ACTIVATE", TransitionFactory.mapOf(PlayerVerb.ACTIVATE));
+            MAP.get("ACTIVATE")
+                    .put('D', new Transition('D', PlayerVerb.ACTIVATE, "ED"));
+            MAP.put("ACTIVE", TransitionFactory.mapOf(PlayerAdjective.ACTIVE));
             MAP.put("AD", TransitionFactory.mapOf('D'));
             MAP.put("ADD", TransitionFactory.mapOf(PlayerVerb.ADD, 'I'));
-            TransitionFactory.sequence(MAP, "ADDI", "TIONAL");
+            TransitionFactory.sequence(MAP, "ADDI", "TION");
+            MAP.put("ADDITION",
+                    TransitionFactory.mapOf(Preposition.ADDITION, 'A'));
+            MAP.put("ADDITIONA", TransitionFactory.mapOf('L'));
             MAP.put("ADDITIONAL",
-                    TransitionFactory.toWord(Adjective.ADDITIONAL));
+                    TransitionFactory.mapOf(Adjective.ADDITIONAL));
             TransitionFactory.sequence(MAP, "AF", "TER");
-            MAP.put("AFTER", TransitionFactory.toWord(Chronology.AFTER));
+            MAP.put("AFTER", TransitionFactory.mapOf(Chronology.AFTER));
             MAP.put("AL", TransitionFactory.mapOf('L'));
-            MAP.put("ALL", TransitionFactory.toWord(Determiner.ALL));
+            MAP.put("ALL", TransitionFactory.mapOf(Determiner.ALL));
             MAP.put("AM", TransitionFactory.mapOf('O'));
             MAP.put("AMO", TransitionFactory.mapOf('N', 'U'));
             MAP.put("AMON", TransitionFactory.mapOf('G'));
-            MAP.put("AMONG", TransitionFactory.toWord(Preposition.AMONG));
+            MAP.put("AMONG", TransitionFactory.mapOf(Preposition.AMONG));
             TransitionFactory.sequence(MAP, "AMOU", "NT");
-            MAP.put("AMOUNT", TransitionFactory.toWord(Noun.AMOUNT));
+            MAP.put("AMOUNT", TransitionFactory.mapOf(Noun.AMOUNT));
             MAP.put("AN",
                     TransitionFactory.mapOf(Determiner.AN, 'D', 'O', 'T', 'Y'));
-            MAP.put("AND", TransitionFactory.toWord(Conjunction.AND));
+            MAP.put("AND", TransitionFactory.mapOf(Conjunction.AND));
+            MAP.get("AND").put('/', new Transition('/', Conjunction.AND, "/"));
             TransitionFactory.sequence(MAP, "ANO", "THER");
-            MAP.put("ANOTHER", TransitionFactory.toWord(Determiner.ANOTHER));
+            MAP.put("ANOTHER", TransitionFactory.mapOf(Determiner.ANOTHER));
             MAP.put("ANT", TransitionFactory.mapOf('E'));
-            MAP.put("ANTE", TransitionFactory.toWord(Zone.ANTE));
-            MAP.put("ANY", TransitionFactory.toWord(Determiner.ANY));
+            MAP.put("ANTE", TransitionFactory.mapOf(Zone.ANTE));
+            MAP.get("ANTE").put('S', TransitionFactory.getTransition());
+            MAP.put("ANY", TransitionFactory.mapOf(Determiner.ANY));
             MAP.put("AR", TransitionFactory.mapOf('E', 'T'));
-            MAP.put("ARE", TransitionFactory.toWord(ObjectVerb.IS));
+            MAP.put("ARE", TransitionFactory.mapOf(ObjectVerb.IS));
             TransitionFactory.sequence(MAP, "ART", "IFACT");
-            MAP.put("ARTIFACT", TransitionFactory.toWord(CardType.ARTIFACT));
+            MAP.put("ARTIFACT", TransitionFactory.mapOf(CardType.ARTIFACT));
             MAP.put("AS",
                     TransitionFactory.mapOf(SubordinateConjunction.AS, 'S'));
             TransitionFactory.sequence(MAP, "ASS", "IGN");
-            MAP.put("ASSIGN", TransitionFactory.toWord(TargetVerb.ASSIGN));
+            MAP.put("ASSIGN", TransitionFactory.mapOf(TargetVerb.ASSIGN));
             MAP.put("AT", TransitionFactory.mapOf(TriggerWord.AT, 'T'));
             TransitionFactory.sequence(MAP, "ATT", "AC");
             MAP.put("ATTAC", TransitionFactory.mapOf('H', 'K'));
-            MAP.put("ATTACH", TransitionFactory.toWord(PlayerVerb.ATTACH));
-            MAP.put("ATTACK", TransitionFactory.toWord(ObjectVerb.ATTACK));
+            MAP.put("ATTACH", TransitionFactory.mapOf(PlayerVerb.ATTACH));
+            MAP.put("ATTACK", TransitionFactory.mapOf(ObjectVerb.ATTACK));
             TransitionFactory.sequence(MAP, "AU", "RA");
-            MAP.put("AURA", TransitionFactory.toWord(EnchantmentType.AURA));
+            MAP.put("AURA", TransitionFactory.mapOf(EnchantmentType.AURA));
         }
         return MAP;
     }

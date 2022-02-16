@@ -41,6 +41,7 @@ public class IState extends State {
             MAP.put("IGNORE", TransitionFactory.mapOf(PlayerVerb.IGNORE));
             MAP.put("IN",
                     TransitionFactory.mapOf(Preposition.IN, 'D', 'G', 'S'));
+            MAP.get("IN").put('T', new Transition('T', Preposition.IN, "T"));
             MAP.put("IND", TransitionFactory.mapOf('E'));
             MAP.put("INDE", TransitionFactory.mapOf('S'));
             MAP.put("INDES", TransitionFactory.mapOf('T'));
@@ -69,11 +70,16 @@ public class IState extends State {
             MAP.put("INSTEA", TransitionFactory.mapOf('D'));
             MAP.put("INSTEAD", TransitionFactory.mapOf(Adverb.INSTEAD));
             MAP.put("IS", TransitionFactory.mapOf(ObjectVerb.IS, 'L'));
+            MAP.get("IS").put('N', new Transition('N', ObjectVerb.IS, "N"));
             MAP.put("ISL", TransitionFactory.mapOf('A'));
             MAP.put("ISLA", TransitionFactory.mapOf('N'));
             MAP.put("ISLAN", TransitionFactory.mapOf('D'));
             MAP.put("ISLAND", TransitionFactory.mapOf(LandType.ISLAND));
+            MAP.get("ISLAND")
+                    .put('W', new Transition('W', LandType.ISLAND, "W"));
             MAP.put("IT", TransitionFactory.mapOf(ObjectNoun.IT));
+            MAP.get("IT").put('S', new Transition('S', ObjectNoun.IT, "'S"));
+            MAP.get("IT").put('\'', new Transition('\'', ObjectNoun.IT, "I"));
         }
         return MAP;
     }

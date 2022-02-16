@@ -32,7 +32,9 @@ public class BaseState extends State {
             MAP.put("",
                     TransitionFactory.mapOf('A', 'B', 'C', 'D', 'E', 'F', 'G',
                             'H', 'I', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T',
-                            'U', 'V', 'W', 'X', 'Y', 'Z'));
+                            'U', 'V', 'W', 'X', 'Y', 'Z', '0', '1', '2', '3',
+                            '4', '7', '8', '\u2022', '\u2014', '{', '\n', '\0',
+                            '-', '+', '"', '~'));
             MAP.put("A",
                     TransitionFactory.mapOf(Determiner.A, 'B', 'C', 'D', 'F',
                             'L', 'M', 'N', 'R', 'S', 'T', 'U'));
@@ -52,7 +54,8 @@ public class BaseState extends State {
             MAP.put("I", TransitionFactory.mapOf('F', 'G', 'N', 'S', 'T'));
             MAP.put("L", TransitionFactory.mapOf('A', 'E', 'I', 'O'));
             MAP.put("M", TransitionFactory.mapOf('A', 'E', 'I', 'O'));
-            MAP.put("N", TransitionFactory.mapOf('A', 'E', 'I', 'O', 'U'));
+            MAP.put("N",
+                    TransitionFactory.mapOf('A', 'E', 'I', 'O', 'U', '\''));
             MAP.put("O",
                     TransitionFactory.mapOf('F', 'N', 'P', 'R', 'T', 'U', 'V',
                             'W'));
@@ -63,19 +66,51 @@ public class BaseState extends State {
             MAP.put("S",
                     TransitionFactory.mapOf(Morpheme.S, 'A', 'E', 'H', 'I', 'K',
                             'P', 'O', 'T', 'W'));
+            MAP.get("S").put('\'', new Transition('\'', Morpheme.S, "'S"));
             MAP.put("T",
                     TransitionFactory.mapOf(Tap.T, 'A', 'E', 'H', 'I', 'O', 'R',
                             'W', 'U', 'Y'));
             MAP.put("U", TransitionFactory.mapOf(ManaSymbol.U, 'N', 'P'));
             MAP.put("V", TransitionFactory.mapOf('A', 'I'));
             MAP.put("W",
-                    TransitionFactory.mapOf(ManaSymbol.W, 'A', 'o', 'H', 'I',
+                    TransitionFactory.mapOf(ManaSymbol.W, 'A', 'E', 'H', 'I',
                             'O'));
             MAP.put("X", TransitionFactory.mapOf(Variable.X));
+            MAP.get("X").put('/', new Transition('/', Variable.X, "/"));
             MAP.put("Y", TransitionFactory.mapOf(Variable.Y, 'O'));
             MAP.put("Z", TransitionFactory.mapOf('E', 'O'));
-            MAP.put(".", TransitionFactory.toWord(Symbol.PERIOD));
-            MAP.put(" ", Map.of('\0', new Transition('\0', Symbol.SPACE, "")));
+            MAP.put("'", TransitionFactory.mapOf('S'));
+            MAP.put("\u2022", TransitionFactory.toSymbol(Symbol.BULLET, ' '));
+            MAP.put(":", TransitionFactory.mapOf(Symbol.COLON));
+            MAP.put(",", TransitionFactory.mapOf(Symbol.COMMA));
+            MAP.put("\u2014", TransitionFactory.toSymbol(Symbol.DASH, '\n'));
+            MAP.put("-",
+                    TransitionFactory.toSymbol(Symbol.HYPHEN, '0', '1', '2'));
+            MAP.put("{",
+                    TransitionFactory.toSymbol(Symbol.LBRACKET, 'B', 'C', 'G',
+                            'R', 'T', 'U', 'W', 'X', '0', '1', '2', '3', '4',
+                            '5'));
+            MAP.put("\n",
+                    Map.of('\0', new Transition('\0', Symbol.NEWLINE, "")));
+            MAP.put(".",
+                    TransitionFactory.toSymbol(Symbol.PERIOD, '\n', '"', ' '));
+            MAP.put("+",
+                    TransitionFactory.toSymbol(Symbol.PLUS, 'X', 'Y', '0', '1',
+                            '2', '3', '7'));
+            MAP.put("\"",
+                    TransitionFactory.toSymbol(Symbol.QUOTE, 'A', 'E', 'L', 'R',
+                            ' ', '{'));
+            MAP.put("}",
+                    TransitionFactory.toSymbol(Symbol.RBRACKET, ':', ',', '{',
+                            '.', ' '));
+            MAP.put(";", TransitionFactory.toSymbol(Symbol.SEMICOLON, ' '));
+            MAP.put(" ", TransitionFactory.toSymbol(Symbol.SPACE));
+            MAP.put("/",
+                    TransitionFactory.toSymbol(Symbol.SLASH, 'O', '1', '2', '6',
+                            '-', '+'));
+            MAP.put("~",
+                    TransitionFactory.toSymbol(Symbol.TILDE, '\'', ':', ',',
+                            ' ', '.'));
         }
         return MAP;
     }

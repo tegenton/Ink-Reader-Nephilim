@@ -71,6 +71,7 @@ public class LState extends State {
             MAP.put("LOO", TransitionFactory.mapOf('K'));
             MAP.put("LOOK", TransitionFactory.mapOf(PlayerVerb.LOOK));
             MAP.put("LOS", TransitionFactory.mapOf('E'));
+            MAP.get("LOS").put('T', new Transition('T', TargetVerb.LOSE, "ED"));
             MAP.put("LOSE", TransitionFactory.mapOf(TargetVerb.LOSE));
             MAP.put("LOY", TransitionFactory.mapOf('A'));
             MAP.put("LOYA", TransitionFactory.mapOf('L'));

@@ -16,6 +16,9 @@ public final class StateFactory {
      * @return Instance of named state.
      */
     public static State getState(final String name) {
+        if (name.length() > 0 && Character.isDigit(name.charAt(0))) {
+            return new NumberState();
+        }
         if (!STATES.containsKey(name)) {
             if (name.length() < 2) {
                 STATES.put(name, new BaseState(name));
@@ -43,6 +46,7 @@ public final class StateFactory {
                     case 'W' -> new WState(name);
                     case 'Y' -> new YState(name);
                     case 'Z' -> new ZState(name);
+                    case '\'' -> new ApostropheState(name);
                     default -> throw new IllegalStateException(
                             "No state '" + name + "'.");
                 });

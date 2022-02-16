@@ -31,6 +31,7 @@ public class PState extends State {
     protected Map<String, Map<Character, Transition>> transitions() {
         if (MAP.isEmpty()) {
             MAP.put("PA", TransitionFactory.mapOf('Y'));
+            MAP.get("PA").put('I', new Transition('I', PlayerVerb.PAY, "E"));
             MAP.put("PAY", TransitionFactory.mapOf(PlayerVerb.PAY));
             MAP.put("PE", TransitionFactory.mapOf('R'));
             MAP.put("PER", TransitionFactory.mapOf('M'));
@@ -65,9 +66,7 @@ public class PState extends State {
             MAP.put("PLANESWALKE", TransitionFactory.mapOf('R'));
             MAP.put("PLANESWALKER",
                     TransitionFactory.mapOf(CardType.PLANESWALKER));
-            MAP.put("PLAY",
-                    Map.of('E', new Transition('E', PlayerVerb.PLAY, "E"), '\0',
-                            new Transition('\0', PlayerVerb.PLAY, "")));
+            MAP.put("PLAY", TransitionFactory.mapOf(PlayerVerb.PLAY));
             MAP.put("PR", TransitionFactory.mapOf('E', 'O'));
             MAP.put("PRE", TransitionFactory.mapOf('V'));
             MAP.put("PREV", TransitionFactory.mapOf('E'));
@@ -79,6 +78,8 @@ public class PState extends State {
             MAP.put("PRODU", TransitionFactory.mapOf('C'));
             MAP.put("PRODUC", TransitionFactory.mapOf('E'));
             MAP.put("PRODUCE", TransitionFactory.mapOf(SourceVerb.PRODUCE));
+            MAP.get("PRODUCE")
+                    .put('D', new Transition('D', SourceVerb.PRODUCE, "ED"));
             MAP.put("PROT", TransitionFactory.mapOf('E'));
             MAP.put("PROTE", TransitionFactory.mapOf('C'));
             MAP.put("PROTEC", TransitionFactory.mapOf('T'));

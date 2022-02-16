@@ -1,6 +1,10 @@
 package tegenton.card.lexer.tokenizer.transition;
 
+import tegenton.card.lexicon.NounWord;
+import tegenton.card.lexicon.Symbol;
+import tegenton.card.lexicon.VerbWord;
 import tegenton.card.lexicon.Word;
+import tegenton.card.lexicon.game.CostSymbol;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,6 +13,18 @@ public final class TransitionFactory {
     private static final Map<Character, Transition> BASIC = new HashMap<>();
 
     private TransitionFactory() {
+    }
+
+    /**
+     * Get a transition that returns the current state.
+     *
+     * @return Empty transition.
+     */
+    public static Transition getTransition() {
+        if (!BASIC.containsKey(null)) {
+            BASIC.put(null, new Transition());
+        }
+        return BASIC.get(null);
     }
 
     /**
@@ -34,8 +50,8 @@ public final class TransitionFactory {
      */
     public static Map<Character, Transition> mapOf(final Word word,
                                                    final char... labels) {
-        Map<Character, Transition> transitions = mapOf(labels);
-        transitions.putAll(toWord(word));
+        final Map<Character, Transition> transitions = toWord(word);
+        transitions.putAll(mapOf(labels));
         return transitions;
     }
 
@@ -46,8 +62,8 @@ public final class TransitionFactory {
      * @return List of transitions for this state.
      */
     public static Map<Character, Transition> mapOf(final char... labels) {
-        Map<Character, Transition> transitions = new HashMap<>();
-        for (char c : labels) {
+        final Map<Character, Transition> transitions = new HashMap<>();
+        for (final char c : labels) {
             transitions.put(c, getTransition(c));
         }
         return transitions;
@@ -63,8 +79,8 @@ public final class TransitionFactory {
     public static void sequence(
             final Map<String, Map<Character, Transition>> map,
             final String start, final String end) {
-        StringBuilder builder = new StringBuilder(start);
-        for (char c : end.toCharArray()) {
+        final StringBuilder builder = new StringBuilder(start);
+        for (final char c : end.toCharArray()) {
             if (map.put(builder.toString(), mapOf(c)) != null) {
                 throw new UnsupportedOperationException(builder.toString());
             }
@@ -78,9 +94,63 @@ public final class TransitionFactory {
      * @param word Product.
      * @return Transitions on space or a null terminator producing that word.
      */
-    public static Map<Character, Transition> toWord(final Word word) {
-        return Map.of('\0', new Transition('\0', word, ""), '.',
-                new Transition('.', word, "."), ' ',
-                new Transition(' ', word, " "));
+    private static Map<Character, Transition> toWord(final Word word) {
+        final Map<Character, Transition> map = new HashMap<>();
+        map.put(',', new Transition(',', word, ","));
+        map.put('\0', new Transition('\0', word, ""));
+        map.put('\n', new Transition('\n', word, "\n"));
+        map.put('.', new Transition('.', word, "."));
+        map.put('"', new Transition('"', word, "\""));
+        map.put(';', new Transition(';', word, ";"));
+        map.put(' ', new Transition(' ', word, " "));
+        if (word instanceof VerbWord verb) {
+            map.putAll(toWord(verb));
+        } else if (word instanceof NounWord noun) {
+            map.putAll(toWord(noun));
+        } else if (word instanceof CostSymbol symbol) {
+            map.putAll(toWord(symbol));
+        }
+        return map;
+    }
+
+    private static Map<Character, Transition> toWord(final VerbWord verb) {
+        final Map<Character, Transition> map = new HashMap<>();
+        map.put('E', new Transition('E', verb, "E"));
+        map.put('I', new Transition('I', verb, "I"));
+        map.put('S', TransitionFactory.getTransition());
+        return map;
+    }
+
+    private static Map<Character, Transition> toWord(final NounWord noun) {
+        final Map<Character, Transition> map = new HashMap<>();
+        map.put('E', new Transition('E', noun, "E"));
+        map.put('S', new Transition('S', noun, "S"));
+        map.put('\'', new Transition('\'', noun, "'"));
+        return map;
+    }
+
+    private static Map<Character, Transition> toWord(final CostSymbol symbol) {
+        final Map<Character, Transition> map = new HashMap<>();
+        map.put('}', new Transition('}', symbol, "}"));
+        return map;
+    }
+
+    /**
+     * Generate a map of transitions from a symbol, each of which produces the
+     * symbol.
+     *
+     * @param symbol Symbol to produce.
+     * @param labels Valid output characters.
+     * @return Map of transitions producing this symbol.
+     */
+    public static Map<Character, Transition> toSymbol(final Symbol symbol,
+                                                      final char... labels) {
+        final Map<Character, Transition> transitions = new HashMap<>();
+        for (final char c : labels) {
+            transitions.put(c,
+                    new Transition(c, symbol, Character.toString(c)));
+        }
+        transitions.put('\0', new Transition('\0', symbol, ""));
+        return transitions;
     }
 }

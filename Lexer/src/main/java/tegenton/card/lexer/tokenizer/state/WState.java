@@ -2,14 +2,17 @@ package tegenton.card.lexer.tokenizer.state;
 
 import tegenton.card.lexer.tokenizer.transition.Transition;
 import tegenton.card.lexer.tokenizer.transition.TransitionFactory;
+import tegenton.card.lexicon.Morpheme;
 import tegenton.card.lexicon.Noun;
 import tegenton.card.lexicon.Preposition;
 import tegenton.card.lexicon.SubordinateConjunction;
 import tegenton.card.lexicon.game.ColorWord;
+import tegenton.card.lexicon.game.GameVerb;
 import tegenton.card.lexicon.game.Keyword;
 import tegenton.card.lexicon.game.TriggerWord;
 import tegenton.card.lexicon.game.target.TargetAuxiliaryVerb;
 import tegenton.card.lexicon.game.target.TargetNoun;
+import tegenton.card.lexicon.game.target.object.ObjectVerb;
 import tegenton.card.lexicon.game.target.object.card.CardName;
 import tegenton.card.lexicon.game.turn.Duration;
 import tegenton.card.lexicon.game.type.CreatureType;
@@ -38,8 +41,15 @@ public class WState extends State {
             MAP.put("WALK", TransitionFactory.mapOf(Keyword.WALK));
             MAP.put("WALL", TransitionFactory.mapOf(CreatureType.WALL));
             MAP.put("WAS", TransitionFactory.mapOf('P'));
+            MAP.get("WAS").put('N', new Transition('N', ObjectVerb.IS));
+            MAP.get("WAS").put(' ', new Transition(' ', ObjectVerb.IS));
+            MAP.put("WASN",
+                    Map.of('\'', new Transition('\'', Morpheme.ED, "NO")));
             MAP.put("WASP", TransitionFactory.mapOf(CardName.WASP));
+            MAP.put("WAS ", Map.of('\0', new Transition('\0', Morpheme.ED)));
             MAP.put("WAY", TransitionFactory.mapOf(Noun.WAY));
+            MAP.put("WE", TransitionFactory.mapOf('R'));
+            MAP.put("WER", Map.of('E', new Transition('E', GameVerb.BE, "ED")));
             MAP.put("WH", TransitionFactory.mapOf('E', 'I', 'O'));
             MAP.put("WHE", TransitionFactory.mapOf('N', 'R'));
             MAP.put("WHEN", TransitionFactory.mapOf(TriggerWord.WHEN, 'E'));
@@ -55,10 +65,15 @@ public class WState extends State {
             MAP.put("WHILE", TransitionFactory.mapOf(Duration.WHILE));
             MAP.put("WHIT", TransitionFactory.mapOf('E'));
             MAP.put("WHITE", TransitionFactory.mapOf(ColorWord.WHITE));
-            MAP.put("WHO", TransitionFactory.mapOf(TargetNoun.WHO));
+            MAP.put("WHO", TransitionFactory.mapOf(TargetNoun.WHO, 'S'));
+            MAP.get("WHO").put('M', TransitionFactory.getTransition());
+            MAP.put("WHOS",
+                    Map.of('E', new Transition('E', TargetNoun.WHO, "'S")));
             MAP.put("WI", TransitionFactory.mapOf('T'));
             MAP.put("WIT", TransitionFactory.mapOf('H'));
             MAP.put("WITH", TransitionFactory.mapOf(Preposition.WITH));
+            MAP.get("WITH")
+                    .put('O', new Transition('O', Preposition.WITH, "O"));
             MAP.put("WO", TransitionFactory.mapOf('R', 'U'));
             MAP.put("WOR", TransitionFactory.mapOf('D'));
             MAP.put("WORD", TransitionFactory.mapOf(Noun.WORD));

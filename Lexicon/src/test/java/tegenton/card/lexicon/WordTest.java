@@ -96,14 +96,14 @@ class WordTest {
     @Test
     void subordinateConjunction() {
         words = SubordinateConjunction.values();
-        values = List.of("AS", "BUT", "EXCEPT", "IF", "LONG", "THOUGH",
-                "WHERE");
+        values =
+                List.of("AS", "BUT", "EXCEPT", "IF", "LONG", "THOUGH", "WHERE");
     }
 
     @Test
     void symbol() {
         words = Symbol.values();
-        values = List.of("\u2022", "\u201D", ":", ",", "\u2014", "-", "{", "\n",
-                "\u201C", ".", "+", "}", ";", "/", " ", "~");
+        values = List.of("\u2022", ":", ",", "\u2014", "-", "{", "\n", ".", "+",
+                "\"", "}", ";", "/", " ", "~");
     }
 }

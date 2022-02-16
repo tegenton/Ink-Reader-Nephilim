@@ -3,6 +3,7 @@ package tegenton.card.lexer.tokenizer.state;
 import tegenton.card.lexer.tokenizer.transition.Transition;
 import tegenton.card.lexer.tokenizer.transition.TransitionFactory;
 import tegenton.card.lexicon.Adjective;
+import tegenton.card.lexicon.Morpheme;
 import tegenton.card.lexicon.Particle;
 import tegenton.card.lexicon.game.GameNoun;
 import tegenton.card.lexicon.game.Keyword;
@@ -32,40 +33,55 @@ public class DState extends State {
     protected Map<String, Map<Character, Transition>> transitions() {
         if (MAP.isEmpty()) {
             TransitionFactory.sequence(MAP, "DA", "MAGE");
-            MAP.put("DAMAGE", TransitionFactory.toWord(GameNoun.DAMAGE));
+            MAP.put("DAMAGE", TransitionFactory.mapOf(GameNoun.DAMAGE));
             MAP.put("DE", TransitionFactory.mapOf('A', 'C', 'F', 'S'));
             MAP.put("DEA", TransitionFactory.mapOf('L'));
-            MAP.put("DEAL", TransitionFactory.toWord(SourceVerb.DEAL));
+            MAP.put("DEAL", TransitionFactory.mapOf(SourceVerb.DEAL));
+            MAP.get("DEAL")
+                    .put('T', new Transition('T', SourceVerb.DEAL, "ED"));
             MAP.put("DEC", TransitionFactory.mapOf('K', 'L'));
-            MAP.put("DECK", TransitionFactory.toWord(Zone.DECK));
-            TransitionFactory.sequence(MAP, "DECL", "ARE");
-            MAP.put("DECLARE", TransitionFactory.toWord(PlayerVerb.DECLARE));
+            MAP.put("DECK", TransitionFactory.mapOf(Zone.DECK));
+            TransitionFactory.sequence(MAP, "DECL", "AR");
+            MAP.put("DECLAR", TransitionFactory.mapOf('E', 'I'));
+            MAP.put("DECLARE", TransitionFactory.mapOf(PlayerVerb.DECLARE));
+            MAP.get("DECLARE")
+                    .put('D', new Transition('D', PlayerVerb.DECLARE, "ED"));
+            MAP.put("DECLARI",
+                    Map.of('N', new Transition('N', PlayerVerb.DECLARE, "IN")));
             TransitionFactory.sequence(MAP, "DEF", "END");
             MAP.put("DEFEND", TransitionFactory.mapOf('E', 'I'));
             MAP.put("DEFENDE", TransitionFactory.mapOf('R'));
-            MAP.put("DEFENDER", TransitionFactory.toWord(Keyword.DEFENDER));
+            MAP.put("DEFENDER", TransitionFactory.mapOf(Keyword.DEFENDER));
             TransitionFactory.sequence(MAP, "DEFENDI", "NG");
             MAP.put("DEFENDING",
-                    TransitionFactory.toWord(PlayerAdjective.DEFENDING));
+                    TransitionFactory.mapOf(PlayerAdjective.DEFENDING));
             TransitionFactory.sequence(MAP, "DES", "TROY");
-            MAP.put("DESTROY", TransitionFactory.toWord(PlayerVerb.DESTROY));
+            MAP.put("DESTROY", TransitionFactory.mapOf(PlayerVerb.DESTROY));
             MAP.put("DI", TransitionFactory.mapOf('E', 'F', 'S', 'V'));
-            MAP.put("DIE", TransitionFactory.toWord(ObjectVerb.DIE));
+            MAP.get("DI").put('D', new Transition('D', SourceVerb.DO));
+            MAP.put("DID", Map.of('N', new Transition('N', Morpheme.ED, "N")));
+            MAP.put("DIE", TransitionFactory.mapOf(ObjectVerb.DIE));
+            MAP.get("DIE").put('D', new Transition('D', ObjectVerb.DIE, "ED"));
             TransitionFactory.sequence(MAP, "DIF", "FERENT");
-            MAP.put("DIFFERENT", TransitionFactory.toWord(Adjective.DIFFERENT));
+            MAP.put("DIFFERENT", TransitionFactory.mapOf(Adjective.DIFFERENT));
             TransitionFactory.sequence(MAP, "DIS", "CARD");
-            MAP.put("DISCARD", TransitionFactory.toWord(PlayerVerb.DISCARD));
+            MAP.put("DISCARD", TransitionFactory.mapOf(PlayerVerb.DISCARD));
             TransitionFactory.sequence(MAP, "DIV", "IDE");
-            MAP.put("DIVIDE", TransitionFactory.toWord(PlayerVerb.DIVIDE));
-            MAP.put("DO", TransitionFactory.mapOf(SourceVerb.DO, 'W'));
+            MAP.put("DIVIDE", TransitionFactory.mapOf(PlayerVerb.DIVIDE));
+            MAP.get("DIVIDE")
+                    .put('D', new Transition('D', PlayerVerb.DIVIDE, "ED"));
+            MAP.put("DO", TransitionFactory.mapOf(SourceVerb.DO, 'E', 'W'));
+            MAP.get("DO").put('I', new Transition('I', SourceVerb.DO, "I"));
+            MAP.get("DO").put('N', new Transition('N', SourceVerb.DO, "N"));
+            MAP.put("DOE", TransitionFactory.mapOf('S'));
+            MAP.put("DOES", TransitionFactory.mapOf(SourceVerb.DO));
+            MAP.get("DOES").put('N', new Transition('N', SourceVerb.DO, "N"));
             MAP.put("DOW", TransitionFactory.mapOf('N'));
-            MAP.put("DOWN", TransitionFactory.toWord(Particle.DOWN));
+            MAP.put("DOWN", TransitionFactory.mapOf(Particle.DOWN));
             TransitionFactory.sequence(MAP, "DR", "AW");
-            MAP.put("DRAW", Map.of('S', new Transition('S', "DRAW"), '\0',
-                    new Transition('\0', PlayerVerb.DRAW, ""), ' ',
-                    new Transition(' ', PlayerVerb.DRAW, " ")));
+            MAP.put("DRAW", TransitionFactory.mapOf(PlayerVerb.DRAW));
             TransitionFactory.sequence(MAP, "DU", "RING");
-            MAP.put("DURING", TransitionFactory.toWord(Chronology.DURING));
+            MAP.put("DURING", TransitionFactory.mapOf(Chronology.DURING));
         }
         return MAP;
     }

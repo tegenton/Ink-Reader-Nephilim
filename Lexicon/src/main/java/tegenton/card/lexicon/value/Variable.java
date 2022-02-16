@@ -1,6 +1,8 @@
 package tegenton.card.lexicon.value;
 
-public enum Variable implements ValueWord {
+import tegenton.card.lexicon.game.CostSymbol;
+
+public enum Variable implements ValueWord, CostSymbol {
     X,
     Y;
 

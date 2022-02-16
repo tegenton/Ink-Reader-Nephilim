@@ -51,19 +51,27 @@ public class RState extends State {
             MAP.put("REGENERAT", TransitionFactory.mapOf('E'));
             MAP.put("REGENERATE",
                     TransitionFactory.mapOf(PlayerVerb.REGENERATE));
+            MAP.get("REGENERATE")
+                    .put('D', new Transition('D', PlayerVerb.REGENERATE, "ED"));
             MAP.put("REM", TransitionFactory.mapOf('O'));
             MAP.put("REMO", TransitionFactory.mapOf('V'));
             MAP.put("REMOV", TransitionFactory.mapOf('E'));
             MAP.put("REMOVE", TransitionFactory.mapOf(PlayerVerb.REMOVE));
+            MAP.get("REMOVE")
+                    .put('D', new Transition('D', PlayerVerb.REMOVE, "ED"));
             MAP.put("REP", TransitionFactory.mapOf('L'));
             MAP.put("REPL", TransitionFactory.mapOf('A'));
             MAP.put("REPLA", TransitionFactory.mapOf('C'));
             MAP.put("REPLAC", TransitionFactory.mapOf('E'));
+            MAP.get("REPLAC")
+                    .put('I', new Transition('I', PlayerVerb.REPLACE, "I"));
             MAP.put("REPLACE", TransitionFactory.mapOf(PlayerVerb.REPLACE));
             MAP.put("RES", TransitionFactory.mapOf('O', 'T'));
             MAP.put("RESO", TransitionFactory.mapOf('L'));
             MAP.put("RESOL", TransitionFactory.mapOf('V'));
             MAP.put("RESOLV", TransitionFactory.mapOf('E'));
+            MAP.get("RESOLV")
+                    .put('I', new Transition('I', SourceVerb.RESOLVE, "I"));
             MAP.put("RESOLVE", TransitionFactory.mapOf(SourceVerb.RESOLVE));
             MAP.put("REST", TransitionFactory.mapOf(Noun.REST));
             MAP.put("RET", TransitionFactory.mapOf('U'));

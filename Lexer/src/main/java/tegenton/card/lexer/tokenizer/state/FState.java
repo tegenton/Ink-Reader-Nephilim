@@ -49,7 +49,9 @@ public class FState extends State {
             MAP.put("FIN", TransitionFactory.mapOf('I'));
             MAP.put("FINI", TransitionFactory.mapOf('S'));
             MAP.put("FINIS", TransitionFactory.mapOf('H'));
-            MAP.put("FINISH", TransitionFactory.mapOf(GameVerb.FINISH));
+            MAP.put("FINISH", TransitionFactory.mapOf(GameVerb.FINISH, 'E'));
+            MAP.put("FINISHE", TransitionFactory.mapOf('S'));
+            MAP.put("FINISHES", TransitionFactory.mapOf(GameVerb.FINISH));
             MAP.put("FIR", TransitionFactory.mapOf('S'));
             MAP.put("FIRS", TransitionFactory.mapOf('T'));
             MAP.put("FIRST", TransitionFactory.mapOf(Adjective.FIRST));
@@ -69,6 +71,8 @@ public class FState extends State {
             MAP.put("FORE", TransitionFactory.mapOf('S'));
             MAP.put("FORES", TransitionFactory.mapOf('T'));
             MAP.put("FOREST", TransitionFactory.mapOf(LandType.FOREST));
+            MAP.get("FOREST")
+                    .put('W', new Transition('W', LandType.FOREST, "W"));
             MAP.put("FOU", TransitionFactory.mapOf('R'));
             MAP.put("FOUR", TransitionFactory.mapOf(EnglishNumber.FOUR));
             MAP.put("FR", TransitionFactory.mapOf('O'));

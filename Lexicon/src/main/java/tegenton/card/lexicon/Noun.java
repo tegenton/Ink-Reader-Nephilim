@@ -3,7 +3,7 @@ package tegenton.card.lexicon;
 /**
  * Nouns represent people, places, or things.
  */
-public enum Noun implements Word {
+public enum Noun implements NounWord {
     AMOUNT,
     CHOICE,
     FEWEST,

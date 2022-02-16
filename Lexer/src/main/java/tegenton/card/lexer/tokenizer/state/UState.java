@@ -2,6 +2,7 @@ package tegenton.card.lexer.tokenizer.state;
 
 import tegenton.card.lexer.tokenizer.transition.Transition;
 import tegenton.card.lexer.tokenizer.transition.TransitionFactory;
+import tegenton.card.lexicon.Adverb;
 import tegenton.card.lexicon.Conjunction;
 import tegenton.card.lexicon.Particle;
 import tegenton.card.lexicon.Preposition;
@@ -28,6 +29,8 @@ public class UState extends State {
     protected Map<String, Map<Character, Transition>> transitions() {
         if (MAP.isEmpty()) {
             MAP.put("UN", TransitionFactory.mapOf('D', 'L', 'T'));
+            MAP.get("UN").put('B', new Transition('B', Adverb.NOT, "B"));
+            MAP.get("UN").put('S', new Transition('S', Adverb.NOT, "S"));
             MAP.put("UND", TransitionFactory.mapOf('E'));
             MAP.put("UNDE", TransitionFactory.mapOf('R'));
             MAP.put("UNDER", TransitionFactory.mapOf(Preposition.UNDER));
@@ -35,7 +38,9 @@ public class UState extends State {
             MAP.put("UNLE", TransitionFactory.mapOf('S'));
             MAP.put("UNLES", TransitionFactory.mapOf('S'));
             MAP.put("UNLESS", TransitionFactory.mapOf(Conjunction.UNLESS));
-            MAP.put("UNT", TransitionFactory.mapOf('I'));
+            MAP.put("UNT", TransitionFactory.mapOf('A', 'I'));
+            MAP.put("UNTA",
+                    Map.of('P', new Transition('P', Adverb.NOT, "TAP")));
             MAP.put("UNTI", TransitionFactory.mapOf('L'));
             MAP.put("UNTIL", TransitionFactory.mapOf(Duration.UNTIL));
             MAP.put("UP", TransitionFactory.mapOf(Particle.UP, 'K'));
@@ -43,6 +48,7 @@ public class UState extends State {
             MAP.put("UPKE", TransitionFactory.mapOf('E'));
             MAP.put("UPKEE", TransitionFactory.mapOf('P'));
             MAP.put("UPKEEP", TransitionFactory.mapOf(Step.UPKEEP));
+            MAP.get("UPKEEP").put('S', new Transition('S', Step.UPKEEP, "S"));
         }
         return MAP;
     }
