@@ -17,10 +17,10 @@ public class SubordinateConjunctionNode extends Node {
         super(input);
         if (nextToken(SubordinateConjunction.AS)) {
             consume(SubordinateConjunction.AS);
-            pop(Symbol.SPACE);
+            expect(Symbol.SPACE);
             if (nextToken(SubordinateConjunction.LONG)) {
                 consume(SubordinateConjunction.LONG);
-                pop(Symbol.SPACE);
+                expect(Symbol.SPACE);
                 consume(SubordinateConjunction.AS);
             } else {
                 consume(SubordinateConjunction.THOUGH);

@@ -15,7 +15,7 @@ public class StatModNode extends Node {
         super(input);
         consume(Symbol.PLUS, Symbol.HYPHEN);
         consume(DigitNumber.class);
-        pop(Symbol.SLASH);
+        expect(Symbol.SLASH);
         consume(Symbol.PLUS, Symbol.HYPHEN);
         consume(DigitNumber.class);
     }

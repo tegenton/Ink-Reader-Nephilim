@@ -27,7 +27,7 @@ public abstract class Node {
         value.add(Leaf.of(statModNode));
     }
 
-    protected void pop(final Word expected) {
+    protected void expect(final Word expected) {
         if (tokens.size() > 0) {
             if (tokens.get(0) == expected) {
                 tokens.remove(0);

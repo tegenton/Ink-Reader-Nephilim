@@ -23,7 +23,7 @@ public class CounterNode extends Node {
         } else {
             addChild(new StatModNode(getTokens()));
         }
-        pop(Symbol.SPACE);
-        pop(PlayerVerb.COUNTER);
+        expect(Symbol.SPACE);
+        expect(PlayerVerb.COUNTER);
     }
 }
