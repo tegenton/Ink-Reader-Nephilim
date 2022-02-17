@@ -9,7 +9,7 @@ import tegenton.card.parser.node.atom.TapSymbolNode;
 import java.util.List;
 
 public class CostNode extends Node {
-    public CostNode(final Node... manaSymbols) {
+    CostNode(final Node... manaSymbols) {
         super(manaSymbols);
     }
 

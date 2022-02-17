@@ -1,6 +1,5 @@
 package tegenton.card.parser.node;
 
-import tegenton.card.lexicon.Symbol;
 import tegenton.card.lexicon.Word;
 import tegenton.card.parser.node.leaf.Leaf;
 
@@ -10,20 +9,19 @@ import java.util.List;
 import java.util.Objects;
 
 public abstract class Node {
-    private final List<Leaf> value;
+    private final List<Leaf> value = new ArrayList<>();
     private List<Word> tokens;
 
     protected Node(final List<Word> input) {
         tokens = input;
-        value = new ArrayList<>();
     }
 
     protected Node(final Word... words) {
-        value = Arrays.stream(words).map(Leaf::of).toList();
+        Arrays.stream(words).map(Leaf::of).forEach(value::add);
     }
 
     public Node(final Node... nodes) {
-        value = Arrays.stream(nodes).map(Leaf::of).toList();
+        Arrays.stream(nodes).map(Leaf::of).forEach(value::add);
     }
 
     protected void expect(final Word expected) {
@@ -39,10 +37,8 @@ public abstract class Node {
     }
 
     protected void consume(final Word expected) {
-        if (tokens.size() > 0 && tokens.get(0) == expected) {
-            value.add(Leaf.of(expected));
-            tokens.remove(0);
-        }
+        expect(expected);
+        value.add(Leaf.of(expected));
     }
 
     @Override
@@ -89,7 +85,7 @@ public abstract class Node {
         }
     }
 
-    protected void consume(final Symbol... accepted) {
+    protected void consume(final Word... accepted) {
         if (Arrays.stream(accepted).anyMatch((s) -> s == nextToken())) {
             consume(nextToken());
         }
