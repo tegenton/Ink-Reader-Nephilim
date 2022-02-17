@@ -79,6 +79,10 @@ public abstract class Node {
     protected void consume(final Class<? extends Word> wordClass) {
         if (nextToken().getClass() == wordClass) {
             consume(nextToken());
+        } else {
+            throw new IllegalStateException(
+                    "Token '" + nextToken() + "' is not of type '"
+                            + wordClass.getSimpleName() + "'");
         }
     }
 
