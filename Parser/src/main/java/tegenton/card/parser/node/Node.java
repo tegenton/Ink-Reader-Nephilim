@@ -2,7 +2,6 @@ package tegenton.card.parser.node;
 
 import tegenton.card.lexicon.Symbol;
 import tegenton.card.lexicon.Word;
-import tegenton.card.parser.node.atom.StatModNode;
 import tegenton.card.parser.node.leaf.Leaf;
 
 import java.util.ArrayList;
@@ -23,9 +22,8 @@ public abstract class Node {
         value = Arrays.stream(words).map(Leaf::of).toList();
     }
 
-    public Node(final StatModNode statModNode) {
-        value = new ArrayList<>();
-        value.add(Leaf.of(statModNode));
+    public Node(final Node... nodes) {
+        value = Arrays.stream(nodes).map(Leaf::of).toList();
     }
 
     protected void expect(final Word expected) {
@@ -70,7 +68,11 @@ public abstract class Node {
     }
 
     protected Word nextToken() {
-        return tokens.get(0);
+        try {
+            return tokens.get(0);
+        } catch (final IndexOutOfBoundsException e) {
+            return null;
+        }
     }
 
     protected boolean nextToken(final Word word) {
@@ -97,7 +99,7 @@ public abstract class Node {
         return tokens;
     }
 
-    protected void addChild(final StatModNode statModNode) {
-        value.add(Leaf.of(statModNode));
+    protected void addChild(final Node node) {
+        value.add(Leaf.of(node));
     }
 }

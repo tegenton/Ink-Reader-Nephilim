@@ -2,7 +2,7 @@ package tegenton.card.parser;
 
 import org.junit.jupiter.api.Test;
 import tegenton.card.lexicon.Word;
-import tegenton.card.parser.node.AbilityNode;
+import tegenton.card.parser.node.CardNode;
 
 import java.util.List;
 
@@ -12,14 +12,14 @@ public class ParserTest {
     @Test
     void empty() {
         final List<Word> tokens = List.of();
-        final AbilityNode expected = new AbilityNode();
+        final CardNode expected = new CardNode(null);
         assertEquals(expected, Parser.parse(tokens));
     }
 
     @Test
     void ancestralRecall() {
         final List<Word> tokens = List.of();
-        final AbilityNode expected = new AbilityNode();
+        final CardNode expected = new CardNode(null);
         assertEquals(expected, Parser.parse(tokens));
     }
 }
