@@ -26,14 +26,14 @@ public abstract class Node {
 
     protected void expect(final Word expected) {
         if (tokens.size() > 0) {
-            if (tokens.get(0) == expected) {
+            if (nextToken() == expected) {
                 tokens.remove(0);
                 return;
             }
         }
         throw new IllegalStateException(
                 "Expected token '" + expected + "' does not match found token '"
-                        + tokens.get(0) + "'");
+                        + nextToken() + "'");
     }
 
     protected void consume(final Word expected) {
@@ -86,8 +86,12 @@ public abstract class Node {
     }
 
     protected void consume(final Word... accepted) {
-        if (Arrays.stream(accepted).anyMatch((s) -> s == nextToken())) {
+        if (Arrays.asList(accepted).contains(nextToken())) {
             consume(nextToken());
+        } else {
+            throw new IllegalStateException(
+                    "Token '" + nextToken() + "' not found in '"
+                            + Arrays.toString(accepted) + "'");
         }
     }
 

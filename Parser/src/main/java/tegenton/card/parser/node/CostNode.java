@@ -3,8 +3,8 @@ package tegenton.card.parser.node;
 import tegenton.card.lexicon.Symbol;
 import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.Tap;
-import tegenton.card.parser.node.atom.ManaSymbolNode;
-import tegenton.card.parser.node.atom.TapSymbolNode;
+import tegenton.card.parser.node.symbol.ManaSymbolNode;
+import tegenton.card.parser.node.symbol.TapSymbolNode;
 
 import java.util.List;
 

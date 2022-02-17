@@ -53,6 +53,6 @@ public class Leaf {
 
     @Override
     public String toString() {
-        return node == null ? word.toString() : node.toString();
+        return (node == null) ? word.toString() : node.toString();
     }
 }
