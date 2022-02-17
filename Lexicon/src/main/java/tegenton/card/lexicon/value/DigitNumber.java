@@ -1,6 +1,7 @@
 package tegenton.card.lexicon.value;
 
 
+import java.util.Objects;
 import java.util.stream.IntStream;
 
 /**
@@ -38,5 +39,22 @@ public final class DigitNumber implements ValueWord {
     @Override
     public String toString() {
         return Integer.toString(val);
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        final DigitNumber that = (DigitNumber) o;
+        return val == that.val;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(val);
     }
 }

@@ -65,4 +65,16 @@ public abstract class Node {
     protected boolean nextToken(final Word word) {
         return tokens.size() > 0 && tokens.get(0) == word;
     }
+
+    protected void consume(final Class<? extends Word> wordClass) {
+        if (nextToken().getClass() == wordClass) {
+            consume(nextToken());
+        }
+    }
+
+    protected void consume(final Symbol... accepted) {
+        if (Arrays.stream(accepted).anyMatch((s) -> s == nextToken())) {
+            consume(nextToken());
+        }
+    }
 }

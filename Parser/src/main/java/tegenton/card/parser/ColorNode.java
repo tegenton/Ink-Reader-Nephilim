@@ -25,10 +25,4 @@ public class ColorNode extends Node {
     ColorNode(final Word... colors) {
         super(colors);
     }
-
-    private void consume(final Class<ColorWord> colorWordClass) {
-        if (nextToken().getClass() == colorWordClass) {
-            consume(nextToken());
-        }
-    }
 }
