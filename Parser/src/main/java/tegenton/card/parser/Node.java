@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Objects;
 
 public abstract class Node {
-    protected final List<Word> value;
-    protected List<Word> tokens;
+    private final List<Word> value;
+    private List<Word> tokens;
 
     protected Node(final List<Word> input) {
         tokens = new ArrayList<>(input);
@@ -56,5 +56,13 @@ public abstract class Node {
     @Override
     public String toString() {
         return this.getClass().getSimpleName() + "{" + "value=" + value + '}';
+    }
+
+    protected Word nextToken() {
+        return tokens.get(0);
+    }
+
+    protected boolean nextToken(final Word word) {
+        return tokens.size() > 0 && tokens.get(0) == word;
     }
 }

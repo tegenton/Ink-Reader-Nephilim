@@ -19,14 +19,10 @@ public class ConjunctionNode extends Node {
                 consume(Symbol.SLASH);
                 consume(Conjunction.OR);
             }
-        } else if (tokens.get(0) instanceof Conjunction conjunction) {
+        } else if (nextToken() instanceof Conjunction conjunction) {
             switch (conjunction) {
                 case OR, THEN -> consume(conjunction);
             }
         }
-    }
-
-    private boolean nextToken(final Word word) {
-        return tokens.size() > 0 && tokens.get(0) == word;
     }
 }

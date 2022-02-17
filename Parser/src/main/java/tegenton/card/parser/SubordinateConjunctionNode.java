@@ -15,10 +15,10 @@ public class SubordinateConjunctionNode extends Node {
 
     public SubordinateConjunctionNode(final List<Word> input) {
         super(input);
-        if (tokens.get(0) == SubordinateConjunction.AS) {
+        if (nextToken(SubordinateConjunction.AS)) {
             consume(SubordinateConjunction.AS);
             pop(Symbol.SPACE);
-            if (tokens.get(0) == SubordinateConjunction.LONG) {
+            if (nextToken(SubordinateConjunction.LONG)) {
                 consume(SubordinateConjunction.LONG);
                 pop(Symbol.SPACE);
                 consume(SubordinateConjunction.AS);
@@ -26,8 +26,7 @@ public class SubordinateConjunctionNode extends Node {
                 consume(SubordinateConjunction.THOUGH);
             }
         } else {
-            if (tokens.get(
-                    0) instanceof SubordinateConjunction subordinateConjunction) {
+            if (nextToken() instanceof SubordinateConjunction subordinateConjunction) {
                 switch (subordinateConjunction) {
                     case BUT, WHERE, THOUGH, LONG, IF, EXCEPT -> consume(
                             subordinateConjunction);

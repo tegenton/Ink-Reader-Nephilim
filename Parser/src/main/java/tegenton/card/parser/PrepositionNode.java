@@ -12,7 +12,7 @@ public class PrepositionNode extends Node {
 
     public PrepositionNode(final List<Word> input) {
         super(input);
-        if (tokens.get(0) instanceof Preposition preposition) {
+        if (nextToken() instanceof Preposition preposition) {
             consume(preposition);
         }
     }
