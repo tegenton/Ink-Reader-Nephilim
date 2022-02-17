@@ -1,8 +1,11 @@
 package tegenton.card.parser.node.atom;
 
 import tegenton.card.lexicon.Morpheme;
+import tegenton.card.lexicon.Symbol;
 import tegenton.card.lexicon.Word;
+import tegenton.card.lexicon.game.target.TargetNoun;
 import tegenton.card.lexicon.game.target.object.ObjectNoun;
+import tegenton.card.lexicon.game.type.TypeWord;
 import tegenton.card.parser.node.Node;
 
 import java.util.List;
@@ -14,7 +17,15 @@ public class AtomicObjectNode extends Node {
 
     public AtomicObjectNode(final List<Word> tokens) {
         super(tokens);
-        consume(ObjectNoun.CARD);
-        consume(Morpheme.S);
+        if (nextToken() instanceof ObjectNoun noun) {
+            consume(noun);
+            if (nextToken() instanceof Morpheme) {
+                consume(Morpheme.S);
+            }
+        } else if (nextToken() instanceof TypeWord type) {
+            consume(type);
+        } else {
+            consume(Symbol.TILDE, TargetNoun.THEY);
+        }
     }
 }
