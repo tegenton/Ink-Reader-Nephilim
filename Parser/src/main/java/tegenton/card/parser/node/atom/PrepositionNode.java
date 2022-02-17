@@ -1,7 +1,8 @@
-package tegenton.card.parser.node;
+package tegenton.card.parser.node.atom;
 
 import tegenton.card.lexicon.Preposition;
 import tegenton.card.lexicon.Word;
+import tegenton.card.parser.node.Node;
 
 import java.util.List;
 

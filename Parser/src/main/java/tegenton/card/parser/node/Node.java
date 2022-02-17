@@ -2,6 +2,7 @@ package tegenton.card.parser.node;
 
 import tegenton.card.lexicon.Symbol;
 import tegenton.card.lexicon.Word;
+import tegenton.card.parser.node.atom.StatModNode;
 import tegenton.card.parser.node.leaf.Leaf;
 
 import java.util.ArrayList;

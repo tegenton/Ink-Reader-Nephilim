@@ -1,8 +1,9 @@
-package tegenton.card.parser.node;
+package tegenton.card.parser.node.atom;
 
 import tegenton.card.lexicon.Symbol;
 import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.value.DigitNumber;
+import tegenton.card.parser.node.Node;
 
 import java.util.List;
 

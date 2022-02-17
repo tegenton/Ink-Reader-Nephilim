@@ -4,6 +4,7 @@ import tegenton.card.lexicon.Symbol;
 import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.target.player.PlayerVerb;
 import tegenton.card.lexicon.game.type.CounterType;
+import tegenton.card.parser.node.atom.StatModNode;
 
 import java.util.List;
 
