@@ -1,7 +1,8 @@
-package tegenton.card.parser;
+package tegenton.card.parser.node;
 
 import tegenton.card.lexicon.Symbol;
 import tegenton.card.lexicon.Word;
+import tegenton.card.parser.node.leaf.Leaf;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,29 +10,38 @@ import java.util.List;
 import java.util.Objects;
 
 public abstract class Node {
-    private final List<Word> value;
+    private final List<Leaf> value;
     private List<Word> tokens;
 
     protected Node(final List<Word> input) {
-        tokens = new ArrayList<>(input);
+        tokens = input;
         value = new ArrayList<>();
     }
 
-    public Node(final Word... subordinateConjunctions) {
-        value = Arrays.asList(subordinateConjunctions);
+    protected Node(final Word... words) {
+        value = Arrays.stream(words).map(Leaf::of).toList();
     }
 
-    protected void pop(final Symbol expected) {
+    public Node(final StatModNode statModNode) {
+        value = new ArrayList<>();
+        value.add(Leaf.of(statModNode));
+    }
+
+    protected void pop(final Word expected) {
         if (tokens.size() > 0) {
             if (tokens.get(0) == expected) {
                 tokens.remove(0);
+                return;
             }
         }
+        throw new IllegalStateException(
+                "Expected token '" + expected + "' does not match found token '"
+                        + tokens.get(0) + "'");
     }
 
     protected void consume(final Word expected) {
         if (tokens.size() > 0 && tokens.get(0) == expected) {
-            value.add(expected);
+            value.add(Leaf.of(expected));
             tokens.remove(0);
         }
     }
@@ -76,5 +86,13 @@ public abstract class Node {
         if (Arrays.stream(accepted).anyMatch((s) -> s == nextToken())) {
             consume(nextToken());
         }
+    }
+
+    protected List<Word> getTokens() {
+        return tokens;
+    }
+
+    protected void addChild(final StatModNode statModNode) {
+        value.add(Leaf.of(statModNode));
     }
 }

@@ -1,10 +1,12 @@
-package tegenton.card.parser;
+package tegenton.card.parser.node;
 
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import tegenton.card.lexicon.Preposition;
 import tegenton.card.lexicon.Word;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -13,62 +15,68 @@ public class PrepositionNodeTest {
     public static List<Word> tokens;
     public static PrepositionNode expected;
 
+    @BeforeEach
+    void setup() {
+        tokens = new ArrayList<>();
+    }
+
     @AfterEach
     void compare() {
         assertEquals(expected, new PrepositionNode(tokens));
+        assertEquals(0, tokens.size());
     }
 
     @Test
     void above() {
-        tokens = List.of(Preposition.ABOVE);
+        tokens.add(Preposition.ABOVE);
         expected = new PrepositionNode(Preposition.ABOVE);
     }
 
     @Test
     void forTest() {
-        tokens = List.of(Preposition.FOR);
+        tokens.add(Preposition.FOR);
         expected = new PrepositionNode(Preposition.FOR);
     }
 
     @Test
     void from() {
-        tokens = List.of(Preposition.FROM);
+        tokens.add(Preposition.FROM);
         expected = new PrepositionNode(Preposition.FROM);
     }
 
     @Test
     void in() {
-        tokens = List.of(Preposition.IN);
+        tokens.add(Preposition.IN);
         expected = new PrepositionNode(Preposition.IN);
     }
 
     @Test
     void of() {
-        tokens = List.of(Preposition.OF);
+        tokens.add(Preposition.OF);
         expected = new PrepositionNode(Preposition.OF);
     }
 
     @Test
     void on() {
-        tokens = List.of(Preposition.ON);
+        tokens.add(Preposition.ON);
         expected = new PrepositionNode(Preposition.ON);
     }
 
     @Test
     void to() {
-        tokens = List.of(Preposition.TO);
+        tokens.add(Preposition.TO);
         expected = new PrepositionNode(Preposition.TO);
     }
 
     @Test
     void under() {
-        tokens = List.of(Preposition.UNDER);
+        tokens.add(Preposition.UNDER);
         expected = new PrepositionNode(Preposition.UNDER);
     }
 
     @Test
     void with() {
-        tokens = List.of(Preposition.WITH);
+        tokens.add(Preposition.WITH);
         expected = new PrepositionNode(Preposition.WITH);
     }
 
