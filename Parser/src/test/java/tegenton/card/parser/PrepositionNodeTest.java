@@ -10,8 +10,8 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PrepositionNodeTest {
-    List<Word> tokens;
-    PrepositionNode expected;
+    public static List<Word> tokens;
+    public static PrepositionNode expected;
 
     @AfterEach
     void compare() {
