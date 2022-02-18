@@ -76,7 +76,7 @@ public abstract class Node {
     }
 
     protected void consume(final Class<? extends Word> wordClass) {
-        if (nextToken().getClass() == wordClass) {
+        if (wordClass.isAssignableFrom(nextToken().getClass())) {
             consume(nextToken());
         } else {
             throw new IllegalStateException(

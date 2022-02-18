@@ -13,6 +13,7 @@ import tegenton.card.lexicon.game.type.LandType;
 import tegenton.card.parser.node.QualityNode;
 import tegenton.card.parser.node.atom.AtomicObjectNode;
 import tegenton.card.parser.node.atom.ColorNode;
+import tegenton.card.parser.node.atom.TypeNode;
 import tegenton.card.parser.node.phrase.headword.ObjectNode;
 
 import java.util.ArrayList;
@@ -69,16 +70,16 @@ class KeywordNodeTest {
     void enchant() {
         tokens.addAll(
                 List.of(Keyword.ENCHANT, Symbol.SPACE, CardType.CREATURE));
-        expected = new KeywordNode(Keyword.ENCHANT,
-                new ObjectNode(new AtomicObjectNode(CardType.CREATURE)));
+        expected = new KeywordNode(Keyword.ENCHANT, new ObjectNode(
+                new AtomicObjectNode(new TypeNode(CardType.CREATURE))));
         compare();
     }
 
     @Test
     void walk() {
         tokens.addAll(List.of(LandType.ISLAND, Keyword.WALK));
-        expected = new KeywordNode(
-                new ObjectNode(new AtomicObjectNode(LandType.ISLAND)),
+        expected = new KeywordNode(new ObjectNode(
+                new AtomicObjectNode(new TypeNode(LandType.ISLAND))),
                 Keyword.WALK);
         compare();
     }

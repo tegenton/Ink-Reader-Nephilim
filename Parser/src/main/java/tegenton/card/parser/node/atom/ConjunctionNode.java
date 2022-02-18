@@ -8,7 +8,7 @@ import tegenton.card.parser.Node;
 import java.util.List;
 
 public class ConjunctionNode extends Node {
-    ConjunctionNode(final Word... conjunctions) {
+    public ConjunctionNode(final Word... conjunctions) {
         super(conjunctions);
     }
 

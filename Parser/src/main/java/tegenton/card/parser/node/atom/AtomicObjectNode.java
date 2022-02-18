@@ -15,6 +15,10 @@ public class AtomicObjectNode extends Node {
         super(object);
     }
 
+    public AtomicObjectNode(TypeNode typeNode) {
+        super(typeNode);
+    }
+
     public AtomicObjectNode(final List<Word> tokens) {
         super(tokens);
         if (nextToken() instanceof ObjectNoun noun) {
@@ -22,8 +26,8 @@ public class AtomicObjectNode extends Node {
             if (nextToken() == Morpheme.S) {
                 consume(Morpheme.S);
             }
-        } else if (nextToken() instanceof TypeWord type) {
-            consume(type);
+        } else if (nextToken() instanceof TypeWord) {
+            addChild(new TypeNode(getTokens()));
             if (nextToken() == Morpheme.S) {
                 consume(Morpheme.S);
             }

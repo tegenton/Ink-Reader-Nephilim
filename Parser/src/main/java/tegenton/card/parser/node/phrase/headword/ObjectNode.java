@@ -2,10 +2,12 @@ package tegenton.card.parser.node.phrase.headword;
 
 import tegenton.card.lexicon.Symbol;
 import tegenton.card.lexicon.Word;
+import tegenton.card.lexicon.game.type.SuperType;
 import tegenton.card.lexicon.game.type.TypeWord;
 import tegenton.card.parser.Node;
 import tegenton.card.parser.node.atom.AtomicObjectNode;
-import tegenton.card.parser.node.atom.DeterminerNode;
+import tegenton.card.parser.node.atom.ConjunctionNode;
+import tegenton.card.parser.node.modifier.PremodifierNode;
 
 import java.util.List;
 
@@ -16,10 +18,18 @@ public class ObjectNode extends Node {
 
     public ObjectNode(final List<Word> tokens) {
         super(tokens);
-        if (nextToken() instanceof TypeWord) {
+        if (nextToken() == SuperType.BASIC) {
+            addChild(new PremodifierNode(getTokens()));
+            expect(Symbol.SPACE);
+            addChild(new AtomicObjectNode(getTokens()));
+            expect(Symbol.SPACE);
+            addChild(new ConjunctionNode(getTokens()));
+            expect(Symbol.SPACE);
+            addChild(new AtomicObjectNode(getTokens()));
+        } else if (nextToken() instanceof TypeWord) {
             addChild(new AtomicObjectNode(getTokens()));
         } else {
-            addChild(new DeterminerNode(getTokens()));
+            addChild(new PremodifierNode(getTokens()));
             expect(Symbol.SPACE);
             addChild(new AtomicObjectNode(getTokens()));
         }

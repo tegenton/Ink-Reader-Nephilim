@@ -13,17 +13,19 @@ import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.target.object.ObjectNoun;
 import tegenton.card.lexicon.game.target.player.PlayerVerb;
 import tegenton.card.lexicon.value.EnglishNumber;
+import tegenton.card.parser.node.AmountNode;
 import tegenton.card.parser.node.CardNode;
-import tegenton.card.parser.node.atom.DeterminerNode;
-import tegenton.card.parser.node.phrase.headword.ObjectNode;
-import tegenton.card.parser.node.phrase.headword.PlayerNode;
-import tegenton.card.parser.node.phrase.PlayerPhraseNode;
-import tegenton.card.parser.node.phrase.PlayerVerbPhraseNode;
-import tegenton.card.parser.node.atom.symbol.PunctuationNode;
-import tegenton.card.parser.node.ability.SpellAbilityNode;
 import tegenton.card.parser.node.SpellNode;
+import tegenton.card.parser.node.ability.SpellAbilityNode;
 import tegenton.card.parser.node.atom.AtomicObjectNode;
 import tegenton.card.parser.node.atom.AtomicPlayerNode;
+import tegenton.card.parser.node.atom.DeterminerNode;
+import tegenton.card.parser.node.atom.symbol.PunctuationNode;
+import tegenton.card.parser.node.modifier.PremodifierNode;
+import tegenton.card.parser.node.phrase.PlayerPhraseNode;
+import tegenton.card.parser.node.phrase.PlayerVerbPhraseNode;
+import tegenton.card.parser.node.phrase.headword.ObjectNode;
+import tegenton.card.parser.node.phrase.headword.PlayerNode;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -58,13 +60,12 @@ public class ParserTest {
                 EnglishNumber.THREE, Symbol.SPACE, ObjectNoun.CARD, Morpheme.S,
                 Symbol.PERIOD));
         expected = new CardNode(new SpellNode(new SpellAbilityNode(
-                new PlayerPhraseNode(
-                        new PlayerNode(new DeterminerNode(Determiner.TARGET),
-                                new AtomicPlayerNode(PlayerVerb.PLAY,
-                                        Morpheme.ER)),
+                new PlayerPhraseNode(new PlayerNode(new PremodifierNode(
+                        new DeterminerNode(Determiner.TARGET)),
+                        new AtomicPlayerNode(PlayerVerb.PLAY, Morpheme.ER)),
                         new PlayerVerbPhraseNode(PlayerVerb.DRAW,
-                                new ObjectNode(
-                                        new DeterminerNode(EnglishNumber.THREE),
+                                new ObjectNode(new PremodifierNode(
+                                        new AmountNode(EnglishNumber.THREE)),
                                         new AtomicObjectNode(ObjectNoun.CARD,
                                                 Morpheme.S)))),
                 new PunctuationNode(Symbol.PERIOD))));

@@ -33,7 +33,7 @@ class AtomicObjectNodeTest {
     @Test
     void artifact() {
         tokens.add(CardType.ARTIFACT);
-        expected = new AtomicObjectNode(CardType.ARTIFACT);
+        expected = new AtomicObjectNode(new TypeNode(CardType.ARTIFACT));
     }
 
     @Test
@@ -87,6 +87,6 @@ class AtomicObjectNodeTest {
     @Test
     void zombie() {
         tokens.add(CreatureType.ZOMBIE);
-        expected = new AtomicObjectNode(CreatureType.ZOMBIE);
+        expected = new AtomicObjectNode(new TypeNode(CreatureType.ZOMBIE));
     }
 }

@@ -10,9 +10,11 @@ import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.target.object.ObjectNoun;
 import tegenton.card.lexicon.game.target.player.PlayerVerb;
 import tegenton.card.lexicon.value.EnglishNumber;
+import tegenton.card.parser.node.AmountNode;
 import tegenton.card.parser.node.atom.AtomicObjectNode;
 import tegenton.card.parser.node.atom.AtomicPlayerNode;
 import tegenton.card.parser.node.atom.DeterminerNode;
+import tegenton.card.parser.node.modifier.PremodifierNode;
 import tegenton.card.parser.node.phrase.headword.ObjectNode;
 import tegenton.card.parser.node.phrase.headword.PlayerNode;
 
@@ -42,12 +44,12 @@ public class PlayerPhraseNodeTest {
                 Morpheme.ER, Symbol.SPACE, PlayerVerb.DRAW, Symbol.SPACE,
                 EnglishNumber.THREE, Symbol.SPACE, ObjectNoun.CARD,
                 Morpheme.S));
-        expected = new PlayerPhraseNode(
-                new PlayerNode(new DeterminerNode(Determiner.TARGET),
-                        new AtomicPlayerNode(PlayerVerb.PLAY, Morpheme.ER)),
-                new PlayerVerbPhraseNode(PlayerVerb.DRAW,
-                        new ObjectNode(new DeterminerNode(EnglishNumber.THREE),
-                                new AtomicObjectNode(ObjectNoun.CARD,
-                                        Morpheme.S))));
+        expected = new PlayerPhraseNode(new PlayerNode(
+                new PremodifierNode(new DeterminerNode(Determiner.TARGET)),
+                new AtomicPlayerNode(PlayerVerb.PLAY, Morpheme.ER)),
+                new PlayerVerbPhraseNode(PlayerVerb.DRAW, new ObjectNode(
+                        new PremodifierNode(
+                                new AmountNode(EnglishNumber.THREE)),
+                        new AtomicObjectNode(ObjectNoun.CARD, Morpheme.S))));
     }
 }
