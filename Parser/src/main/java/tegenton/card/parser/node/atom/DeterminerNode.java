@@ -1,5 +1,6 @@
 package tegenton.card.parser.node.atom;
 
+import tegenton.card.lexicon.Adverb;
 import tegenton.card.lexicon.Determiner;
 import tegenton.card.lexicon.Morpheme;
 import tegenton.card.lexicon.Word;
@@ -21,6 +22,8 @@ public class DeterminerNode extends Node {
         } else if (nextToken() == Keyword.ENCHANT) {
             consume(Keyword.ENCHANT);
             consume(Morpheme.ED);
+        } else if (nextToken() == Adverb.NOT) {
+            consume(Adverb.NOT);
         } else {
             consume(Determiner.class);
         }

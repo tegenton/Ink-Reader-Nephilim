@@ -41,6 +41,7 @@ class KeywordNodeTest {
                         Keyword.FLYING, Keyword.HASTE, Keyword.INDESTRUCTIBLE,
                         Keyword.REACH, Keyword.TRAMPLE, Keyword.VIGILANCE);
         for (Keyword keyword : keywordList) {
+            tokens = new ArrayList<>();
             tokens.add(keyword);
             expected = new KeywordNode(keyword);
             compare();
