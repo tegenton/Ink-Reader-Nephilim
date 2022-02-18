@@ -13,6 +13,6 @@ public class PunctuationNode extends Node {
 
     public PunctuationNode(List<Word> tokens) {
         super(tokens);
-        consume(Symbol.PERIOD);
+        consume(Symbol.COMMA, Symbol.PERIOD);
     }
 }
