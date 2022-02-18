@@ -102,4 +102,8 @@ public abstract class Node {
     protected void addChild(final Node node) {
         value.add(Leaf.of(node));
     }
+
+    protected void addChild(final Word word) {
+        value.add(Leaf.of(word));
+    }
 }

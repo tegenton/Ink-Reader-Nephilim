@@ -10,6 +10,10 @@ import tegenton.card.parser.Node;
 import java.util.List;
 
 public class ColorNode extends Node {
+    public ColorNode(final Word... colors) {
+        super(colors);
+    }
+
     public ColorNode(final List<Word> input) {
         super(input);
         if (nextToken(GameNoun.COLOR)) {
@@ -21,9 +25,5 @@ public class ColorNode extends Node {
             }
             consume(ColorWord.class);
         }
-    }
-
-    ColorNode(final Word... colors) {
-        super(colors);
     }
 }
