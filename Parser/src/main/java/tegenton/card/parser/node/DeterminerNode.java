@@ -21,7 +21,7 @@ public class DeterminerNode extends Node {
             consume(Keyword.ENCHANT);
             consume(Morpheme.ED);
         } else {
-            consume(Determiner.TARGET);
+            consume(Determiner.class);
         }
     }
 }

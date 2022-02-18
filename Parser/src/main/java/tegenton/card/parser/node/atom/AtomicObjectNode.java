@@ -19,11 +19,14 @@ public class AtomicObjectNode extends Node {
         super(tokens);
         if (nextToken() instanceof ObjectNoun noun) {
             consume(noun);
-            if (nextToken() instanceof Morpheme) {
+            if (nextToken() == Morpheme.S) {
                 consume(Morpheme.S);
             }
         } else if (nextToken() instanceof TypeWord type) {
             consume(type);
+            if (nextToken() == Morpheme.S) {
+                consume(Morpheme.S);
+            }
         } else {
             consume(Symbol.TILDE, TargetNoun.THEY);
         }

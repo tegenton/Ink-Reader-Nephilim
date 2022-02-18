@@ -15,7 +15,7 @@ public class PlayerVerbPhraseNode extends Node {
 
     public PlayerVerbPhraseNode(final List<Word> tokens) {
         super(tokens);
-        consume(PlayerVerb.DRAW);
+        consume(PlayerVerb.class);
         expect(Symbol.SPACE);
         addChild(new ObjectNode(getTokens()));
     }
