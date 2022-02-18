@@ -1,10 +1,10 @@
-package tegenton.card.parser.node.leaf;
+package tegenton.card.parser.leaf;
 
 import org.junit.jupiter.api.Test;
 import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.target.player.PlayerVerb;
+import tegenton.card.parser.Node;
 import tegenton.card.parser.node.CardNode;
-import tegenton.card.parser.node.Node;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

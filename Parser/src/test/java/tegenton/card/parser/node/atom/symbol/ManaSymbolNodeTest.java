@@ -1,4 +1,4 @@
-package tegenton.card.parser.node.symbol;
+package tegenton.card.parser.node.atom.symbol;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

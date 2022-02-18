@@ -1,9 +1,9 @@
-package tegenton.card.parser.node.symbol;
+package tegenton.card.parser.node.atom.symbol;
 
 import tegenton.card.lexicon.Symbol;
 import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.Tap;
-import tegenton.card.parser.node.Node;
+import tegenton.card.parser.Node;
 
 import java.util.List;
 

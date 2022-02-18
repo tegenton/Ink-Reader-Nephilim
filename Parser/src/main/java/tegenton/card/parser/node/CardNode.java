@@ -2,7 +2,7 @@ package tegenton.card.parser.node;
 
 import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.Keyword;
-import tegenton.card.parser.SpellNode;
+import tegenton.card.parser.Node;
 
 import java.util.List;
 

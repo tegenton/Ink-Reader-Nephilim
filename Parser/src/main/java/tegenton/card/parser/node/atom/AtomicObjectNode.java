@@ -6,7 +6,7 @@ import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.target.TargetNoun;
 import tegenton.card.lexicon.game.target.object.ObjectNoun;
 import tegenton.card.lexicon.game.type.TypeWord;
-import tegenton.card.parser.node.Node;
+import tegenton.card.parser.Node;
 
 import java.util.List;
 

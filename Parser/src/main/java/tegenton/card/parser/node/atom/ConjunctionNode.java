@@ -3,7 +3,7 @@ package tegenton.card.parser.node.atom;
 import tegenton.card.lexicon.Conjunction;
 import tegenton.card.lexicon.Symbol;
 import tegenton.card.lexicon.Word;
-import tegenton.card.parser.node.Node;
+import tegenton.card.parser.Node;
 
 import java.util.List;
 

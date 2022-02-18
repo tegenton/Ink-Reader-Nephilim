@@ -1,7 +1,7 @@
-package tegenton.card.parser.node.leaf;
+package tegenton.card.parser.leaf;
 
 import tegenton.card.lexicon.Word;
-import tegenton.card.parser.node.Node;
+import tegenton.card.parser.Node;
 
 import java.util.Objects;
 

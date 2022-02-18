@@ -1,4 +1,4 @@
-package tegenton.card.parser.node;
+package tegenton.card.parser.node.ability;
 
 import tegenton.card.lexicon.Adverb;
 import tegenton.card.lexicon.Morpheme;
@@ -9,8 +9,10 @@ import tegenton.card.lexicon.game.target.TargetAuxiliaryVerb;
 import tegenton.card.lexicon.game.target.object.ObjectNoun;
 import tegenton.card.lexicon.game.target.object.ObjectVerb;
 import tegenton.card.lexicon.game.target.object.source.SourceVerb;
-import tegenton.card.parser.PunctuationNode;
+import tegenton.card.parser.Node;
+import tegenton.card.parser.node.phrase.headword.ObjectNode;
 import tegenton.card.parser.node.atom.SubordinateConjunctionNode;
+import tegenton.card.parser.node.atom.symbol.PunctuationNode;
 
 import java.util.List;
 

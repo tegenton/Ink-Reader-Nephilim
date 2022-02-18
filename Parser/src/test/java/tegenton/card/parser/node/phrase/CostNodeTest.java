@@ -1,4 +1,4 @@
-package tegenton.card.parser.node;
+package tegenton.card.parser.node.phrase;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -7,8 +7,8 @@ import tegenton.card.lexicon.Symbol;
 import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.ManaSymbol;
 import tegenton.card.lexicon.game.Tap;
-import tegenton.card.parser.node.symbol.ManaSymbolNode;
-import tegenton.card.parser.node.symbol.TapSymbolNode;
+import tegenton.card.parser.node.atom.symbol.ManaSymbolNode;
+import tegenton.card.parser.node.atom.symbol.TapSymbolNode;
 
 import java.util.ArrayList;
 import java.util.List;
