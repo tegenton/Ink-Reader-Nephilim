@@ -3,6 +3,7 @@ package tegenton.card.lexer;
 import tegenton.card.lexer.tokenizer.Tokenizer;
 import tegenton.card.lexicon.Word;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.function.BiConsumer;
@@ -21,9 +22,10 @@ public class Lexer implements
      * @return List of Words found in text.
      */
     public static List<Word> lex(final String text) {
-        StringStreamBuilder builder = new StringStreamBuilder(
-                text.toUpperCase());
-        return builder.build().collect(Lexer.toWordStream()).toList();
+        StringStreamBuilder builder =
+                new StringStreamBuilder(text.toUpperCase());
+        return new ArrayList<>(
+                builder.build().collect(Lexer.toWordStream()).toList());
     }
 
     /**

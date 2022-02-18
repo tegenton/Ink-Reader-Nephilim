@@ -1,7 +1,9 @@
 package tegenton.card.parser.node;
 
 import tegenton.card.lexicon.Determiner;
+import tegenton.card.lexicon.Morpheme;
 import tegenton.card.lexicon.Word;
+import tegenton.card.lexicon.game.Keyword;
 import tegenton.card.lexicon.value.EnglishNumber;
 
 import java.util.List;
@@ -15,6 +17,9 @@ public class DeterminerNode extends Node {
         super(tokens);
         if (nextToken() == EnglishNumber.THREE) {
             consume(EnglishNumber.THREE);
+        } else if (nextToken() == Keyword.ENCHANT) {
+            consume(Keyword.ENCHANT);
+            consume(Morpheme.ED);
         } else {
             consume(Determiner.TARGET);
         }

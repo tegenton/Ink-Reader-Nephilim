@@ -3,6 +3,9 @@ package tegenton.card.parser;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import tegenton.card.json.JsonLoader;
+import tegenton.card.json.model.SetJson;
+import tegenton.card.lexer.Lexer;
 import tegenton.card.lexicon.Determiner;
 import tegenton.card.lexicon.Morpheme;
 import tegenton.card.lexicon.Symbol;
@@ -11,7 +14,15 @@ import tegenton.card.lexicon.game.target.object.ObjectNoun;
 import tegenton.card.lexicon.game.target.player.PlayerVerb;
 import tegenton.card.lexicon.value.EnglishNumber;
 import tegenton.card.parser.node.CardNode;
+import tegenton.card.parser.node.DeterminerNode;
+import tegenton.card.parser.node.ObjectNode;
+import tegenton.card.parser.node.PlayerNode;
+import tegenton.card.parser.node.PlayerPhraseNode;
+import tegenton.card.parser.node.PlayerVerbPhraseNode;
+import tegenton.card.parser.node.atom.AtomicObjectNode;
+import tegenton.card.parser.node.atom.AtomicPlayerNode;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,12 +40,12 @@ public class ParserTest {
     @AfterEach
     void compare() {
         assertEquals(expected, Parser.parse(tokens));
+        assertEquals(0, tokens.size());
     }
 
     @Test
     void empty() {
-        // TODO
-        expected = new CardNode(null);
+        expected = new CardNode();
     }
 
     @Test
@@ -43,7 +54,33 @@ public class ParserTest {
                 Morpheme.ER, Symbol.SPACE, PlayerVerb.DRAW, Symbol.SPACE,
                 EnglishNumber.THREE, Symbol.SPACE, ObjectNoun.CARD, Morpheme.S,
                 Symbol.PERIOD));
-        // TODO
-        expected = new CardNode(null);
+        expected = new CardNode(new SpellNode(new SpellAbilityNode(
+                new PlayerPhraseNode(
+                        new PlayerNode(new DeterminerNode(Determiner.TARGET),
+                                new AtomicPlayerNode(PlayerVerb.PLAY,
+                                        Morpheme.ER)),
+                        new PlayerVerbPhraseNode(PlayerVerb.DRAW,
+                                new ObjectNode(
+                                        new DeterminerNode(EnglishNumber.THREE),
+                                        new AtomicObjectNode(ObjectNoun.CARD,
+                                                Morpheme.S)))),
+                new PunctuationNode(Symbol.PERIOD))));
+    }
+
+    @Test
+    void alpha() throws IOException {
+        JsonLoader jsonLoader = new JsonLoader();
+        SetJson setJson = jsonLoader.loadSet("LEA");
+        setJson.getCards().forEach(card -> {
+            tokens = Lexer.lex(card.getProcessedText());
+            try {
+                Parser.parse(tokens);
+                assertEquals(0, tokens.size());
+            } catch (final IllegalStateException e) {
+                System.err.println("Card: " + card.getName());
+                System.err.println("Text: " + card.getProcessedText());
+                throw e;
+            }
+        });
     }
 }

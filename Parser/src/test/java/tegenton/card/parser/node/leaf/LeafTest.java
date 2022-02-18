@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class LeafTest {
     @Test
     void node() {
-        final Node test = new CardNode(null);
+        final Node test = new CardNode();
         final Leaf leaf = Leaf.of(test);
         assertEquals(test, leaf.getNode());
     }
