@@ -15,6 +15,10 @@ public class PermanentNode extends Node {
         if (nextToken() == Symbol.NEWLINE) {
             expect(Symbol.NEWLINE);
             addChild(new StaticAbilityNode(getTokens()));
+            if (nextToken() != null) {
+                expect(Symbol.SPACE);
+                addChild(new StaticAbilityNode(getTokens()));
+            }
         }
     }
 }
