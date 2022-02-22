@@ -5,7 +5,6 @@ import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.Keyword;
 import tegenton.card.lexicon.game.type.TypeWord;
 import tegenton.card.parser.Node;
-import tegenton.card.parser.node.AmountNode;
 import tegenton.card.parser.node.atom.AdjectiveNode;
 import tegenton.card.parser.node.atom.DeterminerNode;
 import tegenton.card.parser.node.atom.TypeNode;

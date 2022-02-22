@@ -10,7 +10,6 @@ import tegenton.card.lexicon.game.ColorWord;
 import tegenton.card.lexicon.game.Keyword;
 import tegenton.card.lexicon.game.type.CardType;
 import tegenton.card.lexicon.game.type.LandType;
-import tegenton.card.parser.node.QualityNode;
 import tegenton.card.parser.node.atom.AtomicObjectNode;
 import tegenton.card.parser.node.atom.ColorNode;
 import tegenton.card.parser.node.atom.TypeNode;
@@ -62,7 +61,7 @@ class KeywordNodeTest {
                 List.of(Keyword.PROTECTION, Symbol.SPACE, Preposition.FROM,
                         Symbol.SPACE, ColorWord.WHITE));
         expected = new KeywordNode(Keyword.PROTECTION, Preposition.FROM,
-                new QualityNode(new ColorNode(ColorWord.WHITE)));
+                new ColorNode(ColorWord.WHITE));
         compare();
     }
 

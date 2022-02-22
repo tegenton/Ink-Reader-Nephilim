@@ -7,7 +7,7 @@ import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.Keyword;
 import tegenton.card.lexicon.game.type.TypeWord;
 import tegenton.card.parser.Node;
-import tegenton.card.parser.node.QualityNode;
+import tegenton.card.parser.node.atom.ColorNode;
 import tegenton.card.parser.node.phrase.headword.ObjectNode;
 
 import java.util.List;
@@ -17,7 +17,7 @@ public class KeywordNode extends Node {
         super(keyword);
     }
 
-    KeywordNode(Keyword protection, Preposition from, QualityNode quality) {
+    KeywordNode(Keyword protection, Preposition from, ColorNode quality) {
         super(protection, from);
         addChild(quality);
     }
@@ -47,7 +47,7 @@ public class KeywordNode extends Node {
             expect(Symbol.SPACE);
             consume(Preposition.FROM);
             expect(Symbol.SPACE);
-            addChild(new QualityNode(getTokens()));
+            addChild(new ColorNode(getTokens()));
         } else if (nextToken() instanceof TypeWord) {
             addChild(new ObjectNode(getTokens()));
             consume(Keyword.WALK);
