@@ -12,7 +12,9 @@ public class PermanentNode extends Node {
     protected PermanentNode(List<Word> input) {
         super(input);
         addChild(new KeywordNode(getTokens()));
-        expect(Symbol.NEWLINE);
-        addChild(new StaticAbilityNode(getTokens()));
+        if (nextToken() == Symbol.NEWLINE) {
+            expect(Symbol.NEWLINE);
+            addChild(new StaticAbilityNode(getTokens()));
+        }
     }
 }
