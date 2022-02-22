@@ -21,6 +21,9 @@ public class AtomicPlayerNode extends Node {
         } else if (nextToken() instanceof PlayerVerb) {
             consume(PlayerVerb.CONTROL, PlayerVerb.OWN, PlayerVerb.PLAY);
             consume(Morpheme.ER);
+            if (nextToken() == Morpheme.S) {
+                consume(Morpheme.S);
+            }
         } else {
             consume(TargetNoun.THEY);
         }

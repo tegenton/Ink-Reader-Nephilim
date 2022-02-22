@@ -20,6 +20,8 @@ public class PremodifierNode extends Node {
         super(input);
         if (nextToken() instanceof TypeWord) {
             addChild(new TypeNode(getTokens()));
+        } else if (nextToken() == Determiner.A) {
+            addChild(new AmountNode(getTokens()));
         } else if (nextToken() instanceof Determiner) {
             addChild(new DeterminerNode(getTokens()));
         } else if (nextToken() == Keyword.ENCHANT) {

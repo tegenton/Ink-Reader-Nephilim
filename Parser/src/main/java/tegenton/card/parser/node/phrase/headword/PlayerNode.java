@@ -1,5 +1,6 @@
 package tegenton.card.parser.node.phrase.headword;
 
+import tegenton.card.lexicon.Determiner;
 import tegenton.card.lexicon.Symbol;
 import tegenton.card.lexicon.Word;
 import tegenton.card.parser.Node;
@@ -15,8 +16,10 @@ public class PlayerNode extends Node {
 
     public PlayerNode(final List<Word> tokens) {
         super(tokens);
-        addChild(new PremodifierNode(getTokens()));
-        expect(Symbol.SPACE);
+        if (nextToken() instanceof Determiner) {
+            addChild(new PremodifierNode(getTokens()));
+            expect(Symbol.SPACE);
+        }
         addChild(new AtomicPlayerNode(getTokens()));
     }
 }

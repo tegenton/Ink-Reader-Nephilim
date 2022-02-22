@@ -15,7 +15,7 @@ public class CardNode extends Node {
     public CardNode(final List<Word> input) {
         super(input);
         if (getTokens().size() > 0) {
-            if (nextToken() == Keyword.ENCHANT) {
+            if (nextToken() instanceof Keyword) {
                 addChild(new PermanentNode(getTokens()));
             } else {
                 addChild(new SpellNode(getTokens()));

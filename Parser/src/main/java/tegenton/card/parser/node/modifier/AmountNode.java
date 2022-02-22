@@ -20,7 +20,7 @@ public class AmountNode extends Node {
         if (nextToken() instanceof EnglishNumber) {
             consume(EnglishNumber.THREE);
         } else {
-            consume(Determiner.A);
+            consume(Determiner.class);
             expect(Symbol.SPACE);
             consume(Noun.NUMBER);
             expect(Symbol.SPACE);

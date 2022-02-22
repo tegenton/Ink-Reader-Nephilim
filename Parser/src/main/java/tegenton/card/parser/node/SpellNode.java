@@ -1,5 +1,6 @@
 package tegenton.card.parser.node;
 
+import tegenton.card.lexicon.Symbol;
 import tegenton.card.lexicon.Word;
 import tegenton.card.parser.Node;
 import tegenton.card.parser.node.ability.SpellAbilityNode;
@@ -14,5 +15,9 @@ public class SpellNode extends Node {
     public SpellNode(List<Word> input) {
         super(input);
         addChild(new SpellAbilityNode(getTokens()));
+        if (nextToken() != null) {
+            expect(Symbol.SPACE);
+            addChild(new SpellAbilityNode(getTokens()));
+        }
     }
 }
