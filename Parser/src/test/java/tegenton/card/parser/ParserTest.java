@@ -32,6 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class ParserTest {
     public static List<Word> tokens;
@@ -43,7 +44,7 @@ public class ParserTest {
     }
 
     @AfterEach
-    void compare() {
+    void compare() throws ParseError {
         assertEquals(expected, Parser.parse(tokens));
         assertEquals(0, tokens.size());
     }
@@ -80,10 +81,12 @@ public class ParserTest {
             try {
                 Parser.parse(tokens);
                 assertEquals(0, tokens.size());
-            } catch (final IllegalStateException e) {
+            } catch (final ParseError e) {
+                System.err.println("Message:" + e.getMessage());
                 System.err.println("Card: " + card.getName());
                 System.err.println("Text: " + card.getProcessedText());
-                throw e;
+                System.err.println("Remaining tokens: " + e.getTokens());
+                fail();
             }
         });
     }

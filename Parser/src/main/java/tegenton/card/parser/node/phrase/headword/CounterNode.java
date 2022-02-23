@@ -5,6 +5,7 @@ import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.target.player.PlayerVerb;
 import tegenton.card.lexicon.game.type.CounterType;
 import tegenton.card.parser.Node;
+import tegenton.card.parser.ParseError;
 import tegenton.card.parser.node.atom.StatModNode;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public class CounterNode extends Node {
         super(statModNode);
     }
 
-    public CounterNode(final List<Word> input) {
+    public CounterNode(final List<Word> input) throws ParseError {
         super(input);
         if (nextToken() instanceof CounterType counterType) {
             consume(counterType);

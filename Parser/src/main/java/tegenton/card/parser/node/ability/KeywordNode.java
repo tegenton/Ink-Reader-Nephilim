@@ -7,6 +7,7 @@ import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.Keyword;
 import tegenton.card.lexicon.game.type.TypeWord;
 import tegenton.card.parser.Node;
+import tegenton.card.parser.ParseError;
 import tegenton.card.parser.node.atom.ColorNode;
 import tegenton.card.parser.node.phrase.headword.ObjectNode;
 
@@ -32,7 +33,7 @@ public class KeywordNode extends Node {
         addChild(walk);
     }
 
-    public KeywordNode(List<Word> input) {
+    public KeywordNode(List<Word> input) throws ParseError {
         super(input);
         if (nextToken() == Adjective.FIRST) {
             consume(Adjective.FIRST);

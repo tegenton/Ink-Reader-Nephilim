@@ -11,13 +11,14 @@ import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.target.TargetNoun;
 import tegenton.card.lexicon.game.target.player.PlayerVerb;
 import tegenton.card.parser.Node;
+import tegenton.card.parser.ParseError;
 import tegenton.card.parser.node.atom.AtomicObjectNode;
 import tegenton.card.parser.node.modifier.AmountNode;
 
 import java.util.List;
 
 public class PostModifierNode extends Node {
-    public PostModifierNode(List<Word> tokens) {
+    public PostModifierNode(List<Word> tokens) throws ParseError {
         super(tokens);
         consume(TargetNoun.THEY);
         expect(Symbol.SPACE);

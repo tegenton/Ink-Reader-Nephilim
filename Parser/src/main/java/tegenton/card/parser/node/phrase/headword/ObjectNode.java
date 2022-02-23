@@ -7,6 +7,7 @@ import tegenton.card.lexicon.game.target.object.ObjectNoun;
 import tegenton.card.lexicon.game.type.SuperType;
 import tegenton.card.lexicon.game.type.TypeWord;
 import tegenton.card.parser.Node;
+import tegenton.card.parser.ParseError;
 import tegenton.card.parser.node.atom.AtomicObjectNode;
 import tegenton.card.parser.node.atom.ConjunctionNode;
 import tegenton.card.parser.node.modifier.PremodifierNode;
@@ -18,7 +19,7 @@ public class ObjectNode extends Node {
         super(nodes);
     }
 
-    public ObjectNode(final List<Word> tokens) {
+    public ObjectNode(final List<Word> tokens) throws ParseError {
         super(tokens);
         if (nextToken() == SuperType.BASIC) {
             addChild(new PremodifierNode(getTokens()));

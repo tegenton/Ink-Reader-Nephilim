@@ -13,6 +13,7 @@ import tegenton.card.lexicon.game.target.object.ObjectVerb;
 import tegenton.card.lexicon.game.target.object.source.SourceVerb;
 import tegenton.card.lexicon.game.target.player.PlayerVerb;
 import tegenton.card.parser.Node;
+import tegenton.card.parser.ParseError;
 import tegenton.card.parser.node.atom.SubordinateConjunctionNode;
 import tegenton.card.parser.node.atom.symbol.PunctuationNode;
 import tegenton.card.parser.node.phrase.headword.ObjectNode;
@@ -20,7 +21,7 @@ import tegenton.card.parser.node.phrase.headword.ObjectNode;
 import java.util.List;
 
 public class StaticAbilityNode extends Node {
-    public StaticAbilityNode(List<Word> tokens) {
+    public StaticAbilityNode(List<Word> tokens) throws ParseError {
         super(tokens);
         if (nextToken() == Determiner.THIS) {
             consume(Determiner.THIS);

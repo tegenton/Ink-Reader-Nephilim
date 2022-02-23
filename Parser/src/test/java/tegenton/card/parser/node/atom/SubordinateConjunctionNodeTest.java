@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import tegenton.card.lexicon.SubordinateConjunction;
 import tegenton.card.lexicon.Symbol;
 import tegenton.card.lexicon.Word;
+import tegenton.card.parser.ParseError;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,7 @@ public class SubordinateConjunctionNodeTest {
     }
 
     @AfterEach
-    void compare() {
+    void compare() throws ParseError {
         assertEquals(node, new SubordinateConjunctionNode(tokens));
         assertEquals(0, tokens.size());
     }

@@ -8,11 +8,13 @@ import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.ManaSymbol;
 import tegenton.card.lexicon.value.DigitNumber;
 import tegenton.card.lexicon.value.Variable;
+import tegenton.card.parser.ParseError;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class ManaSymbolNodeTest {
     public static List<Word> tokens;
@@ -25,7 +27,13 @@ public class ManaSymbolNodeTest {
 
     @AfterEach
     void compare() {
-        assertEquals(expected, new ManaSymbolNode(tokens));
+        try {
+            assertEquals(expected, new ManaSymbolNode(tokens));
+        } catch (ParseError e) {
+            System.err.println("Message:" + e.getMessage());
+            System.err.println("Remaining tokens: " + e.getTokens());
+            fail();
+        }
         assertEquals(0, tokens.size());
     }
 

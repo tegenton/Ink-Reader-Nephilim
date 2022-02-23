@@ -9,11 +9,13 @@ import tegenton.card.lexicon.game.target.TargetNoun;
 import tegenton.card.lexicon.game.target.object.ObjectNoun;
 import tegenton.card.lexicon.game.type.CardType;
 import tegenton.card.lexicon.game.type.CreatureType;
+import tegenton.card.parser.ParseError;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 class AtomicObjectNodeTest {
     public static List<Word> tokens;
@@ -26,7 +28,13 @@ class AtomicObjectNodeTest {
 
     @AfterEach
     void compare() {
-        assertEquals(expected, new AtomicObjectNode(tokens));
+        try {
+            assertEquals(expected, new AtomicObjectNode(tokens));
+        } catch (ParseError e) {
+            System.err.println("Message:" + e.getMessage());
+            System.err.println("Remaining tokens: " + e.getTokens());
+            fail();
+        }
         assertEquals(0, tokens.size());
     }
 

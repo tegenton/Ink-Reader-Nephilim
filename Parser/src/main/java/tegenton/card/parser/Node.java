@@ -24,19 +24,19 @@ public abstract class Node {
         Arrays.stream(nodes).map(Leaf::of).forEach(value::add);
     }
 
-    protected void expect(final Word expected) {
+    protected void expect(final Word expected) throws ParseError {
         if (tokens.size() > 0) {
             if (nextToken() == expected) {
                 tokens.remove(0);
                 return;
             }
         }
-        throw new IllegalStateException(
+        throw new ParseError(
                 "Expected token '" + expected + "' does not match found token '"
-                        + nextToken() + "'");
+                        + nextToken() + "'", getTokens());
     }
 
-    protected void consume(final Word expected) {
+    protected void consume(final Word expected) throws ParseError {
         expect(expected);
         value.add(Leaf.of(expected));
     }
@@ -75,23 +75,22 @@ public abstract class Node {
         return tokens.size() > 0 && tokens.get(0) == word;
     }
 
-    protected void consume(final Class<? extends Word> wordClass) {
+    protected void consume(
+            final Class<? extends Word> wordClass) throws ParseError {
         if (wordClass.isAssignableFrom(nextToken().getClass())) {
             consume(nextToken());
         } else {
-            throw new IllegalStateException(
-                    "Token '" + nextToken() + "' is not of type '"
-                            + wordClass.getSimpleName() + "'");
+            throw new ParseError("Token '" + nextToken() + "' is not of type '"
+                    + wordClass.getSimpleName() + "'", getTokens());
         }
     }
 
-    protected void consume(final Word... accepted) {
+    protected void consume(final Word... accepted) throws ParseError {
         if (Arrays.asList(accepted).contains(nextToken())) {
             consume(nextToken());
         } else {
-            throw new IllegalStateException(
-                    "Token '" + nextToken() + "' not found in '"
-                            + Arrays.toString(accepted) + "'");
+            throw new ParseError("Token '" + nextToken() + "' not found in '"
+                    + Arrays.toString(accepted) + "'", getTokens());
         }
     }
 

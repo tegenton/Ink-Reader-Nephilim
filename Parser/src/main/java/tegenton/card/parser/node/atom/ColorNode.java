@@ -6,6 +6,7 @@ import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.ColorWord;
 import tegenton.card.lexicon.game.GameNoun;
 import tegenton.card.parser.Node;
+import tegenton.card.parser.ParseError;
 
 import java.util.List;
 
@@ -14,7 +15,7 @@ public class ColorNode extends Node {
         super(colors);
     }
 
-    public ColorNode(final List<Word> input) {
+    public ColorNode(final List<Word> input) throws ParseError {
         super(input);
         if (nextToken(GameNoun.COLOR)) {
             consume(GameNoun.COLOR);

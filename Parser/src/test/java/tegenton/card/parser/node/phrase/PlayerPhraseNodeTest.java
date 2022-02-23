@@ -10,6 +10,7 @@ import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.target.object.ObjectNoun;
 import tegenton.card.lexicon.game.target.player.PlayerVerb;
 import tegenton.card.lexicon.value.EnglishNumber;
+import tegenton.card.parser.ParseError;
 import tegenton.card.parser.node.atom.AtomicObjectNode;
 import tegenton.card.parser.node.atom.AtomicPlayerNode;
 import tegenton.card.parser.node.atom.DeterminerNode;
@@ -22,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class PlayerPhraseNodeTest {
     public static List<Word> tokens;
@@ -34,7 +36,13 @@ public class PlayerPhraseNodeTest {
 
     @AfterEach
     void compare() {
-        assertEquals(expected, new PlayerPhraseNode(tokens));
+        try {
+            assertEquals(expected, new PlayerPhraseNode(tokens));
+        } catch (ParseError e) {
+            System.err.println("Message:" + e.getMessage());
+            System.err.println("Remaining tokens: " + e.getTokens());
+            fail();
+        }
         assertEquals(0, tokens.size());
     }
 

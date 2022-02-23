@@ -7,6 +7,7 @@ import tegenton.card.lexicon.Symbol;
 import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.value.EnglishNumber;
 import tegenton.card.parser.Node;
+import tegenton.card.parser.ParseError;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class AmountNode extends Node {
         super(amount);
     }
 
-    public AmountNode(List<Word> tokens) {
+    public AmountNode(List<Word> tokens) throws ParseError {
         super(tokens);
         if (nextToken() instanceof EnglishNumber) {
             consume(EnglishNumber.THREE);

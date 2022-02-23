@@ -6,6 +6,7 @@ import tegenton.card.lexicon.game.target.TargetNoun;
 import tegenton.card.lexicon.game.target.player.PlayerNoun;
 import tegenton.card.lexicon.game.target.player.PlayerVerb;
 import tegenton.card.parser.Node;
+import tegenton.card.parser.ParseError;
 
 import java.util.List;
 
@@ -14,7 +15,7 @@ public class AtomicPlayerNode extends Node {
         super(player);
     }
 
-    public AtomicPlayerNode(final List<Word> tokens) {
+    public AtomicPlayerNode(final List<Word> tokens) throws ParseError {
         super(tokens);
         if (nextToken() instanceof PlayerNoun playerNoun) {
             consume(playerNoun);

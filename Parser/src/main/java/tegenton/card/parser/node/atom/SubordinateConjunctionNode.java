@@ -4,6 +4,7 @@ import tegenton.card.lexicon.SubordinateConjunction;
 import tegenton.card.lexicon.Symbol;
 import tegenton.card.lexicon.Word;
 import tegenton.card.parser.Node;
+import tegenton.card.parser.ParseError;
 
 import java.util.List;
 
@@ -14,7 +15,8 @@ public class SubordinateConjunctionNode extends Node {
         super(subordinateConjunctions);
     }
 
-    public SubordinateConjunctionNode(final List<Word> input) {
+    public SubordinateConjunctionNode(
+            final List<Word> input) throws ParseError {
         super(input);
         if (nextToken(SubordinateConjunction.AS)) {
             consume(SubordinateConjunction.AS);

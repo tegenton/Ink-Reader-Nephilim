@@ -6,6 +6,7 @@ import tegenton.card.lexicon.game.ManaSymbol;
 import tegenton.card.lexicon.value.DigitNumber;
 import tegenton.card.lexicon.value.Variable;
 import tegenton.card.parser.Node;
+import tegenton.card.parser.ParseError;
 
 import java.util.List;
 
@@ -14,7 +15,7 @@ public class ManaSymbolNode extends Node {
         super(w);
     }
 
-    public ManaSymbolNode(final List<Word> tokens) {
+    public ManaSymbolNode(final List<Word> tokens) throws ParseError {
         super(tokens);
         expect(Symbol.LBRACKET);
         if (nextToken() instanceof ManaSymbol manaSymbol) {

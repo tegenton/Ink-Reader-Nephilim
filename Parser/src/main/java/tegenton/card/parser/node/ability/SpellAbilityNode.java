@@ -2,6 +2,7 @@ package tegenton.card.parser.node.ability;
 
 import tegenton.card.lexicon.Word;
 import tegenton.card.parser.Node;
+import tegenton.card.parser.ParseError;
 import tegenton.card.parser.node.atom.symbol.PunctuationNode;
 import tegenton.card.parser.node.phrase.PlayerPhraseNode;
 
@@ -12,7 +13,7 @@ public class SpellAbilityNode extends Node {
         super(nodes);
     }
 
-    public SpellAbilityNode(List<Word> input) {
+    public SpellAbilityNode(List<Word> input) throws ParseError {
         super(input);
         addChild(new PlayerPhraseNode(getTokens()));
         addChild(new PunctuationNode(getTokens()));

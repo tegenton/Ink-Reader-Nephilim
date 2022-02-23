@@ -8,6 +8,7 @@ import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.target.player.PlayerVerb;
 import tegenton.card.lexicon.game.type.CounterType;
 import tegenton.card.lexicon.value.DigitNumber;
+import tegenton.card.parser.ParseError;
 import tegenton.card.parser.node.atom.StatModNode;
 
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ public class CounterNodeTest {
     }
 
     @AfterEach
-    void compare() {
+    void compare() throws ParseError {
         assertEquals(expected, new CounterNode(tokens));
         assertEquals(0, tokens.size());
     }

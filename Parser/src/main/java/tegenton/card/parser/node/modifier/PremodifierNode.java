@@ -5,6 +5,7 @@ import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.Keyword;
 import tegenton.card.lexicon.game.type.TypeWord;
 import tegenton.card.parser.Node;
+import tegenton.card.parser.ParseError;
 import tegenton.card.parser.node.atom.AdjectiveNode;
 import tegenton.card.parser.node.atom.DeterminerNode;
 import tegenton.card.parser.node.atom.TypeNode;
@@ -16,7 +17,7 @@ public class PremodifierNode extends Node {
         super(determinerNode);
     }
 
-    public PremodifierNode(List<Word> input) {
+    public PremodifierNode(List<Word> input) throws ParseError {
         super(input);
         if (nextToken() instanceof TypeWord) {
             addChild(new TypeNode(getTokens()));

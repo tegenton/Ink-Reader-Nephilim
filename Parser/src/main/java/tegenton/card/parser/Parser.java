@@ -6,7 +6,7 @@ import tegenton.card.parser.node.CardNode;
 import java.util.List;
 
 public class Parser {
-    public static Node parse(final List<Word> tokens) {
+    public static Node parse(final List<Word> tokens) throws ParseError {
         return new CardNode(tokens);
     }
 }

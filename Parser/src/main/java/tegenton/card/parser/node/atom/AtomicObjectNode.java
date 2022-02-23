@@ -7,6 +7,7 @@ import tegenton.card.lexicon.game.target.TargetNoun;
 import tegenton.card.lexicon.game.target.object.ObjectNoun;
 import tegenton.card.lexicon.game.type.TypeWord;
 import tegenton.card.parser.Node;
+import tegenton.card.parser.ParseError;
 
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class AtomicObjectNode extends Node {
         super(typeNode);
     }
 
-    public AtomicObjectNode(final List<Word> tokens) {
+    public AtomicObjectNode(final List<Word> tokens) throws ParseError {
         super(tokens);
         if (nextToken() instanceof ObjectNoun noun) {
             consume(noun);

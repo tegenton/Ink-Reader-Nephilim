@@ -10,6 +10,7 @@ import tegenton.card.lexicon.game.ColorWord;
 import tegenton.card.lexicon.game.Keyword;
 import tegenton.card.lexicon.game.type.CardType;
 import tegenton.card.lexicon.game.type.LandType;
+import tegenton.card.parser.ParseError;
 import tegenton.card.parser.node.atom.AtomicObjectNode;
 import tegenton.card.parser.node.atom.ColorNode;
 import tegenton.card.parser.node.atom.TypeNode;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 class KeywordNodeTest {
     public static List<Word> tokens;
@@ -30,7 +32,13 @@ class KeywordNodeTest {
     }
 
     void compare() {
-        assertEquals(expected, new KeywordNode(tokens));
+        try {
+            assertEquals(expected, new KeywordNode(tokens));
+        } catch (ParseError e) {
+            System.err.println("Message:" + e.getMessage());
+            System.err.println("Remaining tokens: " + e.getTokens());
+            fail();
+        }
         assertEquals(0, tokens.size());
     }
 

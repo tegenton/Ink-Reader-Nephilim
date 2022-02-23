@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import tegenton.card.lexicon.Preposition;
 import tegenton.card.lexicon.Word;
+import tegenton.card.parser.ParseError;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,7 @@ public class PrepositionNodeTest {
     }
 
     @AfterEach
-    void compare() {
+    void compare() throws ParseError {
         assertEquals(expected, new PrepositionNode(tokens));
         assertEquals(0, tokens.size());
     }

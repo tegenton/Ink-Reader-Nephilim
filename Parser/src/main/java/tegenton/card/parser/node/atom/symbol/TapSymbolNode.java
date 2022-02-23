@@ -4,6 +4,7 @@ import tegenton.card.lexicon.Symbol;
 import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.Tap;
 import tegenton.card.parser.Node;
+import tegenton.card.parser.ParseError;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ public class TapSymbolNode extends Node {
         super(t);
     }
 
-    public TapSymbolNode(final List<Word> tokens) {
+    public TapSymbolNode(final List<Word> tokens) throws ParseError {
         super(tokens);
         expect(Symbol.LBRACKET);
         consume(Tap.class);

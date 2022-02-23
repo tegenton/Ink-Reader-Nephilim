@@ -4,6 +4,7 @@ import tegenton.card.lexicon.Symbol;
 import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.Tap;
 import tegenton.card.parser.Node;
+import tegenton.card.parser.ParseError;
 import tegenton.card.parser.node.atom.symbol.ManaSymbolNode;
 import tegenton.card.parser.node.atom.symbol.TapSymbolNode;
 
@@ -14,7 +15,7 @@ public class CostNode extends Node {
         super(manaSymbols);
     }
 
-    public CostNode(final List<Word> tokens) {
+    public CostNode(final List<Word> tokens) throws ParseError {
         super(tokens);
         while (nextToken() == Symbol.LBRACKET) {
             if (getTokens().get(1) instanceof Tap) {

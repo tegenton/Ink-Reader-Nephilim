@@ -5,11 +5,13 @@ import org.junit.jupiter.api.Test;
 import tegenton.card.lexicon.Adverb;
 import tegenton.card.lexicon.Determiner;
 import tegenton.card.lexicon.Word;
+import tegenton.card.parser.ParseError;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 class DeterminerNodeTest {
     public static List<Word> tokens;
@@ -21,7 +23,13 @@ class DeterminerNodeTest {
     }
 
     void compare() {
-        assertEquals(expected, new DeterminerNode(tokens));
+        try {
+            assertEquals(expected, new DeterminerNode(tokens));
+        } catch (ParseError e) {
+            System.err.println("Message:" + e.getMessage());
+            System.err.println("Remaining tokens: " + e.getTokens());
+            fail();
+        }
         assertEquals(0, tokens.size());
     }
 

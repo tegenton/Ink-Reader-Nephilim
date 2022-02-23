@@ -8,6 +8,7 @@ import tegenton.card.lexicon.Comparative;
 import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.ColorWord;
 import tegenton.card.lexicon.game.GameNoun;
+import tegenton.card.parser.ParseError;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +26,7 @@ public class ColorNodeTest {
     }
 
     @AfterEach
-    void compare() {
+    void compare() throws ParseError {
         assertEquals(expected, new ColorNode(tokens));
         assertEquals(0, tokens.size());
     }

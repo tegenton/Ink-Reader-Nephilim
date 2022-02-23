@@ -8,6 +8,7 @@ import tegenton.card.lexicon.Symbol;
 import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.target.player.PlayerVerb;
 import tegenton.card.parser.Node;
+import tegenton.card.parser.ParseError;
 import tegenton.card.parser.node.phrase.headword.PlayerNode;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public class PlayerPhraseNode extends Node {
         super(nodes);
     }
 
-    public PlayerPhraseNode(final List<Word> input) {
+    public PlayerPhraseNode(final List<Word> input) throws ParseError {
         super(input);
         if (nextToken() instanceof Determiner
                 || nextToken() == PlayerVerb.PLAY) {

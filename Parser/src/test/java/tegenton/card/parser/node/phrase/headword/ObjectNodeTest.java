@@ -8,6 +8,7 @@ import tegenton.card.lexicon.Symbol;
 import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.type.LandType;
 import tegenton.card.lexicon.game.type.SuperType;
+import tegenton.card.parser.ParseError;
 import tegenton.card.parser.node.atom.AtomicObjectNode;
 import tegenton.card.parser.node.atom.ConjunctionNode;
 import tegenton.card.parser.node.atom.TypeNode;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 class ObjectNodeTest {
     public static List<Word> tokens;
@@ -29,7 +31,13 @@ class ObjectNodeTest {
 
     @AfterEach
     void compare() {
-        assertEquals(expected, new ObjectNode(tokens));
+        try {
+            assertEquals(expected, new ObjectNode(tokens));
+        } catch (ParseError e) {
+            System.err.println("Message:" + e.getMessage());
+            System.err.println("Remaining tokens: " + e.getTokens());
+            fail();
+        }
         assertEquals(0, tokens.size());
     }
 

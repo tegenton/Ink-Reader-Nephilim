@@ -8,11 +8,13 @@ import tegenton.card.lexicon.Noun;
 import tegenton.card.lexicon.Preposition;
 import tegenton.card.lexicon.Symbol;
 import tegenton.card.lexicon.Word;
+import tegenton.card.parser.ParseError;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 class AmountNodeTest {
     public static List<Word> tokens;
@@ -25,7 +27,13 @@ class AmountNodeTest {
 
     @AfterEach
     void compare() {
-        assertEquals(expected, new AmountNode(tokens));
+        try {
+            assertEquals(expected, new AmountNode(tokens));
+        } catch (ParseError e) {
+            System.err.println("Message:" + e.getMessage());
+            System.err.println("Remaining tokens: " + e.getTokens());
+            fail();
+        }
         assertEquals(0, tokens.size());
     }
 
