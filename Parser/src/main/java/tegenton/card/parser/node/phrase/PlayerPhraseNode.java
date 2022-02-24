@@ -38,6 +38,12 @@ public class PlayerPhraseNode extends Node {
             consume(Adjective.SAME);
             expect(Symbol.SPACE);
             consume(Noun.WAY);
+        } else if (nextToken() == Symbol.COMMA) {
+            consume(Symbol.COMMA);
+            expect(Symbol.SPACE);
+            consume(Conjunction.THEN);
+            expect(Symbol.SPACE);
+            addChild(new PlayerVerbPhraseNode(getTokens()));
         }
     }
 }

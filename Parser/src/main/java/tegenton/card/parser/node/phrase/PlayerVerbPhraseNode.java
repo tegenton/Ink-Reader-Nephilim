@@ -1,5 +1,7 @@
 package tegenton.card.parser.node.phrase;
 
+import tegenton.card.lexicon.Determiner;
+import tegenton.card.lexicon.Noun;
 import tegenton.card.lexicon.Symbol;
 import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.target.player.PlayerVerb;
@@ -20,6 +22,12 @@ public class PlayerVerbPhraseNode extends Node {
         super(tokens);
         consume(PlayerVerb.class);
         expect(Symbol.SPACE);
-        addChild(new ObjectNode(getTokens()));
+        if (getTokens().get(2) == Noun.REST) {
+            consume(Determiner.THE);
+            expect(Symbol.SPACE);
+            consume(Noun.REST);
+        } else {
+            addChild(new ObjectNode(getTokens()));
+        }
     }
 }

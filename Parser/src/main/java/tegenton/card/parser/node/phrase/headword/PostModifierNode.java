@@ -1,7 +1,6 @@
 package tegenton.card.parser.node.phrase.headword;
 
 import tegenton.card.lexicon.Adjective;
-import tegenton.card.lexicon.Conjunction;
 import tegenton.card.lexicon.Determiner;
 import tegenton.card.lexicon.Morpheme;
 import tegenton.card.lexicon.Noun;
@@ -49,14 +48,5 @@ public class PostModifierNode extends Node {
         consume(Determiner.THE);
         expect(Symbol.SPACE);
         consume(Noun.FEWEST);
-        expect(Symbol.COMMA);
-        expect(Symbol.SPACE);
-        consume(Conjunction.THEN);
-        expect(Symbol.SPACE);
-        consume(PlayerVerb.SACRIFICE);
-        expect(Symbol.SPACE);
-        consume(Determiner.THE);
-        expect(Symbol.SPACE);
-        consume(Noun.REST);
     }
 }

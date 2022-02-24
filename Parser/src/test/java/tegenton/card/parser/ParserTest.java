@@ -22,6 +22,7 @@ import tegenton.card.parser.node.atom.DeterminerNode;
 import tegenton.card.parser.node.atom.symbol.PunctuationNode;
 import tegenton.card.parser.node.modifier.AmountNode;
 import tegenton.card.parser.node.modifier.PremodifierNode;
+import tegenton.card.parser.node.phrase.PhraseNode;
 import tegenton.card.parser.node.phrase.PlayerPhraseNode;
 import tegenton.card.parser.node.phrase.PlayerVerbPhraseNode;
 import tegenton.card.parser.node.phrase.headword.ObjectNode;
@@ -61,14 +62,15 @@ public class ParserTest {
                 EnglishNumber.THREE, Symbol.SPACE, ObjectNoun.CARD, Morpheme.S,
                 Symbol.PERIOD));
         expected = new CardNode(new SpellNode(new SpellAbilityNode(
-                new PlayerPhraseNode(new PlayerNode(new PremodifierNode(
-                        new DeterminerNode(Determiner.TARGET)),
+                new PhraseNode(new PlayerPhraseNode(new PlayerNode(
+                        new PremodifierNode(
+                                new DeterminerNode(Determiner.TARGET)),
                         new AtomicPlayerNode(PlayerVerb.PLAY, Morpheme.ER)),
                         new PlayerVerbPhraseNode(PlayerVerb.DRAW,
                                 new ObjectNode(new PremodifierNode(
                                         new AmountNode(EnglishNumber.THREE)),
                                         new AtomicObjectNode(ObjectNoun.CARD,
-                                                Morpheme.S)))),
+                                                Morpheme.S))))),
                 new PunctuationNode(Symbol.PERIOD))));
     }
 

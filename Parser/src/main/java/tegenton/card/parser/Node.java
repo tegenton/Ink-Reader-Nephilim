@@ -32,7 +32,8 @@ public abstract class Node {
             }
         }
         throw new ParseError(
-                "Expected token '" + expected + "' does not match found token '"
+                this.getClass().getSimpleName() + ": Expected token '"
+                        + expected + "' does not match found token '"
                         + nextToken() + "'", getTokens());
     }
 
@@ -80,8 +81,10 @@ public abstract class Node {
         if (wordClass.isAssignableFrom(nextToken().getClass())) {
             consume(nextToken());
         } else {
-            throw new ParseError("Token '" + nextToken() + "' is not of type '"
-                    + wordClass.getSimpleName() + "'", getTokens());
+            throw new ParseError(
+                    this.getClass().getSimpleName() + ": Token '" + nextToken()
+                            + "' is not of type '" + wordClass.getSimpleName()
+                            + "'", getTokens());
         }
     }
 
