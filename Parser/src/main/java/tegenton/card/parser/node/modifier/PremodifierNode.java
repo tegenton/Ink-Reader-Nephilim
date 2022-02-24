@@ -3,6 +3,7 @@ package tegenton.card.parser.node.modifier;
 import tegenton.card.lexicon.Determiner;
 import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.Keyword;
+import tegenton.card.lexicon.game.target.object.ObjectVerb;
 import tegenton.card.lexicon.game.type.TypeWord;
 import tegenton.card.parser.Node;
 import tegenton.card.parser.ParseError;
@@ -21,11 +22,13 @@ public class PremodifierNode extends Node {
         super(input);
         if (nextToken() instanceof TypeWord) {
             addChild(new TypeNode(getTokens()));
-        } else if (nextToken() == Determiner.A) {
+        } else if (nextToken() == Determiner.A
+                || nextToken() == Determiner.ANY) {
             addChild(new AmountNode(getTokens()));
         } else if (nextToken() instanceof Determiner) {
             addChild(new DeterminerNode(getTokens()));
-        } else if (nextToken() == Keyword.ENCHANT) {
+        } else if (nextToken() == Keyword.ENCHANT
+                || nextToken() == ObjectVerb.ATTACK) {
             addChild(new AdjectiveNode(getTokens()));
         } else {
             addChild(new AmountNode(getTokens()));

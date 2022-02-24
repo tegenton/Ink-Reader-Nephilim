@@ -13,5 +13,6 @@ public class ObjectPhraseNode extends Node {
         super(input);
         addChild(new ObjectNode(getTokens()));
         expect(Symbol.SPACE);
+        addChild(new ObjectVerbPhrase(getTokens()));
     }
 }
