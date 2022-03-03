@@ -1,4 +1,4 @@
-package tegenton.card.parser;
+package tegenton.card.parser.node;
 
 import java.util.Objects;
 

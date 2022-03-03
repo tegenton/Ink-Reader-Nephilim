@@ -1,14 +1,16 @@
-package tegenton.card.parser;
-
-import tegenton.card.parser.ability.KeywordNode;
+package tegenton.card.parser.node;
 
 import java.util.Objects;
 
 public class PermanentNode {
-    private final KeywordNode keywordNode;
+    private KeywordNode node;
 
-    public PermanentNode(KeywordNode keywordNode) {
-        this.keywordNode = keywordNode;
+    public PermanentNode(KeywordNode node) {
+        this.node = node;
+    }
+
+    public PermanentNode() {
+
     }
 
     @Override
@@ -20,11 +22,11 @@ public class PermanentNode {
             return false;
         }
         PermanentNode that = (PermanentNode) o;
-        return Objects.equals(keywordNode, that.keywordNode);
+        return Objects.equals(node, that.node);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(keywordNode);
+        return Objects.hash(node);
     }
 }
