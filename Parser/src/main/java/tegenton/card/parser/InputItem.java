@@ -32,4 +32,8 @@ public class InputItem {
     public int hashCode() {
         return Objects.hash(word);
     }
+
+    public boolean match(Word word) {
+        return this.word == word;
+    }
 }

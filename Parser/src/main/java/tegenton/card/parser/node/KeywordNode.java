@@ -1,9 +1,10 @@
 package tegenton.card.parser.node;
 
-import tegenton.card.lexicon.game.Keyword;
+import tegenton.card.lexicon.Word;
 
-public class KeywordNode {
-    public KeywordNode(Keyword banding) {
+public class KeywordNode extends Node {
+    public KeywordNode(Word... words) {
+
     }
 
     @Override

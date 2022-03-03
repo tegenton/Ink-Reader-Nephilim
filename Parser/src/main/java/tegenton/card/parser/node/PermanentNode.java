@@ -2,7 +2,7 @@ package tegenton.card.parser.node;
 
 import java.util.Objects;
 
-public class PermanentNode {
+public class PermanentNode extends Node {
     private KeywordNode node;
 
     public PermanentNode(KeywordNode node) {
