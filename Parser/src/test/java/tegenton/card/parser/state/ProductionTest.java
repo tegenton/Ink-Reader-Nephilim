@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import tegenton.card.lexicon.Adjective;
 import tegenton.card.lexicon.Symbol;
 import tegenton.card.lexicon.game.Keyword;
+import tegenton.card.parser.node.KeywordAbilitiesNode;
 import tegenton.card.parser.node.KeywordNode;
 import tegenton.card.parser.node.PermanentNode;
 
@@ -15,8 +16,6 @@ public class ProductionTest {
     @Test
     void empty() {
         production = new Production(new PermanentNode());
-        production.add(null);
-        assertTrue(production.accept(null));
         assertTrue(production.reducable());
         assertEquals(new PermanentNode(), production.reduce());
     }
@@ -44,9 +43,23 @@ public class ProductionTest {
     }
 
     @Test
+    void nested() {
+        production = new Production(new KeywordAbilitiesNode());
+        production.add(new KeywordNode());
+        production.add(Symbol.COMMA);
+        production.add(Symbol.SPACE);
+        production.add(new KeywordNode());
+        assertTrue(production.accept(
+                new KeywordNode(Adjective.FIRST, Keyword.STRIKE)));
+        assertTrue(production.accept(Symbol.COMMA));
+        assertTrue(production.accept(Symbol.SPACE));
+        assertTrue(production.accept(new KeywordNode(Keyword.BANDING)));
+        assertTrue(production.reducable());
+    }
+
+    @Test
     void reject() {
         production = new Production(new PermanentNode());
-        production.add(null);
         assertFalse(production.accept(Keyword.BANDING));
     }
 

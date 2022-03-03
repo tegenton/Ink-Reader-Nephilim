@@ -8,18 +8,16 @@ import tegenton.card.parser.node.PermanentNode;
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.List;
-import java.util.Objects;
 
 public class Parser {
     private final Deque<InputItem> input = new ArrayDeque<>();
 
     public Parser(List<Word> tokens) {
         tokens.stream().map(InputItem::new).forEach(input::add);
-        input.add(new InputItem(null));
     }
 
     public CardNode parse() {
-        if (Objects.equals(input.peek(), new InputItem(null))) {
+        if (input.isEmpty()) {
             return new CardNode(new PermanentNode());
         }
         return new CardNode(

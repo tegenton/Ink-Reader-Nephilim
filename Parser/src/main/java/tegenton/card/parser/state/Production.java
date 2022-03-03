@@ -17,7 +17,17 @@ public class Production {
     }
 
     public boolean accept(Word word) {
-        if (configuration.get(index).match(word)) {
+        if (index < configuration.size() && configuration.get(index)
+                .match(word)) {
+            index++;
+            return true;
+        }
+        return false;
+    }
+
+    public boolean accept(Node node) {
+        if (index < configuration.size() && configuration.get(index)
+                .match(node)) {
             index++;
             return true;
         }
@@ -26,6 +36,10 @@ public class Production {
 
     public void add(Word word) {
         configuration.add(new InputItem(word));
+    }
+
+    public void add(Node node) {
+        configuration.add(new InputItem(node));
     }
 
     public boolean reducable() {
