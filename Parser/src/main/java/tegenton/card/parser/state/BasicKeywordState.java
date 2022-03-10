@@ -1,15 +1,16 @@
 package tegenton.card.parser.state;
 
+import tegenton.card.lexicon.Symbol;
 import tegenton.card.lexicon.game.Keyword;
 import tegenton.card.parser.InputItem;
 import tegenton.card.parser.node.KeywordNode;
 
 import java.util.List;
 
-public class KeywordState extends State {
+public class BasicKeywordState extends State {
     @Override
     public int reducible(InputItem peek) {
-        if (peek == null) {
+        if (peek == null || peek.getWord() instanceof Symbol) {
             return 1;
         }
         return -1;

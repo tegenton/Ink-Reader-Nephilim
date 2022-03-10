@@ -30,7 +30,7 @@ public class CardState extends State {
     @Override
     public State shift(InputItem pop) {
         if (pop.getWord() instanceof Keyword) {
-            return new KeywordState();
+            return new BasicKeywordState();
         } else if (pop.hasNode()) {
             if (pop.getNode() instanceof KeywordNode) {
                 return new KeywordAbilityState();
