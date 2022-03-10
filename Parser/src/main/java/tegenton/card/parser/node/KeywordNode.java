@@ -1,14 +1,8 @@
 package tegenton.card.parser.node;
 
-import tegenton.card.lexicon.Word;
+import tegenton.card.lexicon.game.Keyword;
 
 public class KeywordNode extends Node {
-    public KeywordNode(Word... words) {
-
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        return obj instanceof KeywordNode;
+    public KeywordNode(Keyword banding) {
     }
 }

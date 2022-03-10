@@ -2,11 +2,11 @@ package tegenton.card.parser.node;
 
 import java.util.Objects;
 
-public class CardNode {
-    private final PermanentNode permanentNode;
+public class CardNode extends Node {
+    private final Node node;
 
     public CardNode(PermanentNode permanentNode) {
-        this.permanentNode = permanentNode;
+        node = permanentNode;
     }
 
     @Override
@@ -18,11 +18,11 @@ public class CardNode {
             return false;
         }
         CardNode cardNode = (CardNode) o;
-        return Objects.equals(permanentNode, cardNode.permanentNode);
+        return Objects.equals(node, cardNode.node);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(permanentNode);
+        return Objects.hash(node);
     }
 }

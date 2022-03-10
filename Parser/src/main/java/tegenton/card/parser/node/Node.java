@@ -1,4 +1,4 @@
 package tegenton.card.parser.node;
 
-public class Node {
+public abstract class Node {
 }

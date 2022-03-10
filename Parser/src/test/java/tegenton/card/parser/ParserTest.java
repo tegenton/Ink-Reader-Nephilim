@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.Keyword;
 import tegenton.card.parser.node.CardNode;
+import tegenton.card.parser.node.KeywordAbilityNode;
 import tegenton.card.parser.node.KeywordNode;
 import tegenton.card.parser.node.PermanentNode;
 
@@ -33,8 +34,8 @@ public class ParserTest {
     void keyword() {
         tokens.add(Keyword.BANDING);
         Parser parser = new Parser(tokens);
-        expected = new CardNode(
-                new PermanentNode(new KeywordNode(Keyword.BANDING)));
+        expected = new CardNode(new PermanentNode(
+                new KeywordAbilityNode(new KeywordNode(Keyword.BANDING))));
         assertEquals(expected, parser.parse());
     }
 }
