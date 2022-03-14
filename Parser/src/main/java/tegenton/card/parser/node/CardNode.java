@@ -1,12 +1,33 @@
 package tegenton.card.parser.node;
 
+import tegenton.card.parser.InputItem;
+import tegenton.card.parser.state.Production;
+import tegenton.card.parser.state.State;
+
+import java.util.Deque;
 import java.util.Objects;
 
 public class CardNode extends Node {
-    private final Node node;
+    private Node node;
 
     public CardNode(PermanentNode permanentNode) {
         node = permanentNode;
+    }
+
+    CardNode() {
+        node = null;
+    }
+
+    public State productions() {
+        Production p = Production.of(this, new InputItem(new PermanentNode()));
+        p.setAccepting(true);
+        return new State(p);
+    }
+
+    @Override
+    public Node apply(Deque<InputItem> stack, InputItem peek) {
+        this.node = stack.pop().getNode();
+        return this;
     }
 
     @Override

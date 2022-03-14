@@ -3,6 +3,8 @@ package tegenton.card.parser;
 import tegenton.card.lexicon.Word;
 import tegenton.card.parser.node.Node;
 
+import java.util.Objects;
+
 public class InputItem {
     private Node node;
     private Word word;
@@ -29,5 +31,33 @@ public class InputItem {
 
     public boolean hasNode() {
         return node != null;
+    }
+
+    @Override
+    public String toString() {
+        if (hasNode()) {
+            return node.toString();
+        } else if (hasWord()) {
+            return word.toString();
+        }
+        return "N/A";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        InputItem inputItem = (InputItem) o;
+        return Objects.equals(node, inputItem.node) && Objects.equals(word,
+                inputItem.word);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(node, word);
     }
 }
