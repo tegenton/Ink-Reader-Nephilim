@@ -1,0 +1,25 @@
+package tegenton.card.parser.node;
+
+import org.junit.jupiter.api.Test;
+import tegenton.card.lexicon.Conjunction;
+import tegenton.card.lexicon.Word;
+import tegenton.card.parser.InputItem;
+
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.List;
+
+public class ConjunctionNodeTest extends NodeTest {
+    @Test
+    void simple() {
+        List<Conjunction> conjunctionList =
+                List.of(Conjunction.AND, Conjunction.OR, Conjunction.THEN);
+        for (Conjunction conjunction : conjunctionList) {
+            Deque<InputItem> input = new ArrayDeque<>(
+                    List.of(new InputItem(conjunction),
+                            new InputItem((Word) null)));
+            testNode(new ConjunctionNode(conjunction),
+                    new ConjunctionNode().productions(), input);
+        }
+    }
+}
