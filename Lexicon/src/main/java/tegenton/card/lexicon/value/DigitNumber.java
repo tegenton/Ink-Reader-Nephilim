@@ -1,13 +1,15 @@
 package tegenton.card.lexicon.value;
 
 
+import tegenton.card.lexicon.game.CostSymbol;
+
 import java.util.Objects;
 import java.util.stream.IntStream;
 
 /**
  * A number represented as digits, such as "1" or "2".
  */
-public final class DigitNumber implements ValueWord {
+public final class DigitNumber implements ValueWord, CostSymbol {
 
     private final int val;
 
