@@ -6,6 +6,7 @@ import tegenton.card.parser.node.Node;
 import java.util.Arrays;
 import java.util.Deque;
 import java.util.List;
+import java.util.Objects;
 
 public class Production {
     private final List<InputItem> items;
@@ -31,7 +32,7 @@ public class Production {
     }
 
     public Production shift(InputItem next) {
-        if (next.equals(items.get(index))) {
+        if (items.get(index).match(next)) {
             Production newProduction = new Production(output, items);
             newProduction.index = this.index + 1;
             newProduction.accepting = this.accepting;
@@ -68,5 +69,24 @@ public class Production {
 
     public boolean accepting() {
         return accepting;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Production that = (Production) o;
+        return accepting == that.accepting && index == that.index
+                && Objects.equals(items, that.items) && Objects.equals(output,
+                that.output);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(items, output, accepting, index);
     }
 }

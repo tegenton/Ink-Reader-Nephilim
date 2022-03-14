@@ -9,10 +9,12 @@ import tegenton.card.parser.node.KeywordAbilityNode;
 import tegenton.card.parser.node.KeywordNode;
 import tegenton.card.parser.node.PermanentNode;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class ParserTest {
     public static List<Word> tokens;
@@ -27,7 +29,12 @@ public class ParserTest {
     void vanillaCreature() {
         Parser parser = new Parser(tokens);
         expected = new CardNode(new PermanentNode());
-        assertEquals(expected, parser.parse());
+        try {
+            assertEquals(expected, parser.parse());
+        } catch (ParseException e) {
+            e.printStackTrace();
+            fail();
+        }
     }
 
     @Test
@@ -36,6 +43,11 @@ public class ParserTest {
         Parser parser = new Parser(tokens);
         expected = new CardNode(new PermanentNode(
                 new KeywordAbilityNode(new KeywordNode(Keyword.BANDING))));
-        assertEquals(expected, parser.parse());
+        try {
+            assertEquals(expected, parser.parse());
+        } catch (ParseException e) {
+            e.printStackTrace();
+            fail();
+        }
     }
 }

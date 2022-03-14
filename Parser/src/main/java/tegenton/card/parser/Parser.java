@@ -5,6 +5,7 @@ import tegenton.card.parser.node.CardNode;
 import tegenton.card.parser.node.Node;
 import tegenton.card.parser.state.State;
 
+import java.text.ParseException;
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.List;
@@ -20,7 +21,7 @@ public class Parser {
         input.add(new InputItem((Word) null));
     }
 
-    public CardNode parse() {
+    public CardNode parse() throws ParseException {
         boolean accept = false;
         while (!accept) {
             if (stateStack.getFirst().reducible(input.peek()) != -1) {

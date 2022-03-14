@@ -43,6 +43,11 @@ public class InputItem {
         return "N/A";
     }
 
+    public boolean match(InputItem inputItem) {
+        return inputItem != null && Objects.equals(node, inputItem.node)
+                && Objects.equals(word, inputItem.word);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

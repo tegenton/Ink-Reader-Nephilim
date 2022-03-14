@@ -1,6 +1,10 @@
 package tegenton.card.parser.node;
 
+import tegenton.card.lexicon.Adjective;
+import tegenton.card.lexicon.Symbol;
+import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.Keyword;
+import tegenton.card.parser.InputClass;
 import tegenton.card.parser.InputItem;
 import tegenton.card.parser.state.Production;
 import tegenton.card.parser.state.State;
@@ -9,7 +13,7 @@ import java.util.Deque;
 import java.util.Objects;
 
 public class KeywordNode extends Node {
-    private Keyword keyword;
+    private Word keyword;
 
     public KeywordNode(Keyword word) {
         this.keyword = word;
@@ -17,6 +21,10 @@ public class KeywordNode extends Node {
 
     KeywordNode() {
         keyword = null;
+    }
+
+    public KeywordNode(Adjective first, Keyword strike) {
+        keyword = first;
     }
 
     @Override
@@ -43,12 +51,19 @@ public class KeywordNode extends Node {
 
     @Override
     public State productions() {
-        return new State(Production.of(this, new InputItem(Keyword.BANDING)));
+        return new State(Production.of(this, new InputClass(Keyword.class)),
+                Production.of(this, new InputItem(Adjective.FIRST),
+                        new InputItem(Symbol.SPACE),
+                        new InputItem(Keyword.STRIKE)));
     }
 
     @Override
     public Node apply(Deque<InputItem> stack, InputItem peek) {
-        keyword = (Keyword) stack.pop().getWord();
+        if (stack.getFirst().getWord() == Keyword.STRIKE) {
+            stack.pop(); // STRIKE
+            stack.pop(); // SPACE
+        }
+        keyword = stack.pop().getWord();
         return this;
     }
 }

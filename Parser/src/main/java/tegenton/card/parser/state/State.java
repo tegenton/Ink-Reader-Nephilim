@@ -2,6 +2,7 @@ package tegenton.card.parser.state;
 
 import tegenton.card.parser.InputItem;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Deque;
@@ -52,14 +53,17 @@ public class State {
                 .filter(i -> i != -1).findAny().orElse(-1);
     }
 
-    public InputItem reduce(Deque<InputItem> stack, InputItem peek) {
+    public InputItem reduce(Deque<InputItem> stack,
+                            InputItem peek) throws ParseException {
         Production p = productions.stream()
                 .filter(production -> production.reducible(peek) != -1)
                 .findAny().orElse(null);
         if (p != null) {
             return p.reduce(stack, peek);
         }
-        throw new IllegalStateException();
+        throw new ParseException(
+                "Cannot reduce " + stack + " followed by " + peek,
+                stack.size());
     }
 
     public boolean accepting(InputItem peek) {
