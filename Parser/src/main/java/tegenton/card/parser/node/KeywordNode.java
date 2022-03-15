@@ -4,8 +4,8 @@ import tegenton.card.lexicon.Adjective;
 import tegenton.card.lexicon.Symbol;
 import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.Keyword;
-import tegenton.card.parser.InputClass;
-import tegenton.card.parser.InputItem;
+import tegenton.card.parser.item.InputClass;
+import tegenton.card.parser.item.InputItem;
 import tegenton.card.parser.state.Production;
 import tegenton.card.parser.state.State;
 

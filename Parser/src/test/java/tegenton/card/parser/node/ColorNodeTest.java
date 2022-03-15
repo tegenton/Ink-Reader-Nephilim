@@ -6,7 +6,7 @@ import tegenton.card.lexicon.Comparative;
 import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.ColorWord;
 import tegenton.card.lexicon.game.GameNoun;
-import tegenton.card.parser.InputItem;
+import tegenton.card.parser.item.InputItem;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -28,7 +28,6 @@ public class ColorNodeTest extends NodeTest {
 
     @Test
     void noncolor() {
-
         List<ColorWord> colorWords =
                 List.of(ColorWord.WHITE, ColorWord.BLUE, ColorWord.BLACK,
                         ColorWord.RED, ColorWord.GREEN);

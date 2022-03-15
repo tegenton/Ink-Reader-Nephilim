@@ -1,6 +1,6 @@
 package tegenton.card.parser.state;
 
-import tegenton.card.parser.InputItem;
+import tegenton.card.parser.item.InputItem;
 import tegenton.card.parser.node.Node;
 
 import java.util.Arrays;

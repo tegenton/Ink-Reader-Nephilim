@@ -6,7 +6,7 @@ import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.ManaSymbol;
 import tegenton.card.lexicon.value.DigitNumber;
 import tegenton.card.lexicon.value.Variable;
-import tegenton.card.parser.InputItem;
+import tegenton.card.parser.item.InputItem;
 import tegenton.card.parser.state.State;
 
 import java.util.ArrayDeque;

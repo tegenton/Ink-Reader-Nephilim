@@ -1,4 +1,4 @@
-package tegenton.card.parser;
+package tegenton.card.parser.item;
 
 import tegenton.card.lexicon.Symbol;
 

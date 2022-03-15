@@ -1,6 +1,7 @@
 package tegenton.card.parser;
 
 import tegenton.card.lexicon.Word;
+import tegenton.card.parser.item.InputItem;
 import tegenton.card.parser.node.CardNode;
 import tegenton.card.parser.node.Node;
 import tegenton.card.parser.state.State;

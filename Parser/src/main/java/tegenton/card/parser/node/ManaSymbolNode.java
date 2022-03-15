@@ -5,8 +5,8 @@ import tegenton.card.lexicon.game.CostSymbol;
 import tegenton.card.lexicon.game.ManaSymbol;
 import tegenton.card.lexicon.value.DigitNumber;
 import tegenton.card.lexicon.value.Variable;
-import tegenton.card.parser.InputClass;
-import tegenton.card.parser.InputItem;
+import tegenton.card.parser.item.InputClass;
+import tegenton.card.parser.item.InputItem;
 import tegenton.card.parser.state.Production;
 import tegenton.card.parser.state.State;
 
