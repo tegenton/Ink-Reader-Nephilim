@@ -13,6 +13,7 @@ public class Production {
     private final Node output;
     private boolean accepting = false;
     private int index = 0;
+    private InputItem lookahead;
 
     public Production(Node output, List<InputItem> list) {
         this.items = list;
@@ -32,10 +33,11 @@ public class Production {
     }
 
     public Production shift(InputItem next) {
-        if (items.get(index).match(next)) {
+        if (index < items.size() && items.get(index).match(next)) {
             Production newProduction = new Production(output, items);
             newProduction.index = this.index + 1;
             newProduction.accepting = this.accepting;
+            newProduction.lookahead = this.lookahead;
             return newProduction;
         }
         return null;
@@ -58,7 +60,9 @@ public class Production {
 
     public int reducible(InputItem peek) {
         if (index == items.size()) {
-            return index;
+            if (lookahead == null || lookahead.match(peek)) {
+                return index;
+            }
         }
         return -1;
     }
@@ -69,6 +73,10 @@ public class Production {
 
     public boolean accepting() {
         return accepting;
+    }
+
+    public void setLookahead(InputItem item) {
+        lookahead = item;
     }
 
     @Override

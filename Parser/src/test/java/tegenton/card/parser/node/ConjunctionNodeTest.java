@@ -2,6 +2,7 @@ package tegenton.card.parser.node;
 
 import org.junit.jupiter.api.Test;
 import tegenton.card.lexicon.Conjunction;
+import tegenton.card.lexicon.Symbol;
 import tegenton.card.lexicon.Word;
 import tegenton.card.parser.InputItem;
 
@@ -21,5 +22,16 @@ public class ConjunctionNodeTest extends NodeTest {
             testNode(new ConjunctionNode(conjunction),
                     new ConjunctionNode().productions(), input);
         }
+    }
+
+    @Test
+    void andOr() {
+        Deque<InputItem> input = new ArrayDeque<>(
+                List.of(new InputItem(Conjunction.AND),
+                        new InputItem(Symbol.SLASH),
+                        new InputItem(Conjunction.OR),
+                        new InputItem((Word) null)));
+        testNode(new ConjunctionNode(Conjunction.AND, Symbol.SLASH,
+                Conjunction.OR), new ConjunctionNode().productions(), input);
     }
 }
