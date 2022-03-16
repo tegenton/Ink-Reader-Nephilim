@@ -9,30 +9,77 @@ public class InputItem {
     private Node node;
     private Word word;
 
-    public InputItem(Word word) {
-        this.word = word;
+    /**
+     * Create a new InputItem holding a given word.
+     *
+     * @param value Value of this item.
+     */
+    public InputItem(final Word value) {
+        this.word = value;
     }
 
-    public InputItem(Node node) {
-        this.node = node;
+    /**
+     * Create a new InputItem holding a given node.
+     *
+     * @param value Value of this item.
+     */
+    public InputItem(final Node value) {
+        this.node = value;
     }
 
+    /**
+     * Retrieve the word contained by this item if applicable, otherwise null.
+     *
+     * @return Value of this item.
+     */
     public Word getWord() {
         return word;
     }
 
+    /**
+     * If this method returns false, getWord will return null.
+     *
+     * @return Does this item contain a word?
+     */
     public boolean hasWord() {
         return word != null;
     }
 
+    /**
+     * Retrieve the node contained by this item if applicable, otherwise null.
+     *
+     * @return Value of this item.
+     */
     public Node getNode() {
         return node;
     }
 
+    /**
+     * If this method returns false, getNode will return null.
+     *
+     * @return Does this item contain a node?
+     */
     public boolean hasNode() {
         return node != null;
     }
 
+    /**
+     * Compare items.
+     *
+     * @param inputItem Item to compare.
+     * @return Does the given item match this item's requirements?
+     */
+    public boolean match(final InputItem inputItem) {
+        return inputItem != null && Objects.equals(node, inputItem.node)
+                && Objects.equals(word, inputItem.word);
+    }
+
+    /**
+     * Get the string value of the word or node this item contains, or "Empty
+     * Item".
+     *
+     * @return String representing contents of this item.
+     */
     @Override
     public String toString() {
         if (hasNode()) {
@@ -40,16 +87,14 @@ public class InputItem {
         } else if (hasWord()) {
             return word.toString();
         }
-        return "N/A";
+        return "Empty Item";
     }
 
-    public boolean match(InputItem inputItem) {
-        return inputItem != null && Objects.equals(node, inputItem.node)
-                && Objects.equals(word, inputItem.word);
-    }
-
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) {
             return true;
         }
@@ -61,6 +106,9 @@ public class InputItem {
                 inputItem.word);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int hashCode() {
         return Objects.hash(node, word);

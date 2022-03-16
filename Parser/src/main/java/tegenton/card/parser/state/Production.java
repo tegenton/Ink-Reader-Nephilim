@@ -134,10 +134,7 @@ public class Production {
     }
 
     /**
-     * Compare this to another object.
-     *
-     * @param o Object to compare to.
-     * @return Is the object equivalent?
+     * {@inheritDoc}
      */
     @Override
     public boolean equals(final Object o) {
@@ -154,9 +151,7 @@ public class Production {
     }
 
     /**
-     * Hash codes are typically used for things like hash maps.
-     *
-     * @return Hash code of this object.
+     * {@inheritDoc}
      */
     @Override
     public int hashCode() {
