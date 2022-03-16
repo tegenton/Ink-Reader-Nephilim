@@ -15,24 +15,48 @@ public class Production {
     private int index = 0;
     private InputItem lookahead;
 
-    public Production(Node output, List<InputItem> list) {
-        this.items = list;
-        this.output = output;
+    Production(final Node product, final List<InputItem> symbols) {
+        this.items = symbols;
+        this.output = product;
     }
 
-    public static Production of(Node output, InputItem... items) {
-        return new Production(output, Arrays.asList(items));
+    /**
+     * Static production initializer.
+     *
+     * @param product Node that this production produces.
+     * @param symbols Symbols for this production to match against.
+     * @return Production of the given node using the given symbols.
+     */
+    public static Production of(final Node product,
+                                final InputItem... symbols) {
+        return new Production(product, Arrays.asList(symbols));
     }
 
-    public void setAccepting(boolean accepting) {
-        this.accepting = accepting;
+    /**
+     * Set whether completing this production leads to an accepting state.
+     *
+     * @param isAccepting Should this production lead to an accepting state?
+     */
+    public void setAccepting(final boolean isAccepting) {
+        this.accepting = isAccepting;
     }
 
-    public InputItem get(int i) {
+    /**
+     * Retrieve a specific item from this production.
+     *
+     * @param i Index of item to retrieve.
+     * @return Item at the specified index.
+     */
+    public InputItem get(final int i) {
         return items.get(i);
     }
 
-    public Production shift(InputItem next) {
+    /**
+     * @param next Upcoming item from input.
+     * @return New production representing the current production after parsing
+     * the next symbol.
+     */
+    public Production shift(final InputItem next) {
         if (index < items.size() && items.get(index).match(next)) {
             Production newProduction = new Production(output, items);
             newProduction.index = this.index + 1;
@@ -43,6 +67,57 @@ public class Production {
         return null;
     }
 
+    /**
+     * Determine if this production is complete and reducible.
+     *
+     * @param peek Upcoming input symbol.
+     * @return Can this production be reduced?
+     */
+    public int reducible(final InputItem peek) {
+        if (index == items.size()) {
+            if (lookahead == null || lookahead.match(peek)) {
+                return index;
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * Reduce this production to its output.
+     *
+     * @param stack Previously parsed symbols.
+     * @param peek  Upcoming input symbol.
+     * @return Node containing information from this production.
+     */
+    public InputItem reduce(final Deque<InputItem> stack,
+                            final InputItem peek) {
+        return new InputItem(output.apply(stack, peek));
+    }
+
+    /**
+     * Does this production lead to an accepting state?
+     *
+     * @return Is this production accepting?
+     */
+    public boolean accepting() {
+        return accepting;
+    }
+
+    /**
+     * Set a lookahead, which means that this production will not be reduced
+     * unless the upcoming symbol matches the lookahead.
+     *
+     * @param item Item to look for before reducing.
+     */
+    public void setLookahead(final InputItem item) {
+        lookahead = item;
+    }
+
+    /**
+     * Generate a string representing this production.
+     *
+     * @return String form of this production.
+     */
     @Override
     public String toString() {
         StringBuilder temp = new StringBuilder();
@@ -58,29 +133,14 @@ public class Production {
         return temp.toString();
     }
 
-    public int reducible(InputItem peek) {
-        if (index == items.size()) {
-            if (lookahead == null || lookahead.match(peek)) {
-                return index;
-            }
-        }
-        return -1;
-    }
-
-    public InputItem reduce(Deque<InputItem> stack, InputItem peek) {
-        return new InputItem(output.apply(stack, peek));
-    }
-
-    public boolean accepting() {
-        return accepting;
-    }
-
-    public void setLookahead(InputItem item) {
-        lookahead = item;
-    }
-
+    /**
+     * Compare this to another object.
+     *
+     * @param o Object to compare to.
+     * @return Is the object equivalent?
+     */
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) {
             return true;
         }
@@ -93,6 +153,11 @@ public class Production {
                 that.output);
     }
 
+    /**
+     * Hash codes are typically used for things like hash maps.
+     *
+     * @return Hash code of this object.
+     */
     @Override
     public int hashCode() {
         return Objects.hash(items, output, accepting, index);
