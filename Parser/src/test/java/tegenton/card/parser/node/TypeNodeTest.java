@@ -1,6 +1,9 @@
 package tegenton.card.parser.node;
 
 import org.junit.jupiter.api.Test;
+import tegenton.card.lexicon.Adjective;
+import tegenton.card.lexicon.Symbol;
+import tegenton.card.lexicon.game.GameNoun;
 import tegenton.card.lexicon.game.type.CardType;
 import tegenton.card.lexicon.game.type.CreatureType;
 import tegenton.card.lexicon.game.type.EnchantmentType;
@@ -54,5 +57,14 @@ public class TypeNodeTest extends NodeTest {
                     new ArrayDeque<>(List.of(new InputItem(type)));
             testNode(new TypeNode(type), input);
         }
+    }
+
+    @Test
+    void chosenType() {
+        Deque<InputItem> input = new ArrayDeque<>(
+                List.of(new InputItem(Adjective.CHOSEN),
+                        new InputItem(Symbol.SPACE),
+                        new InputItem(GameNoun.TYPE)));
+        testNode(new TypeNode(Adjective.CHOSEN, GameNoun.TYPE), input);
     }
 }
