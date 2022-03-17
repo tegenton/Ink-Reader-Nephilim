@@ -1,6 +1,9 @@
 package tegenton.card.parser.node;
 
 import tegenton.card.lexicon.game.type.CardType;
+import tegenton.card.lexicon.game.type.CreatureType;
+import tegenton.card.lexicon.game.type.EnchantmentType;
+import tegenton.card.lexicon.game.type.LandType;
 import tegenton.card.lexicon.game.type.SuperType;
 import tegenton.card.lexicon.game.type.TypeWord;
 import tegenton.card.parser.item.InputClass;
@@ -21,7 +24,10 @@ public class TypeNode extends Node {
     @Override
     public State productions() {
         return new State(Production.of(this, new InputClass(SuperType.BASIC)),
-                Production.of(this, new InputClass(CardType.ARTIFACT)));
+                Production.of(this, new InputClass(CardType.ARTIFACT)),
+                Production.of(this, new InputClass(CreatureType.WALL)),
+                Production.of(this, new InputClass(EnchantmentType.AURA)),
+                Production.of(this, new InputClass(LandType.PLAINS)));
     }
 
     @Override
