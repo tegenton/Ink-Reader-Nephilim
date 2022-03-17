@@ -19,8 +19,7 @@ public class ConjunctionNodeTest extends NodeTest {
             Deque<InputItem> input = new ArrayDeque<>(
                     List.of(new InputItem(conjunction),
                             new InputItem((Word) null)));
-            testNode(new ConjunctionNode(conjunction),
-                    new ConjunctionNode().productions(), input);
+            testNode(new ConjunctionNode(conjunction), input);
         }
     }
 
@@ -32,6 +31,6 @@ public class ConjunctionNodeTest extends NodeTest {
                         new InputItem(Conjunction.OR),
                         new InputItem((Word) null)));
         testNode(new ConjunctionNode(Conjunction.AND, Symbol.SLASH,
-                Conjunction.OR), new ConjunctionNode().productions(), input);
+                Conjunction.OR), input);
     }
 }

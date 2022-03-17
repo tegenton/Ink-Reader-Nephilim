@@ -22,13 +22,18 @@ public final class State {
     public State(final Production... productionList) {
         List<Production> propagate =
                 new ArrayList<>(Arrays.asList(productionList));
-        propagate.stream().filter(production -> production.get(0).hasNode())
-                .map(production -> production.get(0).getNode())
-                .forEach(node -> addAll(node.productions()));
-        productions.addAll(propagate);
+        extracted(propagate);
     }
 
     private State() {
+    }
+
+    private void extracted(List<Production> propagate) {
+        propagate.stream().map(production -> production.get(0))
+                .filter(Objects::nonNull).filter(InputItem::hasNode)
+                .map(InputItem::getNode)
+                .forEach(node -> addAll(node.productions()));
+        productions.addAll(propagate);
     }
 
     private void addAll(final State closure) {
@@ -43,8 +48,10 @@ public final class State {
      */
     public State shift(final InputItem next) {
         State newState = new State();
-        productions.stream().map(production -> production.shift(next))
-                .filter(Objects::nonNull).forEach(newState.productions::add);
+        List<Production> propagate = this.productions.stream()
+                .map(production -> production.shift(next))
+                .filter(Objects::nonNull).toList();
+        newState.extracted(propagate);
         return newState;
     }
 
@@ -81,22 +88,5 @@ public final class State {
         throw new ParseException(
                 "Cannot reduce " + stack + " followed by " + peek,
                 stack.size());
-    }
-
-    /**
-     * Check if the upcoming state is accepting.
-     *
-     * @param peek Upcoming input symbol.
-     * @return Whether the transition on the given symbol will lead to an
-     * accepting state.
-     */
-    public boolean accepting(final InputItem peek) {
-        Production p = productions.stream()
-                .filter(production -> production.reducible(peek) != -1)
-                .findAny().orElse(null);
-        if (p != null) {
-            return p.accepting();
-        }
-        throw new IllegalStateException();
     }
 }

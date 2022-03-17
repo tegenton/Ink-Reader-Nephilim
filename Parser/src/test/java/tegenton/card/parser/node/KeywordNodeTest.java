@@ -2,8 +2,10 @@ package tegenton.card.parser.node;
 
 import org.junit.jupiter.api.Test;
 import tegenton.card.lexicon.Adjective;
+import tegenton.card.lexicon.Preposition;
 import tegenton.card.lexicon.Symbol;
 import tegenton.card.lexicon.Word;
+import tegenton.card.lexicon.game.ColorWord;
 import tegenton.card.lexicon.game.Keyword;
 import tegenton.card.parser.item.InputItem;
 
@@ -22,8 +24,7 @@ class KeywordNodeTest extends NodeTest {
             ArrayDeque<InputItem> input = new ArrayDeque<>(
                     List.of(new InputItem(keyword),
                             new InputItem((Word) null)));
-            testNode(new KeywordNode(keyword), new KeywordNode().productions(),
-                    input);
+            testNode(new KeywordNode(keyword), input);
         }
     }
 
@@ -34,7 +35,19 @@ class KeywordNodeTest extends NodeTest {
                         new InputItem(Symbol.SPACE),
                         new InputItem(Keyword.STRIKE),
                         new InputItem((Word) null)));
-        testNode(new KeywordNode(Adjective.FIRST, Keyword.STRIKE),
-                new KeywordNode().productions(), input);
+        testNode(new KeywordNode(Adjective.FIRST, Keyword.STRIKE), input);
+    }
+
+    @Test
+    void protection() {
+        for (ColorWord color : ColorWord.values()) {
+            Deque<InputItem> input = new ArrayDeque<>(
+                    List.of(new InputItem(Keyword.PROTECTION),
+                            new InputItem(Symbol.SPACE),
+                            new InputItem(Preposition.FROM),
+                            new InputItem(Symbol.SPACE), new InputItem(color)));
+            testNode(new KeywordNode(Keyword.PROTECTION, Preposition.FROM,
+                    color), input);
+        }
     }
 }

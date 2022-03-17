@@ -48,7 +48,10 @@ public class Production {
      * @return Item at the specified index.
      */
     public InputItem get(final int i) {
-        return items.get(i);
+        if (index + i < items.size()) {
+            return items.get(index + i);
+        }
+        return null;
     }
 
     /**

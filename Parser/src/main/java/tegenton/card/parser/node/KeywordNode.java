@@ -1,30 +1,30 @@
 package tegenton.card.parser.node;
 
 import tegenton.card.lexicon.Adjective;
+import tegenton.card.lexicon.Preposition;
 import tegenton.card.lexicon.Symbol;
 import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.Keyword;
+import tegenton.card.parser.item.ClassExcept;
 import tegenton.card.parser.item.InputClass;
 import tegenton.card.parser.item.InputItem;
 import tegenton.card.parser.state.Production;
 import tegenton.card.parser.state.State;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Deque;
+import java.util.List;
 import java.util.Objects;
 
 public class KeywordNode extends Node {
-    private Word keyword;
+    private final List<Word> keyword = new ArrayList<>();
 
-    public KeywordNode(Keyword word) {
-        this.keyword = word;
+    public KeywordNode(Word... value) {
+        keyword.addAll(Arrays.asList(value));
     }
 
     KeywordNode() {
-        keyword = null;
-    }
-
-    public KeywordNode(Adjective first, Keyword strike) {
-        keyword = first;
     }
 
     @Override
@@ -36,7 +36,7 @@ public class KeywordNode extends Node {
             return false;
         }
         KeywordNode that = (KeywordNode) o;
-        return keyword == that.keyword;
+        return Objects.equals(keyword, ((KeywordNode) o).keyword);
     }
 
     @Override
@@ -51,19 +51,30 @@ public class KeywordNode extends Node {
 
     @Override
     public State productions() {
-        return new State(Production.of(this, new InputClass(Keyword.class)),
+        return new State(
+                Production.of(this, new ClassExcept(Keyword.PROTECTION)),
                 Production.of(this, new InputItem(Adjective.FIRST),
                         new InputItem(Symbol.SPACE),
-                        new InputItem(Keyword.STRIKE)));
+                        new InputItem(Keyword.STRIKE)),
+                Production.of(this, new InputItem(Keyword.PROTECTION),
+                        new InputItem(Symbol.SPACE),
+                        new InputItem(Preposition.FROM),
+                        new InputItem(Symbol.SPACE),
+                        new InputClass(new ColorNode())));
     }
 
     @Override
     public Node apply(Deque<InputItem> stack, InputItem peek) {
         if (stack.getFirst().getWord() == Keyword.STRIKE) {
-            stack.pop(); // STRIKE
+            keyword.add(0, stack.pop().getWord()); // FIRST
+            stack.pop(); // SPACE
+        } else if (stack.getFirst().getNode() instanceof ColorNode) {
+            keyword.add(0, stack.pop().getWord()); // COLOR
+            stack.pop(); // SPACE
+            keyword.add(0, stack.pop().getWord()); // FROM
             stack.pop(); // SPACE
         }
-        keyword = stack.pop().getWord();
+        keyword.add(0, stack.pop().getWord());
         return this;
     }
 }

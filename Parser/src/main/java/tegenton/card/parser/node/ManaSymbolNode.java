@@ -26,13 +26,12 @@ public class ManaSymbolNode extends Node {
     @Override
     public State productions() {
         return new State(Production.of(this, new InputItem(Symbol.LBRACKET),
-                new InputClass(ManaSymbol.class),
-                new InputItem(Symbol.RBRACKET)),
+                new InputClass(ManaSymbol.W), new InputItem(Symbol.RBRACKET)),
                 Production.of(this, new InputItem(Symbol.LBRACKET),
-                        new InputClass(DigitNumber.class),
+                        new InputClass(new DigitNumber(0)),
                         new InputItem(Symbol.RBRACKET)),
                 Production.of(this, new InputItem(Symbol.LBRACKET),
-                        new InputClass(Variable.class),
+                        new InputClass(Variable.X),
                         new InputItem(Symbol.RBRACKET)));
     }
 

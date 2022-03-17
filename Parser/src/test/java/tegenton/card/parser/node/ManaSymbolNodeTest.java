@@ -7,7 +7,6 @@ import tegenton.card.lexicon.game.ManaSymbol;
 import tegenton.card.lexicon.value.DigitNumber;
 import tegenton.card.lexicon.value.Variable;
 import tegenton.card.parser.item.InputItem;
-import tegenton.card.parser.state.State;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -22,8 +21,7 @@ public class ManaSymbolNodeTest extends NodeTest {
                             new InputItem(symbol),
                             new InputItem(Symbol.RBRACKET),
                             new InputItem((Word) null)));
-            State state = new ManaSymbolNode().productions();
-            testNode(new ManaSymbolNode(symbol), state, input);
+            testNode(new ManaSymbolNode(symbol), input);
         }
     }
 
@@ -35,8 +33,7 @@ public class ManaSymbolNodeTest extends NodeTest {
                             new InputItem(number),
                             new InputItem(Symbol.RBRACKET),
                             new InputItem((Word) null)));
-            State state = new ManaSymbolNode().productions();
-            testNode(new ManaSymbolNode(number), state, input);
+            testNode(new ManaSymbolNode(number), input);
         }
     }
 
@@ -48,8 +45,7 @@ public class ManaSymbolNodeTest extends NodeTest {
                             new InputItem(variable),
                             new InputItem(Symbol.RBRACKET),
                             new InputItem((Word) null)));
-            State state = new ManaSymbolNode().productions();
-            testNode(new ManaSymbolNode(variable), state, input);
+            testNode(new ManaSymbolNode(variable), input);
         }
     }
 }

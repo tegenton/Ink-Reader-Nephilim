@@ -28,11 +28,11 @@ public class ColorNode extends Node {
 
     @Override
     public State productions() {
-        return new State(Production.of(this, new InputClass(ColorWord.class)),
+        return new State(Production.of(this, new InputClass(ColorWord.WHITE)),
                 Production.of(this, new InputItem(GameNoun.COLOR),
                         new InputItem(Comparative.LESS)),
                 Production.of(this, new InputItem(Adverb.NOT),
-                        new InputClass(ColorWord.class)));
+                        new InputClass(ColorWord.WHITE)));
     }
 
     @Override

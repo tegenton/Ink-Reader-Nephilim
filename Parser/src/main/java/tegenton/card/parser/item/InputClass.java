@@ -1,20 +1,29 @@
 package tegenton.card.parser.item;
 
 import tegenton.card.lexicon.Word;
+import tegenton.card.parser.node.Node;
 
 import java.util.Objects;
 
 public class InputClass extends InputItem {
     private final Class<? extends Word> wordClass;
+    private final Class<? extends Node> nodeClass;
 
     /**
-     * Create a new InputClass that matches a particular word.
+     * Create a new InputClass that matches a particular type.
      *
-     * @param wordType Type of word that this item should match.
+     * @param type Type that this item should match.
      */
-    public InputClass(final Class<? extends Word> wordType) {
-        super((Word) null);
-        wordClass = wordType;
+    public InputClass(final Word type) {
+        super(type);
+        wordClass = type.getClass();
+        nodeClass = null;
+    }
+
+    public InputClass(final Node type) {
+        super(type);
+        wordClass = null;
+        nodeClass = type.getClass();
     }
 
     /**
@@ -25,18 +34,27 @@ public class InputClass extends InputItem {
      */
     @Override
     public boolean match(final InputItem inputItem) {
-        return inputItem.hasWord()
-                && inputItem.getWord().getClass() == wordClass;
+        if (inputItem.hasWord()) {
+            return inputItem.getWord().getClass() == wordClass;
+        } else if (inputItem.hasNode()) {
+            return inputItem.getNode().getClass() == nodeClass;
+        }
+        return false;
     }
 
     /**
-     * Get the name of the word class this item matches.
+     * Get the name of the class this item matches.
      *
      * @return String representation of this item.
      */
     @Override
     public String toString() {
-        return wordClass.getSimpleName();
+        if (wordClass != null) {
+            return wordClass.getSimpleName();
+        } else if (nodeClass != null) {
+            return nodeClass.getSimpleName();
+        }
+        return "Empty Class";
     }
 
     /**

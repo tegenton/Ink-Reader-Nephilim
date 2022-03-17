@@ -1,26 +1,19 @@
 package tegenton.card.parser.node;
 
+import tegenton.card.parser.Parser;
 import tegenton.card.parser.item.InputItem;
-import tegenton.card.parser.state.State;
 
 import java.text.ParseException;
-import java.util.ArrayDeque;
 import java.util.Deque;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class NodeTest {
-    protected void testNode(Node expected, State state,
-                            Deque<InputItem> input) {
-        Deque<InputItem> stack = new ArrayDeque<>();
-        while (state.reducible(input.getFirst()) == -1) {
-            state = state.shift(input.getFirst());
-            stack.push(input.pop());
-        }
+    protected void testNode(Node expected, Deque<InputItem> input) {
+        Parser parser = new Parser(input);
         try {
-            assertEquals(expected,
-                    state.reduce(stack, input.getFirst()).getNode());
+            assertEquals(expected, parser.parse(expected));
         } catch (ParseException e) {
             e.printStackTrace();
             fail();
