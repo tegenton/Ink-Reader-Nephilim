@@ -1,5 +1,6 @@
 package tegenton.card.parser.node;
 
+import tegenton.card.lexicon.game.type.CardType;
 import tegenton.card.lexicon.game.type.SuperType;
 import tegenton.card.lexicon.game.type.TypeWord;
 import tegenton.card.parser.item.InputClass;
@@ -13,13 +14,14 @@ import java.util.Objects;
 public class TypeNode extends Node {
     private TypeWord typeWord;
 
-    public TypeNode(SuperType basic) {
+    public TypeNode(TypeWord basic) {
         typeWord = basic;
     }
 
     @Override
     public State productions() {
-        return new State(Production.of(this, new InputClass(SuperType.BASIC)));
+        return new State(Production.of(this, new InputClass(SuperType.BASIC)),
+                Production.of(this, new InputClass(CardType.ARTIFACT)));
     }
 
     @Override
