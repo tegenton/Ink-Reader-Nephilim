@@ -21,7 +21,7 @@ public class ColorNodeTest extends NodeTest {
         for (ColorWord color : colorWords) {
             Deque<InputItem> input = new ArrayDeque<>(
                     List.of(new InputItem(color), new InputItem((Word) null)));
-            testNode(new ColorNode(color), input);
+            testNode(new ColorNode(color), new ColorNode(), input);
         }
     }
 
@@ -34,7 +34,7 @@ public class ColorNodeTest extends NodeTest {
             Deque<InputItem> input = new ArrayDeque<>(
                     List.of(new InputItem(Adverb.NOT), new InputItem(color),
                             new InputItem((Word) null)));
-            testNode(new ColorNode(Adverb.NOT, color), input);
+            testNode(new ColorNode(Adverb.NOT, color), new ColorNode(), input);
         }
     }
 
@@ -44,6 +44,7 @@ public class ColorNodeTest extends NodeTest {
                 List.of(new InputItem(GameNoun.COLOR),
                         new InputItem(Comparative.LESS),
                         new InputItem((Word) null)));
-        testNode(new ColorNode(GameNoun.COLOR, Comparative.LESS), input);
+        testNode(new ColorNode(GameNoun.COLOR, Comparative.LESS),
+                new ColorNode(), input);
     }
 }

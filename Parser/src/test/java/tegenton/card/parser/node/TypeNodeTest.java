@@ -2,6 +2,7 @@ package tegenton.card.parser.node;
 
 import org.junit.jupiter.api.Test;
 import tegenton.card.lexicon.Adjective;
+import tegenton.card.lexicon.Conjunction;
 import tegenton.card.lexicon.Symbol;
 import tegenton.card.lexicon.game.GameNoun;
 import tegenton.card.lexicon.game.type.CardType;
@@ -20,7 +21,8 @@ public class TypeNodeTest extends NodeTest {
     void superType() {
         Deque<InputItem> input =
                 new ArrayDeque<>(List.of(new InputItem(SuperType.BASIC)));
-        testNode(new TypeNode(SuperType.BASIC), input);
+        testNode(new TypeNode(new InputItem(SuperType.BASIC)), new TypeNode(),
+                input);
     }
 
     @Test
@@ -28,7 +30,7 @@ public class TypeNodeTest extends NodeTest {
         for (CardType type : CardType.values()) {
             Deque<InputItem> input =
                     new ArrayDeque<>(List.of(new InputItem(type)));
-            testNode(new TypeNode(type), input);
+            testNode(new TypeNode(new InputItem(type)), new TypeNode(), input);
         }
     }
 
@@ -37,7 +39,7 @@ public class TypeNodeTest extends NodeTest {
         for (CreatureType type : CreatureType.values()) {
             Deque<InputItem> input =
                     new ArrayDeque<>(List.of(new InputItem(type)));
-            testNode(new TypeNode(type), input);
+            testNode(new TypeNode(new InputItem(type)), new TypeNode(), input);
         }
     }
 
@@ -46,7 +48,7 @@ public class TypeNodeTest extends NodeTest {
         for (EnchantmentType type : EnchantmentType.values()) {
             Deque<InputItem> input =
                     new ArrayDeque<>(List.of(new InputItem(type)));
-            testNode(new TypeNode(type), input);
+            testNode(new TypeNode(new InputItem(type)), new TypeNode(), input);
         }
     }
 
@@ -55,7 +57,7 @@ public class TypeNodeTest extends NodeTest {
         for (LandType type : LandType.values()) {
             Deque<InputItem> input =
                     new ArrayDeque<>(List.of(new InputItem(type)));
-            testNode(new TypeNode(type), input);
+            testNode(new TypeNode(new InputItem(type)), new TypeNode(), input);
         }
     }
 
@@ -65,6 +67,20 @@ public class TypeNodeTest extends NodeTest {
                 List.of(new InputItem(Adjective.CHOSEN),
                         new InputItem(Symbol.SPACE),
                         new InputItem(GameNoun.TYPE)));
-        testNode(new TypeNode(Adjective.CHOSEN, GameNoun.TYPE), input);
+        testNode(new TypeNode(new InputItem(Adjective.CHOSEN),
+                new InputItem(GameNoun.TYPE)), new TypeNode(), input);
+    }
+
+    @Test
+    void conjoinedTypes() {
+        Deque<InputItem> input = new ArrayDeque<>(
+                List.of(new InputItem(CardType.CREATURE),
+                        new InputItem(Symbol.SPACE),
+                        new InputItem(Conjunction.OR),
+                        new InputItem(Symbol.SPACE),
+                        new InputItem(CardType.PLANESWALKER)));
+        testNode(new TypeNode(new InputItem(CardType.CREATURE),
+                new InputItem(new ConjunctionNode(Conjunction.OR)),
+                new InputItem(CardType.PLANESWALKER)), new TypeNode(), input);
     }
 }

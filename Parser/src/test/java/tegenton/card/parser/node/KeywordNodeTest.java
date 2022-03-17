@@ -25,7 +25,8 @@ class KeywordNodeTest extends NodeTest {
             ArrayDeque<InputItem> input = new ArrayDeque<>(
                     List.of(new InputItem(keyword),
                             new InputItem((Word) null)));
-            testNode(new KeywordNode(new InputItem(keyword)), input);
+            testNode(new KeywordNode(new InputItem(keyword)), new KeywordNode(),
+                    input);
         }
     }
 
@@ -37,7 +38,7 @@ class KeywordNodeTest extends NodeTest {
                         new InputItem(Keyword.STRIKE),
                         new InputItem((Word) null)));
         testNode(new KeywordNode(new InputItem(Adjective.FIRST),
-                new InputItem(Keyword.STRIKE)), input);
+                new InputItem(Keyword.STRIKE)), new KeywordNode(), input);
     }
 
     @Test
@@ -49,8 +50,9 @@ class KeywordNodeTest extends NodeTest {
                             new InputItem(Preposition.FROM),
                             new InputItem(Symbol.SPACE), new InputItem(color)));
             testNode(new KeywordNode(new InputItem(Keyword.PROTECTION),
-                    new InputItem(Preposition.FROM),
-                    new InputItem(new ColorNode(color))), input);
+                            new InputItem(Preposition.FROM),
+                            new InputItem(new ColorNode(color))), new KeywordNode(),
+                    input);
         }
     }
 
@@ -59,8 +61,9 @@ class KeywordNodeTest extends NodeTest {
         for (LandType type : LandType.values()) {
             Deque<InputItem> input = new ArrayDeque<>(
                     List.of(new InputItem(type), new InputItem(Keyword.WALK)));
-            testNode(new KeywordNode(new InputItem(new TypeNode(type)),
-                    new InputItem(Keyword.WALK)), input);
+            testNode(new KeywordNode(
+                    new InputItem(new TypeNode(new InputItem(type))),
+                    new InputItem(Keyword.WALK)), new KeywordNode(), input);
         }
     }
 }

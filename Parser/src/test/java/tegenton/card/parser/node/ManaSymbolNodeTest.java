@@ -21,7 +21,7 @@ public class ManaSymbolNodeTest extends NodeTest {
                             new InputItem(symbol),
                             new InputItem(Symbol.RBRACKET),
                             new InputItem((Word) null)));
-            testNode(new ManaSymbolNode(symbol), input);
+            testNode(new ManaSymbolNode(symbol), new ManaSymbolNode(), input);
         }
     }
 
@@ -33,7 +33,7 @@ public class ManaSymbolNodeTest extends NodeTest {
                             new InputItem(number),
                             new InputItem(Symbol.RBRACKET),
                             new InputItem((Word) null)));
-            testNode(new ManaSymbolNode(number), input);
+            testNode(new ManaSymbolNode(number), new ManaSymbolNode(), input);
         }
     }
 
@@ -45,7 +45,7 @@ public class ManaSymbolNodeTest extends NodeTest {
                             new InputItem(variable),
                             new InputItem(Symbol.RBRACKET),
                             new InputItem((Word) null)));
-            testNode(new ManaSymbolNode(variable), input);
+            testNode(new ManaSymbolNode(variable), new ManaSymbolNode(), input);
         }
     }
 }

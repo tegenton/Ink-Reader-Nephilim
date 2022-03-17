@@ -2,7 +2,6 @@ package tegenton.card.parser.node;
 
 import tegenton.card.lexicon.Adjective;
 import tegenton.card.lexicon.Symbol;
-import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.GameNoun;
 import tegenton.card.lexicon.game.type.CardType;
 import tegenton.card.lexicon.game.type.CreatureType;
@@ -21,10 +20,10 @@ import java.util.List;
 import java.util.Objects;
 
 public class TypeNode extends Node {
-    private final List<Word> value = new ArrayList<>();
+    private final List<InputItem> value = new ArrayList<>();
 
-    public TypeNode(Word... words) {
-        value.addAll(Arrays.asList(words));
+    public TypeNode(InputItem... items) {
+        value.addAll(Arrays.asList(items));
     }
 
     @Override
@@ -36,16 +35,21 @@ public class TypeNode extends Node {
                 Production.of(this, new InputClass(LandType.PLAINS)),
                 Production.of(this, new InputItem(Adjective.CHOSEN),
                         new InputItem(Symbol.SPACE),
-                        new InputItem(GameNoun.TYPE)));
+                        new InputItem(GameNoun.TYPE)),
+                Production.of(this, new InputClass(CardType.CREATURE),
+                        new InputItem(Symbol.SPACE),
+                        new InputClass(new ConjunctionNode()),
+                        new InputItem(Symbol.SPACE),
+                        new InputClass(new TypeNode())));
     }
 
     @Override
     public Node apply(Deque<InputItem> stack, InputItem peek) {
         if (stack.getFirst().getWord() == GameNoun.TYPE) {
-            value.add(stack.pop().getWord());
+            value.add(stack.pop());
             stack.pop();
         }
-        value.add(0, stack.pop().getWord());
+        value.add(0, stack.pop());
         return this;
     }
 

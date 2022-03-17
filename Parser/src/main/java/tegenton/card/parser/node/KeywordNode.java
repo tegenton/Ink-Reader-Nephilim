@@ -4,7 +4,6 @@ import tegenton.card.lexicon.Adjective;
 import tegenton.card.lexicon.Preposition;
 import tegenton.card.lexicon.Symbol;
 import tegenton.card.lexicon.game.Keyword;
-import tegenton.card.lexicon.game.type.CardType;
 import tegenton.card.parser.item.ClassExcept;
 import tegenton.card.parser.item.InputClass;
 import tegenton.card.parser.item.InputItem;
@@ -61,7 +60,7 @@ public class KeywordNode extends Node {
                         new InputItem(Preposition.FROM),
                         new InputItem(Symbol.SPACE),
                         new InputClass(new ColorNode())),
-                Production.of(this, new InputClass(new TypeNode(CardType.LAND)),
+                Production.of(this, new InputClass(new TypeNode()),
                         new InputItem(Keyword.WALK)));
     }
 
@@ -75,6 +74,8 @@ public class KeywordNode extends Node {
             stack.pop(); // SPACE
             value.add(0, stack.pop()); // FROM
             stack.pop(); // SPACE
+        } else if (stack.getFirst().getWord() == Keyword.WALK) {
+            value.add(0, stack.pop()); // TYPE
         }
         value.add(0, stack.pop());
         return this;
