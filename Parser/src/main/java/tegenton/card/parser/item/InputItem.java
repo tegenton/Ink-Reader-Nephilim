@@ -6,8 +6,8 @@ import tegenton.card.parser.node.Node;
 import java.util.Objects;
 
 public class InputItem {
-    private Node node;
-    private Word word;
+    private final Node node;
+    private final Word word;
 
     /**
      * Create a new InputItem holding a given word.
@@ -15,7 +15,8 @@ public class InputItem {
      * @param value Value of this item.
      */
     public InputItem(final Word value) {
-        this.word = value;
+        word = value;
+        node = null;
     }
 
     /**
@@ -24,7 +25,8 @@ public class InputItem {
      * @param value Value of this item.
      */
     public InputItem(final Node value) {
-        this.node = value;
+        word = null;
+        node = value;
     }
 
     /**
