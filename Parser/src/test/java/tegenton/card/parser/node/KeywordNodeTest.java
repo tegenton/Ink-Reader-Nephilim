@@ -7,6 +7,7 @@ import tegenton.card.lexicon.Symbol;
 import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.ColorWord;
 import tegenton.card.lexicon.game.Keyword;
+import tegenton.card.lexicon.game.type.LandType;
 import tegenton.card.parser.item.InputItem;
 
 import java.util.ArrayDeque;
@@ -24,7 +25,7 @@ class KeywordNodeTest extends NodeTest {
             ArrayDeque<InputItem> input = new ArrayDeque<>(
                     List.of(new InputItem(keyword),
                             new InputItem((Word) null)));
-            testNode(new KeywordNode(keyword), input);
+            testNode(new KeywordNode(new InputItem(keyword)), input);
         }
     }
 
@@ -35,7 +36,8 @@ class KeywordNodeTest extends NodeTest {
                         new InputItem(Symbol.SPACE),
                         new InputItem(Keyword.STRIKE),
                         new InputItem((Word) null)));
-        testNode(new KeywordNode(Adjective.FIRST, Keyword.STRIKE), input);
+        testNode(new KeywordNode(new InputItem(Adjective.FIRST),
+                new InputItem(Keyword.STRIKE)), input);
     }
 
     @Test
@@ -46,8 +48,19 @@ class KeywordNodeTest extends NodeTest {
                             new InputItem(Symbol.SPACE),
                             new InputItem(Preposition.FROM),
                             new InputItem(Symbol.SPACE), new InputItem(color)));
-            testNode(new KeywordNode(Keyword.PROTECTION, Preposition.FROM,
-                    color), input);
+            testNode(new KeywordNode(new InputItem(Keyword.PROTECTION),
+                    new InputItem(Preposition.FROM),
+                    new InputItem(new ColorNode(color))), input);
+        }
+    }
+
+    @Test
+    void walk() {
+        for (LandType type : LandType.values()) {
+            Deque<InputItem> input = new ArrayDeque<>(
+                    List.of(new InputItem(type), new InputItem(Keyword.WALK)));
+            testNode(new KeywordNode(new InputItem(new TypeNode(type)),
+                    new InputItem(Keyword.WALK)), input);
         }
     }
 }

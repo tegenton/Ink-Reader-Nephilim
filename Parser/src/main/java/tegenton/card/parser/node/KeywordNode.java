@@ -3,8 +3,8 @@ package tegenton.card.parser.node;
 import tegenton.card.lexicon.Adjective;
 import tegenton.card.lexicon.Preposition;
 import tegenton.card.lexicon.Symbol;
-import tegenton.card.lexicon.Word;
 import tegenton.card.lexicon.game.Keyword;
+import tegenton.card.lexicon.game.type.CardType;
 import tegenton.card.parser.item.ClassExcept;
 import tegenton.card.parser.item.InputClass;
 import tegenton.card.parser.item.InputItem;
@@ -18,10 +18,10 @@ import java.util.List;
 import java.util.Objects;
 
 public class KeywordNode extends Node {
-    private final List<Word> keyword = new ArrayList<>();
+    private final List<InputItem> value = new ArrayList<>();
 
-    public KeywordNode(Word... value) {
-        keyword.addAll(Arrays.asList(value));
+    public KeywordNode(InputItem... items) {
+        this.value.addAll(Arrays.asList(items));
     }
 
     KeywordNode() {
@@ -36,17 +36,17 @@ public class KeywordNode extends Node {
             return false;
         }
         KeywordNode that = (KeywordNode) o;
-        return Objects.equals(keyword, ((KeywordNode) o).keyword);
+        return Objects.equals(value, ((KeywordNode) o).value);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(keyword);
+        return Objects.hash(value);
     }
 
     @Override
     public String toString() {
-        return "KeywordNode{" + keyword + '}';
+        return "KeywordNode{" + value + '}';
     }
 
     @Override
@@ -60,21 +60,23 @@ public class KeywordNode extends Node {
                         new InputItem(Symbol.SPACE),
                         new InputItem(Preposition.FROM),
                         new InputItem(Symbol.SPACE),
-                        new InputClass(new ColorNode())));
+                        new InputClass(new ColorNode())),
+                Production.of(this, new InputClass(new TypeNode(CardType.LAND)),
+                        new InputItem(Keyword.WALK)));
     }
 
     @Override
     public Node apply(Deque<InputItem> stack, InputItem peek) {
         if (stack.getFirst().getWord() == Keyword.STRIKE) {
-            keyword.add(0, stack.pop().getWord()); // FIRST
+            value.add(0, stack.pop()); // FIRST
             stack.pop(); // SPACE
         } else if (stack.getFirst().getNode() instanceof ColorNode) {
-            keyword.add(0, stack.pop().getWord()); // COLOR
+            value.add(0, stack.pop()); // COLOR
             stack.pop(); // SPACE
-            keyword.add(0, stack.pop().getWord()); // FROM
+            value.add(0, stack.pop()); // FROM
             stack.pop(); // SPACE
         }
-        keyword.add(0, stack.pop().getWord());
+        value.add(0, stack.pop());
         return this;
     }
 }

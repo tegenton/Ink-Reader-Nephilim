@@ -37,6 +37,11 @@ public class TypeNode extends Node {
     }
 
     @Override
+    public String toString() {
+        return "TypeNode{" + typeWord + '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
