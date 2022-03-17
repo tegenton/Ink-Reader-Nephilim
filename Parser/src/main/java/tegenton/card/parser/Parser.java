@@ -27,39 +27,27 @@ public class Parser {
 
     public CardNode parse() throws ParseException {
         stateStack.push(CardNode.baseProductions());
-        while (true) {
-            if (input.peek() != null) {
-                if (input.peek().getNode() instanceof CardNode cardNode) {
-                    return cardNode;
-                }
-                if (!reduce()) {
-                    shift();
-                }
-            } else {
-                if (!reduce()) {
-                    return null;
-                }
+        while (input.peek() != null || reduce()) {
+            if (input.peek().getNode() instanceof CardNode cardNode) {
+                return cardNode;
+            } else if (!reduce()) {
+                shift();
             }
         }
+        return null;
     }
 
     public Node parse(Node expect) throws ParseException {
         stateStack.push(expect.productions());
-        while (true) {
-            if (input.peek() != null) {
-                if (input.peek().hasNode() && input.peek().getNode().getClass()
-                        == expect.getClass()) {
-                    return input.pop().getNode();
-                }
-                if (!reduce()) {
-                    shift();
-                }
-            } else {
-                if (!reduce()) {
-                    return null;
-                }
+        while (input.peek() != null || reduce()) {
+            if (input.peek().hasNode()
+                    && input.peek().getNode().getClass() == expect.getClass()) {
+                return input.peek().getNode();
+            } else if (!reduce()) {
+                shift();
             }
         }
+        return null;
     }
 
     private void shift() {

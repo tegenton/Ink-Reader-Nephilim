@@ -84,9 +84,9 @@ public class InputItem {
      */
     @Override
     public String toString() {
-        if (hasNode()) {
+        if (node != null) {
             return node.toString();
-        } else if (hasWord()) {
+        } else if (word != null) {
             return word.toString();
         }
         return "Empty Item";
